@@ -1,24 +1,24 @@
 // For Frontend Back Validation
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
-    'use strict'
-  
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
-  
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-  
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })();
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})();
 
 
 //   document.addEventListener('DOMContentLoaded', function () {
@@ -28,21 +28,21 @@
 // });
 
 // Calander With Target ANd Time
-  document.addEventListener('DOMContentLoaded', function () {
-    $("#kt_daterangepicker_1").daterangepicker({
-      timePicker: true,
-      startDate: moment().startOf("hour"),
-      endDate: moment().startOf("hour").add(32, "hour"),
-      locale: {
-          format: "M/DD hh:mm A"
-      }
+document.addEventListener('DOMContentLoaded', function () {
+  $("#kt_daterangepicker_1").daterangepicker({
+    timePicker: true,
+    startDate: moment().startOf("hour"),
+    endDate: moment().startOf("hour").add(32, "hour"),
+    locale: {
+      format: "M/DD hh:mm A"
+    }
   });
 });
 // Single Calander
-  document.addEventListener('DOMContentLoaded', function () {
-    $("#kt_datepicker_3").flatpickr({
-      enableTime: true,
-      dateFormat: "Y-m-d H:i",
+document.addEventListener('DOMContentLoaded', function () {
+  $("#kt_datepicker_3").flatpickr({
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
   });
 });
 
@@ -56,36 +56,36 @@ $(document).ready(function () {
     maxFiles: 10,
     maxFilesize: 10, // MB
     addRemoveLinks: true,
-    accept: function(file, done) {
-        if (file.name == "wow.jpg") {
-            done("Naha, you don't.");
-        } else {
-            done();
-        }
+    accept: function (file, done) {
+      if (file.name == "wow.jpg") {
+        done("Naha, you don't.");
+      } else {
+        done();
+      }
     }
-});
+  });
 });
 $(document).ready(function () {
- // Select elements
-const target = document.getElementById('kt_clipboard_4');
-const button = target.nextElementSibling;
+  // Select elements
+  const target = document.getElementById('kt_clipboard_4');
+  const button = target.nextElementSibling;
 
-// Init clipboard -- for more info, please read the offical documentation: https://clipboardjs.com/
-clipboard = new ClipboardJS(button, {
+  // Init clipboard -- for more info, please read the offical documentation: https://clipboardjs.com/
+  clipboard = new ClipboardJS(button, {
     target: target,
     text: function () {
-        return target.innerHTML;
+      return target.innerHTML;
     }
-});
+  });
 
-// Success action handler
-clipboard.on('success', function (e) {
+  // Success action handler
+  clipboard.on('success', function (e) {
     var checkIcon = button.querySelector('.bi.bi-check');
     var svgIcon = button.querySelector('.svg-icon');
 
     // Exit check icon when already showing
     if (checkIcon) {
-        return;
+      return;
     }
 
     // Create check icon
@@ -109,19 +109,19 @@ clipboard.on('success', function (e) {
 
     // Revert button label after 3 seconds
     setTimeout(function () {
-        // Remove check icon
-        svgIcon.classList.remove('d-none');
+      // Remove check icon
+      svgIcon.classList.remove('d-none');
 
-        // Revert icon
-        button.removeChild(checkIcon);
+      // Revert icon
+      button.removeChild(checkIcon);
 
-        // Remove target highlight
-        target.classList.remove(...classes);
+      // Remove target highlight
+      target.classList.remove(...classes);
 
-        // Remove button highlight
-        button.classList.remove('btn-success');
+      // Remove button highlight
+      button.classList.remove('btn-success');
     }, 3000)
-});
+  });
 });
 
 
@@ -146,3 +146,4 @@ function copyCode() {
   // You can add a tooltip or other feedback here if needed
   alert('Code copied!');
 }
+

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'rubensrocha/laravel-breeze-multi-auth-admin',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => 'ba51882b0391087dc49700debd86e2f942a29083',
+        'pretty_version' => 'dev-najmul',
+        'version' => 'dev-najmul',
+        'reference' => 'b7334ee3694aeedfe4bdac6211759ccb09e4c275',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -465,6 +465,15 @@
             'replaced' => array(
                 0 => 'v9.52.16',
             ),
+        ),
+        'intervention/image' => array(
+            'pretty_version' => '2.7.2',
+            'version' => '2.7.2.0',
+            'reference' => '04be355f8d6734c826045d02a1079ad658322dad',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../intervention/image',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'kodova/hamcrest-php' => array(
             'dev_requirement' => true,
@@ -966,9 +975,9 @@
             ),
         ),
         'rubensrocha/laravel-breeze-multi-auth-admin' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => 'ba51882b0391087dc49700debd86e2f942a29083',
+            'pretty_version' => 'dev-najmul',
+            'version' => 'dev-najmul',
+            'reference' => 'b7334ee3694aeedfe4bdac6211759ccb09e4c275',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

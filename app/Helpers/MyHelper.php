@@ -22,14 +22,67 @@ use Intervention\Image\Facades\Image;
  * `htmlspecialchars` function as the callback.
  */
 
+// if (!function_exists('customUpload')) {
+//     function customUpload(UploadedFile $mainFile, string $uploadPath, string $itemType, ?int $reqWidth = null, ?int $reqHeight = null): array
+//     {
+//         // Create an empty output array
+//         $output = [];
+
+//         // Get the hashed file name
+//         $fileName = $mainFile->hashName();
+
+//         // Check if the uploaded file is an image
+//         if (strpos($mainFile->getMimeType(), 'image') === 0) {
+//             // Create the requestImg directory if it does not exist
+//             if (!is_dir("{$uploadPath}/requestImg")) {
+//                 if (!mkdir("{$uploadPath}/requestImg", 0777, true)) {
+//                     abort(404, "Failed to create the directory: {$uploadPath}/requestImg");
+//                 }
+//             }
+
+//             // Image file upload
+//             $mainFile->storeAs('public/', $fileName);
+//             $img = Image::make($mainFile);
+//             if ($reqWidth !== null && $reqHeight !== null) {
+//                 $img->resize($reqWidth, $reqHeight, function ($constraint) {
+//                     $constraint->aspectRatio();
+//                     $constraint->upsize();
+//                 });
+//                 $img->save("{$uploadPath}/requestImg/{$fileName}");
+//             }
+//         } else {
+//             // Non-image file upload
+//             $mainFile->storeAs('public/files/', $fileName);
+//         }
+
+//         // Populate the output array with file information
+//         $output = [
+//             'status'         => 1,
+//             'file_name'      => $fileName,
+//             'file_extension' => $mainFile->getClientOriginalExtension(),
+//             'file_size'      => $mainFile->getSize(),
+//             'file_type'      => $mainFile->getMimeType(),
+//         ];
+
+//         // Return the output array
+//         return array_map('htmlspecialchars', $output);
+//     }
+// }
+
 if (!function_exists('customUpload')) {
     function customUpload(UploadedFile $mainFile, string $uploadPath, ?int $reqWidth = null, ?int $reqHeight = null): array
     {
         // Create an empty output array
         $output = [];
 
+        // Get the original file name without extension
+        $originalName = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
+
         // Get the hashed file name
-        $fileName = $mainFile->hashName();
+        $hashedName = $mainFile->hashName();
+
+        // Concatenate the original name with the hashed name
+        $fileName = $originalName . '_' . $hashedName;
 
         // Check if the uploaded file is an image
         if (strpos($mainFile->getMimeType(), 'image') === 0) {
@@ -68,6 +121,8 @@ if (!function_exists('customUpload')) {
         return array_map('htmlspecialchars', $output);
     }
 }
+
+
 
 
 if (!function_exists('getAllCountry')) {

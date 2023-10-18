@@ -1,17 +1,33 @@
-@if (Session::has('message'))
-    <script>
+<script>
+    @if (Session::has('message'))
         toastr.options = {
             "closeButton": true,
-            "newestOnTop": true,
-            "positionClass": "toast-top-right",
-        };
+            "progressBar": true
+        }
+        toastr.success("{{ session('message') }}");
+    @endif
 
-        @php
-            $message = Session::get('message');
-            $type = isset($message['type']) ? $message['type'] : 'info';
-            $content = isset($message['content']) ? $message['content'] : '';
-        @endphp
+    @if (Session::has('error'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.error("{{ session('error') }}");
+    @endif
 
-        toastr["{{ $type }}"]("{{ $content }}");
-    </script>
-@endif
+    @if (Session::has('info'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.info("{{ session('info') }}");
+    @endif
+
+    @if (Session::has('warning'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.warning("{{ session('warning') }}");
+    @endif
+</script>

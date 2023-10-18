@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('parent_id')->nullable()->constrained('categories')->cascadeOnDelete();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->enum('is_parent', ['0', '1'])->default(1);
             $table->string('image')->nullable();
             $table->string('logo')->nullable();
             $table->text('description')->nullable();

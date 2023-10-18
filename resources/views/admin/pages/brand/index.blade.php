@@ -2,82 +2,90 @@
 @section('content')
     <div class="container h-100">
         <div class="row">
-            <div class="col-lg-12 card">
+            <div class="col-lg-12 card rounded-0 shadow-lg">
                 <div class="card card-p-0 card-flush">
                     <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                        <div class="card-title">
-                            <!--begin::Search-->
-                            <div class="d-flex align-items-center position-relative my-1">
-                                <span
-                                    class="svg-icon svg-icon-2 svg-icon-gray-700 position-absolute top-50 translate-middle-y ms-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none">
-                                        <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2"
-                                            rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor">
-                                        </rect>
-                                        <path
-                                            d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
-                                            fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                                <input type="text" data-kt-filter="search"
-                                    class="form-control form-control-sm form-control-solid w-150px ps-14 rounded-0"
-                                    placeholder="Search" style="border: 1px solid #eee;" />
+                        <div class="container px-0">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-12 text-lg-start text-sm-center">
+                                    <!--begin::Search-->
+                                    <div class="d-flex align-items-center position-relative my-1">
+                                        <span
+                                            class="svg-icon svg-icon-2 svg-icon-gray-700 position-absolute top-50 translate-middle-y ms-4">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2"
+                                                    rx="1" transform="rotate(45 17.0365 15.1223)"
+                                                    fill="currentColor">
+                                                </rect>
+                                                <path
+                                                    d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                                                    fill="currentColor"></path>
+                                            </svg>
+                                        </span>
+                                        <input type="text" data-kt-filter="search"
+                                            class="form-control form-control-sm form-control-solid w-150px ps-14 rounded-0"
+                                            placeholder="Search" style="border: 1px solid #eee;" />
+                                    </div>
+                                    <!--end::Search-->
+                                    <!--begin::Export buttons-->
+                                    <div id="kt_datatable_example_1_export" class="d-none"></div>
+                                    <!--end::Export buttons-->
+                                </div>
+                                <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
+                                    <div class="card-title table_title">
+                                        <h2 class="">Brand</h2>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
+                                    <!--begin::Export dropdown-->
+                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0"
+                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
+                                        Export Report
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-light-success rounded-0"
+                                        data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
+                                        data-bs-target="#brandAddModal">
+                                        Add New
+                                    </button>
+                                    <!--begin::Menu-->
+                                    <div id="kt_datatable_example_1_export_menu"
+                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
+                                        data-kt-menu="true">
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
+                                                Copy to clipboard
+                                            </a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
+                                                Export as Excel
+                                            </a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
+                                                Export as CSV
+                                            </a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
+                                                Export as PDF
+                                            </a>
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu-->
+                                    <!--end::Export dropdown-->
+                                </div>
                             </div>
-                            <!--end::Search-->
-                            <!--begin::Export buttons-->
-                            <div id="kt_datatable_example_1_export" class="d-none"></div>
-                            <!--end::Export buttons-->
-                        </div>
-                        <div class="card-title">
-                            <h2 class="text-center">All Empoyees Salary Sheet</h2>
-                        </div>
-                        <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                            <!--begin::Export dropdown-->
-                            <button type="button" class="btn btn-sm btn-light-primary" data-kt-menu-trigger="click"
-                                data-kt-menu-placement="bottom-end">
-                                {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                Export Report
-                            </button>
-                            <button type="button" class="btn btn-sm btn-light-success" data-kt-menu-placement="bottom-end"
-                                data-bs-toggle="modal" data-bs-target="#vatTaxAddModal">
-                                Add New
-                            </button>
-                            <!--begin::Menu-->
-                            <div id="kt_datatable_example_1_export_menu"
-                                class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                data-kt-menu="true">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                        Copy to clipboard
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                        Export as Excel
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                        Export as CSV
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                        Export as PDF
-                                    </a>
-                                </div>
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Menu-->
-                            <!--end::Export dropdown-->
                         </div>
                     </div>
                     <div class="card-body">
@@ -86,35 +94,38 @@
                             id="kt_datatable_example_1">
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
-                                <tr class="text-start text-gray-900 fw-bolder fs-7 text-uppercase">
+                                <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th class="" width="5%">Sl</th>
-                                    <th class="" width="30%">Country Name</th>
-                                    <th class="" width="10%">Type</th>
-                                    <th class="" width="30%">Name</th>
-                                    <th class="" width="5%">Rate</th>
-                                    <th class="" width="10%">Status</th>
-                                    <th class="" width="10%" text-center">Action</th>
+                                    <th class="" width="10%">Logo</th>
+                                    <th class="" width="25%">Country Name</th>
+                                    <th class="" width="40%">Name</th>
+                                    <th class="" width="10%">Image</th>
+                                    <th class="text-center" width="10%">Action</th>
                                     <!--end::Table row-->
                             </thead>
-                            <tbody class="fw-bold text-gray-600">
+                            <tbody class="fw-bold text-gray-600 text-center">
                                 <tr class="odd">
                                     <td>
                                         1
                                     </td>
                                     <td>
-                                        <a href="#" class="text-dark text-hover-primary">Bangladesh</a>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="badge badge-primary">Tax</a>
+                                        <img class="img-fluid rounded-circle" width="35px"
+                                            src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                            alt="">
                                     </td>
                                     <td>Company
                                     </td>
-                                    <td data-order="2022-03-10T14:40:00+05:00">5</td>
-                                    <td class=" pe-0"><span class="badge badge-success">Active</span></td>
+                                    <td>Company
+                                    </td>
+                                    <td>
+                                        <img class="img-fluid" width="35px"
+                                            src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                            alt="">
+                                    </td>
                                     <td class="d-flex justify-content-between align-items-center">
                                         <a href="#"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#vatTaxViewModal">
+                                            data-bs-toggle="modal" data-bs-target="#employeeDepertmentViewModal">
                                             <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                             <span class="svg-icon svg-icon-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
@@ -135,7 +146,7 @@
                                         </a>
                                         <a href="#"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#vatTaxEditModal">
+                                            data-bs-toggle="modal" data-bs-target="#brandtEditModal">
                                             <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                             <span class="svg-icon svg-icon-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -174,25 +185,28 @@
                                         </a>
                                     </td>
                                 </tr>
-                                <tr class="even">
+                                <tr class="Even">
                                     <td>
-                                        2
+                                        1
                                     </td>
                                     <td>
-                                        <a href="#" class="text-dark text-hover-primary">Bangladesh</a>
+                                        <img class="img-fluid rounded-circle" width="35px"
+                                            src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                            alt="">
+                                    </td>
+                                    <td>Company
+                                    </td>
+                                    <td>Company
                                     </td>
                                     <td>
-                                        <a href="#" class="badge badge-info">Vat</a>
+                                        <img class="img-fluid" width="35px"
+                                            src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                            alt="">
                                     </td>
-                                    <td>
-                                        Company
-                                    </td>
-                                    <td data-order="2022-03-10T14:40:00+05:00">5</td>
-                                    <td class=" pe-0"><span class="badge badge-danger">Inactive</span></td>
                                     <td class="d-flex justify-content-between align-items-center">
                                         <a href="#"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#vatTaxViewModal">
+                                            data-bs-toggle="modal" data-bs-target="#employeeDepertmentViewModal">
                                             <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                             <span class="svg-icon svg-icon-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
@@ -214,7 +228,7 @@
                                         </a>
                                         <a href="#"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#vatTaxEditModal">
+                                            data-bs-toggle="modal" data-bs-target="#brandtEditModal">
                                             <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                             <span class="svg-icon svg-icon-3">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -229,11 +243,11 @@
                                             </span>
                                             <!--Edit-->
                                         </a>
-                                        <a id="kt_docs_sweetalert_state_error" href="#"
+                                        <a href="#"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                             data-kt-docs-table-filter="delete_row">
                                             <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                            <span class="svg-icon svg-icon-3">
+                                            <span class="svg-icon svg-icon-4">
                                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
                                                     height="100" viewBox="0,0,256,256">
                                                     <g fill="#a1a5b7" fill-rule="nonzero" stroke="none"
@@ -261,11 +275,11 @@
         </div>
     </div>
     {{-- Add Modal --}}
-    <div class="modal fade" id="vatTaxAddModal" data-backdrop="static">
+    <div class="modal fade" id="brandAddModal" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-0 border-0 shadow-sm">
                 <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">Add Vat & Tax</h5>
+                    <h5 class="modal-title">Add Brand</h5>
                     <!-- Close button in the header -->
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                         aria-label="Close">
@@ -283,7 +297,8 @@
                     </div>
                     <!-- End Close button in the header -->
                 </div>
-                <form action="" class="needs-validation" method="post" novalidate>
+                <form method="POST" action="{{ route('brand.store') }}" class="needs-validation" novalidate
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="container px-0">
@@ -291,57 +306,55 @@
                                 <div class="col-lg-12 col-sm-12">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="validationCustom01" class="form-label required ">Country Name
-                                            </label>
-                                            <input type="text" class="form-control form-control-solid form-control-sm"
-                                                name="country_id" id="validationCustom01" placeholder="Country Name"
-                                                required>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Enter Country Name </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom04" class="form-label required">Type</label>
-                                            <select class="form-select form-select-sm form-select-solid"
-                                                data-control="select2" name="type" data-placeholder="Select an type"
-                                                data-allow-clear="true" data-hide-search="true" required>
+                                            <label for="validationCustom04" class="form-label required">Country
+                                                Name</label>
+                                            <select class="form-select form-select-solid" name="country_id"
+                                                data-dropdown-parent="#brandAddModal" data-control="select2"
+                                                data-placeholder="Select an option" data-allow-clear="true" required>
                                                 <option></option>
-                                                <option value="tax">Tax</option>
-                                                <option value="vat">Vat</option>
+                                                @foreach ($countries as $country)
+                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                @endforeach
                                             </select>
                                             <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Select Type </div>
+                                            <div class="invalid-feedback"> Please provide a valid zip. </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom01" class="form-label required ">Name</label>
+                                        <div class="col-md-6 mb-1">
+                                            <label for="validationCustom01" class="form-label required ">Name
+                                            </label>
                                             <input type="text" class="form-control form-control-solid form-control-sm"
                                                 name="name" id="validationCustom01" placeholder="Enter Name" required>
                                             <div class="valid-feedback"> Looks good! </div>
                                             <div class="invalid-feedback"> Please Enter Name </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom01" class="form-label required ">Rate</label>
-                                            <input type="text" class="form-control form-select-sm form-control-solid"
-                                                id="validationCustom03" pattern="^\d+(\.\d+)?$" name="rate"
-                                                title="Please enter a valid decimal number" required>
+                                        <div class="col-md-6 mb-1">
+                                            <label for="validationCustom01" class="form-label required ">Image
+                                            </label>
+                                            <input type="file" class="form-control form-control-solid form-control-sm"
+                                                name="image" id="validationCustom01" required>
                                             <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please enter a valid decimal number</div>
+                                            <div class="invalid-feedback"> Please Enter Image </div>
+                                        </div>
+                                        <div class="col-md-6 mb-1">
+                                            <label for="validationCustom01" class="form-label required ">Logo
+                                            </label>
+                                            <input type="file" class="form-control form-control-solid form-control-sm"
+                                                name="logo" id="validationCustom01" required>
+                                            <div class="valid-feedback"> Looks good! </div>
+                                            <div class="invalid-feedback"> Please Enter Logo </div>
+                                        </div>
+                                        <div class="col-md-6 mb-1">
+                                            <label for="validationCustom01" class="form-label">Website URL
+                                            </label>
+                                            <input type="url" class="form-control form-control-solid form-control-sm"
+                                                name="website_url" id="validationCustom01"
+                                                placeholder="Enter Web Site Url">
+                                            <div class="valid-feedback"> Looks good! </div>
+                                            <div class="invalid-feedback"> Please Enter Image </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="validationCustom04" class="form-label required">Status</label>
-                                            <select class="form-select form-select-sm form-select-solid"
-                                                data-control="select2" name="status" data-placeholder="Select an type"
-                                                data-allow-clear="true" data-hide-search="true" required>
-                                                <option></option>
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
-                                            </select>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Select Status</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom010"
-                                                class="form-label required">Description</label>
-                                            <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid" required></textarea>
+                                            <label for="validationCustom010" class="form-label">Description</label>
+                                            <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"></textarea>
                                             <div class="valid-feedback"> Looks good! </div>
                                             <div class="invalid-feedback"> Please Enter description</div>
                                         </div>
@@ -352,18 +365,18 @@
                     </div>
                     <div class="modal-footer p-2">
                         <!-- Button to close the modal in the footer -->
-                        <button type="submit" class="btn btn-sm btn-light-primary">Submit</button>
+                        <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     {{-- Edit Modal --}}
-    <div class="modal fade" id="vatTaxEditModal" data-backdrop="static">
+    <div class="modal fade" id="brandtEditModal" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-0 border-0 shadow-sm">
                 <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">Edit Vat & Tax</h5>
+                    <h5 class="modal-title">Edit Brand</h5>
                     <!-- Close button in the header -->
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                         aria-label="Close">
@@ -385,78 +398,72 @@
                     <div class="modal-body">
                         <div class="container px-0">
                             <div class="row">
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="validationCustom01" class="form-label required ">Country Name
-                                            </label>
-                                            <input type="text" class="form-control form-control-solid form-control-sm"
-                                                name="country_id" id="validationCustom01" placeholder="Country Name"
-                                                required>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Enter Country Name </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom04" class="form-label required">Type</label>
-                                            <select class="form-select form-select-sm form-select-solid"
-                                                data-control="select2" name="type" data-placeholder="Select an type"
-                                                data-allow-clear="true" data-hide-search="true" required>
-                                                <option></option>
-                                                <option value="tax">Tax</option>
-                                                <option value="vat">Vat</option>
-                                            </select>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Select Type </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom01" class="form-label required ">Name</label>
-                                            <input type="text" class="form-control form-control-solid form-control-sm"
-                                                name="name" id="validationCustom01" placeholder="Enter Name" required>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Enter Name </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom01" class="form-label required ">Rate</label>
-                                            <input type="text" class="form-control form-select-sm form-control-solid"
-                                                id="validationCustom03" pattern="^\d+(\.\d+)?$" name="rate"
-                                                title="Please enter a valid decimal number" required>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please enter a valid decimal number</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom04" class="form-label required">Status</label>
-                                            <select class="form-select form-select-sm form-select-solid"
-                                                data-control="select2" name="status" data-placeholder="Select an type"
-                                                data-allow-clear="true" data-hide-search="true" required>
-                                                <option></option>
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
-                                            </select>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Select Status</div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom010"
-                                                class="form-label required">Description</label>
-                                            <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid" required></textarea>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Enter description</div>
-                                        </div>
-                                    </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom04" class="form-label required">Country Name</label>
+                                    <select class="form-select form-select-solid" name="country_id"
+                                        data-dropdown-parent="#brandAddModal" data-control="select2"
+                                        data-placeholder="Select an option" data-allow-clear="true" required>
+                                        <option></option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                    </select>
+                                    <div class="valid-feedback""> Looks good! </div>
+                                    <div class="invalid-feedback"> Please provide a valid zip. </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <label for="validationCustom01" class="form-label required ">Name
+                                    </label>
+                                    <input type="text" class="form-control form-control-solid form-control-sm"
+                                        name="name" id="validationCustom01" placeholder="Enter Name" value="Ngen It"
+                                        required>
+                                    <div class="valid-feedback"> Looks good! </div>
+                                    <div class="invalid-feedback"> Please Enter Name </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <label for="validationCustom01" class="form-label required ">Image
+                                    </label>
+                                    <input type="text" class="form-control form-control-solid form-control-sm"
+                                        name="website_url" id="validationCustom01" placeholder="Enter Image" required>
+                                    <div class="valid-feedback"> Looks good! </div>
+                                    <div class="invalid-feedback"> Please Enter Image </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <label for="validationCustom01" class="form-label required ">Logo
+                                    </label>
+                                    <input type="file" class="form-control form-control-solid form-control-sm"
+                                        name="logo" id="validationCustom01" placeholder="Enter Logo" required>
+                                    <div class="valid-feedback"> Looks good! </div>
+                                    <div class="invalid-feedback"> Please Enter Logo </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <label for="validationCustom01" class="form-label required ">Website URL
+                                    </label>
+                                    <input type="url" class="form-control form-control-solid form-control-sm"
+                                        name="website_url" id="validationCustom01" placeholder="Enter Web Site Url"
+                                        value="http://127.0.0.1:8000/" required>
+                                    <div class="valid-feedback"> Looks good! </div>
+                                    <div class="invalid-feedback"> Please Enter Image </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationCustom010" class="form-label required">Description</label>
+                                    <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"
+                                        value="lorem epsum da reto lorem epsum da reto" required></textarea>
+                                    <div class="valid-feedback"> Looks good! </div>
+                                    <div class="invalid-feedback"> Please Enter description</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer p-2">
                         <!-- Button to close the modal in the footer -->
-                        <button type="submit" class="btn btn-sm btn-light-primary">Submit</button>
+                        <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     {{-- View Modal --}}
-    <div class="modal fade" id="vatTaxViewModal" data-backdrop="static">
+    <div class="modal fade" id="employeeDepertmentViewModal" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-0 border-0 shadow-sm">
                 <div class="modal-header p-2 rounded-0">
@@ -479,62 +486,87 @@
                 <div class="modal-body">
                     <div class="container px-0">
                         <div class="row">
-                            <div class="col-lg-12 col-sm-12">
-                                <div class="row">
-                                    <div class="col-lg-3 col-sm-3">
-                                        <p>Company</p>
-                                    </div>
-                                    <div class="col-lg-1 col-sm-3">
-                                        <p>:</p>
-                                    </div>
-                                    <div class="col-lg-8 col-sm-8">
-                                        <p>NGen It</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-sm-3">
-                                        <p>Type</p>
-                                    </div>
-                                    <div class="col-lg-1 col-sm-3">
-                                        <p>:</p>
-                                    </div>
-                                    <div class="col-lg-8 col-sm-8">
-                                        <p>Tax</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-sm-3">
-                                        <p>Name</p>
-                                    </div>
-                                    <div class="col-lg-1 col-sm-3">
-                                        <p>:</p>
-                                    </div>
-                                    <div class="col-lg-8 col-sm-8">
-                                        <p>Sazeduzzaman</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-sm-3">
-                                        <p>Status</p>
-                                    </div>
-                                    <div class="col-lg-1 col-sm-3">
-                                        <p>:</p>
-                                    </div>
-                                    <div class="col-lg-8 col-sm-8">
-                                        <p><span class="badge badge-success">Active</span></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 col-sm-3">
-                                        <p>Description</p>
-                                    </div>
-                                    <div class="col-lg-1 col-sm-3">
-                                        <p>:</p>
-                                    </div>
-                                    <div class="col-lg-8 col-sm-8">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, numquam
-                                            tempora
-                                            quo esse temporibus suscipit dicta quas ducimus excepturi facere.</p>
+                            <div class="col-lg-12">
+                                <div class="card border rounded-0">
+                                    <p class="badge badge-info custom-badge">Brand</span>
+                                    <div class="card-body p-1 px-2">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-sm-5">
+                                                        <p class="fw-bold" title="Country Name">Com. Name</p>
+                                                    </div>
+                                                    <div class="col-lg-6 col-sm-6">
+                                                        <p>Bangladesh</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="row">
+                                                    <div class="col-lg-7 col-sm-5">
+                                                        <p class="fw-bold">Brand Name</p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-6">
+                                                        <p>Intern</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="row">
+                                                    <div class="col-lg-7 col-sm-5">
+                                                        <p class="fw-bold">Image</p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-6">
+                                                        <p>
+                                                            <img class="img-fluid rounded-circle" width="35px"
+                                                                src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                                                alt="">
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="row">
+                                                    <div class="col-lg-7 col-sm-5">
+                                                        <p class="fw-bold">Logo</p>
+                                                    </div>
+                                                    <div class="col-lg-5 col-sm-6">
+                                                        <p>
+                                                            <img class="img-fluid rounded-circle" width="35px"
+                                                                src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                                                alt="">
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-sm-5">
+                                                        <p class="fw-bold">Description</p>
+                                                    </div>
+                                                    <div class="col-lg-9 col-sm-6">
+                                                        <p>
+                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint a
+                                                            ipsam, doloremque maxime assumenda eaque adipisci eum in iste
+                                                            quam, ipsa vitae, commodi voluptatem dicta. Sed hic officiis a
+                                                            autem?
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-sm-5">
+                                                        <p class="fw-bold">Website Url</p>
+                                                    </div>
+                                                    <div class="col-lg-9 col-sm-6">
+                                                        <p>
+                                                            <a href="">http://127.0.0.1:8000/administrator/brand</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -559,19 +591,19 @@
             // Private functions
             var initDatatable = function() {
                 // Set date data order
-                // const tableRows = table.querySelectorAll('tbody tr');
+                const tableRows = table.querySelectorAll('tbody tr');
 
-                // tableRows.forEach(row => {
-                //     const dateRow = row.querySelectorAll('td');
-                //     const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                //         .format(); // select date from 4th column in table
-                //     dateRow[3].setAttribute('data-order', realDate);
-                // });
+                tableRows.forEach(row => {
+                    const dateRow = row.querySelectorAll('td');
+                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
+                        .format(); // select date from 4th column in table
+                    dateRow[3].setAttribute('data-order', realDate);
+                });
 
                 // Init datatable --- more info on datatables: https://datatables.net/manual/
                 datatable = $(table).DataTable({
                     "info": false,
-                    'order': [2],
+                    'order': [],
                     'pageLength': 10,
                 });
             }

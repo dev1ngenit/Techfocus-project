@@ -18,7 +18,7 @@
 				<!--begin::Wrapper-->
 				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
 					<!--begin::Header-->
-					@include('admin.partials.toastr')
+					{{-- @include('admin.partials.toastr') --}}
 					@include('admin.partials.header')
 					<!--end::Header-->
 					<!--begin::Content-->
