@@ -133,7 +133,7 @@ if (!function_exists('getAllCountry')) {
      */
     function getAllCountry()
     {
-        return Country::get(['id', 'name'])->toArray();
+        return Country::get(['id', 'name']);
     }
 }
 

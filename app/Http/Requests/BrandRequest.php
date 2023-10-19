@@ -24,13 +24,15 @@ class BrandRequest extends FormRequest
      */
     public function rules()
     {
+        $brandId = $this->route('brand'); // Directly access the brand ID from the route parameter.
+
         return [
             'country_id'  => 'nullable|exists:countries,id',
-            'name'        => 'required|string|unique:brands,name|max:255',
+            'name'        => 'required|string|unique:brands,name,' . $brandId . '|max:255',
             'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'logo'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'website_url' => 'required|url|max:255',
-            'description' => 'required|string',
+            'website_url' => 'nullable|url|max:255',
+            'description' => 'nullable|string',
         ];
     }
 

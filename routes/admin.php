@@ -52,5 +52,9 @@ Route::prefix('administrator')->group(static function () {
         'employee-department' => EmployeeDepartmentController::class,
         'category'            => CategoryController::class,
         'brand'               => BrandController::class,
+    ], [
+        'except' => array_merge(
+            ['brand.create', 'brand.show', 'brand.edit'],
+        )
     ]);
 });

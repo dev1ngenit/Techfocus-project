@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Country;
 use App\Models\Admin\Brand;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\BrandRequest;
 use App\Http\Controllers\Controller;
-use App\Models\Country;
+use Illuminate\Support\Facades\File;
 
 class BrandController extends Controller
 {
@@ -18,8 +19,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $data['brands'] = Brand::latest()->get();
-        $data['countries'] = Country::latest()->get();
+        $data = [
+            'brands'    => Brand::latest()->get(),
+        ];
         return view('admin.pages.brand.index', $data);
     }
 
@@ -42,14 +44,14 @@ class BrandController extends Controller
     public function store(BrandRequest $request)
     {
         $mainFile = $request->file('image');
-        $logoFile = $request->file('logo');  // Handle logo file
+        $logoFile = $request->file('logo');
         $filePath = storage_path('app/public/');
         if (!empty($mainFile)) {
             $globalFunImage = customUpload($mainFile, $filePath,   44, 44);
         } else {
             $globalFunImage = ['status' => 0];
         }
-        if (!empty($logoFile)) {  // Handle logo file upload
+        if (!empty($logoFile)) {
             $globalFunLogo = customUpload($logoFile, $filePath,   44, 44);
         } else {
             $globalFunLogo = ['status' => 0];
@@ -61,11 +63,10 @@ class BrandController extends Controller
             'slug'         => Str::slug($request->name),
             'description'  => $request->description,
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
-            'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : null,  // Handle logo filename
-            'website_url'  => $request->website_url,  // Handle website_url
+            'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : null,
+            'website_url'  => $request->website_url,
         ]);
 
-        // return redirect()->route('brand.index')->with('success', 'Data added Successfully');
         toastr()->success('Data has been saved successfully!');
         return redirect()->back();
     }
@@ -105,11 +106,11 @@ class BrandController extends Controller
         $brand = Brand::findOrFail($id);
 
         $mainFile = $request->file('image');
+        $logoFile = $request->file('logo');
         $filePath = storage_path('app/public/');
 
         if (!empty($mainFile)) {
             $globalFunImage = customUpload($mainFile, $filePath, 44, 44);
-
             $paths = [
                 storage_path("app/public/{$brand->image}"),
                 storage_path("app/public/requestImg/{$brand->image}")
@@ -123,15 +124,32 @@ class BrandController extends Controller
             $globalFunImage = ['status' => 0];
         }
 
+        if (!empty($logoFile)) {
+            $globalFunLogo = customUpload($logoFile, $filePath, 44, 44);
+            $paths = [
+                storage_path("app/public/{$brand->logo}"),
+                storage_path("app/public/requestImg/{$brand->logo}")
+            ];
+            foreach ($paths as $path) {
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+            }
+        } else {
+            $globalFunLogo = ['status' => 0];
+        }
+
         $brand->update([
-            'name'        => $request->name,
-            'slug'        => Str::slug($request->name),
-            'description' => $request->description,
-            'image'       => $globalFunImage['status'] == 1 ? $mainFile->hashName() : $brand->image,
+            'country_id'   => $request->country_id,
+            'name'         => $request->name,
+            'slug'         => Str::slug($request->name),
+            'description'  => $request->description,
+            'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : $brand->image,
+            'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $brand->logo,
+            'website_url'  => $request->website_url,
         ]);
 
-        toastr()->success('Data has been saved successfully!');
-
+        toastr()->success('Data has been updated successfully!');
         return redirect()->back();
     }
 
@@ -146,7 +164,10 @@ class BrandController extends Controller
         $brand = Brand::findOrFail($id);
         $paths = [
             storage_path('app/public/') . $brand->image,
-            storage_path('app/public/requestImg/') . $brand->image
+            storage_path('app/public/requestImg/') . $brand->image,
+
+            storage_path('app/public/') . $brand->logo,
+            storage_path('app/public/requestImg/') . $brand->logo,
         ];
 
         foreach ($paths as $path) {

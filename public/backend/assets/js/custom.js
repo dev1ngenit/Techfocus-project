@@ -147,3 +147,60 @@ function copyCode() {
   alert('Code copied!');
 }
 
+$(document).on('click', '.delete', function (e) {
+  e.preventDefault();
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  });
+
+  var deleteUrl = $(this).attr('href');
+
+  swalWithBootstrapButtons.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Yes, delete it!',
+    cancelButtonText: 'No, cancel!',
+    buttonsStyling: false,
+    customClass: {
+      confirmButton: 'btn btn-danger',
+      cancelButton: 'btn btn-success'
+    }
+  }).then(function (result) {
+    if (result.isConfirmed) {
+      $.ajax({
+        url: deleteUrl,
+        type: 'DELETE',
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        success: function (data) {
+          swalWithBootstrapButtons.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          ).then(function () {
+            location.reload();
+          });
+        },
+        error: function (xhr, status, error) {
+          swalWithBootstrapButtons.fire(
+            'Error Occurred!',
+            error,
+            'error'
+          );
+        }
+      });
+    }
+    else if (result.dismiss === swal.DismissReason.cancel) {
+      swalWithBootstrapButtons.fire(
+        'Cancelled',
+        'Your imaginary file is safe :)',
+        'error'
+      );
+    }
+  });
+});
