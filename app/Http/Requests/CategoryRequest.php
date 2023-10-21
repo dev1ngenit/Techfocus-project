@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class CategoryRequest extends FormRequest
 {
@@ -27,7 +28,7 @@ class CategoryRequest extends FormRequest
             'country_id'  => 'nullable|exists:countries,id',
             'parent_id'   => 'nullable|exists:categories,id',
             'name'        => 'required|string|max:255',
-            'slug'        => 'required|string|unique:categories,slug|max :255',
+            'is_parent'   => 'nullable|in:0,1',
             'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'logo'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'nullable|string',
@@ -47,10 +48,7 @@ class CategoryRequest extends FormRequest
             'name.required'      => 'The name field is required.',
             'name.string'        => 'The name field must be a string.',
             'name.max'           => 'The name may not be greater than 255 characters.',
-            'slug.required'      => 'The slug field is required.',
-            'slug.string'        => 'The slug field must be a string.',
-            'slug.unique'        => 'The slug has already been taken.',
-            'slug.max'           => 'The slug may not be greater than 255 characters.',
+            'is_parent.in' => 'The is parent field must be either 0 or 1.',
             'image.image'        => 'The file must be an image.',
             'image.mimes'        => 'The image must be a file of type:jpeg, png, jpg, gif.',
             'image.max'          => 'The image may not be greater than 2048 kilobytes.',
@@ -72,10 +70,36 @@ class CategoryRequest extends FormRequest
             'country_id'  => 'Country Name',
             'parent_id'   => 'Parent Category Name',
             'name'        => 'Name',
-            'slug'        => 'Slug',
             'image'       => 'Image',
             'logo'        => 'Logo',
             'description' => 'Description',
         ];
+    }
+
+    /**
+     * Handle a failed validation attempt.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return void
+     */
+    protected function failedValidation(Validator $validator)
+    {
+        $this->recordErrorMessages($validator);
+        parent::failedValidation($validator);
+    }
+
+    /**
+     * Record the error messages displayed to the user.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return void
+     */
+    protected function recordErrorMessages(Validator $validator)
+    {
+        $errorMessages = $validator->errors()->all();
+
+        foreach ($errorMessages as $errorMessage) {
+            toastr()->error($errorMessage);
+        }
     }
 }

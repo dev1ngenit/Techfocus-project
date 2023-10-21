@@ -46,15 +46,18 @@ Route::prefix('administrator')->group(static function () {
         Route::get('/dashboard', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.index');
         Route::get('profile', [\App\Http\Controllers\Admin\HomeController::class, 'profile'])->middleware('password.confirm.admin')->name('admin.profile');
     });
-    Route::resources([
-        'vat-tax'             => VatAndTaxController::class,
-        'employee-category'   => EmployeeCategoryController::class,
-        'employee-department' => EmployeeDepartmentController::class,
-        'category'            => CategoryController::class,
-        'brand'               => BrandController::class,
-    ], [
-        'except' => array_merge(
-            ['brand.create', 'brand.show', 'brand.edit'],
-        )
-    ]);
+    Route::resources(
+        [
+            'vat-tax'             => VatAndTaxController::class,
+            'employee-category'   => EmployeeCategoryController::class,
+            'employee-department' => EmployeeDepartmentController::class,
+            'category'            => CategoryController::class,
+            'brand'               => BrandController::class,
+        ],
+        // [
+        //     'except' => array_merge(
+        //         ['brand.create', 'brand.show', 'brand.edit'],
+        //     )
+        // ]
+    );
 });
