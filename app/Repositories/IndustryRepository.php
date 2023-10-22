@@ -7,7 +7,6 @@ use App\Repositories\Interfaces\IndustryRepositoryInterface;
 
 class IndustryRepository implements IndustryRepositoryInterface
 {
-
     public function all()
     {
         return Industry::latest()->get();
@@ -25,16 +24,11 @@ class IndustryRepository implements IndustryRepositoryInterface
 
     public function update(array $data, int $id)
     {
-        $industry = Industry::find($id);
-        $industry->update($data);
-
-        return $industry;
+        return Industry::find($id)->update($data);
     }
 
     public function destroy(int $id)
     {
-        $industry = Industry::find($id);
-
-        $industry->delete();
+        return Industry::destroy($id);
     }
 }
