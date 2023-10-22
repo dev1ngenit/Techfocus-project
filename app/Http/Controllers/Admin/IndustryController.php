@@ -145,7 +145,7 @@ class IndustryController extends Controller
         }
 
         $data = [
-            'parent_id'   => ($request->parent_id == 'NULL') ? '' : $request->parent_id,
+            'parent_id'   => $request->parent_id,
             'name'         => $request->name,
             'slug'         => Str::slug($request->name),
             'description'  => $request->description,
