@@ -1,11 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\EmployeeCategoryController;
-use App\Http\Controllers\Admin\EmployeeDepartmentController;
+use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\VatAndTaxController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ProductColorController;
+use App\Http\Controllers\Admin\EmployeeCategoryController;
+use App\Http\Controllers\Admin\ProductAttributeController;
+use App\Http\Controllers\Admin\EmployeeDepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,8 +54,11 @@ Route::prefix('administrator')->group(static function () {
             'vat-tax'             => VatAndTaxController::class,
             'employee-category'   => EmployeeCategoryController::class,
             'employee-department' => EmployeeDepartmentController::class,
-            'category'            => CategoryController::class,
-            'brand'               => BrandController::class,
+            'category'            => CategoryController::class, // done
+            'brand'               => BrandController::class, // done
+            'product-attribute'   => ProductAttributeController::class, // done
+            'product-color'       => ProductColorController::class, // done
+            'industry'            => IndustryController::class, // Repository Design Pattern  done
         ],
         // [
         //     'except' => array_merge(

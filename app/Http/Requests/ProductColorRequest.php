@@ -1,11 +1,11 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 
-class {{ class }} extends FormRequest
+class ProductColorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,9 @@ class {{ class }} extends FormRequest
     public function rules()
     {
         return [
-            //
+            'country_id' => 'nullable|exists:countries,id',
+            'name' => 'required|string|max:255',
+            'color_code' => 'required|string|size:7|regex:/^#[0-9A-F]{6}$/i',
         ];
     }
 
@@ -37,7 +39,11 @@ class {{ class }} extends FormRequest
     public function messages()
     {
         return [
-            //
+            'country_id.exists' => 'The selected country does not exist.',
+            'name.required' => 'The name field is required.',
+            'color_code.required' => 'The color code field is required.',
+            'color_code.size' => 'The color code must be 7 characters.',
+            'color_code.regex' => 'The color code format is invalid. It should be in the format #FFFFFF',
         ];
     }
 
@@ -49,10 +55,12 @@ class {{ class }} extends FormRequest
     public function attributes()
     {
         return [
-            //
+            'country_id' => 'Country Name',
+            'name' => 'Name',
+            'color_code' => 'Color Code',
         ];
     }
-    
+
     /**
      * Handle a failed validation attempt.
      *

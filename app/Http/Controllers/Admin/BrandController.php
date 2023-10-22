@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Country;
 use App\Models\Admin\Brand;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -175,6 +174,6 @@ class BrandController extends Controller
                 File::delete($path);
             }
         }
-        $brand->forceDelete();
+        $brand->delete();
     }
 }

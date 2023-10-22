@@ -1,11 +1,11 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 
-class {{ class }} extends FormRequest
+class ProductAttributeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,9 @@ class {{ class }} extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'       => 'required|string|max:255',
+            'values'     => 'nullable|json',
+            'country_id' => 'nullable|exists:countries,id',
         ];
     }
 
@@ -37,7 +39,11 @@ class {{ class }} extends FormRequest
     public function messages()
     {
         return [
-            //
+            'name.required' => 'The name field is required.',
+            'name.string' => 'The name field must be a string.',
+            'name.max' => 'The name field may not be greater than :max characters.',
+            'values.json' => 'The values field must be a valid JSON string.',
+            'country_id.exists' => 'The selected country is invalid.',
         ];
     }
 
@@ -49,10 +55,12 @@ class {{ class }} extends FormRequest
     public function attributes()
     {
         return [
-            //
+            'name' => 'Product Attribute Name',
+            'values' => 'Product Attribute Values',
+            'country_id' => 'Country Name',
         ];
     }
-    
+
     /**
      * Handle a failed validation attempt.
      *

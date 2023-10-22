@@ -4,13 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Models\Admin\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\IndustryRequest;
+use App\Models\Admin\Industry;
+use App\Repositories\Interfaces\IndustryRepositoryInterface;
 
-class CategoryController extends Controller
+class IndustryController extends Controller
 {
+    private $industryRepository;
+
+    public function __construct(IndustryRepositoryInterface $industryRepository)
+    {
+        $this->industryRepository = $industryRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,10 +26,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = [
-            'categories'    => Category::with('children.children.children.children.children')->where('is_parent', '1')->latest()->get(),
-        ];
-        return view('admin.pages.category.index', $data);
+        $data['industries'] =  $this->industryRepository->all();
+
+        return view('admin.pages.industry.index', $data);
     }
 
     /**
@@ -40,7 +47,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(IndustryRequest $request)
     {
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
@@ -56,16 +63,16 @@ class CategoryController extends Controller
             $globalFunLogo = ['status' => 0];
         }
 
-        Category::create([
-            'country_id'  => $request->country_id,
+        $data = [
             'parent_id'   => $request->parent_id,
-            'name'        => $request->name,
-            'slug'        => Str::slug($request->name),
-            'is_parent'   => $request->is_parent ?? '0',
-            'image'       => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
-            'logo'        => $globalFunLogo['status']  == 1 ? $globalFunLogo['file_name'] : null,
-            'description' => $request->description,
-        ]);
+            'name'         => $request->name,
+            'slug'         => Str::slug($request->name),
+            'description'  => $request->description,
+            'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
+            'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : null,
+            'website_url'  => $request->website_url,
+        ];
+        $this->industryRepository->store($data);
 
         toastr()->success('Data has been saved successfully!');
         return redirect()->back();
@@ -100,9 +107,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(IndustryRequest $request, $id)
     {
-        $category = Category::findOrFail($id);
+        $industry =  $this->industryRepository->find($id);
 
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
@@ -111,8 +118,8 @@ class CategoryController extends Controller
         if (!empty($mainFile)) {
             $globalFunImage = customUpload($mainFile, $filePath, 44, 44);
             $paths = [
-                storage_path("app/public/{$category->image}"),
-                storage_path("app/public/requestImg/{$category->image}")
+                storage_path("app/public/{$industry->image}"),
+                storage_path("app/public/requestImg/{$industry->image}")
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -126,8 +133,8 @@ class CategoryController extends Controller
         if (!empty($logoFile)) {
             $globalFunLogo = customUpload($logoFile, $filePath, 44, 44);
             $paths = [
-                storage_path("app/public/{$category->logo}"),
-                storage_path("app/public/requestImg/{$category->logo}")
+                storage_path("app/public/{$industry->logo}"),
+                storage_path("app/public/requestImg/{$industry->logo}")
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -138,16 +145,17 @@ class CategoryController extends Controller
             $globalFunLogo = ['status' => 0];
         }
 
-        $category->update([
-            'country_id'  => $request->country_id,
-            'parent_id'   => $request->parent_id,
-            'name'        => $request->name,
-            'slug'        => Str::slug($request->name),
-            'is_parent'   => $request->is_parent ?? '0',
-            'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : $category->image,
-            'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $category->logo,
-            'description' => $request->description,
-        ]);
+        $data = [
+            'parent_id'   => ($request->parent_id == 'NULL') ? '' : $request->parent_id,
+            'name'         => $request->name,
+            'slug'         => Str::slug($request->name),
+            'description'  => $request->description,
+            'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : $industry->image,
+            'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $industry->logo,
+            'website_url'  => $request->website_url,
+        ];
+
+        $this->industryRepository->update($data, $id);
 
         toastr()->success('Data has been updated successfully!');
         return redirect()->back();
@@ -161,13 +169,15 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $paths = [
-            storage_path('app/public/') . $category->image,
-            storage_path('app/public/requestImg/') . $category->image,
 
-            storage_path('app/public/') . $category->logo,
-            storage_path('app/public/requestImg/') . $category->logo,
+        $industry =  $this->industryRepository->find($id);
+
+        $paths = [
+            storage_path('app/public/') . $industry->image,
+            storage_path('app/public/requestImg/') . $industry->image,
+
+            storage_path('app/public/') . $industry->logo,
+            storage_path('app/public/requestImg/') . $industry->logo,
         ];
 
         foreach ($paths as $path) {
@@ -175,6 +185,6 @@ class CategoryController extends Controller
                 File::delete($path);
             }
         }
-        $category->forceDelete();
+        $this->industryRepository->destroy($id);
     }
 }
