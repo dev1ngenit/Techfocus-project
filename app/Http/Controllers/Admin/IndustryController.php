@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\IndustryRequest;
-use App\Models\Admin\Industry;
 use App\Repositories\Interfaces\IndustryRepositoryInterface;
 
 class IndustryController extends Controller
