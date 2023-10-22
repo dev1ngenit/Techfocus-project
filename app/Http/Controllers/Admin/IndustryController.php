@@ -168,7 +168,6 @@ class IndustryController extends Controller
      */
     public function destroy($id)
     {
-
         $industry =  $this->industryRepository->find($id);
 
         $paths = [

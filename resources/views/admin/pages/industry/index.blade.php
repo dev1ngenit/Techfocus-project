@@ -103,74 +103,44 @@
                                 </tr>
                             </thead>
                             <tbody class="fw-bold text-gray-600">
-                                <tr class="odd">
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        <img class="img-fluid rounded-circle" width="35px"
-                                            src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
-                                            alt="">
-                                    </td>
-                                    <td>Parent
-                                    </td>
-                                    <td>Company
-                                    </td>
-                                    <td class="d-flex justify-content-between align-items-center">
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#IndustryViewModal">
-                                            <i class="fa-solid fa-expand"></i>
-                                            <!--View-->
-                                        </a>
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#IndustryEditModal">
-                                            <i class="fa-solid fa-pen"></i>
-                                            <!--Edit-->
-                                        </a>
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                            data-kt-docs-table-filter="delete_row">
-                                            <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                            <!--Delete-->
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        <img class="img-fluid rounded-circle" width="35px"
-                                            src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
-                                            alt="">
-                                    </td>
-                                    <td>Parent
-                                    </td>
-                                    <td>Company
-                                    </td>
-                                    <td class="d-flex justify-content-between align-items-center">
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#IndustryViewModal">
-                                            <i class="fa-solid fa-expand"></i>
-                                            <!--View-->
-                                        </a>
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#IndustryEditModal">
-                                            <i class="fa-solid fa-pen"></i>
-                                            <!--Edit-->
-                                        </a>
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                            data-kt-docs-table-filter="delete_row">
-                                            <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                            <!--Delete-->
-                                        </a>
-                                    </td>
-                                </tr>
+                                @if ($industries)
+                                    @foreach ($industries as $industry)
+                                        <tr class="odd">
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                <img class="img-fluid rounded-circle" width="35px"
+                                                    src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                                    alt="">
+                                            </td>
+                                            <td>Parent
+                                            </td>
+                                            <td>Company
+                                            </td>
+                                            <td class="d-flex justify-content-between align-items-center">
+                                                <a href="#"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                    data-bs-toggle="modal" data-bs-target="#IndustryViewModal">
+                                                    <i class="fa-solid fa-expand"></i>
+                                                    <!--View-->
+                                                </a>
+                                                <a href="#"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                    data-bs-toggle="modal" data-bs-target="#IndustryEditModal">
+                                                    <i class="fa-solid fa-pen"></i>
+                                                    <!--Edit-->
+                                                </a>
+                                                <a href="{{ route('industry.destroy', $industry->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                    data-kt-docs-table-filter="delete_row">
+                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                    <!--Delete-->
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
