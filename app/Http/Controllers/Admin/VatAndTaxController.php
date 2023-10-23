@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VatTaxRequest;
-use Illuminate\Http\Request;
+use App\Repositories\Interfaces\VatAndTaxRepositoryInterface;
 
 class VatAndTaxController extends Controller
 {
+    private $vatAndTaxRepository;
+
+    public function __construct(VatAndTaxRepositoryInterface $vatAndTaxRepository)
+    {
+        $this->vatAndTaxRepository = $vatAndTaxRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +24,10 @@ class VatAndTaxController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.vatTax.index');
+        $data = [
+            'vatAndTaxes'    => $this->vatAndTaxRepository->allVatAndTax(),
+        ];
+        return view('admin.pages.vatAndTax.index', $data);
     }
 
     /**
@@ -36,7 +48,20 @@ class VatAndTaxController extends Controller
      */
     public function store(VatTaxRequest $request)
     {
-        //
+        $data = [
+            'country_id'  => $request->country_id,
+            'company_id'  => $request->company_id,
+            'type'        => $request->type,
+            'name'        => $request->name,
+            'slug'        => Str::slug($request->name),
+            'rate'        => $request->rate,
+            'description' => $request->description,
+            'status'      => $request->status,
+        ];
+        $this->vatAndTaxRepository->storeVatAndTax($data);
+
+        toastr()->success('Data has been saved successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -70,7 +95,21 @@ class VatAndTaxController extends Controller
      */
     public function update(VatTaxRequest $request, $id)
     {
-        //
+        $data = [
+            'country_id'  => $request->country_id,
+            'company_id'  => $request->company_id,
+            'type'        => $request->type,
+            'name'        => $request->name,
+            'slug'        => Str::slug($request->name),
+            'rate'        => $request->rate,
+            'description' => $request->description,
+            'status'      => $request->status,
+        ];
+
+        $this->vatAndTaxRepository->updateVatAndTax($data, $id);
+
+        toastr()->success('Data has been updated successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +120,6 @@ class VatAndTaxController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->vatAndTaxRepository->destroyVatAndTax($id);
     }
 }

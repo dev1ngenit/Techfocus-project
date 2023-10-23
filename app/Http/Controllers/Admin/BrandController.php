@@ -8,9 +8,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests\BrandRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use App\Repositories\Interfaces\BrandRepositoryInterface;
 
 class BrandController extends Controller
 {
+    private $brandRepository;
+
+    public function __construct(BrandRepositoryInterface $brandRepository)
+    {
+        $this->brandRepository = $brandRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +26,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $data = [
-            'brands'    => Brand::latest()->get(),
-        ];
+        $data['brands'] =  $this->brandRepository->allBrand();
         return view('admin.pages.brand.index', $data);
     }
 
@@ -56,7 +62,7 @@ class BrandController extends Controller
             $globalFunLogo = ['status' => 0];
         }
 
-        Brand::create([
+        $data = [
             'country_id'   => $request->country_id,
             'name'         => $request->name,
             'slug'         => Str::slug($request->name),
@@ -64,7 +70,8 @@ class BrandController extends Controller
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : null,
             'website_url'  => $request->website_url,
-        ]);
+        ];
+        $this->brandRepository->storeBrand($data);
 
         toastr()->success('Data has been saved successfully!');
         return redirect()->back();
@@ -102,7 +109,7 @@ class BrandController extends Controller
      */
     public function update(BrandRequest $request, $id)
     {
-        $brand = Brand::findOrFail($id);
+        $brand =  $this->brandRepository->findBrand($id);
 
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
@@ -138,7 +145,7 @@ class BrandController extends Controller
             $globalFunLogo = ['status' => 0];
         }
 
-        $brand->update([
+        $data = [
             'country_id'   => $request->country_id,
             'name'         => $request->name,
             'slug'         => Str::slug($request->name),
@@ -146,7 +153,9 @@ class BrandController extends Controller
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : $brand->image,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $brand->logo,
             'website_url'  => $request->website_url,
-        ]);
+        ];
+
+        $this->brandRepository->updateBrand($data, $id);
 
         toastr()->success('Data has been updated successfully!');
         return redirect()->back();
@@ -160,7 +169,8 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        $brand = Brand::findOrFail($id);
+        $brand =  $this->brandRepository->findBrand($id);
+
         $paths = [
             storage_path('app/public/') . $brand->image,
             storage_path('app/public/requestImg/') . $brand->image,
@@ -174,6 +184,6 @@ class BrandController extends Controller
                 File::delete($path);
             }
         }
-        $brand->delete();
+        $this->brandRepository->destroyBrand($id);
     }
 }

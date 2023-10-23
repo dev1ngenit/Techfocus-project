@@ -8,9 +8,17 @@ use App\Models\Admin\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\CategoryRequest;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
 
 class CategoryController extends Controller
 {
+    private $categoryRepository;
+
+    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +27,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data = [
-            'categories'    => Category::with('children.children.children.children.children')->where('is_parent', '1')->latest()->get(),
+            'categories'    => $this->categoryRepository->allCategory(),
         ];
         return view('admin.pages.category.index', $data);
     }
@@ -56,7 +64,7 @@ class CategoryController extends Controller
             $globalFunLogo = ['status' => 0];
         }
 
-        Category::create([
+        $data = [
             'country_id'  => $request->country_id,
             'parent_id'   => $request->parent_id,
             'name'        => $request->name,
@@ -65,7 +73,8 @@ class CategoryController extends Controller
             'image'       => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
             'logo'        => $globalFunLogo['status']  == 1 ? $globalFunLogo['file_name'] : null,
             'description' => $request->description,
-        ]);
+        ];
+        $this->categoryRepository->storeCategory($data);
 
         toastr()->success('Data has been saved successfully!');
         return redirect()->back();
@@ -102,7 +111,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        $category = Category::findOrFail($id);
+        $category =  $this->categoryRepository->findCategory($id);
 
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
@@ -138,7 +147,7 @@ class CategoryController extends Controller
             $globalFunLogo = ['status' => 0];
         }
 
-        $category->update([
+        $data = [
             'country_id'  => $request->country_id,
             'parent_id'   => $request->parent_id,
             'name'        => $request->name,
@@ -147,7 +156,9 @@ class CategoryController extends Controller
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : $category->image,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $category->logo,
             'description' => $request->description,
-        ]);
+        ];
+
+        $this->categoryRepository->updateCategory($data, $id);
 
         toastr()->success('Data has been updated successfully!');
         return redirect()->back();
@@ -161,7 +172,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
+        $category =  $this->categoryRepository->findCategory($id);
+
         $paths = [
             storage_path('app/public/') . $category->image,
             storage_path('app/public/requestImg/') . $category->image,
@@ -175,6 +187,6 @@ class CategoryController extends Controller
                 File::delete($path);
             }
         }
-        $category->forceDelete();
+        $this->categoryRepository->destroyCategory($id);
     }
 }

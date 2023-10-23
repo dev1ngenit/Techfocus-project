@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\VatAndTaxController;
@@ -51,14 +52,15 @@ Route::prefix('administrator')->group(static function () {
     });
     Route::resources(
         [
-            'vat-tax'             => VatAndTaxController::class,
+            'vat-tax'             => VatAndTaxController::class, // Repository Design Pattern  back done
             'employee-category'   => EmployeeCategoryController::class,
             'employee-department' => EmployeeDepartmentController::class,
-            'category'            => CategoryController::class, // done
-            'brand'               => BrandController::class, // done
-            'product-attribute'   => ProductAttributeController::class, // done
-            'product-color'       => ProductColorController::class, // done
-            'industry'            => IndustryController::class, // Repository Design Pattern  done
+            'category'            => CategoryController::class, // Repository Design Pattern  back done
+            'brand'               => BrandController::class, // Repository Design Pattern  back done
+            'product-attribute'   => ProductAttributeController::class, // back done
+            'product-color'       => ProductColorController::class, // back done
+            'industry'            => IndustryController::class, // Repository Design Pattern  back done
+            'company'             => CompanyController::class, // Repository Design Pattern  back done
         ],
         // [
         //     'except' => array_merge(

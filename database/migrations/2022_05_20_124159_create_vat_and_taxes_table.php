@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('vat_and_taxes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
+            $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->enum('type', ['tax', 'vat']);
             $table->string('name');
+            $table->string('slug')->unique();
             $table->decimal('rate', 5, 2);
             $table->text('description')->nullable(); // Add description column
             $table->enum('status', ['active', 'inactive'])->default('active');

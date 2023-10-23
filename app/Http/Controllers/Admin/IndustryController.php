@@ -25,8 +25,7 @@ class IndustryController extends Controller
      */
     public function index()
     {
-        $data['industries'] =  $this->industryRepository->all();
-
+        $data['industries'] =  $this->industryRepository->allIndustry();
         return view('admin.pages.industry.index', $data);
     }
 
@@ -71,7 +70,7 @@ class IndustryController extends Controller
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : null,
             'website_url'  => $request->website_url,
         ];
-        $this->industryRepository->store($data);
+        $this->industryRepository->storeIndustry($data);
 
         toastr()->success('Data has been saved successfully!');
         return redirect()->back();
@@ -108,7 +107,7 @@ class IndustryController extends Controller
      */
     public function update(IndustryRequest $request, $id)
     {
-        $industry =  $this->industryRepository->find($id);
+        $industry =  $this->industryRepository->findIndustry($id);
 
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
@@ -154,7 +153,7 @@ class IndustryController extends Controller
             'website_url'  => $request->website_url,
         ];
 
-        $this->industryRepository->update($data, $id);
+        $this->industryRepository->updateIndustry($data, $id);
 
         toastr()->success('Data has been updated successfully!');
         return redirect()->back();
@@ -168,7 +167,7 @@ class IndustryController extends Controller
      */
     public function destroy($id)
     {
-        $industry =  $this->industryRepository->find($id);
+        $industry =  $this->industryRepository->findIndustry($id);
 
         $paths = [
             storage_path('app/public/') . $industry->image,
@@ -183,6 +182,6 @@ class IndustryController extends Controller
                 File::delete($path);
             }
         }
-        $this->industryRepository->destroy($id);
+        $this->industryRepository->destroyIndustry($id);
     }
 }
