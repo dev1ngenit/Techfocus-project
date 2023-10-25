@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Models\Admin\ProductColor;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductColorRequest;
+use App\Repositories\Interfaces\ProductColorRepositoryInterface;
 
 class ProductColorController extends Controller
 {
+    private $productColorRepository;
+
+    public function __construct(ProductColorRepositoryInterface $productColorRepository)
+    {
+        $this->productColorRepository = $productColorRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +24,7 @@ class ProductColorController extends Controller
     public function index()
     {
         $data = [
-            'productColors'    => ProductColor::latest()->get(),
+            'productColors' => $this->productColorRepository->allProductColor(),
         ];
         return view('admin.pages.productColor.index', $data);
     }
@@ -41,12 +47,12 @@ class ProductColorController extends Controller
      */
     public function store(ProductColorRequest $request)
     {
-        ProductColor::create([
-            'country_id' => $request->country_id,
+        $data = [
             'name'       => $request->name,
             'slug'       => Str::slug($request->name),
             'color_code' => $request->color_code,
-        ]);
+        ];
+        $this->productColorRepository->storeProductColor($data);
 
         toastr()->success('Data has been saved successfully!');
         return redirect()->back();
@@ -83,14 +89,13 @@ class ProductColorController extends Controller
      */
     public function update(ProductColorRequest $request, $id)
     {
-        $productColor = ProductColor::findOrFail($id);
-
-        $productColor->update([
-            'country_id' => $request->country_id,
+        $data = [
             'name'       => $request->name,
             'slug'       => Str::slug($request->name),
             'color_code' => $request->color_code,
-        ]);
+        ];
+
+        $this->productColorRepository->updateProductColor($data, $id);
 
         toastr()->success('Data has been updated successfully!');
         return redirect()->back();
@@ -104,8 +109,6 @@ class ProductColorController extends Controller
      */
     public function destroy($id)
     {
-        $productColor = ProductColor::findOrFail($id);
-
-        $productColor->delete();
+        $this->productColorRepository->destroyProductColor($id);
     }
 }

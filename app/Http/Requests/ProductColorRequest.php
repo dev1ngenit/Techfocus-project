@@ -25,7 +25,6 @@ class ProductColorRequest extends FormRequest
     public function rules()
     {
         return [
-            'country_id' => 'nullable|exists:countries,id',
             'name' => 'required|string|max:255',
             'color_code' => 'required|string|size:7|regex:/^#[0-9A-F]{6}$/i',
         ];
@@ -39,7 +38,6 @@ class ProductColorRequest extends FormRequest
     public function messages()
     {
         return [
-            'country_id.exists' => 'The selected country does not exist.',
             'name.required' => 'The name field is required.',
             'color_code.required' => 'The color code field is required.',
             'color_code.size' => 'The color code must be 7 characters.',
@@ -55,7 +53,6 @@ class ProductColorRequest extends FormRequest
     public function attributes()
     {
         return [
-            'country_id' => 'Country Name',
             'name' => 'Name',
             'color_code' => 'Color Code',
         ];
