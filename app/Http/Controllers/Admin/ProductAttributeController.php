@@ -5,11 +5,18 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\ProductAttribute;
 use App\Http\Requests\ProductAttributeRequest;
+use App\Repositories\Interfaces\ProductAttributeRepositoryInterface;
 
 class ProductAttributeController extends Controller
 {
+    private $productAttributeRepository;
+
+    public function __construct(ProductAttributeRepositoryInterface $productAttributeRepository)
+    {
+        $this->productAttributeRepository = $productAttributeRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +25,7 @@ class ProductAttributeController extends Controller
     public function index()
     {
         $data = [
-            'productAttributes'    => ProductAttribute::latest()->get(),
+            'productAttributes' => $this->productAttributeRepository->allProductAttribute(),
         ];
         return view('admin.pages.productAttribute.index', $data);
     }
@@ -41,12 +48,12 @@ class ProductAttributeController extends Controller
      */
     public function store(ProductAttributeRequest $request)
     {
-        ProductAttribute::create([
-            'country_id' => $request->country_id,
+        $data = [
             'name'       => $request->name,
             'slug'       => Str::slug($request->name),
             'values'     => json_encode($request->values),
-        ]);
+        ];
+        $this->productAttributeRepository->storeProductAttribute($data);
 
         toastr()->success('Data has been saved successfully!');
         return redirect()->back();
@@ -83,14 +90,13 @@ class ProductAttributeController extends Controller
      */
     public function update(ProductAttributeRequest $request, $id)
     {
-        $productAttribute = ProductAttribute::findOrFail($id);
-
-        $productAttribute->update([
-            'country_id' => $request->country_id,
+        $data = [
             'name'       => $request->name,
             'slug'       => Str::slug($request->name),
             'values'     => json_encode($request->values),
-        ]);
+        ];
+
+        $this->productAttributeRepository->updateProductAttribute($data, $id);
 
         toastr()->success('Data has been updated successfully!');
         return redirect()->back();
@@ -104,8 +110,6 @@ class ProductAttributeController extends Controller
      */
     public function destroy($id)
     {
-        $productAttribute = ProductAttribute::findOrFail($id);
-
-        $productAttribute->delete();
+        $this->productAttributeRepository->destroyProductAttribute($id);
     }
 }

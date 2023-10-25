@@ -2,11 +2,19 @@
 
 namespace {{ namespace }};
 
+use Illuminate\Support\Str;
 use {{ rootNamespace }}Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class {{ class }} extends Controller
 {
+    private $nameRepository;
+
+    public function __construct(NameRepositoryInterface $nameRepository)
+    {
+        $this->nameRepository = $nameRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *

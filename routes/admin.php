@@ -58,7 +58,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'employee-department' => EmployeeDepartmentController::class,
             'category'            => CategoryController::class, // Repository Design Pattern  back done
             'brand'               => BrandController::class, // Repository Design Pattern  back done
-            'product-attribute'   => ProductAttributeController::class, // back done
+            'product-attribute'   => ProductAttributeController::class, // Repository Design Pattern  back done
             'product-color'       => ProductColorController::class, // back done
             'industry'            => IndustryController::class, // Repository Design Pattern  back done
             'company'             => CompanyController::class, // Repository Design Pattern  back done
@@ -66,6 +66,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         // [
         //     'except' => array_merge(
         //         ['brand.create', 'brand.show', 'brand.edit'],
+        //         ['vat-tax.create', 'vat-tax.show', 'vat-tax.edit'],
         //     )
         // ]
     );

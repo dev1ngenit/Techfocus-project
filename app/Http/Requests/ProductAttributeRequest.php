@@ -27,7 +27,6 @@ class ProductAttributeRequest extends FormRequest
         return [
             'name'       => 'required|string|max:255',
             'values'     => 'nullable|json',
-            'country_id' => 'nullable|exists:countries,id',
         ];
     }
 
@@ -40,10 +39,9 @@ class ProductAttributeRequest extends FormRequest
     {
         return [
             'name.required' => 'The name field is required.',
-            'name.string' => 'The name field must be a string.',
-            'name.max' => 'The name field may not be greater than :max characters.',
-            'values.json' => 'The values field must be a valid JSON string.',
-            'country_id.exists' => 'The selected country is invalid.',
+            'name.string'   => 'The name field must be a string.',
+            'name.max'      => 'The name field may not be greater than: max characters.',
+            'values.json'   => 'The values field must be a valid JSON string.',
         ];
     }
 
@@ -55,9 +53,8 @@ class ProductAttributeRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Product Attribute Name',
+            'name'   => 'Product Attribute Name',
             'values' => 'Product Attribute Values',
-            'country_id' => 'Country Name',
         ];
     }
 
