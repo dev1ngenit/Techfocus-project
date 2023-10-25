@@ -39,6 +39,6 @@ class ConfirmablePasswordController extends Controller
 
         $request->session()->put('auth.admin_password_confirmed_at', time());
 
-        return redirect()->intended(route('admin.index'));
+        return redirect()->intended(route('admin.dashboard'));
     }
 }

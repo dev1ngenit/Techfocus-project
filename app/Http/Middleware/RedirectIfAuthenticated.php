@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
                 $route = 'index';
                 //Admin route
                 if($guard === 'admin'){
-                    $route = 'admin.index';
+                    $route = 'admin.dashboard';
                 }
                 return redirect()->route($route);
             }

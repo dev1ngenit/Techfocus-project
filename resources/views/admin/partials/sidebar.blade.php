@@ -45,7 +45,8 @@
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                <i class="fa-solid fa-house-chimney-window"></i>
+                                {{-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none">
                                     <rect x="2" y="2" width="9" height="9" rx="2"
                                         fill="currentColor" />
@@ -55,7 +56,7 @@
                                         fill="currentColor" />
                                     <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2"
                                         fill="currentColor" />
-                                </svg>
+                                </svg> --}}
                             </span>
                             <!--end::Svg Icon-->
                         </span>
@@ -68,7 +69,47 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Multipurpose</span>
+                                <span class="menu-title">Supply Chain</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link active" href="../../demo1/dist/index.html">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Business</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link active" href="../../demo1/dist/index.html">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Accounts Finance</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link active" href="../../demo1/dist/index.html">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Site Contents</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link active" href="../../demo1/dist/index.html">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">HR & Admin</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link active" href="../../demo1/dist/index.html">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">CRM</span>
                             </a>
                         </div>
 
