@@ -65,6 +65,7 @@ Route::prefix('administrator')->group(static function () {
         // [
         //     'except' => array_merge(
         //         ['brand.create', 'brand.show', 'brand.edit'],
+        //         ['vat-tax.create', 'vat-tax.show', 'vat-tax.edit'],
         //     )
         // ]
     );

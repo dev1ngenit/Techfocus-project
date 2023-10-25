@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class EmployeeCategoryRequest extends FormRequest
 {
@@ -25,8 +26,8 @@ class EmployeeCategoryRequest extends FormRequest
     {
         return [
             'country_id'            => 'nullable|exists:countries,id',
+            'company_id'            => 'nullable|exists:companies,id',
             'name'                  => 'required|string|max:255',
-            'slug'                  => 'required|string|unique:employee_categories,slug|max:255',
             'evaluation_period'     => 'required|integer',
             'monthly_earned_leave'  => 'required|integer|min:0',
             'monthly_casual_leave'  => 'required|integer|min:0',
@@ -46,9 +47,8 @@ class EmployeeCategoryRequest extends FormRequest
     {
         return [
             'country_id.exists'              => 'The selected country name is invalid.',
+            'company_id.exists'              => 'The selected company name is invalid.',
             'name.required'                  => 'The name field is required.',
-            'slug.required'                  => 'The slug field is required.',
-            'slug.unique'                    => 'The slug has already been taken.',
             'evaluation_period.required'     => 'The evaluation period field is required.',
             'monthly_earned_leave.required'  => 'The monthly earned leave field is required.',
             'monthly_casual_leave.required'  => 'The monthly casual leave field is required.',
@@ -68,8 +68,8 @@ class EmployeeCategoryRequest extends FormRequest
     {
         return [
             'country_id'            => 'Country Name',
+            'company_id'            => 'Company Name',
             'name'                  => 'Name',
-            'slug'                  => 'Slug',
             'evaluation_period'     => 'Evaluation Period',
             'monthly_earned_leave'  => 'Monthly Earned Leave',
             'monthly_casual_leave'  => 'Monthly Casual Leave',
@@ -78,5 +78,32 @@ class EmployeeCategoryRequest extends FormRequest
             'yearly_casual_leave'   => 'Yearly Casual Leave',
             'yearly_medical_leave'  => 'Yearly Medical Leave',
         ];
+    }
+
+    /**
+     * Handle a failed validation attempt.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return void
+     */
+    protected function failedValidation(Validator $validator)
+    {
+        $this->recordErrorMessages($validator);
+        parent::failedValidation($validator);
+    }
+
+    /**
+     * Record the error messages displayed to the user.
+     *
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
+     * @return void
+     */
+    protected function recordErrorMessages(Validator $validator)
+    {
+        $errorMessages = $validator->errors()->all();
+
+        foreach ($errorMessages as $errorMessage) {
+            toastr()->error($errorMessage);
+        }
     }
 }

@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeDepartmentRequest;
-use Illuminate\Http\Request;
+use App\Repositories\Interfaces\EmployeeDepartmentRepositoryInterface;
 
 class EmployeeDepartmentController extends Controller
 {
+    private $employeeDepartmentRepository;
+
+    public function __construct(EmployeeDepartmentRepositoryInterface $employeeDepartmentRepository)
+    {
+        $this->employeeDepartmentRepository = $employeeDepartmentRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +23,10 @@ class EmployeeDepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'employeeDepartments' => $this->employeeDepartmentRepository->allEmployeeDepartment(),
+        ];
+        return view('admin.pages.employeeDepartment.index', $data);
     }
 
     /**
@@ -36,7 +47,16 @@ class EmployeeDepartmentController extends Controller
      */
     public function store(EmployeeDepartmentRequest $request)
     {
-        //
+        $data = [
+            'country_id'  => $request->country_id,
+            'company_id'  => $request->company_id,
+            'name'        => $request->name,
+            'slug'        => Str::slug($request->name),
+        ];
+        $this->employeeDepartmentRepository->storeEmployeeDepartment($data);
+
+        toastr()->success('Data has been saved successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -70,7 +90,16 @@ class EmployeeDepartmentController extends Controller
      */
     public function update(EmployeeDepartmentRequest $request, $id)
     {
-        //
+        $data = [
+            'country_id'  => $request->country_id,
+            'company_id'  => $request->company_id,
+            'name'        => $request->name,
+            'slug'        => Str::slug($request->name),
+        ];
+        $this->employeeDepartmentRepository->updateEmployeeDepartment($data, $id);
+
+        toastr()->success('Data has been saved successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +110,6 @@ class EmployeeDepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->employeeDepartmentRepository->destroyEmployeeDepartment($id);
     }
 }
