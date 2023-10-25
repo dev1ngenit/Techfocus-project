@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
             'type' => 'success',
             'content' => 'Successfully Logged in',
         ]);
-        return redirect()->intended(route('admin.index'));
+        return redirect()->intended(route('admin.dashboard'));
     }
 
     /**

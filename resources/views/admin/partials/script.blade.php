@@ -16,8 +16,12 @@
 <script src="{{ asset('backend/assets/js/custom/utilities/modals/upgrade-plan.js') }}"></script>
 <script src="{{ asset('backend/assets/js/custom/utilities/modals/create-app.js') }}"></script>
 <script src="{{ asset('backend/assets/js/custom/utilities/modals/users-search.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
+{{-- <script src="https://kit.fontawesome.com/69b7156a94.js" crossorigin="anonymous"></script> --}}
+<!-- Custom:Shahed --->
+<script src="{{ asset('backend/assets/js/custom/techfocus/font-awesome.js') }}"></script>
+<script src="{{ asset('backend/assets/js/custom/techfocus/toastr.js') }}"></script>
 <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+<!-- Custom:Shahed --->
 <!--end::Page Custom Javascript-->
 @stack('scripts')

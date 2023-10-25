@@ -1,3 +1,15 @@
+
+
+function submitForm(event, element) {
+  event.preventDefault(); // Prevent the default behavior of the anchor element
+  var form = element.closest('form');
+  if (form) {
+    form.submit();
+  }
+}
+
+
+
 // For Frontend Back Validation
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {

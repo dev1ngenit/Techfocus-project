@@ -14,6 +14,10 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return view('admin.profile');
+        return view('admin.pages.profile.index');
+    }
+    public function profileSetting()
+    {
+        return view('admin.pages.profile.profile_setting');
     }
 }
