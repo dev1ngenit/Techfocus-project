@@ -141,7 +141,7 @@
                                                     <i class="fa-solid fa-pen"></i>
                                                     <!--Edit-->
                                                 </a>
-                                                <a href="{{ route('category.destroy', $category->id) }}"
+                                                <a href="{{ route('admin.category.destroy', $category->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                     data-kt-docs-table-filter="delete_row">
                                                     <i class="fa-solid fa-trash-can-arrow-up"></i>
@@ -171,7 +171,7 @@
                     </div>
                     <!-- End Close button in the header -->
                 </div>
-                <form action="{{ route('category.store') }}" class="needs-validation" method="post"
+                <form action="{{ route('admin.category.store') }}" class="needs-validation" method="post"
                     enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="modal-body">

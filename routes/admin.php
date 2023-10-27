@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\VatAndTaxController;
+use App\Http\Controllers\Admin\WebSettingController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
@@ -51,23 +52,22 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::get('profile', [\App\Http\Controllers\Admin\HomeController::class, 'profile'])->name('profile');
         Route::get('profile/setting', [\App\Http\Controllers\Admin\HomeController::class, 'profileSetting'])->middleware('password.confirm.admin')->name('profile.setting');
     });
-    Route::resources(
-        [
-            'vat-tax'             => VatAndTaxController::class, // Repository Design Pattern  back done
-            'employee-category'   => EmployeeCategoryController::class,
-            'employee-department' => EmployeeDepartmentController::class,
-            'category'            => CategoryController::class, // Repository Design Pattern  back done
-            'brand'               => BrandController::class, // Repository Design Pattern  back done
-            'product-attribute'   => ProductAttributeController::class, // Repository Design Pattern  back done
-            'product-color'       => ProductColorController::class, // back done
-            'industry'            => IndustryController::class, // Repository Design Pattern  back done
-            'company'             => CompanyController::class, // Repository Design Pattern  back done
-        ],
-        // [
-        //     'except' => array_merge(
-        //         ['brand.create', 'brand.show', 'brand.edit'],
-        //         ['vat-tax.create', 'vat-tax.show', 'vat-tax.edit'],
-        //     )
-        // ]
-    );
+
+    Route::put('seo/setting', [WebSettingController::class, 'seo'])->name('seo.setting');
+    Route::put('smtp/setting', [WebSettingController::class, 'smtp'])->name('smtp.setting');
+
+    Route::resources([
+        'vat-tax'             => VatAndTaxController::class,
+        'employee-category'   => EmployeeCategoryController::class,
+        'employee-department' => EmployeeDepartmentController::class,
+        'category'            => CategoryController::class,
+        'brand'               => BrandController::class,
+        'product-attribute'   => ProductAttributeController::class,
+        'product-color'       => ProductColorController::class,
+        'industry'            => IndustryController::class,
+        'company'             => CompanyController::class,
+    ], ['except' => ['create', 'show', 'edit']]);
+
+    // Route::resource('vat-tax', VatAndTaxController::class)->except(['create', 'show', 'edit']);
+
 });

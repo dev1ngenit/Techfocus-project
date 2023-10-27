@@ -139,7 +139,7 @@
                                                     <i class="fa-solid fa-pen"></i>
                                                     <!--Edit-->
                                                 </a>
-                                                <a href="{{ route('brand.destroy', $brand->id) }}"
+                                                <a href="{{ route('admin.brand.destroy', $brand->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                     data-kt-docs-table-filter="delete_row">
                                                     <i class="fa-solid fa-trash-can-arrow-up"></i>
@@ -180,7 +180,7 @@
                     </div>
                     <!-- End Close button in the header -->
                 </div>
-                <form method="POST" action="{{ route('brand.store') }}" class="needs-validation" novalidate
+                <form method="POST" action="{{ route('admin.brand.store') }}" class="needs-validation" novalidate
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
@@ -273,7 +273,7 @@
                         </div>
                         <!-- End Close button in the header -->
                     </div>
-                    <form method="POST" action="{{ route('brand.update', $brand->id) }}" class="needs-validation"
+                    <form method="POST" action="{{ route('admin.brand.update', $brand->id) }}" class="needs-validation"
                         novalidate enctype="multipart/form-data">
                         @csrf
                         @method('PUT')

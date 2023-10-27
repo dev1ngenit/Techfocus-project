@@ -132,7 +132,7 @@
                                                     <i class="fa-solid fa-pen"></i>
                                                     <!--Edit-->
                                                 </a>
-                                                <a href="{{ route('industry.destroy', $industry->id) }}"
+                                                <a href="{{ route('admin.industry.destroy', $industry->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                     data-kt-docs-table-filter="delete_row">
                                                     <i class="fa-solid fa-trash-can-arrow-up"></i>
@@ -162,7 +162,7 @@
                     </div>
                     <!-- End Close button in the header -->
                 </div>
-                <form action="{{ route('industry.store') }}" class="needs-validation" method="post"
+                <form action="{{ route('admin.industry.store') }}" class="needs-validation" method="post"
                     enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="modal-body">
