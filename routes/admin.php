@@ -56,18 +56,22 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
     Route::put('seo/setting', [WebSettingController::class, 'seo'])->name('seo.setting');
     Route::put('smtp/setting', [WebSettingController::class, 'smtp'])->name('smtp.setting');
 
-    Route::resources([
-        'vat-tax'             => VatAndTaxController::class,
-        'employee-category'   => EmployeeCategoryController::class,
-        'employee-department' => EmployeeDepartmentController::class,
-        'category'            => CategoryController::class,
-        'brand'               => BrandController::class,
-        'product-attribute'   => ProductAttributeController::class,
-        'product-color'       => ProductColorController::class,
-        'industry'            => IndustryController::class,
-        'company'             => CompanyController::class,
-    ], ['except' => ['create', 'show', 'edit']]);
-
+    Route::resources(
+        [
+            'vat-tax'             => VatAndTaxController::class,
+            'employee-category'   => EmployeeCategoryController::class,
+            'employee-department' => EmployeeDepartmentController::class,
+            'category'            => CategoryController::class,
+            'brand'               => BrandController::class,
+            'product-attribute'   => ProductAttributeController::class,
+            'product-color'       => ProductColorController::class,
+            'industry'            => IndustryController::class,
+            'company'             => CompanyController::class,
+        ],
+        [
+            'except' => ['create', 'show', 'edit'],
+        ]
+    );
     // Route::resource('vat-tax', VatAndTaxController::class)->except(['create', 'show', 'edit']);
 
 });

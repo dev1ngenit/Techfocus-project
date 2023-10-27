@@ -40,14 +40,12 @@ class WebSettingController extends Controller
             'google_adsense_code'      => $request->google_adsense_code,
         ];
 
-        // Remove "array" type declaration from the method call
         $seo = $this->seoRepository->updateOrCreateSeo($dataToUpdateOrCreate);
 
         $toastMessage = $seo->wasRecentlyCreated ? 'Data has been created successfully!' : 'Data has been updated successfully!';
         toastr()->success($toastMessage);
         return redirect()->back();
     }
-
 
     function smtp(SmtpRequest $request)
     {
