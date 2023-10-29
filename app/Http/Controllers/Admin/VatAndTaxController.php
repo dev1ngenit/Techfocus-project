@@ -23,10 +23,9 @@ class VatAndTaxController extends Controller
      */
     public function index()
     {
-        $data = [
+        return view('admin.pages.vatAndTax.index', [
             'vatAndTaxes'    => $this->vatAndTaxRepository->allVatAndTax(),
-        ];
-        return view('admin.pages.vatAndTax.index', $data);
+        ]);
     }
 
     /**

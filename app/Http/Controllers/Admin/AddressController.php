@@ -23,7 +23,9 @@ class AddressController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.address.index', [
+            'addresses' => $this->addressRepository->allAddress(),
+        ]);
     }
 
     /**
@@ -44,7 +46,22 @@ class AddressController extends Controller
      */
     public function store(AddressRequest $request)
     {
-        //
+        $data = [
+            'country_id'   => $request->country_id,
+            'state_id'     => $request->state_id,
+            'city_id'      => $request->city_id,
+            'admin_id'     => $request->admin_id,
+            'user_id'      => $request->user_id,
+            'user_type'    => $request->user_type,
+            'address_type' => $request->address_type,
+            'address'      => $request->address,
+            'postal_code'  => $request->postal_code,
+            'phone'        => $request->phone,
+        ];
+        $this->addressRepository->storeAddress($data);
+
+        toastr()->success('Data has been saved successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -78,7 +95,23 @@ class AddressController extends Controller
      */
     public function update(AddressRequest $request, $id)
     {
-        //
+        $data = [
+            'country_id'   => $request->country_id,
+            'state_id'     => $request->state_id,
+            'city_id'      => $request->city_id,
+            'admin_id'     => $request->admin_id,
+            'user_id'      => $request->user_id,
+            'user_type'    => $request->user_type,
+            'address_type' => $request->address_type,
+            'address'      => $request->address,
+            'postal_code'  => $request->postal_code,
+            'phone'        => $request->phone,
+        ];
+
+        $this->addressRepository->updateAddress($data, $id);
+
+        toastr()->success('Data has been updated successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -89,6 +122,6 @@ class AddressController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->addressRepository->destroyAddress($id);
     }
 }
