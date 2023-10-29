@@ -24,8 +24,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $data['brands'] =  $this->brandRepository->allBrand();
-        return view('admin.pages.brand.index', $data);
+        return view('admin.pages.brand.index', [
+            'brands' =>  $this->brandRepository->allBrand(),
+        ]);
     }
 
     /**

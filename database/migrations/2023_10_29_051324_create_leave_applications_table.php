@@ -35,7 +35,6 @@ return new class extends Migration
             $table->string('included_open_saturday')->nullable();
             $table->string('substitute_signature')->comment('file')->nullable();
             $table->string('applicant_signature')->comment('file.It will automatically come from employee form.No need to add another image to database,just add the image name.')->nullable();
-            // Official Use Columns
             $table->string('leave_position')->nullable();
             $table->unsignedBigInteger('casual_leave_due_as_on')->default(0);
             $table->unsignedBigInteger('casual_leave_availed')->default(0);
