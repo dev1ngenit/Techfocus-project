@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CompanyController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
+use App\Http\Controllers\HR\LeaveApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +69,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'product-color'       => ProductColorController::class,
             'industry'            => IndustryController::class,
             'company'             => CompanyController::class,
+            'address'             => AddressController::class,
+            'leave-application'   => LeaveApplicationController::class,
         ],
         [
             'except' => ['create', 'show', 'edit'],

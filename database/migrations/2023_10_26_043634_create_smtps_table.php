@@ -16,7 +16,16 @@ return new class extends Migration
         Schema::create('smtps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
-            $table->string('slug')->unique();
+            $table->string('host')->nullable();
+            $table->string('port')->nullable();
+            $table->string('encryption')->nullable();
+            $table->string('username')->nullable();
+            $table->string('password')->nullable();
+            $table->string('from_address')->nullable();
+            $table->string('from_name')->nullable();
+            $table->string('sender_email')->nullable();
+            $table->string('sender_name')->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('inactive')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
