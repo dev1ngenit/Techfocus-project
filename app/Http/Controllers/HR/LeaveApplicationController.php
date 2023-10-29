@@ -54,31 +54,11 @@ class LeaveApplicationController extends Controller
 
         $filePath = storage_path('app/public/');
 
-        if (!empty($substituteSignatureFile)) {
-            $globalFunSubstituteSignature = customUpload($substituteSignatureFile, $filePath,   44, 44);
-        } else {
-            $globalFunSubstituteSignature = ['status' => 0];
-        }
-        if (!empty($checkedByFile)) {
-            $globalFunCheckedBy = customUpload($checkedByFile, $filePath,   44, 44);
-        } else {
-            $globalFunCheckedBy = ['status' => 0];
-        }
-        if (!empty($recommendedByFile)) {
-            $globalFunRecommendedBy = customUpload($recommendedByFile, $filePath,   44, 44);
-        } else {
-            $globalFunRecommendedBy = ['status' => 0];
-        }
-        if (!empty($reviewedByFile)) {
-            $globalFunReviewedBy = customUpload($reviewedByFile, $filePath,   44, 44);
-        } else {
-            $globalFunReviewedBy = ['status' => 0];
-        }
-        if (!empty($approvedByFile)) {
-            $globalFunApprovedBy = customUpload($approvedByFile, $filePath,   44, 44);
-        } else {
-            $globalFunApprovedBy = ['status' => 0];
-        }
+        $globalFunSubstituteSignature = empty($substituteSignatureFile) ? ['status' => 0] : customUpload($substituteSignatureFile, $filePath, 44, 44);
+        $globalFunCheckedBy = empty($checkedByFile) ? ['status' => 0] : customUpload($checkedByFile, $filePath, 44, 44);
+        $globalFunRecommendedBy = empty($recommendedByFile) ? ['status' => 0] : customUpload($recommendedByFile, $filePath, 44, 44);
+        $globalFunReviewedBy = empty($reviewedByFile) ? ['status' => 0] : customUpload($reviewedByFile, $filePath, 44, 44);
+        $globalFunApprovedBy = empty($approvedByFile) ? ['status' => 0] : customUpload($approvedByFile, $filePath, 44, 44);
 
         $data = [
             'country_id'              => $request->country_id,
@@ -166,7 +146,7 @@ class LeaveApplicationController extends Controller
         $filePath = storage_path('app/public/');
 
         if (!empty($substituteSignatureFile)) {
-            $globalFunSubstituteSignature = customUpload($substituteSignatureFile, $filePath);
+            $globalFunSubstituteSignature = customUpload($substituteSignatureFile, $filePath, 44, 44);
             $paths = [
                 storage_path("app/public/{$leaveApplication->substitute_signature}"),
                 storage_path("app/public/requestImg/{$leaveApplication->substitute_signature}")
@@ -181,7 +161,7 @@ class LeaveApplicationController extends Controller
         }
 
         if (!empty($checkedByFile)) {
-            $globalFunCheckedBy = customUpload($checkedByFile, $filePath);
+            $globalFunCheckedBy = customUpload($checkedByFile, $filePath, 44, 44);
             $paths = [
                 storage_path("app/public/{$leaveApplication->checked_by}"),
                 storage_path("app/public/requestImg/{$leaveApplication->checked_by}")
