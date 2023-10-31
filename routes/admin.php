@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\VatAndTaxController;
 use App\Http\Controllers\Admin\WebSettingController;
@@ -76,6 +77,9 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'except' => ['create', 'show', 'edit'],
         ]
     );
-    // Route::resource('vat-tax', VatAndTaxController::class)->except(['create', 'show', 'edit']);
+    Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
+        ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']);
+
+    // Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit']);
 
 });

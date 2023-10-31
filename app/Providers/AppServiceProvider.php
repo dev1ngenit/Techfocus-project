@@ -7,6 +7,7 @@ use App\Repositories\SmtpRepository;
 use App\Repositories\BrandRepository;
 use App\Repositories\AddressRepository;
 use App\Repositories\CompanyRepository;
+use App\Repositories\ContactRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\CategoryRepository;
 use App\Repositories\IndustryRepository;
@@ -21,6 +22,7 @@ use App\Repositories\Interfaces\SmtpRepositoryInterface;
 use App\Repositories\Interfaces\BrandRepositoryInterface;
 use App\Repositories\Interfaces\AddressRepositoryInterface;
 use App\Repositories\Interfaces\CompanyRepositoryInterface;
+use App\Repositories\Interfaces\ContactRepositoryInterface;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\IndustryRepositoryInterface;
 use App\Repositories\Interfaces\VatAndTaxRepositoryInterface;
@@ -50,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
             CategoryRepositoryInterface::class => CategoryRepository::class,
             CompanyRepositoryInterface::class => CompanyRepository::class,
             AddressRepositoryInterface::class => AddressRepository::class,
+            ContactRepositoryInterface::class => ContactRepository::class,
             BrandRepositoryInterface::class => BrandRepository::class,
             SmtpRepositoryInterface::class => SmtpRepository::class,
             SeoRepositoryInterface::class => SeoRepository::class,
