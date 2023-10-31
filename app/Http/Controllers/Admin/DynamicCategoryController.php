@@ -10,11 +10,11 @@ use App\Repositories\Interfaces\DynamicCategoryRepositoryInterface;
 
 class DynamicCategoryController extends Controller
 {
-    private $dynamicCategory;
+    private $dynamicCategoryRepository;
 
-    public function __construct(DynamicCategoryRepositoryInterface $dynamicCategory)
+    public function __construct(DynamicCategoryRepositoryInterface $dynamicCategoryRepository)
     {
-        $this->dynamicCategory = $dynamicCategory;
+        $this->dynamicCategoryRepository = $dynamicCategoryRepository;
     }
 
     /**
@@ -25,7 +25,7 @@ class DynamicCategoryController extends Controller
     public function index()
     {
         return view('admin.pages.dynamicCategory.index', [
-            'dynamicCategories'    => $this->dynamicCategory->allDynamicCategory(),
+            'dynamicCategories'    => $this->dynamicCategoryRepository->allDynamicCategory(),
         ]);
     }
 
@@ -47,7 +47,18 @@ class DynamicCategoryController extends Controller
      */
     public function store(DynamicCategoryRequest $request)
     {
-        //
+        $data = [
+            'company_id' => $request->company_id,
+            'parent_id'  => $request->parent_id,
+            'name'       => $request->name,
+            'slug'       => Str::slug($request->name),
+            'type'       => $request->type,
+            'status'     => $request->status,
+        ];
+        $this->dynamicCategoryRepository->storeDynamicCategory($data);
+
+        toastr()->success('Data has been saved successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -81,7 +92,19 @@ class DynamicCategoryController extends Controller
      */
     public function update(DynamicCategoryRequest $request, $id)
     {
-        //
+        $data = [
+            'company_id' => $request->company_id,
+            'parent_id'  => $request->parent_id,
+            'name'       => $request->name,
+            'slug'       => Str::slug($request->name),
+            'type'       => $request->type,
+            'status'     => $request->status,
+        ];
+
+        $this->dynamicCategoryRepository->updateDynamicCategory($data, $id);
+
+        toastr()->success('Data has been updated successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -92,6 +115,6 @@ class DynamicCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->vatAndTaxRepository->destroyVatAndTax($id);
     }
 }

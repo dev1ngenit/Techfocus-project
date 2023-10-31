@@ -10,11 +10,11 @@ use App\Repositories\Interfaces\EventRepositoryInterface;
 
 class EventController extends Controller
 {
-    private $event;
+    private $eventRepository;
 
-    public function __construct(EventRepositoryInterface $event)
+    public function __construct(EventRepositoryInterface $eventRepository)
     {
-        $this->event = $event;
+        $this->eventRepository = $eventRepository;
     }
 
     /**
@@ -25,7 +25,7 @@ class EventController extends Controller
     public function index()
     {
         return view('admin.pages.event.index', [
-            'events'    => $this->event->allEvent(),
+            'events'    => $this->eventRepository->allEvent(),
         ]);
     }
 
@@ -47,7 +47,24 @@ class EventController extends Controller
      */
     public function store(EventRequest $request)
     {
-        //
+        $data = [
+            'country_id' => $request->country_id,
+            'dynamic_category_id' => $request->dynamic_category_id,
+            'employee_id' => $request->employee_id,
+            'department_id' => $request->department_id,
+            'title' => $request->title,
+            'slug' => Str::slug($request->title, '-'),
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'status' => $request->status,
+            'description' => $request->description
+        ];
+        $this->eventRepository->storeEvent($data);
+
+        toastr()->success('Data has been saved successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -81,7 +98,25 @@ class EventController extends Controller
      */
     public function update(EventRequest $request, $id)
     {
-        //
+        $data = [
+            'country_id' => $request->country_id,
+            'dynamic_category_id' => $request->dynamic_category_id,
+            'employee_id' => $request->employee_id,
+            'department_id' => $request->department_id,
+            'title' => $request->title,
+            'slug' => Str::slug($request->title, '-'),
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'start_time' => $request->start_time,
+            'end_time' => $request->end_time,
+            'status' => $request->status,
+            'description' => $request->description
+        ];
+
+        $this->eventRepository->updateEvent($data, $id);
+
+        toastr()->success('Data has been updated successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -92,6 +127,6 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->eventRepository->destroyEvent($id);
     }
 }

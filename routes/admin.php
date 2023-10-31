@@ -74,12 +74,12 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'company'             => CompanyController::class,
             'address'             => AddressController::class,
             'leave-application'   => LeaveApplicationController::class,
-            'dynamic-category'    => DynamicCategoryController::class,
-            'event'               => EventController::class,
+            'dynamic-category'    => DynamicCategoryController::class, // gg
+            'event'               => EventController::class, // gg
         ],
         ['except' => ['create', 'show', 'edit'],]
     );
     Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
-        ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']);
+        ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']); // gg
     // Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit']);
 });
