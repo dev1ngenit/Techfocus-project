@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Repositories\SeoRepository;
 use App\Repositories\SmtpRepository;
 use App\Repositories\BrandRepository;
+use App\Repositories\EventRepository;
 use App\Repositories\AddressRepository;
 use App\Repositories\CompanyRepository;
 use App\Repositories\ContactRepository;
@@ -13,6 +14,7 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\IndustryRepository;
 use App\Repositories\VatAndTaxRepository;
 use App\Repositories\ProductColorRepository;
+use App\Repositories\DynamicCategoryRepository;
 use App\Repositories\EmployeeCategoryRepository;
 use App\Repositories\LeaveApplicationRepository;
 use App\Repositories\ProductAttributeRepository;
@@ -20,6 +22,7 @@ use App\Repositories\EmployeeDepartmentRepository;
 use App\Repositories\Interfaces\SeoRepositoryInterface;
 use App\Repositories\Interfaces\SmtpRepositoryInterface;
 use App\Repositories\Interfaces\BrandRepositoryInterface;
+use App\Repositories\Interfaces\EventRepositoryInterface;
 use App\Repositories\Interfaces\AddressRepositoryInterface;
 use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\ContactRepositoryInterface;
@@ -27,6 +30,7 @@ use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\IndustryRepositoryInterface;
 use App\Repositories\Interfaces\VatAndTaxRepositoryInterface;
 use App\Repositories\Interfaces\ProductColorRepositoryInterface;
+use App\Repositories\Interfaces\DynamicCategoryRepositoryInterface;
 use App\Repositories\Interfaces\EmployeeCategoryRepositoryInterface;
 use App\Repositories\Interfaces\LeaveApplicationRepositoryInterface;
 use App\Repositories\Interfaces\ProductAttributeRepositoryInterface;
@@ -46,6 +50,7 @@ class AppServiceProvider extends ServiceProvider
             EmployeeCategoryRepositoryInterface::class => EmployeeCategoryRepository::class,
             ProductAttributeRepositoryInterface::class => ProductAttributeRepository::class,
             LeaveApplicationRepositoryInterface::class => LeaveApplicationRepository::class,
+            DynamicCategoryRepositoryInterface::class => DynamicCategoryRepository::class,
             ProductColorRepositoryInterface::class => ProductColorRepository::class,
             VatAndTaxRepositoryInterface::class => VatAndTaxRepository::class,
             IndustryRepositoryInterface::class => IndustryRepository::class,
@@ -53,6 +58,7 @@ class AppServiceProvider extends ServiceProvider
             CompanyRepositoryInterface::class => CompanyRepository::class,
             AddressRepositoryInterface::class => AddressRepository::class,
             ContactRepositoryInterface::class => ContactRepository::class,
+            EventRepositoryInterface::class => EventRepository::class,
             BrandRepositoryInterface::class => BrandRepository::class,
             SmtpRepositoryInterface::class => SmtpRepository::class,
             SeoRepositoryInterface::class => SeoRepository::class,

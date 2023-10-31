@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\DynamicCategoryController;
 use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\VatAndTaxController;
 use App\Http\Controllers\Admin\WebSettingController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\HR\LeaveApplicationController;
 
 /*
@@ -72,6 +74,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'company'             => CompanyController::class,
             'address'             => AddressController::class,
             'leave-application'   => LeaveApplicationController::class,
+            'dynamic-category'    => DynamicCategoryController::class,
+            'event'               => EventController::class,
         ],
         ['except' => ['create', 'show', 'edit'],]
     );
