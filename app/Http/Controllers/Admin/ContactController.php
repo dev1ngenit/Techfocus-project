@@ -50,19 +50,9 @@ class ContactController extends Controller
      */
     public function store(ContactRequest $request)
     {
-        $ip       = $request->ip();
-        $key      = 'contact-attempts-' . $ip;
-        $attempts = Cache::increment($key, 1);  // Increment the attempts count atomically
-        Cache::put($key, $attempts, 60);  // Reset the attempts count every minute
-
-        if ($attempts > 10) {
-            Cache::put('ban-status-' . $ip, true, 180);  // Ban the IP for 3 minutes
-            return response()->json(['message' => 'You are temporarily banned. Try again later.'], 429);
-        }
-
         $data = array_merge($request->only(['country_id', 'name', 'email', 'phone', 'subject', 'message', 'status']), [
             'code' => generate_unique_code(),
-            'ip_address' => $ip,
+            'ip_address' => $request->ip(),
         ]);
 
         $this->contactRepository->storeContact($data);
@@ -100,7 +90,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContactRequest $request, $id)
     {
         $replyMessage = $request->input('reply_message');
 
@@ -108,7 +98,7 @@ class ContactController extends Controller
 
         $data = [
             'reply_message' => $replyMessage,
-            'status' => 'replied',
+            'status'        => 'replied',
         ];
 
         $this->contactRepository->updateContact($data, $id);

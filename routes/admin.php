@@ -73,13 +73,9 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'address'             => AddressController::class,
             'leave-application'   => LeaveApplicationController::class,
         ],
-        [
-            'except' => ['create', 'show', 'edit'],
-        ]
+        ['except' => ['create', 'show', 'edit'],]
     );
     Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
         ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']);
-
     // Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit']);
-
 });

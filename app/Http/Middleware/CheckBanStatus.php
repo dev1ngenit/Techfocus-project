@@ -18,9 +18,11 @@ class CheckBanStatus
     public function handle(Request $request, Closure $next)
     {
         $ip = $request->ip();
-        $banStatus = Cache::get('ban-status-' . $ip);
+        $key = 'contact-attempts-' . $ip;
+        $attempts = Cache::increment($key, 1, 60);
 
-        if ($banStatus) {
+        if ($attempts > 10) {
+            Cache::put('ban-status-' . $ip, true, 180);
             return response()->json(['message' => 'You are temporarily banned. Try again later.'], 429);
         }
 
