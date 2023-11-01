@@ -5,9 +5,9 @@ namespace Database\Factories\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin\EventCategory>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Admin\DynamicCategory>
  */
-class EventCategoryFactory extends Factory
+class DynamicCategoryFactory extends Factory
 {
     /**
      * Define the model's default state.
