@@ -48,18 +48,18 @@ class EventController extends Controller
     public function store(EventRequest $request)
     {
         $data = [
-            'country_id' => $request->country_id,
+            'country_id'          => $request->country_id,
             'dynamic_category_id' => $request->dynamic_category_id,
-            'employee_id' => $request->employee_id,
-            'department_id' => $request->department_id,
-            'title' => $request->title,
-            'slug' => Str::slug($request->title, '-'),
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'start_time' => $request->start_time,
-            'end_time' => $request->end_time,
-            'status' => $request->status,
-            'description' => $request->description
+            'employee_id'         => $request->employee_id,
+            'department_id'       => $request->department_id,
+            'title'               => $request->title,
+            'slug'                => Str::slug($request->title),
+            'start_date'          => $request->start_date,
+            'end_date'            => $request->end_date,
+            'start_time'          => $request->start_time,
+            'end_time'            => $request->end_time,
+            'status'              => $request->status,
+            'description'         => $request->description
         ];
         $this->eventRepository->storeEvent($data);
 
@@ -99,18 +99,18 @@ class EventController extends Controller
     public function update(EventRequest $request, $id)
     {
         $data = [
-            'country_id' => $request->country_id,
+            'country_id'          => $request->country_id,
             'dynamic_category_id' => $request->dynamic_category_id,
-            'employee_id' => $request->employee_id,
-            'department_id' => $request->department_id,
-            'title' => $request->title,
-            'slug' => Str::slug($request->title, '-'),
-            'start_date' => $request->start_date,
-            'end_date' => $request->end_date,
-            'start_time' => $request->start_time,
-            'end_time' => $request->end_time,
-            'status' => $request->status,
-            'description' => $request->description
+            'employee_id'         => $request->employee_id,
+            'department_id'       => $request->department_id,
+            'title'               => $request->title,
+            'slug'                => Str::slug($request->title),
+            'start_date'          => $request->start_date,
+            'end_date'            => $request->end_date,
+            'start_time'          => $request->start_time,
+            'end_time'            => $request->end_time,
+            'status'              => $request->status,
+            'description'         => $request->description
         ];
 
         $this->eventRepository->updateEvent($data, $id);

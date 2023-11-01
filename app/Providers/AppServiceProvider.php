@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\FaqRepository;
 use App\Repositories\SeoRepository;
 use App\Repositories\SmtpRepository;
 use App\Repositories\BrandRepository;
@@ -19,6 +20,7 @@ use App\Repositories\EmployeeCategoryRepository;
 use App\Repositories\LeaveApplicationRepository;
 use App\Repositories\ProductAttributeRepository;
 use App\Repositories\EmployeeDepartmentRepository;
+use App\Repositories\Interfaces\FaqRepositoryInterface;
 use App\Repositories\Interfaces\SeoRepositoryInterface;
 use App\Repositories\Interfaces\SmtpRepositoryInterface;
 use App\Repositories\Interfaces\BrandRepositoryInterface;
@@ -62,6 +64,7 @@ class AppServiceProvider extends ServiceProvider
             BrandRepositoryInterface::class => BrandRepository::class,
             SmtpRepositoryInterface::class => SmtpRepository::class,
             SeoRepositoryInterface::class => SeoRepository::class,
+            FaqRepositoryInterface::class => FaqRepository::class,
         ];
 
         foreach ($bindings as $interface => $implementation) {

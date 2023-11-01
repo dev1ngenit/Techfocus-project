@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\HR\LeaveApplicationController;
 
 /*
@@ -76,6 +77,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'leave-application'   => LeaveApplicationController::class,
             'dynamic-category'    => DynamicCategoryController::class, // gg
             'event'               => EventController::class, // gg
+            'faq'                 => FaqController::class, // gg
         ],
         ['except' => ['create', 'show', 'edit'],]
     );
