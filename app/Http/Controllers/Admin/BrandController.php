@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Brand;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Requests\BrandRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -26,8 +24,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $data['brands'] =  $this->brandRepository->allBrand();
-        return view('admin.pages.brand.index', $data);
+        return view('admin.pages.brand.index', [
+            'brands' =>  $this->brandRepository->allBrand(),
+        ]);
     }
 
     /**

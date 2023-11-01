@@ -23,10 +23,9 @@ class ProductColorController extends Controller
      */
     public function index()
     {
-        $data = [
+        return view('admin.pages.productColor.index', [
             'productColors' => $this->productColorRepository->allProductColor(),
-        ];
-        return view('admin.pages.productColor.index', $data);
+        ]);
     }
 
     /**

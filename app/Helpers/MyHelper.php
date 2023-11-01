@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin\Contact;
 use App\Models\Country;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Facades\Image;
@@ -148,3 +149,25 @@ if (!function_exists('getAllCountry')) {
 //         return Site::first();
 //     }
 // }
+
+if (!function_exists('generate_unique_code')) {
+    /**
+     * Generates a unique code for messages.
+     *
+     * @param string $prefix The prefix for the code.
+     * @return string The generated code.
+     */
+    function generate_unique_code($prefix = 'MSG')
+    {
+        $date = now()->format('dmy');
+        $pattern = "$prefix-$date-%";
+
+        $latestCode = Contact::where('code', 'LIKE', $pattern)
+            ->orderByDesc('id')
+            ->value('code');
+
+        $serialNumber = $latestCode ? (int) explode('-', $latestCode)[2] + 1 : 1;
+
+        return sprintf('%s-%s-%d', $prefix, $date, $serialNumber);
+    }
+}

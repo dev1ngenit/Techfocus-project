@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VatTaxRequest;
 use App\Repositories\Interfaces\VatAndTaxRepositoryInterface;
@@ -24,10 +23,9 @@ class VatAndTaxController extends Controller
      */
     public function index()
     {
-        $data = [
+        return view('admin.pages.vatAndTax.index', [
             'vatAndTaxes'    => $this->vatAndTaxRepository->allVatAndTax(),
-        ];
-        return view('admin.pages.vatAndTax.index', $data);
+        ]);
     }
 
     /**
