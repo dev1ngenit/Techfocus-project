@@ -81,5 +81,5 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
     );
     Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
         ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']); // gg
-    // Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit']);
+    // Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit']); 
 });
