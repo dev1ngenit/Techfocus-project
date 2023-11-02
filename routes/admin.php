@@ -1,22 +1,23 @@
 <?php
 
-use App\Http\Controllers\Admin\AddressController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CompanyController;
-use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Admin\DynamicCategoryController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\VatAndTaxController;
 use App\Http\Controllers\Admin\WebSettingController;
 use App\Http\Controllers\Admin\ProductColorController;
+use App\Http\Controllers\HR\LeaveApplicationController;
+use App\Http\Controllers\Admin\DynamicCategoryController;
+use App\Http\Controllers\Admin\CountryStateCityController;
 use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
-use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\HR\LeaveApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,5 +84,32 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
     );
     Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
         ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']); // gg
-    // Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit']); 
+
+    Route::get('country-state-city', [CountryStateCityController::class, 'index'])->name('country.state.city.index');
+
+    Route::put('country/{id}/update', [CountryStateCityController::class, 'updateCountry'])->name('country.update');
+    Route::delete('country/{id}/destroy', [CountryStateCityController::class, 'destroyCountry'])->name('country.destroy');
+
+    Route::put('state/{id}/update', [CountryStateCityController::class, 'updateState'])->name('state.update');
+    Route::delete('state/{id}/destroy', [CountryStateCityController::class, 'destroyState'])->name('state.destroy');
+
+    Route::put('city/{id}/update', [CountryStateCityController::class, 'updateCity'])->name('city.update');
+    Route::delete('city/{id}/destroy', [CountryStateCityController::class, 'destroyCity'])->name('city.destroy');
+
+    Route::get('/subscribers', [NewsletterController::class, 'index'])->name('newsletter.index');
+    Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
+    Route::get('/verify/{token}', [NewsletterController::class, 'verify'])->name('newsletter.verify');
+
+    Route::get('/verified', function () {
+        return view('newsletter.verified');
+    })->name('newsletter.verified');
+
+    Route::get('/verify-failed', function () {
+        return view('newsletter.verify-failed');
+    })->name('newsletter.verify-failed');
+
+    Route::post('/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+
+    // Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit']); //example
 });
