@@ -113,3 +113,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
     // Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit']); //example
 });
+
+// newsletter //pending
+// sales year target //pending
+// sales team target //pending
