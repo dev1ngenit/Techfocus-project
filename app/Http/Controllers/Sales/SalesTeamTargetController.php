@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Sales;
 
-use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\SalesTeamTargetRequest;
+use App\Repositories\Interfaces\SalesTeamTargetRepositoryInterface;
 
 class SalesTeamTargetController extends Controller
 {
-    private $nameRepository;
+    private $salesTeamTargetRepository;
 
-    public function __construct(NameRepositoryInterface $nameRepository)
+    public function __construct(SalesTeamTargetRepositoryInterface $salesTeamTargetRepository)
     {
-        $this->nameRepository = $nameRepository;
+        $this->salesTeamTargetRepository = $salesTeamTargetRepository;
     }
 
     /**
@@ -22,7 +22,9 @@ class SalesTeamTargetController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.salesTeamTarget.index', [
+            'salesTeamTargets' => $this->salesTeamTargetRepository->allSalesTeamTarget(),
+        ]);
     }
 
     /**
@@ -41,9 +43,25 @@ class SalesTeamTargetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SalesTeamTargetRequest $request)
     {
-        //
+        $data = [
+            'sales_man_id'         => $request->sales_man_id,
+            'country_id'           => $request->country_id,
+            'company_id'           => $request->company_id,
+            'name'                 => $request->name,
+            'fiscal_year'          => $request->fiscal_year,
+            'year_target'          => $request->year_target,
+            'quarter_one_target'   => $request->quarter_one_target,
+            'quarter_two_target'   => $request->quarter_two_target,
+            'quarter_three_target' => $request->quarter_three_target,
+            'quarter_four_target'  => $request->quarter_four_target,
+            'year_started'         => $request->year_started,
+        ];
+        $this->salesTeamTargetRepository->storeSalesTeamTarget($data);
+
+        toastr()->success('Data has been saved successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -75,9 +93,26 @@ class SalesTeamTargetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SalesTeamTargetRequest $request, $id)
     {
-        //
+        $data = [
+            'sales_man_id'         => $request->sales_man_id,
+            'country_id'           => $request->country_id,
+            'company_id'           => $request->company_id,
+            'name'                 => $request->name,
+            'fiscal_year'          => $request->fiscal_year,
+            'year_target'          => $request->year_target,
+            'quarter_one_target'   => $request->quarter_one_target,
+            'quarter_two_target'   => $request->quarter_two_target,
+            'quarter_three_target' => $request->quarter_three_target,
+            'quarter_four_target'  => $request->quarter_four_target,
+            'year_started'         => $request->year_started,
+        ];
+
+        $this->salesTeamTargetRepository->updateSalesTeamTarget($data, $id);
+
+        toastr()->success('Data has been updated successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -88,6 +123,6 @@ class SalesTeamTargetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->salesTeamTargetRepository->destroySalesTeamTarget($id);
     }
 }

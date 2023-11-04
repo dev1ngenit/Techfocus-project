@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\WebSettingController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\HR\LeaveApplicationController;
 use App\Http\Controllers\Admin\DynamicCategoryController;
+use App\Http\Controllers\Sales\SalesTeamTargetController;
+use App\Http\Controllers\Sales\SalesYearTargetController;
 use App\Http\Controllers\Admin\CountryStateCityController;
 use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
@@ -76,14 +78,16 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'company'             => CompanyController::class,
             'address'             => AddressController::class,
             'leave-application'   => LeaveApplicationController::class,
-            'dynamic-category'    => DynamicCategoryController::class, // gg
-            'event'               => EventController::class, // gg
-            'faq'                 => FaqController::class, // gg
+            'dynamic-category'    => DynamicCategoryController::class,
+            'event'               => EventController::class,
+            'faq'                 => FaqController::class,
+            'sales-year-target'   => SalesYearTargetController::class,
+            'sales-team-target'   => SalesTeamTargetController::class,
         ],
         ['except' => ['create', 'show', 'edit'],]
     );
     Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
-        ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']); // gg
+        ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']);
 
     Route::get('country-state-city', [CountryStateCityController::class, 'index'])->name('country.state.city.index');
 
@@ -113,7 +117,3 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
     // Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit']); //example
 });
-
-// newsletter //pending
-// sales year target //pending
-// sales team target //pending

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->double('quarter_two_target')->nullable();
             $table->double('quarter_three_target')->nullable();
             $table->double('quarter_four_target')->nullable();
-            $table->enum('year_started', ['january', 'june'])->nullable();
+            $table->enum('year_started', ['january', 'july'])->nullable();
             $table->double('january_target')->nullable();
             $table->double('february_target')->nullable();
             $table->double('march_target')->nullable();
@@ -50,5 +50,3 @@ return new class extends Migration
         Schema::dropIfExists('sales_year_targets');
     }
 };
-
-

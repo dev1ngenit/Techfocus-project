@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use App\Repositories\FaqRepository;
 use App\Repositories\SeoRepository;
 use App\Repositories\SmtpRepository;
@@ -10,12 +11,13 @@ use App\Repositories\EventRepository;
 use App\Repositories\AddressRepository;
 use App\Repositories\CompanyRepository;
 use App\Repositories\ContactRepository;
-use Illuminate\Support\ServiceProvider;
 use App\Repositories\CategoryRepository;
 use App\Repositories\IndustryRepository;
 use App\Repositories\VatAndTaxRepository;
 use App\Repositories\ProductColorRepository;
 use App\Repositories\DynamicCategoryRepository;
+use App\Repositories\SalesTeamTargetRepository;
+use App\Repositories\SalesYearTargetRepository;
 use App\Repositories\EmployeeCategoryRepository;
 use App\Repositories\LeaveApplicationRepository;
 use App\Repositories\ProductAttributeRepository;
@@ -33,6 +35,8 @@ use App\Repositories\Interfaces\IndustryRepositoryInterface;
 use App\Repositories\Interfaces\VatAndTaxRepositoryInterface;
 use App\Repositories\Interfaces\ProductColorRepositoryInterface;
 use App\Repositories\Interfaces\DynamicCategoryRepositoryInterface;
+use App\Repositories\Interfaces\SalesTeamTargetRepositoryInterface;
+use App\Repositories\Interfaces\SalesYearTargetRepositoryInterface;
 use App\Repositories\Interfaces\EmployeeCategoryRepositoryInterface;
 use App\Repositories\Interfaces\LeaveApplicationRepositoryInterface;
 use App\Repositories\Interfaces\ProductAttributeRepositoryInterface;
@@ -53,6 +57,8 @@ class AppServiceProvider extends ServiceProvider
             ProductAttributeRepositoryInterface::class => ProductAttributeRepository::class,
             LeaveApplicationRepositoryInterface::class => LeaveApplicationRepository::class,
             DynamicCategoryRepositoryInterface::class => DynamicCategoryRepository::class,
+            SalesYearTargetRepositoryInterface::class => SalesYearTargetRepository::class,
+            SalesTeamTargetRepositoryInterface::class => SalesTeamTargetRepository::class,
             ProductColorRepositoryInterface::class => ProductColorRepository::class,
             VatAndTaxRepositoryInterface::class => VatAndTaxRepository::class,
             IndustryRepositoryInterface::class => IndustryRepository::class,

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\NewsLetter;
 use Illuminate\Http\Request;
 
 class NewsLetterController extends Controller
 {
     public function index()
     {
-        $subscribers = Subscriber::all();
+        $subscribers = NewsLetter::all();
         return view('newsletter.index', compact('subscribers'));
     }
 
@@ -30,14 +31,14 @@ class NewsLetterController extends Controller
         }
 
         Newsletter::subscribe($request->email);
-        Subscriber::create($subscriptionData);
+        NewsLetter::create($subscriptionData);
 
         return redirect()->back()->with('success', 'Subscription successful.');
     }
 
     public function verify(Request $request, $token)
     {
-        $subscriber = Subscriber::where('verification_token', $token)->first();
+        $subscriber = NewsLetter::where('verification_token', $token)->first();
 
         if (!$subscriber) {
             return redirect()->route('newsletter.verify-failed')->with('error', 'Invalid verification token.');

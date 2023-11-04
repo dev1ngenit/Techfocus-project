@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sales_man_id')->nullable()->constrained('admins')->cascadeOnDelete();
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
-            $table->unsignedBigInteger('sales_man_id')->nullable();
+            $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->string('name')->nullable();
             $table->year('fiscal_year')->nullable();
             $table->double('year_target')->nullable();
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->double('quarter_two_target')->nullable();
             $table->double('quarter_three_target')->nullable();
             $table->double('quarter_four_target')->nullable();
-            $table->enum('year_started', ['january', 'june'])->nullable();
+            $table->enum('year_started', ['january', 'july'])->nullable();
             $table->timestamps();
         });
     }
