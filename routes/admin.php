@@ -115,5 +115,5 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
     Route::post('/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
-    // Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit']); //example
+    // Route::resource('example', ExampleController::class)->except(['create', 'show', 'edit']); //example
 });
