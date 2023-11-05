@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PolicyAcknowledgmentRequest;
+use App\Models\Admin;
 use App\Repositories\Interfaces\PolicyAcknowledgmentRepositoryInterface;
 
 class PolicyAcknowledgmentController extends Controller
@@ -24,6 +25,7 @@ class PolicyAcknowledgmentController extends Controller
     {
         return view('admin.pages.policyAcknowledgment.index', [
             'policyAcknowledgments' =>  $this->policyAcknowledgmentRepository->allPolicyAcknowledgment(),
+            'admins' =>  Admin::get(['id', 'name']),
         ]);
     }
 

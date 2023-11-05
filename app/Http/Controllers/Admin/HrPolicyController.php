@@ -5,14 +5,16 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HrPolicyRequest;
 use App\Repositories\Interfaces\HrPolicyRepositoryInterface;
+use App\Repositories\Interfaces\DynamicCategoryRepositoryInterface;
 
 class HrPolicyController extends Controller
 {
-    private $hrPolicyRepository;
+    private $hrPolicyRepository, $dynamicCategoryRepository;
 
-    public function __construct(HrPolicyRepositoryInterface $hrPolicyRepository)
+    public function __construct(HrPolicyRepositoryInterface $hrPolicyRepository, DynamicCategoryRepositoryInterface $dynamicCategoryRepository)
     {
-        $this->hrPolicyRepository = $hrPolicyRepository;
+        $this->hrPolicyRepository        = $hrPolicyRepository;
+        $this->dynamicCategoryRepository = $dynamicCategoryRepository;
     }
 
     /**
@@ -23,7 +25,8 @@ class HrPolicyController extends Controller
     public function index()
     {
         return view('admin.pages.hrPolicy.index', [
-            'hrPolicys' =>  $this->hrPolicyRepository->allHrPolicy(),
+            'hrPolicys'         => $this->hrPolicyRepository->allHrPolicy(),
+            'dynamicCategories' => $this->dynamicCategoryRepository->allDynamicCategory(),
         ]);
     }
 

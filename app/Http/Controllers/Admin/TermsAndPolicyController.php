@@ -4,15 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TermsAndPolicyRequest;
+use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\TermsAndPolicyRepositoryInterface;
 
 class TermsAndPolicyController extends Controller
 {
-    private $termsAndPolicyRepository;
+    private $termsAndPolicyRepository, $companyRepository;
 
-    public function __construct(TermsAndPolicyRepositoryInterface $termsAndPolicyRepository)
+    public function __construct(TermsAndPolicyRepositoryInterface $termsAndPolicyRepository, CompanyRepositoryInterface $companyRepository)
     {
         $this->termsAndPolicyRepository = $termsAndPolicyRepository;
+        $this->companyRepository        = $companyRepository;
     }
 
     /**
@@ -23,7 +25,8 @@ class TermsAndPolicyController extends Controller
     public function index()
     {
         return view('admin.pages.termsAndPolicy.index', [
-            'termsAndPolicies' =>  $this->termsAndPolicyRepository->allTermsAndPolicy(),
+            'termsAndPolicies' => $this->termsAndPolicyRepository->allTermsAndPolicy(),
+            'companies'        => $this->companyRepository->allCompany(),
         ]);
     }
 
