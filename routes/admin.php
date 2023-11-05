@@ -20,10 +20,10 @@ use App\Http\Controllers\Admin\CountryStateCityController;
 use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
-use App\Http\Controllers\Admin\HrPolicyController;
-use App\Http\Controllers\Admin\NewsTrendController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
 use App\Http\Controllers\Admin\TermsAndPolicyController;
+use App\Http\Controllers\Admin\HrPolicyController;
+use App\Http\Controllers\Admin\NewsTrendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +86,6 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'event'               => EventController::class,
             'faq'                 => FaqController::class,
             'sales-year-target'   => SalesYearTargetController::class,
-            'sales-team-target'   => SalesTeamTargetController::class,
             'sales-team-target'   => SalesTeamTargetController::class,
 
             'news-trend'            => NewsTrendController::class,
