@@ -2,11 +2,13 @@
 
 namespace App\Http\Requests\Admin\Auth;
 
-use Illuminate\Auth\Events\Lockout;
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\RateLimiter;
+use App\Models\Admin;
 use Illuminate\Support\Str;
+use Illuminate\Auth\Events\Lockout;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
 class LoginRequest extends FormRequest
@@ -54,13 +56,23 @@ class LoginRequest extends FormRequest
     public function authenticate()
     {
         $this->ensureIsNotRateLimited();
-
-        if (!Auth::guard('admin')->attempt([$this->identity() => $this->string('identity'), 'password' => $this->string('password')], $this->boolean('remember'))) {
+        $identity = $this->string('identity');
+        $password = $this->string('password');
+        $hash_password = Hash::make($password);
+        $remember = $this->boolean('remember');
+        if (!Auth::guard('admin')->attempt([$this->identity() => $identity, 'password' => $password], $remember)) {
             RateLimiter::hit($this->throttleKey());
 
-            throw ValidationException::withMessages([
-                'identity' => trans('auth.failed'),
-            ]);
+            // throw ValidationException::withMessages([
+            //     'identity' => trans('auth.failed'),
+            // ]);
+            if (!Admin::where('email', $identity)->exists()) {
+                $errors['email'] = trans('Email ID is not correct');
+            } else if (!Admin::where('password', $hash_password)->exists()) {
+                $errors['password'] = trans('Password is not correct');
+            }
+
+            throw ValidationException::withMessages($errors);
         }
 
         RateLimiter::clear($this->throttleKey());

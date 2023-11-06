@@ -26,7 +26,11 @@
     <link href="{{ asset('backend/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
-    
+    <!--start::Custom Stylesheets Bundle-->
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/custom_global.css') }}">
+    <!--end::Custom Stylesheets Bundle-->
+
+
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -38,8 +42,7 @@
         <!--begin::Authentication - Sign-in -->
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <!--begin::Aside-->
-            <div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative"
-                style="background-color: #F2C98A">
+            <div class="d-flex flex-column flex-lg-row-auto w-xl-600px positon-xl-relative common-gradient">
                 <!--begin::Wrapper-->
                 <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
                     <!--begin::Content-->
@@ -51,8 +54,9 @@
                         </a>
                         <!--end::Logo-->
                         <!--begin::Title-->
-                        <h1 class="fw-bolder fs-2qx pb-5 pb-md-10" style="color: #986923;">Welcome to TechFocus Back
-                            Office</h1>
+                        <h1 class="fw-bolder fs-2qx pb-5 pb-md-10 text-white">
+                            Welcome to TechFocus Back Office
+                        </h1>
                         <!--end::Title-->
 
                     </div>
@@ -104,6 +108,7 @@
     </script>
     <!--end::Javascript-->
     <!--custom::Javascript-->
+    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
     @stack('scripts')
     <!--custom::Javascript-->
 

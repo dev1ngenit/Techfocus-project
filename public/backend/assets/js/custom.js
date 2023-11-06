@@ -216,3 +216,19 @@ $(document).on('click', '.delete', function (e) {
     }
   });
 });
+
+
+$(document).ready(function() {
+    $('#common_form').on('submit', function() {
+        var submitButton = $('#common_submit');
+        var labelSpan = submitButton.find('.indicator-label');
+        var progressSpan = submitButton.find('.indicator-progress');
+
+        // Disable the submit button
+        submitButton.prop('disabled', true);
+
+        // Hide the label and show the progress indicator
+        labelSpan.hide();
+        progressSpan.show();
+    });
+});
