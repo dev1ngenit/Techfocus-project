@@ -36,6 +36,15 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => Str::random(10),
 
             ],
+            [
+                'name' => 'Khandker Shahed',
+                'username' => 'shahed141123',
+                'email' => 'khandkershahed23@gmail.com',
+                'password' => Hash::make('password'),
+                'email_verified_at' => null,
+                'remember_token' => Str::random(10),
+
+            ],
 
         ]);
     }

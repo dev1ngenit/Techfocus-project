@@ -7,8 +7,8 @@
             <div class="w-lg-500px p-10 p-lg-15 mx-auto">
                 {{-- action="{{ route('admin.login') }}" --}}
                 <!--begin::Form-->
-                <form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="{{ route('admin.login') }}"
-                 method="POST">
+                <form class="form w-100" novalidate="novalidate" id="common_form" action="{{ route('admin.login') }}"
+                    method="POST">
                     @csrf
                     <!--begin::Heading-->
                     <div class="text-center mb-10">
@@ -28,6 +28,11 @@
                         <!--begin::Input-->
                         <input class="form-control form-control-lg form-control-solid" type="email" name="identity"
                             value="{{ old('email') }}" required autocomplete="off" />
+                        @error('email')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                         <!--end::Input-->
                     </div>
                     <!--end::Input group-->
@@ -56,16 +61,20 @@
                             <i class="fas fa-eye login_eye_icon" id="eyeIcon" style="margin-left: -2.5rem;"
                                 onclick="togglePasswordVisibility()"></i>
                         </div>
+                        @error('password')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                         <!--end::Input-->
                     </div>
                     <!--end::Input group-->
                     <!--begin::Actions-->
                     <div class="text-center">
                         <!--begin::Submit button-->
-                        <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-50 mb-5">
+                        <button type="submit" id="common_submit" class="btn btn-lg common-btn-3 fw-bolder me-4 w-150px mb-5">
                             <span class="indicator-label">Submit</span>
                             <span class="indicator-progress">Please wait...
-                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
                         </button>
                         <!--end::Submit button-->
 
@@ -80,9 +89,3 @@
 
     </div>
 @endsection
-
-@once
-    @push('scripts')
-    <script src="{{asset('backend/assets/js/custom/authentication/sign-in/general.js')}}"></script>
-    @endpush
-@endonce
