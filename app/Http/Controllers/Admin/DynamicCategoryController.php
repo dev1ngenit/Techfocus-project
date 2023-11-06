@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DynamicCategoryRequest;
+use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\DynamicCategoryRepositoryInterface;
 
 class DynamicCategoryController extends Controller
 {
-    private $dynamicCategoryRepository;
+    private $dynamicCategoryRepository, $companyRepository;
 
-    public function __construct(DynamicCategoryRepositoryInterface $dynamicCategoryRepository)
+    public function __construct(DynamicCategoryRepositoryInterface $dynamicCategoryRepository, CompanyRepositoryInterface $companyRepository)
     {
         $this->dynamicCategoryRepository = $dynamicCategoryRepository;
+        $this->companyRepository         = $companyRepository;
     }
 
     /**
@@ -26,6 +27,7 @@ class DynamicCategoryController extends Controller
     {
         return view('admin.pages.dynamicCategory.index', [
             'dynamicCategories'    => $this->dynamicCategoryRepository->allDynamicCategory(),
+            'companies'    => $this->companyRepository->allCompany(),
         ]);
     }
 
@@ -115,6 +117,6 @@ class DynamicCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $this->vatAndTaxRepository->destroyVatAndTax($id);
+        $this->dynamicCategoryRepository->destroyDynamicCategory($id);
     }
 }

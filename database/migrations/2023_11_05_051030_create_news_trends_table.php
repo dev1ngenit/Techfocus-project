@@ -31,7 +31,7 @@ return new class extends Migration
             $table->json('tags')->nullable();
             $table->string('banner_image')->nullable();
             $table->string('thumbnail_image')->nullable();
-            $table->url('additional_url')->nullable();
+            $table->string('additional_url')->nullable();
             $table->text('footer')->nullable()->comment('summernote')->nullable();
             $table->timestamps();
         });

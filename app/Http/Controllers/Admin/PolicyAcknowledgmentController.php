@@ -5,15 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PolicyAcknowledgmentRequest;
 use App\Models\Admin;
+use App\Repositories\Interfaces\HrPolicyRepositoryInterface;
 use App\Repositories\Interfaces\PolicyAcknowledgmentRepositoryInterface;
 
 class PolicyAcknowledgmentController extends Controller
 {
-    private $policyAcknowledgmentRepository;
+    private $policyAcknowledgmentRepository, $hrPolicyRepository;
 
-    public function __construct(PolicyAcknowledgmentRepositoryInterface $policyAcknowledgmentRepository)
+    public function __construct(PolicyAcknowledgmentRepositoryInterface $policyAcknowledgmentRepository, HrPolicyRepositoryInterface $hrPolicyRepository)
     {
         $this->policyAcknowledgmentRepository = $policyAcknowledgmentRepository;
+        $this->hrPolicyRepository             = $hrPolicyRepository;
     }
 
     /**
@@ -24,8 +26,9 @@ class PolicyAcknowledgmentController extends Controller
     public function index()
     {
         return view('admin.pages.policyAcknowledgment.index', [
-            'policyAcknowledgments' =>  $this->policyAcknowledgmentRepository->allPolicyAcknowledgment(),
-            'admins' =>  Admin::get(['id', 'name']),
+            'policyAcknowledgments' => $this->policyAcknowledgmentRepository->allPolicyAcknowledgment(),
+            'hrPolicies'            => $this->hrPolicyRepository->allHrPolicy(),
+            'admins'                => Admin::get(['id', 'name']),
         ]);
     }
 

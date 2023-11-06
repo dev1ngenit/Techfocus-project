@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\EventRepositoryInterface;
+use App\Repositories\Interfaces\DynamicCategoryRepositoryInterface;
+use App\Repositories\Interfaces\EmployeeDepartmentRepositoryInterface;
 
 class EventController extends Controller
 {
     private $eventRepository;
+    private $dynamicCategoryRepository;
+    private $employeedepartmentRepository;
 
-    public function __construct(EventRepositoryInterface $eventRepository)
+    public function __construct(EventRepositoryInterface $eventRepository, DynamicCategoryRepositoryInterface $dynamicCategoryRepository, EmployeeDepartmentRepositoryInterface $employeedepartmentRepository)
     {
-        $this->eventRepository = $eventRepository;
+        $this->eventRepository              = $eventRepository;
+        $this->dynamicCategoryRepository    = $dynamicCategoryRepository;
+        $this->employeedepartmentRepository = $employeedepartmentRepository;
     }
 
     /**
@@ -25,7 +31,10 @@ class EventController extends Controller
     public function index()
     {
         return view('admin.pages.event.index', [
-            'events'    => $this->eventRepository->allEvent(),
+            'events'              => $this->eventRepository->allEvent(),
+            'dynamicCategories'   => $this->dynamicCategoryRepository->allDynamicCategory(),
+            'employeedepartments' => $this->employeedepartmentRepository->allEmployeeDepartment(),
+            'admins' =>  Admin::get(['id', 'name']),
         ]);
     }
 

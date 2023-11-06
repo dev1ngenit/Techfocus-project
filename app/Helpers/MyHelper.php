@@ -1,7 +1,9 @@
 <?php
 
-use App\Models\Admin\Contact;
+use App\Models\City;
+use App\Models\State;
 use App\Models\Country;
+use App\Models\Admin\Contact;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Facades\Image;
 
@@ -135,6 +137,30 @@ if (!function_exists('getAllCountry')) {
     function getAllCountry()
     {
         return Country::get(['id', 'name']);
+    }
+}
+
+if (!function_exists('getAllState')) {
+    /**
+     * Generate a unique transaction number.
+     *
+     * @return string
+     */
+    function getAllState()
+    {
+        return State::get(['id', 'name']);
+    }
+}
+
+if (!function_exists('getAllCity')) {
+    /**
+     * Generate a unique transaction number.
+     *
+     * @return string
+     */
+    function getAllCity()
+    {
+        return City::get(['id', 'name']);
     }
 }
 

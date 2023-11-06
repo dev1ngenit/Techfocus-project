@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddressRequest;
+use App\Models\Admin\Address;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\State;
+use App\Models\User;
 use App\Repositories\Interfaces\AddressRepositoryInterface;
 
 class AddressController extends Controller
@@ -24,6 +29,11 @@ class AddressController extends Controller
     {
         return view('admin.pages.address.index', [
             'addresses' => $this->addressRepository->allAddress(),
+            'countries' => Country::get(),
+            'states'    => State::get(),
+            'cities'    => City::get(),
+            'admins'    => Address::get(),
+            'users'     => User::get(),
         ]);
     }
 

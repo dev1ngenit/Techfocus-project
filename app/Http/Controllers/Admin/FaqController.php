@@ -5,14 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\FaqRequest;
 use App\Http\Controllers\Controller;
 use App\Repositories\Interfaces\FaqRepositoryInterface;
+use App\Repositories\Interfaces\CompanyRepositoryInterface;
+use App\Repositories\Interfaces\DynamicCategoryRepositoryInterface;
 
 class FaqController extends Controller
 {
     private $faqRepository;
+    private $companyRepository;
+    private $dynamicCategoryRepository;
 
-    public function __construct(FaqRepositoryInterface $faqRepository)
+    public function __construct(FaqRepositoryInterface $faqRepository, CompanyRepositoryInterface $companyRepository, DynamicCategoryRepositoryInterface $dynamicCategoryRepository)
     {
-        $this->faqRepository = $faqRepository;
+        $this->faqRepository             = $faqRepository;
+        $this->companyRepository         = $companyRepository;
+        $this->dynamicCategoryRepository = $dynamicCategoryRepository;
     }
 
     /**
@@ -23,7 +29,9 @@ class FaqController extends Controller
     public function index()
     {
         return view('admin.pages.faq.index', [
-            'faqs' => $this->faqRepository->allFaq(),
+            'faqs'              => $this->faqRepository->allFaq(),
+            'companies'         => $this->companyRepository->allCompany(),
+            'dynamicCategories' => $this->dynamicCategoryRepository->allDynamicCategory(),
         ]);
     }
 

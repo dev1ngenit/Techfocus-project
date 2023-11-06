@@ -5,15 +5,17 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VatTaxRequest;
+use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\VatAndTaxRepositoryInterface;
 
 class VatAndTaxController extends Controller
 {
-    private $vatAndTaxRepository;
+    private $vatAndTaxRepository, $companyRepository;
 
-    public function __construct(VatAndTaxRepositoryInterface $vatAndTaxRepository)
+    public function __construct(VatAndTaxRepositoryInterface $vatAndTaxRepository, CompanyRepositoryInterface $companyRepository)
     {
         $this->vatAndTaxRepository = $vatAndTaxRepository;
+        $this->companyRepository            = $companyRepository;
     }
 
     /**
@@ -25,6 +27,7 @@ class VatAndTaxController extends Controller
     {
         return view('admin.pages.vatAndTax.index', [
             'vatAndTaxes'    => $this->vatAndTaxRepository->allVatAndTax(),
+            'companies'           => $this->companyRepository->allCompany(),
         ]);
     }
 

@@ -5,15 +5,17 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeDepartmentRequest;
+use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\EmployeeDepartmentRepositoryInterface;
 
 class EmployeeDepartmentController extends Controller
 {
-    private $employeeDepartmentRepository;
+    private $employeeDepartmentRepository, $companyRepository;
 
-    public function __construct(EmployeeDepartmentRepositoryInterface $employeeDepartmentRepository)
+    public function __construct(EmployeeDepartmentRepositoryInterface $employeeDepartmentRepository, CompanyRepositoryInterface $companyRepository)
     {
         $this->employeeDepartmentRepository = $employeeDepartmentRepository;
+        $this->companyRepository            = $companyRepository;
     }
 
     /**
@@ -25,6 +27,7 @@ class EmployeeDepartmentController extends Controller
     {
         $data = [
             'employeeDepartments' => $this->employeeDepartmentRepository->allEmployeeDepartment(),
+            'companies'           => $this->companyRepository->allCompany(),
         ];
         return view('admin.pages.employeeDepartment.index', $data);
     }

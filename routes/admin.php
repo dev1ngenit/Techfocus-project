@@ -66,8 +66,9 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::get('profile/setting', [\App\Http\Controllers\Admin\HomeController::class, 'profileSetting'])->middleware('password.confirm.admin')->name('profile.setting');
     });
 
-    Route::put('seo/setting', [WebSettingController::class, 'seo'])->name('seo.setting');
-    Route::put('smtp/setting', [WebSettingController::class, 'smtp'])->name('smtp.setting');
+    Route::get('web-setting', [WebSettingController::class, 'index'])->name('web.setting');
+    Route::put('seo-setting', [WebSettingController::class, 'seo'])->name('seo.setting');
+    Route::put('smtp-setting', [WebSettingController::class, 'smtp'])->name('smtp.setting');
 
     Route::resources(
         [
