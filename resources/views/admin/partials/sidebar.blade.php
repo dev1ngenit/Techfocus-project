@@ -140,7 +140,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">eCommerce</span>
+                        <span class="menu-title">Supply Chain</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion">
@@ -149,7 +149,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Catalog</span>
+                                <span class="menu-title">Logistics</span>
                                 <span class="menu-arrow"></span>
                             </span>
                             <div class="menu-sub menu-sub-accordion">
@@ -163,7 +163,7 @@
                                 </div>
                                 <div class="menu-item">
                                     <a class="menu-link"
-                                        href="../../demo1/dist/apps/ecommerce/catalog/categories.html">
+                                        href="{{route('admin.category.index')}}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>

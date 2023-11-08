@@ -117,9 +117,9 @@
                                             <td>
                                                 {{ getAllCountry()->where('id', $category->country_id)->first()->name ?? 'Unknown Country' }}
                                             </td>
-                                            <td>Company
+                                            <td>{{ $category->parentName() ?? 'No Parent' }}
                                             </td>
-                                            <td>Company
+                                            <td>{{ $category->name }}
                                             </td>
                                             <td>
                                                 <img class="img-fluid" width="35px"
@@ -135,8 +135,8 @@
                                                     <!--View-->
                                                 </a>
                                                 <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 categoryEditModal"
+                                                    data-bs-toggle="modal" data-id="{{ $category->id }}"
                                                     data-bs-target="#categoryEditModal_{{ $category->id }}">
                                                     <i class="fa-solid fa-pen"></i>
                                                     <!--Edit-->
@@ -221,7 +221,7 @@
                                             <label for="validationCustom01" class="form-label">
                                             </label>
                                             <div
-                                                class="form-check form-check-custom form-check-warning form-check-solid form-check-sm mt-3 ms-4">
+                                                class="form-check form-check-custom form-check-warning form-check-solid form-check-sm mt-3 ms-4 mb-3">
                                                 <input class="form-check-input bg-primary" name="is_parent"
                                                     value="1" type="checkbox" id="flexRadioLg" />
                                                 <label class="form-check-label" for="flexRadioLg">Is Parent</label>
@@ -235,48 +235,14 @@
                                                 data-dropdown-parent="#categoryAddModal" data-control="select2"
                                                 data-placeholder="Select a Parent" data-allow-clear="true">
                                                 <option></option>
-                                                @if ($categories && count($categories))
-                                                    @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}">{{ $category->name }}
-                                                        </option>
-                                                        @if ($category->children && count($category->children))
-                                                            @foreach ($category->children as $child)
-                                                                <option value="{{ $child->id }}">- {{ $child->name }}
-                                                                </option>
-                                                                @if ($child->children && count($child->children))
-                                                                    @foreach ($child->children as $grandchild)
-                                                                        <option value="{{ $grandchild->id }}">--
-                                                                            {{ $grandchild->name }}</option>
-                                                                        @if ($grandchild->children && count($grandchild->children))
-                                                                            @foreach ($grandchild->children as $grandgrandchild)
-                                                                                <option
-                                                                                    value="{{ $grandgrandchild->id }}">---
-                                                                                    {{ $grandgrandchild->name }}</option>
-                                                                                @if ($grandgrandchild->children && count($grandgrandchild->children))
-                                                                                    @foreach ($grandgrandchild->children as $grandgrandgrandchild)
-                                                                                        <option
-                                                                                            value="{{ $grandgrandgrandchild->id }}">
-                                                                                            ----
-                                                                                            {{ $grandgrandgrandchild->name }}
-                                                                                        </option>
-                                                                                        @if ($grandgrandgrandchild->children && count($grandgrandgrandchild->children))
-                                                                                            @foreach ($grandgrandgrandchild->children as $grandgrandgrandgrandchild)
-                                                                                                <option
-                                                                                                    value="{{ $grandgrandgrandgrandchild->id }}">
-                                                                                                    -----
-                                                                                                    {{ $grandgrandgrandgrandchild->name }}
-                                                                                                </option>
-                                                                                                {{-- You can add even more nesting levels if needed --}}
-                                                                                            @endforeach
-                                                                                        @endif
-                                                                                    @endforeach
-                                                                                @endif
-                                                                            @endforeach
-                                                                        @endif
-                                                                    @endforeach
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
+                                                @if (count($dropdown_categories) > 0)
+                                                    @foreach ($dropdown_categories as $dropdown_category)
+                                                        @include('admin.pages.category.partial.add_parent',
+                                                            [
+                                                                'dropdown_category' => $dropdown_category,
+                                                                'indent'            => '',
+                                                                'type'              => 'add',
+                                                            ])
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -335,7 +301,8 @@
                                                     data-placeholder="Select an option" data-allow-clear="true" required>
                                                     <option></option>
                                                     @foreach (getAllCountry() as $country)
-                                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                        <option value="{{ $country->id }}" @selected($country->id == $category->country_id)>
+                                                            {{ $country->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 <div class="valid-feedback"> Looks good! </div>
@@ -346,8 +313,8 @@
                                                 </label>
                                                 <input type="text"
                                                     class="form-control form-control-solid form-control-sm" name="name"
-                                                    id="validationCustom01" placeholder="Enter Name" name="Ngen It"
-                                                    required>
+                                                    id="validationCustom01" placeholder="Enter Name"
+                                                    value="{{ $category->name }}" required>
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Name </div>
                                             </div>
@@ -356,7 +323,11 @@
                                                 </label>
                                                 <input type="file"
                                                     class="form-control form-control-solid form-control-sm" name="image"
-                                                    id="validationCustom01" required>
+                                                    id="validationCustom01">
+                                                <div class="mt-2">
+                                                    <img src="{{ asset('storage/requestImg/' . $category->image) }}"
+                                                        alt="" class="img-fluid">
+                                                </div>
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Image </div>
                                             </div>
@@ -365,7 +336,11 @@
                                                 </label>
                                                 <input type="file"
                                                     class="form-control form-control-solid form-control-sm" name="logo"
-                                                    id="validationCustom01" required>
+                                                    id="validationCustom01">
+                                                <div class="mt-2">
+                                                    <img src="{{ asset('storage/requestImg/' . $category->logo) }}"
+                                                        alt="" class="img-fluid">
+                                                </div>
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Logo </div>
                                             </div>
@@ -373,22 +348,34 @@
                                                 <label for="validationCustom01" class="form-label">
                                                 </label>
                                                 <div
-                                                    class="form-check form-check-custom form-check-warning form-check-solid form-check-sm mt-3 ms-4">
+                                                    class="form-check form-check-custom form-check-warning form-check-solid form-check-sm mt-3 ms-4  mb-3">
                                                     <input class="form-check-input bg-primary" name="is_parent"
-                                                        value="1" type="checkbox" id="flexRadioLg" />
-                                                    <label class="form-check-label" for="flexRadioLg">Is Parent</label>
+                                                        @checked($category->is_parent == 1) value="1" type="checkbox"
+                                                        id="flexRadioLg-{{ $category->id }}" />
+                                                    <label class="form-check-label"
+                                                        for="flexRadioLg-{{ $category->id }}">Is Parent</label>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 mb-1 hide_parent_input" id="parentInputContainer">
+                                            <div class="col-md-6 mb-1 hide_parent_input"
+                                                id="parentInputContainer-{{ $category->id }}">
                                                 <label for="validationCustom01" class="form-label required">Parent
                                                     Name</label>
                                                 <select class="form-select form-select-solid" name="parent_id"
-                                                    data-dropdown-parent="#categorymentEditModal" data-control="select2"
-                                                    data-placeholder="Select an option" data-allow-clear="true" required>
+                                                    data-dropdown-parent="#categoryEditModal_{{ $category->id }}"
+                                                    data-control="select2" data-placeholder="Select an option"
+                                                    data-allow-clear="true">
                                                     <option></option>
-                                                    <option value="1">Option 1</option>
-                                                    <option value="2">Option 2</option>
+                                                    {{-- @if (count($dropdown_categories) > 0)
+                                                        @foreach ($dropdown_categories as $dropdown_category)
+                                                            @include('admin.pages.category.partial.add_parent',
+                                                                [
+                                                                    'dropdown_category' => $dropdown_category,
+                                                                    'indent'            => '',
+                                                                    'type'              => 'edit',
+                                                                ])
+                                                        @endforeach
+                                                    @endif --}}
                                                 </select>
                                                 <div class="valid-feedback">Looks good!</div>
                                                 <div class="invalid-feedback">Please Select Parent Name</div>
@@ -517,10 +504,23 @@
         $(document).ready(function() {
             // Toggle visibility on checkbox change
             $('#flexRadioLg').change(function() {
-                if (this.checked) {
-                    $('#parentInputContainer').hide();
+                var checkbox = $('.form-check-input');
+                if (checkbox.is(':checked')) {
+                    $('.hide_parent_input').hide();
                 } else {
-                    $('#parentInputContainer').show();
+                    $('.hide_parent_input').show();
+                }
+            });
+            $('.categoryEditModal').click(function() {
+                var categoryId = $(this).data('id');
+                alert(categoryId);
+                var parentInputContainer = $('#parentInputContainer-' + categoryId);
+                var checkboxID = $('#flexRadioLg-' + categoryId);
+
+                if (checkboxID.is(':checked')) {
+                    parentInputContainer.hide();
+                } else {
+                    parentInputContainer.show();
                 }
             });
         });

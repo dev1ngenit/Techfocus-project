@@ -25,7 +25,9 @@ class CategoryController extends Controller
     public function index()
     {
         $data = [
-            'categories'    => $this->categoryRepository->allCategory(),
+            'categories'          => $this->categoryRepository->allCategory(),
+            'dropdown_categories' => $this->categoryRepository->dropdownCategory(),
+            
         ];
         return view('admin.pages.category.index', $data);
     }
