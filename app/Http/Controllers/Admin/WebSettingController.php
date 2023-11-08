@@ -50,14 +50,15 @@ class WebSettingController extends Controller
     function smtp(SmtpRequest $request)
     {
         $dataToUpdateOrCreate = [
-            'driver'       => $request->driver,
             'host'         => $request->host,
             'port'         => $request->port,
+            'encryption'   => $request->encryption,
             'username'     => $request->username,
             'password'     => $request->password,
-            'encryption'   => $request->encryption,
             'from_address' => $request->from_address,
             'from_name'    => $request->from_name,
+            'sender_email' => $request->sender_email,
+            'sender_name'  => $request->sender_name,
             'status'       => $request->status,
         ];
 

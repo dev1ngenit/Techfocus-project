@@ -14,8 +14,7 @@
                         <!--end::Title-->
                         <!--begin::Link-->
                         <div class="text-gray-400 fw-bold fs-4">Already have reset your password ?
-                            <a href="{{route('admin.login')}}"
-                                class="link-primary fw-bolder">Sign in here</a>
+                            <a href="{{ route('admin.login') }}" class="link-primary fw-bolder">Sign in here</a>
                         </div>
                         <!--end::Link-->
                     </div>
@@ -31,7 +30,7 @@
                             <!--begin::Input wrapper-->
                             <div class="position-relative mb-3">
                                 <input class="form-control form-control-lg form-control-solid" type="password"
-                                    placeholder="Enter a strong password" name="password" autocomplete="off" required/>
+                                    placeholder="Enter a strong password" name="password" autocomplete="off" required />
                                 <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
                                     data-kt-password-meter-control="visibility">
                                     <i class="bi bi-eye-slash fs-2"></i>
@@ -57,8 +56,8 @@
                     <!--begin::Input group=-->
                     <div class="fv-row mb-10">
                         <label class="form-label fw-bolder text-dark fs-6">Confirm Password</label>
-                        <input class="form-control form-control-lg form-control-solid" type="password" placeholder="Confirm Your Password"
-                            name="password_confirmation" autocomplete="off" />
+                        <input class="form-control form-control-lg form-control-solid" type="password"
+                            placeholder="Confirm Your Password" name="password_confirmation" autocomplete="off" />
                     </div>
                     <!--end::Input group=-->
                     <!--begin::Input group=-->
@@ -85,9 +84,9 @@
             <!--end::Wrapper-->
         </div>
         <!--end::Content-->
-       
+
     </div>
 @endsection
 @push('scripts')
-<script src="assets/js/custom/authentication/password-reset/new-password.js"></script>
+    <script src="assets/js/custom/authentication/password-reset/new-password.js"></script>
 @endpush
