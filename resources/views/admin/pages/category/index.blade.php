@@ -112,7 +112,7 @@
                                             <td>
                                                 <img class="img-fluid rounded-circle" width="35px"
                                                     src="{{ !empty($category->logo) ? asset('storage/' . $category->logo) : asset('storage/main/no-image-available.png') }}"
-                                                    alt="{{ $category->slug }} Logo">
+                                                    alt="{{ $category->name }} Logo">
                                             </td>
                                             <td>
                                                 {{ getAllCountry()->where('id', $category->country_id)->first()->name ?? 'Unknown Country' }}
@@ -124,7 +124,7 @@
                                             <td>
                                                 <img class="img-fluid" width="35px"
                                                     src="{{ !empty($category->image) ? asset('storage/' . $category->image) : asset('storage/main/no-image-available.png') }}"
-                                                    alt="{{ $category->slug }} image">
+                                                    alt="{{ $category->name }} image">
                                             </td>
                                             <td class="d-flex justify-content-between align-items-center">
                                                 <a href="#"
@@ -158,6 +158,9 @@
             </div>
         </div>
     </div>
+
+
+
     {{-- Add Modal --}}
     <div class="modal fade" id="categoryAddModal" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
@@ -235,17 +238,14 @@
                                                 data-dropdown-parent="#categoryAddModal" data-control="select2"
                                                 data-placeholder="Select a Parent" data-allow-clear="true">
                                                 <option></option>
-                                                @if (count($dropdown_categories) > 0)
-                                                    @foreach ($dropdown_categories as $dropdown_category)
+                                                @if (count($categories))
+                                                    @foreach ($categories->whereNull('parent_id') as $category)
                                                         @include('admin.pages.category.partial.add_parent',
-                                                            [
-                                                                'dropdown_category' => $dropdown_category,
-                                                                'indent'            => '',
-                                                                'type'              => 'add',
-                                                            ])
+                                                            ['category' => $category, 'level' => 0])
                                                     @endforeach
                                                 @endif
                                             </select>
+
 
 
                                             <div class="valid-feedback">Looks good!</div>
@@ -273,8 +273,8 @@
         </div>
     </div>
     {{-- Edit Modal --}}
-    @foreach ($categories as $category)
-        <div class="modal fade" id="categoryEditModal_{{ $category->id }}" data-backdrop="static">
+    @foreach ($categories as $category_modal)
+        <div class="modal fade" id="categoryEditModal_{{ $category_modal->id }}" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
                     <div class="modal-header p-2 rounded-0">
@@ -301,7 +301,7 @@
                                                     data-placeholder="Select an option" data-allow-clear="true" required>
                                                     <option></option>
                                                     @foreach (getAllCountry() as $country)
-                                                        <option value="{{ $country->id }}" @selected($country->id == $category->country_id)>
+                                                        <option value="{{ $country->id }}" @selected($country->id == $category_modal->country_id)>
                                                             {{ $country->name }}</option>
                                                     @endforeach
                                                 </select>
@@ -314,7 +314,7 @@
                                                 <input type="text"
                                                     class="form-control form-control-solid form-control-sm" name="name"
                                                     id="validationCustom01" placeholder="Enter Name"
-                                                    value="{{ $category->name }}" required>
+                                                    value="{{ $category_modal->name }}" required>
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Name </div>
                                             </div>
@@ -325,7 +325,7 @@
                                                     class="form-control form-control-solid form-control-sm" name="image"
                                                     id="validationCustom01">
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/requestImg/' . $category->image) }}"
+                                                    <img src="{{ asset('storage/requestImg/' . $category_modal->image) }}"
                                                         alt="" class="img-fluid">
                                                 </div>
                                                 <div class="valid-feedback"> Looks good! </div>
@@ -338,7 +338,7 @@
                                                     class="form-control form-control-solid form-control-sm" name="logo"
                                                     id="validationCustom01">
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/requestImg/' . $category->logo) }}"
+                                                    <img src="{{ asset('storage/requestImg/' . $category_modal->logo) }}"
                                                         alt="" class="img-fluid">
                                                 </div>
                                                 <div class="valid-feedback"> Looks good! </div>
@@ -350,32 +350,26 @@
                                                 <div
                                                     class="form-check form-check-custom form-check-warning form-check-solid form-check-sm mt-3 ms-4  mb-3">
                                                     <input class="form-check-input bg-primary" name="is_parent"
-                                                        @checked($category->is_parent == 1) value="1" type="checkbox"
-                                                        id="flexRadioLg-{{ $category->id }}" />
+                                                        @checked($category_modal->is_parent == 1) value="1" type="checkbox"
+                                                        id="flexRadioLg-{{ $category_modal->id }}" />
                                                     <label class="form-check-label"
-                                                        for="flexRadioLg-{{ $category->id }}">Is Parent</label>
+                                                        for="flexRadioLg-{{ $category_modal->id }}">Is Parent</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6 mb-1 hide_parent_input"
-                                                id="parentInputContainer-{{ $category->id }}">
+                                                id="parentInputContainer-{{ $category_modal->id }}">
                                                 <label for="validationCustom01" class="form-label required">Parent
                                                     Name</label>
                                                 <select class="form-select form-select-solid" name="parent_id"
-                                                    data-dropdown-parent="#categoryEditModal_{{ $category->id }}"
+                                                    data-dropdown-parent="#categoryEditModal_{{ $category_modal->id }}"
                                                     data-control="select2" data-placeholder="Select an option"
                                                     data-allow-clear="true">
                                                     <option></option>
-                                                    {{-- @if (count($dropdown_categories) > 0)
-                                                        @foreach ($dropdown_categories as $dropdown_category)
-                                                            @include('admin.pages.category.partial.add_parent',
-                                                                [
-                                                                    'dropdown_category' => $dropdown_category,
-                                                                    'indent'            => '',
-                                                                    'type'              => 'edit',
-                                                                ])
-                                                        @endforeach
-                                                    @endif --}}
+                                                    @foreach ($categories->whereNull('parent_id') as $category)
+                                                        @include('admin.pages.category.partial.edit_parent',
+                                                            ['category' => $category, 'level' => 0])
+                                                    @endforeach
                                                 </select>
                                                 <div class="valid-feedback">Looks good!</div>
                                                 <div class="invalid-feedback">Please Select Parent Name</div>
@@ -496,6 +490,9 @@
             </div>
         </div>
     </div>
+
+
+
 @endsection
 
 @push('scripts')
@@ -513,7 +510,7 @@
             });
             $('.categoryEditModal').click(function() {
                 var categoryId = $(this).data('id');
-                alert(categoryId);
+                // alert(categoryId);
                 var parentInputContainer = $('#parentInputContainer-' + categoryId);
                 var checkboxID = $('#flexRadioLg-' + categoryId);
 

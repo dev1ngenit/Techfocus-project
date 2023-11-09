@@ -20,13 +20,7 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
-
-    // // Relationship to parent category
-    // public function parent()
-    // {
-    //     return $this->belongsTo(Category::class, 'parent_id');
-    // }
-
+    
     public function parentName()
     {
         return Category::where('id', $this->parent_id)->value('name');

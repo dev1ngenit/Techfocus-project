@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Str;
+use App\Models\Admin\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\CategoryRequest;
@@ -25,9 +26,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data = [
-            'categories'          => $this->categoryRepository->allCategory(),
-            'dropdown_categories' => $this->categoryRepository->dropdownCategory(),
-            
+            'categories' => $this->categoryRepository->allCategory(),
         ];
         return view('admin.pages.category.index', $data);
     }

@@ -9,11 +9,7 @@ class CategoryRepository implements CategoryRepositoryInterface
 {
     public function allCategory()
     {
-        return Category::latest('id')->get();
-    }
-    public function dropdownCategory()
-    {
-        return Category::with('children')->whereNull('parent_id')->get();
+        return Category::with('children.children.children.children.children.children.children.children.children.children')->latest('id')->get();
     }
 
     public function storeCategory(array $data)
