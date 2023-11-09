@@ -8,6 +8,7 @@ use App\Repositories\SmtpRepository;
 use App\Repositories\BrandRepository;
 use App\Repositories\EventRepository;
 use App\Repositories\AddressRepository;
+use App\Repositories\BankingRepository;
 use App\Repositories\CompanyRepository;
 use App\Repositories\ContactRepository;
 use Illuminate\Support\ServiceProvider;
@@ -32,6 +33,7 @@ use App\Repositories\Interfaces\SmtpRepositoryInterface;
 use App\Repositories\Interfaces\BrandRepositoryInterface;
 use App\Repositories\Interfaces\EventRepositoryInterface;
 use App\Repositories\Interfaces\AddressRepositoryInterface;
+use App\Repositories\Interfaces\BankingRepositoryInterface;
 use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\ContactRepositoryInterface;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
@@ -83,6 +85,7 @@ class AppServiceProvider extends ServiceProvider
             SmtpRepositoryInterface::class => SmtpRepository::class,
             SeoRepositoryInterface::class => SeoRepository::class,
             FaqRepositoryInterface::class => FaqRepository::class,
+            BankingRepositoryInterface::class => BankingRepository::class,
         ];
 
         foreach ($bindings as $interface => $implementation) {

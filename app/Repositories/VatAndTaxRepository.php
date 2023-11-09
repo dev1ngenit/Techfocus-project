@@ -9,7 +9,7 @@ class VatAndTaxRepository implements VatAndTaxRepositoryInterface
 {
     public function allVatAndTax()
     {
-        return VatAndTax::latest()->get();
+        return VatAndTax::latest('id')->get();
     }
 
     public function storeVatAndTax(array $data)

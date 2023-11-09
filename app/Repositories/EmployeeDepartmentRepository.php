@@ -9,7 +9,7 @@ class EmployeeDepartmentRepository implements EmployeeDepartmentRepositoryInterf
 {
     public function allEmployeeDepartment()
     {
-        return EmployeeDepartment::latest()->get();
+        return EmployeeDepartment::latest('id')->get();
     }
 
     public function storeEmployeeDepartment(array $data)

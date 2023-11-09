@@ -9,7 +9,7 @@ class DynamicCategoryRepository implements DynamicCategoryRepositoryInterface
 {
     public function allDynamicCategory()
     {
-        return DynamicCategory::latest()->get();
+        return DynamicCategory::latest('id')->get();
     }
 
     public function storeDynamicCategory(array $data)

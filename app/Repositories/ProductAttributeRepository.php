@@ -10,7 +10,7 @@ class ProductAttributeRepository implements ProductAttributeRepositoryInterface
 {
     public function allProductAttribute()
     {
-        return ProductAttribute::latest()->get();
+        return ProductAttribute::latest('id')->get();
     }
 
     public function storeProductAttribute(array $data)

@@ -9,7 +9,7 @@ class SalesTeamTargetRepository implements SalesTeamTargetRepositoryInterface
 {
     public function allSalesTeamTarget()
     {
-        return SalesTeamTarget::latest()->get();
+        return SalesTeamTarget::latest('id')->get();
     }
 
     public function storeSalesTeamTarget(array $data)

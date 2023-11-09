@@ -9,7 +9,7 @@ class CompanyRepository implements CompanyRepositoryInterface
 {
     public function allCompany()
     {
-        return Company::latest()->get();
+        return Company::latest('id')->get();
     }
 
     public function storeCompany(array $data)

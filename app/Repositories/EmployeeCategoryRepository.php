@@ -9,7 +9,7 @@ class EmployeeCategoryRepository implements EmployeeCategoryRepositoryInterface
 {
     public function allEmployeeCategory()
     {
-        return EmployeeCategory::latest()->get();
+        return EmployeeCategory::latest('id')->get();
     }
 
     public function storeEmployeeCategory(array $data)

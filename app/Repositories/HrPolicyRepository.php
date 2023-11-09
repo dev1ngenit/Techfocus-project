@@ -9,7 +9,7 @@ class HrPolicyRepository implements HrPolicyRepositoryInterface
 {
     public function allHrPolicy()
     {
-        return HrPolicy::latest()->get();
+        return HrPolicy::latest('id')->get();
     }
 
     public function storeHrPolicy(array $data)
