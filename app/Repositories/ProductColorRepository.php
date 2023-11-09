@@ -10,7 +10,7 @@ class ProductColorRepository implements ProductColorRepositoryInterface
 {
     public function allProductColor()
     {
-        return ProductColor::latest()->get();
+        return ProductColor::latest('id')->get();
     }
 
     public function storeProductColor(array $data)

@@ -9,7 +9,7 @@ class AddressRepository implements AddressRepositoryInterface
 {
     public function allAddress()
     {
-        return Address::latest()->get();
+        return Address::latest('id')->get();
     }
 
     public function storeAddress(array $data)

@@ -9,7 +9,7 @@ class IndustryRepository implements IndustryRepositoryInterface
 {
     public function allIndustry()
     {
-        return Industry::latest()->get();
+        return Industry::latest('id')->get();
     }
 
     public function storeIndustry(array $data)

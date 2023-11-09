@@ -9,7 +9,7 @@ class FaqRepository implements FaqRepositoryInterface
 {
     public function allFaq()
     {
-        return Faq::latest()->get();
+        return Faq::latest('id')->get();
     }
 
     public function storeFaq(array $data)

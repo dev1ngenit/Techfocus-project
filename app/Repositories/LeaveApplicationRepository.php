@@ -9,7 +9,7 @@ class LeaveApplicationRepository implements LeaveApplicationRepositoryInterface
 {
     public function allLeaveApplication()
     {
-        return LeaveApplication::latest()->get();
+        return LeaveApplication::latest('id')->get();
     }
 
     public function storeLeaveApplication(array $data)

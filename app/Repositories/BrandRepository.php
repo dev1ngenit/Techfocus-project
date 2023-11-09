@@ -9,7 +9,7 @@ class BrandRepository implements BrandRepositoryInterface
 {
     public function allBrand()
     {
-        return Brand::latest()->get();
+        return Brand::latest('id')->get();
     }
 
     public function storeBrand(array $data)

@@ -5,14 +5,18 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AddressController;
+use App\Http\Controllers\Admin\BankingController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\HrPolicyController;
 use App\Http\Controllers\Admin\IndustryController;
+use App\Http\Controllers\Admin\NewsTrendController;
 use App\Http\Controllers\Admin\VatAndTaxController;
 use App\Http\Controllers\Admin\WebSettingController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\HR\LeaveApplicationController;
+use App\Http\Controllers\Admin\TermsAndPolicyController;
 use App\Http\Controllers\Admin\DynamicCategoryController;
 use App\Http\Controllers\Sales\SalesTeamTargetController;
 use App\Http\Controllers\Sales\SalesYearTargetController;
@@ -21,9 +25,6 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
-use App\Http\Controllers\Admin\TermsAndPolicyController;
-use App\Http\Controllers\Admin\HrPolicyController;
-use App\Http\Controllers\Admin\NewsTrendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +94,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'hr-policy'             => HrPolicyController::class,
             'policy-acknowledgment' => PolicyAcknowledgmentController::class,
             'terms-and-policy'      => TermsAndPolicyController::class,
+
+            'banking'               => BankingController::class,
         ],
         ['except' => ['create', 'show', 'edit'],]
     );

@@ -9,7 +9,7 @@ class SalesYearTargetRepository implements SalesYearTargetRepositoryInterface
 {
     public function allSalesYearTarget()
     {
-        return SalesYearTarget::latest()->get();
+        return SalesYearTarget::latest('id')->get();
     }
 
     public function storeSalesYearTarget(array $data)

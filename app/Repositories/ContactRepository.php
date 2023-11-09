@@ -9,7 +9,7 @@ class ContactRepository implements ContactRepositoryInterface
 {
     public function allContact()
     {
-        return Contact::latest()->get();
+        return Contact::latest('id')->get();
     }
 
     public function storeContact(array $data)

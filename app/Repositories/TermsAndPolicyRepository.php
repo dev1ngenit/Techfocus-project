@@ -9,7 +9,7 @@ class TermsAndPolicyRepository implements TermsAndPolicyRepositoryInterface
 {
     public function allTermsAndPolicy()
     {
-        return TermsAndPolicy::latest()->get();
+        return TermsAndPolicy::latest('id')->get();
     }
 
     public function storeTermsAndPolicy(array $data)

@@ -9,7 +9,7 @@ class EventRepository implements EventRepositoryInterface
 {
     public function allEvent()
     {
-        return Event::latest()->get();
+        return Event::latest('id')->get();
     }
 
     public function storeEvent(array $data)

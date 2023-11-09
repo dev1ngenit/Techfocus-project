@@ -9,7 +9,7 @@ class PolicyAcknowledgmentRepository implements PolicyAcknowledgmentRepositoryIn
 {
     public function allPolicyAcknowledgment()
     {
-        return PolicyAcknowledgment::latest()->get();
+        return PolicyAcknowledgment::latest('id')->get();
     }
 
     public function storePolicyAcknowledgment(array $data)
