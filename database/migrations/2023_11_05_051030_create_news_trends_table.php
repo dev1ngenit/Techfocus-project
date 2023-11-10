@@ -19,6 +19,7 @@ return new class extends Migration
             $table->json('brand_id')->nullable()->comment('multi_id');
             $table->json('industry_id')->nullable()->comment('multi_id');
             $table->json('solution_id')->nullable()->comment('multi_id');
+            $table->json('product_id')->nullable()->comment('multi_id');
             $table->enum('featured', ['0', '1'])->default('0')->nullable();
             $table->enum('type', ['news', 'trends'])->default('trends');
             $table->string('badge', 50)->nullable();

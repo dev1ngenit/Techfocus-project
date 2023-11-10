@@ -16,14 +16,15 @@ return new class extends Migration
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('country_id')->constrained('countries')->cascadeOnDelete()->nullable();
-            $table->boolean('system_default_currency')->default(false)->index();
-            $table->string('symbol_format')->nullable();
+            $table->string('system_default_currency')->default(false)->index()->nullable();
+            $table->string('name')->nullable();
+            $table->string('currency', 100);
+            $table->string('code', 25)->unique();
+            $table->string('symbol')->nullable();
+            $table->enum('thousand_separator', ['.', ','])->default('.');
             $table->enum('decimal_separator', ['.', ','])->default('.');
             $table->unsignedTinyInteger('no_of_decimals')->default(2);
-            $table->string('name');
-            $table->string('symbol', 10);
-            $table->string('code', 3)->unique()->index();
-            $table->decimal('exchange_rate', 16, 6)->default(1.000000);
+            $table->decimal('exchange_rate', 16, 6)->default(1.000000)->nullable();
             $table->timestamps();
         });
     }

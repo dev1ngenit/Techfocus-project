@@ -69,6 +69,7 @@ class BrandController extends Controller
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : null,
             'website_url'  => $request->website_url,
+            'category'     => $request->category,
         ];
         $this->brandRepository->storeBrand($data);
 
@@ -152,6 +153,7 @@ class BrandController extends Controller
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : $brand->image,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $brand->logo,
             'website_url'  => $request->website_url,
+            'category'     => $request->category,
         ];
 
         $this->brandRepository->updateBrand($data, $id);

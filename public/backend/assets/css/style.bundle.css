@@ -37538,7 +37538,7 @@ a:hover {
     justify-content: space-between;
     align-items: stretch;
     flex-wrap: wrap;
-    min-height: 70px;
+    /* min-height: 70px; */
     padding: 0 2.25rem;
     background-color: transparent;
     border-bottom: 1px solid #eff2f5
@@ -49258,7 +49258,8 @@ body {
     }
 
     .header-fixed.toolbar-fixed .wrapper {
-        padding-top: calc(65px + var(--kt-toolbar-height))
+        /* padding-top: calc(65px + var(--kt-toolbar-height)); */
+        padding-top: calc(20px + var(--kt-toolbar-height));
     }
 }
 
@@ -49306,7 +49307,8 @@ body {
 
     .aside-enabled.aside-fixed.header-fixed .header {
         left: 265px;
-        transition: left .3s ease
+        transition: left .3s ease;
+        border-bottom: 1px solid #e1e0e0;
     }
 
     .aside-enabled.aside-fixed.header-fixed[data-kt-aside-minimize=on] .header {
