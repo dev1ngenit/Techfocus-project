@@ -245,9 +245,6 @@
                                                     @endforeach
                                                 @endif
                                             </select>
-
-
-
                                             <div class="valid-feedback">Looks good!</div>
                                             <div class="invalid-feedback">Please Select Parent Name</div>
                                         </div>
