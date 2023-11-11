@@ -73,8 +73,8 @@ class BrandController extends Controller
         ];
         $this->brandRepository->storeBrand($data);
 
-        toastr()->success('Data has been saved successfully!');
-        return redirect()->back();
+        // toastr()->success('Data has been saved successfully!');
+        return redirect()->back()->with('success','Data has been saved successfully!');
     }
 
 
@@ -158,8 +158,9 @@ class BrandController extends Controller
 
         $this->brandRepository->updateBrand($data, $id);
 
-        toastr()->success('Data has been updated successfully!');
-        return redirect()->back();
+        // toastr()->success('Data has been updated successfully!');
+        return redirect()->route('admin.brand.index')->with('message','Data updated Successfully');
+
     }
 
     /**

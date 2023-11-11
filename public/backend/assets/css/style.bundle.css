@@ -52,7 +52,8 @@
     --bs-body-font-weight: 400;
     --bs-body-line-height: 1.5;
     --bs-body-color: #181C32;
-    --bs-body-bg: #ffffff
+    --bs-body-bg: #ffffff;
+    --kt-toolbar-height:56px;
 }
 
 *, ::after, ::before {
@@ -49258,8 +49259,7 @@ body {
     }
 
     .header-fixed.toolbar-fixed .wrapper {
-        /* padding-top: calc(65px + var(--kt-toolbar-height)); */
-        padding-top: calc(20px + var(--kt-toolbar-height));
+        padding-top: calc(65px + var(--kt-toolbar-height));
     }
 }
 

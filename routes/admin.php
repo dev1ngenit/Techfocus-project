@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
+use App\Http\Controllers\Admin\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +64,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::post('logout', [\App\Http\Controllers\Admin\Auth\AuthenticatedSessionController::class, 'destroy'])->name('logout');
         // General routes
         Route::get('/dashboard', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('dashboard');
-        Route::get('profile', [\App\Http\Controllers\Admin\HomeController::class, 'profile'])->name('profile');
+        // Route::get('profile', [\App\Http\Controllers\Admin\HomeController::class, 'profile'])->name('profile');
         Route::get('profile/setting', [\App\Http\Controllers\Admin\HomeController::class, 'profileSetting'])->middleware('password.confirm.admin')->name('profile.setting');
     });
 
@@ -73,6 +74,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
     Route::resources(
         [
+            'profile'               => ProfileController::class,
             'vat-tax'               => VatAndTaxController::class,
             'employee-category'     => EmployeeCategoryController::class,
             'employee-department'   => EmployeeDepartmentController::class,

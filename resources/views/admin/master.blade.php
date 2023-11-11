@@ -21,6 +21,7 @@
 					{{-- @include('admin.partials.toastr') --}}
 					@include('admin.partials.header')
 					<!--end::Header-->
+					@include('admin.partials.verification_notification')
 					<!--begin::Content-->
 					@yield('content')
 					<!--end::Content-->

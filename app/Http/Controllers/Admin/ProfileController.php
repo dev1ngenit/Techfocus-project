@@ -1,13 +1,16 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Str;
-use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class {{ class }} extends Controller
+class ProfileController extends Controller
 {
+    
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,11 @@ class {{ class }} extends Controller
      */
     public function index()
     {
-        //
+
+        $data = [
+            'profile' => Auth::guard('admin')->user(),
+        ];
+        return view('admin.pages.profile.index',$data);
     }
 
     /**

@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+   
     <div class="container h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-lg">
@@ -118,7 +119,7 @@
 
                         </table>
 
-                        <p>{!! nl2br() !!}</p>
+                        {{-- <p>{!! nl2br() !!}</p> --}}
                     </div>
                 </div>
             </div>
@@ -207,9 +208,8 @@
                                         <div class="col-md-6">
                                             <label for="validationCustom04" class="form-label required">Category</label>
                                             <select class="form-select form-select-solid" name="category"
-                                                data-dropdown-parent="#brandtEditModal_{{ $brand->id }}"
-                                                data-control="select2" data-placeholder="Select an option"
-                                                data-allow-clear="true" required>
+                                                data-dropdown-parent="#brandAddModal" data-control="select2"
+                                                data-placeholder="Select an option" data-allow-clear="true" required>
                                                 <option></option>
                                                 <option value="Top">Top</option>
                                                 <option value="Featured">Featured</option>
@@ -293,7 +293,7 @@
                                                 </label>
                                                 <input type="file"
                                                     class="form-control form-control-solid form-control-sm" name="image"
-                                                    id="validationCustom01" required>
+                                                    id="validationCustom01">
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Image(jpg,jpeg,png) </div>
                                             </div>
@@ -302,7 +302,7 @@
                                                 </label>
                                                 <input type="file"
                                                     class="form-control form-control-solid form-control-sm" name="logo"
-                                                    id="validationCustom01" required>
+                                                    id="validationCustom01">
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter logo(jpg,jpeg,png) </div>
                                             </div>
