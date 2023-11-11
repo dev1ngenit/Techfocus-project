@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\HrPolicyController;
 use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\NewsTrendController;
 use App\Http\Controllers\Admin\VatAndTaxController;
+use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\WebSettingController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\HR\LeaveApplicationController;
@@ -96,6 +97,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'terms-and-policy'      => TermsAndPolicyController::class,
 
             'banking'               => BankingController::class,
+
+            'attendance'            => AttendanceController::class,
         ],
         ['except' => ['create', 'show', 'edit'],]
     );

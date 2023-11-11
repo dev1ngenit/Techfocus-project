@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'rubensrocha/laravel-breeze-multi-auth-admin',
+        'name' => 'shahed/laravel-breeze-multi-auth-admin',
         'pretty_version' => 'dev-najmul',
         'version' => 'dev-najmul',
-        'reference' => 'b7334ee3694aeedfe4bdac6211759ccb09e4c275',
+        'reference' => 'f9e3547256c30b1427519e4b1b53cff0e40f3bf3',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -968,20 +968,20 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'rats/zkteco' => array(
+            'pretty_version' => 'V002',
+            'version' => '002.0.0.0',
+            'reference' => '6e17024370ec56c89d87c85a54a1c55079304834',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rats/zkteco',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'rhumsaa/uuid' => array(
             'dev_requirement' => false,
             'replaced' => array(
                 0 => '4.7.4',
             ),
-        ),
-        'rubensrocha/laravel-breeze-multi-auth-admin' => array(
-            'pretty_version' => 'dev-najmul',
-            'version' => 'dev-najmul',
-            'reference' => 'b7334ee3694aeedfe4bdac6211759ccb09e4c275',
-            'type' => 'project',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
         'sebastian/cli-parser' => array(
             'pretty_version' => '1.0.1',
@@ -1126,6 +1126,15 @@
             'install_path' => __DIR__ . '/../sebastian/version',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'shahed/laravel-breeze-multi-auth-admin' => array(
+            'pretty_version' => 'dev-najmul',
+            'version' => 'dev-najmul',
+            'reference' => 'f9e3547256c30b1427519e4b1b53cff0e40f3bf3',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'spatie/backtrace' => array(
             'pretty_version' => '1.5.3',

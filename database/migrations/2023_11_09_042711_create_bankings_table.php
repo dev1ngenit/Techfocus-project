@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
-            $table->foreignId('order_id')->nullable()->constrained('orders')->cascadeOnDelete();
+            // $table->foreignId('order_id')->nullable()->constrained('orders')->cascadeOnDelete();
             $table->string('month')->nullable();
             $table->date('date')->nullable();
             $table->year('fiscal_year')->nullable();
