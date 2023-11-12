@@ -49259,7 +49259,8 @@ body {
     }
 
     .header-fixed.toolbar-fixed .wrapper {
-        padding-top: calc(65px + var(--kt-toolbar-height));
+        /* padding-top: calc(65px + var(--kt-toolbar-height)); */
+        padding-top: calc(20px + var(--kt-toolbar-height));
     }
 }
 

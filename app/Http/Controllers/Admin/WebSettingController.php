@@ -65,7 +65,7 @@ class WebSettingController extends Controller
         $smtp = $this->smtpRepository->updateOrCreateSmtp($dataToUpdateOrCreate);
 
         $toastMessage = $smtp->wasRecentlyCreated ? 'Data has been created successfully!' : 'Data has been updated successfully!';
-        toastr()->success($toastMessage);
+        // toastr()->success($toastMessage);
         return redirect()->back();
     }
 }

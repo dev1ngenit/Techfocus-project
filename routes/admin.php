@@ -65,55 +65,56 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         // General routes
         Route::get('/dashboard', [\App\Http\Controllers\Admin\HomeController::class, 'index'])->name('dashboard');
         // Route::get('profile', [\App\Http\Controllers\Admin\HomeController::class, 'profile'])->name('profile');
-        Route::get('profile/setting', [\App\Http\Controllers\Admin\HomeController::class, 'profileSetting'])->middleware('password.confirm.admin')->name('profile.setting');
+
+        Route::get('web-setting', [WebSettingController::class, 'index'])->name('web.setting');
+        Route::put('seo-setting', [WebSettingController::class, 'seo'])->name('seo.setting');
+        Route::put('smtp-setting', [WebSettingController::class, 'smtp'])->name('smtp.setting');
+
+        Route::resources(
+            [
+                'profile'               => ProfileController::class,
+                'vat-tax'               => VatAndTaxController::class,
+                'employee-category'     => EmployeeCategoryController::class,
+                'employee-department'   => EmployeeDepartmentController::class,
+                'category'              => CategoryController::class,
+                'brand'                 => BrandController::class,
+                'product-attribute'     => ProductAttributeController::class,
+                'product-color'         => ProductColorController::class,
+                'industry'              => IndustryController::class,
+                'company'               => CompanyController::class,
+                'address'               => AddressController::class,
+                'leave-application'     => LeaveApplicationController::class,
+                'dynamic-category'      => DynamicCategoryController::class,
+                'event'                 => EventController::class,
+                'faq'                   => FaqController::class,
+                'sales-year-target'     => SalesYearTargetController::class,
+                'sales-team-target'     => SalesTeamTargetController::class,
+
+                'news-trend'            => NewsTrendController::class,
+                'hr-policy'             => HrPolicyController::class,
+                'policy-acknowledgment' => PolicyAcknowledgmentController::class,
+                'terms-and-policy'      => TermsAndPolicyController::class,
+
+                'banking'               => BankingController::class,
+            ],
+            ['except' => ['create', 'show', 'edit'],]
+        );
+        Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
+            ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']);
+
+        Route::get('country-state-city', [CountryStateCityController::class, 'index'])->name('country.state.city.index');
+
+        Route::put('country/{id}/update', [CountryStateCityController::class, 'updateCountry'])->name('country.update');
+        Route::delete('country/{id}/destroy', [CountryStateCityController::class, 'destroyCountry'])->name('country.destroy');
+
+        Route::put('state/{id}/update', [CountryStateCityController::class, 'updateState'])->name('state.update');
+        Route::delete('state/{id}/destroy', [CountryStateCityController::class, 'destroyState'])->name('state.destroy');
+
+        Route::put('city/{id}/update', [CountryStateCityController::class, 'updateCity'])->name('city.update');
+        Route::delete('city/{id}/destroy', [CountryStateCityController::class, 'destroyCity'])->name('city.destroy');
     });
 
-    Route::get('web-setting', [WebSettingController::class, 'index'])->name('web.setting');
-    Route::put('seo-setting', [WebSettingController::class, 'seo'])->name('seo.setting');
-    Route::put('smtp-setting', [WebSettingController::class, 'smtp'])->name('smtp.setting');
 
-    Route::resources(
-        [
-            'profile'               => ProfileController::class,
-            'vat-tax'               => VatAndTaxController::class,
-            'employee-category'     => EmployeeCategoryController::class,
-            'employee-department'   => EmployeeDepartmentController::class,
-            'category'              => CategoryController::class,
-            'brand'                 => BrandController::class,
-            'product-attribute'     => ProductAttributeController::class,
-            'product-color'         => ProductColorController::class,
-            'industry'              => IndustryController::class,
-            'company'               => CompanyController::class,
-            'address'               => AddressController::class,
-            'leave-application'     => LeaveApplicationController::class,
-            'dynamic-category'      => DynamicCategoryController::class,
-            'event'                 => EventController::class,
-            'faq'                   => FaqController::class,
-            'sales-year-target'     => SalesYearTargetController::class,
-            'sales-team-target'     => SalesTeamTargetController::class,
-
-            'news-trend'            => NewsTrendController::class,
-            'hr-policy'             => HrPolicyController::class,
-            'policy-acknowledgment' => PolicyAcknowledgmentController::class,
-            'terms-and-policy'      => TermsAndPolicyController::class,
-
-            'banking'               => BankingController::class,
-        ],
-        ['except' => ['create', 'show', 'edit'],]
-    );
-    Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
-        ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']);
-
-    Route::get('country-state-city', [CountryStateCityController::class, 'index'])->name('country.state.city.index');
-
-    Route::put('country/{id}/update', [CountryStateCityController::class, 'updateCountry'])->name('country.update');
-    Route::delete('country/{id}/destroy', [CountryStateCityController::class, 'destroyCountry'])->name('country.destroy');
-
-    Route::put('state/{id}/update', [CountryStateCityController::class, 'updateState'])->name('state.update');
-    Route::delete('state/{id}/destroy', [CountryStateCityController::class, 'destroyState'])->name('state.destroy');
-
-    Route::put('city/{id}/update', [CountryStateCityController::class, 'updateCity'])->name('city.update');
-    Route::delete('city/{id}/destroy', [CountryStateCityController::class, 'destroyCity'])->name('city.destroy');
 
     Route::get('/subscribers', [NewsletterController::class, 'index'])->name('newsletter.index');
     Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
