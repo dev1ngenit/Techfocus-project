@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\HR\Attendance;
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use App\Models\Admin\Company;
 
 class AttendanceController extends Controller
 {
@@ -17,7 +18,9 @@ class AttendanceController extends Controller
     public function index()
     {
         return view('admin.pages.attendance.index', [
-            'attendances' => Attendance::all(),
+            'attendances' => Attendance::get(),
+            'employees'   => Admin::get(),
+            'companies'   => Company::get(),
         ]);
     }
 
@@ -39,7 +42,21 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'country_id'  => $request->country_id,
+            'employee_id' => $request->employee_id,
+            'company_id'  => $request->company_id,
+            'year'        => $request->year,
+            'month'       => $request->month,
+            'date'        => $request->date,
+            'check_in'    => $request->check_in,
+            'check_out'   => $request->check_out,
+            'status'      => $request->status,
+        ];
+        Attendance::create($data);
+
+        toastr()->success('Data has been saved successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -73,7 +90,22 @@ class AttendanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $attendance = Attendance::find($id);
+
+        $attendance->update([
+            'country_id'  => $request->country_id,
+            'employee_id' => $request->employee_id,
+            'company_id'  => $request->company_id,
+            'year'        => $request->year,
+            'month'       => $request->month,
+            'date'        => $request->date,
+            'check_in'    => $request->check_in,
+            'check_out'   => $request->check_out,
+            'status'      => $request->status,
+        ]);
+
+        toastr()->success('Data has been updated successfully!');
+        return redirect()->back();
     }
 
     /**
@@ -84,6 +116,6 @@ class AttendanceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Attendance::find($id)->delete();
     }
 }
