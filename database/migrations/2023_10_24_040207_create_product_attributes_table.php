@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('product_attributes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->json('values')->nullable();
+            $table->foreignId('product_id')->nullable()->constrained('products')->cascadeOnDelete();
+            $table->string('name')->nullable();
+            $table->string('sku_code')->unique()->nullable();
+            $table->string('image')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->double('price')->nullable();
             $table->timestamps();
         });
     }

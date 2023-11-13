@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AddressController;
+use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\BankingController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContactController;
@@ -69,6 +70,28 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::get('web-setting', [WebSettingController::class, 'index'])->name('web.setting');
         Route::put('seo-setting', [WebSettingController::class, 'seo'])->name('seo.setting');
         Route::put('smtp-setting', [WebSettingController::class, 'smtp'])->name('smtp.setting');
+
+        //Attribute
+        Route::controller(AttributeController::class)->group(function () {
+            Route::get('/attribute', 'index')->name('attribute.index');
+            // Route::get('/add/product', 'AddProduct')->name('add.product');
+            Route::post('/attribute/store', 'store')->name('attribute.store');
+            // Route::get('/edit/product/{id}', 'EditProduct')->name('edit.product');
+            // Route::post('/update/product', 'UpdateProduct')->name('update.product');
+            // Route::post('/update/product/thambnail', 'UpdateProductThambnail')->name('update.product.thambnail');
+            // Route::post('/update/product/multiimage', 'UpdateProductMultiimage')->name('update.product.multiimage');
+            // Route::delete('/product/multiimg/delete/{id}', 'MulitImageDelelte')->name('product.multiimg.delete');
+    
+            // Route::get('/product/inactive/{id}', 'ProductInactive')->name('product.inactive');
+            // Route::get('/product/active/{id}', 'ProductActive')->name('product.active');
+            // //Route::get('/delete/product/{id}' , 'ProductDelete')->name('delete.product');
+            // Route::delete('/delete/product/{id}', 'ProductDelete')->name('product.destroy');
+    
+            // // For Product Stock ,.,
+            // Route::get('/product/stock', 'ProductStock')->name('product.stock');
+            // Route::get('product/price_notification', 'toastrIndex')->name('product.price_notification');
+        });
+
 
         Route::resources(
             [

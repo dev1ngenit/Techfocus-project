@@ -22,42 +22,18 @@
 <!-- Custom:Shahed --->
 <script src="{{ asset('backend/assets/js/custom/techfocus/font-awesome.js') }}"></script>
 {{-- <script src="{{ asset('backend/assets/js/custom/techfocus/toastr.js') }}"></script> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> --}}
 <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 <!-- Custom:Shahed --->
 <!--end::Page Custom Javascript-->
 @stack('scripts')
+
 <script>
-    @if (Session::has('message'))
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        }
-        toastr.success("{{ session('message') }}");
-        Session::forget('message');
-    @endif
+    $("document").ready(function(){
+    setTimeout(function(){
+       $("div.alert").remove();
+       
+    }, 2000 ); // 2 secs
 
-    @if (Session::has('error'))
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        }
-        toastr.error("{{ session('error') }}");
-    @endif
-
-    @if (Session::has('info'))
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        }
-        toastr.info("{{ session('info') }}");
-    @endif
-
-    @if (Session::has('warning'))
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        }
-        toastr.warning("{{ session('warning') }}");
-    @endif
+});
 </script>

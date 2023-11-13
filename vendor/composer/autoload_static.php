@@ -733,6 +733,7 @@ class ComposerStaticInit477449c53aa665b91ea8dae4c20eebd4
         'App\\Models\\Admin\\NewsLetter' => __DIR__ . '/../..' . '/app/Models/Admin/NewsLetter.php',
         'App\\Models\\Admin\\NewsTrend' => __DIR__ . '/../..' . '/app/Models/Admin/NewsTrend.php',
         'App\\Models\\Admin\\PolicyAcknowledgment' => __DIR__ . '/../..' . '/app/Models/Admin/PolicyAcknowledgment.php',
+        'App\\Models\\Admin\\Product' => __DIR__ . '/../..' . '/app/Models/Admin/Product.php',
         'App\\Models\\Admin\\ProductAttribute' => __DIR__ . '/../..' . '/app/Models/Admin/ProductAttribute.php',
         'App\\Models\\Admin\\ProductColor' => __DIR__ . '/../..' . '/app/Models/Admin/ProductColor.php',
         'App\\Models\\Admin\\Seo' => __DIR__ . '/../..' . '/app/Models/Admin/Seo.php',

@@ -118,6 +118,7 @@ return array(
     'App\\Models\\Admin\\NewsLetter' => $baseDir . '/app/Models/Admin/NewsLetter.php',
     'App\\Models\\Admin\\NewsTrend' => $baseDir . '/app/Models/Admin/NewsTrend.php',
     'App\\Models\\Admin\\PolicyAcknowledgment' => $baseDir . '/app/Models/Admin/PolicyAcknowledgment.php',
+    'App\\Models\\Admin\\Product' => $baseDir . '/app/Models/Admin/Product.php',
     'App\\Models\\Admin\\ProductAttribute' => $baseDir . '/app/Models/Admin/ProductAttribute.php',
     'App\\Models\\Admin\\ProductColor' => $baseDir . '/app/Models/Admin/ProductColor.php',
     'App\\Models\\Admin\\Seo' => $baseDir . '/app/Models/Admin/Seo.php',
