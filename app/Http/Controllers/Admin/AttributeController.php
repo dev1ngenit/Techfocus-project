@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Admin\Attribute;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class AttributeController extends Controller
@@ -64,13 +65,14 @@ class AttributeController extends Controller
                 'name'    => $request->name,
                 'slug' => $data['slug'],
             ]);
-
-            return redirect()->back()->with('success', ['message' => 'Atrribute added successfully']);
+            Session::flash('success', ['message' => 'Atrribute added successfully']);
+            return redirect()->back();
         } else {
 
             // $messages = $validator->messages();
             // return redirect()->back()->with('error', ['messages' => $messages->all()]);
-            return redirect()->back()->with('error', $validator->errors());
+            Session::flash('error', $validator->errors()->all());
+            return redirect()->back();
         }
     }
 
@@ -105,7 +107,39 @@ class AttributeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name' => 'required|unique:attributes',
+            ],
+            [
+                'required' => 'The attribute name must be required',
+                'unique'   => 'This attribute name has already been taken.',
+            ],
+
+        );
+        $attribute = Attribute::findOrFail($id);
+        if ($validator->passes()) {
+            $slug = Str::slug($request->name);
+            $count = Attribute::where('slug', $slug)->count();
+            if ($count > 0) {
+                $slug = $slug . '-' . date('ymdis') . '-' . rand(0, 999);
+            }
+            $data['slug'] = $slug;
+
+            $attribute->update([
+                'name'    => $request->name,
+                'slug' => $data['slug'],
+            ]);
+            Session::flash('success', ['message' => 'Atrribute added successfully']);
+            return redirect()->back();
+        } else {
+
+            // $messages = $validator->messages();
+            // return redirect()->back()->with('error', ['messages' => $messages->all()]);
+            Session::flash('error', $validator->errors()->all());
+            return redirect()->back();
+        }
     }
 
     /**

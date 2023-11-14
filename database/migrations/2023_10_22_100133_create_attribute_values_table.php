@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->foreignId('attribute_id')->nullable()->constrained('attributes')->cascadeOnDelete();
+            $table->string('name')->nullable();
             $table->text('value');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

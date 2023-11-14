@@ -29,11 +29,11 @@
 @stack('scripts')
 
 <script>
-    $("document").ready(function(){
-    setTimeout(function(){
-       $("div.alert").remove();
-       
-    }, 2000 ); // 2 secs
-
-});
+    // Clear messages after a delay
+    setTimeout(function() {
+        document.querySelectorAll('.alert').forEach(function(alert) {
+            alert.remove();
+        });
+    }, 2000); // Adjust the delay as needed (e.g., 5000 milliseconds = 5 seconds)
 </script>
+

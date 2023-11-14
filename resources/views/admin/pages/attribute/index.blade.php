@@ -68,7 +68,7 @@
                                 @foreach ($attributes as $key => $attribute) 
                                     <tr>
                                         <td>
-                                            {{$key++}}
+                                            {{++$key}}
                                         </td>
                                         <td>
                                             {{$attribute->name}}
@@ -83,14 +83,14 @@
                                         <td class="d-flex justify-content-between align-items-center">
                                             <a href="#"
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                data-bs-toggle="modal" data-bs-target="#AttributeViewModal">
+                                                data-bs-toggle="modal" data-bs-target="#AttributeViewModal-{{$attribute->id}}">
                                                 <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                                 <i class="fa-solid fa-expand"></i>
                                                 <!--View-->
                                             </a>
                                             <a href="#"
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                data-bs-toggle="modal" data-bs-target="#AttributeEditModal">
+                                                data-bs-toggle="modal" data-bs-target="#AttributeEditModal-{{$attribute->id}}">
                                                 <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
                                                 <i class="fa-solid fa-pen"></i>
                                                 <!--Edit-->
@@ -146,7 +146,7 @@
                                             <label for="validationCustom01" class="form-label required ">Name
                                             </label>
                                             <input type="text" class="form-control form-control-solid form-control-sm"
-                                                name="name" id="validationCustom01" placeholder="Enter Name" >
+                                                name="name" id="validationCustom01" placeholder="Enter Name" required>
                                             <div class="valid-feedback"> Looks good! </div>
                                             <div class="invalid-feedback"> Please Enter Name </div>
                                         </div>
@@ -163,127 +163,184 @@
             </div>
         </div>
     </div>
-    {{-- Edit Modal --}}
-    <div class="modal fade" id="AttributeEditModal" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">Edit Attribute</h5>
-                    <!-- Close button in the header -->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <span class="svg-icon svg-icon-2x">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                    transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                    transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
-                    </div>
-                    <!-- End Close button in the header -->
-                </div>
-                <form action="" class="needs-validation" method="post" novalidate>
-                    @csrf
-                    <div class="modal-body">
-                        <div class="container px-0">
-                            <div class="row modal_body_badge">
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-1">
-                                            <label for="validationCustom01" class="form-label required ">Name
-                                            </label>
-                                            <input type="text" class="form-control form-control-solid form-control-sm"
-                                                name="name" id="validationCustom01" placeholder="Enter Name"
-                                                value="Ngen It" required>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Enter Name </div>
-                                        </div>
-                                        <div class="col-md-6 mb-1">
-                                            <label for="validationCustom01" class="form-label required ">Values
-                                            </label>
-                                            <input type="number" class="form-control form-control-solid form-control-sm"
-                                                name="values" step="0.01" id="validationCustom01"
-                                                placeholder="Enter Values" value="5" required>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Enter Values</div>
-                                        </div>
-                                    </div>
-                                </div>
+    @if ($attributes) 
+        @foreach ($attributes as $attribute) 
+            {{-- Edit Modal --}}
+            <div class="modal fade" id="AttributeEditModal-{{optional($attribute)->id}}" data-backdrop="static">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content rounded-0 border-0 shadow-sm">
+                        <div class="modal-header p-2 rounded-0">
+                            <h5 class="modal-title">Edit Attribute</h5>
+                            <!-- Close button in the header -->
+                            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span class="svg-icon svg-icon-2x">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none">
+                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                            transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                        <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                            transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
                             </div>
+                            <!-- End Close button in the header -->
                         </div>
-                    </div>
-                    <div class="modal-footer p-2">
-                        <!-- Button to close the modal in the footer -->
-                        <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    {{-- View Modal --}}
-    <div class="modal fade" id="AttributeViewModal" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">View </h5>
-                    <!-- Close button in the header -->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                        <span class="svg-icon svg-icon-2x">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                    transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                    transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="container px-0">
-                        <div class="row modal_body_badge">
-                            <div class="col-lg-12">
-                                <div class="card border rounded-0 mt-3">
-                                    <p class="badge badge-info custom-badge">Info</span>
-                                    <div class="card-body p-1 px-2">
-                                        <div class="row modal_body_badge">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-5 col-sm-5">
-                                                        <p class="fw-bold">Name :</p>
-                                                    </div>
-                                                    <div class="col-lg-7 col-sm-6">
-                                                        <p>Bangladesh</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-7 col-sm-5">
-                                                        <p class="fw-bold">Value :</p>
-                                                    </div>
-                                                    <div class="col-lg-5 col-sm-6">
-                                                        <p>5 Day</p>
-                                                    </div>
+                        <form action="{{route('admin.attribute.update',optional($attribute)->id)}}" class="needs-validation" method="post" novalidate>
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+                                <div class="container px-0">
+                                    <div class="row modal_body_badge">
+                                        <div class="col-lg-12 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-1">
+                                                    <label for="validationCustom01" class="form-label required ">Name
+                                                    </label>
+                                                    <input type="text" class="form-control form-control-solid form-control-sm"
+                                                        name="name" id="validationCustom01" placeholder="Enter Name"
+                                                        value="{{optional($attribute)->name}}" required>
+                                                    <div class="valid-feedback"> Looks good! </div>
+                                                    <div class="invalid-feedback"> Please Enter Name </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal-footer p-2">
+                                <!-- Button to close the modal in the footer -->
+                                <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{-- Add Value Modal --}}
+            <div class="modal fade" id="AttributeValueModal-{{optional($attribute)->id}}" data-backdrop="static">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content rounded-0 border-0 shadow-sm">
+                        <div class="modal-header p-2 rounded-0">
+                            <h5 class="modal-title">Add Attribute Value</h5>
+                            <!-- Close button in the header -->
+                            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span class="svg-icon svg-icon-2x">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none">
+                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                            transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                        <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                            transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </div>
+                            <!-- End Close button in the header -->
+                        </div>
+                        <form action="{{route('admin.attribute.update',optional($attribute)->id)}}" class="needs-validation" method="post" novalidate>
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-body">
+                                <div class="container px-0">
+                                    <div class="row modal_body_badge">
+                                        <div class="col-lg-12 col-sm-12">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-1">
+                                                    <label for="validationCustom01" class="form-label required ">Name
+                                                    </label>
+                                                    <input type="text" class="form-control form-control-solid form-control-sm"
+                                                        name="name" id="validationCustom01" placeholder="Enter Name"
+                                                        value="Ngen It" required>
+                                                    <div class="valid-feedback"> Looks good! </div>
+                                                    <div class="invalid-feedback"> Please Enter Name </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <label for="validationCustom01" class="form-label required ">Values
+                                                    </label>
+                                                    <input type="number" class="form-control form-control-solid form-control-sm"
+                                                        name="values" step="0.01" id="validationCustom01"
+                                                        placeholder="Enter Values" value="5" required>
+                                                    <div class="valid-feedback"> Looks good! </div>
+                                                    <div class="invalid-feedback"> Please Enter Values</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer p-2">
+                                <!-- Button to close the modal in the footer -->
+                                <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {{-- View Modal --}}
+            <div class="modal fade" id="AttributeViewModal-{{optional($attribute)->id}}" data-backdrop="static">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content rounded-0 border-0 shadow-sm">
+                        <div class="modal-header p-2 rounded-0">
+                            <h5 class="modal-title">View </h5>
+                            <!-- Close button in the header -->
+                            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                <span class="svg-icon svg-icon-2x">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none">
+                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                            transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                        <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                            transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container px-0">
+                                <div class="row modal_body_badge">
+                                    <div class="col-lg-12">
+                                        <div class="card border rounded-0 mt-3">
+                                            <p class="badge badge-info custom-badge">Info</span>
+                                            <div class="card-body p-1 px-2">
+                                                <div class="row modal_body_badge">
+                                                    <div class="col-lg-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-5 col-sm-5">
+                                                                <p class="fw-bold">Name :</p>
+                                                            </div>
+                                                            <div class="col-lg-7 col-sm-6">
+                                                                <p>Bangladesh</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="row">
+                                                            <div class="col-lg-7 col-sm-5">
+                                                                <p class="fw-bold">Value :</p>
+                                                            </div>
+                                                            <div class="col-lg-5 col-sm-6">
+                                                                <p>5 Day</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        @endforeach
+    @endif
 @endsection
 
 @push('scripts')

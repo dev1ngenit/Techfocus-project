@@ -76,6 +76,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             Route::get('/attribute', 'index')->name('attribute.index');
             // Route::get('/add/product', 'AddProduct')->name('add.product');
             Route::post('/attribute/store', 'store')->name('attribute.store');
+            Route::put('/attribute/update', 'update')->name('attribute.update');
             // Route::get('/edit/product/{id}', 'EditProduct')->name('edit.product');
             // Route::post('/update/product', 'UpdateProduct')->name('update.product');
             // Route::post('/update/product/thambnail', 'UpdateProductThambnail')->name('update.product.thambnail');

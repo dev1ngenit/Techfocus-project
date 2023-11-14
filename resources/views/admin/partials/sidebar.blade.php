@@ -124,7 +124,7 @@
                     </div>
                 </div> --}}
                 @php
-                    $supplychain = ['supplychain', 'admin.category.index', 'admin.brand.index', 'admin.product-attribute.index', 'admin.product-color.index'];
+                    $supplychain = ['supplychain', 'admin.category.index', 'admin.brand.index', 'admin.attribute.index', 'admin.product-color.index'];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $supplychain) ? 'here show' : '' }}">
@@ -181,7 +181,7 @@
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link {{ Route::current()->getName() == 'admin.product-attribute.index' ? 'active' : '' }}" href="{{ route('admin.product-attribute.index') }}">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.attribute.index' ? 'active' : '' }}" href="{{ route('admin.attribute.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
