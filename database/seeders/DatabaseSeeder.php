@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(5)->create();
-        \App\Models\Admin::factory(5)->create();
+        // \App\Models\User::factory(5)->create();
+        // \App\Models\Admin::factory(5)->create();
 
         $this->call([
             CountryStateCityTableSeeder::class,
@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
                 'username' => 'NGen-Super-Admin',
                 'email' => 'ngenit@gmail.com',
                 'password' => Hash::make('ngenitadmin'),
+                'role' => json_encode('admin'),
                 'email_verified_at' => now(),
                 'remember_token' => Str::random(10),
 
@@ -41,7 +42,8 @@ class DatabaseSeeder extends Seeder
                 'username' => 'shahed141123',
                 'email' => 'khandkershahed23@gmail.com',
                 'password' => Hash::make('password'),
-                'email_verified_at' => null,
+                'role' => json_encode('admin'),
+                'email_verified_at' => now(),
                 'remember_token' => Str::random(10),
 
             ],

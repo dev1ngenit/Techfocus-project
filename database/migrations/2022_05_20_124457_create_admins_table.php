@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('country', 100)->nullable();
             $table->string('postal', 20)->nullable();
             $table->timestamp('last_seen')->nullable();
-            $table->json('role');
+            $table->json('role')->nullable();
             $table->json('department', 30)->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('email_verified_at')->nullable();
