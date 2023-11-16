@@ -77,13 +77,13 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             Route::get('/attribute', 'index')->name('attribute.index');
             Route::post('/attribute/store', 'store')->name('attribute.store');
             Route::put('/attribute/{id}/update', 'update')->name('attribute.update');
-            Route::put('/attribute/{id}/destroy', 'destroy')->name('attribute.destroy');
+            Route::delete('/attribute/{id}/destroy', 'destroy')->name('attribute.destroy');
         });
         Route::controller(AttributeValueController::class)->group(function () {
             Route::get('/attribute-value', 'index')->name('attribute-value.index');
             Route::post('/attribute-value/store', 'store')->name('attribute-value.store');
             Route::put('/attribute-value/{id}/update', 'update')->name('attribute-value.update');
-            Route::put('/attribute-value/{id}/destroy', 'destroy')->name('attribute-value.destroy');
+            Route::delete('/attribute-value/{id}/destroy', 'destroy')->name('attribute-value.destroy');
         });
 
 

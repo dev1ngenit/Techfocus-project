@@ -150,6 +150,7 @@ class AttributeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $attribute = Attribute::findOrFail($id);
+        $attribute->delete(); 
     }
 }

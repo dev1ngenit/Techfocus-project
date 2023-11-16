@@ -105,11 +105,10 @@
                                                 <i class="fa-solid fa-circle-plus"></i>
                                                 <!--Edit-->
                                             </a>
-                                            <a href="#"
-                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                data-kt-docs-table-filter="delete_row">
+                                            <a href="{{ route('admin.attribute.destroy', $attribute->id) }}"
+                                                class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
                                                 <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                                <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                <i class="fa-solid fa-trash-can-arrow-up text-danger"></i>
                                                 <!--Delete-->
                                             </a>
                                         </td>
@@ -167,7 +166,13 @@
                     </div>
                     <div class="modal-footer p-2">
                         <!-- Button to close the modal in the footer -->
-                        <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                        <button type="submit" id="common_submit"
+                            class="btn btn-lg common-btn-3 fw-bolder me-4 w-175px mb-5">
+                            <span class="indicator-label">Submit</span>
+                            <span class="indicator-progress">Please wait...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -223,7 +228,13 @@
                             </div>
                             <div class="modal-footer p-2">
                                 <!-- Button to close the modal in the footer -->
-                                <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                                <button type="submit" id="common_submit"
+                                    class="btn btn-lg common-btn-3 fw-bolder me-4 w-175px mb-5">
+                                    <span class="indicator-label">Submit</span>
+                                    <span class="indicator-progress">Please wait...
+                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                    </span>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -278,7 +289,9 @@
                                                     placeholder="Enter Values" required>
                                                 <div class="valid-feedback">Looks good!</div>
                                                 <div class="invalid-feedback">Please Enter Values</div>
-                                                <p class="invalid-feedback-{{ optional($attribute)->id }} d-none text-danger">This
+                                                <p
+                                                    class="invalid-feedback-{{ optional($attribute)->id }} d-none text-danger">
+                                                    This
                                                     value has already taken</p>
                                             </div>
                                             <div class="col-md-2">
@@ -300,7 +313,13 @@
                             </div>
                             <div class="modal-footer p-2">
                                 <!-- Button to close the modal in the footer -->
-                                <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                                <button type="submit" id="common_submit"
+                                    class="btn btn-lg common-btn-3 fw-bolder me-4 w-175px mb-5">
+                                    <span class="indicator-label">Submit</span>
+                                    <span class="indicator-progress">Please wait...
+                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                    </span>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -311,7 +330,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content rounded-0 border-0 shadow-sm">
                         <div class="modal-header p-2 rounded-0">
-                            <h5 class="modal-title">View </h5>
+                            <h5 class="modal-title">Attribute Values </h5>
                             <!-- Close button in the header -->
                             <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                                 aria-label="Close">
@@ -334,29 +353,61 @@
                                         <div class="card border rounded-0 mt-3">
                                             <p class="badge badge-info custom-badge">Info</span>
                                             <div class="card-body p-1 px-2">
-                                                <div class="row modal_body_badge">
-                                                    <div class="col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-5 col-sm-5">
-                                                                <p class="fw-bold">Name :</p>
-                                                            </div>
-                                                            <div class="col-lg-7 col-sm-6">
-                                                                <p>Bangladesh</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="row">
-                                                            <div class="col-lg-7 col-sm-5">
-                                                                <p class="fw-bold">Value :</p>
-                                                            </div>
-                                                            <div class="col-lg-5 col-sm-6">
-                                                                <p>5 Day</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="table-responsive">
+                                                    <table
+                                                        class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
+                                                        id="kt_datatable_example_1">
+                                                        <thead class="table_header_bg">
+                                                            <!--begin::Table row-->
+                                                            <tr
+                                                                class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
+                                                                <th width="5%">Sl</th>
+                                                                <th width="25%">Name</th>
+                                                                <th width="60%">Value</th>
+                                                                <th width="10%">Action</th>
+                                                                <!--end::Table row-->
+                                                        </thead>
+                                                        <tbody class="fw-bold text-gray-600 text-center">
+                                                            @foreach ($attributes as $key => $attribute)
+                                                                <tr>
+                                                                    <td>
+                                                                        {{ ++$key }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $attribute->name }}
+                                                                    </td>
+                                                                    <td>
+                                                                        @if (count($attribute->values) > 0)
+                                                                            @foreach ($attribute->values as $value)
+                                                                                <span
+                                                                                    class="badge bg-dark">{{ $value->value }}</span>
+                                                                            @endforeach
+                                                                        @endif
+                                                                    </td>
+                                                                    <td
+                                                                        class="d-flex justify-content-between align-items-center">
+
+                                                                        <a href="#"
+                                                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#AttributeEditModal-{{ $attribute->id }}">
+                                                                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                                                                            <i class="fa-solid fa-pen"></i>
+                                                                            <!--Edit-->
+                                                                        </a>
+
+                                                                        <a href="{{ route('admin.attribute.destroy', $attribute->id) }}"
+                                                                            class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 delete">
+                                                                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                                                                            <i
+                                                                                class="fa-solid fa-trash-can-arrow-up text-danger"></i>
+                                                                            <!--Delete-->
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -401,46 +452,7 @@
                 });
             }
 
-            // Hook export buttons
-            var exportButtons = () => {
-                const documentTitle = 'Customer Orders Report';
-                var buttons = new $.fn.dataTable.Buttons(table, {
-                    buttons: [{
-                            extend: 'copyHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'excelHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'csvHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'pdfHtml5',
-                            title: documentTitle
-                        }
-                    ]
-                }).container().appendTo($('#kt_datatable_example_1_export'));
 
-                // Hook dropdown menu click event to datatable export buttons
-                const exportButtons = document.querySelectorAll(
-                    '#kt_datatable_example_1_export_menu [data-kt-export]');
-                exportButtons.forEach(exportButton => {
-                    exportButton.addEventListener('click', e => {
-                        e.preventDefault();
-
-                        // Get clicked export value
-                        const exportValue = e.target.getAttribute('data-kt-export');
-                        const target = document.querySelector('.dt-buttons .buttons-' +
-                            exportValue);
-
-                        // Trigger click event on hidden datatable export buttons
-                        target.click();
-                    });
-                });
-            }
 
             // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
             var handleSearchDatatable = () => {
@@ -460,7 +472,6 @@
                     }
 
                     initDatatable();
-                    exportButtons();
                     handleSearchDatatable();
                 }
             };
@@ -618,89 +629,89 @@
     <script>
         $(document).ready(function() {
             @foreach ($attributes as $attribute)
-                var form{{ optional($attribute)->id }} = $('#attributeValueForm-{{ optional($attribute)->id }}');
-
-                form{{ optional($attribute)->id }}.on('click', '.add-input', function() {
-                    var container = form{{ optional($attribute)->id }}.find(
+                var form{{optional($attribute)->id}} = $('#attributeValueForm-{{ optional($attribute)->id }}');
+                var enteredValues = [];
+                // Check if the form exists
+               
+                
+                if (form{{ optional($attribute)->id }}.length) {
+                    var attributeId{{ optional($attribute)->id }} = {{ optional($attribute)->id }};
+                    var inputContainer{{ optional($attribute)->id }} = form{{ optional($attribute)->id }}.find(
                         "#inputContainer-{{ optional($attribute)->id }}");
 
-                    // Clone the input row
-                    var clone = container.find('.input-row:first').clone(true);
+                    form{{ optional($attribute)->id }}.on('click', '.add-input', function() {
+                        // Clone the input row
+                        var clone = inputContainer{{ optional($attribute)->id }}.find('.input-row:first')
+                            .clone(true);
 
-                    // Clear the input value in the cloned row
-                    clone.find('input[name="value[]"]').val('');
+                        // Clear the input value in the cloned row
+                        clone.find('input[name="value[]"]').val('');
 
-                    clone.find('.add-input').hide(); // Remove add button from the cloned row
-                    clone.find('.remove-input').show(); // Show remove button for the cloned row
+                        clone.find('.add-input').hide(); // Remove add button from the cloned row
+                        clone.find('.remove-input').show(); // Show remove button for the cloned row
 
-                    // Append the cloned row to the container
-                    container.append(clone);
-                });
+                        // Append the cloned row to the container
+                        inputContainer{{ optional($attribute)->id }}.append(clone);
+                    });
 
-                form{{ optional($attribute)->id }}.on('click', '.remove-input', function() {
-                    // Remove the corresponding value from the enteredValues array
-                    var removedValue = $(this).closest('.input-row').find('input[name="value[]"]').val();
-                    enteredValues[{{ optional($attribute)->id }}] = enteredValues[
-                            {{ optional($attribute)->id }}]
-                        .filter(function(value) {
-                            return value !== removedValue;
-                        });
+                    form{{ optional($attribute)->id }}.on('click', '.remove-input', function() {
+                        var removedValue = $(this).closest('.input-row').find('input[name="value[]"]')
+                    .val();
+                        enteredValues[attributeId{{ optional($attribute)->id }}] = enteredValues[
+                                attributeId{{ optional($attribute)->id }}]
+                            .filter(function(value) {
+                                return value !== removedValue;
+                            });
 
-                    // Remove the row
-                    $(this).closest('.input-row').remove();
-                });
+                        $(this).closest('.input-row').remove();
+                    });
 
-                // Validation for unique values
-                form{{ optional($attribute)->id }}.on("input", 'input[name="value[]"]', function() {
-                    var currentValue = $(this).val();
-                    var isDuplicate = false;
+                    // Validation for unique values
+                    form{{ optional($attribute)->id }}.on("input", 'input[name="value[]"]', function() {
+                        var currentValue = $(this).val();
+                        var isDuplicate = false;
 
-                    // Check if the value already exists in previous rows
-                    form{{ optional($attribute)->id }}.find('input[name="value[]"]').not(this).each(
-                        function() {
-                            if ($(this).val() === currentValue) {
-                                isDuplicate = true;
+                        form{{ optional($attribute)->id }}.find('input[name="value[]"]').not(this).each(
+                            function() {
+                                if ($(this).val() === currentValue) {
+                                    isDuplicate = true;
+                                    return false; // exit the loop if a duplicate is found
+                                }
+                            });
+
+                        var inputRow = $(this).closest('.input-row');
+                        var feedback = inputRow.find('.invalid-feedback-{{ optional($attribute)->id }}');
+
+                        if (isDuplicate) {
+                            feedback.removeClass('d-none').removeClass('is-valid');
+                        } else {
+                            feedback.addClass('d-none').addClass('is-valid');
+                        }
+                    });
+
+                    // Form submission
+                    form{{ optional($attribute)->id }}.submit(function(e) {
+                        var duplicateExists = false;
+
+                        form{{ optional($attribute)->id }}.find('input[name="value[]"]').each(function() {
+                            var currentValue = $(this).val();
+                            var isDuplicate = form{{ optional($attribute)->id }}.find(
+                                    'input[name="value[]"]').not(this).filter(function() {
+                                    return $(this).val() === currentValue;
+                                }).length > 0;
+
+                            if (isDuplicate) {
+                                duplicateExists = true;
                                 return false; // exit the loop if a duplicate is found
                             }
                         });
 
-                    var inputRow = $(this).closest('.input-row'); // Find the closest .input-row
-                    var feedback = inputRow.find('.invalid-feedback-{{ optional($attribute)->id }}');
-
-
-                    if (isDuplicate) {
-                        feedback.removeClass('d-none');
-                        feedback.removeClass('is-valid');
-                    } else {
-                        feedback.addClass('d-none');
-                        feedback.addClass('is-valid');
-                    }
-                });
-
-                // Form submission
-                form{{ optional($attribute)->id }}.submit(function(e) {
-                    // Check for duplicates before submitting the form
-                    var duplicateExists = false;
-
-                    form{{ optional($attribute)->id }}.find('input[name="value[]"]').each(function() {
-                        var currentValue = $(this).val();
-                        var isDuplicate = form{{ optional($attribute)->id }}.find(
-                                'input[name="value[]"]').not(this)
-                            .filter(function() {
-                                return $(this).val() === currentValue;
-                            }).length > 0;
-
-                        if (isDuplicate) {
-                            duplicateExists = true;
-                            return false; // exit the loop if a duplicate is found
+                        if (duplicateExists) {
+                            alert("Duplicate values found. Please correct before submitting.");
+                            e.preventDefault(); // prevent form submission
                         }
                     });
-
-                    if (duplicateExists) {
-                        alert("Duplicate values found. Please correct before submitting.");
-                        e.preventDefault(); // prevent form submission
-                    }
-                });
+                }
             @endforeach
         });
     </script>

@@ -170,7 +170,6 @@ $(document).on('click', '.delete', function (e) {
   });
 
   var deleteUrl = $(this).attr('href');
-
   swalWithBootstrapButtons.fire({
     title: 'Are you sure?',
     text: "You won't be able to revert this!",
