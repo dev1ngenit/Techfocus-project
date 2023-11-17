@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class ProductColorRequest extends FormRequest
 {
@@ -78,10 +79,12 @@ class ProductColorRequest extends FormRequest
      */
     protected function recordErrorMessages(Validator $validator)
     {
-        $errorMessages = $validator->errors()->all();
+        // $errorMessages = $validator->errors()->all();
 
-        foreach ($errorMessages as $errorMessage) {
-            toastr()->error($errorMessage);
-        }
+        // foreach ($errorMessages as $errorMessage) {
+        //     toastr()->error($errorMessage);
+        // }
+        Session::flash('error', $validator->errors()->all());
+
     }
 }

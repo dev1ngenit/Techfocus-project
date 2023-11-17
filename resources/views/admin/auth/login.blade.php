@@ -70,7 +70,7 @@
                     <!--begin::Actions-->
                     <div class="text-center">
                         <!--begin::Submit button-->
-                        <button type="submit" id="common_submit" class="btn btn-lg common-btn-3 fw-bolder me-4 w-175px mb-5">
+                        <button type="submit" id="common_submit" class="btn btn-lg common-btn-3 fw-bolder me-4 w-150px mb-5">
                             <span class="indicator-label">Submit</span>
                             <span class="indicator-progress">Please wait...
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span>

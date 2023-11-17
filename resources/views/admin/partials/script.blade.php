@@ -37,3 +37,34 @@
     }, 2000); // Adjust the delay as needed (e.g., 5000 milliseconds = 5 seconds)
 </script>
 
+
+<script>
+    $.fn.poshytip = {
+        defaults: null
+    }
+</script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/js/jquery-editable-poshytip.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    @if (session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('success.message') }}',
+        });
+    @endif
+
+    @if (session('error'))
+        var errorMessage = @json(session('error'));
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            html: errorMessage.join('<br>'),
+        });
+    @endif
+</script>

@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 
 /*
@@ -80,13 +81,18 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             Route::delete('/attribute/{id}/destroy', 'destroy')->name('attribute.destroy');
         });
         Route::controller(AttributeValueController::class)->group(function () {
-            Route::get('/attribute-value', 'index')->name('attribute-value.index');
             Route::post('/attribute-value/store', 'store')->name('attribute-value.store');
-            Route::put('/attribute-value/{id}/update', 'update')->name('attribute-value.update');
+            Route::post('/attribute-value/update', 'update')->name('attribute-value.update');
+            // Route::put('/attribute-value/{id}/update', 'update')->name('attribute-value.update');
             Route::delete('/attribute-value/{id}/destroy', 'destroy')->name('attribute-value.destroy');
         });
 
 
+        Route::resources(
+            [ 
+                'product'               => ProductController::class,
+
+            ]);
         Route::resources(
             [
                 'profile'               => ProfileController::class,

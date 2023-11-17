@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin\Brand;
 use Illuminate\Support\Str;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\Category;
+use App\Models\Admin\Industry;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -25,7 +28,14 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $data['brands']              = Brand::latest()->get();
+        $data['categories']          = Category::orderBy('id', 'DESC')->get();
+        $data['sub_cats']            = Category::orderBy('id', 'DESC')->get();
+        $data['sub_sub_cats']        = Category::orderBy('id', 'DESC')->get();
+        $data['sub_sub_sub_cats']    = Category::orderBy('id', 'DESC')->get();
+        $data['industrys']           = Industry::orderBy('id', 'DESC')->get();
+        $data['solutions']           = Industry::orderBy('id', 'DESC')->get();
+        return view('admin.pages.product.create',$data);
     }
 
     /**

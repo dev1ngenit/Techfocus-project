@@ -1,7 +1,19 @@
 :root{
   --white : #ffff;
-}
 
+}
+.main_bg{
+  background-color: #0069bf !important;
+}
+.secondary_bg{
+  background-color: #ae0a46 !important;
+}
+.main_color{
+  color: #0069bf !important;
+}
+.secondary_color{
+  color: #ae0a46 !important;
+}
 th{
     color: #0000;
 }
@@ -98,4 +110,11 @@ th{
   background-color: #38b6ff !important;
   transition: all 0.5s;
   color: var(--white);
+}
+
+.indicator-progress{
+  font-size: 11px;
+}
+.custom_shadow{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

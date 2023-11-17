@@ -2294,9 +2294,11 @@ progress {
 
 .form-label {
     margin-bottom: .5rem;
-    font-size: 1.05rem;
+    /* font-size: 1.05rem; */
+    font-size: 0.9rem;
     font-weight: 500;
-    color: #3f4254
+    color: #3f4254;
+    margin-left: 4px;
 }
 
 .col-form-label {
@@ -37967,15 +37969,18 @@ a:hover {
 
 .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
     border: 0;
-    padding: calc(.75rem + 1px) calc(1.5rem + 1px)
+    padding: calc(.75rem + 1px) calc(.5rem + 1px);
+    /* padding: calc(.75rem + 1px) calc(1.5rem + 1px); */
 }
 
 .btn-group-lg>.btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon), .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon).btn-lg {
-    padding: calc(.825rem + 1px) calc(1.75rem + 1px)
+    padding: calc(.825rem + 1px) calc(.75rem + 1px);
+    /* padding: calc(.825rem + 1px) calc(1.75rem + 1px); */
 }
 
 .btn-group-sm>.btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon), .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon).btn-sm {
-    padding: calc(.55rem + 1px) calc(1.25rem + 1px)
+    padding: calc(.55rem + 1px) calc(.25rem + 1px);
+    /* padding: calc(.55rem + 1px) calc(1.25rem + 1px); */
 }
 
 .btn.btn-link {
