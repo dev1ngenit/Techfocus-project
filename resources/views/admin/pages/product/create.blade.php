@@ -61,7 +61,7 @@
                                                             <label class="form-label required">Product Name</label>
                                                             <input name="name"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Product Name" type="text" />
+                                                                placeholder="Enter Product Name" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-2 mb-3">
@@ -69,7 +69,7 @@
                                                             <label class="form-label required">SKU Code</label>
                                                             <input name="sku_code"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Eg: NG-2647374" type="text" />
+                                                                placeholder="Eg: NG-2647374" type="text" required />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-2 mb-3">
@@ -77,7 +77,7 @@
                                                             <label class="form-label required">MF Code</label>
                                                             <input name="mf_code"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Eg: MF-2647374" type="text" />
+                                                                placeholder="Eg: MF-2647374" type="text" required />
                                                         </div>
                                                     </div>
 
@@ -86,7 +86,7 @@
                                                             <label class="form-label required">Notification Days</label>
                                                             <input name="notification_days"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Eg:15 days,30 days" type="text" />
+                                                                placeholder="Eg:15 days,30 days" type="text" required />
                                                         </div>
                                                     </div>
 
@@ -97,7 +97,7 @@
                                                                 name="product_type" data-control="select2"
                                                                 data-hide-search="true"
                                                                 data-placeholder="Select an Product Type"
-                                                                data-allow-clear="true">
+                                                                data-allow-clear="true" required>
                                                                 <option></option>
                                                                 <option value="software">Software</option>
                                                                 <option value="hardware">Hardware</option>
@@ -114,7 +114,7 @@
                                                                 class="form-select form-select-solid form-select-sm stock_select"
                                                                 name="stock" data-control="select2"
                                                                 data-placeholder="Select Stock Status"
-                                                                data-allow-clear="true">
+                                                                data-allow-clear="true" required>
                                                                 <option></option>
                                                                 <option class="form-select" value="available">
                                                                     Available
@@ -134,7 +134,8 @@
                                                             <label class="form-label required">Current Stock</label>
                                                             <input name="qty" pattern="\d+" step="1"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Current Stock" type="number" />
+                                                                placeholder="Enter Current Stock" type="number"
+                                                                required />
                                                         </div>
                                                     </div>
 
@@ -144,7 +145,7 @@
                                                             <select class="form-select form-select-solid form-select-sm"
                                                                 data-control="select2"
                                                                 data-placeholder="Select Price Status" name="price_status"
-                                                                data-hide-search="true" data-allow-clear="true">
+                                                                data-hide-search="true" data-allow-clear="true" required>
                                                                 <option></option>
                                                                 <option value="rfq">RFQ</option>
                                                                 <option value="price">Price</option>
@@ -158,20 +159,30 @@
                                                             <label class="form-label ">Product Code</label>
                                                             <input name="product_code"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Product Code" type="text" />
+                                                                placeholder="Enter Product Code" type="text"
+                                                                required />
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Industry Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="industry_id" data-control="select2"
-                                                                data-placeholder="Select an Industry Name"
-                                                                data-allow-clear="true">
+                                                            <select name="industry_id[]"
+                                                                class="form-select multiselect btn btn-sm industry_multiselect"
+                                                                id="select6"
+                                                                 multiple="multiple"
+                                                                data-include-select-all-option="true"
+                                                                data-enable-filtering="true"
+                                                                data-enable-case-insensitive-filtering="true" required>
                                                                 <option></option>
                                                                 <option value="1">Option 1</option>
                                                                 <option value="2">Option 2</option>
+                                                                <option value="3">Option 3</option>
+                                                                <option value="4">Option 4</option>
+                                                                <option value="5">Option 5</option>
+                                                                <option value="6">Option 6</option>
+                                                                <option value="7">Option 7</option>
+                                                                <option value="8">Option 8</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -179,10 +190,11 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Solution Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="solution_id" data-control="select2"
+                                                            <select
+                                                                class="form-select form-select-solid form-select-sm multiple-select"
+                                                                name="solution_id" data-control="select2" multiple
                                                                 data-placeholder="Select an Solution Name"
-                                                                data-allow-clear="true">
+                                                                data-allow-clear="true" required>
                                                                 <option></option>
                                                                 <option value="1">Option 1</option>
                                                                 <option value="2">Option 2</option>
@@ -233,7 +245,7 @@
                                                                     <i class="fa-solid fa-arrow-left"></i>
                                                                 </span>
                                                             </span>
-                                                            
+
                                                         </a>
                                                         <a class="btn btn-lg btn-info rounded-0 tab-trigger"
                                                             data-bs-toggle="tab" data-bs-target="#kt_vtab_pane_2"
@@ -259,153 +271,8 @@
                                             </div>
                                             <div class="fv-row">
                                                 <div class="row">
-
-                                                    <div class="col-lg-3">
-                                                        <div class="fv-row mb-3">
-                                                            <label class="form-label ">Tags</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                data-control="select2"
-                                                                data-placeholder="Select an Product Tags" name="tags"
-                                                                data-allow-clear="true" multiple="multiple">
-                                                                <option></option>
-                                                                <option value="1">Option 1</option>
-                                                                <option value="2">Option 2</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-lg-3">
-                                                        <div class="fv-row mb-3">
-                                                            <label class="form-label">Refurbished</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="refurbished" data-control="select2"
-                                                                data-hide-search="true"
-                                                                data-placeholder="Select an Refurbished"
-                                                                data-allow-clear="true">
-                                                                <option></option>
-                                                                <option value="0">0</option>
-                                                                <option value="1">1</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <div class="fv-row mb-3">
-                                                            <label class="form-label required">Product Type</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="product_type" data-control="select2"
-                                                                data-hide-search="true"
-                                                                data-placeholder="Select an Product Type"
-                                                                data-allow-clear="true">
-                                                                <option></option>
-                                                                <option value="software">Software</option>
-                                                                <option value="hardware">Hardware</option>
-                                                                <option value="book">Book</option>
-                                                                <option value="training">Training</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <div class="fv-row mb-3">
-                                                            <label class="form-label ">Slug</label>
-                                                            <input name="slug"
-                                                                class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Slug" type="text" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <div class="fv-row mb-3">
-                                                            <label class="form-label ">Refundable</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="refunadable" data-control="select2"
-                                                                data-hide-search="true"
-                                                                data-placeholder="Select an Refundable"
-                                                                data-allow-clear="true">
-                                                                <option></option>
-                                                                <option value="software">Software</option>
-                                                                <option value="hardware">Hardware</option>
-                                                                <option value="book">Book</option>
-                                                                <option value="training">Training</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <div class="fv-row mb-3">
-                                                            <label class="form-label ">Status</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="status" data-control="select2"
-                                                                data-hide-search="true"
-                                                                data-placeholder="Select an Status"
-                                                                data-allow-clear="true">
-                                                                <option></option>
-                                                                <option value="software">Software</option>
-                                                                <option value="hardware">Hardware</option>
-                                                                <option value="book">Book</option>
-                                                                <option value="training">Training</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <div class="fv-row mb-3">
-                                                            <label class="form-label ">Country Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="country_id" data-control="select2"
-                                                                data-placeholder="Select an Country Name"
-                                                                data-allow-clear="true">
-                                                                <option></option>
-                                                                <option value="software">Software</option>
-                                                                <option value="hardware">Hardware</option>
-                                                                <option value="book">Book</option>
-                                                                <option value="training">Training</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3">
-                                                        <div class="fv-row mb-3">
-                                                            <label class="form-label">Parent Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="parent__id" data-control="select2"
-                                                                data-placeholder="Select an Parent Name"
-                                                                data-allow-clear="true">
-                                                                <option></option>
-                                                                <option value="software">Software</option>
-                                                                <option value="hardware">Hardware</option>
-                                                                <option value="book">Book</option>
-                                                                <option value="training">Training</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="fv-row mb-3">
-                                                            <label class="form-label required">Brand Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="brand_id" data-control="select2"
-                                                                data-placeholder="Select an Brand Name"
-                                                                data-allow-clear="true">
-                                                                <option></option>
-                                                                <option value="software">Software</option>
-                                                                <option value="hardware">Hardware</option>
-                                                                <option value="book">Book</option>
-                                                                <option value="training">Training</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="fv-row mb-3">
-                                                            <label class="form-label required">Category Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="category_id" data-control="select2"
-                                                                data-hide-search="false"
-                                                                data-placeholder="Select an Category Name"
-                                                                data-allow-clear="true">
-                                                                <option></option>
-                                                                <option value="software">Software</option>
-                                                                <option value="hardware">Hardware</option>
-                                                                <option value="book">Book</option>
-                                                                <option value="training">Training</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
+                                                    nostrud cillum consequat Lorem esse do quis dolor
+                                                    esse fugiat sunt do.
                                                 </div>
                                             </div>
                                         </div>
@@ -475,7 +342,7 @@
 
         });
     </script>
-    <script>
+    {{-- <script>
         $('.tab-trigger').on('show.bs.tab', function(event) {
             let allowTabSwitch = true;
             if (!allowTabSwitch) {
@@ -489,24 +356,32 @@
             // const activeTabIndex = $('.nav-link.active').parent().index();
             // Check the fields in the corresponding tab
             // $('#kt_vtab_pane_' + activeTabIndex).find('input, textarea, select').each(function() {
-                var activeTabHref = $('.tab-trigger.active').attr('href');
+            var activeTabHref = $('.tab-trigger.active').attr('href');
             $(activeTabHref).find('input, textarea, select').each(function() {
                 var $field = $(this);
 
                 // Check if it's a Select2 element
                 var isSelect2 = $field.hasClass('select2-hidden-accessible');
 
-                if ($field.val() === '') {
+                if ($field.prop('required') && $field.val() === '') {
                     // alert($field);
-
                     isValid = false;
 
-                    // Apply CSS based on the element type
                     if (isSelect2) {
-                        $field.next('.select2-container').css("border", "1px solid red");
-                        $field.next('.select2-container').addClass('is-invalid');
+
+                        // Apply CSS based on the element type
+                        if (isSelect2) {
+                            if ($field.prop('required')) {
+                                $('.multiple-select').addClass('is-invalid');
+                            }
+                            $field.next('.select2-container').addClass('is-invalid');
+
+                        } else {
+                            // $field.css("border", "1px solid red");
+                            $field.addClass('is-invalid');
+                        }
                     } else {
-                        $field.css("border", "1px solid red");
+                        // $field.css("border", "1px solid red");
                         $field.addClass('is-invalid');
                     }
                 }
@@ -525,14 +400,21 @@
 
             // Remove red border when user interacts with the field
             if (isSelect2) {
-                $field.next('.select2-container').css("border", "");
+                // $field.next('.select2-container').css("border", "");
                 $field.next('.select2-container').removeClass('is-invalid');
+                $field.removeClass('is-invalid');
 
             } else {
-                $field.css("border", "");
+                // $field.css("border", "");
                 $field.removeClass('is-invalid');
             }
         });
+        $('.multiple-select').on('change', function() {
+            // Remove validation error only from the changed multi-select field
+            var $multiSelect = $(this);
+            console.log($multiSelect);
+            $multiSelect.find('is-invalid').removeClass('is-invalid');
+        })
 
         // Event handler for the "Continue" button
         $('.tab-trigger-next').on('click', function(event) {
@@ -559,7 +441,98 @@
                 switchTab(targetTabId);
             }
         });
+    </script> --}}
+
+    <script>
+        $(document).ready(function() {
+            // Function to validate and switch tabs
+            function validateAndSwitchTab(targetTabId) {
+                let isValid = true;
+
+                // Get the index of the tab to be shown
+                const activeTabHref = $('.tab-trigger.active').attr('href');
+                $(activeTabHref).find('input, textarea, select').each(function() {
+                    var $field = $(this);
+
+                    // Check if it's a Select2 element
+                    var isSelect2 = $field.hasClass('select2-hidden-accessible');
+
+                    if ($field.prop('required') && $field.val() === '') {
+                        isValid = false;
+
+                        if (isSelect2) {
+                            // Apply CSS based on the element type
+                            $field.next('.select2-container').addClass('is-invalid');
+                        } else {
+                            $field.addClass('is-invalid');
+                        }
+                    }
+                });
+
+                if (!isValid) {
+                    // Fields are not valid, prevent the tab switch
+                    return false;
+                } else {
+                    // Fields are valid, switch to the next tab
+                    switchTab(targetTabId);
+                    return true;
+                }
+            }
+
+            // Function to switch tabs
+            function switchTab(targetTabId) {
+                $('.nav-link[href="' + targetTabId + '"]').tab('show');
+            }
+
+            // Event handler for tab switch
+            $('.tab-trigger').on('show.bs.tab', function(event) {
+                return validateAndSwitchTab($(this).data('bs-target'));
+            });
+
+            // Event handler for input change
+            $('.tab-content').on('input change', 'input, textarea, select', function() {
+                var $field = $(this);
+                var isSelect2 = $field.hasClass('select2-hidden-accessible');
+
+                // Remove red border when user interacts with the field
+                if (isSelect2) {
+                    $field.next('.select2-container').removeClass('is-invalid');
+                } else {
+                    $field.removeClass('is-invalid');
+                }
+            });
+
+            // Event handler for multi-select change
+            $('.multiple-select').on('change', function() {
+                // Remove validation error only from the changed multi-select field
+                var $multiSelect = $(this);
+                $multiSelect.removeClass('is-invalid');
+            });
+
+            // Event handler for the "Continue" button
+            $('.tab-trigger-next').on('click', function(event) {
+                // Assuming the data-bs-target attribute contains the tab ID to switch to
+                const targetTabId = $(this).data('bs-target');
+
+                // Validate and switch to the next tab
+                validateAndSwitchTab(targetTabId);
+            });
+
+            // Event handler for the "Previous" button
+            $('.tab-trigger-previous').on('click', function(event) {
+                // Assuming the data-bs-target attribute contains the tab ID to switch to
+                const targetTabId = $(this).data('bs-target');
+
+                // Validate and switch to the previous tab
+                validateAndSwitchTab(targetTabId);
+            });
+        });
     </script>
+
+
+
+
+
 
     <script>
         $('.stock_select').on('change', function() {

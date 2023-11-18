@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('thumbnail', 255)->nullable();
             $table->integer('qty')->default(1);
             $table->string('stock', 50)->nullable();
+            $table->string('weight', 100)->nullable();
             $table->double('price')->nullable();
             $table->double('sas_price')->nullable();
             $table->double('discount')->nullable();

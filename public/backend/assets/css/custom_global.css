@@ -1,51 +1,57 @@
-:root{
-  --white : #ffff;
+:root {
+  --white: #ffff;
 
 }
-.main_bg{
+
+.main_bg {
   background-color: #0069bf !important;
 }
-.secondary_bg{
+
+.secondary_bg {
   background-color: #ae0a46 !important;
 }
-.main_color{
+
+.main_color {
   color: #0069bf !important;
 }
-.secondary_color{
+
+.secondary_color {
   color: #ae0a46 !important;
 }
-th{
-    color: #0000;
+
+th {
+  color: #0000;
 }
-.table_header_bg, .modal-header{
-    background: #24729736;
-    border-radius: 0px;
+
+.table_header_bg, .modal-header {
+  background: #24729736;
+  border-radius: 0px;
 }
 
 .common-gradient {
-    background-image: linear-gradient(to bottom, #0069bf, #077cd0, #178fe0, #27a2f0, #38b6ff);
-  }
-  
-  .form-control{
-    border-radius: 0px;
-  }
-  .form-control-lg{
-    border-radius: 0px;
-  }
-  .form-control-sm{
-    border-radius: 0px;
-  }
+  background-image: linear-gradient(to bottom, #0069bf, #077cd0, #178fe0, #27a2f0, #38b6ff);
+}
 
-  /* btn===> 2 */
+.form-control {
+  border-radius: 0px;
+}
+
+.form-control-lg {
+  border-radius: 0px;
+}
+
+.form-control-sm {
+  border-radius: 0px;
+}
+
+/* btn===> 2 */
 .common-btn-2 {
-  background-image: linear-gradient(
-    to right,
-    #f1f2f2,
-    #f5f5f5,
-    #f8f8f9,
-    #fcfcfc,
-    #ffffff
-  );
+  background-image: linear-gradient(to right,
+      #f1f2f2,
+      #f5f5f5,
+      #f8f8f9,
+      #fcfcfc,
+      #ffffff);
   border: 1px solid transparent;
   color: #004aad;
   width: 100%;
@@ -54,12 +60,14 @@ th{
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px !important;
   border: 0;
 }
+
 .text-gradient {
   background: #004aad;
   background: linear-gradient(to right, #004aad 30%, #38b6ff 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .common-btn-2:hover {
   border: 1px solid var(--main-color);
   transition: all 0.5s;
@@ -69,29 +77,26 @@ th{
 
 /* btn===> 3 */
 .common-btn-3 {
-  background-image: linear-gradient(
-    to bottom,
-    #0069bf,
-    #077cd0,
-    #178fe0,
-    #27a2f0,
-    #38b6ff
-  );
+  background-image: linear-gradient(to bottom,
+      #0069bf,
+      #077cd0,
+      #178fe0,
+      #27a2f0,
+      #38b6ff);
   color: #fff;
   width: 100%;
   font-weight: 500;
   transition: all 0.5s;
   border: 0;
 }
+
 .common-btn-3:hover {
-  background-image: linear-gradient(
-    to left,
-    #0069bf,
-    #077cd0,
-    #178fe0,
-    #27a2f0,
-    #38b6ff
-  );
+  background-image: linear-gradient(to left,
+      #0069bf,
+      #077cd0,
+      #178fe0,
+      #27a2f0,
+      #38b6ff);
   transition: all 0.5s;
   color: var(--white);
 }
@@ -106,15 +111,99 @@ th{
   transition: all 0.5s;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
 .common-btn-4:hover {
   background-color: #38b6ff !important;
   transition: all 0.5s;
   color: var(--white);
 }
 
-.indicator-progress{
+.indicator-progress {
   font-size: 11px;
 }
-.custom_shadow{
+
+.custom_shadow {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.is-invalid{
+  border: 1px solid red !important;
+}
+
+
+
+
+/* Shahed: CSS End */
+
+
+/* Shaju */
+
+
+th {
+  color: #0000;
+}
+
+.table_header_bg,
+.modal-header {
+  background: #24729736;
+  border-radius: 0px;
+}
+
+tr td {
+  padding: 10px !important;
+}
+
+.page-link {
+  border-radius: 0% !important;
+}
+
+.page-item:hover:not(.offset) .page-link {
+  color: #ffffff;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #7239ea !important;
+  border-color: transparent;
+}
+
+.dataTables_length select {
+  border-radius: 0px;
+  border: 1px solid #eee !important;
+}
+
+.custom-badge {
+  position: relative;
+  top: -10px;
+  border-radius: 0px;
+  left: 10px;
+  width: 40px;
+}
+
+.table_title {
+  display: flex;
+  justify-content: center;
+}
+
+.modal_body_badge {
+  margin-top: -15px;
+}
+
+
+/* Responsive */
+@media only screen and (max-width: 600px) {
+
+  .table_search_box,
+  .table_title,
+  .table_search_box {
+    display: flex;
+    justify-content: center;
+  }
+
+  .table_search_box {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
 }
