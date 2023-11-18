@@ -130,7 +130,7 @@
                                                 <a href="#"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#employeeDepertmentViewModal_{{ $category->id }}">
+                                                    data-bs-target="#categoryViewModal_{{ $category->id }}">
                                                     <i class="fa-solid fa-expand"></i>
                                                     <!--View-->
                                                 </a>
@@ -240,8 +240,10 @@
                                                 <option></option>
                                                 @if (count($categories))
                                                     @foreach ($categories->whereNull('parent_id') as $category)
-                                                        @include('admin.pages.category.partial.add_parent',
-                                                            ['category' => $category, 'level' => 0])
+                                                        @include(
+                                                            'admin.pages.category.partial.add_parent',
+                                                            ['category' => $category, 'level' => 0]
+                                                        )
                                                     @endforeach
                                                 @endif
                                             </select>
@@ -270,8 +272,8 @@
         </div>
     </div>
     {{-- Edit Modal --}}
-    @foreach ($categories as $category_modal)
-        <div class="modal fade" id="categoryEditModal_{{ $category_modal->id }}" data-backdrop="static">
+    @foreach ($categories as $category)
+        <div class="modal fade" id="categoryEditModal_{{ $category->id }}" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
                     <div class="modal-header p-2 rounded-0">
@@ -298,7 +300,7 @@
                                                     data-placeholder="Select an option" data-allow-clear="true" required>
                                                     <option></option>
                                                     @foreach (getAllCountry() as $country)
-                                                        <option value="{{ $country->id }}" @selected($country->id == $category_modal->country_id)>
+                                                        <option value="{{ $country->id }}" @selected($country->id == $category->country_id)>
                                                             {{ $country->name }}</option>
                                                     @endforeach
                                                 </select>
@@ -311,7 +313,7 @@
                                                 <input type="text"
                                                     class="form-control form-control-solid form-control-sm" name="name"
                                                     id="validationCustom01" placeholder="Enter Name"
-                                                    value="{{ $category_modal->name }}" required>
+                                                    value="{{ $category->name }}" required>
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Name </div>
                                             </div>
@@ -322,7 +324,7 @@
                                                     class="form-control form-control-solid form-control-sm" name="image"
                                                     id="validationCustom01">
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/requestImg/' . $category_modal->image) }}"
+                                                    <img src="{{ asset('storage/requestImg/' . $category->image) }}"
                                                         alt="" class="img-fluid">
                                                 </div>
                                                 <div class="valid-feedback"> Looks good! </div>
@@ -335,7 +337,7 @@
                                                     class="form-control form-control-solid form-control-sm" name="logo"
                                                     id="validationCustom01">
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/requestImg/' . $category_modal->logo) }}"
+                                                    <img src="{{ asset('storage/requestImg/' . $category->logo) }}"
                                                         alt="" class="img-fluid">
                                                 </div>
                                                 <div class="valid-feedback"> Looks good! </div>
@@ -347,25 +349,27 @@
                                                 <div
                                                     class="form-check form-check-custom form-check-warning form-check-solid form-check-sm mt-3 ms-4  mb-3">
                                                     <input class="form-check-input bg-primary" name="is_parent"
-                                                        @checked($category_modal->is_parent == 1) value="1" type="checkbox"
-                                                        id="flexRadioLg-{{ $category_modal->id }}" />
+                                                        @checked($category->is_parent == 1) value="1" type="checkbox"
+                                                        id="flexRadioLg-{{ $category->id }}" />
                                                     <label class="form-check-label"
-                                                        for="flexRadioLg-{{ $category_modal->id }}">Is Parent</label>
+                                                        for="flexRadioLg-{{ $category->id }}">Is Parent</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6 mb-1 hide_parent_input"
-                                                id="parentInputContainer-{{ $category_modal->id }}">
+                                                id="parentInputContainer-{{ $category->id }}">
                                                 <label for="validationCustom01" class="form-label required">Parent
                                                     Name</label>
                                                 <select class="form-select form-select-solid" name="parent_id"
-                                                    data-dropdown-parent="#categoryEditModal_{{ $category_modal->id }}"
+                                                    data-dropdown-parent="#categoryEditModal_{{ $category->id }}"
                                                     data-control="select2" data-placeholder="Select an option"
                                                     data-allow-clear="true">
                                                     <option></option>
                                                     @foreach ($categories->whereNull('parent_id') as $category)
-                                                        @include('admin.pages.category.partial.edit_parent',
-                                                            ['category' => $category, 'level' => 0])
+                                                        @include(
+                                                            'admin.pages.category.partial.edit_parent',
+                                                            ['category' => $category, 'level' => 0]
+                                                        )
                                                     @endforeach
                                                 </select>
                                                 <div class="valid-feedback">Looks good!</div>
@@ -376,7 +380,7 @@
                                                 <label for="validationCustom010"
                                                     class="form-label required">Description</label>
                                                 <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"
-                                                    placeholder="Enter Description" required></textarea>
+                                                    placeholder="Enter Description" required>{{ $category->description }}</textarea>
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Description</div>
                                             </div>
@@ -395,85 +399,84 @@
         </div>
     @endforeach
     {{-- View Modal --}}
-    <div class="modal fade" id="categoryViewModal" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">View </h5>
-                    <!-- Close button in the header -->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <i class="fa-solid fa-circle-xmark"></i>
+    @foreach ($categories as $category)
+        <div class="modal fade" id="categoryViewModal_{{ $category->id }}" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-0 border-0 shadow-sm">
+                    <div class="modal-header p-2 rounded-0">
+                        <h5 class="modal-title">View </h5>
+                        <!-- Close button in the header -->
+                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-body">
-                    <div class="container px-0">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card border rounded-0">
-                                    <p class="badge badge-info custom-badge">Info</span>
-                                    <div class="card-body p-1 px-2">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold" title="Country Name">Name</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>Bangladesh</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-7 col-sm-5">
-                                                        <p class="fw-bold">Parent Name</p>
-                                                    </div>
-                                                    <div class="col-lg-5 col-sm-6">
-                                                        <p>Intern</p>
+                    <div class="modal-body">
+                        <div class="container px-0">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card border rounded-0">
+                                        <p class="badge badge-info custom-badge">Info</span>
+                                        <div class="card-body p-1 px-2">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold" title="Country Name">Name</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ $category->name }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-7 col-sm-5">
-                                                        <p class="fw-bold">Image</p>
-                                                    </div>
-                                                    <div class="col-lg-5 col-sm-6">
-                                                        <p>
-                                                            <img class="img-fluid rounded-circle" width="35px"
-                                                                src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
-                                                                alt="">
-                                                        </p>
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-7 col-sm-5">
+                                                            <p class="fw-bold">Parent Name</p>
+                                                        </div>
+                                                        <div class="col-lg-5 col-sm-6">
+                                                            <p>{{ $category->parentName() ?? 'No Parent' }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-7 col-sm-5">
-                                                        <p class="fw-bold">Logo</p>
-                                                    </div>
-                                                    <div class="col-lg-5 col-sm-6">
-                                                        <p>
-                                                            <img class="img-fluid rounded-circle" width="35px"
-                                                                src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
-                                                                alt="">
-                                                        </p>
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-7 col-sm-5">
+                                                            <p class="fw-bold">Image</p>
+                                                        </div>
+                                                        <div class="col-lg-5 col-sm-6">
+                                                            <p>
+                                                                <img class="img-fluid rounded-circle" width="35px"
+                                                                    src="{{ !empty($category->image) ? asset('storage/' . $category->image) : asset('storage/main/no-image-available.png') }}"
+                                                                    alt="{{ $category->slug }} Logo">
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-sm-5">
-                                                        <p class="fw-bold">Description</p>
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-7 col-sm-5">
+                                                            <p class="fw-bold">Logo</p>
+                                                        </div>
+                                                        <div class="col-lg-5 col-sm-6">
+                                                            <p>
+                                                                <img class="img-fluid rounded-circle" width="35px"
+                                                                    src="{{ !empty($category->logo) ? asset('storage/' . $category->logo) : asset('storage/main/no-image-available.png') }}"
+                                                                    alt="{{ $category->slug }} Logo">
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-lg-9 col-sm-6">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint a
-                                                            ipsam, doloremque maxime assumenda eaque adipisci eum in iste
-                                                            quam, ipsa vitae, commodi voluptatem dicta. Sed hic officiis a
-                                                            autem?
-                                                        </p>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-sm-5">
+                                                            <p class="fw-bold">Description</p>
+                                                        </div>
+                                                        <div class="col-lg-9 col-sm-6">
+                                                            <p>
+                                                                {{ $category->description }}
+                                                            </p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -486,7 +489,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 
 
 
@@ -517,106 +520,6 @@
                     parentInputContainer.show();
                 }
             });
-        });
-    </script>
-    {{-- Hide the Parent Name Input Field On Checkbox Click End  --}}
-    <script>
-        "use strict";
-
-        // Class definition
-        var KTDatatablesButtons = function() {
-            // Shared variables
-            var table;
-            var datatable;
-
-            // Private functions
-            var initDatatable = function() {
-                // Set date data order
-                const tableRows = table.querySelectorAll('tbody tr');
-
-                tableRows.forEach(row => {
-                    const dateRow = row.querySelectorAll('td');
-                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                        .format(); // select date from 4th column in table
-                    dateRow[3].setAttribute('data-order', realDate);
-                });
-
-                // Init datatable --- more info on datatables: https://datatables.net/manual/
-                datatable = $(table).DataTable({
-                    "info": false,
-                    'order': [],
-                    'pageLength': 10,
-                });
-            }
-
-            // Hook export buttons
-            var exportButtons = () => {
-                const documentTitle = 'Customer Orders Report';
-                var buttons = new $.fn.dataTable.Buttons(table, {
-                    buttons: [{
-                            extend: 'copyHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'excelHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'csvHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'pdfHtml5',
-                            title: documentTitle
-                        }
-                    ]
-                }).container().appendTo($('#kt_datatable_example_1_export'));
-
-                // Hook dropdown menu click event to datatable export buttons
-                const exportButtons = document.querySelectorAll(
-                    '#kt_datatable_example_1_export_menu [data-kt-export]');
-                exportButtons.forEach(exportButton => {
-                    exportButton.addEventListener('click', e => {
-                        e.preventDefault();
-
-                        // Get clicked export value
-                        const exportValue = e.target.getAttribute('data-kt-export');
-                        const target = document.querySelector('.dt-buttons .buttons-' +
-                            exportValue);
-
-                        // Trigger click event on hidden datatable export buttons
-                        target.click();
-                    });
-                });
-            }
-
-            // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-            var handleSearchDatatable = () => {
-                const filterSearch = document.querySelector('[data-kt-filter="search"]');
-                filterSearch.addEventListener('keyup', function(e) {
-                    datatable.search(e.target.value).draw();
-                });
-            }
-
-            // Public methods
-            return {
-                init: function() {
-                    table = document.querySelector('#kt_datatable_example_1');
-
-                    if (!table) {
-                        return;
-                    }
-
-                    initDatatable();
-                    exportButtons();
-                    handleSearchDatatable();
-                }
-            };
-        }();
-
-        // On document ready
-        KTUtil.onDOMContentLoaded(function() {
-            KTDatatablesButtons.init();
         });
     </script>
 @endpush

@@ -102,69 +102,39 @@
                                     <!--end::Table row-->
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
-                                <tr class="odd">
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>Ngen It
-                                    </td>
-                                    <td>#ffff</td>
-                                    <td class="d-flex justify-content-between align-items-center">
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#colorsViewModal">
-                                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                            <i class="fa-solid fa-expand"></i>
-                                            <!--View-->
-                                        </a>
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#colorsEditModal">
-                                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                            <i class="fa-solid fa-pen"></i>
-                                            <!--Edit-->
-                                        </a>
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                            data-kt-docs-table-filter="delete_row">
-                                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                            <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                            <!--Delete-->
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="even">
-                                    <td>
-                                        2
-                                    </td>
-                                    <td>
-                                        Ngen It
-                                    </td>
-                                    <td>#ffff</td>
-                                    <td class="d-flex justify-content-between align-items-center">
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#colorsViewModal">
-                                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                            <i class="fa-solid fa-expand"></i>
-                                            <!--View-->
-                                        </a>
-                                        <a href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                            data-bs-toggle="modal" data-bs-target="#colorsEditModal">
-                                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                            <i class="fa-solid fa-pen"></i>
-                                            <!--Edit-->
-                                        </a>
-                                        <a id="kt_docs_sweetalert_state_error" href="#"
-                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                            data-kt-docs-table-filter="delete_row">
-                                            <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                            <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                            <!--Delete-->
-                                        </a>
-                                    </td>
-                                </tr>
+                                @if ($productColors)
+                                    @foreach ($productColors as $productColor)
+                                        <tr class="even">
+                                            <td>
+                                                {{ $loop->iteration }}
+                                            </td>
+                                            <td>
+                                                {{ $productColor->name }}
+                                            </td>
+                                            <td> {{ $productColor->color_code }}</td>
+                                            <td class="d-flex justify-content-between align-items-center">
+                                                <a href="#"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#colorsViewModal_{{ $productColor->id }}">
+                                                    <i class="fa-solid fa-expand"></i>
+                                                </a>
+                                                <a href="#"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#colorsEditModal_{{ $productColor->id }}">
+                                                    <i class="fa-solid fa-pen"></i>
+                                                </a>
+                                                <a id="kt_docs_sweetalert_state_error"
+                                                    href="{{ route('admin.product-color.destroy', $productColor->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                    data-kt-docs-table-filter="delete_row">
+                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -178,10 +148,8 @@
             <div class="modal-content rounded-0 border-0 shadow-sm">
                 <div class="modal-header p-2 rounded-0">
                     <h5 class="modal-title">Add Colors</h5>
-                    <!-- Close button in the header -->
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                         aria-label="Close">
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                         <span class="svg-icon svg-icon-2x">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none">
@@ -191,11 +159,10 @@
                                     transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
                             </svg>
                         </span>
-                        <!--end::Svg Icon-->
                     </div>
-                    <!-- End Close button in the header -->
                 </div>
-                <form action="" class="needs-validation" method="post" novalidate>
+                <form action="{{ route('admin.product-color.store') }}" class="needs-validation" method="post"
+                    novalidate>
                     @csrf
                     <div class="modal-body">
                         <div class="container px-0">
@@ -212,7 +179,7 @@
                                         <div class="col-md-6 mb-1">
                                             <label for="validationCustom01" class="form-label required">Values</label>
                                             <input type="color" pattern="#[0-9a-fA-F]{6}"
-                                                class="form-control form-control-solid form-control-sm" name="colorCode"
+                                                class="form-control form-control-solid form-control-sm" name="color_code"
                                                 step="0.01" id="validationCustom01" placeholder="Enter Color Code"
                                                 required>
                                             <div class="valid-feedback">Looks good!</div>
@@ -233,112 +200,122 @@
         </div>
     </div>
     {{-- Edit Modal --}}
-    <div class="modal fade" id="colorsEditModal" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">Edit Colors</h5>
-                    <!-- Close button in the header -->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <span class="svg-icon svg-icon-2x">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                    transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                    transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
+    @foreach ($productColors as $productColor)
+        <div class="modal fade" id="colorsEditModal_{{ $productColor->id }}" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-0 border-0 shadow-sm">
+                    <div class="modal-header p-2 rounded-0">
+                        <h5 class="modal-title">Edit Colors</h5>
+                        <!-- Close button in the header -->
+                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <span class="svg-icon svg-icon-2x">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none">
+                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                        transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                    <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                        transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </div>
+                        <!-- End Close button in the header -->
                     </div>
-                    <!-- End Close button in the header -->
+                    <form action="{{ route('admin.product-color.update', $productColor->id) }}" class="needs-validation"
+                        method="post" novalidate>
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="container px-0">
+                                <div class="row modal_body_badge">
+                                    <div class="col-lg-12 col-sm-12">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-1">
+                                                <label for="validationCustom01" class="form-label required ">Name </label>
+                                                <input type="text"
+                                                    class="form-control form-control-solid form-control-sm" name="name"
+                                                    value="{{ $productColor->name }}" id="validationCustom01"
+                                                    value="Ngen It" placeholder="Enter Name" required>
+                                                <div class="valid-feedback"> Looks good! </div>
+                                                <div class="invalid-feedback"> Please Enter Color Code E.g: #FFFF</div>
+                                            </div>
+                                            <div class="col-md-6 mb-1">
+                                                <label for="validationCustom01" class="form-label required">Values</label>
+                                                <input type="color"
+                                                    class="form-control form-control-solid form-control-sm"
+                                                    name="color_code" value="{{ $productColor->color_code }}"
+                                                    id="validationCustom01" placeholder="Enter Color Code"
+                                                    value="#ff0000" required>
+                                                <div class="valid-feedback">Looks good!</div>
+                                                <div class="invalid-feedback">Please enter a valid color code (e.g.,
+                                                    #RRGGBB)
+                                                    with 6 characters.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer p-2">
+                            <!-- Button to close the modal in the footer -->
+                            <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                        </div>
+                    </form>
                 </div>
-                <form action="" class="needs-validation" method="post" novalidate>
-                    @csrf
+            </div>
+        </div>
+    @endforeach
+    {{-- View Modal --}}
+    @foreach ($productColors as $productColor)
+        <div class="modal fade" id="colorsViewModal_{{ $productColor->id }}" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-0 border-0 shadow-sm">
+                    <div class="modal-header p-2 rounded-0">
+                        <h5 class="modal-title">View </h5>
+                        <!-- Close button in the header -->
+                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                            <span class="svg-icon svg-icon-2x">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none">
+                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                        transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                    <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                        transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
                     <div class="modal-body">
                         <div class="container px-0">
                             <div class="row modal_body_badge">
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-1">
-                                            <label for="validationCustom01" class="form-label required ">Name </label>
-                                            <input type="text" class="form-control form-control-solid form-control-sm"
-                                                name="name" id="validationCustom01" value="Ngen It"
-                                                placeholder="Enter Name" required>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Enter Color Code E.g: #FFFF</div>
-                                        </div>
-                                        <div class="col-md-6 mb-1">
-                                            <label for="validationCustom01" class="form-label required">Values</label>
-                                            <input type="color" class="form-control form-control-solid form-control-sm"
-                                                name="colorCode" id="validationCustom01" placeholder="Enter Color Code"
-                                                value="#ff0000" required>
-                                            <div class="valid-feedback">Looks good!</div>
-                                            <div class="invalid-feedback">Please enter a valid color code (e.g., #RRGGBB)
-                                                with 6 characters.</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer p-2">
-                        <!-- Button to close the modal in the footer -->
-                        <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    {{-- View Modal --}}
-    <div class="modal fade" id="colorsViewModal" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">View </h5>
-                    <!-- Close button in the header -->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                        <span class="svg-icon svg-icon-2x">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                    transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                    transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="container px-0">
-                        <div class="row modal_body_badge">
-                            <div class="col-lg-12">
-                                <div class="card border rounded-0 mt-3">
-                                    <p class="badge badge-info custom-badge">Info</span>
-                                    <div class="card-body p-1 px-2">
-                                        <div class="row modal_body_badge">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold">Name :</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>Ngen It</p>
+                                <div class="col-lg-12">
+                                    <div class="card border rounded-0 mt-3">
+                                        <p class="badge badge-info custom-badge">Info</span>
+                                        <div class="card-body p-1 px-2">
+                                            <div class="row modal_body_badge">
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold">Name :</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ $productColor->name }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold">Color Code :</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>#ae0a46</p>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold">Color Code :</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ $productColor->color_code }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -351,107 +328,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    @endforeach
 @endsection
-
-@push('scripts')
-    <script>
-        "use strict";
-
-        // Class definition
-        var KTDatatablesButtons = function() {
-            // Shared variables
-            var table;
-            var datatable;
-
-            // Private functions
-            var initDatatable = function() {
-                // Set date data order
-                const tableRows = table.querySelectorAll('tbody tr');
-
-                tableRows.forEach(row => {
-                    const dateRow = row.querySelectorAll('td');
-                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                        .format(); // select date from 4th column in table
-                    dateRow[3].setcolors('data-order', realDate);
-                });
-
-                // Init datatable --- more info on datatables: https://datatables.net/manual/
-                datatable = $(table).DataTable({
-                    "info": false,
-                    'order': [],
-                    'pageLength': 10,
-                });
-            }
-
-            // Hook export buttons
-            var exportButtons = () => {
-                const documentTitle = 'Customer Orders Report';
-                var buttons = new $.fn.dataTable.Buttons(table, {
-                    buttons: [{
-                            extend: 'copyHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'excelHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'csvHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'pdfHtml5',
-                            title: documentTitle
-                        }
-                    ]
-                }).container().appendTo($('#kt_datatable_example_1_export'));
-
-                // Hook dropdown menu click event to datatable export buttons
-                const exportButtons = document.querySelectorAll(
-                    '#kt_datatable_example_1_export_menu [data-kt-export]');
-                exportButtons.forEach(exportButton => {
-                    exportButton.addEventListener('click', e => {
-                        e.preventDefault();
-
-                        // Get clicked export value
-                        const exportValue = e.target.getcolors('data-kt-export');
-                        const target = document.querySelector('.dt-buttons .buttons-' +
-                            exportValue);
-
-                        // Trigger click event on hidden datatable export buttons
-                        target.click();
-                    });
-                });
-            }
-
-            // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-            var handleSearchDatatable = () => {
-                const filterSearch = document.querySelector('[data-kt-filter="search"]');
-                filterSearch.addEventListener('keyup', function(e) {
-                    datatable.search(e.target.value).draw();
-                });
-            }
-
-            // Public methods
-            return {
-                init: function() {
-                    table = document.querySelector('#kt_datatable_example_1');
-
-                    if (!table) {
-                        return;
-                    }
-
-                    initDatatable();
-                    exportButtons();
-                    handleSearchDatatable();
-                }
-            };
-        }();
-
-        // On document ready
-        KTUtil.onDOMContentLoaded(function() {
-            KTDatatablesButtons.init();
-        });
-    </script>
-@endpush

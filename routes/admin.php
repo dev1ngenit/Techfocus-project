@@ -75,19 +75,19 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
     Route::resources(
         [
-            'vat-tax'               => VatAndTaxController::class,
-            'employee-category'     => EmployeeCategoryController::class,
-            'employee-department'   => EmployeeDepartmentController::class,
-            'category'              => CategoryController::class,
-            'brand'                 => BrandController::class,
-            'product-attribute'     => ProductAttributeController::class,
-            'product-color'         => ProductColorController::class,
-            'industry'              => IndustryController::class,
-            'company'               => CompanyController::class,
-            'address'               => AddressController::class,
-            'leave-application'     => LeaveApplicationController::class,
-            'dynamic-category'      => DynamicCategoryController::class,
-            'event'                 => EventController::class,
+            'vat-tax'               => VatAndTaxController::class, // target 11/13/2023 ||MD // dd uncommitted changes
+            'employee-category'     => EmployeeCategoryController::class, // target 11/13/2023 ||MD // dd uncommitted changes
+            'employee-department'   => EmployeeDepartmentController::class, // target 11/13/2023 ||MD // dd uncommitted changes
+            'category'              => CategoryController::class, // target 11/13/2023 ||MD // dd uncommitted changes
+            'brand'                 => BrandController::class, // target 11/13/2023 ||MD // dd uncommitted changes
+            'product-attribute'     => ProductAttributeController::class, //not my work
+            'product-color'         => ProductColorController::class,  // target 11/13/2023 ||MD // dd uncommitted changes
+            'industry'              => IndustryController::class, // target 11/14/2023 ||MD // dd uncommitted changes.
+
+            'address'               => AddressController::class, // target 11/18/2023 ||MD // dd uncommitted changes.
+            'leave-application'     => LeaveApplicationController::class, //not my work
+            'dynamic-category'      => DynamicCategoryController::class,  // target  11/18/2023 ||MD
+            'event'                 => EventController::class, // target  11/18/2023 ||MD
             'faq'                   => FaqController::class,
             'sales-year-target'     => SalesYearTargetController::class,
             'sales-team-target'     => SalesTeamTargetController::class,
@@ -99,7 +99,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
             'banking'               => BankingController::class,
 
-            'attendance'            => AttendanceController::class,
+            'attendance'            => AttendanceController::class, //not my work
         ],
         ['except' => ['create', 'show', 'edit'],]
     );
@@ -132,6 +132,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
     Route::post('/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
+    Route::resource('company', CompanyController::class)->except(['show']); // target 11/18/2023 ||MD // dd uncommitted changes
     // Route::resource('example', ExampleController::class)->except(['create', 'show', 'edit']); //example
 
     Route::get('/machine-devicesetip-index', [BioMetricController::class, 'index'])->name('attendance.dashboard');
@@ -148,36 +149,3 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
     // Route::get('/device-restart', [BioMetricController::class, 'device_restart'])->name('machine.devicerestart');
     // Route::get('/device-shutdown', [BioMetricController::class, 'device_shutdown'])->name('machine.deviceshutdown');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

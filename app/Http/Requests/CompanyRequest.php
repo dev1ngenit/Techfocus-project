@@ -27,9 +27,9 @@ class CompanyRequest extends FormRequest
         return [
             'headquarter_country_id' => 'nullable|exists:countries,id',
             'name' => 'required|string',
-            'industry' => 'nullable|json',
-            'country' => 'nullable|json',
-            'location' => 'nullable|json',
+            'industry' => 'nullable|array',
+            'country' => 'nullable|array',
+            'location' => 'nullable|array',
             'phone' => 'nullable|string|max:20',
             'email' => 'nullable|email',
             'website_url' => 'nullable|url',

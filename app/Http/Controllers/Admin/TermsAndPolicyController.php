@@ -50,7 +50,7 @@ class TermsAndPolicyController extends Controller
     {
         $data = [
             'country_id'      => $request->country_id,
-            'comany_id'       => $request->comany_id,
+            'company_id'       => $request->company_id,
             'name'            => $request->name,
             'content'         => $request->content,
             'is_active'       => $request->is_active,
@@ -97,7 +97,7 @@ class TermsAndPolicyController extends Controller
     {
         $data = [
             'country_id'      => $request->country_id,
-            'comany_id'       => $request->comany_id,
+            'company_id'       => $request->company_id,
             'name'            => $request->name,
             'content'         => $request->content,
             'is_active'       => $request->is_active,

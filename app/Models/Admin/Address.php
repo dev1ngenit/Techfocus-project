@@ -2,8 +2,11 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\City;
+use App\Models\State;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Address extends Model
 {
@@ -15,4 +18,19 @@ class Address extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function addressCountry()
+    {
+        return Country::where('id', $this->country_id)->value('name');
+    }
+
+    public function addressState()
+    {
+        return State::where('id', $this->state_id)->value('name');
+    }
+
+    public function addressCity()
+    {
+        return City::where('id', $this->city_id)->value('name');
+    }
 }

@@ -1,4 +1,4 @@
-<option value="{{ $category->id }}"  @selected($category->id == $category_modal->parent_id)>
+<option value="{{ $category->id }}"  @selected($category->id == $category->parent_id)>
     @php echo str_repeat('-', $level) @endphp {{ $category->name }}
 </option>
 

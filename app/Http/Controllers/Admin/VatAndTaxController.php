@@ -15,7 +15,7 @@ class VatAndTaxController extends Controller
     public function __construct(VatAndTaxRepositoryInterface $vatAndTaxRepository, CompanyRepositoryInterface $companyRepository)
     {
         $this->vatAndTaxRepository = $vatAndTaxRepository;
-        $this->companyRepository            = $companyRepository;
+        $this->companyRepository   = $companyRepository;
     }
 
     /**
@@ -26,8 +26,8 @@ class VatAndTaxController extends Controller
     public function index()
     {
         return view('admin.pages.vatAndTax.index', [
-            'vatAndTaxes'    => $this->vatAndTaxRepository->allVatAndTax(),
-            'companies'           => $this->companyRepository->allCompany(),
+            'vatAndTaxes' => $this->vatAndTaxRepository->allVatAndTax(),
+            'companies'   => $this->companyRepository->allCompany(),
         ]);
     }
 

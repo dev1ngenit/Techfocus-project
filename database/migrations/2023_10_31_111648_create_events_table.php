@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->foreignId('dynamic_category_id')->nullable()->constrained('dynamic_categories')->cascadeOnDelete();
-            $table->foreignId('employee_id')->nullable()->constrained('admins')->cascadeOnDelete();  // Assuming there's an employees table
-            $table->foreignId('department_id')->nullable()->constrained('employee_departments')->cascadeOnDelete();  // Assuming there's a departments table
+            $table->foreignId('employee_id')->nullable()->constrained('admins')->cascadeOnDelete();
+            $table->foreignId('department_id')->nullable()->constrained('employee_departments')->cascadeOnDelete();
             $table->string('title');
             $table->string('slug')->unique();
             $table->date('start_date')->nullable();

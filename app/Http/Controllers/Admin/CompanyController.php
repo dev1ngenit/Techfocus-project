@@ -24,8 +24,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $data['companies'] =  $this->companyRepository->allCompany();
-        return view('admin.pages.company.index', $data);
+        return view('admin.pages.company.index', [
+            'companies' =>  $this->companyRepository->allCompany(),
+        ]);
     }
 
     /**
@@ -35,7 +36,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.company.create');
     }
 
     /**
@@ -103,7 +104,9 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.company.edit', [
+            'company' =>  $this->companyRepository->findCompany($id),
+        ]);
     }
 
     /**
@@ -145,7 +148,7 @@ class CompanyController extends Controller
             'phone'                  => $request->phone,
             'email'                  => $request->email,
             'website_url'            => $request->website_url,
-            'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $company->logo,
+            'logo'                   => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $company->logo,
             'postal_code'            => $request->postal_code,
             'contact_name'           => $request->contact_name,
             'contact_email'          => $request->contact_email,

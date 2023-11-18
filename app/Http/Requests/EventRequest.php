@@ -25,10 +25,9 @@ class EventRequest extends FormRequest
     public function rules()
     {
         return [
-            'country_id' => 'nullable|exists:countries,id',
             'dynamic_category_id' => 'nullable|exists:dynamic_categories,id',
-            'employee_id' => 'nullable|exists:employees,id',
-            'department_id' => 'nullable|exists:departments,id',
+            'employee_id' => 'nullable|exists:admins,id',
+            'department_id' => 'nullable|exists:employee_departments,id',
             'title' => 'required|string|max:255',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
@@ -47,7 +46,6 @@ class EventRequest extends FormRequest
     public function messages()
     {
         return [
-            'country_id.exists' => 'The selected country does not exist.',
             'dynamic_category_id.exists' => 'The selected dynamic category does not exist.',
             'employee_id.exists' => 'The selected employee does not exist.',
             'department_id.exists' => 'The selected department does not exist.',
@@ -74,7 +72,6 @@ class EventRequest extends FormRequest
     public function attributes()
     {
         return [
-            'country_id' => 'country',
             'dynamic_category_id' => 'dynamic category',
             'employee_id' => 'employee',
             'department_id' => 'department',
