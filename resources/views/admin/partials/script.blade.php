@@ -24,6 +24,7 @@
 {{-- <script src="{{ asset('backend/assets/js/custom/techfocus/toastr.js') }}"></script> --}}
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> --}}
 <script src="{{ asset('backend/assets/js/bootstrap.multi-select.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/js/bootstrap-multiselect.js" ></script>
 <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 <!-- Custom:Shahed --->
 <!--end::Page Custom Javascript-->
@@ -43,6 +44,11 @@
     $.fn.poshytip = {
         defaults: null
     }
+
+//     $(document).ready(function() {
+//          // Initialize Bootstrap Multiselect
+//       $('.bootstrap-multiselect').multiselect();
+//    });
 </script>
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/js/jquery-editable-poshytip.min.js">
