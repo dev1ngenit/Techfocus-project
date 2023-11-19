@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Sales;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SalesTeamTargetRequest;
+use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\SalesTeamTargetRepositoryInterface;
 
 class SalesTeamTargetController extends Controller
 {
     private $salesTeamTargetRepository;
+    private $companyRepository;
 
-    public function __construct(SalesTeamTargetRepositoryInterface $salesTeamTargetRepository)
+    public function __construct(SalesTeamTargetRepositoryInterface $salesTeamTargetRepository, CompanyRepositoryInterface $companyRepository)
     {
         $this->salesTeamTargetRepository = $salesTeamTargetRepository;
+        $this->companyRepository = $companyRepository;
     }
 
     /**
@@ -24,6 +27,7 @@ class SalesTeamTargetController extends Controller
     {
         return view('admin.pages.salesTeamTarget.index', [
             'salesTeamTargets' => $this->salesTeamTargetRepository->allSalesTeamTarget(),
+            'companies' => $this->companyRepository->allCompany(),
         ]);
     }
 

@@ -75,22 +75,22 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
     Route::resources(
         [
-            'vat-tax'               => VatAndTaxController::class, // target 11/13/2023 ||MD // dd uncommitted changes
-            'employee-category'     => EmployeeCategoryController::class, // target 11/13/2023 ||MD // dd uncommitted changes
-            'employee-department'   => EmployeeDepartmentController::class, // target 11/13/2023 ||MD // dd uncommitted changes
-            'category'              => CategoryController::class, // target 11/13/2023 ||MD // dd uncommitted changes
-            'brand'                 => BrandController::class, // target 11/13/2023 ||MD // dd uncommitted changes
+            'vat-tax'               => VatAndTaxController::class,
+            'employee-category'     => EmployeeCategoryController::class,
+            'employee-department'   => EmployeeDepartmentController::class,
+            'category'              => CategoryController::class,
+            'brand'                 => BrandController::class,
             'product-attribute'     => ProductAttributeController::class, //not my work
-            'product-color'         => ProductColorController::class,  // target 11/13/2023 ||MD // dd uncommitted changes
-            'industry'              => IndustryController::class, // target 11/14/2023 ||MD // dd uncommitted changes.
+            'product-color'         => ProductColorController::class,  
+            'industry'              => IndustryController::class,
 
-            'address'               => AddressController::class, // target 11/18/2023 ||MD // dd uncommitted changes.
+            'address'               => AddressController::class, 
             'leave-application'     => LeaveApplicationController::class, //not my work
-            'dynamic-category'      => DynamicCategoryController::class,  // target  11/18/2023 ||MD
-            'event'                 => EventController::class, // target  11/18/2023 ||MD
-            'faq'                   => FaqController::class,
+            'dynamic-category'      => DynamicCategoryController::class,  
+            'event'                 => EventController::class, 
+            'faq'                   => FaqController::class, 
             'sales-year-target'     => SalesYearTargetController::class,
-            'sales-team-target'     => SalesTeamTargetController::class,
+            'sales-team-target'     => SalesTeamTargetController::class,// 70% finised ||  
 
             'news-trend'            => NewsTrendController::class,
             'hr-policy'             => HrPolicyController::class,

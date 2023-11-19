@@ -120,26 +120,26 @@
                                                 {{ $event->start_time }}
                                             </td>
                                             <td>
-                                                <span class="badge {{ $event == 'active' ? 'bg-success' : 'bg-danger' }}">Active</span>
+                                                <span
+                                                    class="badge {{ $event->status == 'active' ? 'bg-success' : 'bg-danger' }}">{{ $event->status }}</span>
                                             </td>
                                             <td class="d-flex justify-content-between align-items-center">
                                                 <a href="#"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal" data-bs-target="#eventsViewModal">
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#eventsViewModal_{{ $event->id }}">
                                                     <i class="fa-solid fa-expand"></i>
-                                                    <!--View-->
                                                 </a>
                                                 <a href="#"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal" data-bs-target="#eventsEditModal">
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#eventsEditModal_{{ $event->id }}">
                                                     <i class="fa-solid fa-pen"></i>
-                                                    <!--Edit-->
                                                 </a>
-                                                <a href="#"
+                                                <a href="{{ route('admin.event.destroy', $event->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                     data-kt-docs-table-filter="delete_row">
                                                     <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                    <!--Delete-->
                                                 </a>
                                             </td>
                                         </tr>
@@ -178,10 +178,11 @@
                                             <select class="form-select-sm form-select form-select-solid"
                                                 name="dynamic_category_id" data-dropdown-parent="#eventsAddModal"
                                                 data-control="select2" data-placeholder="Select an option"
-                                                data-allow-clear="true" >
+                                                data-allow-clear="true">
                                                 <option></option>
                                                 @foreach ($dynamicCategories as $dynamicCategory)
-                                                    <option value="{{ $dynamicCategory->id }}">{{ $dynamicCategory->name }}
+                                                    <option value="{{ $dynamicCategory->id }}">
+                                                        {{ $dynamicCategory->name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -294,7 +295,7 @@
     </div>
     {{-- Edit Modal --}}
     @foreach ($events as $event)
-        <div class="modal fade" id="eventsEditModal" data-backdrop="static">
+        <div class="modal fade" id="eventsEditModal_{{ $event->id }}" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
                     <div class="modal-header p-2 rounded-0">
@@ -319,9 +320,10 @@
                                                 <label for="validationCustom04" class="form-label  mb-0">Dynamic
                                                     Category Name</label>
                                                 <select class="form-select-sm form-select form-select-solid"
-                                                    name="dynamic_category_id" data-dropdown-parent="#eventsAddModal"
+                                                    name="dynamic_category_id"
+                                                    data-dropdown-parent="#eventsEditModal_{{ $event->id }}"
                                                     data-control="select2" data-placeholder="Select an option"
-                                                    data-allow-clear="true" >
+                                                    data-allow-clear="true">
                                                     <option></option>
                                                     @foreach ($dynamicCategories as $dynamicCategory)
                                                         <option @selected($dynamicCategory->id == $event->dynamic_category_id)
@@ -336,7 +338,8 @@
                                                 <label for="validationCustom04" class="form-label required mb-0">Employee
                                                     Name</label>
                                                 <select class="form-select-sm form-select form-select-solid"
-                                                    name="employee_id" data-dropdown-parent="#eventsAddModal"
+                                                    name="employee_id"
+                                                    data-dropdown-parent="#eventsEditModal_{{ $event->id }}"
                                                     data-control="select2" data-placeholder="Select an option"
                                                     data-allow-clear="true" required>
                                                     <option></option>
@@ -353,7 +356,8 @@
                                                     class="form-label required mb-0">Depertment
                                                     Name</label>
                                                 <select class="form-select-sm form-select form-select-solid"
-                                                    name="department_id" data-dropdown-parent="#eventsAddModal"
+                                                    name="department_id"
+                                                    data-dropdown-parent="#eventsEditModal_{{ $event->id }}"
                                                     data-control="select2" data-placeholder="Select an option"
                                                     data-allow-clear="true" required>
                                                     <option></option>
@@ -418,7 +422,8 @@
                                                 <label for="validationCustom04"
                                                     class="form-label required mb-0">Status</label>
                                                 <select class="form-select-sm form-select form-select-solid"
-                                                    name="status" data-dropdown-parent="#eventsAddModal"
+                                                    name="status"
+                                                    data-dropdown-parent="#eventsEditModal_{{ $event->id }}"
                                                     data-control="select2" data-placeholder="Select an option"
                                                     data-hide-search="true" data-allow-clear="true" required>
                                                     <option></option>
@@ -450,7 +455,7 @@
     @endforeach
     {{-- View Modal --}}
     @foreach ($events as $event)
-        <div class="modal fade" id="eventsViewModal" data-backdrop="static">
+        <div class="modal fade" id="eventsViewModal_{{ $event->id }}" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
                     <div class="modal-header p-2 rounded-0">
@@ -475,7 +480,8 @@
                                                             <p class="fw-bold" title="Country Name">Title :</p>
                                                         </div>
                                                         <div class="col-lg-9 col-sm-6">
-                                                            <p>Lorem ipsum dolor sit amet consectetur.</p>
+                                                            <p>{{ $event->title }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -485,7 +491,8 @@
                                                             <p class="fw-bold">Start Date :</p>
                                                         </div>
                                                         <div class="col-lg-5 col-sm-6">
-                                                            <p>22/12/23</p>
+                                                            <p>{{ $event->start_date }}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -496,7 +503,7 @@
                                                         </div>
                                                         <div class="col-lg-6 col-sm-6">
                                                             <p>
-                                                                15/11/23
+                                                                {{ $event->start_time }}
                                                             </p>
                                                         </div>
                                                     </div>
@@ -508,7 +515,8 @@
                                                         </div>
                                                         <div class="col-lg-6 col-sm-6">
                                                             <p>
-                                                                Active
+                                                                <span
+                                                                    class="badge {{ $event->status == 'active' ? 'bg-success' : 'bg-danger' }}">{{ $event->status }}</span>
                                                             </p>
                                                         </div>
                                                     </div>

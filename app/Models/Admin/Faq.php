@@ -2,8 +2,9 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Admin\DynamicCategory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Faq extends Model
 {
@@ -15,4 +16,9 @@ class Faq extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function dynamicCategoryName()
+    {
+        return DynamicCategory::where('id', $this->dynamic_category_id)->value('name');
+    }
 }
