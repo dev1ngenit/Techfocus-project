@@ -87,12 +87,18 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             Route::delete('/attribute-value/{id}/destroy', 'destroy')->name('attribute-value.destroy');
         });
 
-
+        //Product
+        Route::controller(ProductController::class)->group(function () {
+            Route::get('/completed-products', 'index')->name('attribute.index');
+            Route::get('/sourced-products', 'sourcedProducts')->name('sourced.products');
+            Route::get('/saved-products', 'savedProducts')->name('saved.products');
+        });
         Route::resources(
-            [ 
+            [
                 'product'               => ProductController::class,
 
-            ]);
+            ]
+        );
         Route::resources(
             [
                 'profile'               => ProfileController::class,
