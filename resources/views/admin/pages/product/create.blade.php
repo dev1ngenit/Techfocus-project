@@ -145,9 +145,9 @@
                                                     <div class="col-lg-2 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Current Stock</label>
-                                                            <input name="qty" pattern="\d+" step="1"
+                                                            <input type="number" name="qty" pattern="\d+" step="1"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Current Stock" type="number"
+                                                                placeholder="Enter Current Stock"
                                                                 required />
                                                             <div class="invalid-feedback"> Please Enter Current Stock.
                                                             </div>
@@ -178,11 +178,9 @@
                                                                 name="brand_id" data-control="select2"
                                                                 data-placeholder="Select an Brand Name"
                                                                 data-allow-clear="true" required>
-                                                                <option></option>
-                                                                <option value="software">Software</option>
-                                                                <option value="hardware">Hardware</option>
-                                                                <option value="book">Book</option>
-                                                                <option value="training">Training</option>
+                                                                @foreach ($brands as $brand) 
+                                                                    <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                                                @endforeach
                                                             </select>
                                                             <div class="invalid-feedback"> Please Enter Brand Name.</div>
                                                         </div>

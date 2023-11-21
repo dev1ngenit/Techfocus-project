@@ -37,13 +37,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data['brands']              = Brand::latest()->get();
-        $data['categories']          = Category::orderBy('id', 'DESC')->get();
-        $data['sub_cats']            = Category::orderBy('id', 'DESC')->get();
-        $data['sub_sub_cats']        = Category::orderBy('id', 'DESC')->get();
-        $data['sub_sub_sub_cats']    = Category::orderBy('id', 'DESC')->get();
-        $data['industrys']           = Industry::orderBy('id', 'DESC')->get();
-        $data['solutions']           = Industry::orderBy('id', 'DESC')->get();
+        $data['brands']              = Brand::latest('id')->get(['id','name']);
+        $data['categories']          = Category::latest('id')->get();
+        $data['sub_cats']            = Category::latest('id')->get();
+        $data['sub_sub_cats']        = Category::latest('id')->get();
+        $data['sub_sub_sub_cats']    = Category::latest('id')->get();
+        $data['industrys']           = Industry::latest('id')->get();
+        $data['solutions']           = Industry::latest('id')->get();
         return view('admin.pages.product.create', $data);
     }
 

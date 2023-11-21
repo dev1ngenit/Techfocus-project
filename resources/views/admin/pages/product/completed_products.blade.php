@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-lg">
                 <div class="card card-p-0 card-flush">
-                    <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+                    <div class="card-header align-items-center pb-1 pt-3 gap-2 gap-md-5">
                         <div class="container px-0">
                             <div class="row">
                                 <div class="col-lg-2 col-sm-12 text-lg-start text-sm-center">
@@ -39,24 +39,23 @@
                                 </div>
                                 <div class="col-lg-6 col-sm-12 text-lg-end text-sm-center">
                                     <!--begin::Export dropdown-->
-                                    <a href="{{route('admin.saved.products')}}" class="btn btn-sm btn-info rounded-0 px-2 me-3">
-                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                        Saved Products
-                                    </a>
-                                    <a href="{{route('admin.sourced.products')}}" class="btn btn-sm btn-secondary rounded-0 px-2 me-3">
+                                    <a href="{{route('admin.sourced.products')}}" class="btn btn-sm btn-info rounded-0 px-2 me-3">
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Sourced Products
+                                    </a>
+                                    <a href="{{route('admin.saved.products')}}" class="btn btn-sm btn-secondary rounded-0 px-5 me-3">
+                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
+                                        Drafts
                                     </a>
                                     <button type="button" class="btn btn-sm btn-light-primary rounded-0 px-2 me-3"
                                         data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Export Report
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-light-success rounded-0 px-2"
-                                        data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
-                                        data-bs-target="#categoryAddModal">
+                                    <a href="{{route('admin.product.create')}}" class="btn btn-sm btn-success rounded-0 px-2">
+                                        <i class="fa-solid fa-plus"></i>
                                         Add New
-                                    </button>
+                                    </a>
                                     <!--begin::Menu-->
                                     <div id="kt_datatable_example_1_export_menu"
                                         class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"

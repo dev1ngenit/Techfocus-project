@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\AttributeValueController;
 use App\Http\Controllers\Admin\BankingController;
+use App\Http\Controllers\Admin\BrandPageController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -26,9 +27,11 @@ use App\Http\Controllers\Admin\CountryStateCityController;
 use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
+use App\Http\Controllers\Admin\IndustryPageController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SolutionDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,7 +99,9 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::resources(
             [
                 'product'               => ProductController::class,
-
+                'brand-page'            => BrandPageController::class,
+                'solution-details'      => SolutionDetailsController::class,
+                'industry-page'         => IndustryPageController::class,
             ]
         );
         Route::resources(
