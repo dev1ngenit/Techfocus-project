@@ -86,38 +86,32 @@
                                     <th class="text-center" width="15%">Action</th>
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
-                                @if ($condition)
+                                @if ($salesTeamTargets)
                                     @foreach ($salesTeamTargets as $salesTeamTarget)
                                         <tr class="odd">
                                             <td>
                                                 {{ $loop->iteration }}
                                             </td>
                                             <td>
-                                                <span> {{ $salesTeamTargets->name }}</span>
+                                                <span> {{ $salesTeamTarget->name }}</span>
                                             </td>
                                             <td>
-                                                {{ $salesTeamTargets->fiscal_year }}
+                                                {{ $salesTeamTarget->fiscal_year }}
                                             </td>
                                             <td>
-                                                {{ $salesTeamTargets->year_target }}
+                                                {{ $salesTeamTarget->year_target }}
                                             </td>
                                             <td>
-                                                {{ $salesTeamTargets->year_started }}
+                                                {{ $salesTeamTarget->year_started }}
                                             </td>
                                             <td class="d-flex justify-content-between align-items-center">
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#salesmanViewModal_{{ $salesTeamTargets->id }}">
-                                                    <i class="fa-solid fa-expand"></i>
-                                                </a>
                                                 <a href="#"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#salesmanEditModal_{{ $salesTeamTarget->id }}">
                                                     <i class="fa-solid fa-pen"></i>
                                                 </a>
-                                                <a href="#"
+                                                <a href="{{ route('admin.sales-team-target.destroy', $salesTeamTarget->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                     data-kt-docs-table-filter="delete_row">
                                                     <i class="fa-solid fa-trash-can-arrow-up"></i>
@@ -144,7 +138,8 @@
                         <i class="fa-solid fa-circle-xmark"></i>
                     </div>
                 </div>
-                <form action="" class="needs-validation" method="post" novalidate>
+                <form action="{{ route('admin.sales-team-target.store') }}" class="needs-validation" method="post"
+                    novalidate>
                     @csrf
                     <div class="modal-body">
                         <div class="container px-0">
@@ -159,50 +154,54 @@
                                                 data-control="select2" data-placeholder="Select an option"
                                                 data-allow-clear="true" required>
                                                 <option></option>
-                                                <option value="bangladesh">Bangaldesh</option>
-                                                <option value="india">India</option>
-                                                <option value="pakistan">Pakistan</option>
+                                                @foreach ($admins as $admin)
+                                                    <option value="{{ $admin->id }}">{{ $admin->name }}</option>
+                                                @endforeach
                                             </select>
                                             <div class="invalid-feedback"> Please Select Salesman Name. </div>
                                         </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="validationCustom04" class="form-label required mb-0">Country
+                                        <div class="col-md-3">
+                                            <label for="validationCustom04" class="form-label required">Country
                                                 Name</label>
-                                            <select class="form-select form-select-solid form-select-sm" name="country_id"
+                                            <select class="form-select form-select-solid" name="country_id"
                                                 data-dropdown-parent="#salesmanAddModal" data-control="select2"
                                                 data-placeholder="Select an option" data-allow-clear="true" required>
                                                 <option></option>
-                                                <option value="1">Bangaldesh</option>
-                                                <option value="2">India</option>
-                                                <option value="2">Pakistan</option>
+                                                @foreach (getAllCountry() as $country)
+                                                    <option value="{{ $country->id }}">
+                                                        {{ $country->name }}</option>
+                                                @endforeach
                                             </select>
-                                            <div class="invalid-feedback"> Please Select Country Name. </div>
+                                            <div class="valid-feedback"> Looks good! </div>
+                                            <div class="invalid-feedback"> Please provide a valid zip. </div>
                                         </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="validationCustom04" class="form-label required mb-0">Company
+                                        <div class="col-md-3">
+                                            <label for="validationCustom04" class="form-label required">Company
                                                 Name</label>
-                                            <select class="form-select form-select-solid form-select-sm" name="company_id"
+                                            <select class="form-select form-select-solid" name="company_id"
                                                 data-dropdown-parent="#salesmanAddModal" data-control="select2"
-                                                data-placeholder="Select an option" data-allow-clear="true" required>
+                                                data-placeholder="Select an option" data-allow-clear="true">
                                                 <option></option>
-                                                <option value="1">Bangaldesh</option>
-                                                <option value="2">India</option>
-                                                <option value="2">Pakistan</option>
+                                                @foreach ($companies as $company)
+                                                    <option value="{{ $company->id }}">
+                                                        {{ $company->name }}</option>
+                                                @endforeach
                                             </select>
-                                            <div class="invalid-feedback"> Please Select Company Name. </div>
+                                            <div class="valid-feedback"> Looks good! </div>
+                                            <div class="invalid-feedback"> Please provide a valid zip. </div>
                                         </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="validationCustom04" class="form-label required mb-0">Year
-                                                Started</label>
-                                            <select class="form-select form-select-solid form-select-sm"
+                                        <div class="col-md-4 mb-2">
+                                            <label for="validationCustom04" class="form-label required mb-0">
+                                                Year Started</label>
+                                            <select class="form-select-sm form-select form-select-solid"
                                                 name="year_started" data-dropdown-parent="#salesmanAddModal"
-                                                data-hide-search="true" data-control="select2"
-                                                data-placeholder="Select an option" data-allow-clear="true" required>
+                                                data-control="select2" data-placeholder="Select an option"
+                                                data-allow-clear="true" data-hide-search="true" required>
                                                 <option></option>
                                                 <option value="january">January</option>
                                                 <option value="july">July</option>
                                             </select>
-                                            <div class="invalid-feedback"> Please Select Year Started. </div>
+                                            <div class="invalid-feedback"> Please Select a option. </div>
                                         </div>
                                         <div class="col-md-4 mb-2">
                                             <label for="validationCustom01" class="form-label required mb-0">Name
@@ -211,19 +210,17 @@
                                                 name="name" id="validationCustom01" placeholder="Enter Name" required>
                                             <div class="invalid-feedback"> Please Enter Name </div>
                                         </div>
-
-
                                         <div class="col-md-4 mb-2">
-                                            <label for="validationCustom01" class="form-label required mb-0">Fiscal Year
+                                            <label for="validationCustom01" class="form-label required mb-0">Fiscal
+                                                Year
                                             </label>
-                                            <input type="date" class="form-control form-control-solid form-control-sm"
+                                            <input type="text" class="form-control form-control-solid form-control-sm"
                                                 name="fiscal_year" id="validationCustom01" required>
                                             <div class="invalid-feedback"> Please Enter Fiscal Year </div>
                                         </div>
-
-
                                         <div class="col-md-4 mb-2">
-                                            <label for="validationCustom01" class="form-label required mb-0">Year Target
+                                            <label for="validationCustom01" class="form-label required mb-0">Year
+                                                Target
                                             </label>
                                             <input type="number" step="0.01"
                                                 class="form-control form-control-solid form-control-sm" name="year_target"
@@ -231,7 +228,8 @@
                                             <div class="invalid-feedback"> Please Enter Year Target </div>
                                         </div>
                                         <div class="col-md-3 mb-2">
-                                            <label for="validationCustom01" class="form-label required mb-0">Quarter One
+                                            <label for="validationCustom01" class="form-label required mb-0">Quarter
+                                                One
                                                 Target
                                             </label>
                                             <input type="number" step="0.01"
@@ -240,7 +238,8 @@
                                             <div class="invalid-feedback"> Please Enter Quarter One Target </div>
                                         </div>
                                         <div class="col-md-3 mb-2">
-                                            <label for="validationCustom01" class="form-label required mb-0">Quarter Two
+                                            <label for="validationCustom01" class="form-label required mb-0">Quarter
+                                                Two
                                                 Target
                                             </label>
                                             <input type="number" step="0.01"
@@ -249,7 +248,8 @@
                                             <div class="invalid-feedback"> Please Enter Quarter Two Target </div>
                                         </div>
                                         <div class="col-md-3 mb-2">
-                                            <label for="validationCustom01" class="form-label required mb-0">Quarter Three
+                                            <label for="validationCustom01" class="form-label required mb-0">Quarter
+                                                Three
                                                 Target
                                             </label>
                                             <input type="number" step="0.01"
@@ -258,7 +258,8 @@
                                             <div class="invalid-feedback"> Please Enter Quarter Three Target </div>
                                         </div>
                                         <div class="col-md-3 mb-2">
-                                            <label for="validationCustom01" class="form-label required mb-0">Quarter Four
+                                            <label for="validationCustom01" class="form-label required mb-0">Quarter
+                                                Four
                                                 Target
                                             </label>
                                             <input type="number" step="0.01"
@@ -308,84 +309,85 @@
                                                     data-control="select2" data-placeholder="Select an option"
                                                     data-allow-clear="true" required>
                                                     <option></option>
-                                                    <option value="bangladesh">Bangaldesh</option>
-                                                    <option value="india">India</option>
-                                                    <option value="pakistan">Pakistan</option>
+                                                    @foreach ($admins as $admin)
+                                                        <option @selected($admin->id == $salesTeamTarget->sales_man_id) value="{{ $admin->id }}">{{ $admin->name }}</option>
+                                                    @endforeach
                                                 </select>
                                                 <div class="invalid-feedback"> Please Select Salesman Name. </div>
                                             </div>
-                                            <div class="col-md-3 mb-2">
-                                                <label for="validationCustom04" class="form-label required mb-0">Country
+                                            <div class="col-md-3">
+                                                <label for="validationCustom04" class="form-label required">Country
                                                     Name</label>
-                                                <select class="form-select form-select-solid form-select-sm"
-                                                    name="country_id"
+                                                <select class="form-select form-select-solid" name="country_id"
                                                     data-dropdown-parent="#salesmanEditModal_{{ $salesTeamTarget->id }}"
                                                     data-control="select2" data-placeholder="Select an option"
                                                     data-allow-clear="true" required>
                                                     <option></option>
-                                                    <option value="1">Bangaldesh</option>
-                                                    <option value="2">India</option>
-                                                    <option value="2">Pakistan</option>
+                                                    @foreach (getAllCountry() as $country)
+                                                        <option @selected($country->id == $salesTeamTarget->country_id) value="{{ $country->id }}">
+                                                            {{ $country->name }}</option>
+                                                    @endforeach
                                                 </select>
-                                                <div class="invalid-feedback"> Please Select Country Name. </div>
+                                                <div class="valid-feedback"> Looks good! </div>
+                                                <div class="invalid-feedback"> Please provide a valid zip. </div>
                                             </div>
-                                            <div class="col-md-3 mb-2">
-                                                <label for="validationCustom04" class="form-label required mb-0">Company
+                                            <div class="col-md-3">
+                                                <label for="validationCustom04" class="form-label required">Company
                                                     Name</label>
-                                                <select class="form-select form-select-solid form-select-sm"
-                                                    name="company_id"
+                                                <select class="form-select form-select-solid" name="company_id"
                                                     data-dropdown-parent="#salesmanEditModal_{{ $salesTeamTarget->id }}"
                                                     data-control="select2" data-placeholder="Select an option"
-                                                    data-allow-clear="true" required>
+                                                    data-allow-clear="true">
                                                     <option></option>
-                                                    <option value="1">Bangaldesh</option>
-                                                    <option value="2">India</option>
-                                                    <option value="2">Pakistan</option>
+                                                    @foreach ($companies as $company)
+                                                        <option @selected($company->id == $salesTeamTarget->company_id) value="{{ $company->id }}">
+                                                            {{ $company->name }}</option>
+                                                    @endforeach
                                                 </select>
-                                                <div class="invalid-feedback"> Please Select Company Name. </div>
+                                                <div class="valid-feedback"> Looks good! </div>
+                                                <div class="invalid-feedback"> Please provide a valid zip. </div>
                                             </div>
-                                            <div class="col-md-3 mb-2">
-                                                <label for="validationCustom04" class="form-label required mb-0">Year
-                                                    Started</label>
-                                                <select class="form-select form-select-solid form-select-sm"
+                                            <div class="col-md-4 mb-2">
+                                                <label for="validationCustom04" class="form-label required mb-0">
+                                                    Year Started</label>
+                                                <select class="form-select-sm form-select form-select-solid"
                                                     name="year_started"
                                                     data-dropdown-parent="#salesmanEditModal_{{ $salesTeamTarget->id }}"
-                                                    data-hide-search="true" data-control="select2"
-                                                    data-placeholder="Select an option" data-allow-clear="true" required>
+                                                    data-control="select2" data-placeholder="Select an option"
+                                                    data-allow-clear="true" data-hide-search="true" required>
                                                     <option></option>
-                                                    <option value="january">January</option>
-                                                    <option value="july">July</option>
+                                                    <option @selected($salesTeamTarget->year_started == 'january') value="january">January</option>
+                                                    <option @selected($salesTeamTarget->year_started == 'july') value="july">July</option>
                                                 </select>
-                                                <div class="invalid-feedback"> Please Select Year Started. </div>
+                                                <div class="invalid-feedback"> Please Select a option. </div>
                                             </div>
                                             <div class="col-md-4 mb-2">
                                                 <label for="validationCustom01" class="form-label required mb-0">Name
                                                 </label>
                                                 <input type="text"
                                                     class="form-control form-control-solid form-control-sm" name="name"
-                                                    id="validationCustom01" placeholder="Enter Name" required>
+                                                    value="{{ $salesTeamTarget->name }}" id="validationCustom01"
+                                                    placeholder="Enter Name" required>
                                                 <div class="invalid-feedback"> Please Enter Name </div>
                                             </div>
-
-
                                             <div class="col-md-4 mb-2">
                                                 <label for="validationCustom01" class="form-label required mb-0">Fiscal
                                                     Year
                                                 </label>
-                                                <input type="date"
+                                                <input type="text"
                                                     class="form-control form-control-solid form-control-sm"
-                                                    name="fiscal_year" id="validationCustom01" required>
+                                                    name="fiscal_year" value="{{ $salesTeamTarget->fiscal_year }}"
+                                                    id="validationCustom01" required>
                                                 <div class="invalid-feedback"> Please Enter Fiscal Year </div>
                                             </div>
-
-
                                             <div class="col-md-4 mb-2">
                                                 <label for="validationCustom01" class="form-label required mb-0">Year
                                                     Target
                                                 </label>
                                                 <input type="number" step="0.01"
                                                     class="form-control form-control-solid form-control-sm"
-                                                    name="year_target" id="validationCustom01" required>
+                                                    name="year_target" value="{{ $salesTeamTarget->year_target }}"
+                                                    id="validationCustom01" required>
                                                 <div class="invalid-feedback"> Please Enter Year Target </div>
                                             </div>
                                             <div class="col-md-3 mb-2">
@@ -395,7 +397,9 @@
                                                 </label>
                                                 <input type="number" step="0.01"
                                                     class="form-control form-control-solid form-control-sm"
-                                                    name="quarter_one_target" id="validationCustom01" required>
+                                                    name="quarter_one_target"
+                                                    value="{{ $salesTeamTarget->quarter_one_target }}"
+                                                    id="validationCustom01" required>
                                                 <div class="invalid-feedback"> Please Enter Quarter One Target </div>
                                             </div>
                                             <div class="col-md-3 mb-2">
@@ -405,7 +409,9 @@
                                                 </label>
                                                 <input type="number" step="0.01"
                                                     class="form-control form-control-solid form-control-sm"
-                                                    name="quarter_two_target" id="validationCustom01" required>
+                                                    name="quarter_two_target"
+                                                    value="{{ $salesTeamTarget->quarter_two_target }}"
+                                                    id="validationCustom01" required>
                                                 <div class="invalid-feedback"> Please Enter Quarter Two Target </div>
                                             </div>
                                             <div class="col-md-3 mb-2">
@@ -415,7 +421,9 @@
                                                 </label>
                                                 <input type="number" step="0.01"
                                                     class="form-control form-control-solid form-control-sm"
-                                                    name="quarter_three_target" id="validationCustom01" required>
+                                                    name="quarter_three_target"
+                                                    value="{{ $salesTeamTarget->quarter_three_target }}"
+                                                    id="validationCustom01" required>
                                                 <div class="invalid-feedback"> Please Enter Quarter Three Target </div>
                                             </div>
                                             <div class="col-md-3 mb-2">
@@ -425,7 +433,9 @@
                                                 </label>
                                                 <input type="number" step="0.01"
                                                     class="form-control form-control-solid form-control-sm"
-                                                    name="quarter_four_target" id="validationCustom01" required>
+                                                    name="quarter_four_target"
+                                                    value="{{ $salesTeamTarget->quarter_four_target }}"
+                                                    id="validationCustom01" required>
                                                 <div class="invalid-feedback"> Please Enter Quarter Four Target </div>
                                             </div>
                                         </div>
@@ -437,77 +447,6 @@
                             <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    @endforeach
-    {{-- View Modal --}}
-    @foreach ($salesTeamTargets as $salesTeamTarget)
-        <div class="modal fade" id="salesmanViewModal_{{ $salesTeamTargets->id }}" data-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-0 border-0 shadow-sm">
-                    <div class="modal-header p-2 rounded-0">
-                        <h5 class="modal-title ps-5">View Faq</h5>
-                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                            aria-label="Close">
-                            <i class="fa-solid fa-circle-xmark"></i>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container px-0">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="card border rounded-0">
-                                        <p class="badge badge-info custom-badge">Info</span>
-                                        <div class="card-body p-1 px-2">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-5 col-sm-5">
-                                                            <p class="fw-bold" title="Country Name">Salesman Name :</p>
-                                                        </div>
-                                                        <div class="col-lg-7 col-sm-6">
-                                                            <p>Your Name</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-sm-5">
-                                                            <p class="fw-bold">Fiscal Year :</p>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-6">
-                                                            <p>12/11/2023</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-sm-5">
-                                                            <p class="fw-bold">Year Target :</p>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-6">
-                                                            <p>12/11/2023</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-sm-5">
-                                                            <p class="fw-bold">Year Started :</p>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-6">
-                                                            <p>12/11/2023</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -90,12 +90,11 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             'event'                 => EventController::class, 
             'faq'                   => FaqController::class, 
             'sales-year-target'     => SalesYearTargetController::class,
-            'sales-team-target'     => SalesTeamTargetController::class,// 70% finised ||  
+            'sales-team-target'     => SalesTeamTargetController::class,// done ||  
 
-            'news-trend'            => NewsTrendController::class,
-            'hr-policy'             => HrPolicyController::class,
-            'policy-acknowledgment' => PolicyAcknowledgmentController::class,
-            'terms-and-policy'      => TermsAndPolicyController::class,
+            'hr-policy'             => HrPolicyController::class, //11212023
+            'policy-acknowledgment' => PolicyAcknowledgmentController::class,//not done
+            'terms-and-policy'      => TermsAndPolicyController::class, // run
 
             'banking'               => BankingController::class,
 
@@ -132,7 +131,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
     Route::post('/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
-    Route::resource('company', CompanyController::class)->except(['show']); // target 11/18/2023 ||MD // dd uncommitted changes
+    Route::resource('company', CompanyController::class)->except(['show']); // dd uncommitted changes
+    Route::resource('news-trend', NewsTrendController::class)->except(['show']); // dd uncommitted changes
     // Route::resource('example', ExampleController::class)->except(['create', 'show', 'edit']); //example
 
     Route::get('/machine-devicesetip-index', [BioMetricController::class, 'index'])->name('attendance.dashboard');

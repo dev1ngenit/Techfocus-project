@@ -30,13 +30,12 @@
                                     <div class="col-lg-12 col-sm-12">
                                         <div class="row">
                                             <div class="col-md-3 mb-1">
-                                                <label for="validationCustom01" class="form-label required mb-0">Name
+                                                <label for="name" class="form-label required mb-0">Name
                                                 </label>
                                                 <input type="text"
-                                                    class="form-control form-control-solid form-control-sm" name="name"
-                                                    id="validationCustom01" placeholder="E.g : Your Name" required>
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter Name </div>
+                                                    class="form-control form-control-solid form-control-sm @error('name') is-invalid @enderror" name="name"
+                                                    id="name" placeholder="E.g : Your Name">
+                                                <span class="text-danger">@error('name') {{ $message }} @enderror</span>
                                             </div>
                                             <div class="col-md-3 mb-2">
                                                 <label for="validationCustom04"

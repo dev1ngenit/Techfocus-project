@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
-            // $table->foreignId('order_id')->nullable()->constrained('orders')->cascadeOnDelete();
             $table->string('month')->nullable();
             $table->date('date')->nullable();
             $table->year('fiscal_year')->nullable();
@@ -25,10 +24,10 @@ return new class extends Migration
             $table->double('deposit')->nullable();
             $table->double('withdraw')->nullable();
             $table->string('purpose')->nullable();
-            $table->string('comments')->nullable();
-            $table->string('notes')->nullable();
+            $table->text('notes')->nullable();
+            $table->string('transaction_id')->nullable();
+            $table->string('invoice_number')->nullable();
             $table->string('status')->nullable();
-
             $table->timestamps();
         });
     }

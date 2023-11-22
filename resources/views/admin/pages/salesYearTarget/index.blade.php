@@ -334,6 +334,20 @@
                                                 name="december_target" id="validationCustom01" required>
                                             <div class="invalid-feedback"> Please Enter December Target </div>
                                         </div>
+                                        <div class="col-md-4 mb-2">
+                                            <label for="validationCustom04" class="form-label required mb-0">
+                                                Year Started</label>
+                                            <select class="form-select-sm form-select form-select-solid"
+                                                name="year_started"
+                                                data-dropdown-parent="#salesYearAddModal"
+                                                data-control="select2" data-placeholder="Select an option"
+                                                data-allow-clear="true" data-hide-search="true" required>
+                                                <option></option>
+                                                <option value="january">January</option>
+                                                <option value="july">July</option>
+                                            </select>
+                                            <div class="invalid-feedback"> Please Select a option. </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -592,6 +606,20 @@
                                                     value="{{ $salesYearTarget->december_target }}"
                                                     id="validationCustom01" required>
                                                 <div class="invalid-feedback"> Please Enter December Target </div>
+                                            </div>
+                                            <div class="col-md-4 mb-2">
+                                                <label for="validationCustom04" class="form-label required mb-0">
+                                                    Year Started</label>
+                                                <select class="form-select-sm form-select form-select-solid"
+                                                    name="year_started"
+                                                    data-dropdown-parent="#salesmanEditModal_{{ $salesYearTarget->id }}"
+                                                    data-control="select2" data-placeholder="Select an option"
+                                                    data-allow-clear="true" data-hide-search="true" required>
+                                                    <option></option>
+                                                    <option @selected($salesYearTarget->year_started == 'january') value="january">January</option>
+                                                    <option @selected($salesYearTarget->year_started == 'july') value="july">July</option>
+                                                </select>
+                                                <div class="invalid-feedback"> Please Select a option. </div>
                                             </div>
                                         </div>
                                     </div>

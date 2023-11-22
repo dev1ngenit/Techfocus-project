@@ -24,6 +24,7 @@
 <!-- Custom:Shahed --->
 <script src="{{ asset('backend/assets/js/custom/techfocus/font-awesome.js') }}"></script>
 <script src="{{ asset('backend/assets/js/custom/techfocus/toastr.js') }}"></script>
+<script src="{{ asset('backend/assets/js/bootstrap.multi-select.js') }}"></script>
 <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 <!-- Custom:Shahed --->
 <!--end::Page Custom Javascript-->

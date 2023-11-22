@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Sales;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SalesTeamTargetRequest;
+use App\Models\Admin;
 use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\SalesTeamTargetRepositoryInterface;
 
@@ -28,6 +29,7 @@ class SalesTeamTargetController extends Controller
         return view('admin.pages.salesTeamTarget.index', [
             'salesTeamTargets' => $this->salesTeamTargetRepository->allSalesTeamTarget(),
             'companies' => $this->companyRepository->allCompany(),
+            'admins' => Admin::get(['id','name']),
         ]);
     }
 
