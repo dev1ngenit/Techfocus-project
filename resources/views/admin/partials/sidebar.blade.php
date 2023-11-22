@@ -125,7 +125,7 @@
                     </div>
                 </div> --}}
                 @php
-                    $supplychain = ['supplychain', 'admin.category.index', 'admin.brand.index', 'admin.attribute.index', 'admin.product-color.index', 'admin.product.index'];
+                    $supplychain = ['supplychain', 'admin.category.index', 'admin.brand.index', 'admin.attribute.index', 'admin.product-color.index', 'admin.product.index', 'admin.product.create', 'admin.product.edit'];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $supplychain) ? 'here show' : '' }}">
@@ -146,6 +146,7 @@
                             <span class="menu-link">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
+                                    <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Logistics</span>
                                 <span class="menu-arrow"></span>
@@ -157,6 +158,7 @@
                                         href="{{ route('admin.brand.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
+                                            <span class="bullet bullet-dot"></span>
                                         </span>
                                         <span class="menu-title">Brands</span>
                                     </a>
@@ -165,6 +167,7 @@
                                     <a class="menu-link {{ Route::current()->getName() == 'admin.category.index' ? 'active' : '' }}"
                                         href="{{ route('admin.category.index') }}">
                                         <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
                                             <span class="bullet bullet-dot"></span>
                                         </span>
                                         <span class="menu-title">Categories</span>
@@ -175,6 +178,7 @@
                                         href="{{ route('admin.attribute.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
+                                            <span class="bullet bullet-dot"></span>
                                         </span>
                                         <span class="menu-title">Attributes</span>
                                     </a>
@@ -184,14 +188,16 @@
                                         href="{{ route('admin.product-color.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
+                                            <span class="bullet bullet-dot"></span>
                                         </span>
                                         <span class="menu-title">Product Colors</span>
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link {{ Route::current()->getName() == 'admin.product.index' ? 'active' : '' }}"
+                                    <a class="menu-link {{ in_array(Route::current()->getName(), ['admin.product.index', 'admin.product.create', 'admin.product.edit']) ? 'active' : '' }}""
                                         href="{{ route('admin.product.index') }}">
                                         <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
                                             <span class="bullet bullet-dot"></span>
                                         </span>
                                         <span class="menu-title">Products</span>
@@ -335,28 +341,176 @@
                         </div>
                     </div>
                 </div>
-
-
-
                 @php
-                    $sitecontent = ['admin.brand-page.index', 'admin.solution-details.index', 'admin.brand.index', 'admin.product-attribute.index', 'admin.industry-page.index', 'admin.news-trend.index'];
+                    $business = ['admin.brand-page.index', 'admin.solution-details.index', 'admin.brand.index', 'admin.product-attribute.index', 'admin.industry-page.index', 'admin.news-trend.index', 'admin.terms-and-policy.index'];
                 @endphp
                 <div data-kt-menu-trigger="click"
-                    class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $sitecontent) ? 'here show' : '' }}">
+                    class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $business) ? 'here show' : '' }}">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm001.svg-->
                             <span class="svg-icon svg-icon-2">
-                                <i class="fa-solid fa-file-invoice"></i>
+                                <i class="fa-solid fa-business-time"></i>
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Site Contents</span>
+                        <span class="menu-title">Business</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div data-kt-menu-trigger="click"
-                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $sitecontent) ? 'here show' : '' }}">
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $business) ? 'here show' : '' }}">
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">RFQ Management</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion">
+
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.brand.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.brand.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Pending</span>
+                                        <span class="menu-badge"><span class="badge badge-danger">RFQ : 3</span></span>
+                                        <span class="menu-badge"><span class="badge badge-danger">Deals : 3</span></span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.brand-page.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.brand-page.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Client RFQs</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.product-attribute.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.product-attribute.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">About Us</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.solution-details.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.solution-details.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Deals</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.industry-page.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.industry-page.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Indusry Page</span>
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div data-kt-menu-trigger="click"
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $business) ? 'here show' : '' }}">
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">RFQ Management</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion">
+
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.brand.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.brand.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Home Page</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.brand-page.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.brand-page.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Brand Page</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.product-attribute.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.product-attribute.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">About Us</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.solution-details.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.solution-details.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Solution Details</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.industry-page.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.industry-page.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Indusry Page</span>
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::current()->getName() == 'admin.news-trend.index' ? 'active' : '' }}"
+                                href="{{ route('admin.news-trend.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">News & Trends</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                @php
+                    $accounts = ['admin.brand-page.index', 'admin.solution-details.index', 'admin.brand.index', 'admin.product-attribute.index', 'admin.industry-page.index', 'admin.news-trend.index', 'admin.terms-and-policy.index'];
+                @endphp
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $accounts) ? 'here show' : '' }}">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm001.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Accounts Finance</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div data-kt-menu-trigger="click"
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $accounts) ? 'here show' : '' }}">
                             <span class="menu-link">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
@@ -424,131 +578,153 @@
                                 <span class="menu-title">News & Trends</span>
                             </a>
                         </div>
-                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    </div>
+                </div>
+
+                @php
+                    $sitecontent = ['admin.brand-page.index', 'admin.solution-details.index', 'admin.brand.index', 'admin.product-attribute.index', 'admin.industry-page.index', 'admin.news-trend.index', 'admin.terms-and-policy.index'];
+                @endphp
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $sitecontent) ? 'here show' : '' }}">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm001.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <i class="fa-solid fa-file-invoice"></i>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Site Contents</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div data-kt-menu-trigger="click"
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $sitecontent) ? 'here show' : '' }}">
                             <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Pages</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion">
+
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.brand.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.brand.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Home Page</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.brand-page.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.brand-page.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Brand Page</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.product-attribute.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.product-attribute.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">About Us</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.solution-details.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.solution-details.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Solution Details</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.industry-page.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.industry-page.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Indusry Page</span>
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::current()->getName() == 'admin.news-trend.index' ? 'active' : '' }}"
+                                href="{{ route('admin.news-trend.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">News & Trends</span>
-                                <span class="menu-arrow"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-accordion">
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo1/dist/apps/ecommerce/sales/listing.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Orders Listing</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo1/dist/apps/ecommerce/sales/details.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Order Details</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo1/dist/apps/ecommerce/sales/add-order.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Add Order</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo1/dist/apps/ecommerce/sales/edit-order.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Edit Order</span>
-                                    </a>
-                                </div>
-                            </div>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::current()->getName() == 'admin.news-trend.index' ? 'active' : '' }}"
+                                href="{{ route('admin.news-trend.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Features</span>
+                            </a>
                         </div>
                         <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                             <span class="menu-link">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Customers</span>
+                                <span class="menu-title">Blogs, Techglossy & Client Story</span>
                                 <span class="menu-arrow"></span>
                             </span>
                             <div class="menu-sub menu-sub-accordion">
                                 <div class="menu-item">
-                                    <a class="menu-link"
-                                        href="../../demo1/dist/apps/ecommerce/customers/listing.html">
+                                    <a class="menu-link" href="">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title">Customer Listing</span>
+                                        <span class="menu-title">Blogs</span>
                                     </a>
                                 </div>
                                 <div class="menu-item">
-                                    <a class="menu-link"
-                                        href="../../demo1/dist/apps/ecommerce/customers/details.html">
+                                    <a class="menu-link" href="">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title">Customer Details</span>
+                                        <span class="menu-title">Techglossy</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link" href="">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Client Story</span>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                            <span class="menu-link">
+                        <div class="menu-item">
+                            <a class="menu-link {{ Route::current()->getName() == 'admin.terms-and-policy.index' ? 'active' : '' }}"
+                                href="{{ route('admin.terms-and-policy.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Reports</span>
-                                <span class="menu-arrow"></span>
-                            </span>
-                            <div class="menu-sub menu-sub-accordion">
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo1/dist/apps/ecommerce/reports/view.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Products Viewed</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo1/dist/apps/ecommerce/reports/sales.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Sales</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo1/dist/apps/ecommerce/reports/returns.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Returns</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link"
-                                        href="../../demo1/dist/apps/ecommerce/reports/customer-orders.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Customer Orders</span>
-                                    </a>
-                                </div>
-                                <div class="menu-item">
-                                    <a class="menu-link" href="../../demo1/dist/apps/ecommerce/reports/shipping.html">
-                                        <span class="menu-bullet">
-                                            <span class="bullet bullet-dot"></span>
-                                        </span>
-                                        <span class="menu-title">Shipping</span>
-                                    </a>
-                                </div>
-                            </div>
+                                <span class="menu-title">Terms & Policy</span>
+                            </a>
                         </div>
-
                     </div>
                 </div>
 

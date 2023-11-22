@@ -12,7 +12,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-sm-12 d-flex justify-content-end">
+                    <div class="col-lg-7 col-sm-12 d-flex justify-content-start">
                         <h4 class="text-white p-0 m-0 fw-bold">Product Sourcing Add</h4>
                     </div>
                 </div>

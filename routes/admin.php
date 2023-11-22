@@ -92,7 +92,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
         //Product
         Route::controller(ProductController::class)->group(function () {
-            Route::get('/completed-products', 'index')->name('attribute.index');
+            Route::get('/completed-products', 'index')->name('product.index');
             Route::get('/sourced-products', 'sourcedProducts')->name('sourced.products');
             Route::get('/saved-products', 'savedProducts')->name('saved.products');
         });

@@ -23,7 +23,7 @@ class ProductRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules()
-    {       
+    {
         $product = $this->route('product'); // Directly access the brand ID from the route parameter.
 
         return [
@@ -31,25 +31,25 @@ class ProductRequest extends FormRequest
             'company_id'                => 'nullable|exists:companies,id',
             'ref_code'                  => 'nullable|string|max:50',
             'name'                      => 'required|string|unique:products,name,' . $product . '|max:255',
-            'sku_code'                  => 'nullable|string|max:50|unique:products,sku_code',
-            'mf_code'                   => 'nullable|string|max:50|unique:products,mf_code',
+            'sku_code'                  => 'nullable|string|max:50|unique:products,sku_code,' . $product,
+            'mf_code'                   => 'nullable|string|max:50|unique:products,mf_code,' . $product,
             'product_code'              => 'nullable|string|max:50',
-            'tags'                      => 'nullable|json',
-            'color_id'                  => 'nullable|json',
+            'tags'                      => 'nullable|array',
+            'color_id'                  => 'nullable|array',
             'short_desc'                => 'nullable|string',
             'overview'                  => 'nullable|string',
             'specification'             => 'nullable|string',
             'accessories'               => 'nullable|string',
             'warranty'                  => 'nullable|string',
-            'thumbnail'                 => 'nullable|string|max:255',
+            'thumbnail'                 => 'sometimes|image|mimes:png,jpg,jpeg|size:2024',
             'qty'                       => 'required|integer|min:1',
             'stock'                     => 'nullable|string|max:50',
             'price'                     => 'nullable|numeric',
             'sas_price'                 => 'nullable|numeric',
             'discount'                  => 'nullable|numeric',
             'deal'                      => 'nullable|string|max:50',
-            'industry'                  => 'nullable|json',
-            'solution'                  => 'nullable|json',
+            'industry'                  => 'nullable|array',
+            'solution'                  => 'nullable|array',
             'refurbished'               => 'required|in:0,1',
             'price_status'              => 'required|in:rfq,price,offer_price,starting_price',
             'rfq'                       => 'required|in:0,1',
@@ -88,9 +88,6 @@ class ProductRequest extends FormRequest
             'source_two_location'       => 'nullable|string|max:255',
             'source_two_country'        => 'nullable|string|max:255',
             'rejection_note'            => 'nullable|string',
-            'created_by'                => 'nullable|exists:admins,id',
-            'updated_by'                => 'nullable|exists:admins,id',
-            'deleted_by'                => 'nullable|exists:admins,id',
         ];
     }
 
@@ -111,8 +108,8 @@ class ProductRequest extends FormRequest
             'sku_code.max'                      => 'The :attribute may not be greater than :max characters.',
             'mf_code.max'                       => 'The :attribute may not be greater than :max characters.',
             'product_code.max'                  => 'The :attribute may not be greater than :max characters.',
-            'tags.json'                         => 'The :attribute must be a valid JSON string.',
-            'color_id.json'                     => 'The :attribute must be a valid JSON string.',
+            'tags.array'                         => 'The :attribute must be a valid JSON string.',
+            'color_id.array'                     => 'The :attribute must be a valid JSON string.',
             'short_desc.max'                    => 'The :attribute may not be greater than :max characters.',
             'overview.max'                      => 'The :attribute may not be greater than :max characters.',
             'specification.max'                 => 'The :attribute may not be greater than :max characters.',
@@ -125,8 +122,8 @@ class ProductRequest extends FormRequest
             'sas_price.numeric'                 => 'The :attribute must be a number.',
             'discount.numeric'                  => 'The :attribute must be a number.',
             'deal.max'                          => 'The :attribute may not be greater than :max characters.',
-            'industry.json'                     => 'The :attribute must be a valid JSON string.',
-            'solution.json'                     => 'The :attribute must be a valid JSON string.',
+            'industry.array'                     => 'The :attribute must be a valid JSON string.',
+            'solution.array'                     => 'The :attribute must be a valid JSON string.',
             'refurbished.required'              => 'The :attribute field is required.',
             'refurbished.in'                    => 'The selected :attribute is invalid.',
             'price_status.required'             => 'The :attribute field is required.',
@@ -171,9 +168,6 @@ class ProductRequest extends FormRequest
             'source_two_location.max'           => 'The :attribute may not be greater than :max characters.',
             'source_two_country.max'            => 'The :attribute may not be greater than :max characters.',
             'rejection_note.max'                => 'The :attribute may not be greater than :max characters.',
-            'created_by.exists'                 => 'The selected :attribute is invalid.',
-            'updated_by.exists'                 => 'The selected :attribute is invalid.',
-            'deleted_by.exists'                 => 'The selected :attribute is invalid.',
         ];
     }
 
@@ -252,9 +246,6 @@ class ProductRequest extends FormRequest
             'source_two_location'       => 'Source Two Location',
             'source_two_country'        => 'Source Two Country',
             'rejection_note'            => 'Rejection Note',
-            'created_by'                => 'Created By',
-            'updated_by'                => 'Updated By',
-            'deleted_by'                => 'Deleted By',
         ];
     }
 

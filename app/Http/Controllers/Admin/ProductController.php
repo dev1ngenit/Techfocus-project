@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Admin\Brand;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\Admin\Product;
+use Intervention\Image\Facades\Image;
 use App\Models\Admin\Category;
 use App\Models\Admin\Industry;
 use App\Http\Controllers\Controller;
