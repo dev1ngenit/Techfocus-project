@@ -58,7 +58,6 @@ class CompanyController extends Controller
         $data = [
             'headquarter_country_id' => $request->headquarter_country_id,
             'name'                   => $request->name,
-            'slug'                   => Str::slug($request->name),
             'industry'               => json_encode($request->industry),
             'country'                => json_encode($request->country),
             'location'               => json_encode($request->location),
@@ -81,8 +80,8 @@ class CompanyController extends Controller
         ];
         $this->companyRepository->storeCompany($data);
 
-        toastr()->success('Data has been saved successfully!');
-        return redirect()->back();
+        // toastr()->success('Data has been saved successfully!');
+        return redirect()->back()->with('success', 'Data has been saved successfully!')->withInput();
     }
 
     /**

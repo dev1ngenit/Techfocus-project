@@ -30,8 +30,8 @@ class CompanyRequest extends FormRequest
             'industry' => 'nullable|array',
             'country' => 'nullable|array',
             'location' => 'nullable|array',
-            'phone' => 'nullable|string|max:20',
-            'email' => 'nullable|email',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|email',
             'website_url' => 'nullable|url',
             'logo'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'postal_code' => 'nullable|string|max:10',
@@ -117,30 +117,30 @@ class CompanyRequest extends FormRequest
         ];
     }
 
-    /**
-     * Handle a failed validation attempt.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     */
-    protected function failedValidation(Validator $validator)
-    {
-        $this->recordErrorMessages($validator);
-        parent::failedValidation($validator);
-    }
+    // /**
+    //  * Handle a failed validation attempt.
+    //  *
+    //  * @param  \Illuminate\Contracts\Validation\Validator  $validator
+    //  * @return void
+    //  */
+    // protected function failedValidation(Validator $validator)
+    // {
+    //     $this->recordErrorMessages($validator);
+    //     parent::failedValidation($validator);
+    // }
 
-    /**
-     * Record the error messages displayed to the user.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     */
-    protected function recordErrorMessages(Validator $validator)
-    {
-        $errorMessages = $validator->errors()->all();
+    // /**
+    //  * Record the error messages displayed to the user.
+    //  *
+    //  * @param  \Illuminate\Contracts\Validation\Validator  $validator
+    //  * @return void
+    //  */
+    // protected function recordErrorMessages(Validator $validator)
+    // {
+    //     $errorMessages = $validator->errors()->all();
 
-        foreach ($errorMessages as $errorMessage) {
-            toastr()->error($errorMessage);
-        }
-    }
+    //     foreach ($errorMessages as $errorMessage) {
+    //         toastr()->error($errorMessage);
+    //     }
+    // }
 }
