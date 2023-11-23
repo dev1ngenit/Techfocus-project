@@ -10,17 +10,22 @@ trait HasSlug
     protected static function bootHasSlug()
     {
         static::creating(function ($model) {
-            $model->slug = $model->generateUniqueSlug($model->name);
+            if (!isset($model->slugSourceColumn)) {
+                throw new \Exception('Slug source column is not defined in the model.');
+            }
+
+            $slugSourceColumn = $model->slugSourceColumn;
+            $model->slug = $model->generateUniqueSlug($model->$slugSourceColumn);
         });
     }
 
-    private function generateUniqueSlug($name)
+    private function generateUniqueSlug($value)
     {
-        $slug = Str::slug($name);
+        $slug = Str::slug($value);
         $counter = 1;
 
         while ($this->slugExists($slug)) {
-            $slug = Str::slug($name) . '-' . $counter;
+            $slug = Str::slug($value) . '-' . $counter;
             $counter++;
         }
 
