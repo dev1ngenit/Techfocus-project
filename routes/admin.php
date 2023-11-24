@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\IndustryPageController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\RowController;
 use App\Http\Controllers\Admin\SolutionDetailsController;
 
 /*
@@ -102,6 +103,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'brand-page'            => BrandPageController::class,
                 'solution-details'      => SolutionDetailsController::class,
                 'industry-page'         => IndustryPageController::class,
+                'row'                   => RowController::class,
             ]
         );
         Route::resources(

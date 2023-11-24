@@ -25,10 +25,15 @@
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> --}}
 <script src="{{ asset('backend/assets/js/bootstrap.multi-select.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/js/bootstrap-multiselect.js" ></script>
+<script src="{{ asset('backend/assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
+<script src="{{ asset('backend/assets/js/custom/documentation/editors/tinymce/plugins.js') }}"></script>
 <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 <!-- Custom:Shahed --->
 <!--end::Page Custom Javascript-->
 @stack('scripts')
+
+
+
 
 <script>
     // Clear messages after a delay

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->string('badge')->nullable();
             $table->string('title');
-            $table->string('slug')->unique();
+            $table->string('slug')->unique()->nullable();
             $table->string('image')->comment('580*383')->nullable();
             $table->mediumText('short_des')->nullable();
             $table->string('btn_name')->nullable();

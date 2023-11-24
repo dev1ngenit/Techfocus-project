@@ -55,6 +55,19 @@ th {
   border-radius: 0px;
 }
 
+/* Nav Item:Shahed*/
+.nav-line-tabs .nav-item .nav-link{
+  padding: 0.5rem;
+  border-radius: 0;
+}
+
+.nav-line-tabs .nav-item .nav-link.active, .nav-line-tabs .nav-item .nav-link:hover:not(.disabled), .nav-line-tabs .nav-item.show .nav-link{
+  background-color: #ae0a46;
+}
+/* Nav Item:Shahed*/
+
+
+
 
 /* btn===> 2 */
 .common-btn-2 {
@@ -189,9 +202,9 @@ tr td {
 }
 
 
-.page-item:hover:not(.offset) .page-link {
+/* .page-item:hover:not(.offset) .page-link {
   color: #ffffff;
-}
+} */
 
 
 .page-item.active .page-link {
@@ -214,6 +227,7 @@ tr td {
   border-radius: 0px;
   left: 10px;
   width: 40px;
+  justify-content: center;
 }
 
 
