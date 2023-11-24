@@ -340,7 +340,7 @@
                                                             <select
                                                                 class="form-select form-select-solid form-select-sm stock_select"
                                                                 name="color_id" data-control="select2"
-                                                                data-placeholder="Select Stock Status"
+                                                                data-placeholder="Select Colors for the product"
                                                                 data-allow-clear="true">
                                                                 <option></option>
                                                                 <option class="form-select" value="available">
@@ -422,65 +422,25 @@
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Short Desc</label>
                                                         <textarea name="short_desc" class="tox-target kt_docs_tinymce_plugins">
-                                                            <h1>Quick and Simple TinyMCE 5 Integration</h1>
-                                                            <p>Here goes the&nbsp;<a href="#">Minitial content of the editor</a>. Lorem Ipsum is simply dummy text of the&nbsp;<em>printing and typesetting</em>&nbsp;industry.</p>
-                                                            <blockquote>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
-                                                            <h3 style="text-align: right;">Flexible &amp; Powerful</h3>
-                                                            <p style="text-align: right;"><strong>Lorem Ipsum has been the industry's</strong>&nbsp;standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
-                                                            <ul>
-                                                                <li>List item 1</li>
-                                                                <li>List item 2</li>
-                                                                <li>List item 3</li>
-                                                                <li>List item 4</li>
-                                                            </ul>
+                                                            <h1>Write Here...</h1>
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Overview</label>
                                                         <textarea name="overview" class="tox-target kt_docs_tinymce_plugins">
-                                                            <h1>Quick and Simple TinyMCE 5 Integration</h1>
-                                                            <p>Here goes the&nbsp;<a href="#">Minitial content of the editor</a>. Lorem Ipsum is simply dummy text of the&nbsp;<em>printing and typesetting</em>&nbsp;industry.</p>
-                                                            <blockquote>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
-                                                            <h3 style="text-align: right;">Flexible &amp; Powerful</h3>
-                                                            <p style="text-align: right;"><strong>Lorem Ipsum has been the industry's</strong>&nbsp;standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
-                                                            <ul>
-                                                                <li>List item 1</li>
-                                                                <li>List item 2</li>
-                                                                <li>List item 3</li>
-                                                                <li>List item 4</li>
-                                                            </ul>
+                                                            <h1>Write Here...</h1>
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Specification</label>
                                                         <textarea name="specification" class="tox-target kt_docs_tinymce_plugins">
-                                                            <h1>Quick and Simple TinyMCE 5 Integration</h1>
-                                                            <p>Here goes the&nbsp;<a href="#">Minitial content of the editor</a>. Lorem Ipsum is simply dummy text of the&nbsp;<em>printing and typesetting</em>&nbsp;industry.</p>
-                                                            <blockquote>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
-                                                            <h3 style="text-align: right;">Flexible &amp; Powerful</h3>
-                                                            <p style="text-align: right;"><strong>Lorem Ipsum has been the industry's</strong>&nbsp;standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
-                                                            <ul>
-                                                                <li>List item 1</li>
-                                                                <li>List item 2</li>
-                                                                <li>List item 3</li>
-                                                                <li>List item 4</li>
-                                                            </ul>
+                                                            <h1>Write Here...</h1>
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Accessories</label>
                                                         <textarea name="accessories" class="tox-target kt_docs_tinymce_plugins">
-                                                            <h1>Quick and Simple TinyMCE 5 Integration</h1>
-                                                            <p>Here goes the&nbsp;<a href="#">Minitial content of the editor</a>. Lorem Ipsum is simply dummy text of the&nbsp;<em>printing and typesetting</em>&nbsp;industry.</p>
-                                                            <blockquote>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</blockquote>
-                                                            <h3 style="text-align: right;">Flexible &amp; Powerful</h3>
-                                                            <p style="text-align: right;"><strong>Lorem Ipsum has been the industry's</strong>&nbsp;standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
-                                                            <ul>
-                                                                <li>List item 1</li>
-                                                                <li>List item 2</li>
-                                                                <li>List item 3</li>
-                                                                <li>List item 4</li>
-                                                            </ul>
+                                                            <h1>Write Here...</h1>
                                                         </textarea>
                                                     </div>
                                                 </div>

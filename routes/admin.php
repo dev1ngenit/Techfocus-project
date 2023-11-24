@@ -135,7 +135,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
                 'banking'               => BankingController::class,
     
-            'attendance'            => AttendanceController::class, //not my work
+                'attendance'            => AttendanceController::class, //not my work
         ],
             ['except' => ['create', 'show', 'edit'],]
         );

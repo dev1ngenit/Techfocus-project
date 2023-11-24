@@ -26,6 +26,8 @@ return new class extends Migration
             $table->json('tags')->nullable();
             $table->json('attribute_id')->nullable();
             $table->json('color_id')->nullable();
+            $table->json('parent_id')->nullable();
+            $table->json('child_id')->nullable();
             $table->longText('short_desc')->nullable();
             $table->longText('overview')->nullable();
             $table->longText('specification')->nullable();
