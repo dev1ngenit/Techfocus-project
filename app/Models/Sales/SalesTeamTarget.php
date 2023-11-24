@@ -2,8 +2,10 @@
 
 namespace App\Models\Sales;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Country;
+use App\Models\Admin\Company;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SalesTeamTarget extends Model
 {
@@ -15,4 +17,14 @@ class SalesTeamTarget extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function countryName()
+    {
+        return Country::where('id', $this->country_id)->value('name');
+    }
+
+    public function companyName()
+    {
+        return Company::where('id', $this->company_id)->value('name');
+    }
 }

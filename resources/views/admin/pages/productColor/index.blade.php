@@ -241,6 +241,7 @@
             </div>
         </div>
     @endforeach
+    @endforeach
 @endsection
 
 @push('scripts')

@@ -2,8 +2,9 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Admin\Company;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TermsAndPolicy extends Model
 {
@@ -15,4 +16,9 @@ class TermsAndPolicy extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function companyName()
+    {
+        return Company::where('id', $this->company_id)->value('name');
+    }
 }

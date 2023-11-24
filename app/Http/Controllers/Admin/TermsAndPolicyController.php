@@ -48,12 +48,13 @@ class TermsAndPolicyController extends Controller
      */
     public function store(TermsAndPolicyRequest $request)
     {
+        // dd($request->all());
         $data = [
             'country_id'      => $request->country_id,
-            'comany_id'       => $request->comany_id,
+            'company_id'       => $request->company_id,
             'name'            => $request->name,
             'content'         => $request->content,
-            'is_active'       => $request->is_active,
+            'is_active'       => $request->is_active ?? '0',
             'version'         => $request->version,
             'effective_date'  => $request->effective_date,
             'expiration_date' => $request->expiration_date,
@@ -97,10 +98,10 @@ class TermsAndPolicyController extends Controller
     {
         $data = [
             'country_id'      => $request->country_id,
-            'comany_id'       => $request->comany_id,
+            'company_id'       => $request->company_id,
             'name'            => $request->name,
             'content'         => $request->content,
-            'is_active'       => $request->is_active,
+            'is_active'       => $request->is_active ?? '0',
             'version'         => $request->version,
             'effective_date'  => $request->effective_date,
             'expiration_date' => $request->expiration_date,

@@ -6,15 +6,29 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\NewsTrendRequest;
+use App\Repositories\Interfaces\BrandRepositoryInterface;
+use App\Repositories\Interfaces\CategoryRepositoryInterface;
+use App\Repositories\Interfaces\IndustryRepositoryInterface;
 use App\Repositories\Interfaces\NewsTrendRepositoryInterface;
 
 class NewsTrendController extends Controller
 {
     private $newsTrendRepository;
+    private $categoryRepository;
+    private $brandRepository;
+    private $industryRepository;
+    // private $solutionRepository;
 
-    public function __construct(NewsTrendRepositoryInterface $newsTrendRepository)
-    {
+    public function __construct(
+        NewsTrendRepositoryInterface $newsTrendRepository,
+        CategoryRepositoryInterface $categoryRepository,
+        BrandRepositoryInterface $brandRepository,
+        IndustryRepositoryInterface $industryRepository,
+    ) {
         $this->newsTrendRepository = $newsTrendRepository;
+        $this->categoryRepository  = $categoryRepository;
+        $this->brandRepository     = $brandRepository;
+        $this->industryRepository  = $industryRepository;
     }
 
     /**
@@ -25,7 +39,7 @@ class NewsTrendController extends Controller
     public function index()
     {
         return view('admin.pages.newsTrend.index', [
-            'newsTrends' =>  $this->newsTrendRepository->allNewsTrend(),
+            'newsTrends' => $this->newsTrendRepository->allNewsTrend(),
         ]);
     }
 
@@ -36,7 +50,11 @@ class NewsTrendController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.newsTrend.create', [
+            'categories' => $this->categoryRepository->allCategory(),
+            'brands'     => $this->brandRepository->allBrand(),
+            'industries' => $this->industryRepository->allIndustry(),
+        ]);
     }
 
     /**
@@ -107,7 +125,12 @@ class NewsTrendController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.newsTrend.edit', [
+            'newsTrends' =>  $this->newsTrendRepository->findNewsTrend($id),
+            'categories' => $this->categoryRepository->allCategory(),
+            'brands'     => $this->brandRepository->allBrand(),
+            'industries' => $this->industryRepository->allIndustry(),
+        ]);
     }
 
     /**

@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BankingRequest;
 use App\Repositories\Interfaces\BankingRepositoryInterface;
 use App\Repositories\Interfaces\CompanyRepositoryInterface;
 
 class BankingController extends Controller
 {
-    private $bankingRepository, $companyRepository, $orderRepository;
+    private $bankingRepository, $companyRepository;
 
-    public function __construct(BankingRepositoryInterface $bankingRepository, CompanyRepositoryInterface $companyRepository, OrderRepositoryInterface $orderRepository)
+    public function __construct(BankingRepositoryInterface $bankingRepository, CompanyRepositoryInterface $companyRepository)
     {
         $this->bankingRepository = $bankingRepository;
         $this->companyRepository = $companyRepository;
-        $this->orderRepository   = $orderRepository;
     }
 
     /**
@@ -29,7 +27,6 @@ class BankingController extends Controller
         return view('admin.pages.banking.index', [
             'bankings'  => $this->bankingRepository->allBanking(),
             'companies' => $this->companyRepository->allCompany(),
-            'orders'    => $this->orderRepository->allOrder(),
         ]);
     }
 
@@ -49,22 +46,22 @@ class BankingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BankingRequest $request)
     {
         $data = [
-            'country_id'  => $request->country_id,
-            'company_id'  => $request->company_id,
-            'order_id'    => $request->order_id,
-            'month'       => $request->month,
-            'date'        => $request->date,
-            'fiscal_year' => $request->fiscal_year,
-            'bank_name'   => $request->bank_name,
-            'deposit'     => $request->deposit,
-            'withdraw'    => $request->withdraw,
-            'purpose'     => $request->purpose,
-            'comments'    => $request->comments,
-            'notes'       => $request->notes,
-            'status'      => $request->status,
+            'country_id'     => $request->country_id,
+            'company_id'     => $request->company_id,
+            'month'          => $request->month,
+            'date'           => $request->date,
+            'fiscal_year'    => $request->fiscal_year,
+            'bank_name'      => $request->bank_name,
+            'deposit'        => $request->deposit,
+            'withdraw'       => $request->withdraw,
+            'purpose'        => $request->purpose,
+            'notes'          => $request->notes,
+            'transaction_id' => $request->transaction_id,
+            'invoice_number' => $request->invoice_number,
+            'status'         => $request->status,
         ];
         $this->bankingRepository->storeBanking($data);
 
@@ -101,22 +98,22 @@ class BankingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BankingRequest $request, $id)
     {
         $data = [
-            'country_id'  => $request->country_id,
-            'company_id'  => $request->company_id,
-            'order_id'    => $request->order_id,
-            'month'       => $request->month,
-            'date'        => $request->date,
-            'fiscal_year' => $request->fiscal_year,
-            'bank_name'   => $request->bank_name,
-            'deposit'     => $request->deposit,
-            'withdraw'    => $request->withdraw,
-            'purpose'     => $request->purpose,
-            'comments'    => $request->comments,
-            'notes'       => $request->notes,
-            'status'      => $request->status,
+            'country_id'     => $request->country_id,
+            'company_id'     => $request->company_id,
+            'month'          => $request->month,
+            'date'           => $request->date,
+            'fiscal_year'    => $request->fiscal_year,
+            'bank_name'      => $request->bank_name,
+            'deposit'        => $request->deposit,
+            'withdraw'       => $request->withdraw,
+            'purpose'        => $request->purpose,
+            'notes'          => $request->notes,
+            'transaction_id' => $request->transaction_id,
+            'invoice_number' => $request->invoice_number,
+            'status'         => $request->status,
         ];
 
         $this->bankingRepository->updateBanking($data, $id);

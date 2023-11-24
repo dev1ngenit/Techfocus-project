@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,4 +16,14 @@ class VatAndTax extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function countryName()
+    {
+        return Country::where('id', $this->country_id)->value('name');
+    }
+
+    public function companyName()
+    {
+        return Company::where('id', $this->company_id)->value('name');
+    }
 }

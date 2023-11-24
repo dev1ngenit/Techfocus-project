@@ -14,8 +14,10 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HrPolicyController;
 use App\Http\Controllers\Admin\IndustryController;
+use App\Http\Controllers\Admin\BioMetricController;
 use App\Http\Controllers\Admin\NewsTrendController;
 use App\Http\Controllers\Admin\VatAndTaxController;
+use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\WebSettingController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\HR\LeaveApplicationController;
@@ -132,7 +134,9 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'terms-and-policy'      => TermsAndPolicyController::class,
 
                 'banking'               => BankingController::class,
-            ],
+    
+            'attendance'            => AttendanceController::class, //not my work
+        ],
             ['except' => ['create', 'show', 'edit'],]
         );
         Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
@@ -167,5 +171,21 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
     Route::post('/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
+    Route::resource('company', CompanyController::class)->except(['show']); // dd uncommitted changes
+    Route::resource('news-trend', NewsTrendController::class)->except(['show']); // dd uncommitted changes
     // Route::resource('example', ExampleController::class)->except(['create', 'show', 'edit']); //example
+
+    Route::get('/machine-devicesetip-index', [BioMetricController::class, 'index'])->name('attendance.dashboard');
+    // Route::get('/attendance-data/single/{id}', [BioMetricController::class, 'attendanceDataSingle'])->name('attendance.single');
+    Route::post('/device-setip', [BioMetricController::class, 'device_setip'])->name('machine.devicesetip');
+    // Route::get('/device-information', [BioMetricController::class, 'device_information'])->name('machine.deviceinformation');
+    // Route::get('/device-user-data', [BioMetricController::class, 'device_user_data'])->name('machine.deviceuserdata');
+    // Route::get('/device-attendance-data', [BioMetricController::class, 'device_attendance_data'])->name('machine.deviceattendancedata');
+    // Route::get('/device-adduser', [BioMetricController::class, 'device_adduser'])->name('machine.deviceadduser');
+    // Route::post('/device-setuser', [BioMetricController::class, 'device_setuser'])->name('machine.devicesetuser');
+    // Route::get('/device-removeuser-single/{id}', [BioMetricController::class, 'device_removeuser_single'])->name('machine.deviceremoveusersingle');
+    // Route::get('/device-viewuser-single/[id]', [BioMetricController::class, 'device_viewuser_single'])->name('machine.deviceviewusersingle');
+    // Route::get('/device-data/clear-attendance', [BioMetricController::class, 'device_data_clear_attendance'])->name('machine.devicedata.clear.attendance');
+    // Route::get('/device-restart', [BioMetricController::class, 'device_restart'])->name('machine.devicerestart');
+    // Route::get('/device-shutdown', [BioMetricController::class, 'device_shutdown'])->name('machine.deviceshutdown');
 });

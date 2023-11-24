@@ -25,7 +25,19 @@ class BankingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'country_id' => 'nullable|exists:countries,id',
+            'company_id' => 'nullable|exists:companies,id',
+            'month' => 'nullable|string|max:255',
+            'date' => 'nullable|date',
+            'fiscal_year' => 'nullable|digits:4|integer|min:1900|max:' . (date('Y') + 1),
+            'bank_name' => 'nullable|string|max:255',
+            'deposit' => 'nullable|numeric|min:0',
+            'withdraw' => 'nullable|numeric|min:0',
+            'purpose' => 'nullable|string|max:255',
+            'notes' => 'nullable|string',
+            'transaction_id' => 'nullable|string|max:255',
+            'invoice_number' => 'nullable|string|max:255',
+            'status' => 'nullable|string|max:255'
         ];
     }
 
@@ -52,7 +64,7 @@ class BankingRequest extends FormRequest
             //
         ];
     }
-    
+
     /**
      * Handle a failed validation attempt.
      *

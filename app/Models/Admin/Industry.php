@@ -15,4 +15,9 @@ class Industry extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function children()
+    {
+        return $this->hasMany(Industry::class, 'parent_id');
+    }
 }

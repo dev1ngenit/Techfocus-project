@@ -24,8 +24,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $data['companies'] =  $this->companyRepository->allCompany();
-        return view('admin.pages.company.index', $data);
+        return view('admin.pages.company.index', [
+            'companies' =>  $this->companyRepository->allCompany(),
+        ]);
     }
 
     /**
@@ -35,7 +36,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.company.create');
     }
 
     /**
@@ -57,7 +58,6 @@ class CompanyController extends Controller
         $data = [
             'headquarter_country_id' => $request->headquarter_country_id,
             'name'                   => $request->name,
-            'slug'                   => Str::slug($request->name),
             'industry'               => json_encode($request->industry),
             'country'                => json_encode($request->country),
             'location'               => json_encode($request->location),
@@ -80,8 +80,8 @@ class CompanyController extends Controller
         ];
         $this->companyRepository->storeCompany($data);
 
-        toastr()->success('Data has been saved successfully!');
-        return redirect()->back();
+        // toastr()->success('Data has been saved successfully!');
+        return redirect()->back()->with('success', 'Data has been saved successfully!')->withInput();
     }
 
     /**
@@ -103,7 +103,9 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.company.edit', [
+            'company' =>  $this->companyRepository->findCompany($id),
+        ]);
     }
 
     /**
@@ -145,7 +147,7 @@ class CompanyController extends Controller
             'phone'                  => $request->phone,
             'email'                  => $request->email,
             'website_url'            => $request->website_url,
-            'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $company->logo,
+            'logo'                   => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $company->logo,
             'postal_code'            => $request->postal_code,
             'contact_name'           => $request->contact_name,
             'contact_email'          => $request->contact_email,

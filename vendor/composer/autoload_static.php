@@ -105,6 +105,7 @@ class ComposerStaticInit477449c53aa665b91ea8dae4c20eebd4
         ),
         'R' => 
         array (
+            'Rats\\Zkteco\\' => 12,
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
@@ -372,6 +373,10 @@ class ComposerStaticInit477449c53aa665b91ea8dae4c20eebd4
         'Spatie\\Backtrace\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/backtrace/src',
+        ),
+        'Rats\\Zkteco\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rats/zkteco/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -771,6 +776,7 @@ class ComposerStaticInit477449c53aa665b91ea8dae4c20eebd4
         'App\\Models\\Admin\\VatAndTax' => __DIR__ . '/../..' . '/app/Models/Admin/VatAndTax.php',
         'App\\Models\\City' => __DIR__ . '/../..' . '/app/Models/City.php',
         'App\\Models\\Country' => __DIR__ . '/../..' . '/app/Models/Country.php',
+        'App\\Models\\HR\\Attendance' => __DIR__ . '/../..' . '/app/Models/HR/Attendance.php',
         'App\\Models\\Sales\\SalesTeamTarget' => __DIR__ . '/../..' . '/app/Models/Sales/SalesTeamTarget.php',
         'App\\Models\\Sales\\SalesYearTarget' => __DIR__ . '/../..' . '/app/Models/Sales/SalesYearTarget.php',
         'App\\Models\\State' => __DIR__ . '/../..' . '/app/Models/State.php',
@@ -1081,6 +1087,7 @@ class ComposerStaticInit477449c53aa665b91ea8dae4c20eebd4
         'Database\\Factories\\Admin\\SmtpFactory' => __DIR__ . '/../..' . '/database/factories/Admin/SmtpFactory.php',
         'Database\\Factories\\Admin\\TermsAndPolicyFactory' => __DIR__ . '/../..' . '/database/factories/Admin/TermsAndPolicyFactory.php',
         'Database\\Factories\\Admin\\VatAndTaxFactory' => __DIR__ . '/../..' . '/database/factories/Admin/VatAndTaxFactory.php',
+        'Database\\Factories\\HR\\AttendanceFactory' => __DIR__ . '/../..' . '/database/factories/HR/AttendanceFactory.php',
         'Database\\Factories\\Sales\\SalesTeamTargetFactory' => __DIR__ . '/../..' . '/database/factories/Sales/SalesTeamTargetFactory.php',
         'Database\\Factories\\Sales\\SalesYearTargetFactory' => __DIR__ . '/../..' . '/database/factories/Sales/SalesYearTargetFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
@@ -5642,6 +5649,23 @@ class ComposerStaticInit477449c53aa665b91ea8dae4c20eebd4
         'Ramsey\\Uuid\\UuidInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/UuidInterface.php',
         'Ramsey\\Uuid\\Validator\\GenericValidator' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/GenericValidator.php',
         'Ramsey\\Uuid\\Validator\\ValidatorInterface' => __DIR__ . '/..' . '/ramsey/uuid/src/Validator/ValidatorInterface.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Attendance' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Attendance.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Connect' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Connect.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Device' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Device.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Face' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Face.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Fingerprint' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Fingerprint.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Os' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Os.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Pin' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Pin.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Platform' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Platform.php',
+        'Rats\\Zkteco\\Lib\\Helper\\SerialNumber' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/SerialNumber.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Ssr' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Ssr.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Time' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Time.php',
+        'Rats\\Zkteco\\Lib\\Helper\\User' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/User.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Util' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Util.php',
+        'Rats\\Zkteco\\Lib\\Helper\\Version' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/Version.php',
+        'Rats\\Zkteco\\Lib\\Helper\\WorkCode' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/Helper/WorkCode.php',
+        'Rats\\Zkteco\\Lib\\ZKTeco' => __DIR__ . '/..' . '/rats/zkteco/src/Lib/ZKTeco.php',
+        'Rats\\Zkteco\\Providers\\ZktecoServiceProvider' => __DIR__ . '/..' . '/rats/zkteco/src/Providers/ZktecoServiceProvider.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
         'SebastianBergmann\\CliParser\\Exception' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/Exception.php',
         'SebastianBergmann\\CliParser\\OptionDoesNotAllowArgumentException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/OptionDoesNotAllowArgumentException.php',

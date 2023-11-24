@@ -968,6 +968,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'rats/zkteco' => array(
+            'pretty_version' => 'V002',
+            'version' => '002.0.0.0',
+            'reference' => '6e17024370ec56c89d87c85a54a1c55079304834',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rats/zkteco',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'rhumsaa/uuid' => array(
             'dev_requirement' => false,
             'replaced' => array(
