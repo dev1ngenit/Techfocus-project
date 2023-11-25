@@ -1,11 +1,11 @@
- @if(Session::has('success'))
+ {{-- @if(Session::has('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <ul>
             @foreach(Session::get('success') as $success)
                 <li>{{ $success }}</li>
             @endforeach
         </ul>
-        {{-- {{ Session::get('success') }} --}}
+        {{ Session::get('success') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
@@ -20,4 +20,4 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
-{{ Session::forget(['success','error']) }}
+{{ Session::forget(['success','error']) }} --}}

@@ -462,7 +462,9 @@
                 </div>
 
                 @php
-                    $sitecontent = ['admin.brand-page.index', 'admin.solution-details.index', 'admin.brand.index', 'admin.product-attribute.index', 'admin.industry-page.index', 'admin.news-trend.index', 'admin.terms-and-policy.index', 'admin.row.index', 'admin.row.create', 'admin.row.edit'];
+                    $sitecontent = ['admin.brand-page.index', 'admin.solution-details.index', 'admin.brand.index', 'admin.product-attribute.index', 
+                    'admin.industry-page.index', 'admin.news-trend.index', 'admin.terms-and-policy.index', 'admin.row.index', 'admin.row.create', 'admin.row.edit',
+                    'admin.company.index', 'admin.company.create', 'admin.company.edit'];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $sitecontent) ? 'here show' : '' }}">
@@ -622,6 +624,15 @@
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Terms & Policy</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ in_array(Route::current()->getName(), ['admin.company.index', 'admin.company.create', 'admin.company.edit']) ? 'active' : '' }}"
+                                href="{{ route('admin.company.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Company</span>
                             </a>
                         </div>
                     </div>

@@ -50,10 +50,6 @@
         defaults: null
     }
 
-//     $(document).ready(function() {
-//          // Initialize Bootstrap Multiselect
-//       $('.bootstrap-multiselect').multiselect();
-//    });
 </script>
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/js/jquery-editable-poshytip.min.js">
@@ -75,7 +71,7 @@
         var errorMessage = @json(session('error'));
         Swal.fire({
             icon: 'error',
-            title: 'Error!',
+            title: 'You have recently got some errors while esecuting your acr=tio',
             html: errorMessage.join('<br>'),
         });
     @endif

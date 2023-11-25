@@ -283,6 +283,7 @@
                                                                 <i class="bi bi-x fs-2"></i>
                                                             </span>
                                                         </div>
+                                                        <div class="invalid-feedback"> Please Enter Thumbnail Image. </div>
                                                     </div>
                                                     <div class="col-lg-10">
                                                         <label class="form-label required">Multi Image</label>
