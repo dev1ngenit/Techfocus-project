@@ -16,8 +16,4 @@ class HomeController extends Controller
     {
         return view('admin.pages.profile.index');
     }
-    public function profileSetting()
-    {
-        return view('admin.pages.profile.profile_setting');
-    }
 }

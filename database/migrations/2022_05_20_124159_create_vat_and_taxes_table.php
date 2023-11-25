@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('type', ['tax', 'vat']);
             $table->string('name');
             $table->string('slug')->unique();
-            $table->decimal('rate', 5, 2);
+            $table->decimal('amount', 5, 2);
             $table->text('description')->nullable(); // Add description column
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();

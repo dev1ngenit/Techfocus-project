@@ -49,14 +49,27 @@ class BrandController extends Controller
     {
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
-        $filePath = storage_path('app/public/');
+        // $filePath_image = storage_path('app/public/brand/image/');
+        // $filePath_logo = storage_path('app/public/brand/logo/');
+        $brandPath = storage_path('app/public/brand/');
+
+        // Create the brand directory if it does not exist
+        if (!is_dir($brandPath)) {
+            if (!mkdir($brandPath, 0777, true)) {
+                abort(404, "Failed to create the directory: $brandPath");
+            }
+        }
+        // Image directory within brand
+        $filePath_image = $brandPath . 'image/';
+        $filePath_logo = $brandPath . 'logo/';
+
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $filePath,   44, 44);
+            $globalFunImage = customUpload($mainFile, $filePath_image,   44, 44);
         } else {
             $globalFunImage = ['status' => 0];
         }
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $filePath,   44, 44);
+            $globalFunLogo = customUpload($logoFile, $filePath_logo,   44, 44);
         } else {
             $globalFunLogo = ['status' => 0];
         }
@@ -69,11 +82,12 @@ class BrandController extends Controller
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : null,
             'website_url'  => $request->website_url,
+            'category'     => $request->category,
         ];
         $this->brandRepository->storeBrand($data);
 
-        toastr()->success('Data has been saved successfully!');
-        return redirect()->back();
+        // toastr()->success('Data has been saved successfully!');
+        return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
 
 
@@ -112,13 +126,14 @@ class BrandController extends Controller
 
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
-        $filePath = storage_path('app/public/');
+        $filePath_image = storage_path('app/public/brand/image/');
+        $filePath_logo = storage_path('app/public/brand/logo/');
 
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $filePath, 44, 44);
+            $globalFunImage = customUpload($mainFile, $filePath_image, 44, 44);
             $paths = [
-                storage_path("app/public/{$brand->image}"),
-                storage_path("app/public/requestImg/{$brand->image}")
+                storage_path("app/public/brand/image/{$brand->image}"),
+                storage_path("app/public/brand/image/requestImg/{$brand->image}")
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -130,10 +145,10 @@ class BrandController extends Controller
         }
 
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $filePath, 44, 44);
+            $globalFunLogo = customUpload($logoFile, $filePath_logo, 44, 44);
             $paths = [
-                storage_path("app/public/{$brand->logo}"),
-                storage_path("app/public/requestImg/{$brand->logo}")
+                storage_path("app/public/brand/logo/{$brand->logo}"),
+                storage_path("app/public/brand/logo/requestImg/{$brand->logo}")
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -152,12 +167,13 @@ class BrandController extends Controller
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : $brand->image,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $brand->logo,
             'website_url'  => $request->website_url,
+            'category'     => $request->category,
         ];
 
         $this->brandRepository->updateBrand($data, $id);
 
-        toastr()->success('Data has been updated successfully!');
-        return redirect()->back();
+        // toastr()->success('Data has been updated successfully!');
+        return redirect()->route('admin.brand.index')->with('message', 'Data updated Successfully');
     }
 
     /**
@@ -171,11 +187,10 @@ class BrandController extends Controller
         $brand =  $this->brandRepository->findBrand($id);
 
         $paths = [
-            storage_path('app/public/') . $brand->image,
-            storage_path('app/public/requestImg/') . $brand->image,
-
-            storage_path('app/public/') . $brand->logo,
-            storage_path('app/public/requestImg/') . $brand->logo,
+            storage_path("app/public/brand/image/{$brand->image}"),
+            storage_path("app/public/brand/image/requestImg/{$brand->image}"),
+            storage_path("app/public/brand/logo/{$brand->logo}"),
+            storage_path("app/public/brand/logo/requestImg/{$brand->logo}"),
         ];
 
         foreach ($paths as $path) {

@@ -18,13 +18,13 @@ class VerifyEmailController extends Controller
     {
         //dd($request->user()->markEmailAsVerified());
         if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->route('admin.index', ['verified' => true]);
+            return redirect()->route('admin.dashboard', ['verified' => true]);
         }
 
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
 
-        return redirect()->route('admin.index', ['verified' => true]);
+        return redirect()->route('admin.dashboard', ['verified' => true]);
     }
 }

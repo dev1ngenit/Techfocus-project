@@ -1,4 +1,36 @@
 
+// $(document).ready(function () {
+//     $('.multiselect').each(function () {
+//         var $select = $(this);
+
+//         $select.select2({
+//             // placeholder: 'Select an Industry Name',
+//             allowClear: true,
+//             closeOnSelect: false,
+//             minimumResultsForSearch: 0,
+//             tags: false // Enable tags
+//         });
+
+
+//         $select.on('change', function () {
+//             var selectedOptions = $select.val();
+//             var $selection = $select.next('.select2-container').find('.select2-selection__rendered');
+
+//             if (selectedOptions && selectedOptions.length > 2) {
+//                 var displayText = selectedOptions.length + ' options selected';
+//                 $selection.text(displayText);
+//                 $selection.siblings('.select2-selection__choice').css('display', 'none');
+//             } else {
+//                 // $selection.text('');
+//                 $selection.siblings('.select2-selection__choice').css('display', 'block');
+//             }
+//         });
+
+
+
+//     });
+// });
+
 function updateSelectionDisplay($select) {
     var selectedOptions = $select.val();
     var $selection = $select.next('.select2-container').find('.select2-selection__rendered');

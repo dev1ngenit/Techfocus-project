@@ -39,50 +39,13 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
                                     <!--begin::Export dropdown-->
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                        Export Report
-                                    </button>
+                                    
                                     <button type="button" class="btn btn-sm btn-light-success rounded-0"
                                         data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
-                                        data-bs-target="#colorsAddModal">
+                                        data-bs-target="#smtpsEditModal_{{ optional($smtp)->id }}">
                                         Add New
                                     </button>
-                                    <!--begin::Menu-->
-                                    <div id="kt_datatable_example_1_export_menu"
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                                Copy to clipboard
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                                Export as Excel
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                                Export as CSV
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                                Export as PDF
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
+                                    
                                     <!--end::Export dropdown-->
                                 </div>
                             </div>
@@ -99,7 +62,6 @@
                                     <th width="25%">Host</th>
                                     <th width="10%">Port</th>
                                     <th width="10%">User Name</th>
-                                    <th width="10%">Sender Email</th>
                                     <th width="10%">Status</th>
                                     <th class="text-center" width="10%">Action</th>
                                     <!--end::Table row-->
@@ -111,7 +73,6 @@
                                         <td>{{ optional($smtp)->host }}</td>
                                         <td>{{ optional($smtp)->port }}</td>
                                         <td>{{ optional($smtp)->username }}</td>
-                                        <td>{{ optional($smtp)->sender_email }}</td>
                                         <td>
                                             <span
                                                 class="badge badge-{{ optional($smtp)->status == 'active' ? 'success' : 'danger' }}">
@@ -122,7 +83,7 @@
                                             <a href="#"
                                                 class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#colorsViewModal_{{ $smtp->id }}">
+                                                data-bs-target="#smtpViewModal_{{ $smtp->id }}">
                                                 <i class="fa-solid fa-expand"></i>
                                                 <!--View-->
                                             </a>
@@ -143,144 +104,143 @@
             </div>
         </div>
     </div>
-    {{-- Add Modal --}}
-    <div class="modal fade" id="colorsAddModal" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">Add SMTPS</h5>
-                    <!-- Close button in the header -->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                        <span class="svg-icon svg-icon-2x">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                    transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                    transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
+    
+    {{-- Edit Modal --}}
+        <div class="modal fade" id="smtpsEditModal_{{ optional($smtp)->id }}" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-0 border-0 shadow-sm">
+                    <div class="modal-header p-2 rounded-0">
+                        <h5 class="modal-title">Edit SMTPS</h5>
+                        <!-- Close button in the header -->
+                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <span class="svg-icon svg-icon-2x">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                        transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                    <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                        transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </div>
+                        <!-- End Close button in the header -->
                     </div>
-                    <!-- End Close button in the header -->
-                </div>
-                <form action="{{ route('admin.smtp.setting') }}" class="needs-validation" method="post" novalidate>
-                    @csrf
-                    @method('PUT')
-                    <div class="modal-body">
-                        <div class="container px-0">
-                            <div class="row">
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="card border rounded-0 mt-3">
-                                        <p class="badge badge-info custom-badge">Info</span>
-                                        <div class="card-body p-1 px-2">
-                                            <div class="row modal_body_badge">
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01"
-                                                        class="form-label required ">Host</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="host" id="validationCustom01" placeholder="Enter Host"
-                                                        required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Host</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01"
-                                                        class="form-label required ">Port</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="port" id="validationCustom01" placeholder="Enter Port"
-                                                        required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Port</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01"
-                                                        class="form-label required ">Encryption</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="encryption" id="validationCustom01"
-                                                        placeholder="Enter Encryption" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Encryption</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01" class="form-label required ">User
-                                                        Name</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="username" id="validationCustom01"
-                                                        placeholder="Enter User Name" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter User Name</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01"
-                                                        class="form-label required ">Password</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="password" id="validationCustom01"
-                                                        placeholder="Enter Password" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Password</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01" class="form-label required ">From
-                                                        Address</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="from_address" id="validationCustom01"
-                                                        placeholder="Enter From Address" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter From Address</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01" class="form-label required ">From
-                                                        Name</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="from_name" id="validationCustom01"
-                                                        placeholder="Enter From Name" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter From Name</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01" class="form-label required ">Sender
-                                                        Email</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="sender_email" id="validationCustom01"
-                                                        placeholder="Enter Sender Email" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Sender Email</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01" class="form-label required ">Sender
-                                                        Name</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="sender_name" id="validationCustom01"
-                                                        placeholder="Enter Sender Name" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Sender Name</div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label for="validationCustom04"
-                                                        class="form-label required">Status</label>
-                                                    <select class="form-select form-select-sm form-select-solid"
-                                                        name="status" data-dropdown-parent="#colorsAddModal"
-                                                        data-control="select2" data-hide-search="true"
-                                                        data-placeholder="Select an status" data-allow-clear="true"
-                                                        required>
-                                                        <option></option>
-                                                        <option value="active">Active</option>
-                                                        <option value="inactive">Inactive</option>
-                                                    </select>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please provide a Status. </div>
+                    <form action="{{ route('admin.smtp.setting', optional($smtp)->id) }}" class="needs-validation" method="post"
+                        novalidate>
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="container px-0">
+                                <div class="row modal_body_badge">
+                                    <div class="col-lg-12 col-sm-12">
+                                        <div class="card border rounded-0 mt-3">
+                                            <p class="badge badge-info custom-badge">Info</span>
+                                            <div class="card-body p-1 px-2">
+                                                <div class="row modal_body_badge">
+                                                    <div class="col-md-4 mb-1">
+                                                        <label for="validationCustom01"
+                                                            class="form-label required ">Host</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-solid form-control-sm"
+                                                            name="host" value="{{ optional($smtp)->host }}"
+                                                            id="validationCustom01" placeholder="Enter Host" required>
+                                                        <div class="valid-feedback"> Looks good! </div>
+                                                        <div class="invalid-feedback"> Please Enter Host</div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label for="validationCustom01"
+                                                            class="form-label required ">Port</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-solid form-control-sm"
+                                                            name="port" value="{{ optional($smtp)->port }}"
+                                                            id="validationCustom01" placeholder="Enter Port" required>
+                                                        <div class="valid-feedback"> Looks good! </div>
+                                                        <div class="invalid-feedback"> Please Enter Port</div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label for="validationCustom01"
+                                                            class="form-label required ">Encryption</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-solid form-control-sm"
+                                                            name="encryption" value="{{ optional($smtp)->encryption }}"
+                                                            id="validationCustom01" placeholder="Enter Encryption" required>
+                                                        <div class="valid-feedback"> Looks good! </div>
+                                                        <div class="invalid-feedback"> Please Enter Encryption</div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label for="validationCustom01" class="form-label required ">User
+                                                            Name</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-solid form-control-sm"
+                                                            name="username" value="{{ optional($smtp)->username }}"
+                                                            id="validationCustom01" placeholder="Enter User Name" required>
+                                                        <div class="valid-feedback"> Looks good! </div>
+                                                        <div class="invalid-feedback"> Please Enter User Name</div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label for="validationCustom01"
+                                                            class="form-label required ">Password</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-solid form-control-sm"
+                                                            name="password" value="{{ optional($smtp)->password }}"
+                                                            id="validationCustom01" placeholder="Enter Password" required>
+                                                        <div class="valid-feedback"> Looks good! </div>
+                                                        <div class="invalid-feedback"> Please Enter Password</div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label for="validationCustom01" class="form-label required ">From
+                                                            Address</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-solid form-control-sm"
+                                                            name="from_address" value="{{ optional($smtp)->from_address }}"
+                                                            id="validationCustom01" placeholder="Enter From Address" required>
+                                                        <div class="valid-feedback"> Looks good! </div>
+                                                        <div class="invalid-feedback"> Please Enter From Address</div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label for="validationCustom01" class="form-label required ">From
+                                                            Name</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-solid form-control-sm"
+                                                            name="from_name" value="{{ optional($smtp)->from_name }}"
+                                                            id="validationCustom01" placeholder="Enter From Name" required>
+                                                        <div class="valid-feedback"> Looks good! </div>
+                                                        <div class="invalid-feedback"> Please Enter From Name</div>
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label for="validationCustom01" class="form-label">Sender
+                                                            Email</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-solid form-control-sm"
+                                                            name="sender_email" value="{{ optional($smtp)->sender_email }}"
+                                                            id="validationCustom01" placeholder="Enter Sender Email">
+                                                    </div>
+                                                    <div class="col-md-4 mb-1">
+                                                        <label for="validationCustom01" class="form-label">Sender
+                                                            Name</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-solid form-control-sm"
+                                                            name="sender_name" value="{{ optional($smtp)->sender_name }}"
+                                                            id="validationCustom01" placeholder="Enter Sender Name">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="validationCustom04"
+                                                            class="form-label required">Status</label>
+                                                        <select class="form-select form-select-sm form-select-solid"
+                                                            name="status" data-dropdown-parent="#smtpsEditModal_{{ optional($smtp)->id }}"
+                                                            data-control="select2" data-hide-search="true"
+                                                            data-placeholder="Select an status" data-allow-clear="true"
+                                                            required>
+                                                            <option></option>
+                                                            <option @selected(optional($smtp)->status == 'active') value="active">Active</option>
+                                                            <option @selected(optional($smtp)->status == 'inactive') value="inactive">Inactive
+                                                            </option>
+                                                        </select>
+                                                        <div class="valid-feedback"> Looks good! </div>
+                                                        <div class="invalid-feedback"> Please provide a Status. </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -288,304 +248,149 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer p-2">
-                        <!-- Button to close the modal in the footer -->
-                        <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
-                    </div>
-                </form>
+                        <div class="modal-footer p-2">
+                            <!-- Button to close the modal in the footer -->
+                            <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    {{-- Edit Modal --}}
-    <div class="modal fade" id="smtpsEditModal_{{ $smtp->id }}" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">Edit SMTPS</h5>
-                    <!-- Close button in the header -->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <span class="svg-icon svg-icon-2x">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                    transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                    transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
+    {{-- View Modal --}}
+    {{-- @if (!empty(optional($smtp)->id))  --}}
+        <div class="modal fade" id="smtpViewModal_{{ optional($smtp)->id }}" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-0 border-0 shadow-sm">
+                    <div class="modal-header p-2 rounded-0">
+                        <h5 class="modal-title">Complete Information </h5>
+                        <!-- Close button in the header -->
+                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                            <span class="svg-icon svg-icon-2x">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                        transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                    <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                        transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                                </svg>
+                            </span>
+                        </div>
                     </div>
-                    <!-- End Close button in the header -->
-                </div>
-                <form action="{{ route('admin.smtp.setting', $smtp->id) }}" class="needs-validation" method="post"
-                    novalidate>
-                    @csrf
-                    @method('PUT')
-                    <div class="modal-body">
+                    <div class="modal-body pt-0 px-3">
                         <div class="container px-0">
                             <div class="row modal_body_badge">
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="card border rounded-0 mt-3">
-                                        <p class="badge badge-info custom-badge">Info</span>
-                                        <div class="card-body p-1 px-2">
+                                <div class="col-lg-12">
+                                    <div class="card border rounded-0">
+                                        <div class="card-body p-1 px-5">
                                             <div class="row modal_body_badge">
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01"
-                                                        class="form-label required ">Host</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="host" value="{{ $smtp->host }}"
-                                                        id="validationCustom01" placeholder="Enter Host" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Host</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01"
-                                                        class="form-label required ">Port</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="port" value="{{ $smtp->port }}"
-                                                        id="validationCustom01" placeholder="Enter Port" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Port</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01"
-                                                        class="form-label required ">Encryption</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="encryption" value="{{ $smtp->encryption }}"
-                                                        id="validationCustom01" placeholder="Enter Encryption" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Encryption</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01" class="form-label required ">User
-                                                        Name</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="username" value="{{ $smtp->username }}"
-                                                        id="validationCustom01" placeholder="Enter User Name" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter User Name</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01"
-                                                        class="form-label required ">Password</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="password" value="{{ $smtp->password }}"
-                                                        id="validationCustom01" placeholder="Enter Password" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Password</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01" class="form-label required ">From
-                                                        Address</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="from_address" value="{{ $smtp->from_address }}"
-                                                        id="validationCustom01" placeholder="Enter From Address" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter From Address</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01" class="form-label required ">From
-                                                        Name</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="from_name" value="{{ $smtp->from_name }}"
-                                                        id="validationCustom01" placeholder="Enter From Name" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter From Name</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01" class="form-label required ">Sender
-                                                        Email</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="sender_email" value="{{ $smtp->sender_email }}"
-                                                        id="validationCustom01" placeholder="Enter Sender Email" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Sender Email</div>
-                                                </div>
-                                                <div class="col-md-4 mb-1">
-                                                    <label for="validationCustom01" class="form-label required ">Sender
-                                                        Name</label>
-                                                    <input type="text"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="sender_name" value="{{ $smtp->sender_name }}"
-                                                        id="validationCustom01" placeholder="Enter Sender Name" required>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Sender Name</div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label for="validationCustom04"
-                                                        class="form-label required">Status</label>
-                                                    <select class="form-select form-select-sm form-select-solid"
-                                                        name="status" data-dropdown-parent="#smtpsEditModal"
-                                                        data-control="select2" data-hide-search="true"
-                                                        data-placeholder="Select an status" data-allow-clear="true"
-                                                        required>
-                                                        <option></option>
-                                                        <option @selected($smtp->status == 'active') value="active">Active</option>
-                                                        <option @selected($smtp->status == 'inactive') value="inactive">Inactive
-                                                        </option>
-                                                    </select>
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please provide a Status. </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer p-2">
-                        <!-- Button to close the modal in the footer -->
-                        <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    {{-- View Modal --}}
-    <div class="modal fade" id="colorsViewModal_{{ $smtp->id }}" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">View </h5>
-                    <!-- Close button in the header -->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                        <span class="svg-icon svg-icon-2x">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                    transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1"
-                                    transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="container px-0">
-                        <div class="row modal_body_badge">
-                            <div class="col-lg-12">
-                                <div class="card border rounded-0 mt-3">
-                                    <p class="badge badge-info custom-badge">Info</span>
-                                    <div class="card-body p-1 px-2">
-                                        <div class="row modal_body_badge">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold">Host :</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>{{ $smtp->host }}</p>
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-sm-5">
+                                                            <p class="fw-bold">Host :</p>
+                                                        </div>
+                                                        <div class="col-lg-8 col-sm-7">
+                                                            <p>{{ optional($smtp)->host }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold">Port :</p>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold">Port :</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ optional($smtp)->port }}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>{{ $smtp->port }}</p>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold">Encryption :</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ optional($smtp)->encryption }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold">Encryption :</p>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold">Username :</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ optional($smtp)->username }}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>{{ $smtp->encryption }}</p>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold">Password :</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ optional($smtp)->password }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold">Username :</p>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold" title="Form Address">For Address :</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ optional($smtp)->from_address }}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>{{ $smtp->username }}</p>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold" title="Form Name">For Name :</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ optional($smtp)->from_name }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold">Password :</p>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold">Status :</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ optional($smtp)->status }}</p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>{{ $smtp->password }}</p>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-sm-5">
+                                                            <p class="fw-bold" title="Sender Name">Sen Name :</p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-sm-6">
+                                                            <p>{{ optional($smtp)->sender_email }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold" title="Form Address">For Address :</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>{{ $smtp->from_address }}</p>
-                                                    </div>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-5">
+                                                    <p class="fw-bold" title="Sender Title">Sen Email :</p>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold" title="Form Name">For Name :</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>{{ $smtp->from_name }}</p>
-                                                    </div>
+                                                <div class="col-lg-8 col-sm-6">
+                                                    <p>{{ optional($smtp)->sender_name }}</p>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold">Status :</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>{{ $smtp->status }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-sm-5">
-                                                        <p class="fw-bold" title="Sender Name">Sen Name :</p>
-                                                    </div>
-                                                    <div class="col-lg-6 col-sm-6">
-                                                        <p>{{ $smtp->sender_email }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-4 col-sm-5">
-                                                <p class="fw-bold" title="Sender Title">Sen Email :</p>
-                                            </div>
-                                            <div class="col-lg-8 col-sm-6">
-                                                <p>{{ $smtp->sender_name }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -596,7 +401,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    {{-- @endif --}}
 @endsection
 
 @push('scripts')

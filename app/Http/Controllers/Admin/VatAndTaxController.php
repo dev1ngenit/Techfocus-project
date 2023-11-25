@@ -55,7 +55,7 @@ class VatAndTaxController extends Controller
             'type'        => $request->type,
             'name'        => $request->name,
             'slug'        => Str::slug($request->name),
-            'rate'        => $request->rate,
+            'amount'      => $request->amount,
             'description' => $request->description,
             'status'      => $request->status,
         ];
@@ -102,7 +102,7 @@ class VatAndTaxController extends Controller
             'type'        => $request->type,
             'name'        => $request->name,
             'slug'        => Str::slug($request->name),
-            'rate'        => $request->rate,
+            'amount'        => $request->amount,
             'description' => $request->description,
             'status'      => $request->status,
         ];

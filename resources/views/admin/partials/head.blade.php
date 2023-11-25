@@ -1,10 +1,8 @@
 <base href="">
-<title>TechFocus</title>
+<title>TechFocus | Back Office</title>
 <meta charset="utf-8" />
-<meta name="description"
-    content="" />
-<meta name="keywords"
-    content="" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <meta property="og:locale" content="en_US" />
@@ -27,11 +25,14 @@
 <!--begin::Global Stylesheets Bundle(used by all pages)-->
 <link href="{{ asset('backend/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('backend/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <!--end::Global Stylesheets Bundle-->
-
+{{-- <link rel="stylesheet" type="text/css" 
+     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
 
 <!--start::Custom-Shahed-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/css/bootstrap-multiselect.css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/css/jquery-editable.css" rel="stylesheet"/>
 <link href="{{ asset('backend/assets/css/custom/toastr.css') }}" rel="stylesheet" type="text/css" />
 {{-- <link href="{{ asset('backend/assets/css/custom/font-awesome6.css') }}" rel="stylesheet" type="text/css" /> --}}
 <!--end::Custom-Shahed-->
