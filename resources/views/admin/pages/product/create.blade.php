@@ -42,7 +42,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-10 px-4 p-2">
-                            <form id="productForm" method="post" action="" enctype="multipart/form-data">
+                            <form id="productForm" method="post" action="{{route('admin.product.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade active show" id="kt_vtab_pane_1" role="tabpanel">
@@ -145,10 +145,10 @@
                                                     <div class="col-lg-2 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Current Stock</label>
-                                                            <input type="number" name="qty" pattern="\d+" step="1"
+                                                            <input type="number" name="qty" pattern="\d+"
+                                                                step="1"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Current Stock"
-                                                                required />
+                                                                placeholder="Enter Current Stock" required />
                                                             <div class="invalid-feedback"> Please Enter Current Stock.
                                                             </div>
                                                         </div>
@@ -178,8 +178,10 @@
                                                                 name="brand_id" data-control="select2"
                                                                 data-placeholder="Select an Brand Name"
                                                                 data-allow-clear="true" required>
-                                                                @foreach ($brands as $brand) 
-                                                                    <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                                                <option></option>
+                                                                @foreach ($brands as $brand)
+                                                                    <option value="{{ $brand->id }}">{{ $brand->name }}
+                                                                    </option>
                                                                 @endforeach
                                                             </select>
                                                             <div class="invalid-feedback"> Please Enter Brand Name.</div>
@@ -188,16 +190,20 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Category Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="category_id" data-control="select2"
-                                                                data-hide-search="false"
-                                                                data-placeholder="Select an Category Name"
-                                                                data-allow-clear="true" required>
-                                                                <option></option>
-                                                                <option value="software">Software</option>
-                                                                <option value="hardware">Hardware</option>
-                                                                <option value="book">Book</option>
-                                                                <option value="training">Training</option>
+                                                            <select class="form-select form-select-solid form-select-sm" name="category_id[]"
+                                                                id="field2" multiple multiselect-search="true"
+                                                                multiselect-select-all="true" onchange="console.log(this.selectedOptions)">
+                                                                @if (count($categories) > 0)
+                                                                    @foreach ($categories->whereNull('parent_id') as $category)
+                                                                        @include(
+                                                                            'admin.pages.category.partial.add_parent',
+                                                                            [
+                                                                                'category' => $category,
+                                                                                'level' => 0,
+                                                                            ]
+                                                                        )
+                                                                    @endforeach
+                                                                @endif
                                                             </select>
                                                             <div class="invalid-feedback"> Please Enter Category Name.
                                                             </div>
@@ -207,21 +213,14 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Industry Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm multiselect"
-                                                                data-hide-search="false"
-                                                                name="industry_id" data-control="select2" 
-                                                                data-placeholder="Select an Industry Name"
-                                                                data-allow-clear="true" multiple="multiple" required>
-                                                                <option></option>
-                                                                {{-- @foreach ($industries as $industry) 
-                                                                    <option value="1">{{$industry->name}}</option>
-                                                                @endforeach --}}
-                                                                <option value="7">Option 7</option>
-                                                                <option value="6">Option 6</option>
-                                                                <option value="5">Option 5</option>
-                                                                <option value="4">Option 4</option>
-                                                                <option value="3">Option 3</option>
-                                                                <option value="2">Option 2</option>
+                                                            <select class="form-select form-select-solid form-select-sm" name="industry_id[]"
+                                                                id="field2" multiple multiselect-search="true"
+                                                                multiselect-select-all="true" multiselect-max-items="3">
+                                                                @if (count($industries) > 0)
+                                                                    @foreach ($industries as $industry)
+                                                                    <option value="{{ $industry->id }}">{{ $industry->name }}</option>
+                                                                    @endforeach
+                                                                @endif
                                                             </select>
                                                             <div class="invalid-feedback"> Please Enter Industry Name.
                                                             </div>
@@ -232,13 +231,14 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Solution Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
-                                                                name="solution_id" data-control="select2"
-                                                                data-placeholder="Select an Solution Name"
-                                                                data-allow-clear="true" multiple="multiple" required>
-                                                                <option></option>
-                                                                <option value="1">Option 1</option>
-                                                                <option value="2">Option 2</option>
+                                                            <select class="form-select form-select-solid form-select-sm" name="solution_id[]"
+                                                                id="field2" multiple multiselect-search="true"
+                                                                multiselect-select-all="true" multiselect-max-items="3">
+                                                                @if (count($solutions) > 0)
+                                                                    @foreach ($solutions as $solution)
+                                                                    <option value="{{ $solution->id }}">{{ $solution->name }}</option>
+                                                                    @endforeach
+                                                                @endif
                                                             </select>
                                                             <div class="invalid-feedback"> Please Enter Solution Name.
                                                             </div>
@@ -290,15 +290,13 @@
                                                         <div class="fv-row">
                                                             <div class="dropzone" id="kt_dropzonejs_example_1">
                                                                 <div class="dz-message needsclick p-6">
-                                                                    <i
-                                                                        class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                                                    <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
 
                                                                     <div class="ms-4">
                                                                         <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop
                                                                             files here or click to upload.</h3>
                                                                         <span class="fs-7 fw-bold text-gray-400">Upload up
-                                                                            to
-                                                                            10 files</span>
+                                                                            to 10 files</span>
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -6,10 +6,11 @@ use App\Models\Admin\Brand;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
-use Intervention\Image\Facades\Image;
 use App\Models\Admin\Category;
 use App\Models\Admin\Industry;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 use App\Http\Requests\Admin\ProductRequest;
 
 class ProductController extends Controller
@@ -39,13 +40,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data['brands']              = Brand::latest('id')->get(['id','name']);
-        $data['categories']          = Category::latest('id')->get();
-        $data['sub_cats']            = Category::latest('id')->get();
-        $data['sub_sub_cats']        = Category::latest('id')->get();
-        $data['sub_sub_sub_cats']    = Category::latest('id')->get();
-        $data['industrys']           = Industry::latest('id')->get();
-        $data['solutions']           = Industry::latest('id')->get();
+        $data['brands']       = DB::table('brands')->select('id','name')->orderBy('id', 'desc')->get();
+        $data['categories']   = Category::with('children')->latest('id')->get();
+        $data['industries']   = DB::table('industries')->select('id','name')->orderBy('id', 'desc')->get();
+        $data['solutions']    = DB::table('solution_details')->select('id','name')->orderBy('id', 'desc')->get();
         return view('admin.pages.product.create', $data);
     }
 
@@ -55,9 +53,10 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
-        //$input   = $request->all();
+        $input   = $request->all();
+        dd($input);
 
 
         if ($request->source_one_price > $request->source_two_price) {

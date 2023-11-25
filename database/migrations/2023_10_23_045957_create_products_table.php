@@ -47,7 +47,8 @@ return new class extends Migration
             $table->enum('price_status', ['rfq', 'price', 'offer_price', 'starting_price'])->default('price');
             $table->enum('rfq', ['0', '1'])->default('0');
             $table->string('product_type', 50);
-            $table->foreignId('category_id')->nullable()->constrained('categories')->cascadeOnDelete();
+            $table->json('category_id')->nullable();
+            // $table->foreignId('category_id')->nullable()->constrained('categories')->cascadeOnDelete();
             $table->foreignId('brand_id')->nullable()->constrained('brands')->cascadeOnDelete();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->enum('product_status', ['sourcing', 'product'])->default('sourcing');
