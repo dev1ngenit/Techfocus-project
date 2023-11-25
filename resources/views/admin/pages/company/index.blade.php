@@ -90,7 +90,7 @@
                     <div class="card-body">
                         <table
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
-                            id="kt_datatable_example_1">
+                            id="kt_datatable_example">
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">

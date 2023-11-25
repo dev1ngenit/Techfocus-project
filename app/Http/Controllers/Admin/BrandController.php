@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use App\Http\Requests\BrandRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use App\Repositories\Interfaces\BrandRepositoryInterface;
 
 class BrandController extends Controller
@@ -47,21 +48,12 @@ class BrandController extends Controller
      */
     public function store(BrandRequest $request)
     {
+        
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
-        // $filePath_image = storage_path('app/public/brand/image/');
-        // $filePath_logo = storage_path('app/public/brand/logo/');
-        $brandPath = storage_path('app/public/brand/');
-
-        // Create the brand directory if it does not exist
-        if (!is_dir($brandPath)) {
-            if (!mkdir($brandPath, 0777, true)) {
-                abort(404, "Failed to create the directory: $brandPath");
-            }
-        }
-        // Image directory within brand
-        $filePath_image = $brandPath . 'image/';
-        $filePath_logo = $brandPath . 'logo/';
+        
+        $filePath_image = storage_path('app/public/brand/image/');
+        $filePath_logo = storage_path('app/public/brand/logo/');
 
         if (!empty($mainFile)) {
             $globalFunImage = customUpload($mainFile, $filePath_image,   44, 44);
@@ -85,7 +77,7 @@ class BrandController extends Controller
             'category'     => $request->category,
         ];
         $this->brandRepository->storeBrand($data);
-
+        Session::flash('success', ['message' => 'Row is created successfully']);
         // toastr()->success('Data has been saved successfully!');
         return redirect()->back()->with('success', 'Data has been saved successfully!');
     }

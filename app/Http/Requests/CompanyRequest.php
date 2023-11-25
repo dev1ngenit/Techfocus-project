@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class CompanyRequest extends FormRequest
 {
@@ -123,11 +124,11 @@ class CompanyRequest extends FormRequest
     //  * @param  \Illuminate\Contracts\Validation\Validator  $validator
     //  * @return void
     //  */
-    // protected function failedValidation(Validator $validator)
-    // {
-    //     $this->recordErrorMessages($validator);
-    //     parent::failedValidation($validator);
-    // }
+    protected function failedValidation(Validator $validator)
+    {
+        $this->recordErrorMessages($validator);
+        parent::failedValidation($validator);
+    }
 
     // /**
     //  * Record the error messages displayed to the user.
@@ -135,12 +136,12 @@ class CompanyRequest extends FormRequest
     //  * @param  \Illuminate\Contracts\Validation\Validator  $validator
     //  * @return void
     //  */
-    // protected function recordErrorMessages(Validator $validator)
-    // {
-    //     $errorMessages = $validator->errors()->all();
-
-    //     foreach ($errorMessages as $errorMessage) {
-    //         toastr()->error($errorMessage);
-    //     }
-    // }
+    protected function recordErrorMessages(Validator $validator)
+    {
+        $errorMessages = $validator->errors()->all();
+        Session::flash('error', $errorMessages);
+        // foreach ($errorMessages as $errorMessage) {
+        //     toastr()->error($errorMessage);
+        // }
+    }
 }
