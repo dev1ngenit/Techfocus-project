@@ -282,6 +282,71 @@ tr td {
   z-index: 99;
 }
 
+/* Custom Multi file upload */
+.img-thumb {
+  border: 2px solid none;
+  border-radius: 3px;
+  padding: 1px;
+  cursor: pointer;
+  width: 70px;
+  height: 60px;
+  border-radius: 0.475rem;
+}
+
+
+.img-thumb-wrapper {
+  display: inline-block;
+  margin: 0px 10px 0 0;
+}
+
+
+.remove {
+  display: block;
+  background: #cf054f;
+  border: 1px solid none;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 5px;
+}
+
+
+.remove:hover {
+  background: white;
+  color: black;
+}
+
+
+.dropzone-field {
+  border: 1px dashed #009ef7;
+  display: flex;
+  flex-wrap: wrap; /* Allow multiple images in a row */
+  align-items: center;
+  border-radius: 4px;
+  padding: 10px 5px;
+  justify-content: center;
+}
+
+
+#files {
+  display: none;
+}
+
+
+.custom-file-upload {
+  border: 0px solid #ccc;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+
+.custom-file-upload i {
+  margin-right: 5px;
+}
+
+/* Custom Multi file upload */
 
 /* Responsive */
 @media only screen and (max-width: 600px) {

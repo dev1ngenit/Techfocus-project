@@ -83,96 +83,96 @@ $('#multiImg').on('change', function () { //on file input change
 
 // Class definition
 var KTDatatablesExample = function () {
-    // Shared variables
-    var table;
-    var datatable;
+  // Shared variables
+  var table;
+  var datatable;
 
-    // Private functions
-    var initDatatable = function () {
-        // Set date data order
-        const tableRows = table.querySelectorAll('tbody tr');
+  // Private functions
+  var initDatatable = function () {
+    // Set date data order
+    const tableRows = table.querySelectorAll('tbody tr');
 
-        tableRows.forEach(row => {
-            const dateRow = row.querySelectorAll('td');
-            const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT").format(); // select date from 4th column in table
-            dateRow[3].setAttribute('data-order', realDate);
-        });
+    tableRows.forEach(row => {
+      const dateRow = row.querySelectorAll('td');
+      const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT").format(); // select date from 4th column in table
+      dateRow[3].setAttribute('data-order', realDate);
+    });
 
-        // Init datatable --- more info on datatables: https://datatables.net/manual/
-        datatable = $(table).DataTable({
-            "info": false,
-            'order': [],
-            'pageLength': 10,
-        });
-    }
+    // Init datatable --- more info on datatables: https://datatables.net/manual/
+    datatable = $(table).DataTable({
+      "info": false,
+      'order': [],
+      'pageLength': 10,
+    });
+  }
 
-    // Hook export buttons
-    var exportButtons = () => {
-        const documentTitle = $('.document_title').html();
-        var buttons = new $.fn.dataTable.Buttons(table, {
-            buttons: [
-                {
-                    extend: 'copyHtml5',
-                    title: documentTitle
-                },
-                {
-                    extend: 'excelHtml5',
-                    title: documentTitle
-                },
-                {
-                    extend: 'csvHtml5',
-                    title: documentTitle
-                },
-                {
-                    extend: 'pdfHtml5',
-                    title: documentTitle
-                }
-            ]
-        }).container().appendTo($('#kt_datatable_example_buttons'));
-
-        // Hook dropdown menu click event to datatable export buttons
-        const exportButtons = document.querySelectorAll('#kt_datatable_example_export_menu [data-kt-export]');
-        exportButtons.forEach(exportButton => {
-            exportButton.addEventListener('click', e => {
-                e.preventDefault();
-
-                // Get clicked export value
-                const exportValue = e.target.getAttribute('data-kt-export');
-                const target = document.querySelector('.dt-buttons .buttons-' + exportValue);
-
-                // Trigger click event on hidden datatable export buttons
-                target.click();
-            });
-        });
-    }
-
-    // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-    var handleSearchDatatable = () => {
-        const filterSearch = document.querySelector('[data-kt-filter="search"]');
-        filterSearch.addEventListener('keyup', function (e) {
-            datatable.search(e.target.value).draw();
-        });
-    }
-
-    // Public methods
-    return {
-        init: function () {
-            table = document.querySelector('#kt_datatable_example');
-
-            if ( !table ) {
-                return;
-            }
-
-            initDatatable();
-            exportButtons();
-            handleSearchDatatable();
+  // Hook export buttons
+  var exportButtons = () => {
+    const documentTitle = $('.document_title').html();
+    var buttons = new $.fn.dataTable.Buttons(table, {
+      buttons: [
+        {
+          extend: 'copyHtml5',
+          title: documentTitle
+        },
+        {
+          extend: 'excelHtml5',
+          title: documentTitle
+        },
+        {
+          extend: 'csvHtml5',
+          title: documentTitle
+        },
+        {
+          extend: 'pdfHtml5',
+          title: documentTitle
         }
-    };
+      ]
+    }).container().appendTo($('#kt_datatable_example_buttons'));
+
+    // Hook dropdown menu click event to datatable export buttons
+    const exportButtons = document.querySelectorAll('#kt_datatable_example_export_menu [data-kt-export]');
+    exportButtons.forEach(exportButton => {
+      exportButton.addEventListener('click', e => {
+        e.preventDefault();
+
+        // Get clicked export value
+        const exportValue = e.target.getAttribute('data-kt-export');
+        const target = document.querySelector('.dt-buttons .buttons-' + exportValue);
+
+        // Trigger click event on hidden datatable export buttons
+        target.click();
+      });
+    });
+  }
+
+  // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
+  var handleSearchDatatable = () => {
+    const filterSearch = document.querySelector('[data-kt-filter="search"]');
+    filterSearch.addEventListener('keyup', function (e) {
+      datatable.search(e.target.value).draw();
+    });
+  }
+
+  // Public methods
+  return {
+    init: function () {
+      table = document.querySelector('#kt_datatable_example');
+
+      if (!table) {
+        return;
+      }
+
+      initDatatable();
+      exportButtons();
+      handleSearchDatatable();
+    }
+  };
 }();
 
 // On document ready
 KTUtil.onDOMContentLoaded(function () {
-    KTDatatablesExample.init();
+  KTDatatablesExample.init();
 });
 // Datatable End
 
@@ -433,6 +433,68 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 //  DropZone Image
+$(document).ready(function () {
+  var selectedFiles = [];
+
+  $(".dropzone-field").on("change", "#files", function (e) {
+    var files = e.target.files,
+      filesLength = files.length;
+
+    $(".custom-file-upload").toggle(filesLength === 0 && selectedFiles.length === 0);
+
+    for (var i = 0; i < filesLength; i++) {
+      var f = files[i];
+      selectedFiles.push(f);
+      var fileReader = new FileReader();
+      fileReader.onload = (function (file) {
+        return function (e) {
+          $("<div class=\"img-thumb-wrapper card shadow\">" +
+            "<img class=\"img-thumb\" src=\"" + e.target.result +
+            "\" title=\"" + file.name + "\"/>" +
+            "<br/><span class=\"remove\">Remove</span>" +
+            "</div>").insertAfter("#files");
+        };
+      })(f);
+      fileReader.readAsDataURL(f);
+    }
+    // console.log(selectedFiles);
+  });
+
+  // Use event delegation for the click event
+  $(".dropzone-field").on("click", ".remove", function () {
+    var wrapper = $(this).parent(".img-thumb-wrapper");
+    wrapper.remove();
+    var removedFile = wrapper.find('img').prop('title');
+    selectedFiles = selectedFiles.filter(function (file) {
+      return file.name !== removedFile;
+    });
+    updateInputFiles();
+    $(".custom-file-upload").toggle(selectedFiles.length === 0);
+    // alert(selectedFiles.length);
+  });
+
+  function updateInputFiles() {
+    // Create a new set of files excluding the removed one
+    var newInputFiles = new DataTransfer();
+    selectedFiles.forEach(function (file) {
+      newInputFiles.items.add(file);
+    });
+
+    // Clear the input
+    $("#files").val("");
+
+    // Assign the new set of files to the input
+    $("#files")[0].files = newInputFiles.files;
+  }
+});
+
+
+
+
+
+
+
+
 var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
   url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
   paramName: "file", // The name that will be used to transfer the file

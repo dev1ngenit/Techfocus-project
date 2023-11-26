@@ -42,7 +42,8 @@
                             </ul>
                         </div>
                         <div class="col-lg-10 px-4 p-2">
-                            <form id="productForm" method="post" action="{{route('admin.product.store')}}" enctype="multipart/form-data">
+                            <form id="productForm" method="post" action="{{ route('admin.product.store') }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade active show" id="kt_vtab_pane_1" role="tabpanel">
@@ -190,9 +191,10 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Category Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm" name="category_id[]"
-                                                                id="field2" multiple multiselect-search="true"
-                                                                multiselect-select-all="true" onchange="console.log(this.selectedOptions)">
+                                                            <select class="form-select form-select-solid form-select-sm"
+                                                                name="category_id[]" id="field2" multiple
+                                                                multiselect-search="true" multiselect-select-all="true"
+                                                                onchange="console.log(this.selectedOptions)">
                                                                 @if (count($categories) > 0)
                                                                     @foreach ($categories->whereNull('parent_id') as $category)
                                                                         @include(
@@ -213,12 +215,14 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Industry Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm" name="industry_id[]"
-                                                                id="field2" multiple multiselect-search="true"
-                                                                multiselect-select-all="true" multiselect-max-items="3">
+                                                            <select class="form-select form-select-solid form-select-sm"
+                                                                name="industry_id[]" id="field2" multiple
+                                                                multiselect-search="true" multiselect-select-all="true"
+                                                                multiselect-max-items="3">
                                                                 @if (count($industries) > 0)
                                                                     @foreach ($industries as $industry)
-                                                                    <option value="{{ $industry->id }}">{{ $industry->name }}</option>
+                                                                        <option value="{{ $industry->id }}">
+                                                                            {{ $industry->name }}</option>
                                                                     @endforeach
                                                                 @endif
                                                             </select>
@@ -231,12 +235,14 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Solution Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm" name="solution_id[]"
-                                                                id="field2" multiple multiselect-search="true"
-                                                                multiselect-select-all="true" multiselect-max-items="3">
+                                                            <select class="form-select form-select-solid form-select-sm"
+                                                                name="solution_id[]" id="field2" multiple
+                                                                multiselect-search="true" multiselect-select-all="true"
+                                                                multiselect-max-items="3">
                                                                 @if (count($solutions) > 0)
                                                                     @foreach ($solutions as $solution)
-                                                                    <option value="{{ $solution->id }}">{{ $solution->name }}</option>
+                                                                        <option value="{{ $solution->id }}">
+                                                                            {{ $solution->name }}</option>
                                                                     @endforeach
                                                                 @endif
                                                             </select>
@@ -287,10 +293,11 @@
                                                     </div>
                                                     <div class="col-lg-10">
                                                         <label class="form-label required">Multi Image</label>
-                                                        <div class="fv-row">
-                                                            <div class="dropzone" id="kt_dropzonejs_example_1">
+                                                        {{-- <div class="fv-row">
+                                                            <div class="dropzone" id="product_multiimage" name="multi_image[]">
                                                                 <div class="dz-message needsclick p-6">
-                                                                    <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                                                    <i
+                                                                        class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
 
                                                                     <div class="ms-4">
                                                                         <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop
@@ -300,6 +307,23 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </div> --}}
+                                                        <div class="dropzone-field">
+                                                            <label for="files" class="custom-file-upload">
+                                                                <div class="d-flex align-items-center">
+                                                                    <p class="mb-0"><i
+                                                                            class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                                                    </p>
+                                                                    <h5 class="mb-0">Drop files here or click to upload.
+                                                                        <br>
+                                                                        <span class="text-muted"
+                                                                            style="font-size: 10px">Upload 10 File</span>
+                                                                    </h5>
+                                                                </div>
+                                                            </label>
+                                                            <input type="file" id="files" name="multiple_image[]" multiple
+                                                                class="form-control" style="display: none;"
+                                                                onchange="console.log(this.selected.value)" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -420,26 +444,22 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Short Desc</label>
-                                                        <textarea name="short_desc" class="tox-target kt_docs_tinymce_plugins">
-                                                            <h1>Write Here...</h1>
+                                                        <textarea name="short_desc" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Short Desc">
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Overview</label>
-                                                        <textarea name="overview" class="tox-target kt_docs_tinymce_plugins">
-                                                            <h1>Write Here...</h1>
+                                                        <textarea name="overview" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Overview">
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Specification</label>
-                                                        <textarea name="specification" class="tox-target kt_docs_tinymce_plugins">
-                                                            <h1>Write Here...</h1>
+                                                        <textarea name="specification" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Specification">
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Accessories</label>
-                                                        <textarea name="accessories" class="tox-target kt_docs_tinymce_plugins">
-                                                            <h1>Write Here...</h1>
+                                                        <textarea name="accessories" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Accessories">
                                                         </textarea>
                                                     </div>
                                                 </div>
@@ -927,30 +947,17 @@
     <script>
         //---------Sidebar list Show Hide----------
         $(document).ready(function() {
-
-
             $('#dealId').click(function() {
                 $("#dealExpand").toggle(this.checked);
             });
-
-
             $('#rfqId').click(function() {
-
-
                 $("#rfqExpand").toggle('slow');
-
-
             });
-
         });
     </script>
     <script>
         $('.stock_select').on('change', function() {
-
-
             var stock_value = $(this).find(":selected").val();
-
-
             if (stock_value == 'available') {
                 $(".qty_display").removeClass("d-none");
                 $(".qty_required").prop('required', true);
@@ -961,14 +968,10 @@
                 $(".qty_display").addClass("d-none");
                 $(".qty_required").prop('required', false);
             }
-
-
         });
 
 
         $('.price_select').on('change', function() {
-
-
             var price_value = $(this).find(":selected").val();
             if (price_value == 'rfq') {
                 // alert(price_value);
@@ -985,23 +988,31 @@
                 $(".rfq_price").addClass("d-none");
             }
 
-
         });
     </script>
     <script>
-        var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
-            url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location
-            paramName: "file", // The name that will be used to transfer the file
+        var uploadedDocumentMap = {}; // Assuming you have this variable defined somewhere
+
+        var myDropzone = new Dropzone("#product_multiimage", {
+            url: "{{ route('admin.product.store') }}",
+            paramName: "multi_image", // The name that will be used to transfer the file
+            uploadMultiple: true,
+            parallelUploads: 10,
             maxFiles: 10,
             maxFilesize: 10, // MB
             addRemoveLinks: true,
             accept: function(file, done) {
-                if (file.name == "wow.jpg") {
-                    done("Naha, you don't.");
-                } else {
-                    done();
-                }
-            }
+                console.log(file);
+                $('#productForm').append('<input type="hidden" name="document[]" value="' + file.file +
+                    '">');
+                done();
+            },
+            method: "post",
+        });
+
+        document.getElementById('productForm').addEventListener('submit', function(event) {
+            var formData = new FormData(this);
+            console.log(formData);
         });
     </script>
     <script>
@@ -1124,6 +1135,23 @@
                 validateAndSwitchTab(targetTabId);
             });
         });
+
+        //  DropZone Image
+        // var myDropzone = new Dropzone("#product_multiimage", {
+        //     url: "{{ route('admin.product.store') }}", // Set the url for your upload script location
+        //     paramName: "file", // The name that will be used to transfer the file
+        //     maxFiles: 10,
+        //     maxFilesize: 10, // MB
+        //     addRemoveLinks: true,
+        //     accept: function(file, done) {
+        //         if (file.name == "wow.jpg") {
+        //             done("Naha, you don't.");
+        //         } else {
+        //             done();
+        //         }
+        //     }
+        // });
+        // DropZone Image
     </script>
 
     {{-- <script>
