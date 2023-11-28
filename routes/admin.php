@@ -2,39 +2,45 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\RowController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AddressController;
-use App\Http\Controllers\Admin\AttributeController;
-use App\Http\Controllers\Admin\AttributeValueController;
 use App\Http\Controllers\Admin\BankingController;
-use App\Http\Controllers\Admin\BrandPageController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\HrPolicyController;
 use App\Http\Controllers\Admin\IndustryController;
+use App\Http\Controllers\Admin\UserRoleController;
+use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\BioMetricController;
+use App\Http\Controllers\Admin\BrandPageController;
 use App\Http\Controllers\Admin\NewsTrendController;
 use App\Http\Controllers\Admin\VatAndTaxController;
 use App\Http\Controllers\Admin\AttendanceController;
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\WebSettingController;
+use App\Http\Controllers\Admin\IndustryPageController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\HR\LeaveApplicationController;
+use App\Http\Controllers\Admin\AttributeValueController;
+use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\TermsAndPolicyController;
+use App\Http\Controllers\Admin\UserPermissionController;
 use App\Http\Controllers\Admin\DynamicCategoryController;
+use App\Http\Controllers\Admin\SolutionDetailsController;
 use App\Http\Controllers\Sales\SalesTeamTargetController;
 use App\Http\Controllers\Sales\SalesYearTargetController;
 use App\Http\Controllers\Admin\CountryStateCityController;
 use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
-use App\Http\Controllers\Admin\IndustryPageController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\RowController;
-use App\Http\Controllers\Admin\SolutionDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,9 +140,9 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'terms-and-policy'      => TermsAndPolicyController::class,
 
                 'banking'               => BankingController::class,
-    
+
                 'attendance'            => AttendanceController::class, //not my work
-        ],
+            ],
             ['except' => ['create', 'show', 'edit'],]
         );
         Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
@@ -152,8 +158,60 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
         Route::put('city/{id}/update', [CountryStateCityController::class, 'updateCity'])->name('city.update');
         Route::delete('city/{id}/destroy', [CountryStateCityController::class, 'destroyCity'])->name('city.destroy');
-    });
 
+        Route::resource('company', CompanyController::class)->except(['show']); // dd uncommitted changes
+        Route::resource('news-trend', NewsTrendController::class)->except(['show']); // dd uncommitted changes
+
+        Route::resource('role', RoleController::class);
+        Route::resource('permission', PermissionController::class);
+
+        // Route to display the role permission management page
+        // Assuming you have a method in your controller to show the page
+        Route::get('/role/{role}/permission', [RolePermissionController::class, 'show'])
+            ->name('role-permission.show');
+
+        // Route to assign a permission to a role
+        Route::post('/role/{role}/permission/assign', [RolePermissionController::class, 'assignPermission'])
+            ->name('role-permission.assign');
+
+        // Route to remove a permission from a role
+        Route::delete('/role/{role}/permission/{permission}', [RolePermissionController::class, 'removePermission'])
+            ->name('role-permission.remove');
+
+        // Route to display form for assigning permission to a user
+        Route::get('/user/{user}/permission/create', [UserPermissionController::class, 'create'])
+            ->name('user-permission.create');
+
+        // Route to store the assigned permission for a user
+        Route::post('/user/{user}/permission', [UserPermissionController::class, 'store'])
+            ->name('user-permission.store');
+
+        // Route to display form for removing permission from a user
+        Route::get('/user/{user}/permission/edit', [UserPermissionController::class, 'edit'])
+            ->name('user-permission.edit');
+
+        // Route to remove a specific permission from a user
+        Route::delete('/user/{user}/permission/{permission}', [UserPermissionController::class, 'destroy'])
+            ->name('user-permission.destroy');
+
+        Route::resource('employee', EmployeeController::class);
+
+        // Display a listing of the admins with their roles
+        Route::get('/user-roles', [UserRoleController::class, 'index'])
+            ->name('user-roles.index');
+
+        // Show the form for assigning a role to an admin
+        Route::get('/user-roles/{user}/edit', [UserRoleController::class, 'edit'])
+            ->name('user-roles.edit');
+
+        // Update the specified admin's roles
+        Route::put('/user-roles/{user}', [UserRoleController::class, 'update'])
+            ->name('user-roles.update');
+
+        // Remove the specified role from the admin
+        Route::delete('/user-roles/{user}/role/{role}', [UserRoleController::class, 'destroy'])
+            ->name('user-roles.destroy');
+    });
 
 
     Route::get('/subscribers', [NewsletterController::class, 'index'])->name('newsletter.index');
@@ -171,8 +229,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
     Route::post('/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
-    Route::resource('company', CompanyController::class)->except(['show']); // dd uncommitted changes
-    Route::resource('news-trend', NewsTrendController::class)->except(['show']); // dd uncommitted changes
+
     // Route::resource('example', ExampleController::class)->except(['create', 'show', 'edit']); //example
 
     Route::get('/machine-devicesetip-index', [BioMetricController::class, 'index'])->name('attendance.dashboard');
