@@ -48,10 +48,10 @@ class BrandController extends Controller
      */
     public function store(BrandRequest $request)
     {
-        
+
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
-        
+
         $filePath_image = storage_path('app/public/brand/image/');
         $filePath_logo = storage_path('app/public/brand/logo/');
 
@@ -69,7 +69,6 @@ class BrandController extends Controller
         $data = [
             'country_id'   => $request->country_id,
             'name'         => $request->name,
-            'slug'         => Str::slug($request->name),
             'description'  => $request->description,
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : null,
@@ -154,7 +153,6 @@ class BrandController extends Controller
         $data = [
             'country_id'   => $request->country_id,
             'name'         => $request->name,
-            'slug'         => Str::slug($request->name),
             'description'  => $request->description,
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : $brand->image,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $brand->logo,
