@@ -1,14 +1,13 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Models\Admin;
 
-use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class {{ class }} extends Model
+class UserRole extends Model
 {
-    use HasFactory, HasSlug;
+    use HasFactory;
 
     /**
      * The attributes that aren't mass assignable.
@@ -16,7 +15,4 @@ class {{ class }} extends Model
      * @var array
      */
     protected $guarded = [];
-
-    protected $slugSourceColumn = 'name';
-
 }
