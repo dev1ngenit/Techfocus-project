@@ -47,7 +47,7 @@ class ProductController extends Controller
     {
         $data = [
             'brands'     => DB::table('brands')->select('id', 'name')->orderBy('id', 'desc')->get(),
-            'colors'     => DB::table('colors')->select('id', 'color_code', 'name')->orderBy('id', 'desc')->get(),
+            'colors'     => DB::table('product_colors')->select('id', 'color_code', 'name')->orderBy('id', 'desc')->get(),
             'categories' => Category::with('children.children.children.children.children.children')->latest('id')->get(),
             'industries' => DB::table('industries')->select('id', 'name')->orderBy('id', 'desc')->get(),
             'solutions'  => DB::table('solution_details')->select('id', 'name')->orderBy('id', 'desc')->get(),
