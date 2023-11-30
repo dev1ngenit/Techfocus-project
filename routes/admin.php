@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\IndustryPageController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\HR\LeaveApplicationController;
 use App\Http\Controllers\Admin\AttributeValueController;
+use App\Http\Controllers\Admin\CatalogController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\TermsAndPolicyController;
 use App\Http\Controllers\Admin\UserPermissionController;
@@ -164,6 +165,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
         Route::resource('role', RoleController::class);
         Route::resource('permission', PermissionController::class);
+
+        Route::resource('catalog', CatalogController::class);
 
         // Route to display the role permission management page
         // Assuming you have a method in your controller to show the page
