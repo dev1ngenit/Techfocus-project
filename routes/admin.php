@@ -85,6 +85,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::get('web-setting', [WebSettingController::class, 'index'])->name('web.setting');
         Route::put('seo-setting', [WebSettingController::class, 'seo'])->name('seo.setting');
         Route::put('smtp-setting', [WebSettingController::class, 'smtp'])->name('smtp.setting');
+        Route::put('site/setting', [WebSettingController::class, 'site'])->name('site.setting');
 
         //Attribute
         Route::controller(AttributeController::class)->group(function () {
@@ -215,7 +216,6 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::delete('/user-roles/{user}/role/{role}', [UserRoleController::class, 'destroy'])
             ->name('user-roles.destroy');
     });
-
 
     Route::get('/subscribers', [NewsletterController::class, 'index'])->name('newsletter.index');
     Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
