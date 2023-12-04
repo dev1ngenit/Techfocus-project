@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('brand_pages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnUpdate();
             $table->foreignId('brand_id')->nullable()->constrained('brands')->cascadeOnUpdate();
             $table->string('banner_image')->comment('1800*625');
             $table->text('header');
