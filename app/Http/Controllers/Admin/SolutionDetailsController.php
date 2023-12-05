@@ -15,7 +15,7 @@ class SolutionDetailsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.solutionDetails.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class SolutionDetailsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.solutionDetails.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class SolutionDetailsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.solutionDetails.edit');
     }
 
     /**

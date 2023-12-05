@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('solution_cards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->string('badge')->nullable();
             $table->string('title')->nullable();
             $table->string('slug')->unique()->nullable();
@@ -23,9 +22,6 @@ return new class extends Migration
             $table->mediumText('short_des')->nullable();
             $table->text('link')->nullable();
             $table->string('button_name')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable();
             $table->timestamps();
         });
     }
