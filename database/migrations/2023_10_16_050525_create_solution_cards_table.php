@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('badge')->nullable();
             $table->string('title')->nullable();
             $table->string('slug')->unique()->nullable();
-            $table->string('image')->comment('200*200')->nullable();
+            $table->string('image');
             $table->mediumText('short_des')->nullable();
             $table->text('link')->nullable();
             $table->string('button_name')->nullable();

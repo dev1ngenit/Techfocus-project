@@ -67,7 +67,8 @@
                             </ul>
                         </div>
                         <div class="col-lg-10 px-4 p-2">
-                            <form id="productForm" method="post" action="" enctype="multipart/form-data">
+                            <form id="productForm" method="POST" action="{{ route('admin.brand-page.store') }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade active show" id="kt_vtab_pane_1" role="tabpanel">
@@ -85,7 +86,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Select Brand</label>
+                                                            <label class="form-label ">Select Brand</label>
                                                             <select class="form-select form-select-solid form-select-sm"
                                                                 name="brand_id" data-control="select2"
                                                                 data-hide-search="false" data-placeholder="Select a Brand"
@@ -104,35 +105,25 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Brand Logo</label>
+                                                            <label class="form-label ">Brand Logo</label>
                                                             <input name="brand_logo"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Brand Logo" type="file" required />
-                                                            @error('brand_logo')
-                                                                <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                            @enderror
+                                                                placeholder="Enter Brand Logo" type="file" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Banner Image</label>
+                                                            <label class="form-label ">Banner Image</label>
                                                             <input name="banner_image"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Banner Image" type="file"
-                                                                required />
-                                                            @error('banner_image')
-                                                                <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                            @enderror
+                                                                placeholder="Enter Banner Image" type="file" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Banner Header</label>
-                                                            <textarea rows="1" name="banner_header" class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Banner Header">{{ old('banner_header') }}</textarea>
-                                                            @error('banner_header')
-                                                                <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                            @enderror
+                                                            <label class="form-label ">Banner Header</label>
+                                                            <textarea rows="1" name="header" class="form-control form-control-sm form-control-solid"
+                                                                placeholder="Enter Banner Header"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -158,31 +149,23 @@
                                                     class="fw-bolder d-flex justify-content-center align-items-center text-dark">
                                                     Row One
                                                 </h2>
+
                                             </div>
                                             <div class="fv-row">
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Row One Title</label>
+                                                            <label class="form-label ">Row One Title</label>
                                                             <input name="row_one_title"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Row One Title" type="text"
-                                                                value="{{ old('row_one_title') }}" required />
-                                                            @error('row_one_title')
-                                                                <div class="invalid-feedback d-block">{{ $message }}
-                                                                </div>
-                                                            @enderror
+                                                                placeholder="Enter Row One Title" type="text" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Row One Header</label>
+                                                            <label class="form-label ">Row One Header</label>
                                                             <textarea rows="1" name="row_one_header" class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Row One Header">{{ old('row_one_header') }}</textarea>
-                                                            @error('row_one_header')
-                                                                <div class="invalid-feedback d-block">{{ $message }}
-                                                                </div>
-                                                            @enderror
+                                                                placeholder="Enter Row One Header"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -231,12 +214,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="badge" id="validationCustom01"
+                                                                            name="row_four_badge" id="validationCustom01"
                                                                             placeholder="Enter Badge">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
@@ -244,12 +223,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01"
+                                                                            name="row_four_title" id="validationCustom01"
                                                                             placeholder="Enter Title">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -267,12 +242,8 @@
                                                                         </label>
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01"
+                                                                            name="rows_image_four" id="validationCustom01"
                                                                             placeholder="Enter Row Image">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
@@ -280,12 +251,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="btn_name" id="validationCustom01"
+                                                                            name="row_four_btn_name"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Button Name">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
@@ -293,12 +261,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="link" id="validationCustom01"
+                                                                            name="row_four_link" id="validationCustom01"
                                                                             placeholder="Enter Row Link">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -315,13 +279,8 @@
                                                                         <label for="validationCustom01"
                                                                             class="form-label required ">Description
                                                                         </label>
-                                                                        <textarea name="description" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
-                                                                        </textarea>
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
+                                                                        <textarea name="row_four_description" class="tox-target kt_docs_tinymce_plugins">
+                                                                          </textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -373,12 +332,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="badge" id="validationCustom01"
+                                                                            name="row_five_badge" id="validationCustom01"
                                                                             placeholder="Enter Badge">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
@@ -386,12 +341,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01"
+                                                                            name="row_five_title" id="validationCustom01"
                                                                             placeholder="Enter Title">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -409,12 +360,8 @@
                                                                         </label>
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01"
+                                                                            name="rows_image_five" id="validationCustom01"
                                                                             placeholder="Enter Row Image">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
@@ -422,7 +369,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="btn_name" id="validationCustom01"
+                                                                            name="row_five_btn_name"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
@@ -431,7 +379,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="link" id="validationCustom01"
+                                                                            name="row_five_link" id="validationCustom01"
                                                                             placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
@@ -449,14 +397,9 @@
                                                                         <label for="validationCustom01"
                                                                             class="form-label required ">Description
                                                                         </label>
-                                                                        <textarea name="description" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
-                                                                            
+                                                                        <textarea name="row_five_description" class="tox-target kt_docs_tinymce_plugins">
+                                                                           
                                                                         </textarea>
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -504,16 +447,23 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Badge
+                                                                        </label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardOneId_badge"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter a badge">
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-2">
+                                                                        <label for="validationCustom01"
                                                                             class="form-label required mb-0">Title
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01"
+                                                                            name="solutionCardOneId_title"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Title">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
@@ -521,7 +471,8 @@
                                                                         </label>
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01"
+                                                                            name="solution_card_image_one"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Image">
                                                                         <div class="invalid-feedback"> Please Enter Image
                                                                         </div>
@@ -532,7 +483,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="button_name" id="validationCustom01"
+                                                                            name="solutionCardOneId_button_name"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                         <div class="invalid-feedback"> Please Enter Button
                                                                             Name </div>
@@ -541,24 +493,16 @@
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Link
                                                                         </label>
-                                                                        <textarea rows="1" name="link" class="form-control form-control-sm form-control-solid"
+                                                                        <textarea rows="1" name="solutionCardOneId_link" class="form-control form-control-sm form-control-solid"
                                                                             placeholder="Enter Link"></textarea>
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
-                                                                        <textarea name="acceshort_desssories" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
+                                                                        <textarea name="solutionCardOneId_short_des" class="tox-target kt_docs_tinymce_plugins">
+                                                                           
                                                                          </textarea>
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -572,16 +516,23 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Badge
+                                                                        </label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardTwoId_badge"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter a badge">
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-2">
+                                                                        <label for="validationCustom01"
                                                                             class="form-label required mb-0">Title
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01"
+                                                                            name="solutionCardTwoId_title"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Title">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
@@ -589,12 +540,9 @@
                                                                         </label>
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01"
+                                                                            name="solution_card_image_two"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Image">
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
@@ -602,7 +550,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="button_name" id="validationCustom01"
+                                                                            name="solutionCardTwoId_short_des"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                         <div class="invalid-feedback"> Please Enter Button
                                                                             Name </div>
@@ -611,24 +560,16 @@
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Link
                                                                         </label>
-                                                                        <textarea rows="1" name="link" class="form-control form-control-sm form-control-solid"
+                                                                        <textarea rows="1" name="solutionCardTwoId_link" class="form-control form-control-sm form-control-solid"
                                                                             placeholder="Enter Link"></textarea>
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
-                                                                        <textarea name="acceshort_desssories" class="tox-target kt_docs_tinymce_plugins">
-                                                                <h1>Enter Your Text Here</h1>
+                                                                        <textarea name="solutionCardTwoId_button_name" class="tox-target kt_docs_tinymce_plugins">
+                                                               
                                                                 </textarea>
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -642,17 +583,23 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Badge
+                                                                        </label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardTwoId_badge"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter a badge">
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-2">
+                                                                        <label for="validationCustom01"
                                                                             class="form-label required mb-0">Title
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solution_card_three_title"
+                                                                            name="solutionCardTwoId_title"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Title">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
@@ -660,13 +607,9 @@
                                                                         </label>
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solution_card_three_image"
+                                                                            name="solution_card_image_three"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Image">
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
@@ -674,36 +617,24 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solution_card_three_button_name"
+                                                                            name="solutionCardTwoId_short_des"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Link
                                                                         </label>
-                                                                        <textarea rows="1" name="solution_card_three_link" class="form-control form-control-sm form-control-solid"
+                                                                        <textarea rows="1" name="solutionCardTwoId_link" class="form-control form-control-sm form-control-solid"
                                                                             placeholder="Enter Link"></textarea>
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
-                                                                        <textarea name="solution_card_three_short_des" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
+                                                                        <textarea name="solutionCardTwoId_button_name" class="tox-target kt_docs_tinymce_plugins">
+                                                                           
                                                                         </textarea>
-                                                                        @error('banner_header')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -800,12 +731,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="badge" id="validationCustom01"
+                                                                            name="rowSevenId_badge"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Badge">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
@@ -813,12 +741,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01"
+                                                                            name="rowSevenId_title"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Title">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -836,12 +761,9 @@
                                                                         </label>
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01"
+                                                                            name="rows_image_seven"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Row Image">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
@@ -849,7 +771,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="btn_name" id="validationCustom01"
+                                                                            name="rowSevenId_btn_name"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
@@ -858,7 +781,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="link" id="validationCustom01"
+                                                                            name="rowSevenId_link" id="validationCustom01"
                                                                             placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
@@ -876,9 +799,8 @@
                                                                         <label for="validationCustom01"
                                                                             class="form-label required ">Description
                                                                         </label>
-                                                                        <textarea name="description" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
-                                                                            
+                                                                        <textarea name="rowSevenId_description" class="tox-target kt_docs_tinymce_plugins">
+                                                                           
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
@@ -931,12 +853,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="badge" id="validationCustom01"
+                                                                            name="rowEightId_badge"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Badge">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
@@ -944,12 +863,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01"
+                                                                            name="rowEightId_title"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Title">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -967,12 +883,9 @@
                                                                         </label>
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01"
+                                                                            name="rows_image_eight"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Row Image">
-                                                                        @error('banner_image')
-                                                                            <div class="invalid-feedback d-block">
-                                                                                {{ $message }}</div>
-                                                                        @enderror
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
@@ -980,7 +893,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="btn_name" id="validationCustom01"
+                                                                            name="rowEightId_btn_name"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
@@ -989,7 +903,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="link" id="validationCustom01"
+                                                                            name="rowEightId_link" id="validationCustom01"
                                                                             placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
@@ -1007,8 +921,8 @@
                                                                         <label for="validationCustom01"
                                                                             class="form-label required ">Description
                                                                         </label>
-                                                                        <textarea name="description" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
+                                                                        <textarea name="rowEightId_description" class="tox-target kt_docs_tinymce_plugins">
+                                                                           
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
@@ -1048,7 +962,6 @@
                                                 </h2>
                                             </div>
                                             <div class="fv-row">
-                                                asdasdasdas
                                                 <div class="row mt-2 justify-content-end">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
@@ -1090,24 +1003,16 @@
     <script>
         // Stepper lement
         var element = document.querySelector("#kt_stepper_example_clickable");
-
-
         // Initialize Stepper
         var stepper = new KTStepper(element);
-
-
         // Handle navigation click
         stepper.on("kt.stepper.click", function(stepper) {
             stepper.goTo(stepper.getClickedStepIndex()); // go to clicked step
         });
-
-
         // Handle next step
         stepper.on("kt.stepper.next", function(stepper) {
             stepper.goNext(); // go next step
         });
-
-
         // Handle previous step
         stepper.on("kt.stepper.previous", function(stepper) {
             stepper.goPrevious(); // go previous step
@@ -1116,30 +1021,17 @@
     <script>
         //---------Sidebar list Show Hide----------
         $(document).ready(function() {
-
-
             $('#dealId').click(function() {
                 $("#dealExpand").toggle(this.checked);
             });
-
-
             $('#rfqId').click(function() {
-
-
                 $("#rfqExpand").toggle('slow');
-
-
             });
-
         });
     </script>
     <script>
         $('.stock_select').on('change', function() {
-
-
             var stock_value = $(this).find(":selected").val();
-
-
             if (stock_value == 'available') {
                 $(".qty_display").removeClass("d-none");
                 $(".qty_required").prop('required', true);
@@ -1150,14 +1042,8 @@
                 $(".qty_display").addClass("d-none");
                 $(".qty_required").prop('required', false);
             }
-
-
         });
-
-
         $('.price_select').on('change', function() {
-
-
             var price_value = $(this).find(":selected").val();
             if (price_value == 'rfq') {
                 // alert(price_value);
@@ -1173,8 +1059,6 @@
                 $(".offer_price").addClass("d-none");
                 $(".rfq_price").addClass("d-none");
             }
-
-
         });
     </script>
     <script>
@@ -1197,7 +1081,6 @@
         // The DOM elements you wish to replace with Tagify
         var input1 = document.querySelector("#kt_tagify_1");
         var input2 = document.querySelector("#kt_tagify_2");
-
         // Initialize Tagify components on the above inputs
         new Tagify(input1);
         new Tagify(input2);
@@ -1207,7 +1090,6 @@
             // Get the checkbox and colors input container
             var checkbox = document.getElementById('dealCheckbox');
             var dealsInputContainer = document.getElementById('dealsInputContainer');
-
             // Add change event listener to the checkbox
             checkbox.addEventListener('change', function() {
                 // Toggle the visibility of the colors input field based on checkbox state
@@ -1220,22 +1102,14 @@
             // Function to validate and switch tabs
             function validateAndSwitchTab(targetTabId) {
                 let isValid = true;
-
-
                 // Get the index of the tab to be shown
                 const activeTabHref = $('.tab-trigger.active').attr('href');
                 $(activeTabHref).find('input, textarea, select').each(function() {
                     var $field = $(this);
-
-
                     // Check if it's a Select2 element
                     var isSelect2 = $field.hasClass('select2-hidden-accessible');
-
-
                     if ($field.prop('required') && $field.val() === '') {
                         isValid = false;
-
-
                         if (isSelect2) {
                             // Apply CSS based on the element type
                             $field.next('.select2-container').addClass('is-invalid');
@@ -1244,8 +1118,6 @@
                         }
                     }
                 });
-
-
                 if (!isValid) {
                     // Fields are not valid, prevent the tab switch
                     return false;
@@ -1255,26 +1127,18 @@
                     return true;
                 }
             }
-
-
             // Function to switch tabs
             function switchTab(targetTabId) {
                 $('.nav-link[href="' + targetTabId + '"]').tab('show');
             }
-
-
             // Event handler for tab switch
             $('.tab-trigger').on('show.bs.tab', function(event) {
                 return validateAndSwitchTab($(this).data('bs-target'));
             });
-
-
             // Event handler for input change
             $('.tab-content').on('input change', 'input, textarea, select', function() {
                 var $field = $(this);
                 var isSelect2 = $field.hasClass('select2-hidden-accessible');
-
-
                 // Remove red border when user interacts with the field
                 if (isSelect2) {
                     $field.next('.select2-container').removeClass('is-invalid');
@@ -1282,33 +1146,23 @@
                     $field.removeClass('is-invalid');
                 }
             });
-
-
             // Event handler for multi-select change
             $('.multiple-select').on('change', function() {
                 // Remove validation error only from the changed multi-select field
                 var $multiSelect = $(this);
                 $multiSelect.removeClass('is-invalid');
             });
-
-
             // Event handler for the "Continue" button
             $('.tab-trigger-next').on('click', function(event) {
                 // Assuming the data-bs-target attribute contains the tab ID to switch to
                 const targetTabId = $(this).data('bs-target');
-
-
                 // Validate and switch to the next tab
                 validateAndSwitchTab(targetTabId);
             });
-
-
             // Event handler for the "Previous" button
             $('.tab-trigger-previous').on('click', function(event) {
                 // Assuming the data-bs-target attribute contains the tab ID to switch to
                 const targetTabId = $(this).data('bs-target');
-
-
                 // Validate and switch to the previous tab
                 validateAndSwitchTab(targetTabId);
             });

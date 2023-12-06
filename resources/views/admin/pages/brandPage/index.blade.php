@@ -39,7 +39,7 @@
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Export Report
                                     </button>
-                                    <a href="{{ route('brand-page.create') }}" type="button"
+                                    <a href="{{ route('admin.brand-page.create') }}" type="button"
                                         class="btn btn-sm btn-light-success rounded-0">
                                         Add New
                                     </a>
@@ -105,7 +105,7 @@
                                             data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
                                             <i class="fa-solid fa-expand"></i>
                                         </a>
-                                        <a href="{{ route('brand-page.create') }}"
+                                        <a href="{{ route('admin.brand-page.create') }}"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                             data-bs-toggle="modal" data-bs-target="#TermsPoliciesEditModal">
                                             <i class="fa-solid fa-pen"></i>
@@ -138,7 +138,7 @@
                                             data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
                                             <i class="fa-solid fa-expand"></i>
                                         </a>
-                                        <a href="{{ route('brand-page.create') }}"
+                                        <a href="{{ route('admin.brand-page.create') }}"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                             data-bs-toggle="modal" data-bs-target="#TermsPoliciesEditModal">
                                             <i class="fa-solid fa-pen"></i>
