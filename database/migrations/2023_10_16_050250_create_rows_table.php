@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('rows', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->string('badge')->nullable();
             $table->string('title');
             $table->string('slug')->unique()->nullable();
-            $table->string('image')->comment('580*383')->nullable();
+            $table->string('image')->nullable();
             $table->mediumText('short_des')->nullable();
             $table->string('btn_name')->nullable();
             $table->string('link')->nullable();
@@ -29,9 +28,6 @@ return new class extends Migration
             $table->string('list_three')->nullable();
             $table->string('list_four')->nullable();
             $table->longText('description')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable();
             $table->timestamps();
         });
     }

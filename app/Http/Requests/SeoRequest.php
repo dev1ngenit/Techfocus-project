@@ -53,30 +53,30 @@ class SeoRequest extends FormRequest
         ];
     }
     
-    /**
-     * Handle a failed validation attempt.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     */
-    protected function failedValidation(Validator $validator)
-    {
-        $this->recordErrorMessages($validator);
-        parent::failedValidation($validator);
-    }
+    // /**
+    //  * Handle a failed validation attempt.
+    //  *
+    //  * @param  \Illuminate\Contracts\Validation\Validator  $validator
+    //  * @return void
+    //  */
+    // protected function failedValidation(Validator $validator)
+    // {
+    //     $this->recordErrorMessages($validator);
+    //     parent::failedValidation($validator);
+    // }
 
-    /**
-     * Record the error messages displayed to the user.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     */
-    protected function recordErrorMessages(Validator $validator)
-    {
-        $errorMessages = $validator->errors()->all();
+    // /**
+    //  * Record the error messages displayed to the user.
+    //  *
+    //  * @param  \Illuminate\Contracts\Validation\Validator  $validator
+    //  * @return void
+    //  */
+    // protected function recordErrorMessages(Validator $validator)
+    // {
+    //     $errorMessages = $validator->errors()->all();
 
-        foreach ($errorMessages as $errorMessage) {
-            toastr()->error($errorMessage);
-        }
-    }
+    //     foreach ($errorMessages as $errorMessage) {
+    //         toastr()->error($errorMessage);
+    //     }
+    // }
 }

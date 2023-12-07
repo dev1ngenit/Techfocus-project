@@ -76,8 +76,6 @@ class BrandController extends Controller
             'category'     => $request->category,
         ];
         $this->brandRepository->storeBrand($data);
-        Session::flash('success', ['message' => 'Row is created successfully']);
-        // toastr()->success('Data has been saved successfully!');
         return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
 

@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
                                     <div class="card-title table_title">
-                                        <h2 class="text-center">Brand Page</h2>
+                                        <h2 class="text-center">Solution Details</h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
@@ -39,8 +39,7 @@
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Export Report
                                     </button>
-                                    <a href="{{ route('admin.brand-page.create') }}" type="button"
-                                        class="btn btn-sm btn-light-success rounded-0">
+                                    <a href="{{ route('solution-details.create') }}" type="button" class="btn btn-sm btn-light-success rounded-0">
                                         Add New
                                     </a>
                                     <div id="kt_datatable_example_1_export_menu"
@@ -84,43 +83,72 @@
                                     <th class="text-center" width="10%">Action</th>
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
-                              @if ($brandPages) 
-                                @foreach ($brandPages as $item) 
-                                      <tr class="odd">
-                                          <td>
-                                              {{ $loop->iteration }}
-                                          </td>
-                                          <td>
-                                              <img class="img-fluid rounded-circle" width="35px"
-                                                  src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
-                                                  alt="">
-                                          </td>
-                                          <td>
-                                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, perferendis?
-                                          </td>
-                                          <td>
-                                              <button class="btn btn-light-primary btn-sm">New Button</button>
-                                          </td>
-                                          <td class="d-flex justify-content-between align-items-center">
-                                              <a href="#"
-                                                  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                  data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
-                                                  <i class="fa-solid fa-expand"></i>
-                                              </a>
-                                              <a href="{{ route('admin.brand-page.create') }}"
-                                                  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                  data-bs-toggle="modal" data-bs-target="#TermsPoliciesEditModal">
-                                                  <i class="fa-solid fa-pen"></i>
-                                              </a>
-                                              <a href="#"
-                                                  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                  data-kt-docs-table-filter="delete_row">
-                                                  <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                              </a>
-                                          </td>
-                                      </tr>
-                                @endforeach
-                              @endif
+                                <tr class="odd">
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        <img class="img-fluid rounded-circle" width="35px"
+                                            src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                            alt="">
+                                    </td>
+                                    <td>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, perferendis?
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-light-primary btn-sm">New Button</button>
+                                    </td>
+                                    <td class="d-flex justify-content-between align-items-center">
+                                        <a href="#"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                            data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </a>
+                                        <a href="{{ route('solution-details.create') }}"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                            data-bs-toggle="modal" data-bs-target="#TermsPoliciesEditModal">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                        <a href="#"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                            data-kt-docs-table-filter="delete_row">
+                                            <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="Even">
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        <img class="img-fluid rounded-circle" width="35px"
+                                            src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                            alt="">
+                                    </td>
+                                    <td>
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, perferendis?
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-light-primary btn-sm">New Button</button>
+                                    </td>
+                                    <td class="d-flex justify-content-between align-items-center">
+                                        <a href="#"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                            data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
+                                            <i class="fa-solid fa-expand"></i>
+                                        </a>
+                                        <a href="{{ route('solution-details.create') }}"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                            data-bs-toggle="modal" data-bs-target="#TermsPoliciesEditModal">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </a>
+                                        <a href="#"
+                                            class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                            data-kt-docs-table-filter="delete_row">
+                                            <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                        </a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -133,7 +161,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-0 border-0 shadow-sm">
                 <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title ps-5">View Brand Page</h5>
+                    <h5 class="modal-title ps-5">View Solution Details</h5>
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                         aria-label="Close">
                         <i class="fa-solid fa-circle-xmark"></i>
