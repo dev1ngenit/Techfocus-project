@@ -262,10 +262,11 @@ class BrandPageController extends Controller
     {
         $brandPage = BrandPage::findOrFail($id);
         $paths = [
-            storage_path("app/public/row-image/{$brandPage->image}"),
-            storage_path("app/public/brand-page/banner-image/{$brandPage->brand_logo}"),
-            storage_path("app/public/brand-page/rowSix-image/{$brandPage->row_six_image}"),
-            storage_path("app/public/solution-card-image/{$brandPage->image}"),
+            storage_path("app/public/row/{$brandPage->image}"),
+            storage_path("app/public/brand-page/logo/{$brandPage->image}"),
+            storage_path("app/public/brand-page/banner-image/{$brandPage->image}"),
+            storage_path("app/public/brand-page/row/{$brandPage->image}"),
+            storage_path("app/public/solution-card/{$brandPage->image}"),
         ];
 
         foreach ($paths as $path) {
