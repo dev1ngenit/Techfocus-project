@@ -77,4 +77,5 @@
             html: errorMessage.join('<br>'),
         });
     @endif
+
 </script>

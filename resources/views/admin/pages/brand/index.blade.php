@@ -1,6 +1,5 @@
 @extends('admin.master')
 @section('content')
-   
     <div class="container h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-lg">
@@ -54,7 +53,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- @dump(getAllCountry()) --}}
                     <div class="card-body">
                         <table
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
@@ -77,7 +75,6 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <img class="img-fluid" width="60px"
-                                                
                                                     src="{{ !empty($brand->logo) && Storage::exists('public/brand/logo/requestImg/' . $brand->logo) ? asset('storage/brand/logo/requestImg/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
                                                     alt="{{ $brand->slug }} Logo">
                                             </td>
