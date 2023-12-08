@@ -39,7 +39,7 @@
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Export Report
                                     </button>
-                                    <a href="{{ route('solution-details.create') }}" type="button" class="btn btn-sm btn-light-success rounded-0">
+                                    <a href="{{ route('admin.solution-details.create') }}" type="button" class="btn btn-sm btn-light-success rounded-0">
                                         Add New
                                     </a>
                                     <div id="kt_datatable_example_1_export_menu"
@@ -104,7 +104,7 @@
                                             data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
                                             <i class="fa-solid fa-expand"></i>
                                         </a>
-                                        <a href="{{ route('solution-details.create') }}"
+                                        <a href="{{ route('admin.solution-details.create') }}"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                             data-bs-toggle="modal" data-bs-target="#TermsPoliciesEditModal">
                                             <i class="fa-solid fa-pen"></i>
@@ -137,7 +137,7 @@
                                             data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
                                             <i class="fa-solid fa-expand"></i>
                                         </a>
-                                        <a href="{{ route('solution-details.create') }}"
+                                        <a href="{{ route('admin.solution-details.create') }}"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                             data-bs-toggle="modal" data-bs-target="#TermsPoliciesEditModal">
                                             <i class="fa-solid fa-pen"></i>

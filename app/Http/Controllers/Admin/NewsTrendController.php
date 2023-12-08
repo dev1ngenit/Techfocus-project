@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\NewsTrendRequest;
+use App\Models\Admin\SolutionDetail;
 use App\Repositories\Interfaces\BrandRepositoryInterface;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\IndustryRepositoryInterface;
@@ -54,6 +55,7 @@ class NewsTrendController extends Controller
             'categories' => $this->categoryRepository->allCategory(),
             'brands'     => $this->brandRepository->allBrand(),
             'industries' => $this->industryRepository->allIndustry(),
+        'solutions'      => SolutionDetail::latest('id')->get(['id','name']),
         ]);
     }
 

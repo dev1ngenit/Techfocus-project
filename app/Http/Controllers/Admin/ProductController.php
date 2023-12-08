@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Admin;
+use App\Models\Admin\IndustryProduct;
+use App\Models\Admin\ProductImage;
+use App\Models\Admin\SolutionProduct;
 use Illuminate\Support\Facades\Notification;
 
 class ProductController extends Controller
@@ -133,7 +136,7 @@ class ProductController extends Controller
                 Image::make($img)->resize(376, 282)->save($multi_path);
                 $uploadPath = 'upload/Products/multi-image/' . $make_name;
 
-                MultiImage::create([
+                ProductImage::create([
                     'product_id' => $product->id,
                     'photo' => $uploadPath,
                 ]);
@@ -143,7 +146,7 @@ class ProductController extends Controller
         if (!empty($request->industry_id)) {
             $industrys = $request->industry_id;
             foreach ($industrys as $industry) {
-                MultiIndustry::create([
+                IndustryProduct::create([
                     'product_id' => $product->id,
                     'industry_id' => $industry,
                 ]);
@@ -153,7 +156,7 @@ class ProductController extends Controller
         if (!empty($request->solution_id)) {
             $solutions = $request->solution_id;
             foreach ($solutions as $solution) {
-                MultiSolution::create([
+                SolutionProduct::create([
                     'product_id' => $product->id,
                     'solution_id' => $solution,
                 ]);

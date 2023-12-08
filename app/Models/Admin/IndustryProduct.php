@@ -1,12 +1,12 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Models\Admin;
 
 use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class {{ class }} extends Model
+class IndustryProduct extends Model
 {
     use HasFactory;
 

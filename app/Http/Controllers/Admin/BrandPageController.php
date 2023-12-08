@@ -183,12 +183,12 @@ class BrandPageController extends Controller
         ]);
 
         $solutionCardThreeId = SolutionCard::create([
-            'badge'       => $request->solutionCardTwoId_badge,
-            'title'       => $request->solutionCardTwoId_title,
+            'badge'       => $request->solutionCardThreeId_badge,
+            'title'       => $request->solutionCardThreeId_title,
             'image'         => $globalFunSolutionCardImageThree['status'] == 1 ? $globalFunSolutionCardImageThree['file_name'] : null,
-            'short_des'   => $request->solutionCardTwoId_short_des,
-            'link'        => $request->solutionCardTwoId_link,
-            'button_name' => $request->solutionCardTwoId_button_name,
+            'short_des'   => $request->solutionCardThreeId_short_des,
+            'link'        => $request->solutionCardThreeId_link,
+            'button_name' => $request->solutionCardThreeId_button_name,
         ]);
 
         BrandPage::create([

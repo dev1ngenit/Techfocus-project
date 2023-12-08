@@ -21,15 +21,17 @@ return new class extends Migration
             $table->json('solution_id')->nullable()->comment('multi_id');
             $table->json('product_id')->nullable()->comment('multi_id');
             $table->enum('featured', ['0', '1'])->default('0')->nullable();
-            $table->enum('type', ['news', 'trends'])->default('trends');
+            $table->enum('type', ['news', 'trends','blogs','client_stories','tech_contents'])->default('blogs');
             $table->string('badge', 50)->nullable();
             $table->string('title', 255)->nullable();
+            $table->string('slug', 255)->unique();
             $table->text('header')->nullable();
             $table->longText('short_des')->comment('summernote')->nullable();
             $table->longText('long_des')->comment('summernote')->nullable();
             $table->string('author')->nullable();
             $table->text('address')->nullable();
             $table->json('tags')->nullable();
+            $table->string('author_image')->nullable();
             $table->string('banner_image')->nullable();
             $table->string('thumbnail_image')->nullable();
             $table->string('additional_url')->nullable();
