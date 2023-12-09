@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
+use App\Models\Admin;
 use App\Models\Admin\Brand;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Admin\Product;
 use App\Models\Admin\Category;
 use App\Models\Admin\Industry;
+use App\Models\Admin\ProductImage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Admin\IndustryProduct;
+use App\Models\Admin\SolutionProduct;
 use Intervention\Image\Facades\Image;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Admin;
