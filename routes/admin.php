@@ -42,6 +42,7 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
+use App\Http\Controllers\Admin\SolutionCardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,6 +114,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'solution-details'      => SolutionDetailsController::class,
                 'industry-page'         => IndustryPageController::class,
                 'row'                   => RowController::class,
+                'solution-card'         => SolutionCardController::class,
             ]
         );
         Route::resources(
