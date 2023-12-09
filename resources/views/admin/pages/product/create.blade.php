@@ -259,7 +259,7 @@
                                                             style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu9SD4sBJ2uIPWpGacTtmooVTnf3pW06iT33PFqNYxFoQMdq6ObFkaJYnhYaIIm8eGsak&usqp=CAU);width: auto;
                                                             background-size: contain;
                                                             border: 1px solid #009ae5;">
-                                                            <div class="image-input-wrapper w-125px h-80px"></div>
+                                                            <div class="image-input-wrapper w-100px h-70px"></div>
 
                                                             <label
                                                                 class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
@@ -352,52 +352,49 @@
                                             </div>
                                             <div class="fv-row">
                                                 <div class="row">
-                                                    <div class="col-lg-5">
+                                                    <div class="col-lg-9">
                                                         <label class="form-label">Tags</label>
                                                         <input class="form-control form-select-sm form-control-solid"
                                                             name="tags" id="kt_tagify_2" />
                                                     </div>
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label">Colors</label>
-                                                            <select
-                                                                class="form-select form-select-solid form-select-sm stock_select"
-                                                                name="color_id" data-control="select2"
-                                                                data-placeholder="Select Colors for the product"
-                                                                data-allow-clear="true">
-                                                                <option></option>
-                                                                <option class="form-select" value="available">
-                                                                    Available
-                                                                </option>
-                                                                <option class="form-select" value="limited">
-                                                                    Limited</option>
-                                                                <option class="form-select" value="unlimited">
-                                                                    UnLimited</option>
-                                                                <option class="form-select" value="stock_out">
-                                                                    Out of Stock</option>
+                                                            <label class="form-label required">Product Colors</label>
+                                                            <select class="form-select form-select-solid form-select-sm"
+                                                                name="color_id[]" id="field2" multiple
+                                                                multiselect-search="true" multiselect-select-all="true"
+                                                                multiselect-max-items="3">
+                                                                @if (count($colors) > 0)
+                                                                    @foreach ($colors as $color)
+                                                                        <option value="{{ $color->id }}">
+                                                                            {{ $color->name }}</option>
+                                                                    @endforeach
+                                                                @endif
                                                             </select>
-                                                            <div class="invalid-feedback"> Please Enter Product Type.</div>
+                                                            <div class="invalid-feedback"> Please Enter Product Colors.
+                                                            </div>
                                                         </div>
+                                                        
                                                     </div>
                                                     <div class="col-lg-2 mb-3">
-                                                        <label class="form-label">Colors</label>
+                                                        <label class="form-label"></label>
                                                         <div class="form-check form-check-custom form-check-solid mb-5">
                                                             <input class="form-check-input me-3" name="refurbished"
                                                                 type="checkbox" value="1"
                                                                 id="kt_docs_formvalidation_checkbox_option_1" />
                                                             <label class="form-check-label"
                                                                 for="kt_docs_formvalidation_checkbox_option_1">
-                                                                <div class="fw-bolder text-gray-800">Refurbished</div>
+                                                                <div class="fw-bolder text-gray-800">Is Refurbished</div>
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-2 mb-3">
-                                                        <label class="form-label">Is Deals</label>
+                                                        <label class="form-label"></label>
                                                         <div class="form-check form-check-custom form-check-solid mb-5">
                                                             <input class="form-check-input me-3" name="refurbished"
                                                                 type="checkbox" value="1" id="dealCheckbox">
                                                             <label class="form-check-label">
-                                                                <div class="fw-bolder text-gray-800">Deal</div>
+                                                                <div class="fw-bolder text-gray-800">Is Deal</div>
                                                             </label>
                                                         </div>
                                                     </div>

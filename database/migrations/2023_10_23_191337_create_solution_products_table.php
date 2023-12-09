@@ -13,18 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('solution_products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
-            $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->string('image')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('website_url')->nullable();
-            $table->text('description')->nullable();
-            $table->string('category');
-            $table->foreignId('created_by')->nullable()->constrained('admins')->nullOnDelete();
-            $table->foreignId('updated_by')->nullable()->constrained('admins')->nullOnDelete();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
             $table->timestamps();
         });
     }
@@ -36,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('solution_products');
     }
 };

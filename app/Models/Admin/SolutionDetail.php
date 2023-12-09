@@ -15,4 +15,6 @@ class SolutionDetail extends Model
      * @var array
      */
     protected $guarded = [];
+
+    protected $slugSourceColumn = 'name';
 }

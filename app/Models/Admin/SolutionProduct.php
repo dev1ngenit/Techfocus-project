@@ -6,9 +6,9 @@ use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SolutionCard extends Model
+class SolutionProduct extends Model
 {
-    use HasFactory, HasSlug;
+    use HasFactory;
 
     /**
      * The attributes that aren't mass assignable.
@@ -17,5 +17,10 @@ class SolutionCard extends Model
      */
     protected $guarded = [];
 
-    protected $slugSourceColumn = 'name';
+    /**
+     * , HasSlug
+     * protected $slugSourceColumn = 'name';
+     */
+    
+
 }
