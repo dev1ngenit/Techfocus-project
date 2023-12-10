@@ -235,7 +235,7 @@ class BrandPageController extends Controller
     public function edit($id)
     {
         return view('admin.pages.brandPage.edit', [
-            'brand' => Brand::get(['id', 'name']),
+            'brands' => Brand::get(['id', 'name']),
             'brandPage' => BrandPage::find($id),
         ]);
     }
@@ -250,7 +250,7 @@ class BrandPageController extends Controller
     public function update(Request $request, $id)
     {
 
-        $brandPage =  BrandPage::with('rowFour', 'rowFive', 'rowSeven', 'rowEight', 'solutionCardOne', 'solutionCardTwo', 'solutionCardThree')->findOrFail($id);
+        $brandPage =  BrandPage::with('rowFour', 'rowFive', 'rowSeven', 'rowEight', 'solutionCardOne', 'solutionCardTwo', 'solutionCardThree')->find($id);
 
         $RowsMainFileImageFour          = $request->file('rows_image_four');
         $RowsMainFileImageFive          = $request->file('rows_image_five');
@@ -484,14 +484,14 @@ class BrandPageController extends Controller
             'brand_logo'             => $globalFunBrandLogo['status'] == 1 ? $globalFunBrandLogo['file_name'] : $brandPage->brand_logo,
             // 'row_six_title'          => $request->row_six_title,
             // 'row_six_header'         => $request->row_six_header,
-            'row_four_id'            => $rowFourId->id,
-            'row_five_id'            => $rowFiveId->id,
-            'solution_card_one_id'   => $solutionCardOneId->id,
-            'solution_card_two_id'   => $solutionCardTwoId->id,
-            'solution_card_three_id' => $solutionCardThreeId->id,
+            // 'row_four_id'            => $rowFourId->id,
+            // 'row_five_id'            => $rowFiveId->id,
+            // 'solution_card_one_id'   => $solutionCardOneId->id,
+            // 'solution_card_two_id'   => $solutionCardTwoId->id,
+            // 'solution_card_three_id' => $solutionCardThreeId->id,
             'row_six_image'          => $globalFunRowSixImage['status'] == 1 ? $globalFunRowSixImage['file_name'] : $brandPage->row_six_image,
-            'row_seven_id'           => $rowSevenId->id,
-            'row_eight_id'           => $rowEightId->id,
+            // 'row_seven_id'           => $rowSevenId->id,
+            // 'row_eight_id'           => $rowEightId->id,
             'row_one_title'          => $request->row_one_title,
             'row_one_header'         => $request->row_one_header,
             // 'row_nine_title'         => $request->row_nine_title,

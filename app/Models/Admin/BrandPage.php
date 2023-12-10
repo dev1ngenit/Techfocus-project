@@ -34,14 +34,14 @@ class BrandPage extends Model
     }
     public function solutionCardOne()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_one_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_one_id',);
     }
     public function solutionCardTwo()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_two_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_two_id');
     }
     public function solutionCardThree()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_three_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_three_id');
     }
 }

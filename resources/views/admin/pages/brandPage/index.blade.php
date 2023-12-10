@@ -104,9 +104,8 @@
                                                     data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
                                                     <i class="fa-solid fa-expand"></i>
                                                 </a>
-                                                <a href="{{ route('admin.brand-page.create') }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal" data-bs-target="#TermsPoliciesEditModal">
+                                                <a href="{{ route('admin.brand-page.edit', $brandPage->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-pen"></i>
                                                 </a>
                                                 <a href="{{ route('admin.brand-page.destroy', $brandPage->id) }}"

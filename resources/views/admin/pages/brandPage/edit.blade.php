@@ -125,7 +125,7 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label ">Banner Header</label>
                                                             <textarea rows="1" name="header" class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Banner Header"></textarea>
+                                                                placeholder="Enter Banner Header">{{ $brandPage->header }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -159,6 +159,7 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label ">Row One Title</label>
                                                             <input name="row_one_title"
+                                                                value="{{ $brandPage->row_one_title }}"
                                                                 class="form-control form-control-sm form-control-solid"
                                                                 placeholder="Enter Row One Title" type="text" />
                                                         </div>
@@ -167,7 +168,7 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label ">Row One Header</label>
                                                             <textarea rows="1" name="row_one_header" class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Row One Header"></textarea>
+                                                                placeholder="Enter Row One Header">{{ $brandPage->row_one_header }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -216,7 +217,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="row_four_badge" id="validationCustom01"
+                                                                            name="row_four_badge"
+                                                                            value="{{ $brandPage->rowFour->badge }}"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Badge">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
@@ -225,7 +228,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="row_four_title" id="validationCustom01"
+                                                                            name="row_four_title"
+                                                                            value="{{ $brandPage->rowFour->title }}"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Title">
                                                                     </div>
                                                                 </div>
@@ -254,6 +259,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="row_four_btn_name"
+                                                                            value="{{ $brandPage->rowFour->btn_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
@@ -263,7 +269,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="row_four_link" id="validationCustom01"
+                                                                            name="row_four_link"
+                                                                            value="{{ $brandPage->rowFour->link }}"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
@@ -282,7 +290,7 @@
                                                                             class="form-label required ">Description
                                                                         </label>
                                                                         <textarea name="row_four_description" class="tox-target kt_docs_tinymce_plugins">
-                                                                          </textarea>
+                                                                          {{ $brandPage->rowFour->description }}</textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -334,7 +342,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="row_five_badge" id="validationCustom01"
+                                                                            name="row_five_badge"
+                                                                            value="{{ $brandPage->rowFive->badge }}"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Badge">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
@@ -343,7 +353,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="row_five_title" id="validationCustom01"
+                                                                            name="row_five_title"
+                                                                            value="{{ $brandPage->rowFive->title }}"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Title">
                                                                     </div>
                                                                 </div>
@@ -372,6 +384,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="row_five_btn_name"
+                                                                            value="{{ $brandPage->rowFive->btn_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
@@ -381,7 +394,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="row_five_link" id="validationCustom01"
+                                                                            name="row_five_link"
+                                                                            value="{{ $brandPage->rowFive->link }}"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
@@ -400,7 +415,7 @@
                                                                             class="form-label required ">Description
                                                                         </label>
                                                                         <textarea name="row_five_description" class="tox-target kt_docs_tinymce_plugins">
-                                                                           
+                                                                           {{ $brandPage->rowFive->description }}
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
@@ -454,6 +469,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="solutionCardOneId_badge"
+                                                                            value="{{ $brandPage->solutionCardOne->badge }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter a badge">
                                                                     </div>
@@ -464,6 +480,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="solutionCardOneId_title"
+                                                                            value="{{ $brandPage->solutionCardOne->title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Title">
                                                                     </div>
@@ -486,6 +503,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="solutionCardOneId_button_name"
+                                                                            value="{{ $brandPage->solutionCardOne->button_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                         <div class="invalid-feedback"> Please Enter Button
@@ -496,14 +514,14 @@
                                                                             class="form-label required mb-0">Link
                                                                         </label>
                                                                         <textarea rows="1" name="solutionCardOneId_link" class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Enter Link"></textarea>
+                                                                            placeholder="Enter Link">{{ $brandPage->solutionCardOne->link }}</textarea>
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
                                                                         <textarea name="solutionCardOneId_short_des" class="tox-target kt_docs_tinymce_plugins">
-                                                                           
+                                                                           {{ $brandPage->solutionCardOne->short_des }}
                                                                          </textarea>
                                                                     </div>
                                                                 </div>
@@ -523,6 +541,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="solutionCardTwoId_badge"
+                                                                            value="{{ $brandPage->solutionCardTwo->badge }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter a badge">
                                                                     </div>
@@ -533,6 +552,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="solutionCardTwoId_title"
+                                                                            value="{{ $brandPage->solutionCardTwo->title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Title">
                                                                     </div>
@@ -553,6 +573,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="solutionCardTwoId_short_des"
+                                                                            value="{{ $brandPage->solutionCardTwo->short_des }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                         <div class="invalid-feedback"> Please Enter Button
@@ -563,14 +584,14 @@
                                                                             class="form-label required mb-0">Link
                                                                         </label>
                                                                         <textarea rows="1" name="solutionCardTwoId_link" class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Enter Link"></textarea>
+                                                                            placeholder="Enter Link">{{ $brandPage->solutionCardTwo->link }}</textarea>
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
                                                                         <textarea name="solutionCardTwoId_button_name" class="tox-target kt_docs_tinymce_plugins">
-                                                               
+                                                               {{ $brandPage->solutionCardTwo->button_name }}
                                                                 </textarea>
                                                                     </div>
                                                                 </div>
@@ -590,6 +611,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="solutionCardTwoId_badge"
+                                                                            value="{{ $brandPage->solutionCardThree->badge }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter a badge">
                                                                     </div>
@@ -600,6 +622,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="solutionCardTwoId_title"
+                                                                            value="{{ $brandPage->solutionCardThree->title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Title">
                                                                     </div>
@@ -620,6 +643,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="solutionCardTwoId_short_des"
+                                                                            value="{{ $brandPage->solutionCardThree->short_des }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
@@ -628,14 +652,14 @@
                                                                             class="form-label required mb-0">Link
                                                                         </label>
                                                                         <textarea rows="1" name="solutionCardTwoId_link" class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Enter Link"></textarea>
+                                                                            placeholder="Enter Link">{{ $brandPage->solutionCardThree->link }}</textarea>
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
                                                                         <textarea name="solutionCardTwoId_button_name" class="tox-target kt_docs_tinymce_plugins">
-                                                                           
+                                                                           {{ $brandPage->solutionCardThree->button_name }}
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
@@ -682,7 +706,8 @@
                                                         </label>
                                                         <input type="file"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_six_image" id="validationCustom01"
+                                                            name="row_six_image" value="{{ $brandPage->row_six_image }}"
+                                                            id="validationCustom01"
                                                             placeholder="Enter Row Four Background Img">
                                                         <div class="invalid-feedback"> Please Enter Row Four Background Img
                                                         </div>
@@ -734,6 +759,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="rowSevenId_badge"
+                                                                            value="{{ $brandPage->rowSeven->badge }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Badge">
                                                                     </div>
@@ -744,6 +770,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="rowSevenId_title"
+                                                                            value="{{ $brandPage->rowSeven->title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Title">
                                                                     </div>
@@ -763,7 +790,6 @@
                                                                         </label>
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="rows_image_seven"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Row Image">
                                                                     </div>
@@ -774,6 +800,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="rowSevenId_btn_name"
+                                                                            value="{{ $brandPage->rowSeven->btn_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
@@ -783,7 +810,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="rowSevenId_link" id="validationCustom01"
+                                                                            name="rowSevenId_link"
+                                                                            value="{{ $brandPage->rowSeven->link }}"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
@@ -802,7 +831,7 @@
                                                                             class="form-label required ">Description
                                                                         </label>
                                                                         <textarea name="rowSevenId_description" class="tox-target kt_docs_tinymce_plugins">
-                                                                           
+                                                                           {{ $brandPage->rowSeven->description }}
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
@@ -856,6 +885,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="rowEightId_badge"
+                                                                            value="{{ $brandPage->rowSeven->badge }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Badge">
                                                                     </div>
@@ -866,6 +896,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="rowEightId_title"
+                                                                            value="{{ $brandPage->rowSeven->title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Title">
                                                                     </div>
@@ -896,6 +927,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="rowEightId_btn_name"
+                                                                            value="{{ $brandPage->rowSeven->btn_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
@@ -905,7 +937,9 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="rowEightId_link" id="validationCustom01"
+                                                                            name="rowEightId_link"
+                                                                            value="{{ $brandPage->rowSeven->link }}"
+                                                                            id="validationCustom01"
                                                                             placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
@@ -924,7 +958,7 @@
                                                                             class="form-label required ">Description
                                                                         </label>
                                                                         <textarea name="rowEightId_description" class="tox-target kt_docs_tinymce_plugins">
-                                                                           
+                                                                           {{ $brandPage->rowSeven->description }}
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
