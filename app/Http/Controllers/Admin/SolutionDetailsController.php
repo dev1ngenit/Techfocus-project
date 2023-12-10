@@ -33,7 +33,7 @@ class SolutionDetailsController extends Controller
     public function create()
     {
         return view('admin.pages.solutionDetails.create', [
-            'industries' => Industry::get(),
+            'industries' => Industry::get(['id', 'name']),
         ]);
     }
 
@@ -269,7 +269,10 @@ class SolutionDetailsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.pages.solutionDetails.edit');
+        return view('admin.pages.solutionDetails.edit', [
+            'solutionDetail' => SolutionDetail::find($id),
+            'industries' => Industry::get(['id', 'name']),
+        ]);
     }
 
     /**
