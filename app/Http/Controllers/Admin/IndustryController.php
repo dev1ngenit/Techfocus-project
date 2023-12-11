@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin\Row;
 use Illuminate\Support\Str;
+use App\Models\Admin\Industry;
+use App\Models\Admin\SolutionCard;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\IndustryRequest;
-use App\Repositories\Interfaces\IndustryRepositoryInterface;
 
 class IndustryController extends Controller
 {
-    private $industryRepository;
-
-    public function __construct(IndustryRepositoryInterface $industryRepository)
-    {
-        $this->industryRepository = $industryRepository;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +19,7 @@ class IndustryController extends Controller
      */
     public function index()
     {
-        $data['industries'] =  $this->industryRepository->allIndustry();
+        $data['industries'] =  Industry::get();
         return view('admin.pages.industry.index', $data);
     }
 
@@ -35,7 +30,8 @@ class IndustryController extends Controller
      */
     public function create()
     {
-        //
+        $data['industryParentID'] =  Industry::get(['id', 'name']);
+        return view('admin.pages.industry.create', $data);
     }
 
     /**
@@ -46,33 +42,108 @@ class IndustryController extends Controller
      */
     public function store(IndustryRequest $request)
     {
+        $RowsMainFileImageOne   = $request->file('rows_image_one');
+        $RowsMainFileImageThree = $request->file('rows_image_three');
+        $RowsMainFileImageFive  = $request->file('rows_image_five');
+
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
-        $filePath = storage_path('app/public/');
+
+        $filePathRowsImageOnes  = storage_path('app/public/row/');
+        $filePathRowsImageThree = storage_path('app/public/row/');
+        $filePathRowsImageFives = storage_path('app/public/row/');
+
+        $filePathImage = storage_path('app/public/industry/image');
+        $filePathLogo = storage_path('app/public/industry/logo');
+
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $filePath,   44, 44);
+            $globalFunImage = customUpload($mainFile, $filePathImage);
         } else {
             $globalFunImage = ['status' => 0];
         }
+
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $filePath,   44, 44);
+            $globalFunLogo = customUpload($logoFile, $filePathLogo);
         } else {
             $globalFunLogo = ['status' => 0];
         }
 
-        $data = [
-            'parent_id'   => $request->parent_id,
-            'name'         => $request->name,
-            'slug'         => Str::slug($request->name),
-            'description'  => $request->description,
-            'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
-            'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : null,
-            'website_url'  => $request->website_url,
-        ];
-        $this->industryRepository->storeIndustry($data);
+        if (!empty($RowsMainFileImageOne)) {
+            $globalFunRowsImageOnes  = customUpload($RowsMainFileImageOne, $filePathRowsImageOnes);
+        } else {
+            $globalFunRowsImageOnes = ['status' => 0];
+        }
 
-        toastr()->success('Data has been saved successfully!');
-        return redirect()->back();
+        if (!empty($RowsMainFileImageThree)) {
+            $globalFunRowsImageThree  = customUpload($RowsMainFileImageThree, $filePathRowsImageThree);
+        } else {
+            $globalFunRowsImageThree = ['status' => 0];
+        }
+
+        if (!empty($RowsMainFileImageFive)) {
+            $globalFunRowsImageFives  = customUpload($RowsMainFileImageFive, $filePathRowsImageFives);
+        } else {
+            $globalFunRowsImageFives = ['status' => 0];
+        }
+
+        $rowOneId = Row::create([
+            'badge'       => $request->row_one_badge,
+            'title'       => $request->row_one_title,
+            'image'       => $globalFunRowsImageOnes['status'] == 1 ? $globalFunRowsImageOnes['file_name'] : null,
+            'btn_name'    => $request->row_one_btn_name,
+            'link'        => $request->row_one_link,
+            'description' => $request->row_one_description,
+        ]);
+
+        $rowFourId = Row::create([
+            'badge'       => $request->row_four_badge,
+            'title'       => $request->row_four_title,
+            'image'       => $globalFunRowsImageThree['status'] == 1 ? $globalFunRowsImageThree['file_name'] : null,
+            'btn_name'    => $request->row_four_btn_name,
+            'link'        => $request->row_four_link,
+            'description' => $request->row_four_description,
+        ]);
+
+        $rowFiveId = Row::create([
+            'badge'       => $request->row_five_badge,
+            'title'       => $request->row_five_title,
+            'image'        => $globalFunRowsImageFives['status'] == 1 ? $globalFunRowsImageFives['file_name'] : null,
+            'btn_name'    => $request->row_five_btn_name,
+            'link'        => $request->row_five_link,
+            'description' => $request->row_five_description,
+        ]);
+
+        Industry::create([
+            'parent_id'               => $request->parent_id,
+            'name'                    => $request->name,
+            'description'             => $request->description,
+            'image'                   => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
+            'logo'                    => $globalFunLogo['status']  == 1 ? $globalFunLogo['file_name'] : null,
+            'website_url'             => $request->website_url,
+
+            'row_one_id'              => $rowOneId->id,
+            'row_three_id'            => $rowFourId->id,
+            'row_five_id'             => $rowFiveId->id,
+
+            'solution_one_id'         => $request->solution_one_id,
+            'solution_two_id'         => $request->solution_two_id,
+            'solution_three_id'       => $request->solution_three_id,
+            'solution_four_id'        => $request->solution_four_id,
+            'client_story_id'         => $request->client_story_id,
+            'header'                  => $request->header,
+            'btn_one_name'            => $request->btn_one_name,
+            'btn_one_link'            => $request->btn_one_link,
+            'row_four_title'          => $request->row_four_title,
+            'row_four_header'         => $request->row_four_header,
+            'row_four_col_one_title'  => $request->row_four_col_one_title,
+            'row_four_col_one_header' => $request->row_four_col_one_header,
+            'row_four_col_two_title'  => $request->row_four_col_two_title,
+            'row_four_col_two_header' => $request->row_four_col_two_header,
+            'footer_title'            => $request->footer_title,
+            'footer_header'           => $request->footer_header,
+        ]);
+
+        return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
 
     /**
@@ -94,7 +165,10 @@ class IndustryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.industry.create', [
+            'industries' =>  Industry::find($id),
+            'industryParentID' =>  Industry::get(['id', 'name']),
+        ]);
     }
 
     /**
@@ -106,17 +180,27 @@ class IndustryController extends Controller
      */
     public function update(IndustryRequest $request, $id)
     {
-        $industry =  $this->industryRepository->findIndustry($id);
+        $industry = Industry::with('rowOne', 'rowThree', 'rowFive')->find($id);
+
+        $RowsMainFileImageOne   = $request->file('rows_image_one');
+        $RowsMainFileImageThree = $request->file('rows_image_three');
+        $RowsMainFileImageFive  = $request->file('rows_image_five');
 
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
-        $filePath = storage_path('app/public/');
+
+        $filePathRowsImageOnes  = storage_path('app/public/row/');
+        $filePathRowsImageThree = storage_path('app/public/row/');
+        $filePathRowsImageFives = storage_path('app/public/row/');
+
+        $filePathImage = storage_path('app/public/industry/image');
+        $filePathLogo = storage_path('app/public/industry/logo');
 
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $filePath, 44, 44);
+            $globalFunImage = customUpload($mainFile, $filePathImage);
+
             $paths = [
-                storage_path("app/public/{$industry->image}"),
-                storage_path("app/public/requestImg/{$industry->image}")
+                storage_path("'app/public/industry/image/{$industry->image}"),
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -128,10 +212,9 @@ class IndustryController extends Controller
         }
 
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $filePath, 44, 44);
+            $globalFunLogo = customUpload($logoFile, $filePathLogo);
             $paths = [
-                storage_path("app/public/{$industry->logo}"),
-                storage_path("app/public/requestImg/{$industry->logo}")
+                storage_path("'app/public/industry/logo/{$industry->logo}"),
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -142,20 +225,106 @@ class IndustryController extends Controller
             $globalFunLogo = ['status' => 0];
         }
 
-        $data = [
-            'parent_id'   => $request->parent_id,
-            'name'         => $request->name,
-            'slug'         => Str::slug($request->name),
-            'description'  => $request->description,
-            'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : $industry->image,
-            'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $industry->logo,
-            'website_url'  => $request->website_url,
-        ];
+        if (!empty($RowsMainFileImageOne)) {
+            $globalFunRowsImageOnes  = customUpload($RowsMainFileImageOne, $filePathRowsImageOnes);
+            $paths = [
+                storage_path("app/public/row/{$industry->rowOne->image}"),
+            ];
+            foreach ($paths as $path) {
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+            }
+        } else {
+            $globalFunRowsImageOnes = ['status' => 0];
+        }
 
-        $this->industryRepository->updateIndustry($data, $id);
+        if (!empty($RowsMainFileImageThree)) {
+            $globalFunRowsImageThree  = customUpload($RowsMainFileImageThree, $filePathRowsImageThree);
+            $paths = [
+                storage_path("app/public/row/{$industry->rowThree->image}"),
+            ];
+            foreach ($paths as $path) {
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+            }
+        } else {
+            $globalFunRowsImageThree = ['status' => 0];
+        }
 
-        toastr()->success('Data has been updated successfully!');
-        return redirect()->back();
+        if (!empty($RowsMainFileImageFive)) {
+            $globalFunRowsImageFives  = customUpload($RowsMainFileImageFive, $filePathRowsImageFives);
+            $paths = [
+                storage_path("app/public/row/{$industry->rowFive->image}"),
+            ];
+            foreach ($paths as $path) {
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+            }
+        } else {
+            $globalFunRowsImageFives = ['status' => 0];
+        }
+
+        $rowOneId = $industry->rowOne->update([
+            'badge'       => $request->row_one_badge,
+            'title'       => $request->row_one_title,
+            'image'       => $globalFunRowsImageOnes['status'] == 1 ? $globalFunRowsImageOnes['file_name'] : $industry->rowOne->image,
+            'btn_name'    => $request->row_one_btn_name,
+            'link'        => $request->row_one_link,
+            'description' => $request->row_one_description,
+        ]);
+
+        $rowFourId = $industry->rowThree->update([
+            'badge'       => $request->row_four_badge,
+            'title'       => $request->row_four_title,
+            'image'       => $globalFunRowsImageThree['status'] == 1 ? $globalFunRowsImageThree['file_name'] : $industry->rowThree->image,
+            'btn_name'    => $request->row_four_btn_name,
+            'link'        => $request->row_four_link,
+            'description' => $request->row_four_description,
+        ]);
+
+        $rowFiveId = $industry->rowFive->update([
+            'badge'       => $request->row_five_badge,
+            'title'       => $request->row_five_title,
+            'image'        => $globalFunRowsImageFives['status'] == 1 ? $globalFunRowsImageFives['file_name'] : $industry->rowFive->image,
+            'btn_name'    => $request->row_five_btn_name,
+            'link'        => $request->row_five_link,
+            'description' => $request->row_five_description,
+        ]);
+
+        $industry->update([
+            'parent_id'               => $request->parent_id,
+            'name'                    => $request->name,
+            'description'             => $request->description,
+            'image'                   => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] :  $industry->image,
+            'logo'                    => $globalFunLogo['status']  == 1 ? $globalFunLogo['file_name'] :  $industry->logo,
+            'website_url'             => $request->website_url,
+
+            // 'row_one_id'              => $rowOneId->id,
+            // 'row_three_id'            => $rowFourId->id,
+            // 'row_five_id'             => $rowFiveId->id,
+
+            'solution_one_id'         => $request->solution_one_id,
+            'solution_two_id'         => $request->solution_two_id,
+            'solution_three_id'       => $request->solution_three_id,
+            'solution_four_id'        => $request->solution_four_id,
+            'client_story_id'         => $request->client_story_id,
+            'header'                  => $request->header,
+            'btn_one_name'            => $request->btn_one_name,
+            'btn_one_link'            => $request->btn_one_link,
+            'row_four_title'          => $request->row_four_title,
+            'row_four_header'         => $request->row_four_header,
+            'row_four_col_one_title'  => $request->row_four_col_one_title,
+            'row_four_col_one_header' => $request->row_four_col_one_header,
+            'row_four_col_two_title'  => $request->row_four_col_two_title,
+            'row_four_col_two_header' => $request->row_four_col_two_header,
+            'footer_title'            => $request->footer_title,
+            'footer_header'           => $request->footer_header,
+        ]);
+
+        return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
 
     /**
@@ -166,14 +335,14 @@ class IndustryController extends Controller
      */
     public function destroy($id)
     {
-        $industry =  $this->industryRepository->findIndustry($id);
+        $industry = Industry::with('rowOne', 'rowThree', 'rowFive')->find($id);
 
         $paths = [
-            storage_path('app/public/') . $industry->image,
-            storage_path('app/public/requestImg/') . $industry->image,
-
-            storage_path('app/public/') . $industry->logo,
-            storage_path('app/public/requestImg/') . $industry->logo,
+            storage_path("'app/public/industry/image/{$industry->image}"),
+            storage_path("'app/public/industry/logo/{$industry->logo}"),
+            storage_path("app/public/row/{$industry->rowOne->image}"),
+            storage_path("app/public/row/{$industry->rowThree->image}"),
+            storage_path("app/public/row/{$industry->rowFive->image}"),
         ];
 
         foreach ($paths as $path) {
@@ -181,6 +350,6 @@ class IndustryController extends Controller
                 File::delete($path);
             }
         }
-        $this->industryRepository->destroyIndustry($id);
+        $industry->delete();
     }
 }

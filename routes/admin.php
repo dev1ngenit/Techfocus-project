@@ -42,6 +42,7 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
+use App\Http\Controllers\Admin\ProductSasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,11 +110,12 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         });
         Route::resources(
             [
-                'product'               => ProductController::class,
-                'brand-page'            => BrandPageController::class,
-                'solution-details'      => SolutionDetailsController::class,
-                'industry-page'         => IndustryPageController::class,
-                'row'                   => RowController::class,
+                'product'          => ProductController::class,
+                'product-sas'      => ProductSasController::class,
+                'brand-page'       => BrandPageController::class,
+                'solution-details' => SolutionDetailsController::class,
+                'industry-page'    => IndustryPageController::class,
+                'row'              => RowController::class,
             ]
         );
         Route::resources(

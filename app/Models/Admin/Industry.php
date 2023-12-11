@@ -23,4 +23,17 @@ class Industry extends Model
     {
         return $this->hasMany(Industry::class, 'parent_id');
     }
+
+    public function rowOne()
+    {
+        return $this->belongsTo(Row::class, 'row_four_id');
+    }
+    public function rowThree()
+    {
+        return $this->belongsTo(Row::class, 'row_three_id');
+    }
+    public function rowFive()
+    {
+        return $this->belongsTo(Row::class, 'row_five_id');
+    }
 }
