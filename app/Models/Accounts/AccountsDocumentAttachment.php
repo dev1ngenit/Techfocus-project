@@ -1,15 +1,14 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Models\Accounts;
 
-use App\Traits\HasSlug;
-use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Wildside\Userstamps\Userstamps;
 
-class {{ class }} extends Model
+class AccountsDocumentAttachment extends Model
 {
-    use HasFactory, HasSlug, Userstamps;
+    use HasFactory, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.
@@ -17,7 +16,4 @@ class {{ class }} extends Model
      * @var array
      */
     protected $guarded = [];
-
-    protected $slugSourceColumn = 'name';
-
 }

@@ -16,16 +16,15 @@ return new class extends Migration
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
-            $table->foreignId('department_id')->nullable()->constrained('employee_departments')->cascadeOnDelete();
+            $table->foreignId('employee_department_id')->nullable()->constrained('employee_departments')->cascadeOnDelete();
             $table->string('name', 255);
             $table->string('username', 30)->unique()->nullable();
             $table->string('email', 255)->unique();
-            $table->string('photo', 255)->nullable();
+            $table->string('photo', 255)->nullable(); //file
             $table->string('phone', 20)->nullable();
             $table->string('designation', 30)->nullable();
             $table->text('address')->nullable();
             $table->string('city', 100)->nullable();
-            $table->string('country', 100)->nullable();
             $table->string('postal', 20)->nullable();
             $table->timestamp('last_seen')->nullable();
             $table->json('role')->nullable();
@@ -33,8 +32,7 @@ return new class extends Migration
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
-
-            $table->foreignId('category_id')->nullable()->constrained('employee_categories')->cascadeOnDelete();
+            $table->foreignId('employee_category_id')->nullable()->constrained('employee_categories')->cascadeOnDelete();
             $table->string('employee_id')->unique()->nullable()->comment('107');
             $table->string('mobile', 20)->nullable();
             $table->string('total_years_of_job_experience')->nullable();
@@ -109,10 +107,10 @@ return new class extends Migration
             $table->string('sisters_total')->nullable();
             $table->text('siblings_contact_info_one')->nullable();
             $table->text('siblings_contact_info_two')->nullable();
-            $table->text('sign')->comment('file')->nullable();
-            $table->text('ceo_sign')->comment('file')->nullable();
-            $table->text('operation_director_sign')->comment('file')->nullable();
-            $table->text('managing_director_sign')->comment('file')->nullable();
+            $table->text('sign')->comment('file')->nullable(); //files
+            $table->text('ceo_sign')->comment('file')->nullable(); //files
+            $table->text('operation_director_sign')->comment('file')->nullable(); //file
+            $table->text('managing_director_sign')->comment('file')->nullable(); //file
             $table->date('sign_date')->nullable();
             $table->date('evaluation_date')->nullable();
             $table->integer('casual_leave_due_as_on')->default('0')->nullable();

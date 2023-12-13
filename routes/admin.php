@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Accounts\AccountsDocumentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\RowController;
@@ -146,6 +147,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'banking'               => BankingController::class,
 
                 'attendance'            => AttendanceController::class, //not my work
+
+                'accounts-document'      => AccountsDocumentController::class,
             ],
             ['except' => ['create', 'show', 'edit'],]
         );

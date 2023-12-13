@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('accounts_document_attachments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
-            $table->string('name')->unique();
-            $table->string('slug')->unique();
-            $table->string('image')->nullable();
-            $table->string('logo')->nullable();
-            $table->string('website_url')->nullable();
-            $table->text('description')->nullable();
-            $table->string('category');
+            $table->foreignId('accounts_document_id')->nullable()->constrained('accounts_documents')->cascadeOnDelete();
+            $table->string('attachment')->comment('file:image/Docs/PDF');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
@@ -36,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('accounts_document_attachments');
     }
 };
