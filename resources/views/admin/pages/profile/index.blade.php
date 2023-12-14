@@ -63,11 +63,10 @@
                     <div class="card-header cursor-pointer pt-1 pb-2">
                         <!--begin::Card title-->
                         <div class="card-title m-0">
-                            <h3 class="fw-bolder m-0">Profile Details</h3>
+                            <h3 class="fw-bolder m-0">Profile Edit</h3>
                         </div>
                         <!--end::Card title-->
                         <!--begin::Action-->
-                        <a href="" class="btn btn-primary align-self-center">Edit Profile</a>
                         <!--end::Action-->
                     </div>
                     <!--begin::Card header-->
