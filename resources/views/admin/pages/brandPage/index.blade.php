@@ -77,50 +77,46 @@
                             id="kt_datatable_example_1">
                             <thead class="table_header_bg">
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
-                                    <th class="" width="5%">Sl</th>
-                                    <th class="" width="10%">Image</th>
-                                    <th class="" width="55%">Title</th>
-                                    <th class="" width="20%">Button Name</th>
+                                    <th width="5%">Sl</th>
+                                    <th width="10%">Image</th>
+                                    <th width="75%">Header</th>
                                     <th class="text-center" width="10%">Action</th>
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
-                              @if ($brandPages) 
-                                @foreach ($brandPages as $item) 
-                                      <tr class="odd">
-                                          <td>
-                                              {{ $loop->iteration }}
-                                          </td>
-                                          <td>
-                                              <img class="img-fluid rounded-circle" width="35px"
-                                                  src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
-                                                  alt="">
-                                          </td>
-                                          <td>
-                                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, perferendis?
-                                          </td>
-                                          <td>
-                                              <button class="btn btn-light-primary btn-sm">New Button</button>
-                                          </td>
-                                          <td class="d-flex justify-content-between align-items-center">
-                                              <a href="#"
-                                                  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                  data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
-                                                  <i class="fa-solid fa-expand"></i>
-                                              </a>
-                                              <a href="{{ route('admin.brand-page.create') }}"
-                                                  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                  data-bs-toggle="modal" data-bs-target="#TermsPoliciesEditModal">
-                                                  <i class="fa-solid fa-pen"></i>
-                                              </a>
-                                              <a href="#"
-                                                  class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                  data-kt-docs-table-filter="delete_row">
-                                                  <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                              </a>
-                                          </td>
-                                      </tr>
-                                @endforeach
-                              @endif
+                                @if ($brandPages)
+                                    @foreach ($brandPages as $brandPage)
+                                        <tr class="odd">
+                                            <td>
+                                                {{ $loop->iteration }}
+                                            </td>
+                                            <td>
+                                                <img class="img-fluid rounded-circle" width="35px"
+                                                    src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
+                                                    alt="">
+                                            </td>
+                                            <td>
+                                                {{ $brandPage->header }}
+
+                                            </td>
+                                            <td class="d-flex justify-content-between align-items-center">
+                                                <a href="#"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                    data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
+                                                    <i class="fa-solid fa-expand"></i>
+                                                </a>
+                                                <a href="{{ route('admin.brand-page.edit', $brandPage->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                    <i class="fa-solid fa-pen"></i>
+                                                </a>
+                                                <a href="{{ route('admin.brand-page.destroy', $brandPage->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                    data-kt-docs-table-filter="delete_row">
+                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

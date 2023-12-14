@@ -21,17 +21,15 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->string('website_url')->nullable();
-
-            $table->foreignId('row_one_id')->nullable()->constrained('solution_cards')->cascadeOnDelete();
-            $table->foreignId('row_three_id')->nullable()->constrained('solution_cards')->cascadeOnDelete();
-            $table->foreignId('row_five_id')->nullable()->constrained('solution_cards')->cascadeOnDelete();
-            $table->foreignId('solution_one_id')->nullable()->constrained('solution_cards')->cascadeOnDelete();
-            $table->foreignId('solution_two_id')->nullable()->constrained('solution_cards')->cascadeOnDelete();
-            $table->foreignId('solution_three_id')->nullable()->constrained('solution_cards')->cascadeOnDelete();
-            $table->foreignId('solution_four_id')->nullable()->constrained('solution_cards')->cascadeOnDelete();
-            $table->foreignId('client_story_id')->nullable()->constrained('solution_cards')->cascadeOnDelete();
-
+            $table->text('website_url')->nullable();
+            $table->foreignId('row_one_id')->nullable()->constrained('rows')->cascadeOnUpdate();
+            $table->foreignId('row_three_id')->nullable()->constrained('rows')->cascadeOnUpdate();
+            $table->foreignId('row_five_id')->nullable()->constrained('rows')->cascadeOnUpdate();
+            $table->foreignId('solution_one_id')->nullable()->constrained('solution_details')->cascadeOnUpdate();
+            $table->foreignId('solution_two_id')->nullable()->constrained('solution_details')->cascadeOnUpdate();
+            $table->foreignId('solution_three_id')->nullable()->constrained('solution_details')->cascadeOnUpdate();
+            $table->foreignId('solution_four_id')->nullable()->constrained('solution_details')->cascadeOnUpdate();
+            $table->foreignId('client_story_id')->nullable()->constrained('news_trends')->cascadeOnUpdate();
             $table->text('header')->nullable();
             $table->string('btn_one_name')->nullable();
             $table->string('btn_one_link')->nullable();
