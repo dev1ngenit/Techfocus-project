@@ -222,10 +222,10 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             ->name('user-roles.destroy');
     });
 
-    Route::get('/subscribers', [NewsletterController::class, 'index'])->name('newsletter.index');
-    Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+    // Route::get('/subscribers', [NewsletterController::class, 'index'])->name('newsletter.index');
+    // Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
-    Route::get('/verify/{token}', [NewsletterController::class, 'verify'])->name('newsletter.verify');
+    // Route::get('/verify/{token}', [NewsletterController::class, 'verify'])->name('newsletter.verify');
 
     Route::get('/verified', function () {
         return view('newsletter.verified');
@@ -235,7 +235,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         return view('newsletter.verify-failed');
     })->name('newsletter.verify-failed');
 
-    Route::post('/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+    // Route::post('/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
 
     // Route::resource('example', ExampleController::class)->except(['create', 'show', 'edit']); //example
