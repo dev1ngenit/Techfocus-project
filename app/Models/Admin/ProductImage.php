@@ -17,10 +17,5 @@ class ProductImage extends Model
      */
     protected $guarded = [];
 
-    /**
-     * , HasSlug
-     * protected $slugSourceColumn = 'name';
-     */
-    
 
 }
