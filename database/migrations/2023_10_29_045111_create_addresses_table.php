@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('address', 255)->nullable();
             $table->string('postal_code', 20)->nullable();
             $table->string('phone', 20)->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

@@ -26,7 +26,6 @@ return new class extends Migration
             $table->text('google_adsense_code')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable();
             $table->timestamps();
         });
     }

@@ -41,6 +41,8 @@ return new class extends Migration
             $table->text('row_four_col_two_header')->nullable();
             $table->string('footer_title')->nullable();
             $table->text('footer_header')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

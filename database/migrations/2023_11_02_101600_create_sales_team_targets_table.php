@@ -26,6 +26,8 @@ return new class extends Migration
             $table->double('quarter_three_target')->nullable();
             $table->double('quarter_four_target')->nullable();
             $table->enum('year_started', ['january', 'july'])->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

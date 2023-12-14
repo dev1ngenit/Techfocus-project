@@ -24,6 +24,8 @@ return new class extends Migration
             $table->text('message')->nullable();
             $table->string('ip_address', 100)->nullable();
             $table->enum('status', ['pending', 'replied', 'on_going', 'closed'])->default('pending');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

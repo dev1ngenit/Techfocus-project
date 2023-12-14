@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('permission_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained('admins')->onDelete('cascade');
             $table->primary(['user_id', 'permission_id']);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

@@ -5,12 +5,13 @@ namespace App\Models\Admin;
 use App\Models\City;
 use App\Models\State;
 use App\Models\Country;
+use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Address extends Model
 {
-    use HasFactory;
+    use HasFactory, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.

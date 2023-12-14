@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('version');
             $table->date('effective_date');
             $table->date('expiration_date')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

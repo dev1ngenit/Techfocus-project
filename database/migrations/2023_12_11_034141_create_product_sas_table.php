@@ -19,23 +19,25 @@ return new class extends Migration
             $table->string('ref_code')->unique();
             $table->date('create')->nullable();
             $table->string('item_name')->nullable();
-            $table->double('cog_price')->nullable(); // ok
+            $table->double('cog_price')->nullable(); 
             $table->double('sales_price')->nullable();
-            $table->float('bank_charge')->nullable(); // ok
-            $table->float('customs')->nullable(); // ok
-            $table->float('tax')->nullable(); // ok
-            $table->float('utility_cost')->nullable(); // ok
-            $table->float('shiping_cost')->nullable(); // ok
-            $table->float('sales_comission')->nullable(); // ok
-            $table->float('liability')->nullable(); // ok
-            $table->float('regular_discounts')->nullable(); // ok
-            $table->float('rebates')->nullable(); // ok
-            $table->float('capital_share')->nullable(); // ok
-            $table->float('management_cost')->nullable(); // ok
+            $table->float('bank_charge')->nullable(); 
+            $table->float('customs')->nullable(); 
+            $table->float('tax')->nullable(); 
+            $table->float('utility_cost')->nullable(); 
+            $table->float('shiping_cost')->nullable(); 
+            $table->float('sales_comission')->nullable(); 
+            $table->float('liability')->nullable(); 
+            $table->float('regular_discounts')->nullable(); 
+            $table->float('rebates')->nullable(); 
+            $table->float('capital_share')->nullable(); 
+            $table->float('management_cost')->nullable(); 
             $table->double('net_profit')->nullable();
             $table->double('gross_profit')->nullable();
             $table->double('net_profit_amount')->nullable();
             $table->double('gross_profit_amount')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

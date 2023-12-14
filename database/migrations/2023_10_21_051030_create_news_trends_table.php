@@ -34,6 +34,8 @@ return new class extends Migration
             $table->string('thumbnail_image')->nullable();
             $table->string('additional_url')->nullable();
             $table->text('footer')->nullable()->comment('summernote')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

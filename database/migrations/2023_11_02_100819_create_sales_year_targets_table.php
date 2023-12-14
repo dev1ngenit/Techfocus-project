@@ -36,6 +36,8 @@ return new class extends Migration
             $table->double('october_target')->nullable();
             $table->double('november_target')->nullable();
             $table->double('december_target')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

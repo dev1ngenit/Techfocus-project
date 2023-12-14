@@ -25,6 +25,8 @@ return new class extends Migration
             $table->enum('decimal_separator', ['.', ','])->default('.');
             $table->unsignedTinyInteger('no_of_decimals')->default(2);
             $table->decimal('exchange_rate', 16, 6)->default(1.000000)->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

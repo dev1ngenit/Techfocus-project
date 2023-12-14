@@ -34,6 +34,8 @@ return new class extends Migration
             $table->string('row_nine_title')->nullable();
             $table->text('row_nine_header')->nullable();
             $table->string('added_by')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

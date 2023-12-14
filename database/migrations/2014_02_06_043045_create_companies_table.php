@@ -37,6 +37,8 @@ return new class extends Migration
             $table->mediumText('vision')->nullable();
             $table->mediumText('history')->nullable();
             $table->mediumText('about')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

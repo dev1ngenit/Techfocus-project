@@ -2,12 +2,13 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Attribute extends Model
 {
-    use HasFactory;
+    use HasFactory, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.
@@ -15,7 +16,7 @@ class Attribute extends Model
      * @var array
      */
     protected $guarded = [];
-    
+
     public function values()
     {
         return $this->hasMany(AttributeValue::class);
@@ -23,7 +24,6 @@ class Attribute extends Model
 
     public function scopeOrderByName($query)
     {
-        $query->orderBy('name','ASC');
+        $query->orderBy('name', 'ASC');
     }
-
 }

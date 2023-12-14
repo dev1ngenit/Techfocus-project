@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('answer');
             $table->integer('order')->unsigned()->nullable();
             $table->enum('is_published', ['0', '1'])->default(0);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }
