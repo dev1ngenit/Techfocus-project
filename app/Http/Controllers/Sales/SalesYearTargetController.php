@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Sales;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SalesYearTargetRequest;
+use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\SalesYearTargetRepositoryInterface;
 
 class SalesYearTargetController extends Controller
 {
     private $salesYearTargetRepository;
+    private $companyRepository;
 
-    public function __construct(SalesYearTargetRepositoryInterface $salesYearTargetRepository)
+    public function __construct(SalesYearTargetRepositoryInterface $salesYearTargetRepository,CompanyRepositoryInterface $companyRepository)
     {
         $this->salesYearTargetRepository = $salesYearTargetRepository;
+        $this->companyRepository = $companyRepository;
     }
 
     /**
@@ -25,6 +28,7 @@ class SalesYearTargetController extends Controller
     {
         return view('admin.pages.salesYearTarget.index', [
             'salesYearTargets' => $this->salesYearTargetRepository->allSalesYearTarget(),
+            'companies' => $this->companyRepository->allCompany(),
         ]);
     }
 

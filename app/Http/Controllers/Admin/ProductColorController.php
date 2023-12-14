@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\ProductColorRequest;
 use App\Repositories\Interfaces\ProductColorRepositoryInterface;
 
@@ -24,7 +25,7 @@ class ProductColorController extends Controller
     public function index()
     {
         return view('admin.pages.productColor.index', [
-            'productColors' => $this->productColorRepository->allProductColor(),
+            'colors' => $this->productColorRepository->allProductColor(),
         ]);
     }
 
@@ -53,7 +54,7 @@ class ProductColorController extends Controller
         ];
         $this->productColorRepository->storeProductColor($data);
 
-        toastr()->success('Data has been saved successfully!');
+        Session::flash('success', ['message' => 'Color added successfully']);
         return redirect()->back();
     }
 
@@ -95,8 +96,7 @@ class ProductColorController extends Controller
         ];
 
         $this->productColorRepository->updateProductColor($data, $id);
-
-        toastr()->success('Data has been updated successfully!');
+        Session::flash('success', ['message' => 'Color updated successfully']);
         return redirect()->back();
     }
 

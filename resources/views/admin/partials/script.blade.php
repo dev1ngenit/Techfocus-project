@@ -4,6 +4,8 @@
 <!--begin::Global Javascript Bundle(used by all pages)-->
 <script src="{{ asset('backend/assets/plugins/global/plugins.bundle.js') }}"></script>
 <script src="{{ asset('backend/assets/js/scripts.bundle.js') }}"></script>
+<script src="{{ asset('backend/assets/plugins/custom/formrepeater/formrepeater.bundle.js') }}"></script>
+
 <!--end::Global Javascript Bundle-->
 <!--begin::Page Vendors Javascript(used by this page)-->
 <script src="{{ asset('backend/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
@@ -22,42 +24,58 @@
 <!-- Custom:Shahed --->
 <script src="{{ asset('backend/assets/js/custom/techfocus/font-awesome.js') }}"></script>
 {{-- <script src="{{ asset('backend/assets/js/custom/techfocus/toastr.js') }}"></script> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> --}}
+<script src="{{ asset('backend/assets/js/bootstrap.multi-select.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/js/bootstrap-multiselect.js" ></script>
+<script src="{{ asset('backend/assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
+<script src="{{ asset('backend/assets/js/custom/documentation/editors/tinymce/plugins.js') }}"></script>
 <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 <!-- Custom:Shahed --->
 <!--end::Page Custom Javascript-->
 @stack('scripts')
+
+
+
+
 <script>
-    @if (Session::has('message'))
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        }
-        toastr.success("{{ session('message') }}");
-        Session::forget('message');
+    // Clear messages after a delay
+    setTimeout(function() {
+        document.querySelectorAll('.alert').forEach(function(alert) {
+            alert.remove();
+        });
+    }, 2000); // Adjust the delay as needed (e.g., 5000 milliseconds = 5 seconds)
+</script>
+
+
+<script>
+    $.fn.poshytip = {
+        defaults: null
+    }
+
+</script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/js/jquery-editable-poshytip.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    @if (session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '{{ session('success.message') }}',
+        });
     @endif
 
-    @if (Session::has('error'))
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        }
-        toastr.error("{{ session('error') }}");
+    @if (session('error'))
+        var errorMessage = @json(session('error'));
+        Swal.fire({
+            icon: 'error',
+            title: 'You have recently got some errors while esecuting your acr=tio',
+            html: errorMessage.join('<br>'),
+        });
     @endif
 
-    @if (Session::has('info'))
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        }
-        toastr.info("{{ session('info') }}");
-    @endif
-
-    @if (Session::has('warning'))
-        toastr.options = {
-            "closeButton": true,
-            "progressBar": true
-        }
-        toastr.warning("{{ session('warning') }}");
-    @endif
 </script>

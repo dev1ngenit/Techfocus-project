@@ -24,10 +24,10 @@ return new class extends Migration
             $table->double('deposit')->nullable();
             $table->double('withdraw')->nullable();
             $table->string('purpose')->nullable();
-            $table->string('comments')->nullable();
-            $table->string('notes')->nullable();
+            $table->text('notes')->nullable();
+            $table->string('transaction_id')->nullable();
+            $table->string('invoice_number')->nullable();
             $table->string('status')->nullable();
-
             $table->timestamps();
         });
     }

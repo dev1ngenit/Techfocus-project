@@ -29,18 +29,14 @@ return new class extends Migration
             $table->string('contact_name')->nullable();
             $table->string('contact_email')->nullable();
             $table->string('contact_phone')->nullable();
-            $table->text('headquarter')->nullable(); // Headquarter location
-            $table->string('founder')->nullable(); // Founder's name
-            $table->year('year_founded')->nullable(); // Year the industry was founded
-            $table->string('ceo')->nullable(); // CEO's name
-            $table->mediumText('mission')->nullable(); // Mission statement
-            $table->mediumText('vision')->nullable(); // Vision statement
-            $table->mediumText('history')->nullable(); // Historical information
-            $table->mediumText('about')->nullable(); // About. information
-
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable();
+            $table->text('headquarter')->nullable();
+            $table->string('founder')->nullable();
+            $table->year('year_founded')->nullable();
+            $table->string('ceo')->nullable();
+            $table->mediumText('mission')->nullable();
+            $table->mediumText('vision')->nullable();
+            $table->mediumText('history')->nullable();
+            $table->mediumText('about')->nullable();
             $table->timestamps();
         });
     }

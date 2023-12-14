@@ -2,6 +2,7 @@
 
 namespace {{ namespace }};
 
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,4 +16,11 @@ class {{ class }} extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * , HasSlug
+     * protected $slugSourceColumn = 'name';
+     */
+    
+
 }

@@ -14,10 +14,9 @@ class FaqController extends Controller
     private $companyRepository;
     private $dynamicCategoryRepository;
 
-    public function __construct(FaqRepositoryInterface $faqRepository, CompanyRepositoryInterface $companyRepository, DynamicCategoryRepositoryInterface $dynamicCategoryRepository)
+    public function __construct(FaqRepositoryInterface $faqRepository, DynamicCategoryRepositoryInterface $dynamicCategoryRepository)
     {
         $this->faqRepository             = $faqRepository;
-        $this->companyRepository         = $companyRepository;
         $this->dynamicCategoryRepository = $dynamicCategoryRepository;
     }
 
@@ -30,7 +29,6 @@ class FaqController extends Controller
     {
         return view('admin.pages.faq.index', [
             'faqs'              => $this->faqRepository->allFaq(),
-            'companies'         => $this->companyRepository->allCompany(),
             'dynamicCategories' => $this->dynamicCategoryRepository->allDynamicCategory(),
         ]);
     }
@@ -54,8 +52,6 @@ class FaqController extends Controller
     public function store(FaqRequest $request)
     {
         $data = [
-            'country_id'          => $request->country_id,
-            'company_id'          => $request->company_id,
             'dynamic_category_id' => $request->dynamic_category_id,
             'question'            => $request->question,
             'answer'              => $request->answer,
@@ -100,8 +96,6 @@ class FaqController extends Controller
     public function update(FaqRequest $request, $id)
     {
         $data = [
-            'country_id'          => $request->country_id,
-            'company_id'          => $request->company_id,
             'dynamic_category_id' => $request->dynamic_category_id,
             'question'            => $request->question,
             'answer'              => $request->answer,

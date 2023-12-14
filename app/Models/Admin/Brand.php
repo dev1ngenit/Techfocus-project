@@ -2,12 +2,13 @@
 
 namespace App\Models\Admin;
 
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Brand extends Model
 {
-    use HasFactory;
+    use HasFactory, HasSlug;
 
     /**
      * The attributes that aren't mass assignable.
@@ -15,4 +16,6 @@ class Brand extends Model
      * @var array
      */
     protected $guarded = [];
+
+    protected $slugSourceColumn = 'name';
 }

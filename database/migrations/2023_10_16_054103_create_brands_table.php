@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('website_url')->nullable();
             $table->text('description')->nullable();
             $table->string('category');
+            $table->foreignId('created_by')->nullable()->constrained('admins')->nullOnDelete();
+            $table->foreignId('updated_by')->nullable()->constrained('admins')->nullOnDelete();
             $table->timestamps();
         });
     }

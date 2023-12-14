@@ -75,8 +75,8 @@ class CategoryController extends Controller
         ];
         $this->categoryRepository->storeCategory($data);
 
-        toastr()->success('Data has been saved successfully!');
-        return redirect()->back();
+        // toastr()->success('Data has been saved successfully!');
+        return redirect()->back()->with('success', 'Category Added Successfully');
     }
 
     /**
@@ -159,8 +159,8 @@ class CategoryController extends Controller
 
         $this->categoryRepository->updateCategory($data, $id);
 
-        toastr()->success('Data has been updated successfully!');
-        return redirect()->back();
+        // toastr()->success('Data has been updated successfully!');
+        return redirect()->back()->with('success', 'Category has been updated successfully');
     }
 
     /**

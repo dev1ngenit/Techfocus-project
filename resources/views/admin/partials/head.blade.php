@@ -31,7 +31,9 @@
      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
 
 <!--start::Custom-Shahed-->
-{{-- <link href="{{ asset('backend/assets/css/custom/toastr.css') }}" rel="stylesheet" type="text/css" /> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/css/bootstrap-multiselect.css"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jquery-editable/css/jquery-editable.css" rel="stylesheet"/>
+<link href="{{ asset('backend/assets/css/custom/toastr.css') }}" rel="stylesheet" type="text/css" />
 {{-- <link href="{{ asset('backend/assets/css/custom/font-awesome6.css') }}" rel="stylesheet" type="text/css" /> --}}
 <!--end::Custom-Shahed-->
 

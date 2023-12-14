@@ -23,10 +23,14 @@
                             <a href="javascript:void(0);" class="text-gray-900 text-hover-primary fs-2 fw-bolder me-1">
                                 {{ $profile->name }}
                             </a>
-                            <a href="">
+
+                            @if (Auth::guard('admin')->user()->hasVerifiedEmail()) 
                                 <span class="badge badge-success">Verified</span>
+                            @else 
+                            <a href="{{route('admin.verification.notice')}}">
                                 <span class="badge badge-danger">Not Verified</span>
                             </a>
+                            @endif
                             {{-- <a href="javascript:void(0);" title="Verified">
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen026.svg-->
                                 <span class="svg-icon svg-icon-1 svg-icon-primary">
@@ -244,7 +248,7 @@
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5"
-                    href="">Settings</a>
+                    href="{{ route('admin.profile.edit',$profile->id) }}">Settings</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->

@@ -2,15 +2,16 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class CompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return bool
+     * @return bool 
      */
     public function authorize()
     {
@@ -27,11 +28,11 @@ class CompanyRequest extends FormRequest
         return [
             'headquarter_country_id' => 'nullable|exists:countries,id',
             'name' => 'required|string',
-            'industry' => 'nullable|json',
-            'country' => 'nullable|json',
-            'location' => 'nullable|json',
-            'phone' => 'nullable|string|max:20',
-            'email' => 'nullable|email',
+            'industry' => 'nullable|array',
+            'country' => 'nullable|array',
+            'location' => 'nullable|array',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|email',
             'website_url' => 'nullable|url',
             'logo'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'postal_code' => 'nullable|string|max:10',
@@ -117,30 +118,30 @@ class CompanyRequest extends FormRequest
         ];
     }
 
-    /**
-     * Handle a failed validation attempt.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     */
+    // /**
+    //  * Handle a failed validation attempt.
+    //  *
+    //  * @param  \Illuminate\Contracts\Validation\Validator  $validator
+    //  * @return void
+    //  */
     protected function failedValidation(Validator $validator)
     {
         $this->recordErrorMessages($validator);
         parent::failedValidation($validator);
     }
 
-    /**
-     * Record the error messages displayed to the user.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     */
+    // /**
+    //  * Record the error messages displayed to the user.
+    //  *
+    //  * @param  \Illuminate\Contracts\Validation\Validator  $validator
+    //  * @return void
+    //  */
     protected function recordErrorMessages(Validator $validator)
     {
         $errorMessages = $validator->errors()->all();
-
-        foreach ($errorMessages as $errorMessage) {
-            toastr()->error($errorMessage);
-        }
+        Session::flash('error', $errorMessages);
+        // foreach ($errorMessages as $errorMessage) {
+        //     toastr()->error($errorMessage);
+        // }
     }
 }
