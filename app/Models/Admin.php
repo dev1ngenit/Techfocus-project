@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Admin\Role;
 use App\Models\Admin\Permission;
 use Laravel\Sanctum\HasApiTokens;
+use Wildside\Userstamps\Userstamps;
 use App\Traits\HasRolesAndPermissions;
 use App\Notifications\Admin\VerifyEmail;
 use Illuminate\Notifications\Notifiable;
@@ -15,7 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRolesAndPermissions;
+    use HasApiTokens, HasFactory, Notifiable, HasRolesAndPermissions, Userstamps;
     /**
      * The attributes that are mass assignable.
      *

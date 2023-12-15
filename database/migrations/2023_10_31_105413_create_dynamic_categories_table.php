@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('type');
             $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

@@ -3,12 +3,13 @@
 namespace App\Models\Admin;
 
 use App\Traits\HasSlug;
+use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Company extends Model
 {
-    use HasFactory, HasSlug;
+    use HasFactory, HasSlug, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.

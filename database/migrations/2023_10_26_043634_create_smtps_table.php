@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('sender_email')->nullable();
             $table->string('sender_name')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('inactive')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

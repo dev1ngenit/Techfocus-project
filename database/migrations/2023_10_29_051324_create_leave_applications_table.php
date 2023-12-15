@@ -51,10 +51,8 @@ return new class extends Migration
             $table->string('approved_by')->nullable()->comment('file')->nullable();
             $table->enum('application_status', ['approved', 'rejected', 'pending'])->nullable();
             $table->text('note')->nullable();
-
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable();
             $table->timestamps();
         });
     }

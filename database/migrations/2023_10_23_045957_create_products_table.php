@@ -88,7 +88,6 @@ return new class extends Migration
             $table->text('rejection_note')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable();
             $table->timestamps();
         });
     }

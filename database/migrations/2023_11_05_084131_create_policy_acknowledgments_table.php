@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('sign')->nullable()->comment('file.It will automatically come from employee form.No need to add another image to database,just add the image name.');
             $table->enum('status', ['acknowledged', 'pending'])->default('pending');
             $table->timestamp('acknowledged_at')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

@@ -3,12 +3,13 @@
 namespace App\Models\Admin;
 
 use App\Models\Country;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class VatAndTax extends Model
 {
-    use HasFactory;
+    use HasFactory, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.

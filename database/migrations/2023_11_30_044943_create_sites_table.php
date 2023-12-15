@@ -50,7 +50,8 @@ return new class extends Migration
             $table->string('upwork_url', 255)->nullable();
             $table->string('service_days', 100)->nullable();
             $table->string('service_time', 100)->nullable();
-
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

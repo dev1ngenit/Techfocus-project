@@ -4,12 +4,13 @@ namespace App\Models\Sales;
 
 use App\Models\Country;
 use App\Models\Admin\Company;
+use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SalesYearTarget extends Model
 {
-    use HasFactory;
+    use HasFactory, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.

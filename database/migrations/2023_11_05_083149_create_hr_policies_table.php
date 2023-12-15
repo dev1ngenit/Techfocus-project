@@ -24,6 +24,8 @@ return new class extends Migration
             $table->date('expiration_date')->nullable();
             $table->enum('status', ['active', 'inactive', 'archived'])->default('active');
             $table->string('version')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

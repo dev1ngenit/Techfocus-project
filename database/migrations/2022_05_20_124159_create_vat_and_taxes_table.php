@@ -23,6 +23,8 @@ return new class extends Migration
             $table->decimal('amount', 5, 2);
             $table->text('description')->nullable(); // Add description column
             $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

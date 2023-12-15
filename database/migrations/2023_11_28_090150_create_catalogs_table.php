@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('company_button_name')->nullable();
             $table->string('company_button_link')->nullable();
             $table->string('document')->nullable()->comment('file:pdf');
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

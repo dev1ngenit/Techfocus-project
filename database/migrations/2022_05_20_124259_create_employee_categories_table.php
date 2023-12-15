@@ -26,6 +26,8 @@ return new class extends Migration
             $table->unsignedSmallInteger('yearly_earned_leave')->default(0);
             $table->unsignedSmallInteger('yearly_casual_leave')->default(0);
             $table->unsignedSmallInteger('yearly_medical_leave')->default(0);
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

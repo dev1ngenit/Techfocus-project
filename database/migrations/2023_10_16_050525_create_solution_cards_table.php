@@ -22,6 +22,8 @@ return new class extends Migration
             $table->mediumText('short_des')->nullable();
             $table->text('link')->nullable();
             $table->string('button_name')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

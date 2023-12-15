@@ -125,6 +125,8 @@ return new class extends Migration
             $table->enum('police_verification', ['verified', 'unverified'])->default('unverified')->nullable();
             $table->enum('acknowledgement', ['acknowledged', 'unacknowledged'])->default('acknowledged')->nullable();
             $table->rememberToken();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }
