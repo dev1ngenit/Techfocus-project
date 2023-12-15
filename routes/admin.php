@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Accounts\AccountsDocumentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\RowController;
@@ -42,6 +43,7 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
+use App\Http\Controllers\Admin\ProductSasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,11 +111,12 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         });
         Route::resources(
             [
-                'product'               => ProductController::class,
-                'brand-page'            => BrandPageController::class,
-                'solution-details'      => SolutionDetailsController::class,
-                'industry-page'         => IndustryPageController::class,
-                'row'                   => RowController::class,
+                'product'          => ProductController::class,
+                'product-sas'      => ProductSasController::class,
+                'brand-page'       => BrandPageController::class,
+                'solution-details' => SolutionDetailsController::class,
+                'industry-page'    => IndustryPageController::class,
+                'row'              => RowController::class,
             ]
         );
         Route::resources(
@@ -144,6 +147,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'banking'               => BankingController::class,
 
                 'attendance'            => AttendanceController::class, //not my work
+
+                'accounts-document'      => AccountsDocumentController::class,
             ],
             ['except' => ['create', 'show', 'edit'],]
         );
@@ -217,10 +222,10 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             ->name('user-roles.destroy');
     });
 
-    Route::get('/subscribers', [NewsletterController::class, 'index'])->name('newsletter.index');
-    Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+    // Route::get('/subscribers', [NewsletterController::class, 'index'])->name('newsletter.index');
+    // Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
-    Route::get('/verify/{token}', [NewsletterController::class, 'verify'])->name('newsletter.verify');
+    // Route::get('/verify/{token}', [NewsletterController::class, 'verify'])->name('newsletter.verify');
 
     Route::get('/verified', function () {
         return view('newsletter.verified');
@@ -230,7 +235,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         return view('newsletter.verify-failed');
     })->name('newsletter.verify-failed');
 
-    Route::post('/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+    // Route::post('/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
 
 
     // Route::resource('example', ExampleController::class)->except(['create', 'show', 'edit']); //example

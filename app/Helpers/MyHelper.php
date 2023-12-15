@@ -7,6 +7,7 @@ use App\Models\State;
 use App\Models\Country;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Industry;
+use App\Models\Admin\ProductSas;
 use Illuminate\Http\UploadedFile;
 use Intervention\Image\Facades\Image;
 
@@ -76,6 +77,24 @@ if (!function_exists('customUpload')) {
     }
 }
 
+if (!function_exists('generateRefUniqueCode')) {
+    /**
+     * Generate a Ref Unique Code.
+     *
+     * @return string
+     */
+    function generateRefUniqueCode()
+    {
+        $prefix          = 'TFP-';
+        $date            = date('dmY');
+        $lastCode        = ProductSas::latest()->value('ref_code');
+        $lastNumber      = intval(substr($lastCode, -3));
+        $newNumber       = $lastNumber + 1;
+        $newNumberPadded = str_pad($newNumber, 3, '0', STR_PAD_LEFT);
+        $code            = $prefix . $date . $newNumberPadded;
+        return $code;
+    }
+}
 if (!function_exists('getAllCountry')) {
     /**
      * Generate a unique transaction number.
