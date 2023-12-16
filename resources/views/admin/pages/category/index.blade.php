@@ -34,56 +34,16 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
                                     <div class="card-title table_title">
-                                        <h2 class="text-center">Category</h2>
+                                        <h2 class="text-center mb-0">Category</h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
                                     <!--begin::Export dropdown-->
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                        Export Report
-                                    </button>
                                     <button type="button" class="btn btn-sm btn-light-success rounded-0"
                                         data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
                                         data-bs-target="#categoryAddModal">
                                         Add New
                                     </button>
-                                    <!--begin::Menu-->
-                                    <div id="kt_datatable_example_1_export_menu"
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                                Copy to clipboard
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                                Export as Excel
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                                Export as CSV
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                                Export as PDF
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-                                    <!--end::Export dropdown-->
                                 </div>
                             </div>
                         </div>
@@ -97,12 +57,11 @@
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th class="" width="5%">Sl</th>
                                     <th class="" width="10%">Logo</th>
-                                    <th class="" width="25%">Country Name</th>
                                     <th class="" width="30%">Parent Name</th>
                                     <th class="" width="10%">Name</th>
-                                    <th class="" width="10%">Image</th>
-                                    <th class="text-center" width="10%">Action</th>
-                                    <!--end::Table row-->
+                                    <th class="" width="10%">Action</th>
+                                </tr>
+                                <!--end::Table row-->
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
                                 @if ($categories)
@@ -114,39 +73,36 @@
                                                     src="{{ !empty($category->logo) ? asset('storage/' . $category->logo) : asset('storage/main/no-image-available.png') }}"
                                                     alt="{{ $category->name }} Logo">
                                             </td>
-                                            <td>
+                                            {{-- <td>
                                                 {{ getAllCountry()->where('id', $category->country_id)->first()->name ?? 'Unknown Country' }}
-                                            </td>
+                                            </td> --}}
                                             <td>{{ $category->parentName() ?? 'No Parent' }}
                                             </td>
                                             <td>{{ $category->name }}
                                             </td>
                                             <td>
-                                                <img class="img-fluid" width="35px"
-                                                    src="{{ !empty($category->image) ? asset('storage/' . $category->image) : asset('storage/main/no-image-available.png') }}"
-                                                    alt="{{ $category->name }} image">
-                                            </td>
-                                            <td class="d-flex justify-content-between align-items-center">
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#categoryViewModal_{{ $category->id }}">
-                                                    <i class="fa-solid fa-expand"></i>
-                                                    <!--View-->
-                                                </a>
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 categoryEditModal"
-                                                    data-bs-toggle="modal" data-id="{{ $category->id }}"
-                                                    data-bs-target="#categoryEditModal_{{ $category->id }}">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                    <!--Edit-->
-                                                </a>
-                                                <a href="{{ route('admin.category.destroy', $category->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                    data-kt-docs-table-filter="delete_row">
-                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                    <!--Delete-->
-                                                </a>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a href="#"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#categoryViewModal_{{ $category->id }}">
+                                                        <i class="fa-solid fa-expand"></i>
+                                                        <!--View-->
+                                                    </a>
+                                                    <a href="#"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 categoryEditModal"
+                                                        data-bs-toggle="modal" data-id="{{ $category->id }}"
+                                                        data-bs-target="#categoryEditModal_{{ $category->id }}">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                        <!--Edit-->
+                                                    </a>
+                                                    <a href="{{ route('admin.category.destroy', $category->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                        data-kt-docs-table-filter="delete_row">
+                                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                        <!--Delete-->
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -182,21 +138,6 @@
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="validationCustom04" class="form-label required">Country
-                                                Name</label>
-                                            <select class="form-select form-select-solid" name="country_id"
-                                                data-dropdown-parent="#categoryAddModal" data-control="select2"
-                                                data-placeholder="Select an option" data-allow-clear="true" required>
-                                                <option></option>
-                                                @foreach (getAllCountry() as $country)
-                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Select Country Name. </div>
-                                        </div>
-
                                         <div class="col-md-6 mb-1">
                                             <label for="validationCustom01" class="form-label required ">Name
                                             </label>
@@ -292,21 +233,6 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <label for="validationCustom04" class="form-label required">Country
-                                                    Name</label>
-                                                <select class="form-select form-select-solid" name="country_id"
-                                                    data-dropdown-parent="#categorymentEditModal" data-control="select2"
-                                                    data-placeholder="Select an option" data-allow-clear="true" required>
-                                                    <option></option>
-                                                    @foreach (getAllCountry() as $country)
-                                                        <option value="{{ $country->id }}" @selected($country->id == $category->country_id)>
-                                                            {{ $country->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Select Country Name. </div>
-                                            </div>
                                             <div class="col-md-6 mb-1">
                                                 <label for="validationCustom01" class="form-label required ">Name
                                                 </label>
@@ -397,14 +323,12 @@
                 </div>
             </div>
         </div>
-    @endforeach
-    {{-- View Modal --}}
-    @foreach ($categories as $category)
+
         <div class="modal fade" id="categoryViewModal_{{ $category->id }}" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
                     <div class="modal-header p-2 rounded-0">
-                        <h5 class="modal-title">View </h5>
+                        <h5 class="modal-title mb-0">Category View </h5>
                         <!-- Close button in the header -->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
@@ -416,7 +340,6 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card border rounded-0">
-                                        <p class="badge badge-info custom-badge">Info</span>
                                         <div class="card-body p-1 px-2">
                                             <div class="row">
                                                 <div class="col-lg-6">

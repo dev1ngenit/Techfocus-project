@@ -458,6 +458,7 @@ $(document).ready(function () {
       fileReader.readAsDataURL(f);
     }
     // console.log(selectedFiles);
+    $(".existing-images").show();
   });
 
   // Use event delegation for the click event

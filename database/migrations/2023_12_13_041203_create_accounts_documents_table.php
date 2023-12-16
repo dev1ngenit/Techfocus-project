@@ -18,8 +18,9 @@ return new class extends Migration
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->year('fiscal_year')->nullable();
-            $table->string('name')->unique();
+            $table->string('name')->nullable();
             $table->string('slug')->unique();
+            $table->string('status')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();

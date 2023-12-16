@@ -18,4 +18,19 @@ class Product extends Model
      */
     protected $guarded = [];
     protected $slugSourceColumn = 'name';
+    public function industries()
+    {
+        return $this->belongsToMany(Industry::class, 'industry_products', 'product_id', 'industry_id');
+    }
+
+    // Define the many-to-many relationship with solutions
+    public function solutions()
+    {
+        return $this->belongsToMany(SolutionDetail::class, 'solution_products', 'product_id', 'solution_id');
+    }
+    public function multiImages()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
+
 }

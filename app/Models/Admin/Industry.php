@@ -20,6 +20,11 @@ class Industry extends Model
 
     protected $slugSourceColumn = 'name';
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'industry_products');
+    }
+    
     public function children()
     {
         return $this->hasMany(Industry::class, 'parent_id');

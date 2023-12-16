@@ -19,6 +19,11 @@ class SolutionDetail extends Model
     protected $guarded = [];
 
     protected $slugSourceColumn = 'name';
+ 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'solution_products');
+    }
 
     /**
      * Get the Row One that owns the SolutionDetail

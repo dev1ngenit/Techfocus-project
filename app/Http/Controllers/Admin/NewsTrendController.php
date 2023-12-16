@@ -55,7 +55,7 @@ class NewsTrendController extends Controller
             'categories' => $this->categoryRepository->allCategory(),
             'brands'     => $this->brandRepository->allBrand(),
             'industries' => $this->industryRepository->allIndustry(),
-        'solutions'      => SolutionDetail::latest('id')->get(['id','name']),
+            'solutions'  => SolutionDetail::latest('id')->get(['id', 'name']),
         ]);
     }
 
@@ -132,6 +132,7 @@ class NewsTrendController extends Controller
             'categories' => $this->categoryRepository->allCategory(),
             'brands'     => $this->brandRepository->allBrand(),
             'industries' => $this->industryRepository->allIndustry(),
+            'solutions'  => SolutionDetail::latest('id')->get(['id', 'name']),
         ]);
     }
 

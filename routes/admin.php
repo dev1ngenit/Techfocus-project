@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Accounts\AccountsDocumentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\RowController;
@@ -9,15 +8,18 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\BankingController;
+use App\Http\Controllers\Admin\CatalogController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\HomePageController;
 use App\Http\Controllers\Admin\HrPolicyController;
 use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\UserRoleController;
+use App\Http\Controllers\Admin\AboutPageController;
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\BioMetricController;
 use App\Http\Controllers\Admin\BrandPageController;
@@ -25,12 +27,12 @@ use App\Http\Controllers\Admin\NewsTrendController;
 use App\Http\Controllers\Admin\VatAndTaxController;
 use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\ProductSasController;
 use App\Http\Controllers\Admin\WebSettingController;
 use App\Http\Controllers\Admin\IndustryPageController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\HR\LeaveApplicationController;
 use App\Http\Controllers\Admin\AttributeValueController;
-use App\Http\Controllers\Admin\CatalogController;
 use App\Http\Controllers\Admin\RolePermissionController;
 use App\Http\Controllers\Admin\TermsAndPolicyController;
 use App\Http\Controllers\Admin\UserPermissionController;
@@ -42,8 +44,9 @@ use App\Http\Controllers\Admin\CountryStateCityController;
 use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
+use App\Http\Controllers\Accounts\AccountsDocumentController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
-use App\Http\Controllers\Admin\ProductSasController;
+use App\Http\Controllers\Admin\SolutionCardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,6 +120,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'solution-details' => SolutionDetailsController::class,
                 'industry-page'    => IndustryPageController::class,
                 'row'              => RowController::class,
+                'homepage'         => HomePageController::class, //Not Done
+                'aboutpage'        => AboutPageController::class, //Not Done
             ]
         );
         Route::resources(
@@ -138,17 +143,14 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'faq'                   => FaqController::class,
                 'sales-year-target'     => SalesYearTargetController::class,
                 'sales-team-target'     => SalesTeamTargetController::class,
-
                 'news-trend'            => NewsTrendController::class,
                 'hr-policy'             => HrPolicyController::class,
                 'policy-acknowledgment' => PolicyAcknowledgmentController::class,
                 'terms-and-policy'      => TermsAndPolicyController::class,
-
                 'banking'               => BankingController::class,
-
                 'attendance'            => AttendanceController::class, //not my work
-
-                'accounts-document'      => AccountsDocumentController::class,
+                'accounts-document'     => AccountsDocumentController::class,
+                'solution-card'         => SolutionCardController::class,
             ],
             ['except' => ['create', 'show', 'edit'],]
         );
