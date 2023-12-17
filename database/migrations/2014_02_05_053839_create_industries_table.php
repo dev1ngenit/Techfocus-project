@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreignId('solution_two_id')->nullable()->constrained('solution_details')->cascadeOnUpdate();
             $table->foreignId('solution_three_id')->nullable()->constrained('solution_details')->cascadeOnUpdate();
             $table->foreignId('solution_four_id')->nullable()->constrained('solution_details')->cascadeOnUpdate();
-            $table->foreignId('client_story_id')->nullable()->constrained('rows')->cascadeOnUpdate();
+            $table->foreignId('client_story_id')->nullable()->constrained('news_trends')->cascadeOnUpdate();
             $table->text('header')->nullable();
             $table->string('btn_one_name')->nullable();
             $table->string('btn_one_link')->nullable();
