@@ -122,7 +122,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'row'              => RowController::class,
                 'homepage'         => HomePageController::class, //Not Done
                 'aboutpage'        => AboutPageController::class, //Not Done
-                'solution-card'         => SolutionCardController::class,
+                'solution-card'    => SolutionCardController::class,
             ]
         );
         Route::resources(
