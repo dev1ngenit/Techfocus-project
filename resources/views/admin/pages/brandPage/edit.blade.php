@@ -31,38 +31,47 @@
                                 </li>
                                 <li class="nav-item w-md-290px my-1" role="presentation">
                                     <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                        href="#kt_vtab_pane_3" aria-selected="false" role="tab"
-                                        tabindex="-1">Row Two</a>
+                                        href="#kt_vtab_pane_3" aria-selected="false" role="tab" tabindex="-1">Row
+                                        Two</a>
                                 </li>
                                 <li class="nav-item w-md-290px my-1" role="presentation">
                                     <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                        href="#kt_vtab_pane_4" aria-selected="false" role="tab" tabindex="-1">Row Three</a>
+                                        href="#kt_vtab_pane_4" aria-selected="false" role="tab" tabindex="-1">Row
+                                        Three</a>
                                 </li>
                                 <li class="nav-item w-md-290px my-1" role="presentation">
                                     <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                        href="#kt_vtab_pane_5" aria-selected="false" role="tab" tabindex="-1">Card Row</a>
+                                        href="#kt_vtab_pane_5" aria-selected="false" role="tab" tabindex="-1">Card
+                                        Row</a>
                                 </li>
                                 <li class="nav-item w-md-290px my-1" role="presentation">
                                     <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                        href="#kt_vtab_pane_6" aria-selected="false" role="tab" tabindex="-1">Row Four</a>
+                                        href="#kt_vtab_pane_6" aria-selected="false" role="tab" tabindex="-1">Row
+                                        Four</a>
                                 </li>
                                 <li class="nav-item w-md-290px my-1" role="presentation">
                                     <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                        href="#kt_vtab_pane_7" aria-selected="false" role="tab" tabindex="-1">Row Five</a>
+                                        href="#kt_vtab_pane_7" aria-selected="false" role="tab" tabindex="-1">Row
+                                        Five</a>
                                 </li>
                                 <li class="nav-item w-md-290px my-1" role="presentation">
                                     <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                        href="#kt_vtab_pane_8" aria-selected="false" role="tab" tabindex="-1">Row Six</a>
+                                        href="#kt_vtab_pane_8" aria-selected="false" role="tab" tabindex="-1">Row
+                                        Six</a>
                                 </li>
                                 <li class="nav-item w-md-290px my-1 mb-0 me-2" role="presentation">
                                     <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
-                                        href="#kt_vtab_pane_9" aria-selected="false" role="tab" tabindex="-1">Map Row Six</a>
+                                        href="#kt_vtab_pane_9" aria-selected="false" role="tab" tabindex="-1">Map Row
+                                        Six</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-lg-10 px-4 p-2">
-                            <form id="productForm" method="post" action="" enctype="multipart/form-data">
+                            <form id="productForm" method="POST"
+                                action="{{ route('admin.brand-page.update', $brandPage->id) }}"
+                                enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade active show" id="kt_vtab_pane_1" role="tabpanel">
                                         <div class="w-100">
@@ -79,45 +88,44 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Select Brand</label>
+                                                            <label class="form-label ">Select Brand</label>
                                                             <select class="form-select form-select-solid form-select-sm"
                                                                 name="brand_id" data-control="select2"
-                                                                data-hide-search="false"
-                                                                data-placeholder="Select an Product Type"
-                                                                data-allow-clear="true" required>
+                                                                data-hide-search="false" data-placeholder="Select a Brand"
+                                                                data-allow-clear="true">
                                                                 <option></option>
-                                                                <option value="software">Software</option>
-                                                                <option value="hardware">Hardware</option>
-                                                                <option value="book">Book</option>
-                                                                <option value="training">Training</option>
+                                                                @foreach ($brands as $brand)
+                                                                    <option @selected($brand->id == $brandPage->brand_id)
+                                                                        value="{{ $brand->id }}">
+                                                                        {{ $brand->name }}</option>
+                                                                @endforeach
                                                             </select>
-                                                            <div class="invalid-feedback"> Please Enter Product Name.</div>
+                                                            @error('brand_id')
+                                                                <div class="invalid-feedback d-block">{{ $message }}</div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Brand Logo</label>
+                                                            <label class="form-label ">Brand Logo</label>
                                                             <input name="brand_logo"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Brand Logo" type="file" required />
-                                                            <div class="invalid-feedback"> Please Enter Brand Logo.</div>
+                                                                placeholder="Enter Brand Logo" type="file" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Banner Image</label>
+                                                            <label class="form-label ">Banner Image</label>
                                                             <input name="banner_image"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Banner Image" type="file" required />
-                                                            <div class="invalid-feedback"> Please Enter Banner Image.</div>
+                                                                placeholder="Enter Banner Image" type="file" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Banner Header</label>
-                                                            <textarea rows="1" name="source_contact" class="form-control form-control-sm form-control-solid"
-                                                            placeholder="Enter Banner Header" required></textarea>
-                                                            <div class="invalid-feedback"> Please Enter Banner Header.</div>
+                                                            <label class="form-label ">Banner Header</label>
+                                                            <textarea rows="1" name="header" class="form-control form-control-sm form-control-solid"
+                                                                placeholder="Enter Banner Header">{{ $brandPage->header }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -143,31 +151,32 @@
                                                     class="fw-bolder d-flex justify-content-center align-items-center text-dark">
                                                     Row One
                                                 </h2>
+
                                             </div>
                                             <div class="fv-row">
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Row One Title</label>
-                                                            <input name="row_six_title"
+                                                            <label class="form-label ">Row One Title</label>
+                                                            <input name="row_one_title"
+                                                                value="{{ $brandPage->row_one_title }}"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Row One Title" type="text" required />
-                                                            <div class="invalid-feedback"> Please Enter Row One Title.</div>
+                                                                placeholder="Enter Row One Title" type="text" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Row One Header</label>
-                                                            <textarea rows="1" name="row_six_header" class="form-control form-control-sm form-control-solid"
-                                                            placeholder="Enter Row One Header" required></textarea>
-                                                            <div class="invalid-feedback"> Please Enter Row One Header.</div>
+                                                            <label class="form-label ">Row One Header</label>
+                                                            <textarea rows="1" name="row_one_header" class="form-control form-control-sm form-control-solid"
+                                                                placeholder="Enter Row One Header">{{ $brandPage->row_one_header }}</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mt-2 justify-content-end">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
-                                                        data-bs-target="#kt_vtab_pane_1" aria-selected="false" role="tab" tabindex="-1">
+                                                            data-bs-target="#kt_vtab_pane_1" aria-selected="false"
+                                                            role="tab" tabindex="-1">
                                                             Previous
                                                             <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                                 <i class="fa-solid fa-arrow-right"></i>
@@ -198,22 +207,31 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px">Row</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px">Row</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Badge
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Badge
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="badge" id="validationCustom01" placeholder="Enter Badge">
-                                                                        <div class="invalid-feedback"> Please Enter Badge </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="row_four_badge"
+                                                                            value="{{ $brandPage->rowFour->badge }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Badge">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Title
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Title
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01" placeholder="Enter Title" required>
-                                                                        <div class="invalid-feedback"> Please Enter Title </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="row_four_title"
+                                                                            value="{{ $brandPage->rowFour->title }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Title">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -221,27 +239,40 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 18%">Row Image Area</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 18%">Row Image Area</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Row Image
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Row Image
                                                                         </label>
-                                                                        <input type="file" class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01" placeholder="Enter Row Image" required>
-                                                                        <div class="invalid-feedback"> Please Enter Row Image </div>
+                                                                        <input type="file"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rows_image_four" id="validationCustom01"
+                                                                            placeholder="Enter Row Image">
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Button Name
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Button Name
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="btn_name" id="validationCustom01" placeholder="Enter Button Name">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="row_four_btn_name"
+                                                                            value="{{ $brandPage->rowFour->btn_name }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Button Name">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Link
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Link
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="link" id="validationCustom01" placeholder="Enter Row Link">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="row_four_link"
+                                                                            value="{{ $brandPage->rowFour->link }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -249,15 +280,17 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="row border p-4 mt-8">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 10%">Row Description</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 10%">Row
+                                                                Description</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-1">
-                                                                        <label for="validationCustom01" class="form-label required ">Description
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required ">Description
                                                                         </label>
-                                                                        <textarea  name="description" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
-                                                                        </textarea>
+                                                                        <textarea name="row_four_description" class="tox-target kt_docs_tinymce_plugins">
+                                                                          {{ $brandPage->rowFour->description }}</textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -267,7 +300,8 @@
                                                 <div class="row mt-2 justify-content-end">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
-                                                        data-bs-target="#kt_vtab_pane_2" aria-selected="false" role="tab" tabindex="-1">
+                                                            data-bs-target="#kt_vtab_pane_2" aria-selected="false"
+                                                            role="tab" tabindex="-1">
                                                             Previous
                                                             <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                                 <i class="fa-solid fa-arrow-right"></i>
@@ -298,22 +332,31 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px">Row</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px">Row</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Badge
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Badge
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="badge" id="validationCustom01" placeholder="Enter Badge">
-                                                                        <div class="invalid-feedback"> Please Enter Badge </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="row_five_badge"
+                                                                            value="{{ $brandPage->rowFive->badge }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Badge">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Title
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Title
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01" placeholder="Enter Title" required>
-                                                                        <div class="invalid-feedback"> Please Enter Title </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="row_five_title"
+                                                                            value="{{ $brandPage->rowFive->title }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Title">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -321,27 +364,40 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 18%">Row Image Area</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 18%">Row Image Area</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Row Image
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Row Image
                                                                         </label>
-                                                                        <input type="file" class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01" placeholder="Enter Row Image" required>
-                                                                        <div class="invalid-feedback"> Please Enter Row Image </div>
+                                                                        <input type="file"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rows_image_five" id="validationCustom01"
+                                                                            placeholder="Enter Row Image">
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Button Name
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Button Name
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="btn_name" id="validationCustom01" placeholder="Enter Button Name">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="row_five_btn_name"
+                                                                            value="{{ $brandPage->rowFive->btn_name }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Button Name">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Link
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Link
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="link" id="validationCustom01" placeholder="Enter Row Link">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="row_five_link"
+                                                                            value="{{ $brandPage->rowFive->link }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -349,15 +405,17 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="row border p-4 mt-8">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 10%">Row Description</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 10%">Row
+                                                                Description</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-1">
-                                                                        <label for="validationCustom01" class="form-label required ">Description
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required ">Description
                                                                         </label>
-                                                                        <textarea  name="description" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
-                                                                            
+                                                                        <textarea name="row_five_description" class="tox-target kt_docs_tinymce_plugins">
+                                                                           {{ $brandPage->rowFive->description }}
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
@@ -368,7 +426,8 @@
                                                 <div class="row mt-2 justify-content-end">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
-                                                        data-bs-target="#kt_vtab_pane_3" aria-selected="false" role="tab" tabindex="-1">
+                                                            data-bs-target="#kt_vtab_pane_3" aria-selected="false"
+                                                            role="tab" tabindex="-1">
                                                             Previous
                                                             <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                                 <i class="fa-solid fa-arrow-right"></i>
@@ -399,44 +458,71 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 11%">Card One</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 11%">Card One</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Title
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Badge
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01" placeholder="Enter Title" required>
-                                                                        <div class="invalid-feedback"> Please Enter Title </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardOneId_badge"
+                                                                            value="{{ $brandPage->solutionCardOne->badge }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter a badge">
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Image
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Title
                                                                         </label>
-                                                                        <input type="file" class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01" placeholder="Enter Image" required>
-                                                                        <div class="invalid-feedback"> Please Enter Image </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardOneId_title"
+                                                                            value="{{ $brandPage->solutionCardOne->title }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Title">
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Button Name
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Image
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="button_name" id="validationCustom01" placeholder="Enter Button Name"
-                                                                            required>
-                                                                        <div class="invalid-feedback"> Please Enter Button Name </div>
+                                                                        <input type="file"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solution_card_image_one"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Image">
+                                                                        <div class="invalid-feedback"> Please Enter Image
+                                                                        </div>
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Link
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Button Name
                                                                         </label>
-                                                                        <textarea rows="1" name="link" class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Enter Link" required></textarea>
-                                                                        <div class="invalid-feedback"> Please Enter Link </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardOneId_button_name"
+                                                                            value="{{ $brandPage->solutionCardOne->button_name }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Button Name">
+                                                                        <div class="invalid-feedback"> Please Enter Button
+                                                                            Name </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-2">
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Link
+                                                                        </label>
+                                                                        <textarea rows="1" name="solutionCardOneId_link" class="form-control form-control-sm form-control-solid"
+                                                                            placeholder="Enter Link">{{ $brandPage->solutionCardOne->link }}</textarea>
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Short Des</label>
-                                                                        <textarea name="acceshort_desssories" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Short
+                                                                            Des</label>
+                                                                        <textarea name="solutionCardOneId_short_des" class="tox-target kt_docs_tinymce_plugins">
+                                                                           {{ $brandPage->solutionCardOne->short_des }}
                                                                          </textarea>
-                                                                        <div class="invalid-feedback"> Please Enter Short Des </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -444,101 +530,148 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 11%">Card Two</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 11%">Card Two</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
-                                                            <div class="col-md-6 mb-2">
-                                                                <label for="validationCustom01" class="form-label required mb-0">Title
-                                                                </label>
-                                                                <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                    name="title" id="validationCustom01" placeholder="Enter Title" required>
-                                                                <div class="invalid-feedback"> Please Enter Title </div>
-                                                            </div>
-                                                            <div class="col-md-6 mb-2">
-                                                                <label for="validationCustom01" class="form-label required mb-0">Image
-                                                                </label>
-                                                                <input type="file" class="form-control form-control-solid form-control-sm"
-                                                                    name="image" id="validationCustom01" placeholder="Enter Image" required>
-                                                                <div class="invalid-feedback"> Please Enter Image </div>
-                                                            </div>
-                                                            <div class="col-md-6 mb-2">
-                                                                <label for="validationCustom01" class="form-label required mb-0">Button Name
-                                                                </label>
-                                                                <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                    name="button_name" id="validationCustom01" placeholder="Enter Button Name"
-                                                                    required>
-                                                                <div class="invalid-feedback"> Please Enter Button Name </div>
-                                                            </div>
-                                                            <div class="col-md-6 mb-2">
-                                                                <label for="validationCustom01" class="form-label required mb-0">Link
-                                                                </label>
-                                                                <textarea rows="1" name="link" class="form-control form-control-sm form-control-solid"
-                                                                    placeholder="Enter Link" required></textarea>
-                                                                <div class="invalid-feedback"> Please Enter Link </div>
-                                                            </div>
-                                                            <div class="col-md-12 mb-2">
-                                                                <label for="validationCustom01" class="form-label required mb-0">Short Des</label>
-                                                                <textarea name="acceshort_desssories" class="tox-target kt_docs_tinymce_plugins">
-                                                                <h1>Enter Your Text Here</h1>
+                                                                    <div class="col-md-6 mb-2">
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Badge
+                                                                        </label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardTwoId_badge"
+                                                                            value="{{ $brandPage->solutionCardTwo->badge }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter a badge">
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-2">
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Title
+                                                                        </label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardTwoId_title"
+                                                                            value="{{ $brandPage->solutionCardTwo->title }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Title">
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-2">
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Image
+                                                                        </label>
+                                                                        <input type="file"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solution_card_image_two"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Image">
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-2">
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Button Name
+                                                                        </label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardTwoId_short_des"
+                                                                            value="{{ $brandPage->solutionCardTwo->short_des }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Button Name">
+                                                                        <div class="invalid-feedback"> Please Enter Button
+                                                                            Name </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-2">
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Link
+                                                                        </label>
+                                                                        <textarea rows="1" name="solutionCardTwoId_link" class="form-control form-control-sm form-control-solid"
+                                                                            placeholder="Enter Link">{{ $brandPage->solutionCardTwo->link }}</textarea>
+                                                                    </div>
+                                                                    <div class="col-md-12 mb-2">
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Short
+                                                                            Des</label>
+                                                                        <textarea name="solutionCardTwoId_button_name" class="tox-target kt_docs_tinymce_plugins">
+                                                               {{ $brandPage->solutionCardTwo->button_name }}
                                                                 </textarea>
-                                                                <div class="invalid-feedback"> Please Enter Short Des </div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4 mt-8">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 12%">Card Three</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 12%">Card Three</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Title
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Badge
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01" placeholder="Enter Title" required>
-                                                                        <div class="invalid-feedback"> Please Enter Title </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardTwoId_badge"
+                                                                            value="{{ $brandPage->solutionCardThree->badge }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter a badge">
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Image
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Title
                                                                         </label>
-                                                                        <input type="file" class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01" placeholder="Enter Image" required>
-                                                                        <div class="invalid-feedback"> Please Enter Image </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardTwoId_title"
+                                                                            value="{{ $brandPage->solutionCardThree->title }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Title">
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Button Name
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Image
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="button_name" id="validationCustom01" placeholder="Enter Button Name"
-                                                                            required>
-                                                                        <div class="invalid-feedback"> Please Enter Button Name </div>
+                                                                        <input type="file"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solution_card_image_three"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Image">
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Link
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Button Name
                                                                         </label>
-                                                                        <textarea rows="1" name="link" class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Enter Link" required></textarea>
-                                                                        <div class="invalid-feedback"> Please Enter Link </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="solutionCardTwoId_short_des"
+                                                                            value="{{ $brandPage->solutionCardThree->short_des }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Button Name">
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-2">
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Link
+                                                                        </label>
+                                                                        <textarea rows="1" name="solutionCardTwoId_link" class="form-control form-control-sm form-control-solid"
+                                                                            placeholder="Enter Link">{{ $brandPage->solutionCardThree->link }}</textarea>
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Short Des</label>
-                                                                        <textarea name="acceshort_desssories" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Short
+                                                                            Des</label>
+                                                                        <textarea name="solutionCardTwoId_button_name" class="tox-target kt_docs_tinymce_plugins">
+                                                                           {{ $brandPage->solutionCardThree->button_name }}
                                                                         </textarea>
-                                                                        <div class="invalid-feedback"> Please Enter Short Des </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                                 <div class="row mt-2 justify-content-end">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
-                                                        data-bs-target="#kt_vtab_pane_4" aria-selected="false" role="tab" tabindex="-1">
+                                                            data-bs-target="#kt_vtab_pane_4" aria-selected="false"
+                                                            role="tab" tabindex="-1">
                                                             Previous
                                                             <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                                 <i class="fa-solid fa-arrow-right"></i>
@@ -568,18 +701,23 @@
                                             <div class="fv-row">
                                                 <div class="row">
                                                     <div class="col-md-12 mb-2">
-                                                        <label for="validationCustom01" class="form-label required mb-0">Row Four Background Img
+                                                        <label for="validationCustom01"
+                                                            class="form-label required mb-0">Row Four Background Img
                                                         </label>
-                                                        <input type="file" class="form-control form-control-solid form-control-sm"
-                                                            name="row_six_image" id="validationCustom01" placeholder="Enter Row Four Background Img"
-                                                            required>
-                                                        <div class="invalid-feedback"> Please Enter Row Four Background Img </div>
+                                                        <input type="file"
+                                                            class="form-control form-control-solid form-control-sm"
+                                                            name="row_six_image" value="{{ $brandPage->row_six_image }}"
+                                                            id="validationCustom01"
+                                                            placeholder="Enter Row Four Background Img">
+                                                        <div class="invalid-feedback"> Please Enter Row Four Background Img
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mt-2 justify-content-end">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
-                                                        data-bs-target="#kt_vtab_pane_5" aria-selected="false" role="tab" tabindex="-1">
+                                                            data-bs-target="#kt_vtab_pane_5" aria-selected="false"
+                                                            role="tab" tabindex="-1">
                                                             Previous
                                                             <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                                 <i class="fa-solid fa-arrow-right"></i>
@@ -610,22 +748,31 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px">Row</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px">Row</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Badge
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Badge
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="badge" id="validationCustom01" placeholder="Enter Badge">
-                                                                        <div class="invalid-feedback"> Please Enter Badge </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rowSevenId_badge"
+                                                                            value="{{ $brandPage->rowSeven->badge }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Badge">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Title
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Title
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01" placeholder="Enter Title" required>
-                                                                        <div class="invalid-feedback"> Please Enter Title </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rowSevenId_title"
+                                                                            value="{{ $brandPage->rowSeven->title }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Title">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -633,27 +780,40 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 18%">Row Image Area</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 18%">Row Image Area</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Row Image
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Row Image
                                                                         </label>
-                                                                        <input type="file" class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01" placeholder="Enter Row Image" required>
-                                                                        <div class="invalid-feedback"> Please Enter Row Image </div>
+                                                                        <input type="file"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Row Image">
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Button Name
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Button Name
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="btn_name" id="validationCustom01" placeholder="Enter Button Name">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rowSevenId_btn_name"
+                                                                            value="{{ $brandPage->rowSeven->btn_name }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Button Name">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Link
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Link
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="link" id="validationCustom01" placeholder="Enter Row Link">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rowSevenId_link"
+                                                                            value="{{ $brandPage->rowSeven->link }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -661,15 +821,17 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="row border p-4 mt-8">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 10%">Row Description</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 10%">Row
+                                                                Description</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-1">
-                                                                        <label for="validationCustom01" class="form-label required ">Description
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required ">Description
                                                                         </label>
-                                                                        <textarea  name="description" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
-                                                                            
+                                                                        <textarea name="rowSevenId_description" class="tox-target kt_docs_tinymce_plugins">
+                                                                           {{ $brandPage->rowSeven->description }}
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
@@ -680,7 +842,8 @@
                                                 <div class="row mt-2 justify-content-end">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
-                                                        data-bs-target="#kt_vtab_pane_6" aria-selected="false" role="tab" tabindex="-1">
+                                                            data-bs-target="#kt_vtab_pane_6" aria-selected="false"
+                                                            role="tab" tabindex="-1">
                                                             Previous
                                                             <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                                 <i class="fa-solid fa-arrow-right"></i>
@@ -711,22 +874,31 @@
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px">Row</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px">Row</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Badge
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Badge
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="badge" id="validationCustom01" placeholder="Enter Badge">
-                                                                        <div class="invalid-feedback"> Please Enter Badge </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rowEightId_badge"
+                                                                            value="{{ $brandPage->rowSeven->badge }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Badge">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Title
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Title
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="title" id="validationCustom01" placeholder="Enter Title" required>
-                                                                        <div class="invalid-feedback"> Please Enter Title </div>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rowEightId_title"
+                                                                            value="{{ $brandPage->rowSeven->title }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Title">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -734,27 +906,41 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="row border p-4">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 18%">Row Image Area</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 18%">Row Image Area</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label required mb-0">Row Image
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required mb-0">Row Image
                                                                         </label>
-                                                                        <input type="file" class="form-control form-control-solid form-control-sm"
-                                                                            name="image" id="validationCustom01" placeholder="Enter Row Image" required>
-                                                                        <div class="invalid-feedback"> Please Enter Row Image </div>
+                                                                        <input type="file"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rows_image_eight"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Row Image">
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Button Name
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Button Name
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="btn_name" id="validationCustom01" placeholder="Enter Button Name">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rowEightId_btn_name"
+                                                                            value="{{ $brandPage->rowSeven->btn_name }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Button Name">
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
-                                                                        <label for="validationCustom01" class="form-label mb-0">Link
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label mb-0">Link
                                                                         </label>
-                                                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                                                            name="link" id="validationCustom01" placeholder="Enter Row Link">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm"
+                                                                            name="rowEightId_link"
+                                                                            value="{{ $brandPage->rowSeven->link }}"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Row Link">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -762,15 +948,17 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="row border p-4 mt-8">
-                                                            <p class="badge badge-info custom-badge" style="margin-top: -15px; width: 10%">Row Description</span>
+                                                            <p class="badge badge-info custom-badge"
+                                                                style="margin-top: -15px; width: 10%">Row
+                                                                Description</span>
                                                             <div class="col-lg-12 col-sm-12">
                                                                 <div class="row">
                                                                     <div class="col-md-12 mb-1">
-                                                                        <label for="validationCustom01" class="form-label required ">Description
+                                                                        <label for="validationCustom01"
+                                                                            class="form-label required ">Description
                                                                         </label>
-                                                                        <textarea  name="description" class="tox-target kt_docs_tinymce_plugins">
-                                                                            <h1>Enter Your Text Here</h1>
-                                                                            
+                                                                        <textarea name="rowEightId_description" class="tox-target kt_docs_tinymce_plugins">
+                                                                           {{ $brandPage->rowSeven->description }}
                                                                         </textarea>
                                                                     </div>
                                                                 </div>
@@ -781,7 +969,8 @@
                                                 <div class="row mt-2 justify-content-end">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
-                                                        data-bs-target="#kt_vtab_pane_7" aria-selected="false" role="tab" tabindex="-1">
+                                                            data-bs-target="#kt_vtab_pane_7" aria-selected="false"
+                                                            role="tab" tabindex="-1">
                                                             Previous
                                                             <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                                 <i class="fa-solid fa-arrow-right"></i>
@@ -809,11 +998,11 @@
                                                 </h2>
                                             </div>
                                             <div class="fv-row">
-                                                asdasdasdas
                                                 <div class="row mt-2 justify-content-end">
                                                     <div class="d-flex align-items-center justify-content-between">
                                                         <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
-                                                        data-bs-target="#kt_vtab_pane_8" aria-selected="false" role="tab" tabindex="-1">
+                                                            data-bs-target="#kt_vtab_pane_8" aria-selected="false"
+                                                            role="tab" tabindex="-1">
                                                             Previous
                                                             <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                                 <i class="fa-solid fa-arrow-right"></i>
@@ -850,24 +1039,16 @@
     <script>
         // Stepper lement
         var element = document.querySelector("#kt_stepper_example_clickable");
-
-
         // Initialize Stepper
         var stepper = new KTStepper(element);
-
-
         // Handle navigation click
         stepper.on("kt.stepper.click", function(stepper) {
             stepper.goTo(stepper.getClickedStepIndex()); // go to clicked step
         });
-
-
         // Handle next step
         stepper.on("kt.stepper.next", function(stepper) {
             stepper.goNext(); // go next step
         });
-
-
         // Handle previous step
         stepper.on("kt.stepper.previous", function(stepper) {
             stepper.goPrevious(); // go previous step
@@ -876,30 +1057,17 @@
     <script>
         //---------Sidebar list Show Hide----------
         $(document).ready(function() {
-
-
             $('#dealId').click(function() {
                 $("#dealExpand").toggle(this.checked);
             });
-
-
             $('#rfqId').click(function() {
-
-
                 $("#rfqExpand").toggle('slow');
-
-
             });
-
         });
     </script>
     <script>
         $('.stock_select').on('change', function() {
-
-
             var stock_value = $(this).find(":selected").val();
-
-
             if (stock_value == 'available') {
                 $(".qty_display").removeClass("d-none");
                 $(".qty_required").prop('required', true);
@@ -910,14 +1078,8 @@
                 $(".qty_display").addClass("d-none");
                 $(".qty_required").prop('required', false);
             }
-
-
         });
-
-
         $('.price_select').on('change', function() {
-
-
             var price_value = $(this).find(":selected").val();
             if (price_value == 'rfq') {
                 // alert(price_value);
@@ -933,8 +1095,6 @@
                 $(".offer_price").addClass("d-none");
                 $(".rfq_price").addClass("d-none");
             }
-
-
         });
     </script>
     <script>
@@ -957,7 +1117,6 @@
         // The DOM elements you wish to replace with Tagify
         var input1 = document.querySelector("#kt_tagify_1");
         var input2 = document.querySelector("#kt_tagify_2");
-
         // Initialize Tagify components on the above inputs
         new Tagify(input1);
         new Tagify(input2);
@@ -967,7 +1126,6 @@
             // Get the checkbox and colors input container
             var checkbox = document.getElementById('dealCheckbox');
             var dealsInputContainer = document.getElementById('dealsInputContainer');
-
             // Add change event listener to the checkbox
             checkbox.addEventListener('change', function() {
                 // Toggle the visibility of the colors input field based on checkbox state
@@ -980,22 +1138,14 @@
             // Function to validate and switch tabs
             function validateAndSwitchTab(targetTabId) {
                 let isValid = true;
-
-
                 // Get the index of the tab to be shown
                 const activeTabHref = $('.tab-trigger.active').attr('href');
                 $(activeTabHref).find('input, textarea, select').each(function() {
                     var $field = $(this);
-
-
                     // Check if it's a Select2 element
                     var isSelect2 = $field.hasClass('select2-hidden-accessible');
-
-
                     if ($field.prop('required') && $field.val() === '') {
                         isValid = false;
-
-
                         if (isSelect2) {
                             // Apply CSS based on the element type
                             $field.next('.select2-container').addClass('is-invalid');
@@ -1004,8 +1154,6 @@
                         }
                     }
                 });
-
-
                 if (!isValid) {
                     // Fields are not valid, prevent the tab switch
                     return false;
@@ -1015,26 +1163,18 @@
                     return true;
                 }
             }
-
-
             // Function to switch tabs
             function switchTab(targetTabId) {
                 $('.nav-link[href="' + targetTabId + '"]').tab('show');
             }
-
-
             // Event handler for tab switch
             $('.tab-trigger').on('show.bs.tab', function(event) {
                 return validateAndSwitchTab($(this).data('bs-target'));
             });
-
-
             // Event handler for input change
             $('.tab-content').on('input change', 'input, textarea, select', function() {
                 var $field = $(this);
                 var isSelect2 = $field.hasClass('select2-hidden-accessible');
-
-
                 // Remove red border when user interacts with the field
                 if (isSelect2) {
                     $field.next('.select2-container').removeClass('is-invalid');
@@ -1042,33 +1182,23 @@
                     $field.removeClass('is-invalid');
                 }
             });
-
-
             // Event handler for multi-select change
             $('.multiple-select').on('change', function() {
                 // Remove validation error only from the changed multi-select field
                 var $multiSelect = $(this);
                 $multiSelect.removeClass('is-invalid');
             });
-
-
             // Event handler for the "Continue" button
             $('.tab-trigger-next').on('click', function(event) {
                 // Assuming the data-bs-target attribute contains the tab ID to switch to
                 const targetTabId = $(this).data('bs-target');
-
-
                 // Validate and switch to the next tab
                 validateAndSwitchTab(targetTabId);
             });
-
-
             // Event handler for the "Previous" button
             $('.tab-trigger-previous').on('click', function(event) {
                 // Assuming the data-bs-target attribute contains the tab ID to switch to
                 const targetTabId = $(this).data('bs-target');
-
-
                 // Validate and switch to the previous tab
                 validateAndSwitchTab(targetTabId);
             });

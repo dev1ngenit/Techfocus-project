@@ -34,15 +34,13 @@ return new class extends Migration
             $table->longText('accessories')->nullable();
             $table->longText('warranty')->nullable();
             $table->string('thumbnail', 255)->nullable();
-            $table->integer('qty')->default(1);
+            $table->integer('qty')->nullable();
             $table->string('stock', 50)->nullable();
             $table->string('weight', 100)->nullable();
             $table->double('price')->nullable();
             $table->double('sas_price')->nullable();
             $table->double('discount')->nullable();
             $table->string('deal', 50)->nullable();
-            $table->json('industry')->nullable();
-            $table->json('solution')->nullable();
             $table->enum('refurbished', ['0', '1'])->default('0');
             $table->enum('price_status', ['rfq', 'price', 'offer_price', 'starting_price'])->default('price');
             $table->enum('rfq', ['0', '1'])->default('0');
@@ -50,6 +48,7 @@ return new class extends Migration
             $table->json('category_id')->nullable();
             // $table->foreignId('category_id')->nullable()->constrained('categories')->cascadeOnDelete();
             $table->foreignId('brand_id')->nullable()->constrained('brands')->cascadeOnDelete();
+            $table->foreignId('currency_id')->nullable()->constrained('currencies')->cascadeOnDelete();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->enum('product_status', ['sourcing', 'product'])->default('sourcing');
             $table->double('source_one_price')->nullable();
@@ -88,7 +87,6 @@ return new class extends Migration
             $table->text('rejection_note')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
-            $table->unsignedBigInteger('deleted_by')->nullable();
             $table->timestamps();
         });
     }

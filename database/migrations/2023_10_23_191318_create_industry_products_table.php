@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('industry_products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
-            $table->string('slug')->unique();
+            $table->foreignId('product_id')->nullable()->constrained('products')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('industry_id')->nullable()->constrained('industries')->cascadeOnUpdate()->cascadeOnDelete();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();

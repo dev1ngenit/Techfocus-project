@@ -2,12 +2,13 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.
@@ -20,7 +21,7 @@ class Category extends Model
     {
         return $this->hasMany(Category::class, 'parent_id');
     }
-    
+
     public function parentName()
     {
         return Category::where('id', $this->parent_id)->value('name');

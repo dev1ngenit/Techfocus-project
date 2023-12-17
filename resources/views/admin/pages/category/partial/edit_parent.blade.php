@@ -1,5 +1,5 @@
 <option value="{{ $category->id }}"  @selected($category->id == $category->parent_id)>
-    @php echo str_repeat('-', $level) @endphp {{ $category->name }}
+    {{ str_repeat('-', $level) }} {{ $category->name }}
 </option>
 
 @if ($category->children && count($category->children))

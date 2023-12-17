@@ -3,12 +3,13 @@
 namespace App\Models\Admin;
 
 use App\Traits\HasSlug;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SolutionCard extends Model
 {
-    use HasFactory, HasSlug;
+    use HasFactory, HasSlug, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.
@@ -17,5 +18,5 @@ class SolutionCard extends Model
      */
     protected $guarded = [];
 
-    protected $slugSourceColumn = 'name';
+    protected $slugSourceColumn = 'title';
 }

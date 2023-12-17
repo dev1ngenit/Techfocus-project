@@ -2,12 +2,13 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductAttribute extends Model
 {
-    use HasFactory;
+    use HasFactory, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.

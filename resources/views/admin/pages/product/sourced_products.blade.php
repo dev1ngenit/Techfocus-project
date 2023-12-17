@@ -34,16 +34,19 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
                                     <div class="card-title table_title">
-                                        <h4 class="text-center">Sourced Products ( <small>Pending For Approval</small> )</h4>
+                                        <h4 class="text-center">Sourced Products ( <small>Pending For Approval</small> )
+                                        </h4>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 text-lg-end text-sm-center">
                                     <!--begin::Export dropdown-->
-                                    <a href="{{route('admin.product.index')}}" class="btn btn-sm btn-info rounded-0 px-2 me-3">
+                                    <a href="{{ route('admin.product.index') }}"
+                                        class="btn btn-sm btn-info rounded-0 px-2 me-3">
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Completed Products
                                     </a>
-                                    <a href="{{route('admin.saved.products')}}" class="btn btn-sm btn-secondary rounded-0 px-5 me-3">
+                                    <a href="{{ route('admin.saved.products') }}"
+                                        class="btn btn-sm btn-secondary rounded-0 px-5 me-3">
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Drafts
                                     </a>
@@ -52,7 +55,8 @@
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Export Report
                                     </button>
-                                    <a href="{{route('admin.product.create')}}" class="btn btn-sm btn-success rounded-0 px-2">
+                                    <a href="{{ route('admin.product.create') }}"
+                                        class="btn btn-sm btn-success rounded-0 px-2">
                                         <i class="fa-solid fa-plus"></i>
                                         Add New
                                     </a>
@@ -105,50 +109,52 @@
                                     <th width="5%">Sl</th>
                                     <th width="10%">Image</th>
                                     <th width="45%">Product Name</th>
-                                    <th width="10%">Price Status</th>
                                     <th width="10%">Added By</th>
+                                    <th width="10%">Price Status</th>
                                     <th width="10%">Status</th>
                                     <th width="10%">Action</th>
                                     <!--end::Table row-->
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
-                                {{-- @if ($categories)
-                                    @foreach ($categories as $category)
+                                @if ($products)
+                                    @foreach ($products as $product)
                                         <tr class="odd">
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <img class="img-fluid rounded-circle" width="35px"
-                                                    src="{{ !empty($category->logo) ? asset('storage/' . $category->logo) : asset('storage/main/no-image-available.png') }}"
-                                                    alt="{{ $category->name }} Logo">
+                                                    src="{{ $product->thumbnail }}" alt="{{ $product->name }}">
+                                            </td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->added_by }}</td>
+                                            <td>
+                                                @if ($product->price_status === 'rfq')
+                                                    <span class="text-black fw-bold">{{ ucfirst($product->price_status) }}</span>
+                                                @else
+                                                    {{ ucfirst($product->price_status) }}
+                                                @endif
                                             </td>
                                             <td>
-                                                {{ getAllCountry()->where('id', $category->country_id)->first()->name ?? 'Unknown Country' }}
-                                            </td>
-                                            <td>{{ $category->parentName() ?? 'No Parent' }}
-                                            </td>
-                                            <td>{{ $category->name }}
-                                            </td>
-                                            <td>
-                                                <img class="img-fluid" width="35px"
-                                                    src="{{ !empty($category->image) ? asset('storage/' . $category->image) : asset('storage/main/no-image-available.png') }}"
-                                                    alt="{{ $category->name }} image">
+                                                @if ($product->action_status === 'listed')
+                                                    <span
+                                                        class="text-success">{{ ucfirst($product->action_status) }}</span>
+                                                @elseif ($product->action_status === 'rejected')
+                                                    <span class="text-danger">{{ ucfirst($product->action_status) }}</span>
+                                                @else
+                                                    {{ ucfirst($product->action_status) }}
+                                                @endif
                                             </td>
                                             <td class="d-flex justify-content-between align-items-center">
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#employeeDepertmentViewModal_{{ $category->id }}">
+                                                <a href="{{ route('admin.product.edit', $product->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-expand"></i>
                                                     <!--View-->
                                                 </a>
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 categoryEditModal"
-                                                    data-bs-toggle="modal" data-id="{{ $category->id }}"
-                                                    data-bs-target="#categoryEditModal_{{ $category->id }}">
+                                                <a href="{{ route('admin.product.edit', $product->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-pen"></i>
-                                                    <!--Edit-->
+                                                    <!--View-->
                                                 </a>
-                                                <a href="{{ route('admin.category.destroy', $category->id) }}"
+                                                <a href="{{ route('admin.category.destroy', $product->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                     data-kt-docs-table-filter="delete_row">
                                                     <i class="fa-solid fa-trash-can-arrow-up"></i>
@@ -157,7 +163,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                @endif --}}
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -172,7 +178,6 @@
 @endsection
 
 @push('scripts')
-    
     <script>
         "use strict";
 

@@ -14,33 +14,20 @@ use Illuminate\Support\Facades\Validator;
 
 class RowController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $data['rows'] = DB::table('rows')->orderBy('id', 'desc')->get();
         return view('admin.pages.row.index', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('admin.pages.row.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -61,15 +48,11 @@ class RowController extends Controller
 
         $mainFile = $request->file('image');
         $filePath = storage_path('app/public/row/');
-        $globalFunImage = !empty($mainFile) ? customUpload($mainFile, $filePath, 60, 45) : ['status' => 0];
-
-        $slug = Str::slug($request->title);
-        $slug = Row::where('slug', $slug)->exists() ? $slug . '-' . now()->format('ymdis') . '-' . rand(0, 999) : $slug;
+        $globalFunImage = !empty($mainFile) ? customUpload($mainFile, $filePath) : ['status' => 0];
 
         Row::create([
             'title'       => $request->title,
             'badge'       => $request->badge,
-            'slug'        => $slug,
             'short_des'   => $request->short_des,
             'btn_name'    => $request->btn_name,
             'link'        => $request->link,
@@ -83,26 +66,15 @@ class RowController extends Controller
         ]);
 
         Session::flash('success', ['message' => 'Row is created successfully']);
-        return redirect()->back();
+        return redirect()->back()->withInput();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         //
-    }
+    } 
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $data['row'] = Row::findOrFail($id);
@@ -133,14 +105,14 @@ class RowController extends Controller
             Session::flash('error', $validator->errors()->all());
             return redirect()->back();
         }
-
+ 
         $row = Row::findOrFail($id);
 
         $mainFile = $request->file('image');
         $filePath = storage_path('app/public/row/');
 
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $filePath, 60, 45);
+            $globalFunImage = customUpload($mainFile, $filePath);
             if (!empty($row->image)) {
                 Storage::delete("public/row/requestImg/{$row->image}");
                 Storage::delete("public/row/{$row->image}");
@@ -187,7 +159,7 @@ class RowController extends Controller
      */
     public function destroy($id)
     {
-        $row = Row::find($id);
+        $row = Row::findOrFail($id);
 
         if (File::exists(public_path('storage/row/') . $row->image)) {
             File::delete(public_path('storage/row/') . $row->image);

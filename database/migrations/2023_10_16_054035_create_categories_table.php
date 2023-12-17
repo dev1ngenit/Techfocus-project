@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('logo')->nullable();
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

@@ -37,6 +37,8 @@ return new class extends Migration
             $table->foreignId('solution_card_seven_id')->nullable()->constrained('solution_cards')->cascadeOnDelete();
             $table->foreignId('solution_card_eight_id')->nullable()->constrained('solution_cards')->cascadeOnDelete();
             $table->string('added_by')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

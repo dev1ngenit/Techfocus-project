@@ -39,9 +39,9 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
                                     <!--begin::Export dropdown-->
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0 me-3">
+                                    <a href="{{ route('admin.brand-page.index') }}" class="btn btn-sm btn-light-primary rounded-0 me-3">
                                         BrandPage
-                                    </button>
+                                    </a>
                                     <button type="button" class="btn btn-sm btn-light-success rounded-0"
                                         data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
                                         data-bs-target="#brandAddModal">
@@ -62,7 +62,6 @@
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th class="" width="5%">Sl</th>
                                     <th class="" width="10%">Logo</th>
-                                    <th class="" width="25%">Country Name</th>
                                     <th class="" width="40%">Name</th>
                                     <th class="" width="10%">Image</th>
                                     <th class="text-center" width="10%">Action</th>
@@ -74,41 +73,43 @@
                                         <tr class="odd">
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                <img class="img-fluid" width="60px"
-                                                    src="{{ !empty($brand->logo) && Storage::exists('public/brand/logo/requestImg/' . $brand->logo) ? asset('storage/brand/logo/requestImg/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
-                                                    alt="{{ $brand->slug }} Logo">
+                                                <img class="img-fluid" width="50px"
+                                                    src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/requestImg/' . $brand->logo)) ? asset('storage/brand/logo/requestImg/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
+                                                    alt="{{ $brand->name }} Logo">
                                             </td>
-                                            <td>
+                                            {{-- <td>
                                                 {{ getAllCountry()->where('id', $brand->country_id)->first()->name ?? 'Unknown Country' }}
-                                            </td>
+                                            </td> --}}
 
                                             <td>{{ $brand->name }}</td>
                                             <td>
-                                                <img class="img-fluid" width="35px"
-                                                    src="{{ !empty($brand->image) && Storage::exists(asset('public/brand/image/requestImg/' . $brand->image)) ? asset('storage/brand/image/requestImg/' . $brand->image) : asset('backend/images/no-image-available.png') }}"
-                                                    alt="{{ $brand->slug }} image">
+                                                <img class="img-fluid" width="50px"
+                                                    src="{{ !empty($brand->image) && file_exists(public_path('storage/brand/image/requestImg/' . $brand->image)) ? asset('storage/brand/image/requestImg/' . $brand->image) : asset('backend/images/no-image-available.png') }}"
+                                                    alt="{{ $brand->name }} image">
                                             </td>
-                                            <td class="d-flex justify-content-between align-items-center">
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#brandViewModal_{{ $brand->id }}">
-                                                    <i class="fa-solid fa-expand"></i>
-                                                    <!--View-->
-                                                </a>
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#brandtEditModal_{{ $brand->id }}">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                    <!--Edit-->
-                                                </a>
-                                                <a href="{{ route('admin.brand.destroy', $brand->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                    data-kt-docs-table-filter="delete_row">
-                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                    <!--Delete-->
-                                                </a>
+                                            <td>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a href="#"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#brandViewModal_{{ $brand->id }}">
+                                                        <i class="fa-solid fa-expand"></i>
+                                                        <!--View-->
+                                                    </a>
+                                                    <a href="#"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#brandtEditModal_{{ $brand->id }}">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                        <!--Edit-->
+                                                    </a>
+                                                    <a href="{{ route('admin.brand.destroy', $brand->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                        data-kt-docs-table-filter="delete_row">
+                                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                        <!--Delete-->
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -355,14 +356,12 @@
                 </div>
             </div>
         </div>
-    @endforeach
-    {{-- View Modal --}}
-    @foreach ($brands as $brand)
+
         <div class="modal fade" id="brandViewModal_{{ $brand->id }}" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
                     <div class="modal-header p-2 rounded-0">
-                        <h5 class="modal-title">View </h5>
+                        <h5 class="modal-title mb-0 text-center">Brand View </h5>
                         <!-- Close button in the header -->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
@@ -383,21 +382,11 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card border rounded-0">
-                                        <p class="badge badge-info custom-badge">Brand</span>
+                                        {{-- <p class="badge badge-info custom-badge">Brand</span> --}}
                                         <div class="card-body p-1 px-2">
                                             <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-sm-5">
-                                                            <p class="fw-bold" title="Country Name">Com. Name</p>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-6">
-                                                            <p>{{ getAllCountry()->where('id', $brand->country_id)->first()->name ?? 'Unknown Country' }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
+
+                                                <div class="col-lg-12 mb-3">
                                                     <div class="row">
                                                         <div class="col-lg-7 col-sm-5">
                                                             <p class="fw-bold">Brand Name</p>
@@ -407,7 +396,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-6 mb-3">
                                                     <div class="row">
                                                         <div class="col-lg-7 col-sm-5">
                                                             <p class="fw-bold">Image</p>
@@ -415,13 +404,13 @@
                                                         <div class="col-lg-5 col-sm-6">
                                                             <p>
                                                                 <img class="img-fluid rounded-circle" width="35px"
-                                                                    src="{{ !empty($brand->image) ? asset('storage/' . $brand->image) : asset('backend/images/no-image-available.png') }}"
-                                                                    alt="">
+                                                                    src="{{ !empty($brand->image) && file_exists(public_path('storage/brand/image/requestImg/' . $brand->image)) ? asset('storage/brand/image/requestImg/' . $brand->image) : asset('backend/images/no-image-available.png') }}"
+                                                                    alt="{{ $brand->image }}">
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-6 mb-3">
                                                     <div class="row">
                                                         <div class="col-lg-7 col-sm-5">
                                                             <p class="fw-bold">Logo</p>
@@ -429,13 +418,13 @@
                                                         <div class="col-lg-5 col-sm-6">
                                                             <p>
                                                                 <img class="img-fluid rounded-circle" width="35px"
-                                                                    src="{{ !empty($brand->logo) && file_exists(asset('storage/' . $brand->logo)) ? asset('storage/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
-                                                                    alt="">
+                                                                    src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/requestImg/' . $brand->logo)) ? asset('storage/brand/image/requestImg/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
+                                                                    alt="{{ $brand->logo }}">
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12">
+                                                <div class="col-lg-12 mb-3">
                                                     <div class="row">
                                                         <div class="col-lg-3 col-sm-5">
                                                             <p class="fw-bold">Description</p>
@@ -447,7 +436,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12">
+                                                <div class="col-lg-12 mb-3">
                                                     <div class="row">
                                                         <div class="col-lg-3 col-sm-5">
                                                             <p class="fw-bold">Website Url</p>

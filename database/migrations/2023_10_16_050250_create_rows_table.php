@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('list_three')->nullable();
             $table->string('list_four')->nullable();
             $table->longText('description')->nullable();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

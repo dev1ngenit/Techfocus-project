@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             // $table->string('slug')->unique();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

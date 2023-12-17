@@ -13,6 +13,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "rats/zkteco": "^002.0",
+        "wildside/userstamps": "^2.3",
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
