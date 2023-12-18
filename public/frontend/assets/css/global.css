@@ -72,6 +72,16 @@
   color: var(--white);
 }
 
+/* Common Container Start */
+.container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1650px;
+    }
+/* Common Container End */
 .main-menu {
   background-color: var(--sub-color);
 }
@@ -339,8 +349,8 @@
 }
 
 .swiper-slide {
-  height: 450px;
   width: 100%;
+  height: 330px;
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -350,8 +360,8 @@
 }
 
 .swiper-slide img {
-  height: 450px;
   width: 100%;
+  height: 330px;
   display: block;
   object-fit: cover;
 }
@@ -1869,7 +1879,7 @@ ul:not(:hover) li:first-child .imgSubCat {
   color: var(--white);
   width: 35px;
   position: relative;
-  right: 20px;
+  right: 15px;
   top: 0px;
   font-size: 10px;
   border-top-left-radius: 10px;

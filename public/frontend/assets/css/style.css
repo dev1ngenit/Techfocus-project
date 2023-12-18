@@ -60,6 +60,7 @@
 body{
   width: 100%;
   overflow-x: hidden;
+  font-family: hurme-light;
 }
 /* Scroll Bar Css */
 body::-webkit-scrollbar {

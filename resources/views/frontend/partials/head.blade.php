@@ -13,14 +13,5 @@
 <!-- *********************************CSS End*********************************** -->
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/global.css') }}" />
-<style>
-    .container,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container-xl,
-    .container-xxl {
-        max-width: 1650px !important;
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}" />
 @stack('styles')

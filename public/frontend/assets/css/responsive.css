@@ -1,0 +1,36 @@
+/* Extra small devices (phones, 575px and down) */
+@media only screen and (max-width: 576px) {
+  /* Your styles for extra small devices go here */
+}
+
+/* Small devices (portrait tablets and large phones, 577px - 768px) */
+@media only screen and (min-width: 577px) and (max-width: 768px) {
+  /* Your styles for small devices go here */
+}
+
+/* Medium devices (landscape tablets, 769px - 992px) */
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  /* Your styles for medium devices go here */
+}
+
+/* Large devices (laptops/desktops, 993px - 1200px) */
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1201px and up) */
+@media only screen and (min-width: 1201px) {
+  /* Your styles for extra large devices go here */
+}
+
+/* Custom media query (992px - 1400px) */
+@media only screen and (min-width: 992px) and (max-width: 1400px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1150px !important;
+    }
+}
