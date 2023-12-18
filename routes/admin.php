@@ -47,6 +47,7 @@ use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Accounts\AccountsDocumentController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
 use App\Http\Controllers\Admin\SolutionCardController;
+use App\Http\Controllers\HR\HRController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +112,10 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             Route::get('/completed-products', 'index')->name('product.index');
             Route::get('/sourced-products', 'sourcedProducts')->name('sourced.products');
             Route::get('/saved-products', 'savedProducts')->name('saved.products');
+        });
+        // HR
+        Route::prefix('hr')->controller(HRController::class)->group(function () {
+            Route::get('/dashboard', 'dashboard')->name('hr.dashboard');
         });
         Route::resources(
             [
