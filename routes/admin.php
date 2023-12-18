@@ -117,6 +117,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::prefix('hr')->controller(HRController::class)->group(function () {
             Route::get('/dashboard', 'dashboard')->name('hr.dashboard');
         });
+
         Route::resources(
             [
                 'product'          => ProductController::class,
@@ -128,6 +129,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'homepage'         => HomePageController::class, //Not Done
                 'aboutpage'        => AboutPageController::class, //Not Done
                 'solution-card'    => SolutionCardController::class,
+                'employee'         => EmployeeController::class,
             ]
         );
         Route::resources(
@@ -211,7 +213,6 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::delete('/user/{user}/permission/{permission}', [UserPermissionController::class, 'destroy'])
             ->name('user-permission.destroy');
 
-        Route::resource('employee', EmployeeController::class);
 
         // Display a listing of the admins with their roles
         Route::get('/user-roles', [UserRoleController::class, 'index'])

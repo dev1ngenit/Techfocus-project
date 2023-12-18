@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('logo')->nullable();
             $table->string('image')->nullable();
+            $table->string('banner_image')->nullable();
             $table->text('description')->nullable();
             $table->text('website_url')->nullable();
             $table->foreignId('row_one_id')->nullable()->constrained('rows')->cascadeOnUpdate();
@@ -31,14 +32,16 @@ return new class extends Migration
             $table->foreignId('solution_four_id')->nullable()->constrained('solution_details')->cascadeOnUpdate();
             $table->foreignId('client_story_id')->nullable()->constrained('news_trends')->cascadeOnUpdate();
             $table->text('header')->nullable();
-            $table->string('btn_one_name')->nullable();
-            $table->string('btn_one_link')->nullable();
             $table->string('row_four_title')->nullable();
             $table->text('row_four_header')->nullable();
             $table->string('row_four_col_one_title')->nullable();
             $table->text('row_four_col_one_header')->nullable();
+            $table->string('row_four_col_one_button_name')->nullable();
+            $table->text('row_four_col_one_button_link')->nullable();
             $table->string('row_four_col_two_title')->nullable();
             $table->text('row_four_col_two_header')->nullable();
+            $table->string('row_four_col_two_button_name')->nullable();
+            $table->text('row_four_col_two_button_link')->nullable();
             $table->string('footer_title')->nullable();
             $table->text('footer_header')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
