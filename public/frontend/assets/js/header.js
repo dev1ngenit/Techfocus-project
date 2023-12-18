@@ -33,7 +33,7 @@ var swiper = new Swiper(".bannerSwiper", {
   centeredSlides: true,
   roundLengths: true,
   mousewheel: true,
-  grabCursor: true,
+  grabCursor: false,
   autoplay: {
     delay: 5000,
   },

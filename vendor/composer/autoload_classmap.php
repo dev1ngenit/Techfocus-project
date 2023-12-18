@@ -158,7 +158,6 @@ return array(
     'App\\Models\\Admin\\EmployeeDepartment' => $baseDir . '/app/Models/Admin/EmployeeDepartment.php',
     'App\\Models\\Admin\\Event' => $baseDir . '/app/Models/Admin/Event.php',
     'App\\Models\\Admin\\Faq' => $baseDir . '/app/Models/Admin/Faq.php',
-    'App\\Models\\Admin\\HomePage' => $baseDir . '/app/Models/Admin/HomePage.php',
     'App\\Models\\Admin\\HrPolicy' => $baseDir . '/app/Models/Admin/HrPolicy.php',
     'App\\Models\\Admin\\Industry' => $baseDir . '/app/Models/Admin/Industry.php',
     'App\\Models\\Admin\\IndustryProduct' => $baseDir . '/app/Models/Admin/IndustryProduct.php',

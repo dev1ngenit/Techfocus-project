@@ -11,4 +11,7 @@ class HomeController extends Controller
     public function homePage() {
         return view('frontend.pages.home.index');
     }
+    public function solutionDetails() {
+        return view('frontend.pages.solution.solution_details');
+    }
 }
