@@ -34,39 +34,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                        Export Report
-                                    </button>
-                                    <a href="{{ route('admin.admin.solution-details.create') }}" type="button"
+                                    
+                                    <a href="{{ route('admin.solution-details.create') }}" type="button"
                                         class="btn btn-sm btn-light-success rounded-0">
                                         Add New
                                     </a>
-                                    <div id="kt_datatable_example_1_export_menu"
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                        data-kt-menu="true">
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                                Copy to clipboard
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                                Export as Excel
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                                Export as CSV
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                                Export as PDF
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
