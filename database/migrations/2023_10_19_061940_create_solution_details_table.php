@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('solution_details', function (Blueprint $table) {
             $table->id();
             $table->json('industry_id')->nullable()->comment('multi_id');
+            $table->json('brand_id')->nullable()->comment('multi_id');
             $table->string('name')->nullable();
             $table->string('slug')->unique()->nullable();
             $table->text('header')->nullable();
             $table->string('banner_image')->nullable();
+            $table->string('thumbnail_image')->nullable();
             $table->foreignId('row_one_id')->nullable()->constrained('rows')->cascadeOnDelete();
             $table->string('row_two_title')->nullable();
             $table->text('row_two_header')->nullable();
