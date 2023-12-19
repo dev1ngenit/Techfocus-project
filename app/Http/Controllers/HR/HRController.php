@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class HRController extends Controller
 {
     public function dashboard()  {
-        return view('admin.pages.hrAdmin.dashboard');
+        return view('admin.pages.hrAdmin.hr_dashboard');
     }
 }

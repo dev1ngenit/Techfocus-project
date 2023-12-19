@@ -65,6 +65,7 @@
                                     <th class="" width="40%">Name</th>
                                     <th class="" width="10%">Image</th>
                                     <th class="text-center" width="10%">Action</th>
+                                </tr>
                                     <!--end::Table row-->
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">

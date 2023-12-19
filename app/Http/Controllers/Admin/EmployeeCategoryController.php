@@ -60,9 +60,9 @@ class EmployeeCategoryController extends Controller
             'monthly_earned_leave'  => $request->monthly_earned_leave,
             'monthly_casual_leave'  => $request->monthly_casual_leave,
             'monthly_medical_leave' => $request->monthly_medical_leave,
-            'yearly_earned_leave'   => $request->monthly_earned_leave * 12,
-            'yearly_casual_leave'   => $request->monthly_casual_leave * 12,
-            'yearly_medical_leave'  => $request->monthly_medical_leave * 12,
+            'yearly_earned_leave'   => $request->yearly_earned_leave,
+            'yearly_casual_leave'   => $request->yearly_casual_leave,
+            'yearly_medical_leave'  => $request->yearly_medical_leave,
         ];
 
         $this->employeeCategoryRepository->storeEmployeeCategory($data);
@@ -111,9 +111,9 @@ class EmployeeCategoryController extends Controller
             'monthly_earned_leave'  => $request->monthly_earned_leave,
             'monthly_casual_leave'  => $request->monthly_casual_leave,
             'monthly_medical_leave' => $request->monthly_medical_leave,
-            'yearly_earned_leave'   => $request->monthly_earned_leave * 12,
-            'yearly_casual_leave'   => $request->monthly_casual_leave * 12,
-            'yearly_medical_leave'  => $request->monthly_medical_leave * 12,
+            'yearly_earned_leave'   => $request->yearly_earned_leave,
+            'yearly_casual_leave'   => $request->yearly_casual_leave,
+            'yearly_medical_leave'  => $request->yearly_medical_leave,
         ];
 
         $this->employeeCategoryRepository->updateEmployeeCategory($data, $id);

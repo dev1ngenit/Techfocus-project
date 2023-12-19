@@ -28,9 +28,7 @@
                                             placeholder="Search" style="border: 1px solid #eee;" />
                                     </div>
                                     <!--end::Search-->
-                                    <!--begin::Export buttons-->
-                                    <div id="kt_datatable_example_1_export" class="d-none"></div>
-                                    <!--end::Export buttons-->
+                                    
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
                                     <div class="card-title">
@@ -38,52 +36,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
-                                    <!--begin::Export dropdown-->
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                        Export Report
-                                    </button>
                                     <button type="button" class="btn btn-sm btn-light-success rounded-0"
                                         data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
                                         data-bs-target="#employeeDepertmentAddModal">
                                         Add New
                                     </button>
-                                    <!--begin::Menu-->
-                                    <div id="kt_datatable_example_1_export_menu"
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                                Copy to clipboard
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                                Export as Excel
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                                Export as CSV
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                                Export as PDF
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-                                    <!--end::Export dropdown-->
                                 </div>
                             </div>
                         </div>
@@ -186,7 +143,7 @@
                                                 @endforeach
                                             </select>
                                             <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please provide a valid zip. </div>
+                                            <div class="invalid-feedback"> Please provide a valid Country. </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="validationCustom04" class="form-label required">Company
@@ -201,10 +158,10 @@
                                                 @endforeach
                                             </select>
                                             <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please provide a valid zip. </div>
+                                            <div class="invalid-feedback"> Please provide a valid Company. </div>
                                         </div>
                                         <div class="col-md-6 mb-1">
-                                            <label for="validationCustom01" class="form-label required ">Name
+                                            <label for="validationCustom01" class="form-label required ">Department Name
                                             </label>
                                             <input type="text" class="form-control form-control-solid form-control-sm"
                                                 name="name" id="validationCustom01" placeholder="Enter Name" required>

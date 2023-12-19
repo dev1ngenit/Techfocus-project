@@ -12,7 +12,7 @@
                     </h1>
                 </div>
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
-                    
+
                     <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                         data-bs-target="#kt_modal_create_app">Create</a>
                 </div>
@@ -21,7 +21,31 @@
         <div class="post d-flex flex-column-fluid" id="kt_post">
             <div id="kt_content_container" class="container-xxl">
                 <div class="row gy-5 g-xl-8">
-
+                    <div class="col-xl-3">
+                        <!--begin::Statistics Widget 1-->
+                        <div class="card bgi-no-repeat mb-xl-8"
+                            style="background-position: right top; background-size: 30% auto; background-image: url({{ asset('backend/assets/media/svg/shapes/abstract-4.svg') }}">
+                            <!--begin::Body-->
+                            <div class="card-body px-3">
+                                <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-6">
+                                    <span class="text-start w-xl-225px">Today's Entry :</span> <span
+                                        class="text-end ms-3">10</span>
+                                </a>
+                                <div class="my-2">
+                                    <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-7">
+                                        <span class="text-start w-xl-225px">Today's Check-Out :</span> <span
+                                            class="text-end ms-3">10</span>
+                                    </a>
+                                </div>
+                                <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-7">
+                                    <span class="text-start w-xl-225px">Late Count (This Month) :</span> <span
+                                        class="text-end ms-3">10</span>
+                                </a>
+                            </div>
+                            <!--end::Body-->
+                        </div>
+                        <!--end::Statistics Widget 1-->
+                    </div>
                     <div class="col-xl-4">
                         <div class="card card-xl-stretch-50 mb-5 mb-xl-8">
                             <div class="card-body d-flex flex-column p-0">
@@ -221,7 +245,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="row g-5 g-xl-8">
                     <div class="col-xl-4">
                         <div class="card card-xxl-stretch mb-xl-8">
@@ -1121,6 +1145,5 @@
 @endsection
 @once
     @push('scripts')
-        
     @endpush
 @endonce

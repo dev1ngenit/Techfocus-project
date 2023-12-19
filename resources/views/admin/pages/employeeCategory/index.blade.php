@@ -38,52 +38,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
-                                    <!--begin::Export dropdown-->
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                        Export Report
-                                    </button>
                                     <button type="button" class="btn btn-sm btn-light-success rounded-0"
                                         data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
                                         data-bs-target="#employeeCategoryAddModal">
                                         Add New
                                     </button>
-                                    <!--begin::Menu-->
-                                    <div id="kt_datatable_example_1_export_menu"
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                                Copy to clipboard
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                                Export as Excel
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                                Export as CSV
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                                Export as PDF
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-                                    <!--end::Export dropdown-->
                                 </div>
                             </div>
                         </div>
@@ -91,22 +50,16 @@
                     <div class="card-body">
                         <table
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
-                            id="kt_datatable_example_1">
+                            id="kt_datatable_example">
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th width="5%">Sl</th>
-                                    <th width="15%">Country Name</th>
-                                    <th width="15%">Company Name</th>
-                                    <th width="25%">Name</th>
-                                    <th width="5%">Evaluation Period</th>
-                                    <th width="5%">Monthly Earned Leave</th>
-                                    <th width="5%">Monthly Casual Leave</th>
-                                    <th width="5%">Monthly Medical Leave</th>
-                                    <th width="5%">Yearly Earned Leave</th>
-                                    <th width="5%">Yearly Casual Leave</th>
-                                    <th width="5%">Yearly Medical Leave</th>
-                                    <th class="text-center" width="5%">Action</th>
+                                    <th width="17%">Country Name</th>
+                                    <th width="17%">Company Name</th>
+                                    <th width="31%">Name</th>
+                                    <th width="20%">Evaluation Period</th>
+                                    <th class="text-center" width="10%">Action</th>
                                     <!--end::Table row-->
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
@@ -114,37 +67,33 @@
                                     @foreach ($employeeCategories as $employeeCategory)
                                         <tr class="odd">
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $employeeCategory->countryName() ?? 'no data' }}</td>
-                                            <td>{{ $employeeCategory->companyName() ?? 'no data' }}</td>
+                                            <td>{{ $employeeCategory->countryName() ?? 'Not Identified' }}</td>
+                                            <td>{{ $employeeCategory->companyName() ?? 'Not Identified' }}</td>
                                             <td>{{ $employeeCategory->name }}</td>
-                                            <td>{{ $employeeCategory->evaluation_period }}</td>
-                                            <td>{{ $employeeCategory->monthly_earned_leave }}</td>
-                                            <td>{{ $employeeCategory->monthly_casual_leave }}</td>
-                                            <td>{{ $employeeCategory->monthly_medical_leave }}</td>
-                                            <td>{{ $employeeCategory->yearly_earned_leave }}</td>
-                                            <td>{{ $employeeCategory->yearly_casual_leave }}</td>
-                                            <td>{{ $employeeCategory->yearly_medical_leave }}</td>
-                                            <td class="d-flex justify-content-between align-items-center">
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#employeeCategoryViewModal_{{ $employeeCategory->id }}">
-                                                    <i class="fa-solid fa-expand"></i>
-                                                    <!--View-->
-                                                </a>
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#employeeCategoryEditModal_{{ $employeeCategory->id }}">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                    <!--Edit-->
-                                                </a>
-                                                <a href="{{ route('admin.employee-category.destroy', $employeeCategory->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                    data-kt-docs-table-filter="delete_row">
-                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                    <!--Delete-->
-                                                </a>
+                                            <td>{{ $employeeCategory->evaluation_period }} days</td>
+                                            <td>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a href="#"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#employeeCategoryViewModal_{{ $employeeCategory->id }}">
+                                                        <i class="fa-solid fa-expand"></i>
+                                                        <!--View-->
+                                                    </a>
+                                                    <a href="#"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#employeeCategoryEditModal_{{ $employeeCategory->id }}">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                        <!--Edit-->
+                                                    </a>
+                                                    <a href="{{ route('admin.employee-category.destroy', $employeeCategory->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                        data-kt-docs-table-filter="delete_row">
+                                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                        <!--Delete-->
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -187,12 +136,12 @@
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12">
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="validationCustom04" class="form-label required">Country
+                                        <div class="col-lg-6 mb-2">
+                                            <label for="validationCustom04" class="form-label">Country
                                                 Name</label>
                                             <select class="form-select form-select-solid" name="country_id"
                                                 data-dropdown-parent="#employeeCategoryAddModal" data-control="select2"
-                                                data-placeholder="Select an option" data-allow-clear="true" required>
+                                                data-placeholder="Select an option" data-allow-clear="true">
                                                 <option></option>
                                                 @foreach (getAllCountry() as $country)
                                                     <option value="{{ $country->id }}">
@@ -200,10 +149,10 @@
                                                 @endforeach
                                             </select>
                                             <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please provide a valid zip. </div>
+                                            <div class="invalid-feedback"> Please provide a valid Country. </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom04" class="form-label required">Company
+                                        <div class="col-lg-6 mb-2">
+                                            <label for="validationCustom04" class="form-label">Company
                                                 Name</label>
                                             <select class="form-select form-select-solid" name="company_id"
                                                 data-dropdown-parent="#employeeCategoryAddModal" data-control="select2"
@@ -215,18 +164,20 @@
                                                 @endforeach
                                             </select>
                                             <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please provide a valid zip. </div>
+                                            <div class="invalid-feedback"> Please provide a valid Company Name. </div>
                                         </div>
-                                        <div class="col-md-4 mb-1">
-                                            <label for="validationCustom01" class="form-label required ">Name
+                                        <div class="col-lg-7 mb-2">
+                                            <label for="validationCustom01" class="form-label required ">Category Name
                                             </label>
                                             <input type="text" class="form-control form-control-solid form-control-sm"
-                                                name="name" id="validationCustom01" placeholder="Enter Name" required>
+                                                name="name" id="validationCustom01"
+                                                placeholder="Enter Name (Eg:Intern,Probation)" required>
                                             <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Enter Name </div>
+                                            <div class="invalid-feedback"> Please Enter Category Name</div>
                                         </div>
-                                        <div class="col-md-4 mb-1">
+                                        <div class="col-lg-5 mb-2">
                                             <label for="validationCustom01" class="form-label required ">Evaluation Period
+                                                (Days)
                                             </label>
                                             <input type="number" class="form-control form-control-solid form-control-sm"
                                                 name="evaluation_period" step="0.01" id="validationCustom01"
@@ -238,7 +189,7 @@
                                             <p class="badge badge-info custom-badge w-60px">Monthly</span>
                                             <div class="card-body p-1 px-2">
                                                 <div class="row modal_body_badge">
-                                                    <div class="col-md-4 mb-1">
+                                                    <div class="col-md-4 mb-2">
                                                         <label for="validationCustom01"
                                                             class="form-label required ">Earned
                                                             Leave
@@ -252,7 +203,7 @@
                                                         <div class="invalid-feedback"> Please Enter Monthly Earned Leave
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 mb-1">
+                                                    <div class="col-md-4 mb-2">
                                                         <label for="validationCustom01"
                                                             class="form-label required ">Casual
                                                             Leave
@@ -266,7 +217,7 @@
                                                         <div class="invalid-feedback"> Please Enter Monthly Casual Leave
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 mb-1">
+                                                    <div class="col-md-4 mb-2">
                                                         <label for="validationCustom01"
                                                             class="form-label required ">Medical
                                                             Leave
@@ -287,7 +238,7 @@
                                             <p class="badge badge-info custom-badge w-60px">Yearly</span>
                                             <div class="card-body p-1 px-2">
                                                 <div class="row modal_body_badge">
-                                                    <div class="col-md-4 mb-1">
+                                                    <div class="col-md-4 mb-2">
                                                         <label for="validationCustom01"
                                                             class="form-label required ">Earned
                                                             Leave
@@ -301,7 +252,7 @@
                                                         <div class="invalid-feedback"> Please Enter Yearly Earned Leave
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 mb-1">
+                                                    <div class="col-md-4 mb-2">
                                                         <label for="validationCustom01"
                                                             class="form-label required ">Casual
                                                             Leave
@@ -315,7 +266,7 @@
                                                         <div class="invalid-feedback"> Please Enter Yearly Casual Leave
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 mb-1">
+                                                    <div class="col-md-4 mb-2">
                                                         <label for="validationCustom01" class="form-label required ">
                                                             Medical
                                                             Leave
@@ -369,8 +320,9 @@
                         <!-- End Close button in the header -->
                     </div>
                     <form action="{{ route('admin.employee-category.update', $employeeCategory->id) }}"
-                        class="needs-validation" method="post" novalidate>
+                        class="needs-validation" method="POST" novalidate>
                         @csrf
+                        @method('PUT')
                         <div class="modal-body">
                             <div class="container px-0">
                                 <div class="row modal_body_badge">
@@ -408,7 +360,7 @@
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please provide a valid zip. </div>
                                             </div>
-                                            <div class="col-md-4 mb-1">
+                                            <div class="col-md-4 mb-2">
                                                 <label for="validationCustom01" class="form-label required ">Name
                                                 </label>
                                                 <input type="text"
@@ -418,7 +370,7 @@
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Name </div>
                                             </div>
-                                            <div class="col-md-4 mb-1">
+                                            <div class="col-md-4 mb-2">
                                                 <label for="validationCustom01" class="form-label required ">Evaluation
                                                     Period
                                                 </label>
@@ -435,7 +387,7 @@
                                                 <p class="badge badge-info custom-badge w-60px">Monthly</span>
                                                 <div class="card-body p-1 px-2">
                                                     <div class="row modal_body_badge">
-                                                        <div class="col-md-4 mb-1">
+                                                        <div class="col-md-4 mb-2">
                                                             <label for="validationCustom01"
                                                                 class="form-label required ">Earned
                                                                 Leave
@@ -451,7 +403,7 @@
                                                                 Leave
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4 mb-1">
+                                                        <div class="col-md-4 mb-2">
                                                             <label for="validationCustom01"
                                                                 class="form-label required ">Casual
                                                                 Leave
@@ -467,7 +419,7 @@
                                                                 Leave
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4 mb-1">
+                                                        <div class="col-md-4 mb-2">
                                                             <label for="validationCustom01"
                                                                 class="form-label required ">Medical
                                                                 Leave
@@ -490,7 +442,7 @@
                                                 <p class="badge badge-info custom-badge w-60px">Yearly</span>
                                                 <div class="card-body p-1 px-2">
                                                     <div class="row modal_body_badge">
-                                                        <div class="col-md-4 mb-1">
+                                                        <div class="col-md-4 mb-2">
                                                             <label for="validationCustom01"
                                                                 class="form-label required ">Earned
                                                                 Leave
@@ -505,7 +457,7 @@
                                                             <div class="invalid-feedback"> Please Enter Yearly Earned Leave
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4 mb-1">
+                                                        <div class="col-md-4 mb-2">
                                                             <label for="validationCustom01"
                                                                 class="form-label required ">Casual
                                                                 Leave
@@ -520,7 +472,7 @@
                                                             <div class="invalid-feedback"> Please Enter Yearly Casual Leave
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4 mb-1">
+                                                        <div class="col-md-4 mb-2">
                                                             <label for="validationCustom01" class="form-label required ">
                                                                 Medical
                                                                 Leave
@@ -552,9 +504,7 @@
                 </div>
             </div>
         </div>
-    @endforeach
-    {{-- View Modal --}}
-    @foreach ($employeeCategories as $employeeCategory)
+        {{-- View Modal --}}
         <div class="modal fade" id="employeeCategoryViewModal_{{ $employeeCategory->id }}" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
@@ -580,41 +530,24 @@
                             <div class="row modal_body_badge">
                                 <div class="col-lg-12">
                                     <div class="card border rounded-0">
-                                        <p class="badge badge-info custom-badge mt-2">Info</span>
+                                        <p class="badge badge-info custom-badge mt-2 mb-0">Info</span>
                                         <div class="card-body p-1 px-2">
                                             <div class="row">
-                                                <div class="col-lg-3 col-sm-3">
-                                                    <p>Country</p>
-                                                </div>
-                                                <div class="col-lg-1 col-sm-3">
-                                                    <p>:</p>
-                                                </div>
-                                                <div class="col-lg-8 col-sm-8">
-                                                    <p> {{ $employeeCategory->countryName() ?? 'no data' }}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-3 col-sm-3">
-                                                    <p>Company</p>
-                                                </div>
-                                                <div class="col-lg-1 col-sm-3">
-                                                    <p>:</p>
-                                                </div>
-                                                <div class="col-lg-8 col-sm-8">
-                                                    <p> {{ $employeeCategory->companyName() ?? 'no data' }}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
                                                 <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-5 col-sm-5">
-                                                            <p class="fw-bold">Eval Period</p>
-                                                        </div>
-                                                        <div class="col-lg-7 col-sm-6">
-                                                            <p>{{ $employeeCategory->evaluation_period }}</p>
-                                                        </div>
-                                                    </div>
+                                                    <h6 class="mb-2">Company :
+                                                        {{ $employeeCategory->companyName() ?? 'no data' }} </h6>
                                                 </div>
+                                                <div class="col-lg-6">
+                                                    <h6 class="mb-2">Country :
+                                                        {{ $employeeCategory->countryName() ?? 'no data' }} </h6>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <h6 class="mb-2">Category Name : {{ $employeeCategory->name }} </h6>
+                                            </div>
+                                            <div class="row">
+                                                <h6 class="mb-2">Evaluation Period :
+                                                    {{ $employeeCategory->evaluation_period }} </h6>
                                             </div>
                                         </div>
                                     </div>

@@ -587,7 +587,7 @@
 
 
                 @php
-                    $hr_admin = ['admin.hr.dashboard',];
+                    $hr_admin = ['admin.hr.dashboard', 'admin.employee-category.index', 'admin.employee-department.index', 'admin.employee.index'];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $hr_admin) ? 'here show' : '' }}">
@@ -610,6 +610,77 @@
                                 </span>
                                 <span class="menu-title">Dashboard</span>
                             </a>
+                        </div>
+                        
+                        <div data-kt-menu-trigger="click"
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), ['admin.employee-category.index', 'admin.employee-department.index','admin.employee.index']) ? 'here show' : '' }}">
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Employee</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion">
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.employee-category.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.employee-category.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Employee Category</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.employee-department.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.employee-department.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Employee Department</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.employee.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.employee.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Employee List</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-kt-menu-trigger="click"
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $supplychain) ? 'here show' : '' }}">
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Leave</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion">
+
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.brand.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.brand.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Applications</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.category.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.category.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Categories</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div data-kt-menu-trigger="click"
                             class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $supplychain) ? 'here show' : '' }}">
