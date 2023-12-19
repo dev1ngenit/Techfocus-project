@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="col-lg-7 col-sm-12 d-flex justify-content-end">
-                        <h4 class="text-white p-0 m-0 fw-bold">Industry Create Add</h4>
+                        <h4 class="text-white p-0 m-0 fw-bold">Industry Create Edit</h4>
                     </div>
                 </div>
                 <div class="card-body p-0 pt-1">
@@ -54,9 +54,10 @@
                             </ul>
                         </div>
                         <div class="col-lg-10 px-4 p-2">
-                            <form id="productForm" method="POST" action="{{ route('admin.industry.store') }}"
-                                enctype="multipart/form-data">
+                            <form id="productForm" method="POST"
+                                action="{{ route('admin.industry.update', $industry->id) }}" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade active show" id="general-info" role="tabpanel">
                                         <div class="w-100">
@@ -79,7 +80,8 @@
                                                             data-placeholder="Select an option" data-allow-clear="true">
                                                             <option></option>
                                                             @foreach ($industryParents as $industryParent)
-                                                                <option value="{{ $industryParent->id }}">
+                                                                <option @selected($industry->id == $industryParent->parent_id)
+                                                                    value="{{ $industryParent->id }}">
                                                                     {{ $industryParent->name }}</option>
                                                             @endforeach
                                                         </select>
@@ -87,7 +89,7 @@
                                                     <div class="col-lg-9">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Name</label>
-                                                            <input name="name"
+                                                            <input name="name" value="{{ $industry->name }}"
                                                                 class="form-control form-control-sm form-control-solid"
                                                                 placeholder="Enter Name" type="text" />
                                                             <div class="invalid-feedback"> Please Enter Name.</div>
@@ -124,7 +126,7 @@
                                                     <div class="col-lg-4">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Header</label>
-                                                            <input name="header"
+                                                            <input name="header" value="{{ $industry->header }}"
                                                                 class="form-control form-control-sm form-control-solid"
                                                                 placeholder="Enter Banner Image" type="text" />
                                                             <div class="invalid-feedback"> Please Enter Header.</div>
@@ -134,7 +136,7 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Description</label>
                                                             <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Description"></textarea>
+                                                                placeholder="Enter Description">{{ $industry->description }}</textarea>
                                                             <div class="invalid-feedback"> Please Enter Description.</div>
                                                         </div>
                                                     </div>
@@ -142,7 +144,7 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Website URL</label>
                                                             <textarea rows="1" name="website_url" class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Enter Website URL"></textarea>
+                                                                placeholder="Enter Website URL">{{ $industry->website_url }}</textarea>
                                                             <div class="invalid-feedback"> Please Enter Website URL.</div>
                                                         </div>
                                                     </div>
@@ -177,8 +179,8 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_one_badge" id="validationCustom01"
-                                                            placeholder="Enter Badge">
+                                                            name="row_one_badge" value="{{ $industry->rowOne->badge }}"
+                                                            id="validationCustom01" placeholder="Enter Badge">
                                                         <div class="invalid-feedback"> Please Enter Badge
                                                         </div>
                                                     </div>
@@ -187,8 +189,8 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_one_title" id="validationCustom01"
-                                                            placeholder="Enter Title">
+                                                            name="row_one_title" value="{{ $industry->rowOne->title }}"
+                                                            id="validationCustom01" placeholder="Enter Title">
                                                         <div class="invalid-feedback"> Please Enter Title
                                                         </div>
                                                     </div>
@@ -210,7 +212,9 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_one_btn_name" id="validationCustom01"
+                                                            name="row_one_btn_name"
+                                                            value="{{ $industry->rowOne->btn_name }}"
+                                                            id="validationCustom01"
                                                             placeholder="Enter Row One Button Name">
                                                     </div>
                                                     <div class="col-md-6 mb-2">
@@ -218,8 +222,8 @@
                                                         </label>
                                                         <input type="url"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_one_link" id="validationCustom01"
-                                                            placeholder="Enter Row One Link">
+                                                            name="row_one_link" value="{{ $industry->rowOne->link }}"
+                                                            id="validationCustom01" placeholder="Enter Row One Link">
                                                     </div>
                                                     <div class="col-md-6 mb-2">
                                                         <label for="validationCustom01" class="form-label">Row One
@@ -227,7 +231,9 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_one_description" id="validationCustom01"
+                                                            name="row_one_description"
+                                                            value="{{ $industry->rowOne->description }}"
+                                                            id="validationCustom01"
                                                             placeholder="Enter Row One Description">
                                                     </div>
                                                 </div>
@@ -272,7 +278,8 @@
                                                             data-placeholder="Select an option" data-allow-clear="true">
                                                             <option></option>
                                                             @foreach ($solutionDetails as $solutionDetail)
-                                                                <option value="{{ $solutionDetail->id }}">
+                                                                <option @selected($solutionDetail->id == $solutionDetail->solution_one_id)
+                                                                    value="{{ $solutionDetail->id }}">
                                                                     {{ $solutionDetail->name }}</option>
                                                             @endforeach
                                                         </select>
@@ -284,10 +291,9 @@
                                                             name="solution_two_id" data-control="select2"
                                                             data-placeholder="Select an option" data-allow-clear="true">
                                                             <option></option>
-
-
                                                             @foreach ($solutionDetails as $solutionDetail)
-                                                                <option value="{{ $solutionDetail->id }}">
+                                                                <option @selected($solutionDetail->id == $solutionDetail->solution_two_id)
+                                                                    value="{{ $solutionDetail->id }}">
                                                                     {{ $solutionDetail->name }}</option>
                                                             @endforeach
                                                         </select>
@@ -299,10 +305,9 @@
                                                             name="solution_three_id" data-control="select2"
                                                             data-placeholder="Select an option" data-allow-clear="true">
                                                             <option></option>
-
-
                                                             @foreach ($solutionDetails as $solutionDetail)
-                                                                <option value="{{ $solutionDetail->id }}">
+                                                                <option @selected($solutionDetail->id == $solutionDetail->solution_three_id)
+                                                                    value="{{ $solutionDetail->id }}">
                                                                     {{ $solutionDetail->name }}</option>
                                                             @endforeach
                                                         </select>
@@ -314,10 +319,9 @@
                                                             name="solution_four_id" data-control="select2"
                                                             data-placeholder="Select an option" data-allow-clear="true">
                                                             <option></option>
-
-
                                                             @foreach ($solutionDetails as $solutionDetail)
-                                                                <option value="{{ $solutionDetail->id }}">
+                                                                <option @selected($solutionDetail->id == $solutionDetail->solution_four_id)
+                                                                    value="{{ $solutionDetail->id }}">
                                                                     {{ $solutionDetail->name }}</option>
                                                             @endforeach
                                                         </select>
@@ -330,7 +334,8 @@
                                                             data-placeholder="Select an option" data-allow-clear="true">
                                                             <option></option>
                                                             @foreach ($newsTrends as $newsTrend)
-                                                                <option value="{{ $newsTrend->id }}">
+                                                                <option @selected($newsTrend->id == $newsTrend->client_story_id)
+                                                                    value="{{ $newsTrend->id }}">
                                                                     {{ $newsTrend->name }}</option>
                                                             @endforeach
                                                         </select>
@@ -374,8 +379,9 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_three_badge" id="validationCustom01"
-                                                            placeholder="Enter Row Three Badge">
+                                                            name="row_three_badge"
+                                                            value="{{ $industry->rowThree->badge }}"
+                                                            id="validationCustom01" placeholder="Enter Row Three Badge">
                                                         <div class="invalid-feedback"> Please Enter Row
                                                             Three Badge
                                                         </div>
@@ -386,8 +392,9 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_three_title" id="validationCustom01"
-                                                            placeholder="Enter Row Three Title">
+                                                            name="row_three_title"
+                                                            value="{{ $industry->rowThree->title }}"
+                                                            id="validationCustom01" placeholder="Enter Row Three Title">
                                                         <div class="invalid-feedback"> Please Enter Row
                                                             Three Title
                                                         </div>
@@ -411,7 +418,9 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_three_btn_name" id="validationCustom01"
+                                                            name="row_three_btn_name"
+                                                            value="{{ $industry->rowThree->btn_name }}"
+                                                            id="validationCustom01"
                                                             placeholder="Enter Row Three Btn Name">
                                                         <div class="invalid-feedback"> Please Enter Row
                                                             Three Btn Name
@@ -423,8 +432,8 @@
                                                         </label>
                                                         <input type="url"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_three_link" id="validationCustom01"
-                                                            placeholder="Enter Row Three Link">
+                                                            name="row_three_link" value="{{ $industry->rowThree->link }}"
+                                                            id="validationCustom01" placeholder="Enter Row Three Link">
                                                         <div class="invalid-feedback"> Please Enter Row
                                                             Three Link
                                                         </div>
@@ -434,7 +443,7 @@
                                                             Description
                                                         </label>
                                                         <textarea rows="1" name="row_three_description" class="form-control form-control-sm form-control-solid"
-                                                            placeholder="Enter Row Three Description"></textarea>
+                                                            placeholder="Enter Row Three Description">{{ $industry->rowThree->description }}</textarea>
                                                         <div class="invalid-feedback"> Please Enter Row
                                                             Three Description
                                                         </div>
@@ -480,15 +489,15 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_four_title" id="validationCustom01"
-                                                            placeholder="Enter Row Four Title">
+                                                            name="row_four_title" value="{{ $industry->row_four_title }}"
+                                                            id="validationCustom01" placeholder="Enter Row Four Title">
                                                     </div>
                                                     <div class="col-md-6 mb-2">
                                                         <label for="validationCustom01" class="form-label">Row
                                                             Four Header
                                                         </label>
                                                         <textarea rows="1" name="row_four_header" class="form-control form-control-sm form-control-solid"
-                                                            placeholder="Enter Row Four Header"></textarea>
+                                                            placeholder="Enter Row Four Header">{{ $industry->row_four_header }}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row mt-4 pt-4">
@@ -506,6 +515,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="row_four_col_one_title"
+                                                                            value="{{ $industry->row_four_col_one_title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Row Four Col One Title">
                                                                         <div class="invalid-feedback"> Please Enter Row
@@ -519,7 +529,7 @@
                                                                             One Header
                                                                         </label>
                                                                         <textarea rows="1" name="row_four_col_one_header" class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Enter Row Four Col One Header"></textarea>
+                                                                            placeholder="Enter Row Four Col One Header">{{ $industry->row_four_col_one_header }}</textarea>
                                                                         <div class="invalid-feedback"> Please Enter Row
                                                                             Four
                                                                             Col One Header
@@ -533,6 +543,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="row_four_col_one_button_name"
+                                                                            value="{{ $industry->row_four_col_one_button_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Row Four Col One Button Name">
                                                                         <div class="invalid-feedback"> Please Enter Row
@@ -546,7 +557,7 @@
                                                                             One Button Link
                                                                         </label>
                                                                         <textarea rows="1" name="row_four_col_one_button_link" class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Enter Row Four Col One Button Link"></textarea>
+                                                                            placeholder="Enter Row Four Col One Button Link">{{ $industry->row_four_col_one_button_link }}</textarea>
                                                                         <div class="invalid-feedback"> Please Enter Row
                                                                             Four
                                                                             Col One Button Link
@@ -570,6 +581,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="row_four_col_two_title"
+                                                                            value="{{ $industry->row_four_col_two_title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Row Four Col One Title">
                                                                         <div class="invalid-feedback"> Please Enter Row
@@ -583,7 +595,7 @@
                                                                             One Header
                                                                         </label>
                                                                         <textarea rows="1" name="row_four_col_two_header" class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Enter Row Four Col One Header"></textarea>
+                                                                            placeholder="Enter Row Four Col One Header">{{ $industry->row_four_col_two_header }}</textarea>
                                                                         <div class="invalid-feedback"> Please Enter Row
                                                                             Four
                                                                             Col One Header
@@ -597,6 +609,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="row_four_col_two_button_name"
+                                                                            value="{{ $industry->row_four_col_two_button_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Row Four Col One Button Name">
                                                                         <div class="invalid-feedback"> Please Enter Row
@@ -610,7 +623,7 @@
                                                                             One Button Link
                                                                         </label>
                                                                         <textarea rows="1" name="row_four_col_two_button_link" class="form-control form-control-sm form-control-solid"
-                                                                            placeholder="Enter Row Four Col One Button Link"></textarea>
+                                                                            placeholder="Enter Row Four Col One Button Link">{{ $industry->row_four_col_two_button_link }}</textarea>
                                                                         <div class="invalid-feedback"> Please Enter Row
                                                                             Four
                                                                             Col One Button Link
@@ -659,8 +672,8 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_five_badge" id="validationCustom01"
-                                                            placeholder="Enter Row Five Badge">
+                                                            name="row_five_badge" value="{{ $industry->rowFive->badge }}"
+                                                            id="validationCustom01" placeholder="Enter Row Five Badge">
                                                         <div class="invalid-feedback"> Please Enter Row Five
                                                             Badge
                                                         </div>
@@ -670,8 +683,8 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_five_title" id="validationCustom01"
-                                                            placeholder="Enter Row Five Title">
+                                                            name="row_five_title" value="{{ $industry->rowFive->title }}"
+                                                            id="validationCustom01" placeholder="Enter Row Five Title">
                                                         <div class="invalid-feedback"> Please Enter Row Five
                                                             Title
                                                         </div>
@@ -692,7 +705,9 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_five_btn_name" id="validationCustom01"
+                                                            name="row_five_btn_name"
+                                                            value="{{ $industry->rowFive->btn_name }}"
+                                                            id="validationCustom01"
                                                             placeholder="Enter Row Five Button Name">
                                                     </div>
                                                     <div class="col-md-6 mb-2">
@@ -700,15 +715,15 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="row_five_link" id="validationCustom01"
-                                                            placeholder="Enter Row Five Link">
+                                                            name="row_five_link" value="{{ $industry->rowFive->link }}"
+                                                            id="validationCustom01" placeholder="Enter Row Five Link">
                                                     </div>
                                                     <div class="col-md-6 mb-2">
                                                         <label for="validationCustom01" class="form-label">Row Five
                                                             Description
                                                         </label>
                                                         <textarea rows="1" name="row_five_description" class="form-control form-control-sm form-control-solid"
-                                                            placeholder="Enter Row Five Description"></textarea>
+                                                            placeholder="Enter Row Five Description">{{ $industry->rowFive->description }}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row mt-4 justify-content-end">
@@ -749,8 +764,8 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="footer_title" id="validationCustom01"
-                                                            placeholder="Enter Footer Title">
+                                                            name="footer_title" value="{{ $industry->footer_title }}"
+                                                            id="validationCustom01" placeholder="Enter Footer Title">
                                                         <div class="invalid-feedback"> Please Enter Footer
                                                             Title
                                                         </div>
@@ -760,7 +775,7 @@
                                                             Header
                                                         </label>
                                                         <textarea rows="1" name="footer_header" class="form-control form-control-sm form-control-solid"
-                                                            placeholder="Enter Row Four Col Two Button Link"></textarea>
+                                                            placeholder="Enter Row Four Col Two Button Link">{{ $industry->footer_header }}</textarea>
                                                         <div class="invalid-feedback"> Please Enter Footer
                                                             Header
                                                         </div>

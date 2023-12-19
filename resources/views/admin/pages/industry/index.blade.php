@@ -45,7 +45,8 @@
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Export Report
                                     </button>
-                                    <a href="{{ route('admin.industry.create') }}" class="btn btn-sm btn-light-success rounded-0 p-3">
+                                    <a href="{{ route('admin.industry.create') }}"
+                                        class="btn btn-sm btn-light-success rounded-0 p-3">
                                         Add New
                                     </a>
                                     <!--begin::Menu-->
@@ -90,7 +91,7 @@
                     <div class="card-body">
                         <table
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
-                            id="kt_datatable_example_1">
+                            id="kt_datatable_example">
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
                                 <tr>
@@ -121,25 +122,14 @@
                                             <td>{{ $industry->name }}
                                             </td>
                                             <td class="d-flex justify-content-between align-items-center">
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#IndustryViewModal_{{ $industry->id }}">
-                                                    <i class="fa-solid fa-expand"></i>
-                                                    <!--View-->
-                                                </a>
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#IndustryEditModal_{{ $industry->id }}">
+                                                <a href="{{ route('admin.industry.edit', $industry->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-pen"></i>
-                                                    <!--Edit-->
                                                 </a>
                                                 <a href="{{ route('admin.industry.destroy', $industry->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                     data-kt-docs-table-filter="delete_row">
                                                     <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                    <!--Delete-->
                                                 </a>
                                             </td>
                                         </tr>
@@ -152,313 +142,6 @@
             </div>
         </div>
     </div>
-    {{-- Add Modal --}}
-    <div class="modal fade" id="IndustryAddModal" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">Add Industry</h5>
-                    <!-- Close button in the header -->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                    </div>
-                    <!-- End Close button in the header -->
-                </div>
-                <form action="{{ route('admin.industry.store') }}" class="needs-validation" method="post"
-                    enctype="multipart/form-data" novalidate>
-                    @csrf
-                    <div class="modal-body">
-                        <div class="container px-0">
-                            <div class="row">
-                                <div class="col-lg-12 col-sm-12">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="validationCustom04" class="form-label required">Parent
-                                                Industry Name</label>
-                                            <select class="form-select form-select-sm form-select-solid" name="parent_id"
-                                                data-dropdown-parent="#IndustryAddModal" data-control="select2"
-                                                data-placeholder="Select an Options" data-allow-clear="true">
-                                                <option></option>
-                                                @foreach ($industries as $industry)
-                                                    <option value="{{ $industry->id }}">{{ $industry->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-6 mb-1">
-                                            <label for="validationCustom01" class="form-label required ">Name
-                                            </label>
-                                            <input type="text" class="form-control form-control-solid form-control-sm"
-                                                name="name" placeholder="Enter Name" required>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please Enter Name </div>
-                                        </div>
-                                        <div class="col-md-6 mb-1">
-                                            <label for="validationCustom01" class="form-label ">Url
-                                            </label>
-                                            <input type="url" class="form-control form-control-solid form-control-sm"
-                                                placeholder="Enter A Url" name="website_url">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="validationCustom010" class="form-label">Description</label>
-                                            <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Description"></textarea>
-                                        </div>
-                                        <div class="col-md-6 mb-1">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-10">
-                                                    <label for="validationCustom01" class="form-label">Image
-                                                    </label>
-                                                    <input type="file"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="image">
-                                                </div>
-                                                <div class="col-md-2 p-0">
-                                                    <img src="https://t4.ftcdn.net/jpg/01/43/23/83/360_F_143238306_lh0ap42wgot36y44WybfQpvsJB5A1CHc.jpg"
-                                                        class="mt-10 border border-info shadow-sm" width="30px"
-                                                        height="30px" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-1">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-10">
-                                                    <label for="validationCustom01" class="form-label">Logo
-                                                    </label>
-                                                    <input type="file"
-                                                        class="form-control form-control-solid form-control-sm"
-                                                        name="logo">
-                                                    <div class="valid-feedback"> Looks good! </div>
-                                                    <div class="invalid-feedback"> Please Enter Image </div>
-                                                </div>
-                                                <div class="col-md-2 p-0">
-                                                    <img src="https://t4.ftcdn.net/jpg/01/43/23/83/360_F_143238306_lh0ap42wgot36y44WybfQpvsJB5A1CHc.jpg"
-                                                        class="mt-10 border border-info shadow-sm" width="30px"
-                                                        height="30px" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer p-2">
-                        <!-- Button to close the modal in the footer -->
-                        <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    {{-- Edit Modal --}}
-    @foreach ($industries as $industry)
-        <div class="modal fade" id="IndustryEditModal_{{ $industry->id }}" data-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-0 border-0 shadow-sm">
-                    <div class="modal-header p-2 rounded-0">
-                        <h5 class="modal-title">Edit Industry</h5>
-                        <!-- Close button in the header -->
-                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                            aria-label="Close">
-                            <i class="fa-solid fa-circle-xmark"></i>
-                        </div>
-                        <!-- End Close button in the header -->
-                    </div>
-                    <form action="{{ route('admin.industry.update',$industry->id) }}" class="needs-validation" method="POST" novalidate enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="modal-body">
-                            <div class="container px-0">
-                                <div class="row">
-                                    <div class="col-lg-12 col-sm-12">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label for="validationCustom04" class="form-label required">Parent
-                                                    Industry Name</label>
-                                                <select class="form-select form-select-sm form-select-solid" name="parent_id"
-                                                    data-dropdown-parent="#IndustryAddModal" data-control="select2"
-                                                    data-placeholder="Select an Options" data-allow-clear="true">
-                                                    <option></option>
-                                                    @foreach ($industries as $industry)
-                                                        <option @selected($industry->id == $industry->parent_id) value="{{ $industry->id }}">{{ $industry->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-    
-                                            <div class="col-md-6 mb-1">
-                                                <label for="validationCustom01" class="form-label required ">Name
-                                                </label>
-                                                <input type="text" class="form-control form-control-solid form-control-sm"
-                                                    name="name" value="{{ $industry->name }}" placeholder="Enter Name" required>
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter Name </div>
-                                            </div>
-                                            <div class="col-md-6 mb-1">
-                                                <label for="validationCustom01" class="form-label ">Url
-                                                </label>
-                                                <input type="url" class="form-control form-control-solid form-control-sm"
-                                                    placeholder="Enter A Url" name="website_url" value="{{ $industry->website_url }}">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="validationCustom010" class="form-label">Description</label>
-                                                <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"
-                                                    placeholder="Enter Description">{{ $industry->description }}</textarea>
-                                            </div>
-                                            <div class="col-md-6 mb-1">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-10">
-                                                        <label for="validationCustom01" class="form-label">Image
-                                                        </label>
-                                                        <input type="file"
-                                                            class="form-control form-control-solid form-control-sm"
-                                                            name="image">
-                                                    </div>
-                                                    <div class="col-md-2 p-0">
-                                                        <img src="https://t4.ftcdn.net/jpg/01/43/23/83/360_F_143238306_lh0ap42wgot36y44WybfQpvsJB5A1CHc.jpg"
-                                                            class="mt-10 border border-info shadow-sm" width="30px"
-                                                            height="30px" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 mb-1">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-10">
-                                                        <label for="validationCustom01" class="form-label">Logo
-                                                        </label>
-                                                        <input type="file"
-                                                            class="form-control form-control-solid form-control-sm"
-                                                            name="logo">
-                                                        <div class="valid-feedback"> Looks good! </div>
-                                                        <div class="invalid-feedback"> Please Enter Image </div>
-                                                    </div>
-                                                    <div class="col-md-2 p-0">
-                                                        <img src="https://t4.ftcdn.net/jpg/01/43/23/83/360_F_143238306_lh0ap42wgot36y44WybfQpvsJB5A1CHc.jpg"
-                                                            class="mt-10 border border-info shadow-sm" width="30px"
-                                                            height="30px" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-    
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer p-2">
-                            <!-- Button to close the modal in the footer -->
-                            <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    @endforeach
-    {{-- View Modal --}}
-    @foreach ($industries as $industry)
-        <div class="modal fade" id="IndustryViewModal_{{ $industry->id }}" data-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-0 border-0 shadow-sm">
-                    <div class="modal-header p-2 rounded-0">
-                        <h5 class="modal-title">View </h5>
-                        <!-- Close button in the header -->
-                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                            aria-label="Close">
-                            <i class="fa-solid fa-circle-xmark"></i>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container px-0">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="card border rounded-0">
-                                        <p class="badge badge-info custom-badge">Info</span>
-                                        <div class="card-body p-1 px-2">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-sm-5">
-                                                            <p class="fw-bold" title="Country Name">Parent Industry Name
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-lg-4 col-sm-6">
-                                                            <p>Bangladesh</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-sm-5">
-                                                            <p class="fw-bold">Name</p>
-                                                        </div>
-                                                        <div class="col-lg-4 col-sm-6">
-                                                            <p>{{ $industry->name }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-sm-5">
-                                                            <p class="fw-bold">Url</p>
-                                                        </div>
-                                                        <div class="col-lg-4 col-sm-6">
-                                                            <p>{{ $industry->website_url }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-7 col-sm-5">
-                                                            <p class="fw-bold">Image</p>
-                                                        </div>
-                                                        <div class="col-lg-5 col-sm-6">
-                                                            <p>
-                                                                <img class="img-fluid rounded-circle" width="35px"
-                                                                    src="{{ !empty($industry->image) ? asset('storage/' . $industry->image) : asset('storage/main/no-image-available.png') }}"
-                                                                    alt="{{ $industry->slug }} Logo">
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-7 col-sm-5">
-                                                            <p class="fw-bold">Logo</p>
-                                                        </div>
-                                                        <div class="col-lg-5 col-sm-6">
-                                                            <p>
-                                                                <img class="img-fluid rounded-circle" width="35px"
-                                                                    src="{{ !empty($industry->logo) ? asset('storage/' . $industry->logo) : asset('storage/main/no-image-available.png') }}"
-                                                                    alt="{{ $industry->slug }} Logo">
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-3 col-sm-5">
-                                                            <p class="fw-bold">Description</p>
-                                                        </div>
-                                                        <div class="col-lg-9 col-sm-6">
-                                                            <p>
-                                                                {{ $industry->description }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endforeach
 @endsection
 
 

@@ -33892,10 +33892,6 @@ a:hover {
     margin-right: .5rem
 }
 
-.nav-pills .nav-item:last-child {
-    margin-right: 0
-}
-
 .nav-stretch {
     align-items: stretch;
     padding-top: 0 !important;

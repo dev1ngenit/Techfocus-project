@@ -44,16 +44,7 @@ class IndustryRequest extends FormRequest
     public function messages()
     {
         return [
-            'parent_id.exists' => 'The selected :attribute is invalid.',
-            'name.string' => 'The :attribute must be a string.',
-            'image.image'        => 'The file must be an image.',
-            'image.mimes'        => 'The image must be a file of type:jpeg, png, jpg, gif.',
-            'image.max'          => 'The image may not be greater than 2048 kilobytes.',
-            'logo.image'         => 'The file must be an image.',
-            'logo.mimes'         => 'The logo must be a file of type:jpeg, png, jpg, gif.',
-            'logo.max'           => 'The logo may not be greater than 2048 kilobytes.',
-            'description.string' => 'The :attribute must be a string.',
-            'website_url.url' => 'The :attribute format is invalid.',
+            //
         ];
     }
 
@@ -65,12 +56,7 @@ class IndustryRequest extends FormRequest
     public function attributes()
     {
         return [
-            'parent_id' => 'Parent Industry',
-            'name' => 'Industry Name',
-            'image'       => 'Image',
-            'logo'        => 'Logo',
-            'description' => 'Description',
-            'website_url' => 'Website URL',
+            //
         ];
     }
 
