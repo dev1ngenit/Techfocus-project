@@ -33,4 +33,12 @@
     .container-xxl {
         max-width: 1150px !important;
     }
+    .empty-area {
+        width: 70%;
+      }
+      
+      .fill-area {
+        width: 30%;
+      }
+
 }

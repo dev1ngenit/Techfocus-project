@@ -1,39 +1,5 @@
 /* Font Family Start*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap");
-@font-face {
-  font-family: hurme-light;
-  src: url("/assets/fonts/hurme-geometric-sans/HurmeGeometricSans1-Light.otf")
-    format("opentype");
-}
-@font-face {
-  font-family: hurme-most-light;
-  src: url("/assets/fonts/hurme-geometric-sans/HurmeGeometricSans1-Hairline.otf")
-    format("opentype");
-}
-@font-face {
-  font-family: hurme-semi-bold;
-  src: url("/assets/fonts/hurme-geometric-sans/HurmeGeometricSans1SemiBoldOblique.otf")
-    format("opentype");
-}
-@font-face {
-  font-family: hurme-full-bold;
-  src: url("/assets/fonts/hurme-geometric-sans/HurmeGeometricSans1-Black.otf")
-    format("opentype");
-}
-@font-face {
-  font-family: hurme-big-bold;
-  src: url("/assets/fonts/hurme-geometric-sans/HurmeGeometricSans1-Bold.otf")
-    format("opentype");
-}
-@font-face {
-  font-family: hurme-italic-bold;
-  src: url("/assets/fonts/hurme-geometric-sans/HurmeGeometricSans1-BoldOblique.otf")
-    format("opentype");
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap');
 
 /* Font Family End*/
 /* #38b688==> sky blue
@@ -51,33 +17,13 @@
   --white: #ffff;
 }
 .sub-font {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Arimo', sans-serif;
 }
 
 .main-color {
   color: var(--main-color);
 }
-body{
-  width: 100%;
-  overflow-x: hidden;
-  font-family: hurme-light;
-}
-/* Scroll Bar Css */
-body::-webkit-scrollbar {
-  width: 10px;
-}
 
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: var(--main-color);
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
 
 /* Scroll Bar Css */
 .specification-areas-brand::-webkit-scrollbar {
@@ -148,9 +94,40 @@ body {
   background-color: #f6f6f6;
   color: rgba(0, 0, 0, 0.87);
   min-height: 100vh;
-  font-family: "Ubuntu", sans-serif;
   line-height: 1;
   text-rendering: optimizeSpeed;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  font: inherit;
+  font-size: 16px;
+  font-family: 'Arimo', sans-serif; /* You need to define --primary-font somewhere in your CSS or use an actual font name */
+  font-weight: 400;
+  font-style: normal;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
+
+/* Scroll Bar Css */
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 img,
@@ -197,13 +174,13 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 a:hover {
-  color: var(--sub-color);
+  color: var(--main-color);
   transition: all 0.5s;
 }
 p {
   font-size: 12px;
   /* font-family: 'Open Sans', sans-serif; */
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Arimo', sans-serif;
 }
 h6,
 .h6,
@@ -219,7 +196,7 @@ h1,
 .h1 {
   margin-top: 0;
   margin-bottom: 20px;
-  font-family: ubuntu, open sans, sans-serif;
+  font-family: 'Arimo', sans-serif;
   font-weight: 400;
   line-height: 1.2;
 }

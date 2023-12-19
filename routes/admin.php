@@ -125,6 +125,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'brand-page'       => BrandPageController::class,
                 'solution-details' => SolutionDetailsController::class,
                 'industry-page'    => IndustryPageController::class,
+                'industry'         => IndustryController::class,
                 'row'              => RowController::class,
                 'homepage'         => HomePageController::class, //Not Done
                 'aboutpage'        => AboutPageController::class, //Not Done
@@ -143,7 +144,6 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'brand'                 => BrandController::class,
                 'product-attribute'     => ProductAttributeController::class,
                 'product-color'         => ProductColorController::class,
-                'industry'              => IndustryController::class,
                 'company'               => CompanyController::class,
                 'address'               => AddressController::class,
                 'leave-application'     => LeaveApplicationController::class,

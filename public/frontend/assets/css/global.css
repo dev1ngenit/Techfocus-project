@@ -74,13 +74,21 @@
 
 /* Common Container Start */
 .container,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container-xl,
-    .container-xxl {
-        max-width: 1650px;
-    }
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  max-width: 1650px;
+}
+
+.empty-area {
+  width: 80%;
+}
+
+.fill-area {
+  width: 20%;
+}
 /* Common Container End */
 .main-menu {
   background-color: var(--sub-color);
@@ -373,14 +381,14 @@
   padding: 0px 20px;
   font-size: 14px;
   color: rgb(85, 86, 89);
-  font-family: HurmeGeometricSans_SemiBold, sans-serif;
+  font-family: "Arimo", sans-serif;
   text-transform: uppercase;
 }
 .devider-content {
   margin-top: 30px;
   margin-bottom: 40px;
   padding: 0px 20px;
-  font-family: HurmeGeometricSans_No4_5_SemiBold, Arial, sans-serif;
+  font-family: "Arimo", sans-serif;
   font-size: 1.16em;
   text-transform: uppercase;
   /* border-bottom: 1px solid rgb(211, 211, 211); */
@@ -391,7 +399,7 @@
   margin-top: 30px;
   margin-bottom: 40px;
   padding: 0px 20px;
-  font-family: HurmeGeometricSans_No4_5_SemiBold, Arial, sans-serif;
+  font-family: "Arimo", sans-serif;
   font-size: 1.16em;
   text-transform: uppercase;
   border-bottom: 1px solid rgb(211, 211, 211);
@@ -649,7 +657,7 @@ figure img {
   color: var(--main-color);
 }
 .titles {
-  font-family: hurme-full-bold;
+  font-family: "Arimo", sans-serif;
   font-size: 32px;
 }
 .exhibition-area {
@@ -678,7 +686,7 @@ figure img {
 }
 
 .section-titles {
-  font-family: hurme-light;
+  font-family: "Arimo", sans-serif;
   font-weight: 800;
 }
 .univers-group-item {
@@ -1118,7 +1126,7 @@ figure img {
 
 .xzoom-caption span {
   color: #fff;
-  font-family: Arial, sans-serif;
+  font-family: "Arimo", sans-serif;
   display: block;
   font-size: 0.75em;
   font-weight: bold;
@@ -1159,7 +1167,7 @@ figure img {
 
 .description-title {
   padding: 10px 20px;
-  font-family: HurmeGeometricSans_SemiBold, Arial, sans-serif;
+  font-family: "Arimo", sans-serif;
   font-size: 1.2em;
   text-transform: uppercase;
   border-left: 3px solid var(--main-color);
@@ -1243,7 +1251,7 @@ figure img {
 .extra-titles {
   font-size: 22px;
   font-weight: bold;
-  font-family: hurme-full-bold;
+  font-family: "Arimo", sans-serif;
 }
 
 .related-items li {
@@ -1422,7 +1430,7 @@ figure img {
   font-size: 18px;
   margin: 0;
   padding: 10px;
-  font-family: "Open Sans";
+  font-family: "Arimo", sans-serif;
 }
 
 .projectFactsWrap .item span {

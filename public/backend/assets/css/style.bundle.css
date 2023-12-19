@@ -33893,7 +33893,7 @@ a:hover {
 }
 
 .nav-pills .nav-item:last-child {
-    margin-right: 0
+    margin-right: 6px;
 }
 
 .nav-stretch {
