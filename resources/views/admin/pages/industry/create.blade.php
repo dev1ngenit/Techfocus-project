@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-sm-12 d-flex justify-content-end">
-                    <h4 class="text-white p-0 m-0 fw-bold">Industry Details Page Add</h4>
+                    <h4 class="text-white p-0 m-0 fw-bold">Industry Create Add</h4>
                 </div>
             </div>
             <div class="card-body p-0 pt-1">
@@ -47,7 +47,7 @@
                                     aria-selected="false" role="tab" tabindex="-1">Row Five</a>
                             </li>
                             <li class="nav-item w-md-290px my-1" role="presentation">
-                                <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab" href="#row-six"
+                                <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab" href="#row_six"
                                     aria-selected="false" role="tab" tabindex="-1">Row Six</a>
                             </li>
                         </ul>
@@ -70,34 +70,20 @@
                                         <div class="fv-row">
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    <label for="validationCustom04" class="form-label required">Parent
+                                                    <label for="validationCustom04" class="form-label">Parent
                                                         name</label>
                                                     <select class="form-select form-select-sm form-select-solid"
                                                         name="parent_id" data-control="select2"
-                                                        data-placeholder="Select an option" data-allow-clear="true"
-                                                        >
+                                                        data-placeholder="Select an option" data-allow-clear="true">
                                                         <option></option>
                                                         <option value="Top">Top</option>
                                                         <option value="Featured">Featured</option>
                                                         <option value="Others">Others</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <label for="validationCustom04" class="form-label required">Client
-                                                        Story Name</label>
-                                                    <select class="form-select form-select-sm form-select-solid"
-                                                        name="client_story_id" data-control="select2"
-                                                        data-placeholder="Select an option" data-allow-clear="true"
-                                                        >
-                                                        <option></option>
-                                                        <option value="Top">Top</option>
-                                                        <option value="Featured">Featured</option>
-                                                        <option value="Others">Others</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-9">
                                                     <div class="fv-row mb-3">
-                                                        <label class="form-label required">Name</label>
+                                                        <label class="form-label">Name</label>
                                                         <input name="name"
                                                             class="form-control form-control-sm form-control-solid"
                                                             placeholder="Enter Name" type="text" required />
@@ -106,7 +92,16 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="fv-row mb-3">
-                                                        <label class="form-label required">Logo</label>
+                                                        <label class="form-label"> Image</label>
+                                                        <input name="image"
+                                                            class="form-control form-control-sm form-control-solid"
+                                                            placeholder="Enter Image" type="file" />
+                                                        <div class="invalid-feedback"> Please Enter Image.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="fv-row mb-3">
+                                                        <label class="form-label">Logo</label>
                                                         <input name="logo"
                                                             class="form-control form-control-sm form-control-solid"
                                                             placeholder="Enter Name" type="file" />
@@ -116,37 +111,37 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="fv-row mb-3">
-                                                        <label class="form-label required"> Image</label>
-                                                        <input name="image"
-                                                            class="form-control form-control-sm form-control-solid"
-                                                            placeholder="Enter Image" type="file" />
-                                                        <div class="invalid-feedback"> Please Enter Image.</div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="fv-row mb-3">
-                                                        <label class="form-label required">Banner Image</label>
+                                                        <label class="form-label">Banner Image</label>
                                                         <input name="banner_image"
                                                             class="form-control form-control-sm form-control-solid"
                                                             placeholder="Enter Banner Image" type="file" />
                                                         <div class="invalid-feedback"> Please Enter Banner Image.</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-4">
                                                     <div class="fv-row mb-3">
-                                                        <label class="form-label required">Description</label>
+                                                        <label class="form-label">Header</label>
+                                                        <input name="header"
+                                                            class="form-control form-control-sm form-control-solid"
+                                                            placeholder="Enter Banner Image" type="text" />
+                                                        <div class="invalid-feedback"> Please Enter Header.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8">
+                                                    <div class="fv-row mb-3">
+                                                        <label class="form-label">Description</label>
                                                         <textarea rows="1" name="description"
                                                             class="form-control form-control-sm form-control-solid"
-                                                            placeholder="Enter Description" ></textarea>
+                                                            placeholder="Enter Description"></textarea>
                                                         <div class="invalid-feedback"> Please Enter Description.</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-12">
                                                     <div class="fv-row mb-3">
-                                                        <label class="form-label required">Website URL</label>
+                                                        <label class="form-label">Website URL</label>
                                                         <textarea rows="1" name="website_url"
                                                             class="form-control form-control-sm form-control-solid"
-                                                            placeholder="Enter Website URL" ></textarea>
+                                                            placeholder="Enter Website URL"></textarea>
                                                         <div class="invalid-feedback"> Please Enter Website URL.</div>
                                                     </div>
                                                 </div>
@@ -176,98 +171,70 @@
                                         </div>
                                         <div class="fv-row">
                                             <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="row border p-4">
-                                                        <p class="badge badge-info custom-badge"
-                                                            style="margin-top: -15px">Row</span>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="row">
-                                                                <div class="col-md-12 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label mb-0">Badge
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_one_badge" id="validationCustom01"
-                                                                        placeholder="Enter Badge">
-                                                                    <div class="invalid-feedback"> Please Enter Badge
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Title
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_one_title" id="validationCustom01"
-                                                                        placeholder="Enter Title" >
-                                                                    <div class="invalid-feedback"> Please Enter Title
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Badge
+                                                    </label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_one_badge" id="validationCustom01"
+                                                        placeholder="Enter Badge">
+                                                    <div class="invalid-feedback"> Please Enter Badge
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row border p-4">
-                                                        <p class="badge badge-info custom-badge"
-                                                            style="margin-top: -15px; width: 18%">Row Image Area</span>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="row">
-                                                                <div class="col-md-6 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Image
-                                                                    </label>
-                                                                    <input type="file"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_one_image" id="validationCustom01"
-                                                                        placeholder="Enter Row Image" >
-                                                                    <div class="invalid-feedback"> Please Enter Row
-                                                                        Image </div>
-                                                                </div>
-                                                                <div class="col-md-6 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label mb-0">Button Name
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_one_btn_name" id="validationCustom01"
-                                                                        placeholder="Enter Button Name">
-                                                                </div>
-                                                                <div class="col-md-12 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label mb-0">Link
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_one_link" id="validationCustom01"
-                                                                        placeholder="Enter Row Link">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label required">Title
+                                                    </label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_one_title" id="validationCustom01"
+                                                        placeholder="Enter Title">
+                                                    <div class="invalid-feedback"> Please Enter Title
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <div class="row border p-4 mt-8">
-                                                        <p class="badge badge-info custom-badge"
-                                                            style="margin-top: -15px; width: 10%">Row
-                                                            Description</span>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="row">
-                                                                <div class="col-md-12 mb-1">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required ">Description
-                                                                    </label>
-                                                                    <textarea name="row_one_description" class="tox-target kt_docs_tinymce_plugins">
-                                                                        <h1>Enter Your Text Here</h1>
-                                                                    </textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label required">Rows Image One
+                                                    </label>
+                                                    <input type="file"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="rows_image_one" id="validationCustom01"
+                                                        placeholder="Enter Rows Image One">
+                                                    <div class="invalid-feedback"> Please Enter Rows
+                                                        Image One
                                                     </div>
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Row One Button Name
+                                                    </label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_one_btn_name" id="validationCustom01"
+                                                        placeholder="Enter Row One Button Name">
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Row One Link
+                                                    </label>
+                                                    <input type="url"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_one_link" id="validationCustom01"
+                                                        placeholder="Enter Row One Link">
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Row One Description
+                                                    </label>
+                                                    <input type="url"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_one_description"
+                                                        id="validationCustom01"
+                                                        placeholder="Enter Row One Description">
                                                 </div>
                                             </div>
-                                            <div class="row mt-2 justify-content-end">
+                                            <div class="row mt-4 justify-content-end">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
                                                         data-bs-target="#general-info" aria-selected="false" role="tab"
@@ -295,57 +262,65 @@
                                         <div class="pb-10 pb-lg-10">
                                             <h2
                                                 class="fw-bolder d-flex justify-content-center align-items-center text-dark">
-                                                Row Two
+                                                Solutiuon Row One
                                             </h2>
                                         </div>
                                         <div class="fv-row">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <label for="validationCustom04" class="form-label required">Solution
+                                                <div class="col-md-4 mb-2 ">
+                                                    <label for="validationCustom04" class="form-label">Solution
                                                         One Name</label>
                                                     <select class="form-select form-select-sm form-select-solid"
                                                         name="solution_one_id" data-control="select2"
-                                                        data-placeholder="Select an option" data-allow-clear="true"
-                                                        >
+                                                        data-placeholder="Select an option" data-allow-clear="true">
                                                         <option></option>
                                                         <option value="Top">Top</option>
                                                         <option value="Featured">Featured</option>
                                                         <option value="Others">Others</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <label for="validationCustom04" class="form-label required">Solution
+                                                <div class="col-md-4 mb-2">
+                                                    <label for="validationCustom04" class="form-label">Solution
                                                         Two Name</label>
                                                     <select class="form-select form-select-sm form-select-solid"
                                                         name="solution_two_id" data-control="select2"
-                                                        data-placeholder="Select an option" data-allow-clear="true"
-                                                        >
+                                                        data-placeholder="Select an option" data-allow-clear="true">
                                                         <option></option>
                                                         <option value="Top">Top</option>
                                                         <option value="Featured">Featured</option>
                                                         <option value="Others">Others</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <label for="validationCustom04" class="form-label required">Solution
+                                                <div class="col-md-4 mb-2">
+                                                    <label for="validationCustom04" class="form-label">Solution
                                                         Three Name</label>
                                                     <select class="form-select form-select-sm form-select-solid"
                                                         name="solution_three_id" data-control="select2"
-                                                        data-placeholder="Select an option" data-allow-clear="true"
-                                                        >
+                                                        data-placeholder="Select an option" data-allow-clear="true">
                                                         <option></option>
                                                         <option value="Top">Top</option>
                                                         <option value="Featured">Featured</option>
                                                         <option value="Others">Others</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <label for="validationCustom04" class="form-label required">Solution
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom04" class="form-label">Solution
                                                         Four Name</label>
                                                     <select class="form-select form-select-sm form-select-solid"
                                                         name="solution_four_id" data-control="select2"
-                                                        data-placeholder="Select an option" data-allow-clear="true"
-                                                        >
+                                                        data-placeholder="Select an option" data-allow-clear="true">
+                                                        <option></option>
+                                                        <option value="Top">Top</option>
+                                                        <option value="Featured">Featured</option>
+                                                        <option value="Others">Others</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom04" class="form-label">Client
+                                                        Story Name</label>
+                                                    <select class="form-select form-select-sm form-select-solid"
+                                                        name="client_story_id" data-control="select2"
+                                                        data-placeholder="Select an option" data-allow-clear="true">
                                                         <option></option>
                                                         <option value="Top">Top</option>
                                                         <option value="Featured">Featured</option>
@@ -353,7 +328,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="row mt-2 justify-content-end">
+                                            <div class="row mt-4 justify-content-end">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
                                                         data-bs-target="#row-one" aria-selected="false" role="tab"
@@ -386,98 +361,84 @@
                                         </div>
                                         <div class="fv-row">
                                             <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="row border p-4">
-                                                        <p class="badge badge-info custom-badge"
-                                                            style="margin-top: -15px">Row</span>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="row">
-                                                                <div class="col-md-12 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label mb-0">Badge
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_three_badge" id="validationCustom01"
-                                                                        placeholder="Enter Badge">
-                                                                    <div class="invalid-feedback"> Please Enter Badge
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Title
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_three_title" id="validationCustom01"
-                                                                        placeholder="Enter Title" >
-                                                                    <div class="invalid-feedback"> Please Enter Title
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Row Three Badge
+                                                    </label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_three_badge" id="validationCustom01"
+                                                        placeholder="Enter Row Three Badge">
+                                                    <div class="invalid-feedback"> Please Enter Row
+                                                        Three Badge
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row border p-4">
-                                                        <p class="badge badge-info custom-badge"
-                                                            style="margin-top: -15px; width: 18%">Row Image Area</span>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="row">
-                                                                <div class="col-md-6 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Image
-                                                                    </label>
-                                                                    <input type="file"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_three_image" id="validationCustom01"
-                                                                        placeholder="Enter Row Image" >
-                                                                    <div class="invalid-feedback"> Please Enter Row
-                                                                        Image </div>
-                                                                </div>
-                                                                <div class="col-md-6 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label mb-0">Button Name
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_three_btn_name" id="validationCustom01"
-                                                                        placeholder="Enter Button Name">
-                                                                </div>
-                                                                <div class="col-md-12 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label mb-0">Link
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_three_link" id="validationCustom01"
-                                                                        placeholder="Enter Row Link">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label required mb-0">Row Three Title
+                                                    </label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_three_title" id="validationCustom01"
+                                                        placeholder="Enter Row Three Title">
+                                                    <div class="invalid-feedback"> Please Enter Row
+                                                        Three Title
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <div class="row border p-4 mt-8">
-                                                        <p class="badge badge-info custom-badge"
-                                                            style="margin-top: -15px; width: 10%">Row
-                                                            Description</span>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="row">
-                                                                <div class="col-md-12 mb-1">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required ">Description
-                                                                    </label>
-                                                                    <textarea name="row_three_description" class="tox-target kt_docs_tinymce_plugins">
-                                                                        <h1>Enter Your Text Here</h1>
-                                                                    </textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label required mb-0">Rows Image
+                                                        Three
+                                                    </label>
+                                                    <input type="file"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="rows_image_three" id="validationCustom01"
+                                                        placeholder="Enter Rows Image Three">
+                                                    <div class="invalid-feedback"> Please Enter Rows
+                                                        Image Three
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label required mb-0">Row Three Btn
+                                                        Name
+                                                    </label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_three_btn_name"
+                                                        id="validationCustom01"
+                                                        placeholder="Enter Row Three Btn Name">
+                                                    <div class="invalid-feedback"> Please Enter Row
+                                                        Three Btn Name
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label required mb-0">Row Three Link
+                                                    </label>
+                                                    <input type="url"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_three_link" id="validationCustom01"
+                                                        placeholder="Enter Row Three Link">
+                                                    <div class="invalid-feedback"> Please Enter Row
+                                                        Three Link
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label required mb-0">Row Three
+                                                        Description
+                                                    </label>
+                                                    <textarea rows="1" name="row_three_description"
+                                                        class="form-control form-control-sm form-control-solid"
+                                                        placeholder="Enter Row Three Description"></textarea>
+                                                    <div class="invalid-feedback"> Please Enter Row
+                                                        Three Description
+                                                    </div>
+                                                </div>
+
                                             </div>
-                                            <div class="row mt-2 justify-content-end">
+                                            <div class="row mt-4 justify-content-end">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
                                                         data-bs-target="#solution_row_one" aria-selected="false"
@@ -505,27 +466,27 @@
                                         <div class="pb-10 pb-lg-10">
                                             <h2
                                                 class="fw-bolder d-flex justify-content-center align-items-center text-dark">
-                                            Row Four
+                                                Row Four
                                             </h2>
                                         </div>
                                         <div class="fv-row">
                                             <div class="row mb-4 border">
                                                 <div class="col-md-6 mb-2">
-                                                    <label for="validationCustom01" class="form-label required mb-0">Row
+                                                    <label for="validationCustom01" class="form-label">Row
                                                         Four Title
                                                     </label>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-sm"
                                                         name="row_four_title" id="validationCustom01"
-                                                        placeholder="Enter Row Four Title" >
+                                                        placeholder="Enter Row Four Title">
                                                 </div>
                                                 <div class="col-md-6 mb-2">
-                                                    <label for="validationCustom01" class="form-label required mb-0">Row
+                                                    <label for="validationCustom01" class="form-label">Row
                                                         Four Header
                                                     </label>
                                                     <textarea rows="1" name="row_four_header"
                                                         class="form-control form-control-sm form-control-solid"
-                                                        placeholder="Enter Row Four Header" ></textarea>
+                                                        placeholder="Enter Row Four Header"></textarea>
                                                 </div>
                                             </div>
                                             <div class="row mt-4 pt-4">
@@ -537,57 +498,53 @@
                                                             <div class="row">
                                                                 <div class="col-md-6 mb-2">
                                                                     <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Four Col
+                                                                        class="form-label">Row Four Col
                                                                         One Title
                                                                     </label>
                                                                     <input type="text"
                                                                         class="form-control form-control-solid form-control-sm"
                                                                         name="row_four_col_one_title"
                                                                         id="validationCustom01"
-                                                                        placeholder="Enter Row Four Col One Title"
-                                                                        >
+                                                                        placeholder="Enter Row Four Col One Title">
                                                                     <div class="invalid-feedback"> Please Enter Row Four
                                                                         Col One Title
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 mb-2">
                                                                     <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Four Col
+                                                                        class="form-label">Row Four Col
                                                                         One Header
                                                                     </label>
-                                                                    <textarea rows="2" name="row_four_col_one_header"
+                                                                    <textarea rows="1" name="row_four_col_one_header"
                                                                         class="form-control form-control-sm form-control-solid"
-                                                                        placeholder="Enter Row Four Col One Header"
-                                                                        ></textarea>
+                                                                        placeholder="Enter Row Four Col One Header"></textarea>
                                                                     <div class="invalid-feedback"> Please Enter Row Four
                                                                         Col One Header
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 mb-2">
                                                                     <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Four Col
+                                                                        class="form-label">Row Four Col
                                                                         One Button Name
                                                                     </label>
                                                                     <input type="text"
                                                                         class="form-control form-control-solid form-control-sm"
                                                                         name="row_four_col_one_button_name"
                                                                         id="validationCustom01"
-                                                                        placeholder="Enter Row Four Col One Button Name"
-                                                                        >
+                                                                        placeholder="Enter Row Four Col One Button Name">
                                                                     <div class="invalid-feedback"> Please Enter Row Four
                                                                         Col One Button Name
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 mb-2">
                                                                     <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Four Col
+                                                                        class="form-label">Row Four Col
                                                                         One Button Link
                                                                     </label>
-                                                                    <textarea rows="2"
+                                                                    <textarea rows="1"
                                                                         name="row_four_col_one_button_link"
                                                                         class="form-control form-control-sm form-control-solid"
-                                                                        placeholder="Enter Row Four Col One Button Link"
-                                                                        ></textarea>
+                                                                        placeholder="Enter Row Four Col One Button Link"></textarea>
                                                                     <div class="invalid-feedback"> Please Enter Row Four
                                                                         Col One Button Link
                                                                     </div>
@@ -604,97 +561,64 @@
                                                             <div class="row">
                                                                 <div class="col-md-6 mb-2">
                                                                     <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Four Col
-                                                                        Two Title
+                                                                        class="form-label">Row Four Col
+                                                                        One Title
                                                                     </label>
                                                                     <input type="text"
                                                                         class="form-control form-control-solid form-control-sm"
                                                                         name="row_four_col_two_title"
                                                                         id="validationCustom01"
-                                                                        placeholder="Enter Row Four Col Two Title"
-                                                                        >
+                                                                        placeholder="Enter Row Four Col One Title">
                                                                     <div class="invalid-feedback"> Please Enter Row Four
-                                                                        Col Two Title
+                                                                        Col One Title
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 mb-2">
                                                                     <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Four Col
-                                                                        Two Header
+                                                                        class="form-label">Row Four Col
+                                                                        One Header
                                                                     </label>
-                                                                    <textarea rows="2" name="row_four_col_two_header"
+                                                                    <textarea rows="1" name="row_four_col_two_header"
                                                                         class="form-control form-control-sm form-control-solid"
-                                                                        placeholder="Enter Row Four Col Two Header"
-                                                                        ></textarea>
+                                                                        placeholder="Enter Row Four Col One Header"></textarea>
                                                                     <div class="invalid-feedback"> Please Enter Row Four
-                                                                        Col Two Header
+                                                                        Col One Header
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 mb-2">
                                                                     <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Four Col
-                                                                        Two Button Name
+                                                                        class="form-label">Row Four Col
+                                                                        One Button Name
                                                                     </label>
                                                                     <input type="text"
                                                                         class="form-control form-control-solid form-control-sm"
                                                                         name="row_four_col_two_button_name"
                                                                         id="validationCustom01"
-                                                                        placeholder="Enter Row Four Col Two Button Name"
-                                                                        >
+                                                                        placeholder="Enter Row Four Col One Button Name">
                                                                     <div class="invalid-feedback"> Please Enter Row Four
-                                                                        Col Two Button Name
+                                                                        Col One Button Name
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 mb-2">
                                                                     <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Four Col
-                                                                        Two Button Link
+                                                                        class="form-label">Row Four Col
+                                                                        One Button Link
                                                                     </label>
-                                                                    <textarea rows="2"
+                                                                    <textarea rows="1"
                                                                         name="row_four_col_two_button_link"
                                                                         class="form-control form-control-sm form-control-solid"
-                                                                        placeholder="Enter Row Four Col Two Button Link"
-                                                                        ></textarea>
+                                                                        placeholder="Enter Row Four Col One Button Link"></textarea>
                                                                     <div class="invalid-feedback"> Please Enter Row Four
-                                                                        Col Two Button Link
+                                                                        Col One Button Link
                                                                     </div>
                                                                 </div>
-
-
-
-                                                                <div class="col-md-6 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Footer Title
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="footer_title" id="validationCustom01"
-                                                                        placeholder="Enter Footer Title" >
-                                                                    <div class="invalid-feedback"> Please Enter Footer
-                                                                        Title
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Footer Header
-                                                                    </label>
-                                                                    <textarea rows="2" name="footer_header"
-                                                                        class="form-control form-control-sm form-control-solid"
-                                                                        placeholder="Enter Row Four Col Two Button Link"
-                                                                        ></textarea>
-                                                                    <div class="invalid-feedback"> Please Enter Footer
-                                                                        Header
-                                                                    </div>
-                                                                </div>
-
-
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row mt-2 justify-content-end">
-                                                <div class="d-flex align-items-center justify-content-between">
+                                            <div class="row mt-4 justify-content-end">
+                                                <div class="d-flex align-items-center justify-content-between p-0">
                                                     <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
                                                         data-bs-target="#row_three" aria-selected="false" role="tab"
                                                         tabindex="-1">
@@ -726,101 +650,72 @@
                                         </div>
                                         <div class="fv-row">
                                             <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="row border p-4">
-                                                        <p class="badge badge-info custom-badge"
-                                                            style="margin-top: -15px">Row</span>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="row">
-                                                                <div class="col-md-12 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label mb-0">Badge
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_five_badge" id="validationCustom01"
-                                                                        placeholder="Enter Badge">
-                                                                    <div class="invalid-feedback"> Please Enter Badge
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Title
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_five_title" id="validationCustom01"
-                                                                        placeholder="Enter Title" >
-                                                                    <div class="invalid-feedback"> Please Enter Title
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Row Five Badge
+                                                    </label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_five_badge" id="validationCustom01"
+                                                        placeholder="Enter Row Five Badge">
+                                                    <div class="invalid-feedback"> Please Enter Row Five
+                                                        Badge
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row border p-4">
-                                                        <p class="badge badge-info custom-badge"
-                                                            style="margin-top: -15px; width: 18%">Row Image Area</span>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="row">
-                                                                <div class="col-md-6 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required mb-0">Row Image
-                                                                    </label>
-                                                                    <input type="file"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_five_image" id="validationCustom01"
-                                                                        placeholder="Enter Row Image" >
-                                                                    <div class="invalid-feedback"> Please Enter Row
-                                                                        Image </div>
-                                                                </div>
-                                                                <div class="col-md-6 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label mb-0">Button Name
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_five_btn_name" id="validationCustom01"
-                                                                        placeholder="Enter Button Name">
-                                                                </div>
-                                                                <div class="col-md-12 mb-2">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label mb-0">Link
-                                                                    </label>
-                                                                    <input type="text"
-                                                                        class="form-control form-control-solid form-control-sm"
-                                                                        name="row_five_link" id="validationCustom01"
-                                                                        placeholder="Enter Row Link">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-md-12 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Row Five Title
+                                                    </label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_five_title" id="validationCustom01"
+                                                        placeholder="Enter Row Five Title">
+                                                    <div class="invalid-feedback"> Please Enter Row Five
+                                                        Title
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <div class="row border p-4 mt-8">
-                                                        <p class="badge badge-info custom-badge"
-                                                            style="margin-top: -15px; width: 10%">Row
-                                                            Description</span>
-                                                        <div class="col-lg-12 col-sm-12">
-                                                            <div class="row">
-                                                                <div class="col-md-12 mb-1">
-                                                                    <label for="validationCustom01"
-                                                                        class="form-label required ">Description
-                                                                    </label>
-                                                                    <textarea name="row_five_description" class="tox-target kt_docs_tinymce_plugins">
-                                                                        <h1>Enter Your Text Here</h1>
-                                                                    </textarea>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Row Five Image
+                                                    </label>
+                                                    <input type="file"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="rows_image_five" id="validationCustom01"
+                                                        placeholder="Enter Row Image">
+                                                    <div class="invalid-feedback"> Please Enter Row Five
+                                                        Image </div>
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Row Five Button Name
+                                                    </label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_five_btn_name" id="validationCustom01"
+                                                        placeholder="Enter Row Five Button Name">
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Row Five Link
+                                                    </label>
+                                                    <input type="text"
+                                                        class="form-control form-control-solid form-control-sm"
+                                                        name="row_five_link" id="validationCustom01"
+                                                        placeholder="Enter Row Five Link">
+                                                </div>
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01"
+                                                        class="form-label">Row Five Description
+                                                    </label>
+                                                    <textarea rows="1" name="row_five_description"
+                                                        class="form-control form-control-sm form-control-solid"
+                                                        placeholder="Enter Row Five Description"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="row mt-2 justify-content-end">
+                                            <div class="row mt-4 justify-content-end">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
-                                                        data-bs-target="#solution_row_one" aria-selected="false"
+                                                        data-bs-target="#row_four" aria-selected="false"
                                                         role="tab" tabindex="-1">
                                                         Previous
                                                         <span class="svg-icon svg-icon-4 ms-1 me-0">
@@ -828,7 +723,7 @@
                                                         </span>
                                                     </a>
                                                     <a class="btn btn-lg btn-info rounded-0 tab-trigger-next"
-                                                        data-bs-toggle="tab" data-bs-target="#row_four"
+                                                        data-bs-toggle="tab" data-bs-target="#row_six"
                                                         aria-selected="false" role="tab" tabindex="-1">
                                                         Continue
                                                         <span class="svg-icon svg-icon-4 ms-1 me-0">
@@ -840,7 +735,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="row-six" role="tabpanel">
+                                <div class="tab-pane fade" id="row_six" role="tabpanel">
                                     <div class="w-100">
                                         <div class="pb-10 pb-lg-10">
                                             <h2
@@ -850,34 +745,36 @@
                                         </div>
                                         <div class="fv-row">
                                             <div class="row">
-                                                <div class="col-md-12 mb-2">
-                                                    <label for="validationCustom01"
-                                                        class="form-label mb-0">Footer Title
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01" class="form-label">Footer Title
                                                     </label>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-sm"
                                                         name="footer_title" id="validationCustom01"
                                                         placeholder="Enter Footer Title">
-                                                    <div class="invalid-feedback"> Please Enter Badge
+                                                    <div class="invalid-feedback"> Please Enter Footer
+                                                        Title
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12 mb-2">
-                                                    <label for="validationCustom01"
-                                                        class="form-label required mb-0">Footer Header
+                                                <div class="col-md-6 mb-2">
+                                                    <label for="validationCustom01" class="form-label">Footer
+                                                        Header
                                                     </label>
-                                                    <textarea rows="1" name="description"
-                                                            class="form-control form-control-sm form-control-solid"
-                                                            placeholder="Enter Footer Header" ></textarea>
-                                                    <div class="invalid-feedback"> Please Enter Footer Header
+                                                    <textarea rows="1" name="footer_header"
+                                                        class="form-control form-control-sm form-control-solid"
+                                                        placeholder="Enter Row Four Col Two Button Link"></textarea>
+                                                    <div class="invalid-feedback"> Please Enter Footer
+                                                        Header
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row mt-2 justify-content-end">
                                             <div class="d-flex align-items-center justify-content-end">
-                                                <button type="submit" class="btn btn-lg btn-info rounded-0 tab-trigger-next"
-                                                    data-bs-toggle="tab" data-bs-target="#row-one"
-                                                    aria-selected="false" role="tab" tabindex="-1">
+                                                <button type="submit"
+                                                    class="btn btn-lg btn-info rounded-0 tab-trigger-next"
+                                                    data-bs-toggle="tab" data-bs-target="#row-one" aria-selected="false"
+                                                    role="tab" tabindex="-1">
                                                     Submit
                                                     <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                         <i class="fa-solid fa-arrow-right"></i>
