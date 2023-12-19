@@ -40,16 +40,14 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
                                     <!--begin::Export dropdown-->
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0"
+                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0 p-3"
                                         data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Export Report
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-light-success rounded-0"
-                                        data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
-                                        data-bs-target="#IndustryAddModal">
+                                    <a href="{{ route('admin.industry.create') }}" class="btn btn-sm btn-light-success rounded-0 p-3">
                                         Add New
-                                    </button>
+                                    </a>
                                     <!--begin::Menu-->
                                     <div id="kt_datatable_example_1_export_menu"
                                         class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
