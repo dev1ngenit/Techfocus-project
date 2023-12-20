@@ -131,6 +131,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'aboutpage'        => AboutPageController::class, //Not Done
                 'solution-card'    => SolutionCardController::class,
                 'employee'         => EmployeeController::class,
+                'catalog'          => CatalogController::class,
             ]
         );
         Route::resources(
@@ -182,7 +183,6 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::resource('role', RoleController::class);
         Route::resource('permission', PermissionController::class);
 
-        Route::resource('catalog', CatalogController::class);
 
         // Route to display the role permission management page
         // Assuming you have a method in your controller to show the page
