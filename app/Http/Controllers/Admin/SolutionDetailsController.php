@@ -20,9 +20,7 @@ class SolutionDetailsController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.solutionDetails.index', [
-            'solutionDetails' => SolutionDetail::get(),
-        ]);
+        return view('admin.pages.solutionDetails.index');
     }
 
     /**
