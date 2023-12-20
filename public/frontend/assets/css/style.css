@@ -15,7 +15,24 @@
   --para-color: #8b8888;
   --divider-color: #0069bf;
   --white: #ffff;
+  --custom-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --primary-font: 'Arimo', sans-serif;
+  --number-font: "Poppins", sans-serif;
+  --section-title-font-size: 1.75rem;
+  /*28px*/
+  --header-font-size: 1.125rem;
+  /*18px*/
+  --content-title-font-size: 1.5rem;
+  /*24px*/
+  --paragraph-font-size: 1rem;
+  /*16px*/
+  --badge-font-size: 1.25rem;
+  /*20px*/
 }
+
+
+
+
 .sub-font {
   font-family: 'Arimo', sans-serif;
 }
@@ -178,7 +195,7 @@ a:hover {
   transition: all 0.5s;
 }
 p {
-  font-size: 12px;
+  font-size: var(--paragraph-font-size);
   /* font-family: 'Open Sans', sans-serif; */
   font-family: 'Arimo', sans-serif;
 }

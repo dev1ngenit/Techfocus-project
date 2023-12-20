@@ -20,7 +20,7 @@
 </div>
 <!-- Content Menu -->
 <div class="container p-0">
-    <div class="mt-3 mb-3">
+    <div class="mt-2 mb-2">
         <div class="row">
             <div class="col-lg-12">
                 <div class="container">
@@ -36,7 +36,7 @@
                                                 <span class="ms-0"> </span>
                                             </p>
                                             <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" class="" alt="" />
+                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
                                                 <p class="mb-0 ms-2">
                                                     FLOW, PRESSURE AND LEVEL MEASUREMENT
                                                 </p>
@@ -74,7 +74,7 @@
                                                 <span class="ms-0"> </span>
                                             </p>
                                             <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" class="" alt="" />
+                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
                                                 <p class="mb-0 ms-2">DETECTION - MEASUREMENT</p>
                                             </div>
     
@@ -110,7 +110,7 @@
                                                 <span class="ms-0"> </span>
                                             </p>
                                             <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" class="" alt="" />
+                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
                                                 <p class="mb-0 ms-2">
                                                     ROBOTICS - AUTOMATION - INDUSTRIAL IT
                                                 </p>
@@ -148,7 +148,7 @@
                                                 <span class="ms-0"> </span>
                                             </p>
                                             <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" class="" alt="" />
+                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
                                                 <p class="mb-0 ms-2">
                                                     AUTOMATION - INDUSTRIAL IT- ROBOTICS
                                                 </p>
@@ -191,7 +191,7 @@
                                                 <span class="ms-0"> </span>
                                             </p>
                                             <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" class="" alt="" />
+                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
                                                 <p class="mb-0 ms-2">
                                                     FLOW, PRESSURE AND LEVEL MEASUREMENT
                                                 </p>
@@ -229,7 +229,7 @@
                                                 <span class="ms-0"> </span>
                                             </p>
                                             <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" class="" alt="" />
+                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
                                                 <p class="mb-0 ms-2">DETECTION - MEASUREMENT</p>
                                             </div>
     
@@ -265,7 +265,7 @@
                                                 <span class="ms-0"> </span>
                                             </p>
                                             <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" class="" alt="" />
+                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
                                                 <p class="mb-0 ms-2">
                                                     ROBOTICS - AUTOMATION - INDUSTRIAL IT
                                                 </p>
@@ -303,7 +303,7 @@
                                                 <span class="ms-0"> </span>
                                             </p>
                                             <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" class="" alt="" />
+                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
                                                 <p class="mb-0 ms-2">
                                                     AUTOMATION - INDUSTRIAL IT- ROBOTICS
                                                 </p>
@@ -338,9 +338,51 @@
                 </div>
             </div>
         </div>
+        <div>
+            <div class="row mt-1 mb-3">
+                <div class="col-lg-12">
+                    <div class="devider-wrap">
+                        <h4 class="devider-content">
+                            <span class="devider-text">WHAT WE DO</span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row bg-white mb-5 mx-1" style="
+                border-top-right-radius: 40px;
+                border-bottom-left-radius: 40px;
+                background-image: url(https://www.riverbed.com/riverbed-wp-content/uploads/2022/12/lady-with-laptop.png);
+                background-repeat: no-repeat;
+                background-size: cover;
+                padding: 3rem 0rem 3rem;
+              ">
+                <div class="col-lg-12 p-5 mb-3">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="holder-main-text">
+                                <h6 style="width: 23%; line-height: 25px">
+                                    WHY YOU NEED US ?
+                                </h6>
+                                <h2 class="pt-3 mb-0 pb-2 w-75">
+                                    Modernize IT for Digital and Cloud Success
+                                </h2>
+                                <p class="py-3 mt-0 w-75" style="text-align: justify">
+                                    To take advantage of digital and cloud technologies that
+                                    fuel transformation, organizations must modernize their IT
+                                    infrastructure. But this doesn’t happen overnight. Whatever
+                                    the pace, Riverbed can help IT teams make the transition in
+                                    the most performant, cost-effective, and secure way.
+                                </p>
+                                <a href="guide.html" class="btn common-btn-3 rounded-0 w-25">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="devider-wrap">
+                <div class="devider-wrap mb-lg-5">
                     <h4 class="devider-content">
                         <span class="devider-text">New products</span>
                     </h4>
@@ -546,7 +588,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="devider-wrap mt-5">
+                <div class="devider-wrap mt-2">
                     <h4 class="devider-content pt-4">
                         <span class="devider-text">New Solution</span>
                     </h4>
@@ -555,7 +597,7 @@
         </div>
     </div>
     <!-- New Product -->
-    <div class="px-3">
+    <div>
         <div class="card border-0 bg-primary mb-3" style="
             border-top-right-radius: 40px;
             border-bottom-left-radius: 40px;
@@ -575,7 +617,7 @@
             <div class="card-body bg-white" style="border-bottom-left-radius: 40px">
                 <div class="row gx-5 special_solution_box px-5">
                     <div class="col-md-3">
-                        <div class="">
+                        <div>
                             <a href="">
                                 <div class="card border-0 rounded-0 solution_cards shadow-sm p-3">
                                     <div class="d-flex align-items-center card-body py-0 pt-2">
@@ -683,7 +725,7 @@
         </div>
     </div>
     <!-- New Trends -->
-    <div class="">
+    <div>
         <div class="row mt-3">
             <div class="col-lg-12">
                 <div class="devider-wrap">
@@ -754,7 +796,7 @@
         </div>
     </div>
     <!-- Exhibitions -->
-    <div class="">
+    <div>
         <div class="mt-5 mb-3 mx-4">
             <a href="exhibit.html" class="mt-3">
                 <div class="row gx-5 bg-white develop-business-2 align-items-center">
@@ -787,9 +829,9 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col p-2 special-exhibit-2 p-0 m-0">
-                        <div class="text-center">
-                            <h4 class="text-white">Exhibit with us</h4>
+                    <div class="col p-2 special-exhibit-2 m-0">
+                        <div class="text-center p-3">
+                            <h4 class="text-white mb-0">Exhibit with us</h4>
                             <p class="ms-2 p-0 m-0 text-white" style="font-size: 12px">
                                 Sign up in 2 minutes
                             </p>
@@ -800,7 +842,7 @@
         </div>
     </div>
     <!-- Our Buying Guides -->
-    <div class="">
+    <div>
         <div class="row gx-5 mt-3">
             <div class="col-lg-12">
                 <div class="devider-wrap">
@@ -816,11 +858,11 @@
         <div class="row gx-3">
             <div class="col-lg-4 col-sm-12">
                 <div class="bg-white p-4 buying-area">
-                    <div class="ms-3">
+                    <div class="ms-1">
                         <img src="https://img.directindustry.com/buyingguide/di/en/501.jpg"
                             alt="Choosing the Right Pressure Gauge" class="img-fluid" width="800px" />
                     </div>
-                    <div class="ms-5">
+                    <div class="ms-2">
                         <h6 class="main-color">CHOOSING THE RIGHT PRESSURE GAUGE</h6>
                         <p class="p-0 m-0 my-3" style="
                     font-size: 14px;
@@ -840,11 +882,11 @@
             </div>
             <div class="col-lg-4 col-sm-12">
                 <div class="bg-white p-4 buying-area">
-                    <div class="ms-3">
+                    <div class="ms-1">
                         <img src="https://img.directindustry.com/buyingguide/di/en/480.jpg"
                             alt="Choosing the Right Pressure Gauge" class="img-fluid" width="800px" />
                     </div>
-                    <div class="ms-5">
+                    <div class="ms-2">
                         <h6 class="main-color">CHOOSING THE RIGHT LEVEL SWITCH</h6>
                         <p class="p-0 m-0 my-3" style="
                     font-size: 14px;
@@ -863,11 +905,11 @@
             </div>
             <div class="col-lg-4 col-sm-12">
                 <div class="bg-white p-4 buying-area">
-                    <div class="ms-3">
+                    <div class="ms-1">
                         <img src="https://img.directindustry.com/buyingguide/di/en/444.jpg"
                             alt="Choosing the Right Pressure Gauge" class="img-fluid" width="800px" />
                     </div>
-                    <div class="ms-5">
+                    <div class="ms-2">
                         <h6 class="main-color">CHOOSING THE RIGHT INDUSTRIAL MINCER</h6>
                         <p class="p-0 m-0 my-3" style="
                     font-size: 14px;
@@ -887,13 +929,13 @@
         </div>
         <div class="row">
             <div class="col-lg-12 text-end mt-3">
-                <a class="sc-1hhdqbr-0 sc-tpomlr-9 jQCsOM cvNBub" href="https://projects.directindustry.com/">See
+                <a class="main-color" href="https://projects.directindustry.com/">See
                     All Projects <i class="fa fa-angle-right"></i>
                 </a>
             </div>
         </div>
     </div>
-    <div class="">
+    <div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="devider-wrap">
@@ -903,7 +945,7 @@
                 </div>
             </div>
         </div>
-        <div class="row bg-white mb-5" style="border-top-right-radius: 40px; border-bottom-left-radius: 40px">
+        <div class="row bg-white mb-5 mx-1" style="border-top-right-radius: 40px; border-bottom-left-radius: 40px">
             <div class="col-lg-12 p-5 mb-3">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -1159,48 +1201,6 @@
                                     </div>
                                 </a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="">
-        <div class="row mt-1 mb-3">
-            <div class="col-lg-12">
-                <div class="devider-wrap">
-                    <h4 class="devider-content">
-                        <span class="devider-text">WHAT WE DO</span>
-                    </h4>
-                </div>
-            </div>
-        </div>
-        <div class="row bg-white mb-5" style="
-            border-top-right-radius: 40px;
-            border-bottom-left-radius: 40px;
-            background-image: url(https://www.riverbed.com/riverbed-wp-content/uploads/2022/12/lady-with-laptop.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            padding: 3rem 0rem 3rem;
-          ">
-            <div class="col-lg-12 p-5 mb-3">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="holder-main-text">
-                            <h6 style="width: 23%; line-height: 25px">
-                                WHY YOU NEED US ?
-                            </h6>
-                            <h2 class="pt-3 mb-0 pb-2 w-75">
-                                Modernize IT for Digital and Cloud Success
-                            </h2>
-                            <p class="py-3 mt-0 w-75" style="text-align: justify">
-                                To take advantage of digital and cloud technologies that
-                                fuel transformation, organizations must modernize their IT
-                                infrastructure. But this doesn’t happen overnight. Whatever
-                                the pace, Riverbed can help IT teams make the transition in
-                                the most performant, cost-effective, and secure way.
-                            </p>
-                            <a href="guide.html" class="btn common-btn-3 rounded-0 w-25">Learn More</a>
                         </div>
                     </div>
                 </div>

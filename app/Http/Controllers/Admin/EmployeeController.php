@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Admin\EmployeeCategory;
+use Illuminate\Support\Facades\Session;
 use App\Models\Admin\EmployeeDepartment;
 
 class EmployeeController extends Controller
@@ -91,7 +92,7 @@ class EmployeeController extends Controller
             'name'                                          => $request->name,
             'username'                                      => $request->username,
             'email'                                         => $request->email,
-            'photo'                   => $globalFunPhoto['status'] == 1 ? $globalFunPhoto['file_name'] : null,
+            'photo'                                         => $globalFunPhoto['status'] == 1 ? $globalFunPhoto['file_name'] : null,
             'phone'                                         => $request->phone,
             'designation'                                   => $request->designation,
             'address'                                       => $request->address,
@@ -234,7 +235,8 @@ class EmployeeController extends Controller
      */
     public function update(EmployeeRequest $request, $id)
     {
-        $admins = Admin::find($id);
+        // dd($request->all());
+        $admins = Admin::findOrFail($id);
 
         $mainFilePhoto                 = $request->file('photo');
         $mainFileSign                  = $request->file('sign');
@@ -320,7 +322,7 @@ class EmployeeController extends Controller
             'name'                                          => $request->name,
             'username'                                      => $request->username,
             'email'                                         => $request->email,
-            'photo'                   => $globalFunPhoto['status'] == 1 ? $globalFunPhoto['file_name'] : $admins->photo,
+            'photo'                                         => $globalFunPhoto['status'] == 1 ? $globalFunPhoto['file_name'] : $admins->photo,
             'phone'                                         => $request->phone,
             'designation'                                   => $request->designation,
             'address'                                       => $request->address,
@@ -331,7 +333,7 @@ class EmployeeController extends Controller
             'department'                                    => $request->department,
             'status'                                        => $request->status,
             'email_verified_at'                             => $request->email_verified_at,
-            'password'                                      => Hash::make($request->password),
+            'password'                                      => (!empty($request->password) ? Hash::make($request->password) : $admins->password),
             'employee_category_id'                          => $request->employee_category_id,
             'employee_id'                                   => $request->employee_id,
             'mobile'                                        => $request->mobile,
@@ -407,10 +409,10 @@ class EmployeeController extends Controller
             'sisters_total'                                 => $request->sisters_total,
             'siblings_contact_info_one'                     => $request->siblings_contact_info_one,
             'siblings_contact_info_two'                     => $request->siblings_contact_info_two,
-            'sign'                    => $globalFunSign['status'] == 1 ? $globalFunSign['file_name'] : $admins->sign,
-            'ceo_sign'                => $globalFunCeoSign['status'] == 1 ? $globalFunCeoSign['file_name'] : $admins->ceo_sign,
-            'operation_director_sign' => $globalFunOperationDirectorSign['status'] == 1 ? $globalFunOperationDirectorSign['file_name'] : $admins->operation_director_sign,
-            'managing_director_sign'  => $globalFunManagingDirectorSign['status'] == 1 ? $globalFunManagingDirectorSign['file_name'] : $admins->managing_director_sign,
+            'sign'                                          => $globalFunSign['status'] == 1 ? $globalFunSign['file_name'] : $admins->sign,
+            'ceo_sign'                                      => $globalFunCeoSign['status'] == 1 ? $globalFunCeoSign['file_name'] : $admins->ceo_sign,
+            'operation_director_sign'                       => $globalFunOperationDirectorSign['status'] == 1 ? $globalFunOperationDirectorSign['file_name'] : $admins->operation_director_sign,
+            'managing_director_sign'                        => $globalFunManagingDirectorSign['status'] == 1 ? $globalFunManagingDirectorSign['file_name'] : $admins->managing_director_sign,
             'sign_date'                                     => $request->sign_date,
             'evaluation_date'                               => $request->evaluation_date,
             'casual_leave_due_as_on'                        => $request->casual_leave_due_as_on,
@@ -426,6 +428,7 @@ class EmployeeController extends Controller
             'acknowledgement'                               => $request->acknowledgement,
 
         ]);
+        Session::flash('success', 'Data has been saved successfully!');
         return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
 
