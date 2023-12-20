@@ -41,4 +41,17 @@
         width: 30%;
       }
 
+      .holder-main-text h6{
+        width: 33% !important;
+      }
+      .swiper-slide img {
+        width: 100%;
+        height: 290px;
+        display: block;
+        object-fit: cover;
+    }
+      .swiper-slide {
+        width: 100%;
+        height: 290px;
+      }
 }

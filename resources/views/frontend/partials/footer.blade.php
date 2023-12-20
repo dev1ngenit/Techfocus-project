@@ -57,7 +57,7 @@
         <div class="row pt-5">
             <div class="col-lg-8 offset-lg-2 d-flex">
                 <div class="d-flex align-items-center">
-                    <a href="brand-news.html" class="border-left-side">
+                    <a href="brand-news.html" class="border-left-side pe-lg-3">
                         <img src="https://i.ibb.co/Wtvb87v/7066435420f2be0c54dd.webp" width="180px" class="me-3"
                             alt="" />
                     </a>
@@ -82,7 +82,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-12 text-white">
+            <div class="col-lg-12 text-white mt-lg-5">
                 <p class="text-center">© 2023 All rights reserved</p>
                 <ul class="d-flex justify-content-center ps-0">
                     <li>

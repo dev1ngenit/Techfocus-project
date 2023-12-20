@@ -207,7 +207,7 @@
     </div>
     <div class="  p-3 mb-3">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 p-lg-0">
                 <h5 class="fw-bold">Conclusion</h5>
                 <p class="pt-3">
                     The constantly changing scientific landscape and unpredictable
@@ -229,7 +229,7 @@
                     <span class="badge rounded-0" style="background-color: var(--main-color)">MEDICAL INDUSTRY</span>
                     <span class="badge rounded-0" style="background-color: var(--main-color)">SPONSORED CONTENT</span>
                 </div>
-                <div class="mt-3 d-flex justify-content-center">
+                <div class="mt-3 d-flex justify-content-start">
                     <img src="https://emag.directindustry.com/wp-content/uploads/sites/3/EMO_2023_Banner_1000x258px.png"
                         alt="" />
                 </div>
@@ -247,7 +247,7 @@
                                 <img class="card-img-top rounded-0"
                                     src="https://emag.directindustry.com/wp-content/uploads/sites/3/Featured-17-320x213.png"
                                     alt="Title" />
-                                <div class="card-body">
+                                <div class="card-body feature-fixed">
                                     <div class="">
                                         <a href="">
                                             <span class="badge rounded-0 mt-1 font-two"
@@ -273,7 +273,7 @@
                                 <img class="card-img-top rounded-0"
                                     src="https://emag.directindustry.com/wp-content/uploads/sites/3/Featured-17-320x213.png"
                                     alt="Title" />
-                                <div class="card-body">
+                                <div class="card-body feature-fixed">
                                     <div class="">
                                         <a href="">
                                             <span class="badge rounded-0 mt-1 font-two"
@@ -299,7 +299,7 @@
                                 <img class="card-img-top rounded-0"
                                     src="https://emag.directindustry.com/wp-content/uploads/sites/3/Featured-17-320x213.png"
                                     alt="Title" />
-                                <div class="card-body">
+                                <div class="card-body feature-fixed">
                                     <div class="">
                                         <a href="">
                                             <span class="badge rounded-0 mt-1 font-two"
@@ -325,7 +325,7 @@
                                 <img class="card-img-top rounded-0"
                                     src="https://emag.directindustry.com/wp-content/uploads/sites/3/Featured-17-320x213.png"
                                     alt="Title" />
-                                <div class="card-body">
+                                <div class="card-body feature-fixed">
                                     <div class="">
                                         <a href="">
                                             <span class="badge rounded-0 mt-1 font-two"
@@ -351,7 +351,7 @@
                                 <img class="card-img-top rounded-0"
                                     src="https://emag.directindustry.com/wp-content/uploads/sites/3/Featured-17-320x213.png"
                                     alt="Title" />
-                                <div class="card-body">
+                                <div class="card-body feature-fixed">
                                     <div class="">
                                         <a href="">
                                             <span class="badge rounded-0 mt-1 font-two"
@@ -382,7 +382,7 @@
     </div>
 </div>
 <div class="container-fluid bg-white">
-    <div class="mb-3 p-3">
+    <div class="p-3">
         <div class="row align-items-center">
             <div class="col-lg-2 col-sm-12">
                 <div>

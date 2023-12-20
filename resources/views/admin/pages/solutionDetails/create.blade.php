@@ -1243,13 +1243,13 @@
                                                             <i class="fa-solid fa-arrow-right"></i>
                                                         </span>
                                                     </a>
-                                                    <a class="btn btn-lg btn-info rounded-0 tab-trigger-next"
+                                                    <button class="btn btn-lg btn-info rounded-0"
                                                         type="submit">
                                                         Submit
                                                         <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                             <i class="fa-solid fa-arrow-right"></i>
                                                         </span>
-                                                    </a>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
