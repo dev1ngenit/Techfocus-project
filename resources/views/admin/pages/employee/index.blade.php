@@ -47,19 +47,18 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table
-                            class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
+                        <table class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6"
                             id="kt_datatable_example">
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
-                                <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
-                                    <th width="10%">Image</th>
-                                    <th width="30%">Name</th>
-                                    <th width="10%">Designation</th>
-                                    <th width="20%">Department</th>
-                                    <th width="15%">Roles</th>
-                                    <th width="5%">Employment Form</th>
-                                    <th width="10%">Action</th>
+                                <tr class="text-center text-gray-900 fw-bolder fs-9 text-uppercase">
+                                    <th class="ps-0" width="10%">Image</th>
+                                    <th class="ps-0" width="30%">Name</th>
+                                    <th class="ps-0" width="10%">Designation</th>
+                                    <th class="ps-0" width="20%">Department</th>
+                                    <th class="ps-0" width="15%">Roles</th>
+                                    <th class="ps-0" width="5%"><span class="text-center" title="Employment Form">Form</span></th>
+                                    <th class="ps-0" width="10%">Action</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>
@@ -67,7 +66,6 @@
                                 @if ($admins)
                                     @foreach ($admins as $admin)
                                         <tr class="odd">
-                                            <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <img class="img-fluid" width="50px"
                                                     src="{{ !empty($admin->logo) && file_exists(public_path('storage/brand/logo/requestImg/' . $admin->logo)) ? asset('storage/brand/logo/requestImg/' . $admin->logo) : asset('backend/images/no-image-available.png') }}"
@@ -86,7 +84,16 @@
                                                 @endif
                                             </td>
                                             <td>{{ $admin->name }}</td>
-
+                                            <td>
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <a href="#"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#adminViewModal_{{ $admin->id }}">
+                                                        <i class="fa-solid fa-expand"></i>
+                                                    </a>
+                                                </div>
+                                            </td>
                                             <td>
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <a href="#"
@@ -99,7 +106,7 @@
                                                     <a href="#"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#admintEditModal_{{ $admin->id }}">
+                                                        data-bs-target="#adminEditModal-{{ $admin->id }}">
                                                         <i class="fa-solid fa-pen"></i>
                                                         <!--Edit-->
                                                     </a>
@@ -272,8 +279,8 @@
     </div>
     {{-- Edit Modal --}}
     @foreach ($admins as $admin)
-        <div class="modal fade" id="adminEditModal_{{ $admin->id }}" data-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered">
+        <div class="modal fade" id="adminEditModal-{{ $admin->id }}" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
                     <div class="modal-header p-2 rounded-0">
                         <h5 class="modal-title">Edit Brand</h5>
@@ -293,96 +300,136 @@
                         </div>
                         <!-- End Close button in the header -->
                     </div>
-                    <form method="POST" action="{{ route('admin.brand.update', $admin->id) }}" class="needs-validation"
+                    <form method="POST" action="{{ route('admin.employee.update', $admin->id) }}" class="needs-validation"
                         novalidate enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
                             <div class="container px-0">
                                 <div class="row">
-                                    <div class="col-lg-12 col-sm-12">
-                                        <div class="row">
-                                            {{-- <div class="col-md-6">
-                                                <label for="validationCustom04" class="form-label required">Country
-                                                    Name</label>
-                                                <select class="form-select form-select-solid" name="country_id"
-                                                    data-dropdown-parent="#admintEditModal_{{ $admin->id }}" data-control="select2"
-                                                    data-placeholder="Select an option" data-allow-clear="true" required>
-                                                    <option></option>
-                                                    @foreach (getAllCountry() as $country)
-                                                        <option @selected($country->id == $admin->country_id) value="{{ $country->id }}">
-                                                            {{ $country->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please provide a valid zip. </div>
-                                            </div> --}}
-                                            <div class="col-md-6 mb-1">
-                                                <label for="validationCustom01" class="form-label required ">Brand Name
-                                                </label>
-                                                <input type="text"
-                                                    class="form-control form-control-solid form-control-sm" name="name"
-                                                    value="{{ $admin->name }}" id="validationCustom01"
-                                                    placeholder="Enter Name" required>
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter Name </div>
-                                            </div>
-                                            <div class="col-md-6 mb-1">
-                                                <label for="validationCustom01" class="form-label  ">Image
-                                                </label>
-                                                <input type="file"
-                                                    class="form-control form-control-solid form-control-sm" name="image"
-                                                    id="validationCustom01">
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter Image(jpg,jpeg,png) </div>
-                                            </div>
-                                            <div class="col-md-6 mb-1">
-                                                <label for="validationCustom01" class="form-label  ">Logo
-                                                </label>
-                                                <input type="file"
-                                                    class="form-control form-control-solid form-control-sm" name="logo"
-                                                    id="validationCustom01">
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter logo(jpg,jpeg,png) </div>
-                                            </div>
-                                            <div class="col-md-6 mb-1">
-                                                <label for="validationCustom01" class="form-label">Website URL
-                                                </label>
-                                                <input type="url"
-                                                    class="form-control form-control-solid form-control-sm"
-                                                    name="website_url" value="{{ $admin->website_url }}"
-                                                    id="validationCustom01" placeholder="Enter Web Site Url">
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter Url </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="validationCustom010" class="form-label">Description</label>
-                                                <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid">{{ $admin->description }}</textarea>
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter description</div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="validationCustom04"
-                                                    class="form-label required">Category</label>
-                                                <select class="form-select form-select-solid" name="category"
-                                                    data-dropdown-parent="#admintEditModal_{{ $admin->id }}"
-                                                    data-control="select2" data-placeholder="Select an option"
-                                                    data-allow-clear="true" required>
-                                                    <option></option>
-                                                    <option value="Top"
-                                                        {{ $admin->category == 'Top' ? 'selected' : '' }}>
-                                                        Top
-                                                    </option>
-                                                    <option value="Featured"
-                                                        {{ $admin->category == 'Featured' ? 'selected' : '' }}>
-                                                        Featured</option>
-                                                    <option value="Others"
-                                                        {{ $admin->category == 'Others' ? 'selected' : '' }}>
-                                                        Others</option>
-                                                </select>
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please provide a valid Option. </div>
-                                            </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-firstname-input">Full
+                                                Name</label>
+                                            <input type="text" maxlength="80" class="form-control form-control-sm"
+                                                placeholder="Enter Employees Name" name="name"
+                                                value="{{ $admin->name }}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-email-input">Designation</label>
+                                            <input maxlength="50" type="text" class="form-control form-control-sm"
+                                                placeholder="Enter Employees Designation" name="designation"
+                                                value="{{ $admin->designation }}" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-phoneno-input">Phone</label>
+                                            <input maxlength="15" type="text"
+                                                class="form-control form-control-sm allow_decimal"
+                                                placeholder="Enter Phone Number" name="phone"
+                                                value="{{ $admin->phone }}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-phoneno-input">Employee Code</label>
+                                            <input maxlength="15" type="text"
+                                                class="form-control form-control-sm allow_decimal"
+                                                placeholder="Enter Employee Code" name="employee_id"
+                                                value="{{ $admin->employee_id }}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-email-input">Email</label>
+                                            <input type="email" class="form-control form-control-sm"
+                                                placeholder="Enter Email ID" name="email"
+                                                value="{{ $admin->email }}" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-firstname-input">City</label>
+                                            <input type="text" maxlength="50" class="form-control form-control-sm"
+                                                placeholder="Enter City" name="city" value="{{ $admin->city }}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-firstname-input">Department</label>
+
+                                            <select name="department[]" class="form-control-sm multiselect btn btn-sm"
+                                                id="select6" multiple="multiple" data-include-select-all-option="true"
+                                                data-placeholder="Chose Sector" data-enable-filtering="true"
+                                                data-enable-case-insensitive-filtering="true" required>
+                                                @php
+                                                    $adminDepartment = isset($admin->department) ? json_decode($admin->department, true) : [];
+                                                    $adminRole = isset($admin->role) ? json_decode($admin->role, true) : [];
+                                                @endphp
+                                                <option value="admin" @selected(is_array($adminDepartment) && in_array('admin', $adminDepartment))>Admin</option>
+                                                <option value="business" @selected(is_array($adminDepartment) && in_array('business', $adminDepartment))>Business</option>
+                                                <option value="accounts" @selected(is_array($adminDepartment) && in_array('accounts', $adminDepartment))>Accounts</option>
+                                                <option value="site" @selected(is_array($adminDepartment) && in_array('site', $adminDepartment))>Site & Contents
+                                                </option>
+                                                <option value="logistics" @selected(is_array($adminDepartment) && in_array('logistics', $adminDepartment))>Logistics
+                                                </option>
+                                                <option value="support" @selected(is_array($adminDepartment) && in_array('support', $adminDepartment))>Support
+                                                </option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-firstname-input">Role</label>
+                                            <select name="role" class="form-control form-select-sm select"
+                                                data-container-css-class="select-sm"
+                                                data-minimum-results-for-search="Infinity" data-placeholder="Chose Sector"
+                                                required>
+                                                <option></option>
+                                                <option value="admin" @selected(is_array($adminRole) && in_array('admin', $adminRole))>Admin</option>
+                                                <option value="manager" @selected(is_array($adminRole) && in_array('manager', $adminRole))>Manager</option>
+                                                <option value="others" @selected(is_array($adminRole) && in_array('others', $adminRole))>Others</option>
+                                                <option value="developer" @selected(is_array($adminRole) && in_array('developer', $adminRole))>Support Developer
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-firstname-input">Profile
+                                                Picture</label>
+                                            <div class="row"></div>
+                                            <input id="image" type="file" class="form-control form-control-sm"
+                                                id="basicpill-firstname-input" name="photo" />
+                                            {{-- <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin" style="width:40px; height: 40px;"/> --}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-firstname-input">Password</label>
+                                            <input type="password" class="form-control form-control-sm" id="password"
+                                                name="password">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-firstname-input">Confirm
+                                                Password</label>
+                                            <input type="password" class="form-control form-control-sm"
+                                                id="confirm_password" name="confirm_password">
+                                            <div id="message"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -390,7 +437,7 @@
                         </div>
                         <div class="modal-footer p-2">
                             <!-- Button to close the modal in the footer -->
-                            <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                            <button type="submit" class="btn btn-sm btn-primary rounded-0">Submit</button>
                         </div>
                     </form>
                 </div>

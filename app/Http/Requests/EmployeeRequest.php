@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
 class EmployeeRequest extends FormRequest
 {
@@ -24,12 +25,13 @@ class EmployeeRequest extends FormRequest
      */
     public function rules()
     {
+        $employee = $this->route('employee');
         return [
             'country_id' => 'nullable|exists:countries,id',
             'employee_department_id' => 'nullable|exists:employee_departments,id',
             'name' => 'required|string|max:255',
-            'username' => 'nullable|string|max:30|unique:admins,username',
-            'email' => 'required|string|email|max:255|unique:admins,email',
+            'username' => 'nullable|string|max:30|unique:admins,username,'. $employee,
+            'email' => 'required|string|email|max:255|unique:admins,email,'. $employee,
             'photo' => 'sometimes|image|mimes:jpeg,png,jpg|max:2048',
             'phone' => 'nullable|string|max:20',
             'designation' => 'nullable|string|max:30',
@@ -37,13 +39,12 @@ class EmployeeRequest extends FormRequest
             'city' => 'nullable|string|max:100',
             'postal' => 'nullable|string|max:20',
             'last_seen' => 'nullable|date',
-            // 'role' => 'nullable|array',
             'department' => 'nullable|array',
             'status' => 'nullable|in:active,inactive',
             'email_verified_at' => 'nullable|date',
             'password' => 'required|string|max:255',
             'employee_category_id' => 'nullable|exists:employee_categories,id',
-            'employee_id' => 'nullable|string|unique:admins,employee_id',
+            'employee_id' => 'nullable|string|unique:admins,employee_id,'. $employee,
             'mobile' => 'nullable|string|max:20',
             'total_years_of_job_experience' => 'nullable|string',
             'total_years_of_related_experience' => 'nullable|string',
@@ -93,10 +94,10 @@ class EmployeeRequest extends FormRequest
             'current_address_city' => 'nullable|string',
             'current_address_state' => 'nullable|string',
             'current_address_zip_code' => 'nullable|string',
-            'alternate_email' => 'nullable|email|unique:admins,alternate_email',
+            'alternate_email' => 'nullable|email|unique:admins,alternate_email,'. $employee,
             'home_phone' => 'nullable|string|max:20',
             'emergency_number' => 'nullable|string|max:20',
-            'nid_bri_ppn' => 'nullable|string|max:50|unique:admins,nid_bri_ppn',
+            'nid_bri_ppn' => 'nullable|string|max:50|unique:admins,nid_bri_ppn,'. $employee,
             'birth_date' => 'nullable|date',
             'marital_status' => 'nullable|in:single,married,divorced,widowed',
             'spouse_name' => 'nullable|string|max:100',
@@ -158,5 +159,15 @@ class EmployeeRequest extends FormRequest
         return [
             //
         ];
+    }
+
+    protected function recordErrorMessages(Validator $validator)
+    {
+        $errorMessages = $validator->errors()->all();
+
+        foreach ($errorMessages as $errorMessage) {
+            Session::flash('error', $errorMessage);
+            // toastr()->error($errorMessage);
+        }
     }
 }

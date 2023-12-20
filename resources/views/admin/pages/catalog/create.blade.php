@@ -129,7 +129,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 col-6">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Title</label>
                                         <input name="name" class="form-control form-control-sm form-control-solid"
@@ -137,7 +137,7 @@
                                         <div class="invalid-feedback"> Please Enter Title.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-6 col-6">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Thumbnail</label>
                                         <input name="thumbnail" class="form-control form-control-sm form-control-solid"
@@ -145,7 +145,7 @@
                                         <div class="invalid-feedback"> Please Choose Thumbnail.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3 col-4">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Page Number</label>
                                         <input name="page_number" class="form-control form-control-sm form-control-solid"
@@ -153,7 +153,7 @@
                                         <div class="invalid-feedback"> Please Enter Page Number.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-3 col-4">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Document</label>
                                         <input name="document" class="form-control form-control-sm form-control-solid"
@@ -161,7 +161,7 @@
                                         <div class="invalid-feedback"> Please Enter Document.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-6 col-4">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Description</label>
                                         <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"
@@ -170,68 +170,70 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mt-lg-4 mt-3 pt-3">
+                                <div class="col-lg-12 mb-3">
+                                    <h5 class="mb-3 w-150px text-white p-2" style="background: #0069bf;">
+                                        Catalogue Details
+                                    </h5>
+                                    {{-- <hr style="margin-top: -9px;"> --}}
+                                </div>
                                 <div class="col-lg-12">
-                                    <div class="col-lg-12">
-                                        <div id="kt_docs_repeater_advanced">
-                                            <div class="form-group">
-                                                <div data-repeater-list="kt_docs_repeater_advanced">
-                                                    <div data-repeater-item>
-                                                        <div class="form-group row mb-5 align-items-center">
-                                                            <div class="col-lg-10">
-                                                                <div class="row">
-                                                                    <div class="col-md-3">
-                                                                        <label class="form-label">Page Image</label>
-                                                                        <input name="page_image" type="file"
-                                                                            class="form-control form-control-sm form-control-solid"
-                                                                            data-kt-repeater="repeat"
-                                                                            placeholder="Page Image" />
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <label class="form-label">Page Link</label>
-                                                                        <input name="page_link" type="url"
-                                                                            class="form-control form-control-sm form-control-solid"
-                                                                            data-kt-repeater="repeat"
-                                                                            placeholder="Enter Page Link" />
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <label class="form-label">Button Name</label>
-                                                                        <input name="button_name" type="text"
-                                                                            class="form-control form-control-sm form-control-solid"
-                                                                            data-kt-repeater="repeat"
-                                                                            placeholder="Button Name" />
-                                                                    </div>
-                                                                    <div class="col-md-3">
-                                                                        <label class="form-label">Button Link</label>
-                                                                        <input name="button_link" type="url"
-                                                                            class="form-control form-control-sm form-control-solid"
-                                                                            data-kt-repeater="repeat"
-                                                                            placeholder="Enter Button Link" />
-                                                                    </div>
-                                                                    <div class="col-md-12">
-                                                                        <label
-                                                                            class="form-label required">Description</label>
-                                                                        <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"
-                                                                            data-kt-repeater="repeat" placeholder="Enter Description" ></textarea>
-                                                                    </div>
+                                    <div id="kt_docs_repeater_advanced">
+                                        <div class="form-group">
+                                            <div data-repeater-list="kt_docs_repeater_advanced">
+                                                <div data-repeater-item class="border p-3 mb-3">
+                                                    <div class="form-group row mb-5 align-items-center">
+                                                        <div class="col-lg-10">
+                                                            <div class="row">
+                                                                <div class="col-md-3">
+                                                                    <label class="form-label">Page Image</label>
+                                                                    <input name="page_image" type="file"
+                                                                        class="form-control form-control-sm form-control-solid"
+                                                                        data-kt-repeater="repeat"
+                                                                        placeholder="Page Image" />
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label class="form-label">Page Link</label>
+                                                                    <input name="page_link" type="url"
+                                                                        class="form-control form-control-sm form-control-solid"
+                                                                        data-kt-repeater="repeat"
+                                                                        placeholder="Enter Page Link" />
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label class="form-label">Button Name</label>
+                                                                    <input name="button_name" type="text"
+                                                                        class="form-control form-control-sm form-control-solid"
+                                                                        data-kt-repeater="repeat"
+                                                                        placeholder="Button Name" />
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label class="form-label">Button Link</label>
+                                                                    <input name="button_link" type="url"
+                                                                        class="form-control form-control-sm form-control-solid"
+                                                                        data-kt-repeater="repeat"
+                                                                        placeholder="Enter Button Link" />
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="form-label required">Description</label>
+                                                                    <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"
+                                                                        data-kt-repeater="repeat" placeholder="Enter Description"></textarea>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-2">
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center">
-                                                                    <a href="javascript:;" data-repeater-create
-                                                                        class="btn btn-sm btn-light-primary mt-8">
-                                                                        <i class="la la-plus"></i>Add
-                                                                    </a>
-
-                                                                    <a href="javascript:;" data-repeater-delete
-                                                                        class="btn btn-sm btn-light-danger mt-8">
-                                                                        <i class="la la-trash-o fs-3"></i>Delete
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-
                                                         </div>
+                                                        <div class="col-md-2">
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <a href="javascript:;" data-repeater-create
+                                                                    class="btn btn-sm btn-light-primary mt-8">
+                                                                    <i class="la la-plus"></i>Add
+                                                                </a>
+
+                                                                <a href="javascript:;" data-repeater-delete
+                                                                    class="btn btn-sm btn-light-danger mt-8">
+                                                                    <i class="la la-trash-o fs-3"></i>Delete
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
