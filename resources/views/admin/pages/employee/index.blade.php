@@ -99,7 +99,7 @@
                                                     <a href="#"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#admintEditModal_{{ $admin->id }}">
+                                                        data-bs-target="#admintEditModal-{{ $admin->id }}">
                                                         <i class="fa-solid fa-pen"></i>
                                                         <!--Edit-->
                                                     </a>
@@ -272,7 +272,7 @@
     </div>
     {{-- Edit Modal --}}
     @foreach ($admins as $admin)
-        <div class="modal fade" id="adminEditModal_{{ $admin->id }}" data-backdrop="static">
+        <div class="modal fade" id="admintEditModal-{{ $admin->id }}" data-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
                     <div class="modal-header p-2 rounded-0">
