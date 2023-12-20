@@ -29,12 +29,12 @@
                             <div class="card-body px-3">
                                 <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-6">
                                     <span class="text-start w-xl-225px">Today's Entry :</span> <span
-                                        class="text-end ms-3">10</span>
+                                        class="text-end ms-3">{{$attendanceToday['check_in']}}</span>
                                 </a>
                                 <div class="my-2">
                                     <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-7">
                                         <span class="text-start w-xl-225px">Today's Check-Out :</span> <span
-                                            class="text-end ms-3">10</span>
+                                            class="text-end ms-3">{{$attendanceToday['check_out']}}</span>
                                     </a>
                                 </div>
                                 <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-7">

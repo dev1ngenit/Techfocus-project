@@ -339,10 +339,10 @@
                                     <div class="col-lg-3">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicpill-phoneno-input">Employee Code</label>
-                                            <input maxlength="15" type="text"
+                                            <input type="text"
                                                 class="form-control form-control-sm allow_decimal"
                                                 placeholder="Enter Employee Code" name="employee_id"
-                                                value="{{ $admin->employee_id }}" />
+                                                maxlength="15" value="{{ $admin->employee_id }}" />
                                         </div>
                                     </div>
                                     <div class="col-lg-5">
