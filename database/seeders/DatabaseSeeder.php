@@ -41,6 +41,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Khandker Shahed',
                 'username' => 'shahed141123',
                 'email' => 'khandkershahed23@gmail.com',
+                'employee_id' => '106',
                 'password' => Hash::make('password'),
                 'role' => json_encode('admin'),
                 'email_verified_at' => now(),
