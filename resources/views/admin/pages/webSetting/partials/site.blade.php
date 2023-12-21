@@ -9,8 +9,9 @@
                 data-placeholder="Select an Product Type" data-allow-clear="true">
                 <option></option>
                 @foreach (getAllCountry() as $country)
-                    <option @selected($country->id == $site->country_id) value="{{ $country->id }}">{{ $country->name }}</option>
+                    <option value="{{ $country->id }}" @selected($country->id == $site->country_id)>{{ $country->name }}</option>
                 @endforeach
+                
             </select>
             @error('country_id')
                 <div class="invalid-feedback"> {{ $message }}</div>
@@ -22,7 +23,7 @@
                 name="company_id" data-control="select2" data-placeholder="Select an option" data-allow-clear="true">
                 <option></option>
                 @foreach ($companies as $company)
-                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                    <option value="{{ $company->id }}" @selected($company->id == $site->company_id)>{{ $company->name }}</option>
                 @endforeach
             </select>
             @error('company_id')

@@ -604,16 +604,16 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion">
                         <div class="menu-item">
-                            <a class="menu-link" href="{{route('admin.hr.dashboard')}}">
+                            <a class="menu-link" href="{{ route('admin.hr.dashboard') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
                                 <span class="menu-title">Dashboard</span>
                             </a>
                         </div>
-                        
+
                         <div data-kt-menu-trigger="click"
-                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), ['admin.employee-category.index', 'admin.employee-department.index','admin.employee.index']) ? 'here show' : '' }}">
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), ['admin.employee-category.index', 'admin.employee-department.index', 'admin.employee.index']) ? 'here show' : '' }}">
                             <span class="menu-link">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
@@ -768,6 +768,66 @@
                         </span>
                         <span class="menu-title">Calendar</span>
                     </a>
+                </div>
+
+                @php
+                    $setting = ['admin.web.setting',];
+                @endphp
+                <div data-kt-menu-trigger="click"
+                    class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $setting) ? 'here show' : '' }}">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/ecommerce/ecm001.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <i class="fa-solid fa-user-tie side_baricon"></i>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </span>
+                        <span class="menu-title">Settings</span>
+                        <span class="menu-arrow"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-accordion">
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('admin.web.setting') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Setting</span>
+                            </a>
+                        </div>
+
+                        <div data-kt-menu-trigger="click"
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $supplychain) ? 'here show' : '' }}">
+                            <span class="menu-link">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Leave</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <div class="menu-sub menu-sub-accordion">
+
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.brand.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.brand.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Applications</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.category.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.category.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Categories</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="menu-item">
                     <div class="menu-content pt-8 pb-0">

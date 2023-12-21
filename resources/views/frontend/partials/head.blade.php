@@ -1,5 +1,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="shortcut icon" href="{{ !empty($site->site_icon) && file_exists(public_path('storage/webSetting/siteIcon/'. $site->site_icon)) ? asset('storage/webSetting/siteIcon/'. $site->site_icon) : asset('backend/images/no-image-available.png') }}" />
 <title>Tech Focus</title>
 @yield('metadata')
 <!-- *********************************CSS Start*********************************** -->
