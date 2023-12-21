@@ -99,10 +99,9 @@ class EmployeeController extends Controller
             'city'                                          => $request->city,
             'postal'                                        => $request->postal,
             'last_seen'                                     => $request->last_seen,
-            'role'                                          => $request->role,
-            'department'                                    => $request->department,
-            'status'                                        => $request->status,
-            'email_verified_at'                             => $request->email_verified_at,
+            'role'                                          => json_encode($request->role),
+            'department'                                    => json_encode($request->department),
+            'status'                                        => 'active',
             'password'                                      => Hash::make($request->password),
             'employee_category_id'                          => $request->employee_category_id,
             'employee_id'                                   => $request->employee_id,
@@ -179,10 +178,10 @@ class EmployeeController extends Controller
             'sisters_total'                                 => $request->sisters_total,
             'siblings_contact_info_one'                     => $request->siblings_contact_info_one,
             'siblings_contact_info_two'                     => $request->siblings_contact_info_two,
-            'sign'                    => $globalFunSign['status'] == 1 ? $globalFunSign['file_name'] : null,
-            'ceo_sign'                => $globalFunCeoSign['status'] == 1 ? $globalFunCeoSign['file_name'] : null,
-            'operation_director_sign' => $globalFunOperationDirectorSign['status'] == 1 ? $globalFunOperationDirectorSign['file_name'] : null,
-            'managing_director_sign'  => $globalFunManagingDirectorSign['status'] == 1 ? $globalFunManagingDirectorSign['file_name'] : null,
+            'sign'                                          => $globalFunSign['status'] == 1 ? $globalFunSign['file_name'] : null,
+            'ceo_sign'                                      => $globalFunCeoSign['status'] == 1 ? $globalFunCeoSign['file_name'] : null,
+            'operation_director_sign'                       => $globalFunOperationDirectorSign['status'] == 1 ? $globalFunOperationDirectorSign['file_name'] : null,
+            'managing_director_sign'                        => $globalFunManagingDirectorSign['status'] == 1 ? $globalFunManagingDirectorSign['file_name'] : null,
             'sign_date'                                     => $request->sign_date,
             'evaluation_date'                               => $request->evaluation_date,
             'casual_leave_due_as_on'                        => $request->casual_leave_due_as_on,
@@ -329,10 +328,9 @@ class EmployeeController extends Controller
             'city'                                          => $request->city,
             'postal'                                        => $request->postal,
             'last_seen'                                     => $request->last_seen,
-            'role'                                          => $request->role,
-            'department'                                    => $request->department,
-            'status'                                        => $request->status,
-            'email_verified_at'                             => $request->email_verified_at,
+            'role'                                          => json_encode($request->role),
+            'department'                                    => json_encode($request->department),
+            'status'                                        => 'active',
             'password'                                      => (!empty($request->password) ? Hash::make($request->password) : $admins->password),
             'employee_category_id'                          => $request->employee_category_id,
             'employee_id'                                   => $request->employee_id,
@@ -428,8 +426,8 @@ class EmployeeController extends Controller
             'acknowledgement'                               => $request->acknowledgement,
 
         ]);
-        Session::flash('success', 'Data has been saved successfully!');
-        return redirect()->back()->with('success', 'Data has been saved successfully!');
+        Session::flash('success', 'Data has been updated successfully!');
+        return redirect()->back()->with('success', 'Data has been updated successfully!');
     }
 
     /**
