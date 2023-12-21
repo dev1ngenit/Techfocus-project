@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('rows', function (Blueprint $table) {
             $table->id();
             $table->string('badge')->nullable();
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('slug')->unique()->nullable();
             $table->string('image')->nullable();
             $table->mediumText('short_des')->nullable();

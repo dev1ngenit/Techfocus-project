@@ -24,7 +24,7 @@ class Industry extends Model
     {
         return $this->belongsToMany(Product::class, 'industry_products');
     }
-    
+
     public function children()
     {
         return $this->hasMany(Industry::class, 'parent_id');
@@ -32,7 +32,7 @@ class Industry extends Model
 
     public function rowOne()
     {
-        return $this->belongsTo(Row::class, 'row_four_id');
+        return $this->belongsTo(Row::class, 'row_one_id');
     }
     public function rowThree()
     {
@@ -41,5 +41,10 @@ class Industry extends Model
     public function rowFive()
     {
         return $this->belongsTo(Row::class, 'row_five_id');
+    }
+
+    public function parentName()
+    {
+        return Industry::where('id', $this->parent_id)->value('name');
     }
 }

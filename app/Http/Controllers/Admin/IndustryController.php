@@ -9,6 +9,9 @@ use App\Models\Admin\SolutionCard;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\IndustryRequest;
+use Illuminate\Http\Request;
+use App\Models\Admin\NewsTrend;
+use App\Models\Admin\SolutionDetail;
 
 class IndustryController extends Controller
 {
@@ -30,7 +33,9 @@ class IndustryController extends Controller
      */
     public function create()
     {
-        $data['industryParentID'] =  Industry::get(['id', 'name']);
+        $data['industryParents'] =  Industry::get(['id', 'name']);
+        $data['solutionDetails'] =  SolutionDetail::get(['id', 'name']);
+        $data['newsTrends'] =  NewsTrend::get(['id', 'title']);
         return view('admin.pages.industry.create', $data);
     }
 
@@ -40,7 +45,7 @@ class IndustryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(IndustryRequest $request)
+    public function store(Request $request)
     {
         $RowsMainFileImageOne   = $request->file('rows_image_one');
         $RowsMainFileImageThree = $request->file('rows_image_three');
@@ -48,6 +53,7 @@ class IndustryController extends Controller
 
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
+        $bannerImageFile = $request->file('banner_image');
 
         $filePathRowsImageOnes  = storage_path('app/public/row/');
         $filePathRowsImageThree = storage_path('app/public/row/');
@@ -55,6 +61,7 @@ class IndustryController extends Controller
 
         $filePathImage = storage_path('app/public/industry/image');
         $filePathLogo = storage_path('app/public/industry/logo');
+        $filePathBannerImage = storage_path('app/public/industry/banner-image');
 
         if (!empty($mainFile)) {
             $globalFunImage = customUpload($mainFile, $filePathImage);
@@ -66,6 +73,12 @@ class IndustryController extends Controller
             $globalFunLogo = customUpload($logoFile, $filePathLogo);
         } else {
             $globalFunLogo = ['status' => 0];
+        }
+
+        if (!empty($bannerImageFile)) {
+            $globalFunBannerImage = customUpload($bannerImageFile, $filePathBannerImage);
+        } else {
+            $globalFunBannerImage = ['status' => 0];
         }
 
         if (!empty($RowsMainFileImageOne)) {
@@ -95,13 +108,13 @@ class IndustryController extends Controller
             'description' => $request->row_one_description,
         ]);
 
-        $rowFourId = Row::create([
-            'badge'       => $request->row_four_badge,
-            'title'       => $request->row_four_title,
+        $rowThreeId = Row::create([
+            'badge'       => $request->row_three_badge,
+            'title'       => $request->row_three_title,
             'image'       => $globalFunRowsImageThree['status'] == 1 ? $globalFunRowsImageThree['file_name'] : null,
-            'btn_name'    => $request->row_four_btn_name,
-            'link'        => $request->row_four_link,
-            'description' => $request->row_four_description,
+            'btn_name'    => $request->row_three_btn_name,
+            'link'        => $request->row_three_link,
+            'description' => $request->row_three_description,
         ]);
 
         $rowFiveId = Row::create([
@@ -119,28 +132,32 @@ class IndustryController extends Controller
             'description'             => $request->description,
             'image'                   => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
             'logo'                    => $globalFunLogo['status']  == 1 ? $globalFunLogo['file_name'] : null,
+            'banner_image'                    => $globalFunBannerImage['status']  == 1 ? $globalFunBannerImage['file_name'] : null,
             'website_url'             => $request->website_url,
 
             'row_one_id'              => $rowOneId->id,
-            'row_three_id'            => $rowFourId->id,
+            'row_three_id'            => $rowThreeId->id,
             'row_five_id'             => $rowFiveId->id,
 
-            'solution_one_id'         => $request->solution_one_id,
-            'solution_two_id'         => $request->solution_two_id,
-            'solution_three_id'       => $request->solution_three_id,
-            'solution_four_id'        => $request->solution_four_id,
-            'client_story_id'         => $request->client_story_id,
-            'header'                  => $request->header,
-            'btn_one_name'            => $request->btn_one_name,
-            'btn_one_link'            => $request->btn_one_link,
-            'row_four_title'          => $request->row_four_title,
-            'row_four_header'         => $request->row_four_header,
-            'row_four_col_one_title'  => $request->row_four_col_one_title,
-            'row_four_col_one_header' => $request->row_four_col_one_header,
-            'row_four_col_two_title'  => $request->row_four_col_two_title,
-            'row_four_col_two_header' => $request->row_four_col_two_header,
-            'footer_title'            => $request->footer_title,
-            'footer_header'           => $request->footer_header,
+            'solution_one_id'              => $request->solution_one_id,
+            'solution_two_id'              => $request->solution_two_id,
+            'solution_three_id'            => $request->solution_three_id,
+            'solution_four_id'             => $request->solution_four_id,
+            'client_story_id'              => $request->client_story_id,
+            'header'                       => $request->header,
+
+            'row_four_title'               => $request->row_four_title,
+            'row_four_header'              => $request->row_four_header,
+            'row_four_col_one_title'       => $request->row_four_col_one_title,
+            'row_four_col_one_header'      => $request->row_four_col_one_header,
+            'row_four_col_two_title'       => $request->row_four_col_two_title,
+            'row_four_col_two_header'      => $request->row_four_col_two_header,
+            'footer_title'                 => $request->footer_title,
+            'footer_header'                => $request->footer_header,
+            'row_four_col_one_button_name' => $request->row_four_col_one_button_name,
+            'row_four_col_one_button_link' => $request->row_four_col_one_button_link,
+            'row_four_col_two_button_name' => $request->row_four_col_two_button_name,
+            'row_four_col_two_button_link' => $request->row_four_col_two_button_link,
         ]);
 
         return redirect()->back()->with('success', 'Data has been saved successfully!');
@@ -165,9 +182,11 @@ class IndustryController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.pages.industry.create', [
-            'industries' =>  Industry::find($id),
-            'industryParentID' =>  Industry::get(['id', 'name']),
+        return view('admin.pages.industry.edit', [
+            'industry' =>  Industry::with('rowOne', 'rowThree', 'rowFive')->findOrFail($id),
+            'industryParents' =>  Industry::get(['id', 'name']),
+            'solutionDetails' =>  SolutionDetail::get(['id', 'name']),
+            'newsTrends' =>  NewsTrend::get(['id', 'title']),
         ]);
     }
 
@@ -178,7 +197,7 @@ class IndustryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(IndustryRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $industry = Industry::with('rowOne', 'rowThree', 'rowFive')->find($id);
 
@@ -188,6 +207,8 @@ class IndustryController extends Controller
 
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
+        $bannerImageFile = $request->file('banner_image');
+
 
         $filePathRowsImageOnes  = storage_path('app/public/row/');
         $filePathRowsImageThree = storage_path('app/public/row/');
@@ -195,12 +216,13 @@ class IndustryController extends Controller
 
         $filePathImage = storage_path('app/public/industry/image');
         $filePathLogo = storage_path('app/public/industry/logo');
+        $filePathBannerImage = storage_path('app/public/industry/banner-image');
 
         if (!empty($mainFile)) {
             $globalFunImage = customUpload($mainFile, $filePathImage);
 
             $paths = [
-                storage_path("'app/public/industry/image/{$industry->image}"),
+                storage_path("app/public/industry/image/{$industry->image}"),
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -214,7 +236,7 @@ class IndustryController extends Controller
         if (!empty($logoFile)) {
             $globalFunLogo = customUpload($logoFile, $filePathLogo);
             $paths = [
-                storage_path("'app/public/industry/logo/{$industry->logo}"),
+                storage_path("app/public/industry/logo/{$industry->logo}"),
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -223,6 +245,20 @@ class IndustryController extends Controller
             }
         } else {
             $globalFunLogo = ['status' => 0];
+        }
+
+        if (!empty($bannerImageFile)) {
+            $globalFunBannerImage = customUpload($bannerImageFile, $filePathBannerImage);
+            $paths = [
+                storage_path("app/public/industry/banner-image/{$industry->banner_image}"),
+            ];
+            foreach ($paths as $path) {
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+            }
+        } else {
+            $globalFunBannerImage = ['status' => 0];
         }
 
         if (!empty($RowsMainFileImageOne)) {
@@ -276,13 +312,13 @@ class IndustryController extends Controller
             'description' => $request->row_one_description,
         ]);
 
-        $rowFourId = $industry->rowThree->update([
-            'badge'       => $request->row_four_badge,
-            'title'       => $request->row_four_title,
+        $rowThreeId = $industry->rowThree->update([
+            'badge'       => $request->row_three_badge,
+            'title'       => $request->row_three_title,
             'image'       => $globalFunRowsImageThree['status'] == 1 ? $globalFunRowsImageThree['file_name'] : $industry->rowThree->image,
-            'btn_name'    => $request->row_four_btn_name,
-            'link'        => $request->row_four_link,
-            'description' => $request->row_four_description,
+            'btn_name'    => $request->row_three_btn_name,
+            'link'        => $request->row_three_link,
+            'description' => $request->row_three_description,
         ]);
 
         $rowFiveId = $industry->rowFive->update([
@@ -300,28 +336,32 @@ class IndustryController extends Controller
             'description'             => $request->description,
             'image'                   => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] :  $industry->image,
             'logo'                    => $globalFunLogo['status']  == 1 ? $globalFunLogo['file_name'] :  $industry->logo,
+            'banner_image'            => $globalFunBannerImage['status']  == 1 ? $globalFunBannerImage['file_name'] :  $industry->banner_image,
             'website_url'             => $request->website_url,
 
             // 'row_one_id'              => $rowOneId->id,
-            // 'row_three_id'            => $rowFourId->id,
+            // 'row_three_id'            => $rowThreeId->id,
             // 'row_five_id'             => $rowFiveId->id,
 
-            'solution_one_id'         => $request->solution_one_id,
-            'solution_two_id'         => $request->solution_two_id,
-            'solution_three_id'       => $request->solution_three_id,
-            'solution_four_id'        => $request->solution_four_id,
-            'client_story_id'         => $request->client_story_id,
-            'header'                  => $request->header,
-            'btn_one_name'            => $request->btn_one_name,
-            'btn_one_link'            => $request->btn_one_link,
-            'row_four_title'          => $request->row_four_title,
-            'row_four_header'         => $request->row_four_header,
-            'row_four_col_one_title'  => $request->row_four_col_one_title,
-            'row_four_col_one_header' => $request->row_four_col_one_header,
-            'row_four_col_two_title'  => $request->row_four_col_two_title,
-            'row_four_col_two_header' => $request->row_four_col_two_header,
-            'footer_title'            => $request->footer_title,
-            'footer_header'           => $request->footer_header,
+            'solution_one_id'              => $request->solution_one_id,
+            'solution_two_id'              => $request->solution_two_id,
+            'solution_three_id'            => $request->solution_three_id,
+            'solution_four_id'             => $request->solution_four_id,
+            'client_story_id'              => $request->client_story_id,
+            'header'                       => $request->header,
+
+            'row_four_title'               => $request->row_four_title,
+            'row_four_header'              => $request->row_four_header,
+            'row_four_col_one_title'       => $request->row_four_col_one_title,
+            'row_four_col_one_header'      => $request->row_four_col_one_header,
+            'row_four_col_two_title'       => $request->row_four_col_two_title,
+            'row_four_col_two_header'      => $request->row_four_col_two_header,
+            'footer_title'                 => $request->footer_title,
+            'footer_header'                => $request->footer_header,
+            'row_four_col_one_button_name' => $request->row_four_col_one_button_name,
+            'row_four_col_one_button_link' => $request->row_four_col_one_button_link,
+            'row_four_col_two_button_name' => $request->row_four_col_two_button_name,
+            'row_four_col_two_button_link' => $request->row_four_col_two_button_link,
         ]);
 
         return redirect()->back()->with('success', 'Data has been saved successfully!');
@@ -338,8 +378,9 @@ class IndustryController extends Controller
         $industry = Industry::with('rowOne', 'rowThree', 'rowFive')->find($id);
 
         $paths = [
-            storage_path("'app/public/industry/image/{$industry->image}"),
-            storage_path("'app/public/industry/logo/{$industry->logo}"),
+            storage_path("app/public/industry/image/{$industry->image}"),
+            storage_path("app/public/industry/logo/{$industry->logo}"),
+            storage_path("app/public/industry/banner-image/{$industry->banner_image}"),
             storage_path("app/public/row/{$industry->rowOne->image}"),
             storage_path("app/public/row/{$industry->rowThree->image}"),
             storage_path("app/public/row/{$industry->rowFive->image}"),

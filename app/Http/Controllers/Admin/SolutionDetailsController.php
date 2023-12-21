@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Industry;
 use App\Models\Admin\SolutionCard;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Brand;
 use App\Models\Admin\SolutionDetail;
 use Illuminate\Support\Facades\File;
 
@@ -20,8 +21,9 @@ class SolutionDetailsController extends Controller
      */
     public function index()
     {
-        $data['solutionDetails'] = SolutionDetail::latest('id')->get(['name']);
-        return view('admin.pages.solutionDetails.index',$data);
+        return view('admin.pages.solutionDetails.index', [
+            'solutionDetails' => SolutionDetail::get(),
+        ]);
     }
 
     /**
@@ -33,6 +35,7 @@ class SolutionDetailsController extends Controller
     {
         return view('admin.pages.solutionDetails.create', [
             'industries' => Industry::get(['id', 'name']),
+            'brands' => Brand::get(['id', 'name']),
         ]);
     }
 
@@ -273,8 +276,9 @@ class SolutionDetailsController extends Controller
     public function edit($id)
     {
         return view('admin.pages.solutionDetails.edit', [
-            'solutionDetail' => SolutionDetail::find($id),
+            'solutionDetail' => SolutionDetail::with('rowOne', 'rowFour', 'solutionCardOne', 'solutionCardTwo', 'solutionCardThree', 'solutionCardFour', 'solutionCardFive', 'solutionCardSix', 'solutionCardSeven', 'solutionCardEight')->find($id),
             'industries' => Industry::get(['id', 'name']),
+            'brands' => Brand::get(['id', 'name']),
         ]);
     }
 
@@ -291,6 +295,8 @@ class SolutionDetailsController extends Controller
 
         $BannerMainFileImage    = $request->file('banner_image');
         $ThumbnailMainFileImage = $request->file('thumbnail_image');
+
+        $RowsMainFileImageFour  = $request->file('rows_image_four');
         
         $solutionCardMainFileImageOne   = $request->file('solution_card_image_one');
         $solutionCardMainFileImageTwo   = $request->file('solution_card_image_two');
@@ -302,7 +308,7 @@ class SolutionDetailsController extends Controller
         $solutionCardMainFileImageEight = $request->file('solution_card_image_eight');
 
         $filePathRowsImageFours         = storage_path('app/public/row/');
-        
+
         $filePathBannerImage            = storage_path('app/public/solution-details/banner-image/');
         $filePathThumbnailImage         = storage_path('app/public/solution-details/thumbnail-image/');
 
@@ -314,8 +320,6 @@ class SolutionDetailsController extends Controller
         $filePathSolutionCardImageSix   = storage_path('app/public/solution-card/');
         $filePathSolutionCardImageSeven = storage_path('app/public/solution-card/');
         $filePathSolutionCardImageEight = storage_path('app/public/solution-card/');
-
-       
 
         if (!empty($RowsMainFileImageFour)) {
             $globalFunRowsImageFours  = customUpload($RowsMainFileImageFour, $filePathRowsImageFours);
@@ -510,53 +514,53 @@ class SolutionDetailsController extends Controller
         ]);
 
         $solutionCardThreeId = $solutionDetail->solutionCardThree->update([
-            'badge'       => $request->solutionCardTwoId_badge,
-            'title'       => $request->solutionCardTwoId_title,
+            'badge'       => $request->solutionCardThreeId_badge,
+            'title'       => $request->solutionCardThreeId_title,
             'image'         => $globalFunSolutionCardImageThree['status'] == 1 ? $globalFunSolutionCardImageThree['file_name'] : $solutionDetail->solutionCardThree->image,
-            'short_des'   => $request->solutionCardTwoId_short_des,
-            'link'        => $request->solutionCardTwoId_link,
-            'button_name' => $request->solutionCardTwoId_button_name,
+            'short_des'   => $request->solutionCardThreeId_short_des,
+            'link'        => $request->solutionCardThreeId_link,
+            'button_name' => $request->solutionCardThreeId_button_name,
         ]);
 
         $solutionCardFourId = $solutionDetail->solutionCardFour->update([
-            'badge'       => $request->solutionCardTwoId_badge,
-            'title'       => $request->solutionCardTwoId_title,
+            'badge'       => $request->solutionCardFourId_badge,
+            'title'       => $request->solutionCardFourId_title,
             'image'         => $globalFunSolutionCardImageFour['status'] == 1 ? $globalFunSolutionCardImageFour['file_name'] : $solutionDetail->solutionCardFour->image,
-            'short_des'   => $request->solutionCardTwoId_short_des,
-            'link'        => $request->solutionCardTwoId_link,
-            'button_name' => $request->solutionCardTwoId_button_name,
+            'short_des'   => $request->solutionCardFourId_short_des,
+            'link'        => $request->solutionCardFourId_link,
+            'button_name' => $request->solutionCardFourId_button_name,
         ]);
         $solutionCardFiveId = $solutionDetail->solutionCardFive->update([
-            'badge'       => $request->solutionCardTwoId_badge,
-            'title'       => $request->solutionCardTwoId_title,
+            'badge'       => $request->solutionCardFiveId_badge,
+            'title'       => $request->solutionCardFiveId_title,
             'image'         => $globalFunSolutionCardImageFive['status'] == 1 ? $globalFunSolutionCardImageFive['file_name'] : $solutionDetail->solutionCardFive->image,
-            'short_des'   => $request->solutionCardTwoId_short_des,
-            'link'        => $request->solutionCardTwoId_link,
-            'button_name' => $request->solutionCardTwoId_button_name,
+            'short_des'   => $request->solutionCardFiveId_short_des,
+            'link'        => $request->solutionCardFiveId_link,
+            'button_name' => $request->solutionCardFiveId_button_name,
         ]);
         $solutionCardSixId = $solutionDetail->solutionCardSix->update([
-            'badge'       => $request->solutionCardTwoId_badge,
-            'title'       => $request->solutionCardTwoId_title,
+            'badge'       => $request->solutionCardSixId_badge,
+            'title'       => $request->solutionCardSixId_title,
             'image'         => $globalFunSolutionCardImageSix['status'] == 1 ? $globalFunSolutionCardImageSix['file_name'] : $solutionDetail->solutionCardSix->image,
-            'short_des'   => $request->solutionCardTwoId_short_des,
-            'link'        => $request->solutionCardTwoId_link,
-            'button_name' => $request->solutionCardTwoId_button_name,
+            'short_des'   => $request->solutionCardSixId_short_des,
+            'link'        => $request->solutionCardSixId_link,
+            'button_name' => $request->solutionCardSixId_button_name,
         ]);
         $solutionCardSevenId = $solutionDetail->solutionCardSeven->update([
-            'badge'       => $request->solutionCardTwoId_badge,
-            'title'       => $request->solutionCardTwoId_title,
+            'badge'       => $request->solutionCardSevenId_badge,
+            'title'       => $request->solutionCardSevenId_title,
             'image'         => $globalFunSolutionCardImageSeven['status'] == 1 ? $globalFunSolutionCardImageSeven['file_name'] : $solutionDetail->solutionCardSeven->image,
-            'short_des'   => $request->solutionCardTwoId_short_des,
-            'link'        => $request->solutionCardTwoId_link,
-            'button_name' => $request->solutionCardTwoId_button_name,
+            'short_des'   => $request->solutionCardSevenId_short_des,
+            'link'        => $request->solutionCardSevenId_link,
+            'button_name' => $request->solutionCardSevenId_button_name,
         ]);
         $solutionCardEightId = $solutionDetail->solutionCardEight->update([
-            'badge'       => $request->solutionCardTwoId_badge,
-            'title'       => $request->solutionCardTwoId_title,
+            'badge'       => $request->solutionCardEightId_badge,
+            'title'       => $request->solutionCardEightId_title,
             'image'         => $globalFunSolutionCardImageEight['status'] == 1 ? $globalFunSolutionCardImageEight['file_name'] : $solutionDetail->solutionCardEight->image,
-            'short_des'   => $request->solutionCardTwoId_short_des,
-            'link'        => $request->solutionCardTwoId_link,
-            'button_name' => $request->solutionCardTwoId_button_name,
+            'short_des'   => $request->solutionCardEightId_short_des,
+            'link'        => $request->solutionCardEightId_link,
+            'button_name' => $request->solutionCardEightId_button_name,
         ]);
 
         $solutionDetail->update([

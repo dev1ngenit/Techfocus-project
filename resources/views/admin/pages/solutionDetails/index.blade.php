@@ -34,11 +34,40 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
+                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0 p-4"
+                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
+                                        Export Report
+                                    </button>
 
                                     <a href="{{ route('admin.solution-details.create') }}" type="button"
                                         class="btn btn-sm btn-light-success rounded-0">
                                         Add New
                                     </a>
+                                    <div id="kt_datatable_example_1_export_menu"
+                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
+                                        data-kt-menu="true">
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
+                                                Copy to clipboard
+                                            </a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
+                                                Export as Excel
+                                            </a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
+                                                Export as CSV
+                                            </a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
+                                                Export as PDF
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -51,8 +80,8 @@
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th width="5%">Sl</th>
                                     <th width="10%">Image</th>
-                                    <th width="55%">Title</th>
-                                    <th width="10%">Action</th>
+                                    <th width="75%">Name</th>
+                                    <th class="text-center" width="10%">Action</th>
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
                                 @if (count($solutionDetails) > 0)
@@ -69,49 +98,22 @@
                                             <td>
                                                 {{ $solutionDetail->name }}
                                             </td>
-                                            <td>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <a href="#"
-                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                        data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
-                                                        <i class="fa-solid fa-expand"></i>
-                                                    </a>
-                                                    <a href="{{ route('admin.solution-details.edit', $solutionDetail->id) }}"
-                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                        data-bs-toggle="modal" data-bs-target="#TermsPoliciesEditModal">
-                                                        <i class="fa-solid fa-pen"></i>
-                                                    </a>
-                                                    <a href="{{ route('admin.solution-details.destroy', $solutionDetail->id) }}"
-                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                        data-kt-docs-table-filter="delete_row">
-                                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                    </a>
-                                                </div>
+                                            <td class="d-flex justify-content-between align-items-center">
+                                                <a href="{{ route('admin.solution-details.edit', $solutionDetail->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                    <i class="fa-solid fa-pen"></i>
+                                                </a>
+                                                <a href="{{ route('admin.solution-details.destroy', $solutionDetail->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                    data-kt-docs-table-filter="delete_row">
+                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 @endif
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- View Modal --}}
-    <div class="modal fade" id="TermsPoliciesViewModal" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title ps-5">View Solution Details</h5>
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="container px-0">
-                        <div class="row"></div>
                     </div>
                 </div>
             </div>
