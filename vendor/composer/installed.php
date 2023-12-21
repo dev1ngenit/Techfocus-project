@@ -3,26 +3,13 @@
         'name' => 'shahed/laravel-breeze-multi-auth-admin',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-<<<<<<< HEAD
-        'reference' => '177e6c95fbf6f41914877415985f6c75f71f92cc',
-=======
-        'reference' => '120dd60a93a8a49c7531c56389e4e3b2c2ce21f9',
->>>>>>> e67f68834255d0e20bc0d5a59b6dd790bec4cd2c
+        'reference' => 'd41e4ef1587e2f41a04c3aa404f03909f679474b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'barryvdh/laravel-debugbar' => array(
-            'pretty_version' => 'v3.9.2',
-            'version' => '3.9.2.0',
-            'reference' => 'bfd0131c146973cab164e50f5cdd8a67cc60cab1',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../barryvdh/laravel-debugbar',
-            'aliases' => array(),
-            'dev_requirement' => true,
-        ),
         'barryvdh/laravel-ide-helper' => array(
             'pretty_version' => 'v2.13.0',
             'version' => '2.13.0.0',
@@ -539,6 +526,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'laravel/telescope' => array(
+            'pretty_version' => 'v4.17.3',
+            'version' => '4.17.3.0',
+            'reference' => '17a420d0121b03ea90648dd4484b62abe6d3e261',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/telescope',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'laravel/tinker' => array(
             'pretty_version' => 'v2.8.2',
             'version' => '2.8.2.0',
@@ -592,15 +588,6 @@
             'install_path' => __DIR__ . '/../league/mime-type-detection',
             'aliases' => array(),
             'dev_requirement' => false,
-        ),
-        'maximebf/debugbar' => array(
-            'pretty_version' => 'v1.19.1',
-            'version' => '1.19.1.0',
-            'reference' => '03dd40a1826f4d585ef93ef83afa2a9874a00523',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../maximebf/debugbar',
-            'aliases' => array(),
-            'dev_requirement' => true,
         ),
         'mockery/mockery' => array(
             'pretty_version' => '1.6.7',
@@ -1143,11 +1130,7 @@
         'shahed/laravel-breeze-multi-auth-admin' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-<<<<<<< HEAD
-            'reference' => '177e6c95fbf6f41914877415985f6c75f71f92cc',
-=======
-            'reference' => '120dd60a93a8a49c7531c56389e4e3b2c2ce21f9',
->>>>>>> e67f68834255d0e20bc0d5a59b6dd790bec4cd2c
+            'reference' => 'd41e4ef1587e2f41a04c3aa404f03909f679474b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
