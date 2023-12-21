@@ -37,10 +37,24 @@
                                             class="text-end ms-3">{{$attendanceToday['check_out']}}</span>
                                     </a>
                                 </div>
-                                <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-7">
+                                <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-7"
+                                data-bs-toggle="modal" data-bs-target="#lateCount">
                                     <span class="text-start w-xl-225px">Late Count (This Month) :</span> <span
-                                        class="text-end ms-3">10</span>
+                                        class="text-end ms-3">{{count($lateCounts)}}</span>
                                 </a>
+                                <div class="mt-2 d-flex justify-content-between align-items-center">
+                                    <a href="#" class="card-title fw-bolder main_color text-hover-primary fs-7"
+                                    data-bs-toggle="modal" data-bs-target="#thisMonth">
+                                        <span class="text-start">This Month</span> <span
+                                            class="ms-3"><i class="fas fa-arrow-right"></i></span>
+                                    </a>
+                                    <a href="#" class="card-title fw-bolder main_color text-hover-primary fs-7"
+                                    data-bs-toggle="modal" data-bs-target="#lastMonth">
+                                        <span class="">Last Month</span> <span
+                                            class="ms-3"><i class="fas fa-arrow-right"></i></span>
+                                    </a>
+                                    @include('admin.partials.attendance_modals')
+                                </div>
                             </div>
                             <!--end::Body-->
                         </div>

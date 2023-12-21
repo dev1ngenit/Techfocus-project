@@ -157,7 +157,7 @@ var KTDatatablesExample = function () {
   // Public methods
   return {
     init: function () {
-      table = document.querySelector('#kt_datatable_example');
+      table = document.querySelector('#kt_datatable_example, .kt_datatable_example');
 
       if (!table) {
         return;

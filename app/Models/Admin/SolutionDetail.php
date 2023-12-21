@@ -46,75 +46,75 @@ class SolutionDetail extends Model
     }
 
     /**
-     * Get the Row Four that owns the SolutionDetail
+     * Get the Row Four that owns the SolutionCard
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function solutionCardOne()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_one_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_one_id');
     }
     /**
-     * Get the Row Four that owns the SolutionDetail
+     * Get the Row Four that owns the SolutionCard
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function solutionCardTwo()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_two_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_two_id');
     }
     /**
-     * Get the Row Four that owns the SolutionDetail
+     * Get the Row Four that owns the SolutionCard
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function solutionCardThree()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_three_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_three_id');
     }
     /**
-     * Get the Row Four that owns the SolutionDetail
+     * Get the Row Four that owns the SolutionCard
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function solutionCardFour()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_four_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_four_id');
     }
     /**
-     * Get the Row Four that owns the SolutionDetail
+     * Get the Row Four that owns the SolutionCard
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function solutionCardFive()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_five_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_five_id');
     }
     /**
-     * Get the Row Four that owns the SolutionDetail
+     * Get the Row Four that owns the SolutionCard
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function solutionCardSix()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_six_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_six_id');
     }
     /**
-     * Get the Row Four that owns the SolutionDetail
+     * Get the Row Four that owns the SolutionCard
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function solutionCardSeven()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_seven_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_seven_id');
     }
     /**
-     * Get the Row Four that owns the SolutionDetail
+     * Get the Row Four that owns the SolutionCard
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function solutionCardEight()
     {
-        return $this->belongsTo(SolutionDetail::class, 'solution_card_eight_id');
+        return $this->belongsTo(SolutionCard::class, 'solution_card_eight_id');
     }
 }

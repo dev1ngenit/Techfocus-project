@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\Admin\Event;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Rats\Zkteco\Lib\ZKTeco;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -22,7 +23,7 @@ class HomeController extends Controller
         return $deviceip;
     }
 
-    
+
     public function index()
     {
         $id = Auth::guard('admin')->user()->employee_id;
@@ -33,7 +34,7 @@ class HomeController extends Controller
         $zk->enableDevice();
 
         // Retrieve attendances and user data from the device
-        $attendances_all = $zk->getAttendance(2);
+        $attendances_all = $zk->getEmployeeAttendance(2, $id);
         $users = $zk->getUser();
         $user = null;
 
@@ -46,7 +47,7 @@ class HomeController extends Controller
 
         // Initialize arrays to store user's attendance data for today, last week, and last month
         $attendanceToday = [];
-        $attendanceLastWeek = [];
+        $attendanceThisMonth = [];
         $attendanceLastMonth = [];
 
         if ($user) {
@@ -61,51 +62,123 @@ class HomeController extends Controller
                 return ($attendanceDate === $todayDate) && ($attendance['id'] === $id);
             });
 
+            // Initialize variables to store earliest check-in and latest check-out times
+            $earliestCheckIn = null;
+            $latestCheckOut = null;
+
             // Loop through the filtered attendances for today
             foreach ($todayAttendances as $attendance) {
                 $checkTime = date('H:i:s', strtotime($attendance['timestamp']));
 
+                // Update earliest check-in time
+                if ($earliestCheckIn === null || strtotime($checkTime) < strtotime($earliestCheckIn)) {
+                    $earliestCheckIn = $checkTime;
+                }
+
+                // Update latest check-out time
+                if ($latestCheckOut === null || strtotime($checkTime) > strtotime($latestCheckOut)) {
+                    $latestCheckOut = $checkTime;
+                }
+            }
+
+            // Add the overall attendance data for today
+            if ($earliestCheckIn !== null && $latestCheckOut !== null) {
                 $attendanceToday[] = [
                     'user_id' => $id,
                     'user_name' => $user_name,
                     'date' => $todayDate,
-                    'check_in' => $checkTime,
-                    'check_out' => $checkTime,
+                    'check_in' => $earliestCheckIn,
+                    'check_out' => $latestCheckOut,
                 ];
             }
+            $attendanceToday = count($attendanceToday) > 0 ? $attendanceToday[0] : null;
 
             // Get the first day of the current week and last day of the last week
-            $firstDayThisWeek = date('Y-m-d', strtotime('this week Monday'));
-            $lastDayLastWeek = date('Y-m-d', strtotime('last week Sunday'));
+            // Get the first day and last day of the last week
+            // $firstDayLastWeek = date('Y-m-d', strtotime('last week Monday'));
+            // $lastDayLastWeek = date('Y-m-d', strtotime('last week Sunday'));
 
-            // Filter attendances for the last week
-            $lastWeekAttendances = array_filter($attendances_all, function ($attendance) use ($id, $firstDayThisWeek, $lastDayLastWeek) {
+            // // Filter attendances for the last week
+            // $lastWeekAttendances = array_filter($attendances_all, function ($attendance) use ($id, $firstDayLastWeek, $lastDayLastWeek) {
+            //     $attendanceDate = date('Y-m-d', strtotime($attendance['timestamp']));
+            //     return ($attendanceDate >= $firstDayLastWeek) && ($attendanceDate <= $lastDayLastWeek) && ($attendance['id'] === $id);
+            // });
+
+            // // Initialize variables to store earliest check-in and latest check-out times for each day
+            // $earliestCheckInLastWeek = [];
+            // $latestCheckOutLastWeek = [];
+
+            // // Loop through the filtered attendances for the last week
+            // foreach ($lastWeekAttendances as $attendance) {
+            //     $attendanceDate = date('Y-m-d', strtotime($attendance['timestamp']));
+            //     $checkTime = date('H:i:s', strtotime($attendance['timestamp']));
+
+            //     // Update earliest check-in time
+            //     if (!isset($earliestCheckInLastWeek[$attendanceDate]) || strtotime($checkTime) < strtotime($earliestCheckInLastWeek[$attendanceDate])) {
+            //         $earliestCheckInLastWeek[$attendanceDate] = $checkTime;
+            //     }
+
+            //     // Update latest check-out time
+            //     if (!isset($latestCheckOutLastWeek[$attendanceDate]) || strtotime($checkTime) > strtotime($latestCheckOutLastWeek[$attendanceDate])) {
+            //         $latestCheckOutLastWeek[$attendanceDate] = $checkTime;
+            //     }
+            // }
+
+            // // Create entries for each day with the earliest check-in and latest check-out times
+            // foreach ($earliestCheckInLastWeek as $date => $checkIn) {
+            //     $attendanceLastWeek[] = [
+            //         'user_id' => $id,
+            //         'user_name' => $user_name,
+            //         'date' => $date,
+            //         'check_in' => $checkIn,
+            //         'check_out' => $latestCheckOutLastWeek[$date],
+            //     ];
+            // }
+
+            // Calculate the date range for this month
+            $startDate = date('Y-m-01', strtotime('this month'));
+            $endDate = date('Y-m-d');
+
+            // Filter attendances for for this month
+            $thisMonthAttendances = array_filter($attendances_all, function ($attendance) use ($id, $startDate, $endDate) {
                 $attendanceDate = date('Y-m-d', strtotime($attendance['timestamp']));
-                return ($attendanceDate >= $firstDayThisWeek) && ($attendanceDate <= $lastDayLastWeek) && ($attendance['id'] === $id);
+                return ($attendanceDate >= $startDate) && ($attendanceDate <= $endDate) && ($attendance['id'] === $id);
             });
 
-            // Loop through the filtered attendances for the last week
-            foreach ($lastWeekAttendances as $attendance) {
+            // Initialize variables to store earliest check-in and latest check-out times for each day
+            $earliestCheckInThisMonth = [];
+            $latestCheckOutThisMonth = [];
+
+            // Loop through the filtered attendances for for this month
+            foreach ($thisMonthAttendances as $attendance) {
                 $attendanceDate = date('Y-m-d', strtotime($attendance['timestamp']));
                 $checkTime = date('H:i:s', strtotime($attendance['timestamp']));
 
-                // Create a unique key for each day
-                $key = $attendanceDate;
+                // Update earliest check-in time
+                if (!isset($earliestCheckInThisMonth[$attendanceDate]) || strtotime($checkTime) < strtotime($earliestCheckInThisMonth[$attendanceDate])) {
+                    $earliestCheckInThisMonth[$attendanceDate] = $checkTime;
+                }
 
-                if (!isset($attendanceLastWeek[$key])) {
-                    $attendanceLastWeek[$key] = [
-                        'user_id' => $id,
-                        'user_name' => $user_name,
-                        'date' => $attendanceDate,
-                        'check_in' => $checkTime,
-                        'check_out' => $checkTime,
-                    ];
-                } else {
-                    if (strtotime($checkTime) > strtotime($attendanceLastWeek[$key]['check_out'])) {
-                        $attendanceLastWeek[$key]['check_out'] = $checkTime;
-                    }
+                // Update latest check-out time
+                if (!isset($latestCheckOutThisMonth[$attendanceDate]) || strtotime($checkTime) > strtotime($latestCheckOutThisMonth[$attendanceDate])) {
+                    $latestCheckOutThisMonth[$attendanceDate] = $checkTime;
                 }
             }
+
+            // Create entries for each day with the earliest check-in and latest check-out times
+            foreach ($earliestCheckInThisMonth as $date => $checkIn) {
+                $attendanceThisMonth[] = [
+                    'user_id' => $id,
+                    'user_name' => $user_name,
+                    'date' => $date,
+                    'check_in' => $checkIn,
+                    'check_out' => $latestCheckOutThisMonth[$date],
+                ];
+            }
+
+            // Now $attendanceThisMonth contains the attendance data for this month
+
+            // For Last Month
 
             // Get the first day and last day of the previous month
             $firstDayLastMonth = date('Y-m-01', strtotime('last month'));
@@ -117,38 +190,48 @@ class HomeController extends Controller
                 return ($attendanceDate >= $firstDayLastMonth) && ($attendanceDate <= $lastDayLastMonth) && ($attendance['id'] === $id);
             });
 
+            // Initialize variables to store earliest check-in and latest check-out times
+            $earliestCheckInLastMonth = [];
+            $latestCheckOutLastMonth = [];
+
             // Loop through the filtered attendances for the last month
             foreach ($lastMonthAttendances as $attendance) {
                 $attendanceDate = date('Y-m-d', strtotime($attendance['timestamp']));
                 $checkTime = date('H:i:s', strtotime($attendance['timestamp']));
 
-                // Create a unique key for each day
-                $key = $attendanceDate;
-
-                if (!isset($attendanceLastMonth[$key])) {
-                    $attendanceLastMonth[$key] = [
-                        'user_id' => $id,
-                        'user_name' => $user_name,
-                        'date' => $attendanceDate,
-                        'check_in' => $checkTime,
-                        'check_out' => $checkTime,
-                    ];
-                } else {
-                    if (strtotime($checkTime) > strtotime($attendanceLastMonth[$key]['check_out'])) {
-                        $attendanceLastMonth[$key]['check_out'] = $checkTime;
-                    }
+                // Update earliest check-in time
+                if (!isset($earliestCheckInLastMonth[$attendanceDate]) || strtotime($checkTime) < strtotime($earliestCheckInLastMonth[$attendanceDate])) {
+                    $earliestCheckInLastMonth[$attendanceDate] = $checkTime;
                 }
+
+                // Update latest check-out time
+                if (!isset($latestCheckOutLastMonth[$attendanceDate]) || strtotime($checkTime) > strtotime($latestCheckOutLastMonth[$attendanceDate])) {
+                    $latestCheckOutLastMonth[$attendanceDate] = $checkTime;
+                }
+            }
+
+            // Create entries for each day with the earliest check-in and latest check-out times for the last month
+            foreach ($earliestCheckInLastMonth as $date => $checkIn) {
+                $attendanceLastMonth[] = [
+                    'user_id' => $id,
+                    'user_name' => $user_name,
+                    'date' => $date,
+                    'check_in' => $checkIn,
+                    'check_out' => $latestCheckOutLastMonth[$date],
+                ];
             }
         }
 
-        // Now $attendanceToday, $attendanceLastWeek, and $attendanceLastMonth contain the attendance data for the specified user
-
+        $lateCounts = array_filter($attendanceThisMonth, function ($attendance) {
+            return Carbon::parse($attendance['check_in']) > Carbon::parse('09:05:00');
+        });
 
         return view('admin.pages.dashboard.index', [
-            'attendanceToday' => $attendanceToday,
-            'attendanceLastWeek' => $attendanceLastWeek,
-            'attendanceLastMonth' => $attendanceLastMonth,
-            'deviceip' => $deviceip,
+            'attendanceToday'      => isset($attendanceToday) ? $attendanceToday : null,
+            'attendanceThisMonths' => isset($attendanceThisMonth) ? $attendanceThisMonth : null,
+            'lateCounts'           => isset($lateCounts) ? $lateCounts : null,
+            'attendanceLastMonths' => isset($attendanceLastMonth) ? $attendanceLastMonth : null,
+            'deviceip'             => isset($deviceip) ? $deviceip : null,
         ]);
     }
 

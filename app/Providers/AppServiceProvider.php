@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Admin\Site;
 use App\Repositories\FaqRepository;
 use App\Repositories\SeoRepository;
 use App\Repositories\SmtpRepository;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 use App\Repositories\BrandRepository;
 use App\Repositories\EventRepository;
 use App\Repositories\AddressRepository;
@@ -100,6 +103,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::share('site', Site::first());
+        Paginator::useBootstrap();
     }
 }
