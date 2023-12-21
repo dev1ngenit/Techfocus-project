@@ -159,7 +159,6 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'banking'               => BankingController::class,
                 'attendance'            => AttendanceController::class, //not my work
                 'accounts-document'     => AccountsDocumentController::class,
-                'solution-card'         => SolutionCardController::class,
             ],
             ['except' => ['create', 'show', 'edit'],]
         );

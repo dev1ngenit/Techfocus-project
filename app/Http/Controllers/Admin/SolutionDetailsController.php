@@ -20,7 +20,8 @@ class SolutionDetailsController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.solutionDetails.index');
+        $data['solutionDetails'] = SolutionDetail::latest('id')->get(['name']);
+        return view('admin.pages.solutionDetails.index',$data);
     }
 
     /**
