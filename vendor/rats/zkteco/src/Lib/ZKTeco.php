@@ -331,9 +331,14 @@ class ZKTeco{
    *
    * @return array [uid, id, state, timestamp]
    */
-  public function getAttendance()
+  public function getAttendance($month)
   {
-    return Attendance::get($this);
+    return Attendance::get($this, $month);
+  }
+
+  public function getEmployeeAttendance($month, $id)
+  {
+    return Attendance::get($this, $month, $id);
   }
 
   /**

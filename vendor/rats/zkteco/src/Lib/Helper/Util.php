@@ -204,7 +204,7 @@ class Util
     }
 
     if ($chksum > 0) {
-      $chksum = -($chksum);
+      $chksum = - ($chksum);
     } else {
       $chksum = abs($chksum);
     }
@@ -245,7 +245,6 @@ class Util
     $buf = pack('SSSS', $command, $chksum, $session_id, $reply_id);
 
     return $buf . $command_string;
-
   }
 
   /**
@@ -391,6 +390,83 @@ class Util
 
     return $data;
   }
+
+  // Custom Code: shahed starts
+  static public function recAttendanceData(ZKTeco $self, $employeeId, $maxErrors = 10, $first = true)
+  {
+    $data = '';
+    $bytes = self::getSize($self);
+
+    if ($bytes) {
+      $received = 0;
+      $errors = 0;
+
+      while ($bytes > $received) {
+        $ret = @socket_recvfrom($self->_zkclient, $dataRec, 1032, 0, $self->_ip, $self->_port);
+
+        if ($ret === false) {
+          if ($errors < $maxErrors) {
+            // try again if false
+            $errors++;
+            sleep(1);
+            continue;
+          } else {
+            // return empty if has the maximum count of errors
+            self::logReceived($self, $received, $bytes);
+            unset($data);
+            return '';
+          }
+        }
+
+        if ($first === false) {
+          // The first 4 bytes don't seem to be related to the user
+          $dataRec = substr($dataRec, 8);
+        }
+
+        $data .= $dataRec;
+        $received += strlen($dataRec);
+
+        unset($dataRec);
+        $first = false;
+      }
+
+      // Process attendance data for a specific employee ID
+      $attendanceData = self::processAttendanceData($data, $employeeId);
+
+      // Now $attendanceData contains the attendance data for the specified employee ID
+
+      // flush socket
+      @socket_recvfrom($self->_zkclient, $dataRec, 1024, 0, $self->_ip, $self->_port);
+      unset($dataRec);
+    }
+
+    return $attendanceData;
+  }
+
+  // Helper function to process attendance data for a specific employee ID
+  static private function processAttendanceData($rawData, $employeeId)
+  {
+    // Your logic to filter and process attendance data for the specific employee ID
+    // Implement the logic to extract and organize the attendance data based on the employee ID
+    // This can include parsing the raw data, filtering by employee ID, and formatting the result
+    // Return the processed attendance data for the specified employee ID
+
+    // For demonstration purposes, let's assume the raw data is in JSON format
+    // and you want to filter by employee ID
+    $allAttendances = json_decode($rawData, true);
+
+    $filteredAttendances = array_filter($allAttendances, function ($attendance) use ($employeeId) {
+      return $attendance['employee_id'] == $employeeId;
+    });
+
+    return $filteredAttendances;
+  }
+
+  // Custom Code: shahed end
+
+
+
+
 
   /**
    * @param ZKTeco $self
