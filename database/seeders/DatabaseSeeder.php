@@ -31,12 +31,14 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Ngen It Super Admin',
                 'username' => 'NGen-Super-Admin',
                 'email' => 'ngenit@gmail.com',
+                'employee_id' => '100',
                 'password' => Hash::make('ngenitadmin'),
                 'role' => json_encode('admin'),
                 'email_verified_at' => now(),
                 'remember_token' => Str::random(10),
 
             ],
+            
             [
                 'name' => 'Khandker Shahed',
                 'username' => 'shahed141123',
