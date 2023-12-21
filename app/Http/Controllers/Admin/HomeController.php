@@ -227,11 +227,11 @@ class HomeController extends Controller
         });
 
         return view('admin.pages.dashboard.index', [
-            'attendanceToday'      => $attendanceToday,
-            'attendanceThisMonths' => $attendanceThisMonth,
-            'lateCounts'           => $lateCounts,
-            'attendanceLastMonths' => $attendanceLastMonth,
-            'deviceip'             => $deviceip,
+            'attendanceToday'      => !empty($attendanceToday) ? $attendanceToday : null,
+            'attendanceThisMonths' => !empty($attendanceThisMonth) ? $attendanceThisMonth : null,
+            'lateCounts'           => !empty($lateCounts) ? $lateCounts : null,
+            'attendanceLastMonths' => !empty($attendanceLastMonth) ? $attendanceLastMonth : null,
+            'deviceip'             => !empty($deviceip) ? $deviceip : null,
         ]);
     }
 
