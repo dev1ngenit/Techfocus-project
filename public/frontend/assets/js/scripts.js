@@ -45,227 +45,286 @@ $(document).ready(function () {
 });
 
 // Fancy Product Image
-// Mousewheel changes amount of zoom
 
+// Category Page Image
 $(document).ready(function () {
-  // You can try out different effects here
-  $(".xzoom, .xzoom-gallery").xzoom({
-    zoomWidth: 400,
-    title: true,
-    tint: "#333",
-    Xoffset: 15,
-  });
-  $(".xzoom2, .xzoom-gallery2").xzoom({
-    position: "#xzoom2-id",
-    tint: "#ffa200",
-  });
-  $(".xzoom3, .xzoom-gallery3").xzoom({
-    position: "lens",
-    lensShape: "circle",
-    sourceClass: "xzoom-hidden",
-  });
-  $(".xzoom4, .xzoom-gallery4").xzoom({ tint: "#006699", Xoffset: 15 });
-  $(".xzoom5, .xzoom-gallery5").xzoom({ tint: "#006699", Xoffset: 15 });
+  // Add a hover effect to the <a> tags inside <li> elements
+  $("ul.category-grouplist li a").hover(
+    function () {
+      // Show the .imgSubCat div when hovering
+      $(this).siblings(".imgSubCat").show();
+    },
+    function () {
+      // Hide the .imgSubCat div when the mouse leaves
+      $(this).siblings(".imgSubCat").hide();
+    }
+  );
+});
+// Category Page Image
 
-  //Integration with hammer.js
-  var isTouchSupported = "ontouchstart" in window;
+// Price Slider
 
-  if (isTouchSupported) {
-    //If touch device
-    $(".xzoom, .xzoom2, .xzoom3, .xzoom4, .xzoom5").each(function () {
-      var xzoom = $(this).data("xzoom");
-      xzoom.eventunbind();
-    });
+var minPrice = 0;
+var maxPrice = 100;
 
-    $(".xzoom, .xzoom2, .xzoom3").each(function () {
-      var xzoom = $(this).data("xzoom");
-      $(this)
-        .hammer()
-        .on("tap", function (event) {
-          event.pageX = event.gesture.center.pageX;
-          event.pageY = event.gesture.center.pageY;
-          var s = 1,
-            ls;
+// Initialize the price range slider
+$("#price-slider").ionRangeSlider({
+  type: "double",
+  grid: true,
+  min: 0,
+  max: 1000,
+  from: minPrice,
+  to: maxPrice,
+  step: 1,
+  onStart: function (data) {
+    // Initialize the input fields with initial values
+    $("#min-price").val(data.from);
+    $("#max-price").val(data.to);
+  },
+  onChange: function (data) {
+    // Update the input fields as the slider changes
+    $("#min-price").val(data.from);
+    $("#max-price").val(data.to);
+  },
+});
 
-          xzoom.eventmove = function (element) {
-            element.hammer().on("drag", function (event) {
-              event.pageX = event.gesture.center.pageX;
-              event.pageY = event.gesture.center.pageY;
-              xzoom.movezoom(event);
-              event.gesture.preventDefault();
-            });
-          };
+// Update the slider when the input values change
+$("#min-price, #max-price").on("input", function () {
+  var slider = $("#price-slider").data("ionRangeSlider");
+  var newMinPrice = parseInt($("#min-price").val());
+  var newMaxPrice = parseInt($("#max-price").val());
 
-          xzoom.eventleave = function (element) {
-            element.hammer().on("tap", function (event) {
-              xzoom.closezoom();
-            });
-          };
-          xzoom.openzoom(event);
-        });
-    });
-
-    $(".xzoom4").each(function () {
-      var xzoom = $(this).data("xzoom");
-      $(this)
-        .hammer()
-        .on("tap", function (event) {
-          event.pageX = event.gesture.center.pageX;
-          event.pageY = event.gesture.center.pageY;
-          var s = 1,
-            ls;
-
-          xzoom.eventmove = function (element) {
-            element.hammer().on("drag", function (event) {
-              event.pageX = event.gesture.center.pageX;
-              event.pageY = event.gesture.center.pageY;
-              xzoom.movezoom(event);
-              event.gesture.preventDefault();
-            });
-          };
-
-          var counter = 0;
-          xzoom.eventclick = function (element) {
-            element.hammer().on("tap", function () {
-              counter++;
-              if (counter == 1) setTimeout(openfancy, 300);
-              event.gesture.preventDefault();
-            });
-          };
-
-          function openfancy() {
-            if (counter == 2) {
-              xzoom.closezoom();
-              $.fancybox.open(xzoom.gallery().cgallery);
-            } else {
-              xzoom.closezoom();
-            }
-            counter = 0;
-          }
-          xzoom.openzoom(event);
-        });
-    });
-
-    $(".xzoom5").each(function () {
-      var xzoom = $(this).data("xzoom");
-      $(this)
-        .hammer()
-        .on("tap", function (event) {
-          event.pageX = event.gesture.center.pageX;
-          event.pageY = event.gesture.center.pageY;
-          var s = 1,
-            ls;
-
-          xzoom.eventmove = function (element) {
-            element.hammer().on("drag", function (event) {
-              event.pageX = event.gesture.center.pageX;
-              event.pageY = event.gesture.center.pageY;
-              xzoom.movezoom(event);
-              event.gesture.preventDefault();
-            });
-          };
-
-          var counter = 0;
-          xzoom.eventclick = function (element) {
-            element.hammer().on("tap", function () {
-              counter++;
-              if (counter == 1) setTimeout(openmagnific, 200);
-              event.gesture.preventDefault();
-            });
-          };
-
-          function openmagnific() {
-            if (counter == 2) {
-              xzoom.closezoom();
-              var gallery = xzoom.gallery().cgallery;
-              var i,
-                images = new Array();
-              for (i in gallery) {
-                images[i] = { src: gallery[i] };
-              }
-              $.magnificPopup.open({
-                items: images,
-                type: "image",
-                gallery: { enabled: true },
-              });
-            } else {
-              xzoom.closezoom();
-            }
-            counter = 0;
-          }
-          xzoom.openzoom(event);
-        });
-    });
-  } else {
-    //If not touch device
-
-    //Integration with fancybox plugin
-    $("#xzoom-fancy").bind("click", function (event) {
-      var xzoom = $(this).data("xzoom");
-      xzoom.closezoom();
-      $.fancybox.open(xzoom.gallery().cgallery, {
-        padding: 0,
-        helpers: { overlay: { locked: false } },
-      });
-      event.preventDefault();
-    });
-
-    //Integration with magnific popup plugin
-    $("#xzoom-magnific").bind("click", function (event) {
-      var xzoom = $(this).data("xzoom");
-      xzoom.closezoom();
-      var gallery = xzoom.gallery().cgallery;
-      var i,
-        images = new Array();
-      for (i in gallery) {
-        images[i] = { src: gallery[i] };
-      }
-      $.magnificPopup.open({
-        items: images,
-        type: "image",
-        gallery: { enabled: true },
-      });
-      event.preventDefault();
+  // Ensure that minPrice is less than or equal to maxPrice
+  if (newMinPrice <= newMaxPrice) {
+    slider.update({
+      from: newMinPrice,
+      to: newMaxPrice,
     });
   }
-
-  // Fancybox
-  $('[data-fancybox="gallery"]').fancybox({
-    // Options will go here
-  });
 });
+
+// Price Slider
+// Mousewheel changes amount of zoom
+
+
+// You can try out different effects here
+$(".xzoom, .xzoom-gallery").xzoom({
+  zoomWidth: 400,
+  title: true,
+  tint: "#333",
+  Xoffset: 15,
+});
+$(".xzoom2, .xzoom-gallery2").xzoom({
+  position: "#xzoom2-id",
+  tint: "#ffa200",
+});
+$(".xzoom3, .xzoom-gallery3").xzoom({
+  position: "lens",
+  lensShape: "circle",
+  sourceClass: "xzoom-hidden",
+});
+$(".xzoom4, .xzoom-gallery4").xzoom({ tint: "#006699", Xoffset: 15 });
+$(".xzoom5, .xzoom-gallery5").xzoom({ tint: "#006699", Xoffset: 15 });
+
+//Integration with hammer.js
+var isTouchSupported = "ontouchstart" in window;
+
+if (isTouchSupported) {
+  //If touch device
+  $(".xzoom, .xzoom2, .xzoom3, .xzoom4, .xzoom5").each(function () {
+    var xzoom = $(this).data("xzoom");
+    xzoom.eventunbind();
+  });
+
+  $(".xzoom, .xzoom2, .xzoom3").each(function () {
+    var xzoom = $(this).data("xzoom");
+    $(this)
+      .hammer()
+      .on("tap", function (event) {
+        event.pageX = event.gesture.center.pageX;
+        event.pageY = event.gesture.center.pageY;
+        var s = 1,
+          ls;
+
+        xzoom.eventmove = function (element) {
+          element.hammer().on("drag", function (event) {
+            event.pageX = event.gesture.center.pageX;
+            event.pageY = event.gesture.center.pageY;
+            xzoom.movezoom(event);
+            event.gesture.preventDefault();
+          });
+        };
+
+        xzoom.eventleave = function (element) {
+          element.hammer().on("tap", function (event) {
+            xzoom.closezoom();
+          });
+        };
+        xzoom.openzoom(event);
+      });
+  });
+
+  $(".xzoom4").each(function () {
+    var xzoom = $(this).data("xzoom");
+    $(this)
+      .hammer()
+      .on("tap", function (event) {
+        event.pageX = event.gesture.center.pageX;
+        event.pageY = event.gesture.center.pageY;
+        var s = 1,
+          ls;
+
+        xzoom.eventmove = function (element) {
+          element.hammer().on("drag", function (event) {
+            event.pageX = event.gesture.center.pageX;
+            event.pageY = event.gesture.center.pageY;
+            xzoom.movezoom(event);
+            event.gesture.preventDefault();
+          });
+        };
+
+        var counter = 0;
+        xzoom.eventclick = function (element) {
+          element.hammer().on("tap", function () {
+            counter++;
+            if (counter == 1) setTimeout(openfancy, 300);
+            event.gesture.preventDefault();
+          });
+        };
+
+        function openfancy() {
+          if (counter == 2) {
+            xzoom.closezoom();
+            $.fancybox.open(xzoom.gallery().cgallery);
+          } else {
+            xzoom.closezoom();
+          }
+          counter = 0;
+        }
+        xzoom.openzoom(event);
+      });
+  });
+
+  $(".xzoom5").each(function () {
+    var xzoom = $(this).data("xzoom");
+    $(this)
+      .hammer()
+      .on("tap", function (event) {
+        event.pageX = event.gesture.center.pageX;
+        event.pageY = event.gesture.center.pageY;
+        var s = 1,
+          ls;
+
+        xzoom.eventmove = function (element) {
+          element.hammer().on("drag", function (event) {
+            event.pageX = event.gesture.center.pageX;
+            event.pageY = event.gesture.center.pageY;
+            xzoom.movezoom(event);
+            event.gesture.preventDefault();
+          });
+        };
+
+        var counter = 0;
+        xzoom.eventclick = function (element) {
+          element.hammer().on("tap", function () {
+            counter++;
+            if (counter == 1) setTimeout(openmagnific, 200);
+            event.gesture.preventDefault();
+          });
+        };
+
+        function openmagnific() {
+          if (counter == 2) {
+            xzoom.closezoom();
+            var gallery = xzoom.gallery().cgallery;
+            var i,
+              images = new Array();
+            for (i in gallery) {
+              images[i] = { src: gallery[i] };
+            }
+            $.magnificPopup.open({
+              items: images,
+              type: "image",
+              gallery: { enabled: true },
+            });
+          } else {
+            xzoom.closezoom();
+          }
+          counter = 0;
+        }
+        xzoom.openzoom(event);
+      });
+  });
+} else {
+  //If not touch device
+
+  //Integration with fancybox plugin
+  $("#xzoom-fancy").bind("click", function (event) {
+    var xzoom = $(this).data("xzoom");
+    xzoom.closezoom();
+    $.fancybox.open(xzoom.gallery().cgallery, {
+      padding: 0,
+      helpers: { overlay: { locked: false } },
+    });
+    event.preventDefault();
+  });
+
+  //Integration with magnific popup plugin
+  $("#xzoom-magnific").bind("click", function (event) {
+    var xzoom = $(this).data("xzoom");
+    xzoom.closezoom();
+    var gallery = xzoom.gallery().cgallery;
+    var i,
+      images = new Array();
+    for (i in gallery) {
+      images[i] = { src: gallery[i] };
+    }
+    $.magnificPopup.open({
+      items: images,
+      type: "image",
+      gallery: { enabled: true },
+    });
+    event.preventDefault();
+  });
+}
+
+// Fancybox
+$('[data-fancybox="gallery"]').fancybox({
+  // Options will go here
+});
+
 
 // Fancy Box End
 
 // Project Counter For Our Service Page
 
-$.fn.jQuerySimpleCounter = function( options ) {
+$.fn.jQuerySimpleCounter = function (options) {
   var settings = $.extend({
-      start:  0,
-      end:    100,
-      easing: 'swing',
-      duration: 400,
-      complete: ''
-  }, options );
+    start: 0,
+    end: 100,
+    easing: 'swing',
+    duration: 400,
+    complete: ''
+  }, options);
 
   var thisElement = $(this);
 
-  $({count: settings.start}).animate({count: settings.end}, {
-  duration: settings.duration,
-  easing: settings.easing,
-  step: function() {
-    var mathCount = Math.ceil(this.count);
-    thisElement.text(mathCount);
-  },
-  complete: settings.complete
-});
+  $({ count: settings.start }).animate({ count: settings.end }, {
+    duration: settings.duration,
+    easing: settings.easing,
+    step: function () {
+      var mathCount = Math.ceil(this.count);
+      thisElement.text(mathCount);
+    },
+    complete: settings.complete
+  });
 };
 
 
-$('#number1').jQuerySimpleCounter({end: 12,duration: 3000});
-$('#number2').jQuerySimpleCounter({end: 55,duration: 3000});
-$('#number3').jQuerySimpleCounter({end: 359,duration: 2000});
-$('#number4').jQuerySimpleCounter({end: 246,duration: 2500});
+$('#number1').jQuerySimpleCounter({ end: 12, duration: 3000 });
+$('#number2').jQuerySimpleCounter({ end: 55, duration: 3000 });
+$('#number3').jQuerySimpleCounter({ end: 359, duration: 2000 });
+$('#number4').jQuerySimpleCounter({ end: 246, duration: 2500 });
 
 
 
@@ -299,22 +358,22 @@ function scroll_cb() {
   addClassOnScroll();
 }
 
-$(document).ready(function () {
-   window.addEventListener("scroll", throttle(scroll_cb, 100));
-  $(window).scroll(function () {
-    var scroll = $(window).scrollTop();
-    var doc = $(document).height();
-    var win = $(window).height();
-    var value =
-      (scroll / (doc - win)) *
-      90; /* this value will varie in function of your page height*/
-    $("ul .sideline").css("height", value + "%");
-  });
-  $("a.clickable").click(function () {
-    $("a.current").removeClass("current");
-    $(this).addClass("current");
-  });
+
+window.addEventListener("scroll", throttle(scroll_cb, 100));
+$(window).scroll(function () {
+  var scroll = $(window).scrollTop();
+  var doc = $(document).height();
+  var win = $(window).height();
+  var value =
+    (scroll / (doc - win)) *
+    90; /* this value will varie in function of your page height*/
+  $("ul .sideline").css("height", value + "%");
 });
+$("a.clickable").click(function () {
+  $("a.current").removeClass("current");
+  $(this).addClass("current");
+});
+
 
 
 // Initialize Draggable Table

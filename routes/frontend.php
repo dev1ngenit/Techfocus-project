@@ -1,24 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\SiteController;
 use App\Http\Controllers\Frontend\PageController;
 
-
-Route::get('/', [HomeController::class, 'homePage'])->name('homepage');
-Route::get('solution/details', [HomeController::class, 'solutionDetails'])->name('solution.details');
+Route::get('/', [SiteController::class, 'homePage'])->name('homepage');
+Route::get('solution/details', [SiteController::class, 'solutionDetails'])->name('solution.details');
+Route::get('category/{slug}', [SiteController::class, 'category'])->name('category');
+Route::get('catalog/all', [SiteController::class, 'allCatalog'])->name('catalog.all');
+Route::get('faq', [SiteController::class, 'faq'])->name('faq');
+Route::get('rfq', [SiteController::class, 'rfq'])->name('rfq');
+Route::get('contact', [SiteController::class, 'contact'])->name('contact');
+Route::get('terms', [SiteController::class, 'terms'])->name('terms');
+// Route::get('{slug}/products', [SiteController::class, 'filterProducts'])->name('filtering.products');
 
 // Brand Pages
-Route::controller(PageController::class)->group(function () {
-    Route::get('/single/product/{id}', 'productDetails')->name('product.details');
-    Route::get('/{id}/overview', 'overview')->name('brand.overview');
-    Route::get('/{id}/products', 'brandProducts')->name('brand.products');
-    Route::get('/{id}/pdfs', 'brandPdf')->name('brand.pdf');
-    Route::get('/{id}/contents', 'content')->name('brand.content');
-    // Route::get('/{id}/contents/{id}/details', 'blogDetails')->name('brand.content.details.blog');
-    // Route::get('/{id}/contents/{id}/details', 'storyDetails')->name('brand.content.details.story');
-    Route::get('/{slug}/products', 'ajaxBrandProductsPagination')->name('brand.products.pagination');
+Route::middleware('web')->group(function () {
+    Route::get('/{slug}/company', [PageController::class, 'overview'])->name('brand.overview');
+    Route::get('/{slug}/products', [PageController::class, 'brandProducts'])->name('brand.products');
+    Route::get('/single/product/{slug}', [PageController::class, 'productDetails'])->name('product.details');
+    Route::get('/{slug}/brochures', [PageController::class, 'brandPdf'])->name('brand.pdf');
+    Route::get('/pdf/{slug}', [PageController::class, 'pdfDetails'])->name('pdf.details');
+    Route::get('/{slug}/contents', [PageController::class, 'content'])->name('brand.content');
+    Route::get('/contents/{slug}', [PageController::class, 'contentDetails'])->name('content.details');
+    // Route::get('/{slug}/products', [PageController::class, 'ajaxBrandProductsPagination'])->name('brand.products.pagination');
 });
-
-
-

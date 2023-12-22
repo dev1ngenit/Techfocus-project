@@ -50,7 +50,7 @@
                                         <div class="accordion-body">
                                             <ul class="ps-3">
                                                 <li class="mb-2 menu-single-items">
-                                                    <a href="#">FLOW, PRESSURE AND LEVEL MEASUREMENT</a>
+                                                    <a href="{{ route('category',[$slug = 'flow-pressure-level-management']) }}">FLOW, PRESSURE AND LEVEL MEASUREMENT</a>
                                                 </li>
                                                 <li class="mb-2 menu-single-items">
                                                     <a href="#">DETECTION - MEASUREMENT</a>

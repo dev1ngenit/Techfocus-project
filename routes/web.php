@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])
-//     ->name('index');
 
 require __DIR__ . '/frontend.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
 
+// Route::get('/', [\App\Http\Controllers\SiteController::class, 'index'])
+//     ->name('index');
 // Route::middleware(['auth', 'verified'])->group(function () {
 //     Route::get('dashboard', function () {
 //         return view('dashboard');

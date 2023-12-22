@@ -116,7 +116,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark main-menu px-3">
   <div class="container-fluid">
     <!-- Logo Start -->
-    <a class="navbar-brand mb-2" href="index.html" data-aos="fade-right">
+    <a class="navbar-brand mb-2" href="{{ route('homepage') }}" data-aos="fade-right">
       <img src="https://i.ibb.co/dD1P3Wt/Demo-Logo.png" height="60px" alt="" />
     </a>
     <!-- Logo End -->
@@ -132,7 +132,7 @@
         <div class="" style="z-index: 9999; padding-top: 1rem; padding-left: 28rem">
           <!--Mobile Head -->
           <p class="text-danger">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ route('homepage') }}">
               <img src="https://i.ibb.co/dD1P3Wt/Demo-Logo.png" width="200px" height="60px" alt="" />
             </a>
           </p>
@@ -190,13 +190,13 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="catalogs.html">Catalog</a>
+              <a class="nav-link" href="{{ route('catalog.all') }}">Catalog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="RFQ.html">RFQ</a>
+              <a class="nav-link" href="{{ route('rfq') }}">RFQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="RFQ.html">Contact Us</a>
+              <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="news-trends.html" id="navbarDropdown" role="button"
@@ -463,7 +463,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-aos="fade-right" href="catalogs.html">Catalog</a>
+          <a class="nav-link" data-aos="fade-right" href="{{ route('catalog.all') }}">Catalog</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="news-trends.html" id="navbarDropdown" role="button"
@@ -665,10 +665,10 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-aos="fade-right" href="RFQ.html">RFQ</a>
+          <a class="nav-link" data-aos="fade-right" href="{{ route('rfq') }}">RFQ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="RFQ.html">Contact Us</a>
+          <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
         </li>
       </ul>
       <!-- Search Box Start -->

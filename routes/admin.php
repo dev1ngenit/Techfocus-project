@@ -120,7 +120,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
 
         Route::resources(
             [
-                'product'          => ProductController::class,
+                // 'product'          => ProductController::class,
                 'product-sas'      => ProductSasController::class,
                 'brand-page'       => BrandPageController::class,
                 'solution-details' => SolutionDetailsController::class,
