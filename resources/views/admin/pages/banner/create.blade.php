@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.catalog.store') }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data"
                             class="needs-validation" novalidate>
                             @csrf
                             <div class="row">
@@ -165,7 +165,7 @@
                                             <label class="form-label required">Banner One Image</label>
                                             <input name="banner_one_image"
                                                 class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Banner One Name" type="file" required/>
+                                                placeholder="Enter Banner One Name" type="file" required />
                                             <div class="invalid-feedback"> Please Enter Banner One Image</div>
                                         </div>
                                     </div>
@@ -264,7 +264,7 @@
                                             <label class="form-label">Meta Title</label>
                                             <input name="meta_title"
                                                 class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Meta Image" type="text" maxlength="60"/>
+                                                placeholder="Enter Meta Image" type="text" maxlength="60" />
                                             <div class="invalid-feedback"> Please Enter Meta Title</div>
                                         </div>
                                     </div>
@@ -280,7 +280,7 @@
                                     <div class="col-lg-6">
                                         <div class="fv-row mb-3">
                                             <label class="form-label required">Select Meta Tags</label>
-                                            <input class="form-control form-select-sm form-control-solid" name="meta_tags[]"
+                                            <input class="form-control form-select-sm form-control-solid" name="meta_tags"
                                                 id="tags1" value="{{ old('meta_tags') }}" />
                                             <div class="invalid-feedback"> Please Enter Meta Tags.</div>
                                         </div>
@@ -288,8 +288,9 @@
                                     <div class="col-lg-6">
                                         <div class="fv-row mb-3">
                                             <label class="form-label required">Select Status</label>
-                                            <select class="form-select form-select-solid" name="status" data-control="select2"
-                                                data-placeholder="Select Status" data-allow-clear="true" required>
+                                            <select class="form-select form-select-solid" name="status"
+                                                data-control="select2" data-placeholder="Select Status"
+                                                data-allow-clear="true" required>
                                                 <option></option>
                                                 <option value="active">Active</option>
                                                 <option value="inactive">Inactive</option>

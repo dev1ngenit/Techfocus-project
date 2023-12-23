@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin\Brand;
+use Illuminate\Support\Str;
 use App\Models\Admin\Banner;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\BannerRequest;
-use App\Models\Admin\Brand;
+use App\Models\Admin\Product;
 use App\Models\Admin\Category;
 use App\Models\Admin\Industry;
 use App\Models\Admin\NewsTrend;
-use App\Models\Admin\Product;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\BannerRequest;
 use App\Models\Admin\SolutionDetail;
 use Illuminate\Support\Facades\File;
 
@@ -98,9 +99,9 @@ class BannerController extends Controller
             'banner_one_name'    => $request->banner_one_name,
             'banner_two_name'    => $request->banner_two_name,
             'banner_three_name'  => $request->banner_three_name,
-            'banner_one_slug'    => $request->banner_one_slug,
-            'banner_two_slug'    => $request->banner_two_slug,
-            'banner_three_slug'  => $request->banner_three_slug,
+            'banner_one_slug'    => Str::slug($request->banner_one_name),
+            'banner_two_slug'    => Str::slug($request->banner_two_name),
+            'banner_three_slug'  => Str::slug($request->banner_three_name),
             'banner_one_image'   => $globalFunBannerOne['status']   == 1 ? $globalFunBannerOne['file_name']  : null,
             'banner_two_image'   => $globalFunBannerTwo['status']   == 1 ? $globalFunBannerTwo['file_name']  : null,
             'banner_three_image' => $globalFunBannerThree['status'] == 1 ? $globalFunBannerThree['file_name'] : null,
@@ -109,7 +110,7 @@ class BannerController extends Controller
             'banner_three_link'  => $request->banner_three_link,
             'meta_title'         => $request->meta_title,
             'meta_description'   => $request->meta_description,
-            'meta_tags'          => json_encode($request->meta_tags),
+            'meta_tags'          => $request->meta_tags,
             'meta_image'         => $globalFunMetaImage['status']   == 1 ? $globalFunMetaImage['file_name']  : null,
             'status'             => $request->status,
         ]);
@@ -227,9 +228,9 @@ class BannerController extends Controller
             'banner_one_name'    => $request->banner_one_name,
             'banner_two_name'    => $request->banner_two_name,
             'banner_three_name'  => $request->banner_three_name,
-            'banner_one_slug'    => $request->banner_one_slug,
-            'banner_two_slug'    => $request->banner_two_slug,
-            'banner_three_slug'  => $request->banner_three_slug,
+            'banner_one_slug'    => Str::slug($request->banner_one_name),
+            'banner_two_slug'    => Str::slug($request->banner_two_name),
+            'banner_three_slug'  => Str::slug($request->banner_three_name),
             'banner_one_image'   => $globalFunBannerOne['status']   == 1 ? $globalFunBannerOne['file_name']  :  $banner->banner_one_image,
             'banner_two_image'   => $globalFunBannerTwo['status']   == 1 ? $globalFunBannerTwo['file_name']  :  $banner->banner_two_image,
             'banner_three_image' => $globalFunBannerThree['status'] == 1 ? $globalFunBannerThree['file_name'] :  $banner->banner_three_image,
