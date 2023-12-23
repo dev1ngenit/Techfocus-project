@@ -674,6 +674,7 @@ class ComposerStaticInit477449c53aa665b91ea8dae4c20eebd4
         'App\\Http\\Controllers\\Admin\\Auth\\PasswordResetLinkController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Auth/PasswordResetLinkController.php',
         'App\\Http\\Controllers\\Admin\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\Admin\\BankingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BankingController.php',
+        'App\\Http\\Controllers\\Admin\\BannerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BannerController.php',
         'App\\Http\\Controllers\\Admin\\BioMetricController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BioMetricController.php',
         'App\\Http\\Controllers\\Admin\\BrandController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BrandController.php',
         'App\\Http\\Controllers\\Admin\\BrandPageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BrandPageController.php',

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin\Brand;
 use Illuminate\Support\Str;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\Product;
+use App\Models\Admin\Industry;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 
 class BannerController extends Controller
 {
@@ -25,7 +29,13 @@ class BannerController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.banner.create');
+        return view('admin.pages.banner.create', [
+            'brands' => Brand::get('id', 'name'),
+            'products' => Product::get('id', 'name'),
+            'industries' => Industry::get('id', 'name'),
+            'categories' => Category::get('id', 'name'),
+            // 'solutions' => Solution::get('id','name'),
+        ]);
     }
 
     /**
