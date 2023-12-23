@@ -31,8 +31,9 @@
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Select Category</label>
                                         <select class="form-select form-select-solid form-select-sm" name="category"
-                                            id="banner_id" data-control="select2" data-hide-search="false"
-                                            data-placeholder="Select an Product Type" data-allow-clear="true">
+                                            id="bannerCategory" data-control="select2" data-hide-search="false"
+                                            data-placeholder="Select Category" data-allow-clear="true">
+                                            <option></option>
                                             <option value="brand">Brand</option>
                                             <option value="solution">Solution</option>
                                             <option value="industry">Industry</option>
@@ -41,10 +42,10 @@
                                             <option value="content">Content</option>
                                             <option value="page">Page</option>
                                         </select>
-                                        <div class="invalid-feedback"> Please Select Brand.</div>
+                                        <div class="invalid-feedback"> Please Select Category.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 brand-select-box hidden">
+                                <div class="col-lg-6 brand-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Brand Name</label>
                                         <select class="form-select form-select-solid form-select-sm" name="brand_id"
@@ -61,13 +62,12 @@
                                         <div class="invalid-feedback"> Please Brand Name.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 category-select-box hidden">
+                                <div class="col-lg-6 category-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Category Name</label>
                                         <select class="form-select form-select-solid form-select-sm" name="category_id"
                                             id="category_id" data-control="select2" data-hide-search="false"
-                                            data-placeholder="Select an Product Type" data-allow-clear="true"
-                                            onchange="showSelectBox()">
+                                            data-placeholder="Select an Product Type" data-allow-clear="true">
                                             <option value="brand">Brand</option>
                                             <option value="product">Product</option>
                                             <option value="industry">Industry</option>
@@ -79,13 +79,12 @@
                                         <div class="invalid-feedback"> Please Category Name.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 solution-select-box hidden">
+                                <div class="col-lg-6 solution-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Solution Name</label>
                                         <select class="form-select form-select-solid form-select-sm" name="solution_id"
                                             id="solution_id" data-control="select2" data-hide-search="false"
-                                            data-placeholder="Select an Product Type" data-allow-clear="true"
-                                            onchange="showSelectBox()">
+                                            data-placeholder="Select an Product Type" data-allow-clear="true">
                                             <option value="brand">Brand</option>
                                             <option value="product">Product</option>
                                             <option value="industry">Industry</option>
@@ -97,13 +96,12 @@
                                         <div class="invalid-feedback"> Please Solution Name.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 product-select-box hidden">
+                                <div class="col-lg-6 product-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Product Name</label>
                                         <select class="form-select form-select-solid form-select-sm" name="product_id"
                                             id="product" data-control="select2" data-hide-search="false"
-                                            data-placeholder="Select an Product Type" data-allow-clear="true"
-                                            onchange="showSelectBox()">
+                                            data-placeholder="Select an Product Type" data-allow-clear="true">
                                             <option value="brand">Brand</option>
                                             <option value="product">Product</option>
                                             <option value="industry">Industry</option>
@@ -115,7 +113,7 @@
                                         <div class="invalid-feedback"> Please Product Name.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 industry-select-box hidden">
+                                <div class="col-lg-6 industry-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Industry Name</label>
                                         <select class="form-select form-select-solid form-select-sm" name="industry_id"
@@ -132,7 +130,7 @@
                                         <div class="invalid-feedback"> Please Industry Name.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 content-select-box hidden">
+                                <div class="col-lg-6 content-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Content Name</label>
                                         <select class="form-select form-select-solid form-select-sm" name="content_id"
@@ -149,7 +147,7 @@
                                         <div class="invalid-feedback"> Please Content Name.</div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 page-select-box hidden">
+                                <div class="col-lg-6 page-select-box d-none">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="fv-row mb-3">
@@ -352,29 +350,35 @@
         // Initialize Tagify components on the above inputs
         new Tagify(input1);
     </script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     <script>
-        function showSelectBox() {
-            // Hide all select boxes and input boxes
-            $(".brand-select-box, .product-select-box, .industry-select-box, .solution-select-box, .content-select-box, .page-select-box, .page-title")
-                .addClass("hidden");
+        $(document).ready(function() {
+            $("#bannerCategory").change(function() {
+                // Hide all select boxes and input boxes
+                $(".brand-select-box, .product-select-box, .industry-select-box, .solution-select-box, .content-select-box, .page-select-box, .page-title")
+                    .addClass("d-none");
 
-            // Get the selected option
-            var selectedOption = $("#category").val();
+                // Get the selected option
+                var selectedOption = $("#bannerCategory").val();
 
-            // Define a mapping between selected options and corresponding elements
-            var optionMapping = {
-                "brand": ".brand-select-box",
-                "product": ".product-select-box",
-                "industry": ".industry-select-box",
-                "solution": ".solution-select-box",
-                "content": ".solution-select-box", // Assuming this is intentional, you may adjust as needed
-                "page": ".page-select-box, .page-title",
-            };
+                // Define a mapping between selected options and corresponding elements
+                var optionMapping = {
+                    "brand": ".brand-select-box",
+                    "category": ".category-select-box",
+                    "solution": ".solution-select-box",
+                    "product": ".product-select-box",
+                    "industry": ".industry-select-box",
+                    "content": ".content-select-box", // Adjusted this to ".content-select-box"
+                    "page": ".page-select-box", // Corrected the syntax here
+                };
 
-            // Show the relevant select box or input boxes based on the selected option
-            if (optionMapping[selectedOption]) {
-                $(optionMapping[selectedOption]).removeClass("hidden");
-            }
-        }
+                // Show the relevant select box or input boxes based on the selected option
+                if (optionMapping[selectedOption]) {
+                    $(optionMapping[selectedOption]).removeClass("d-none");
+                }
+                // alert(optionMapping[selectedOption]);
+
+            })
+        });
     </script>
 @endpush
