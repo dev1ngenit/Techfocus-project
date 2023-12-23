@@ -45,7 +45,7 @@
                                     <div class="invalid-feedback"> Please Select Brand.</div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 hidden">
+                            <div class="col-lg-6 brand-show-box hidden">
                                 <div class="fv-row mb-3">
                                     <label class="form-label required">Brand Name</label>
                                     <select class="form-select form-select-solid form-select-sm" name="category"
@@ -63,7 +63,7 @@
                                     <div class="invalid-feedback"> Please Brand Name.</div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 hidden">
+                            <div class="col-lg-6 category-show-box hidden">
                                 <div class="fv-row mb-3">
                                     <label class="form-label required">Category Name</label>
                                     <select class="form-select form-select-solid form-select-sm" name="category_id"
@@ -81,7 +81,7 @@
                                     <div class="invalid-feedback"> Please Category Name.</div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 hidden">
+                            <div class="col-lg-6 solution-show-box hidden">
                                 <div class="fv-row mb-3">
                                     <label class="form-label required">Solution Name</label>
                                     <select class="form-select form-select-solid form-select-sm" name="solution_id"
@@ -99,7 +99,7 @@
                                     <div class="invalid-feedback"> Please Solution Name.</div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 hidden">
+                            <div class="col-lg-6 product-show-box hidden">
                                 <div class="fv-row mb-3">
                                     <label class="form-label required">Product Name</label>
                                     <select class="form-select form-select-solid form-select-sm" name="product"
@@ -117,7 +117,7 @@
                                     <div class="invalid-feedback"> Please Product Name.</div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 hidden">
+                            <div class="col-lg-6 industry-show-box hidden">
                                 <div class="fv-row mb-3">
                                     <label class="form-label required">Industry Name</label>
                                     <select class="form-select form-select-solid form-select-sm" name="industry_id"
@@ -177,17 +177,159 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="fv-row mb-3">
-                                    <label class="form-label">Page Title</label>
-                                    <input name="page_title"
-                                        class="form-control form-control-sm form-control-solid"
-                                        placeholder="Enter Page Title" type="text" />
-                                    <div class="invalid-feedback"> Please Enter Page Name</div>
+                        <div class="border p-4 m-1 mt-5">
+                            <p class="badge badge-info custom-bage-all">Banner
+                                One</span>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Banner One Name</label>
+                                        <input name="banner_one_name"
+                                            class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Banner One Name" type="text" />
+                                        <div class="invalid-feedback"> Please Enter Banner One Name</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Banner One Image</label>
+                                        <input name="banner_one_image"
+                                            class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Banner One Name" type="file" />
+                                        <div class="invalid-feedback"> Please Enter Banner One Image</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Banner One Link</label>
+                                        <input name="banner_one_link"
+                                            class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Banner One Name" type="url" />
+                                        <div class="invalid-feedback"> Please Enter Banner One Link</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="border p-4 m-1 mt-5">
+                            <p class="badge badge-info custom-bage-all">Banner
+                                Two</span>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Banner Two Name</label>
+                                        <input name="banner_two_name"
+                                            class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Banner Two Name" type="text" />
+                                        <div class="invalid-feedback"> Please Enter Banner Two Name</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Banner Two Image</label>
+                                        <input name="banner_two_image"
+                                            class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Banner Two Name" type="file" />
+                                        <div class="invalid-feedback"> Please Enter Banner Two Image</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Banner Two Link</label>
+                                        <input name="banner_two_link"
+                                            class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Banner Two Name" type="url" />
+                                        <div class="invalid-feedback"> Please Enter Banner Two Link</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border p-4 m-1 mt-5">
+                            <p class="badge badge-info custom-bage-all">Banner
+                                Three</span>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Banner Three Name</label>
+                                        <input name="banner_three_name"
+                                            class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Banner Three Name" type="text" />
+                                        <div class="invalid-feedback"> Please Enter Banner Three Name</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Banner Three Image</label>
+                                        <input name="banner_three_image"
+                                            class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Banner Three Name" type="file" />
+                                        <div class="invalid-feedback"> Please Enter Banner Three Image</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Banner Three Link</label>
+                                        <input name="banner_three_link"
+                                            class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Banner Three Name" type="url" />
+                                        <div class="invalid-feedback"> Please Enter Banner Three Link</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border p-4 m-1 mt-5">
+                            <p class="badge badge-info custom-bage-all">Meta Box</span>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Meta Description</label>
+                                        <textarea type="text" name="meta_description"
+                                            class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Meta Description" id="" cols="30" rows="1"></textarea>
+                                        <div class="invalid-feedback"> Please Enter Meta Description</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Meta Title</label>
+                                        <input name="meta_title" class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Meta Image" type="file" />
+                                        <div class="invalid-feedback"> Please Enter Meta Image</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label">Meta Image</label>
+                                        <input name="meta_image" class="form-control form-control-sm form-control-solid"
+                                            placeholder="Enter Meta Image" type="file" />
+                                        <div class="invalid-feedback"> Please Enter Meta Image</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label required">Select Meta Tags</label>
+                                        <input class="form-control form-select-sm form-control-solid" name="meta_tags"
+                                            id="tags1" value="{{ old('meta_tags') }}" />
+                                        <div class="invalid-feedback"> Please Enter Meta Tags.</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="fv-row mb-3">
+                                        <label class="form-label required">Select Status</label>
+                                        <select class="form-select form-select-solid" name="status"
+                                            data-dropdown-parent="#brandAddModal" data-control="select2"
+                                            data-placeholder="Select an option" data-allow-clear="true" required>
+                                            <option></option>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
+                                        <div class="invalid-feedback"> Please Select Status.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-lg-12 mt-5">
                                 <div class="d-flex justify-content-end">
@@ -203,65 +345,13 @@
 </div>
 @endsection
 @push('scripts')
-
 <script>
-    // Function to show/hide sections based on the selected option
-    function showSelectBox() {
-        var selectedOption = $('#banner_id').val();
+    // The DOM elements you wish to replace with Tagify
+    var input1 = document.querySelector("#tags1");
+    var input1 = document.querySelector("#tags2");
+    var input1 = document.querySelector("#tags3");
 
-        // Hide all sections
-        $('.hidden').hide();
-
-        // Show the selected section
-        $('#' + selectedOption + '-section').show();
-    }
-
-    // Initial setup to hide all sections except "Select Banner"
-    $(document).ready(function () {
-        $('.hidden').hide();
-        $('#brand-section').show(); // Show the default section
-
-        // Initialize select2, flatpickr, and Tagify
-        $('[data-kt-repeater="select2"]').select2();
-        $('[data-kt-repeater="datepicker"]').flatpickr();
-        new Tagify(document.querySelector('[data-kt-repeater="tagify"]'));
-    });
-</script>
-<script>
-    $('#kt_docs_repeater_advanced').repeater({
-            initEmpty: false,
-
-            defaultValues: {
-                'text-input': 'foo'
-            },
-
-            show: function() {
-                $(this).slideDown();
-
-                // Re-init select2
-                $(this).find('[data-kt-repeater="select2"]').select2();
-
-                // Re-init flatpickr
-                $(this).find('[data-kt-repeater="datepicker"]').flatpickr();
-
-                // Re-init tagify
-                new Tagify(this.querySelector('[data-kt-repeater="tagify"]'));
-            },
-
-            hide: function(deleteElement) {
-                $(this).slideUp(deleteElement);
-            },
-
-            ready: function() {
-                // Init select2
-                $('[data-kt-repeater="select2"]').select2();
-
-                // Init flatpickr
-                $('[data-kt-repeater="datepicker"]').flatpickr();
-
-                // Init Tagify
-                new Tagify(document.querySelector('[data-kt-repeater="tagify"]'));
-            }
-        });
+    // Initialize Tagify components on the above inputs
+    new Tagify(input1);
 </script>
 @endpush

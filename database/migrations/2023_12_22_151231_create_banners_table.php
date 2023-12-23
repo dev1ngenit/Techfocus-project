@@ -23,18 +23,24 @@ return new class extends Migration
             $table->foreignId('industry_id')->nullable()->constrained('industries')->cascadeOnDelete();
             $table->foreignId('content_id')->nullable()->constrained('news_trends')->cascadeOnDelete();
             $table->string('page_name')->nullable();
+
+
             $table->string('banner_one_name')->nullable();
             $table->string('banner_two_name')->nullable();
             $table->string('banner_three_name')->nullable();
+
             $table->string('banner_one_slug')->unique()->nullable();
             $table->string('banner_two_slug')->unique()->nullable();
             $table->string('banner_three_slug')->unique()->nullable();
+
             $table->string('banner_one_image')->comment('image upload');
             $table->string('banner_two_image')->comment('image upload');
             $table->string('banner_three_image')->comment('image upload');
+
             $table->string('banner_one_link')->nullable();
             $table->string('banner_two_link')->nullable();
             $table->string('banner_three_link')->nullable();
+            
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
             $table->json('meta_tags')->nullable();
