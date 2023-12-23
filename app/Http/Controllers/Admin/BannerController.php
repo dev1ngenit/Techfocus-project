@@ -15,7 +15,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.banner.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.banner.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->back()->withInput();
     }
 
     /**
@@ -58,7 +58,7 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.banner.edit');
     }
 
     /**
