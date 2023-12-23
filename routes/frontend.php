@@ -12,12 +12,11 @@ Route::get('faq', [SiteController::class, 'faq'])->name('faq');
 Route::get('rfq', [SiteController::class, 'rfq'])->name('rfq');
 Route::get('contact', [SiteController::class, 'contact'])->name('contact');
 Route::get('terms', [SiteController::class, 'terms'])->name('terms');
-// Route::get('{slug}/products', [SiteController::class, 'filterProducts'])->name('filtering.products');
+Route::get('{slug}/products', [SiteController::class, 'filterProducts'])->name('filtering.products');
 
 // Brand Pages
 Route::middleware('web')->group(function () {
     Route::get('/{slug}/company', [PageController::class, 'overview'])->name('brand.overview');
-    Route::get('/{slug}/products', [PageController::class, 'brandProducts'])->name('brand.products');
     Route::get('/single/product/{slug}', [PageController::class, 'productDetails'])->name('product.details');
     Route::get('/{slug}/brochures', [PageController::class, 'brandPdf'])->name('brand.pdf');
     Route::get('/pdf/{slug}', [PageController::class, 'pdfDetails'])->name('pdf.details');

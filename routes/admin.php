@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HR\HRController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\RowController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\BankingController;
 use App\Http\Controllers\Admin\CatalogController;
@@ -31,6 +33,7 @@ use App\Http\Controllers\Admin\ProductSasController;
 use App\Http\Controllers\Admin\WebSettingController;
 use App\Http\Controllers\Admin\IndustryPageController;
 use App\Http\Controllers\Admin\ProductColorController;
+use App\Http\Controllers\Admin\SolutionCardController;
 use App\Http\Controllers\HR\LeaveApplicationController;
 use App\Http\Controllers\Admin\AttributeValueController;
 use App\Http\Controllers\Admin\RolePermissionController;
@@ -46,8 +49,6 @@ use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Accounts\AccountsDocumentController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
-use App\Http\Controllers\Admin\SolutionCardController;
-use App\Http\Controllers\HR\HRController;
 
 /*
 |--------------------------------------------------------------------------
@@ -132,6 +133,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'solution-card'    => SolutionCardController::class,
                 'employee'         => EmployeeController::class,
                 'catalog'          => CatalogController::class,
+                'banner'           => BannerController::class,
             ]
         );
         Route::resources(

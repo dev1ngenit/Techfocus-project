@@ -8,7 +8,7 @@
             <div class="modal-header justify-content-between align-items-center border-0 pt-3 pb-2">
                 <!--begin::Close-->
                 <div>
-                    <h5 class="mb-0">This Month's Attendance ({{ $attendanceToday['user_name'] }})</h5>
+                    <h5 class="mb-0">This Month's Attendance ({{!empty($attendanceToday['user_name']) ? $attendanceToday['user_name'] : "Not Defined"}})</h5>
                 </div>
                 <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
@@ -87,7 +87,7 @@
             <div class="modal-header justify-content-between align-items-center border-0 pt-3 pb-2">
                 <!--begin::Close-->
                 <div>
-                    <h5 class="mb-0">This Month's Late Entrys ({{ $attendanceToday['user_name'] }})</h5>
+                    <h5 class="mb-0">This Month's Late Entrys ({{!empty($attendanceToday['user_name']) ? $attendanceToday['user_name'] : "Not Defined"}})</h5>
                 </div>
                 <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
@@ -167,7 +167,8 @@
                 <!--begin::Close-->
                 <div>
                     <h5 class="mb-0">{{ \Carbon\Carbon::now()->subMonth()->format('F') }}'s Attendance
-                        ({{ $attendanceToday['user_name'] }})</h5>
+                        ({{!empty($attendanceToday['user_name']) ? $attendanceToday['user_name'] : "Not Defined"}})
+                    </h5>
                 </div>
                 <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->

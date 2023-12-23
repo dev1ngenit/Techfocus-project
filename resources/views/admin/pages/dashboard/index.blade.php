@@ -29,18 +29,18 @@
                             <div class="card-body px-3">
                                 <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-6">
                                     <span class="text-start w-xl-225px">Today's Entry :</span> <span
-                                        class="text-end ms-3">{{$attendanceToday['check_in']}}</span>
+                                        class="text-end ms-3">{{!empty($attendanceToday['check_in']) ? $attendanceToday['check_in'] : 00.00}}</span>
                                 </a>
                                 <div class="my-2">
                                     <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-7">
                                         <span class="text-start w-xl-225px">Today's Check-Out :</span> <span
-                                            class="text-end ms-3">{{$attendanceToday['check_out']}}</span>
+                                            class="text-end ms-3">{{!empty($attendanceToday['check_out']) ? $attendanceToday['check_out'] : 00.00}}</span>
                                     </a>
                                 </div>
                                 <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-7"
                                 data-bs-toggle="modal" data-bs-target="#lateCount">
                                     <span class="text-start w-xl-225px">Late Count (This Month) :</span> <span
-                                        class="text-end ms-3">{{count($lateCounts)}}</span>
+                                        class="text-end ms-3">{{!empty(count($lateCounts)) ? count($lateCounts) : 0}}</span>
                                 </a>
                                 <div class="mt-2 d-flex justify-content-between align-items-center">
                                     <a href="#" class="card-title fw-bolder main_color text-hover-primary fs-7"

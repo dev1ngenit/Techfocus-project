@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,9 @@ class SiteController extends Controller
         return view('frontend.pages.category.category');
     }
     public function filterProducts($slug) {
+        // if (Category::where('slug' , $slug)->) {
+        //     # code...
+        // }
         return view('frontend.pages.shop.filterProducts');
     }
     public function faq() {
