@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Brand;
-use Illuminate\Support\Str;
 use App\Models\Admin\Banner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -43,7 +41,7 @@ class BannerController extends Controller
             'products'   => Product::get(['id', 'name']),
             'solutions'  => SolutionDetail::get(['id', 'name']),
             'industries' => Industry::get(['id', 'name']),
-            'contents'   => NewsTrend::get(['id', 'name']),
+            'contents'   => NewsTrend::get(['id', 'title']),
         ]);
     }
 
@@ -111,7 +109,7 @@ class BannerController extends Controller
             'banner_three_link'  => $request->banner_three_link,
             'meta_title'         => $request->meta_title,
             'meta_description'   => $request->meta_description,
-            'meta_tags'          => $request->meta_tags,
+            'meta_tags'          => json_encode($request->meta_tags),
             'meta_image'         => $globalFunMetaImage['status']   == 1 ? $globalFunMetaImage['file_name']  : null,
             'status'             => $request->status,
         ]);
@@ -240,7 +238,7 @@ class BannerController extends Controller
             'banner_three_link'  => $request->banner_three_link,
             'meta_title'         => $request->meta_title,
             'meta_description'   => $request->meta_description,
-            'meta_tags'          => $request->meta_tags,
+            'meta_tags'          => json_encode($request->meta_tags),
             'meta_image'         => $globalFunMetaImage['status']   == 1 ? $globalFunMetaImage['file_name']  :  $banner->meta_image,
             'status'             => $request->status,
         ]);
