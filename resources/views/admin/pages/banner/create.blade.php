@@ -51,13 +51,9 @@
                                         <select class="form-select form-select-solid form-select-sm" name="brand_id"
                                             id="brand_id" data-control="select2" data-hide-search="false"
                                             data-placeholder="Select an Product Type" data-allow-clear="true">
-                                            <option value="brand">Brand</option>
-                                            <option value="product">Product</option>
-                                            <option value="industry">Industry</option>
-                                            <option value="solution">Solution</option>
-                                            <option value="category">Category</option>
-                                            <option value="page">Page</option>
-                                            <option value="content">Content</option>
+                                            @foreach ($brands as $brand)
+                                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback"> Please Brand Name.</div>
                                     </div>
@@ -68,13 +64,9 @@
                                         <select class="form-select form-select-solid form-select-sm" name="category_id"
                                             id="category_id" data-control="select2" data-hide-search="false"
                                             data-placeholder="Select an Product Type" data-allow-clear="true">
-                                            <option value="brand">Brand</option>
-                                            <option value="product">Product</option>
-                                            <option value="industry">Industry</option>
-                                            <option value="solution">Solution</option>
-                                            <option value="category">Category</option>
-                                            <option value="page">Page</option>
-                                            <option value="content">Content</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback"> Please Category Name.</div>
                                     </div>
@@ -85,13 +77,9 @@
                                         <select class="form-select form-select-solid form-select-sm" name="solution_id"
                                             id="solution_id" data-control="select2" data-hide-search="false"
                                             data-placeholder="Select an Product Type" data-allow-clear="true">
-                                            <option value="brand">Brand</option>
-                                            <option value="product">Product</option>
-                                            <option value="industry">Industry</option>
-                                            <option value="solution">Solution</option>
-                                            <option value="category">Category</option>
-                                            <option value="page">Page</option>
-                                            <option value="content">Content</option>
+                                            @foreach ($solutions as $solution)
+                                                <option value="{{ $solution->id }}">{{ $solution->name }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback"> Please Solution Name.</div>
                                     </div>
@@ -102,13 +90,9 @@
                                         <select class="form-select form-select-solid form-select-sm" name="product_id"
                                             id="product" data-control="select2" data-hide-search="false"
                                             data-placeholder="Select an Product Type" data-allow-clear="true">
-                                            <option value="brand">Brand</option>
-                                            <option value="product">Product</option>
-                                            <option value="industry">Industry</option>
-                                            <option value="solution">Solution</option>
-                                            <option value="category">Category</option>
-                                            <option value="page">Page</option>
-                                            <option value="content">Content</option>
+                                            @foreach ($products as $product)
+                                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback"> Please Product Name.</div>
                                     </div>
@@ -119,13 +103,9 @@
                                         <select class="form-select form-select-solid form-select-sm" name="industry_id"
                                             id="industry_id" data-control="select2" data-hide-search="false"
                                             data-placeholder="Select an Product Type" data-allow-clear="true">
-                                            <option value="brand">Brand</option>
-                                            <option value="product">Product</option>
-                                            <option value="industry">Industry</option>
-                                            <option value="solution">Solution</option>
-                                            <option value="category">Category</option>
-                                            <option value="page">Page</option>
-                                            <option value="content">Content</option>
+                                            @foreach ($industries as $industry)
+                                                <option value="{{ $industry->id }}">{{ $industry->name }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback"> Please Industry Name.</div>
                                     </div>
@@ -136,13 +116,9 @@
                                         <select class="form-select form-select-solid form-select-sm" name="content_id"
                                             id="content_id" data-control="select2" data-hide-search="false"
                                             data-placeholder="Select an Product Type" data-allow-clear="true">
-                                            <option value="brand">Brand</option>
-                                            <option value="product">Product</option>
-                                            <option value="industry">Industry</option>
-                                            <option value="solution">Solution</option>
-                                            <option value="category">Category</option>
-                                            <option value="page">Page</option>
-                                            <option value="content">Content</option>
+                                            @foreach ($contents as $content)
+                                                <option value="{{ $content->id }}">{{ $content->title }}</option>
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback"> Please Content Name.</div>
                                     </div>
@@ -304,7 +280,7 @@
                                     <div class="col-lg-6">
                                         <div class="fv-row mb-3">
                                             <label class="form-label required">Select Meta Tags</label>
-                                            <input class="form-control form-select-sm form-control-solid" name="meta_tags"
+                                            <input class="form-control form-select-sm form-control-solid" name="meta_tags[]"
                                                 id="tags1" value="{{ old('meta_tags') }}" />
                                             <div class="invalid-feedback"> Please Enter Meta Tags.</div>
                                         </div>
