@@ -186,10 +186,10 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
-                                            <label class="form-label">Banner One Image</label>
+                                            <label class="form-label required">Banner One Image</label>
                                             <input name="banner_one_image"
                                                 class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Banner One Name" type="file" />
+                                                placeholder="Enter Banner One Name" type="file" required/>
                                             <div class="invalid-feedback"> Please Enter Banner One Image</div>
                                         </div>
                                     </div>
@@ -279,7 +279,7 @@
                                         <div class="fv-row mb-3">
                                             <label class="form-label">Meta Description</label>
                                             <textarea type="text" name="meta_description" class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Meta Description" id="" cols="30" rows="1"></textarea>
+                                                placeholder="Enter Meta Description" id="" cols="30" rows="1" maxlength="160"></textarea>
                                             <div class="invalid-feedback"> Please Enter Meta Description</div>
                                         </div>
                                     </div>
@@ -288,8 +288,8 @@
                                             <label class="form-label">Meta Title</label>
                                             <input name="meta_title"
                                                 class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Meta Image" type="text" />
-                                            <div class="invalid-feedback"> Please Enter Meta Image</div>
+                                                placeholder="Enter Meta Image" type="text" maxlength="60"/>
+                                            <div class="invalid-feedback"> Please Enter Meta Title</div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -312,9 +312,8 @@
                                     <div class="col-lg-6">
                                         <div class="fv-row mb-3">
                                             <label class="form-label required">Select Status</label>
-                                            <select class="form-select form-select-solid" name="status"
-                                                data-dropdown-parent="#brandAddModal" data-control="select2"
-                                                data-placeholder="Select an option" data-allow-clear="true" required>
+                                            <select class="form-select form-select-solid" name="status" data-control="select2"
+                                                data-placeholder="Select Status" data-allow-clear="true" required>
                                                 <option></option>
                                                 <option value="active">Active</option>
                                                 <option value="inactive">Inactive</option>
