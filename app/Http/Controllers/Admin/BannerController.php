@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Admin\Brand;
 use Illuminate\Support\Str;
 use App\Models\Admin\Banner;
 use Illuminate\Http\Request;

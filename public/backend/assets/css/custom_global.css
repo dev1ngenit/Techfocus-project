@@ -230,6 +230,13 @@ tr td {
   justify-content: center;
 }
 
+.custom-bage-all{
+  margin-top: -25px;
+  width: 10%;
+  height: 20px;
+  display: flex;
+    justify-content: center;
+}
 
 .table_title {
   display: flex;
