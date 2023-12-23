@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\Admin\\Auth\\PasswordResetLinkController' => $baseDir . '/app/Http/Controllers/Admin/Auth/PasswordResetLinkController.php',
     'App\\Http\\Controllers\\Admin\\Auth\\VerifyEmailController' => $baseDir . '/app/Http/Controllers/Admin/Auth/VerifyEmailController.php',
     'App\\Http\\Controllers\\Admin\\BankingController' => $baseDir . '/app/Http/Controllers/Admin/BankingController.php',
+    'App\\Http\\Controllers\\Admin\\BannerController' => $baseDir . '/app/Http/Controllers/Admin/BannerController.php',
     'App\\Http\\Controllers\\Admin\\BioMetricController' => $baseDir . '/app/Http/Controllers/Admin/BioMetricController.php',
     'App\\Http\\Controllers\\Admin\\BrandController' => $baseDir . '/app/Http/Controllers/Admin/BrandController.php',
     'App\\Http\\Controllers\\Admin\\BrandPageController' => $baseDir . '/app/Http/Controllers/Admin/BrandPageController.php',
