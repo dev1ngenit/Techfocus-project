@@ -706,3 +706,6 @@ function validateform() {
 
 // Multi Select
 
+// Tagify
+
+// Tagify

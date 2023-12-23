@@ -288,7 +288,7 @@
                                             <label class="form-label">Meta Title</label>
                                             <input name="meta_title"
                                                 class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Meta Image" type="file" />
+                                                placeholder="Enter Meta Image" type="text" />
                                             <div class="invalid-feedback"> Please Enter Meta Image</div>
                                         </div>
                                     </div>
@@ -342,15 +342,14 @@
 @endsection
 @push('scripts')
     <script>
-        // The DOM elements you wish to replace with Tagify
-        var input1 = document.querySelector("#tags1");
-        var input1 = document.querySelector("#tags2");
-        var input1 = document.querySelector("#tags3");
+        var tags1 = document.querySelector("#tags1");
+        var tags2 = document.querySelector("#tags2");
+        var tags3 = document.querySelector("#tags3");
 
-        // Initialize Tagify components on the above inputs
-        new Tagify(input1);
+        new Tagify(tags1);
+        new Tagify(tags2);
+        new Tagify(tags3);
     </script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     <script>
         $(document).ready(function() {
             $("#bannerCategory").change(function() {
