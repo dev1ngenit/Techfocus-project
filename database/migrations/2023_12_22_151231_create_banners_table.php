@@ -22,6 +22,8 @@ return new class extends Migration
             $table->foreignId('solution_id')->nullable()->constrained('solution_details')->cascadeOnDelete();
             $table->foreignId('industry_id')->nullable()->constrained('industries')->cascadeOnDelete();
             $table->foreignId('content_id')->nullable()->constrained('news_trends')->cascadeOnDelete();
+            $table->string('page_name')->nullable();
+            
             $table->string('banner_one_name')->nullable();
             $table->string('banner_two_name')->nullable();
             $table->string('banner_three_name')->nullable();
@@ -38,7 +40,6 @@ return new class extends Migration
             $table->string('meta_description')->nullable();
             $table->json('meta_tags')->nullable();
             $table->string('meta_image')->nullable()->comment('image upload');
-            $table->string('page_name')->nullable();
             $table->enum('status', ['active', 'inactive', 'scheduled'])->default('active');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
