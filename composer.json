@@ -11,13 +11,13 @@
         "intervention/image": "^2.7",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
+        "laravel/telescope": "^4.17",
         "laravel/tinker": "^2.7",
         "rats/zkteco": "^002.0",
         "wildside/userstamps": "^2.3",
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.6",
         "barryvdh/laravel-ide-helper": "^2.12",
         "beyondcode/laravel-query-detector": "^1.6",
         "dipeshsukhia/laravel-country-state-city-data": "^2.0",

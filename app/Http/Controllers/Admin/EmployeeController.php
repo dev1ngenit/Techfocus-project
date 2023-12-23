@@ -46,7 +46,7 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmployeeRequest $request)
+    public function store(Request $request)
     {
         $mainFilePhoto                 = $request->file('photo');
         $mainFileSign                  = $request->file('sign');
@@ -232,7 +232,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmployeeRequest $request, $id)
+    public function update(Request $request, $id)
     {
         // dd($request->all());
         $admins = Admin::findOrFail($id);
