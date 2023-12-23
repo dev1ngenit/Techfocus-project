@@ -2,14 +2,13 @@
 
 namespace App\Models\Admin;
 
-use App\Traits\HasSlug;
 use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
 {
-    use HasFactory, HasSlug, Userstamps;
+    use HasFactory, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.
@@ -17,11 +16,4 @@ class Banner extends Model
      * @var array
      */
     protected $guarded = [];
-
-    /**
-     * , HasSlug
-     * protected $slugSourceColumn = 'name';
-     */
-    
-
 }
