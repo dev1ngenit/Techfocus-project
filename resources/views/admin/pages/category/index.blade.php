@@ -55,11 +55,11 @@
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
-                                    <th class="" width="5%">Sl</th>
-                                    <th class="" width="10%">Logo</th>
-                                    <th class="" width="30%">Parent Name</th>
-                                    <th class="" width="10%">Name</th>
-                                    <th class="" width="10%">Action</th>
+                                    <th width="5%">Sl</th>
+                                    <th width="10%">Logo</th>
+                                    <th width="30%">Parent Name</th>
+                                    <th width="10%">Name</th>
+                                    <th width="10%">Action</th>
                                 </tr>
                                 <!--end::Table row-->
                             </thead>
@@ -73,34 +73,22 @@
                                                     src="{{ !empty($category->logo) ? asset('storage/' . $category->logo) : asset('storage/main/no-image-available.png') }}"
                                                     alt="{{ $category->name }} Logo">
                                             </td>
-                                            {{-- <td>
-                                                {{ getAllCountry()->where('id', $category->country_id)->first()->name ?? 'Unknown Country' }}
-                                            </td> --}}
                                             <td>{{ $category->parentName() ?? 'No Parent' }}
                                             </td>
                                             <td>{{ $category->name }}
                                             </td>
                                             <td>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <a href="#"
-                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#categoryViewModal_{{ $category->id }}">
-                                                        <i class="fa-solid fa-expand"></i>
-                                                        <!--View-->
-                                                    </a>
-                                                    <a href="#"
-                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 categoryEditModal"
+                                                <div class="align-items-center">
+                                                    <a href="javascript:void(0)"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 mx-2 categoryEditModal"
                                                         data-bs-toggle="modal" data-id="{{ $category->id }}"
                                                         data-bs-target="#categoryEditModal_{{ $category->id }}">
                                                         <i class="fa-solid fa-pen"></i>
-                                                        <!--Edit-->
                                                     </a>
                                                     <a href="{{ route('admin.category.destroy', $category->id) }}"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                         data-kt-docs-table-filter="delete_row">
                                                         <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                        <!--Delete-->
                                                     </a>
                                                 </div>
                                             </td>
@@ -114,8 +102,6 @@
             </div>
         </div>
     </div>
-
-
 
     {{-- Add Modal --}}
     <div class="modal fade" id="categoryAddModal" data-backdrop="static">
@@ -226,8 +212,10 @@
                         </div>
                         <!-- End Close button in the header -->
                     </div>
-                    <form action="" class="needs-validation" method="post" novalidate>
+                    <form action="{{ route('admin.category.update', $category->id) }}" class="needs-validation"
+                        method="post" novalidate enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="modal-body">
                             <div class="container px-0">
                                 <div class="row">
@@ -303,10 +291,9 @@
                                             </div>
 
                                             <div class="col-md-12">
-                                                <label for="validationCustom010"
-                                                    class="form-label required">Description</label>
+                                                <label for="validationCustom010" class="form-label ">Description</label>
                                                 <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"
-                                                    placeholder="Enter Description" required>{{ $category->description }}</textarea>
+                                                    placeholder="Enter Description">{{ $category->description }}</textarea>
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Description</div>
                                             </div>
@@ -320,95 +307,6 @@
                             <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="categoryViewModal_{{ $category->id }}" data-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content rounded-0 border-0 shadow-sm">
-                    <div class="modal-header p-2 rounded-0">
-                        <h5 class="modal-title mb-0">Category View </h5>
-                        <!-- Close button in the header -->
-                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                            aria-label="Close">
-                            <i class="fa-solid fa-circle-xmark"></i>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container px-0">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="card border rounded-0">
-                                        <div class="card-body p-1 px-2">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-6 col-sm-5">
-                                                            <p class="fw-bold" title="Country Name">Name</p>
-                                                        </div>
-                                                        <div class="col-lg-6 col-sm-6">
-                                                            <p>{{ $category->name }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-7 col-sm-5">
-                                                            <p class="fw-bold">Parent Name</p>
-                                                        </div>
-                                                        <div class="col-lg-5 col-sm-6">
-                                                            <p>{{ $category->parentName() ?? 'No Parent' }}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-7 col-sm-5">
-                                                            <p class="fw-bold">Image</p>
-                                                        </div>
-                                                        <div class="col-lg-5 col-sm-6">
-                                                            <p>
-                                                                <img class="img-fluid rounded-circle" width="35px"
-                                                                    src="{{ !empty($category->image) ? asset('storage/' . $category->image) : asset('storage/main/no-image-available.png') }}"
-                                                                    alt="{{ $category->slug }} Logo">
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="row">
-                                                        <div class="col-lg-7 col-sm-5">
-                                                            <p class="fw-bold">Logo</p>
-                                                        </div>
-                                                        <div class="col-lg-5 col-sm-6">
-                                                            <p>
-                                                                <img class="img-fluid rounded-circle" width="35px"
-                                                                    src="{{ !empty($category->logo) ? asset('storage/' . $category->logo) : asset('storage/main/no-image-available.png') }}"
-                                                                    alt="{{ $category->slug }} Logo">
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-3 col-sm-5">
-                                                            <p class="fw-bold">Description</p>
-                                                        </div>
-                                                        <div class="col-lg-9 col-sm-6">
-                                                            <p>
-                                                                {{ $category->description }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

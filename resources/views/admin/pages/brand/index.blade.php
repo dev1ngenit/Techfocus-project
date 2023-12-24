@@ -34,12 +34,13 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
                                     <div class="card-title table_title">
-                                        <h2 class="">Brands</h2>
+                                        <h2>Brands</h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
                                     <!--begin::Export dropdown-->
-                                    <a href="{{ route('admin.brand-page.index') }}" class="btn btn-sm btn-light-primary rounded-0 me-3">
+                                    <a href="{{ route('admin.brand-page.index') }}"
+                                        class="btn btn-sm btn-light-primary rounded-0 me-3">
                                         BrandPage
                                     </a>
                                     <button type="button" class="btn btn-sm btn-light-success rounded-0"
@@ -60,13 +61,13 @@
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
-                                    <th class="" width="5%">Sl</th>
-                                    <th class="" width="10%">Logo</th>
-                                    <th class="" width="40%">Name</th>
-                                    <th class="" width="10%">Image</th>
+                                    <th width="5%">Sl</th>
+                                    <th width="10%">Logo</th>
+                                    <th width="40%">Name</th>
+                                    <th width="10%">Image</th>
                                     <th class="text-center" width="10%">Action</th>
                                 </tr>
-                                    <!--end::Table row-->
+                                <!--end::Table row-->
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
                                 @if ($brands)
@@ -75,17 +76,14 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <img class="img-fluid" width="50px"
-                                                    src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/requestImg/' . $brand->logo)) ? asset('storage/brand/logo/requestImg/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
+                                                    src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/' . $brand->logo)) ? asset('storage/brand/logo/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
                                                     alt="{{ $brand->name }} Logo">
                                             </td>
-                                            {{-- <td>
-                                                {{ getAllCountry()->where('id', $brand->country_id)->first()->name ?? 'Unknown Country' }}
-                                            </td> --}}
 
                                             <td>{{ $brand->name }}</td>
                                             <td>
                                                 <img class="img-fluid" width="50px"
-                                                    src="{{ !empty($brand->image) && file_exists(public_path('storage/brand/image/requestImg/' . $brand->image)) ? asset('storage/brand/image/requestImg/' . $brand->image) : asset('backend/images/no-image-available.png') }}"
+                                                    src="{{ !empty($brand->image) && file_exists(public_path('storage/brand/image/' . $brand->image)) ? asset('storage/brand/image/' . $brand->image) : asset('backend/images/no-image-available.png') }}"
                                                     alt="{{ $brand->name }} image">
                                             </td>
                                             <td>
@@ -405,7 +403,7 @@
                                                         <div class="col-lg-5 col-sm-6">
                                                             <p>
                                                                 <img class="img-fluid rounded-circle" width="35px"
-                                                                    src="{{ !empty($brand->image) && file_exists(public_path('storage/brand/image/requestImg/' . $brand->image)) ? asset('storage/brand/image/requestImg/' . $brand->image) : asset('backend/images/no-image-available.png') }}"
+                                                                    src="{{ !empty($brand->image) && file_exists(public_path('storage/brand/image/' . $brand->image)) ? asset('storage/brand/image/' . $brand->image) : asset('backend/images/no-image-available.png') }}"
                                                                     alt="{{ $brand->image }}">
                                                             </p>
                                                         </div>
@@ -418,9 +416,9 @@
                                                         </div>
                                                         <div class="col-lg-5 col-sm-6">
                                                             <p>
-                                                                <img class="img-fluid rounded-circle" width="35px"
-                                                                    src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/requestImg/' . $brand->logo)) ? asset('storage/brand/image/requestImg/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
-                                                                    alt="{{ $brand->logo }}">
+                                                                <img class="img-fluid" width="50px"
+                                                                    src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/' . $brand->logo)) ? asset('storage/brand/logo/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
+                                                                    alt="{{ $brand->name }} Logo">
                                                             </p>
                                                         </div>
                                                     </div>

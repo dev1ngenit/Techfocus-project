@@ -56,12 +56,12 @@ class BrandController extends Controller
         $filePath_logo = storage_path('app/public/brand/logo/');
 
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $filePath_image,   44, 44);
+            $globalFunImage = customUpload($mainFile, $filePath_image);
         } else {
             $globalFunImage = ['status' => 0];
         }
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $filePath_logo,   44, 44);
+            $globalFunLogo = customUpload($logoFile, $filePath_logo);
         } else {
             $globalFunLogo = ['status' => 0];
         }
@@ -119,10 +119,9 @@ class BrandController extends Controller
         $filePath_logo = storage_path('app/public/brand/logo/');
 
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $filePath_image, 44, 44);
+            $globalFunImage = customUpload($mainFile, $filePath_image);
             $paths = [
                 storage_path("app/public/brand/image/{$brand->image}"),
-                storage_path("app/public/brand/image/requestImg/{$brand->image}")
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -134,10 +133,9 @@ class BrandController extends Controller
         }
 
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $filePath_logo, 44, 44);
+            $globalFunLogo = customUpload($logoFile, $filePath_logo);
             $paths = [
                 storage_path("app/public/brand/logo/{$brand->logo}"),
-                storage_path("app/public/brand/logo/requestImg/{$brand->logo}")
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -176,9 +174,7 @@ class BrandController extends Controller
 
         $paths = [
             storage_path("app/public/brand/image/{$brand->image}"),
-            storage_path("app/public/brand/image/requestImg/{$brand->image}"),
             storage_path("app/public/brand/logo/{$brand->logo}"),
-            storage_path("app/public/brand/logo/requestImg/{$brand->logo}"),
         ];
 
         foreach ($paths as $path) {

@@ -53,12 +53,12 @@ class CategoryController extends Controller
         $logoFile = $request->file('logo');
         $filePath = storage_path('app/public/');
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $filePath,   44, 44);
+            $globalFunImage = customUpload($mainFile, $filePath);
         } else {
             $globalFunImage = ['status' => 0];
         }
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $filePath,   44, 44);
+            $globalFunLogo = customUpload($logoFile, $filePath);
         } else {
             $globalFunLogo = ['status' => 0];
         }
@@ -75,7 +75,6 @@ class CategoryController extends Controller
         ];
         $this->categoryRepository->storeCategory($data);
 
-        // toastr()->success('Data has been saved successfully!');
         return redirect()->back()->with('success', 'Category Added Successfully');
     }
 
@@ -159,7 +158,6 @@ class CategoryController extends Controller
 
         $this->categoryRepository->updateCategory($data, $id);
 
-        // toastr()->success('Data has been updated successfully!');
         return redirect()->back()->with('success', 'Category has been updated successfully');
     }
 

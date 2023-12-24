@@ -2,13 +2,14 @@
 
 namespace App\Models\Admin;
 
+use App\Traits\HasSlug;
 use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    use HasFactory, Userstamps;
+    use HasFactory, Userstamps, HasSlug;
 
     /**
      * The attributes that aren't mass assignable.
@@ -16,6 +17,8 @@ class Category extends Model
      * @var array
      */
     protected $guarded = [];
+
+    protected $slugSourceColumn = 'name';
 
     public function children()
     {
