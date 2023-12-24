@@ -39,4 +39,7 @@ class SiteController extends Controller
     public function contact() {
         return view('frontend.pages.crm.contact');
     }
+    public function about() {
+        return view('frontend.pages.about.about');
+    }
 }
