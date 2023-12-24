@@ -134,7 +134,7 @@
     <!-- Footer End -->
     <!-- Go To Top Button -->
     <a id="goTop"></a>
-    <div id="modalOverlay">
+    {{-- <div id="modalOverlay">
         <div class="modalPopup">
             <div class="row headerBar align-items-center">
                 <div class="col-2"></div>
@@ -152,7 +152,7 @@
                 <button class="buttonStyle" id="closeButton">Close</button>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- *********************************Script Start***********************************-->
     @include('frontend.partials.script')

@@ -1,9 +1,9 @@
 <!-- Top Bar Start -->
-<div class="container-fluid d-sm-none d-md-block" style="background-color: var(--sub-color)">
-  <div class="row text-white top-bar" style="background-color: var(--sub-main-color)">
-    <div class="empty-area" style="background-color: var(--sub-color);
+<div class="container-fluid d-sm-none d-md-block" style="background-color: var(--secondary-deep-color)">
+  <div class="row text-white top-bar" style="background-color: var(--secondary-color)">
+    <div class="empty-area" style="background-color: var(--secondary-deep-color);
       clip-path: polygon(0 0, 96% 0%, 100% 120%, 0% 100%);"></div>
-    <div class="fill-area" style="background-color: var(--sub-main-color)">
+    <div class="fill-area" style="background-color: var(--secondary-color)">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
