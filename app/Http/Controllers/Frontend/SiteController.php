@@ -9,8 +9,12 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
+
     public function homePage() {
-        return view('frontend.pages.home.index');
+        $data = [
+            'categories' => Category::with('children.children.children.children.children.children.children.children.children.children')->get(['id','parent_id','name','slug']),
+        ];
+        return view('frontend.pages.home.index',$data);
     }
     public function solutionDetails() {
         return view('frontend.pages.solution.solution_details');

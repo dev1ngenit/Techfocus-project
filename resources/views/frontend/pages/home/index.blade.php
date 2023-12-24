@@ -25,175 +25,51 @@
             <div class="col-lg-12">
                 <div class="container">
                     <div class="row gx-3 my-3">
-                        <div class="col-lg-6 col-sm-12  ps-0">
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-                                <div class="accordion-item mb-2">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button p-3 collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                            aria-expanded="false" aria-controls="flush-collapseOne">
-                                            <p class="m-0 accordion-button-area p-2 ps-0">
-                                                <span class="ms-0"> </span>
-                                            </p>
-                                            <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
-                                                <p class="mb-0 ms-2">
-                                                    FLOW, PRESSURE AND LEVEL MEASUREMENT
-                                                </p>
+                        @if (count($categories) > 0) 
+                            @foreach ($categories as $key => $category) 
+                                <div class="col-lg-6 col-sm-12 ps-0">
+                                    <div class="accordion accordion-flush" id="accordionFlushExample-{{$key}}">
+                                        <div class="accordion-item mb-2">
+                                            <h2 class="accordion-header" id="flush-heading-{{$key}}">
+                                                <button class="accordion-button p-3 collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{$key}}"
+                                                    aria-expanded="false" aria-controls="flush-collapse-{{$key}}">
+                                                    <p class="m-0 accordion-button-area p-2 ps-0">
+                                                        <span class="ms-0"> </span>
+                                                    </p>
+                                                    <div class="d-flex align-items-center w-100">
+                                                        <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
+                                                        <p class="mb-0 ms-2">
+                                                            {{$category->name}}
+                                                        </p>
+                                                    </div>
+            
+                                                    <p></p>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapse-{{$key}}" class="accordion-collapse collapse"
+                                                aria-labelledby="flush-heading-{{$key}}" data-bs-parent="#accordionFlushExample-{{$key}}">
+                                                <div class="accordion-body">
+                                                    <ul class="ps-3">
+                                                        @if (count($category->children) > 0) 
+                                                            @foreach ($category->children as $sub_cat) 
+                                                                <li class="mb-2 menu-single-items">
+                                                                    <a href="{{ route('category',$sub_cat->slug) }}">{{$sub_cat->name}}</a>
+                                                                </li>
+                                                            @endforeach
+                                                            @else
+                                                            <li class="mb-2 menu-single-items">
+                                                                <a href="javascript:void(0)">No Content Found!</a>
+                                                            </li>
+                                                        @endif
+                                                    </ul>
+                                                </div>
                                             </div>
-    
-                                            <p></p>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                            <ul class="ps-3">
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="{{ route('category',[$slug = 'flow-pressure-level-management']) }}">FLOW, PRESSURE AND LEVEL MEASUREMENT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">DETECTION - MEASUREMENT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">ROBOTICS - AUTOMATION - INDUSTRIAL IT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">ELECTRICITY - ELECTRONICS</a>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-    
-                        <div class="col-lg-6 col-sm-12 ps-0">
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-                                <div class="accordion-item mb-2">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button p-3 collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapse5"
-                                            aria-expanded="false" aria-controls="flush-collapse5">
-                                            <p class="m-0 accordion-button-area p-2 ps-0">
-                                                <span class="ms-0"> </span>
-                                            </p>
-                                            <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
-                                                <p class="mb-0 ms-2">
-                                                    FLOW, PRESSURE AND LEVEL MEASUREMENT
-                                                </p>
-                                            </div>
-    
-                                            <p></p>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapse5" class="accordion-collapse collapse"
-                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                            <ul class="ps-3">
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">FLOW, PRESSURE AND LEVEL MEASUREMENT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">DETECTION - MEASUREMENT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">ROBOTICS - AUTOMATION - INDUSTRIAL IT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">ELECTRICITY - ELECTRONICS</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12 ps-0">
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-                                <div class="accordion-item mb-2">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button p-3 collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapse5"
-                                            aria-expanded="false" aria-controls="flush-collapse5">
-                                            <p class="m-0 accordion-button-area p-2 ps-0">
-                                                <span class="ms-0"> </span>
-                                            </p>
-                                            <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
-                                                <p class="mb-0 ms-2">
-                                                    FLOW, PRESSURE AND LEVEL MEASUREMENT
-                                                </p>
-                                            </div>
-    
-                                            <p></p>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapse5" class="accordion-collapse collapse"
-                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                            <ul class="ps-3">
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">FLOW, PRESSURE AND LEVEL MEASUREMENT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">DETECTION - MEASUREMENT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">ROBOTICS - AUTOMATION - INDUSTRIAL IT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">ELECTRICITY - ELECTRONICS</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-sm-12 ps-0">
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-                                <div class="accordion-item mb-2">
-                                    <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button p-3 collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapse5"
-                                            aria-expanded="false" aria-controls="flush-collapse5">
-                                            <p class="m-0 accordion-button-area p-2 ps-0">
-                                                <span class="ms-0"> </span>
-                                            </p>
-                                            <div class="d-flex align-items-center w-100">
-                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
-                                                <p class="mb-0 ms-2">
-                                                    FLOW, PRESSURE AND LEVEL MEASUREMENT
-                                                </p>
-                                            </div>
-    
-                                            <p></p>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapse5" class="accordion-collapse collapse"
-                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                            <ul class="ps-3">
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">FLOW, PRESSURE AND LEVEL MEASUREMENT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">DETECTION - MEASUREMENT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">ROBOTICS - AUTOMATION - INDUSTRIAL IT</a>
-                                                </li>
-                                                <li class="mb-2 menu-single-items">
-                                                    <a href="#">ELECTRICITY - ELECTRONICS</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

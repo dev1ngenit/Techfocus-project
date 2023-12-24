@@ -117,7 +117,7 @@
   <div class="container-fluid">
     <!-- Logo Start -->
     <a class="navbar-brand mb-2" href="{{ route('homepage') }}" data-aos="fade-right">
-      <img src="https://i.ibb.co/dD1P3Wt/Demo-Logo.png" height="60px" alt="" />
+      <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}" height="60px" alt="" />
     </a>
     <!-- Logo End -->
     <!-- Mobile Menu -->
@@ -133,7 +133,7 @@
           <!--Mobile Head -->
           <p class="text-danger">
             <a class="navbar-brand" href="{{ route('homepage') }}">
-              <img src="https://i.ibb.co/dD1P3Wt/Demo-Logo.png" width="200px" height="60px" alt="" />
+              <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}" width="200px" height="60px" alt="" />
             </a>
           </p>
           <!-- Mobile Menu -->

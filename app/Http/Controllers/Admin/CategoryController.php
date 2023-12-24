@@ -51,14 +51,15 @@ class CategoryController extends Controller
     {
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
-        $filePath = storage_path('app/public/');
+        $imageFilePath = storage_path('app/public/category/image/');
+        $logoFilePath = storage_path('app/public/category/logo/');
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $filePath,   44, 44);
+            $globalFunImage = customUpload($mainFile, $imageFilePath,   44, 44);
         } else {
             $globalFunImage = ['status' => 0];
         }
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $filePath,   44, 44);
+            $globalFunLogo = customUpload($logoFile, $logoFilePath,   44, 44);
         } else {
             $globalFunLogo = ['status' => 0];
         }
@@ -114,13 +115,14 @@ class CategoryController extends Controller
 
         $mainFile = $request->file('image');
         $logoFile = $request->file('logo');
-        $filePath = storage_path('app/public/');
+        $imageFilePath = storage_path('app/public/category/image/');
+        $logoFilePath = storage_path('app/public/category/logo/');
 
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $filePath, 44, 44);
+            $globalFunImage = customUpload($mainFile, $imageFilePath, 44, 44);
             $paths = [
-                storage_path("app/public/{$category->image}"),
-                storage_path("app/public/requestImg/{$category->image}")
+                storage_path("app/public/category/image/{$category->image}"),
+                storage_path("app/public/category/image/{$category->image}")
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -132,10 +134,10 @@ class CategoryController extends Controller
         }
 
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $filePath, 44, 44);
+            $globalFunLogo = customUpload($logoFile, $logoFilePath, 44, 44);
             $paths = [
-                storage_path("app/public/{$category->logo}"),
-                storage_path("app/public/requestImg/{$category->logo}")
+                storage_path("app/public/category/logo/{$category->logo}"),
+                storage_path("app/public/category/logo/{$category->logo}")
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -174,11 +176,11 @@ class CategoryController extends Controller
         $category =  $this->categoryRepository->findCategory($id);
 
         $paths = [
-            storage_path('app/public/') . $category->image,
-            storage_path('app/public/requestImg/') . $category->image,
+            storage_path("app/public/category/image/{$category->image}"),
+            storage_path("app/public/category/image/{$category->image}"),
 
-            storage_path('app/public/') . $category->logo,
-            storage_path('app/public/requestImg/') . $category->logo,
+            storage_path("app/public/category/logo/{$category->logo}"),
+            storage_path("app/public/category/logo/{$category->logo}"),
         ];
 
         foreach ($paths as $path) {
