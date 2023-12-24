@@ -12,6 +12,23 @@
         max-width: 1450px;
     }
 </style>
+<section class="ban_sec">
+    <div class="container-fluid p-0">
+        <div class="ban_img">
+            <img src="https://myefilings.com/wp-content/uploads/2020/06/contact-us-banner.jpg" alt="banner" border="0">
+            <div class="ban_text">
+                <strong>
+                    About Us
+                </strong>
+                <ul class="d-flex align-items-center ps-0 mt-5">
+                    <li class="text-white"><a href="#" class="">Home</a></li>
+                    <li class="text-white"><span class="me-2 ms-2">/</span></li>
+                    <li class="main-color"><a href="#">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="container custom-spacer">
     <div class="row">
         <div class="col-lg-12">
