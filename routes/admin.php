@@ -113,6 +113,10 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             Route::get('/completed-products', 'index')->name('product.index');
             Route::get('/sourced-products', 'sourcedProducts')->name('sourced.products');
             Route::get('/saved-products', 'savedProducts')->name('saved.products');
+            Route::get('/product/create', 'create')->name('product.create');
+            Route::post('/product/create', 'store')->name('product.store');
+            Route::get('/product/{id}/edit', 'edit')->name('product.edit');
+            Route::post('/product/{id}/update', 'update')->name('product.update');
         });
         // HR
         Route::prefix('hr')->controller(HRController::class)->group(function () {

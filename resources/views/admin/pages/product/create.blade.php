@@ -193,8 +193,7 @@
                                                             <label class="form-label required">Category Name</label>
                                                             <select class="form-select form-select-solid form-select-sm"
                                                                 name="category_id[]" id="field2" multiple
-                                                                multiselect-search="true" multiselect-select-all="true"
-                                                                onchange="console.log(this.selectedOptions)">
+                                                                multiselect-search="true" multiselect-select-all="true">
                                                                 @if (count($categories) > 0)
                                                                     @foreach ($categories->whereNull('parent_id') as $category)
                                                                         @include(
