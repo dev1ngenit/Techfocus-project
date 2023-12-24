@@ -25,7 +25,26 @@ class CatalogRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'category' => 'string|nullable',
+            'brand_id' => 'array|nullable',
+            'product_id' => 'array|nullable',
+            'industry_id' => 'array|nullable',
+            'solution_id' => 'array|nullable',
+            'company_id' => 'array|nullable',
+            'name' => 'string|nullable',
+            'slug' => 'string|unique:catalogs,slug|nullable',
+            'thumbnail' => 'image|nullable',
+            'page_number' => 'string|max:20|nullable',
+            'description' => 'string|nullable',
+            'company_button_name' => 'string|nullable',
+            'company_button_link' => 'string|nullable',
+            'document' => 'file|mimes:pdf|nullable',
+            'attachments' => 'array',
+            'attachments.*.page_image' => 'image|nullable',
+            'attachments.*.page_description' => 'string|nullable',
+            'attachments.*.page_link' => 'string|nullable',
+            'attachments.*.button_name' => 'string|nullable',
+            'attachments.*.button_link' => 'string|nullable',
         ];
     }
 
@@ -52,7 +71,7 @@ class CatalogRequest extends FormRequest
             //
         ];
     }
-    
+
     /**
      * Handle a failed validation attempt.
      *

@@ -24,7 +24,7 @@ class BannerRequest extends FormRequest
      */
     public function rules()
     {
-        $bannerId = $this->route('banner'); // Getting the current banner ID from the route
+        $bannerId = $this->route('banner');
 
         return [
             'category' => 'nullable|string',
@@ -35,12 +35,13 @@ class BannerRequest extends FormRequest
             'industry_id' => 'nullable|exists:industries,id',
             'content_id' => 'nullable|exists:news_trends,id',
             'page_name' => 'nullable|string',
-            'banner_one_name' => 'nullable|string',
+            'page_title' => 'nullable|string',
+            'banner_one_name' => 'required|string',
             'banner_two_name' => 'nullable|string',
             'banner_three_name' => 'nullable|string',
-            'banner_one_slug' => 'nullable|string|unique:banners,banner_one_slug,' . $bannerId,
-            'banner_two_slug' => 'nullable|string|unique:banners,banner_two_slug,' . $bannerId,
-            'banner_three_slug' => 'nullable|string|unique:banners,banner_three_slug,' . $bannerId,
+            'banner_one_slug' => 'nullable|string|unique:banners,banner_one_slug,' . $bannerId . ',id',
+            'banner_two_slug' => 'nullable|string|unique:banners,banner_two_slug,' . $bannerId . ',id',
+            'banner_three_slug' => 'nullable|string|unique:banners,banner_three_slug,' . $bannerId . ',id',
             'banner_one_image' => 'sometimes|image|mimes:jpeg,png,jpg|max:2048',
             'banner_two_image' => 'sometimes|image|mimes:jpeg,png,jpg|max:2048',
             'banner_three_image' => 'sometimes|image|mimes:jpeg,png,jpg|max:2048',
@@ -49,7 +50,7 @@ class BannerRequest extends FormRequest
             'banner_three_link' => 'nullable|url',
             'meta_title' => 'nullable|string',
             'meta_description' => 'nullable|string',
-            'meta_tags' => 'nullable|json',
+            'meta_tags' => 'nullable|array',
             'meta_image' => 'sometimes|image|mimes:jpeg,png,jpg|max:2048',
             'status' => 'required|in:active,inactive',
         ];

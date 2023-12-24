@@ -23,9 +23,10 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data"
-                            class="needs-validation" novalidate>
+                        <form action="{{ route('admin.banner.update', $banner->id) }}" method="POST"
+                            enctype="multipart/form-data" class="needs-validation" novalidate>
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="fv-row mb-3">
@@ -34,167 +35,218 @@
                                             id="bannerCategory" data-control="select2" data-hide-search="false"
                                             data-placeholder="Select Category" data-allow-clear="true">
                                             <option></option>
-                                            <option value="brand">Brand</option>
-                                            <option value="solution">Solution</option>
-                                            <option value="industry">Industry</option>
-                                            <option value="category">Category</option>
-                                            <option value="product">Product</option>
-                                            <option value="content">Content</option>
-                                            <option value="page">Page</option>
+                                            @foreach (['brand', 'solution', 'industry', 'category', 'product', 'content', 'page'] as $option)
+                                                <option value="{{ $option }}"
+                                                    @if (old('category', $currentCategory) == $option) selected @endif>{{ ucfirst($option) }}
+                                                </option>
+                                            @endforeach
                                         </select>
-                                        <div class="invalid-feedback"> Please Select Category.</div>
+                                        @error('category')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 brand-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Brand Name</label>
-                                        <select class="form-select form-select-solid form-select-sm" name="brand_id"
-                                            id="brand_id" data-control="select2" data-hide-search="false"
+                                        <select
+                                            class="form-select form-select-solid form-select-sm @error('brand_id') is-invalid @enderror"
+                                            name="brand_id" id="brand_id" data-control="select2" data-hide-search="false"
                                             data-placeholder="Select an Product Type" data-allow-clear="true">
+                                            <option></option>
                                             @foreach ($brands as $brand)
-                                                <option @selected($brand->id == $brand->brand_id) value="{{ $brand->id }}">
-                                                    {{ $brand->name }}</option>
+                                                <option @selected($brand->id == old('brand_id')) value="{{ $brand->id }}">
+                                                    {{ $brand->name }}
+                                                </option>
                                             @endforeach
                                         </select>
-                                        <div class="invalid-feedback"> Please Brand Name.</div>
+                                        @error('brand_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
+
+
                                 <div class="col-lg-6 category-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Category Name</label>
-                                        <select class="form-select form-select-solid form-select-sm" name="category_id"
-                                            id="category_id" data-control="select2" data-hide-search="false"
-                                            data-placeholder="Select an Product Type" data-allow-clear="true">
+                                        <select
+                                            class="form-select form-select-solid form-select-sm @error('category_id') is-invalid @enderror"
+                                            name="category_id" id="category_id" data-control="select2"
+                                            data-hide-search="false" data-placeholder="Select a Product Type"
+                                            data-allow-clear="true">
+                                            <option></option>
                                             @foreach ($categories as $category)
-                                                <option @selected($category->id == $category->category_id) value="{{ $category->id }}">
-                                                    {{ $category->name }}</option>
+                                                <option @selected($category->id == old('category_id')) value="{{ $category->id }}">
+                                                    {{ $category->name }}
+                                                </option>
                                             @endforeach
                                         </select>
-                                        <div class="invalid-feedback"> Please Category Name.</div>
+                                        @error('category_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 solution-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Solution Name</label>
-                                        <select class="form-select form-select-solid form-select-sm" name="solution_id"
-                                            id="solution_id" data-control="select2" data-hide-search="false"
-                                            data-placeholder="Select an Product Type" data-allow-clear="true">
+                                        <select
+                                            class="form-select form-select-solid form-select-sm @error('solution_id') is-invalid @enderror"
+                                            name="solution_id" id="solution_id" data-control="select2"
+                                            data-hide-search="false" data-placeholder="Select a Product Type"
+                                            data-allow-clear="true">
+                                            <option></option>
                                             @foreach ($solutions as $solution)
-                                                <option @selected($solution->id == $solution->solution_id) value="{{ $solution->id }}">
-                                                    {{ $solution->name }}</option>
+                                                <option @selected($solution->id == old('solution_id')) value="{{ $solution->id }}">
+                                                    {{ $solution->name }}
+                                                </option>
                                             @endforeach
                                         </select>
-                                        <div class="invalid-feedback"> Please Solution Name.</div>
+                                        @error('solution_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-lg-6 product-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Product Name</label>
-                                        <select class="form-select form-select-solid form-select-sm" name="product_id"
-                                            id="product" data-control="select2" data-hide-search="false"
-                                            data-placeholder="Select an Product Type" data-allow-clear="true">
+                                        <select
+                                            class="form-select form-select-solid form-select-sm @error('product_id') is-invalid @enderror"
+                                            name="product_id" id="product" data-control="select2" data-hide-search="false"
+                                            data-placeholder="Select a Product Type" data-allow-clear="true">
+                                            <option></option>
                                             @foreach ($products as $product)
-                                                <option @selected($product->id == $product->product_id) value="{{ $product->id }}">
-                                                    {{ $product->name }}</option>
+                                                <option @selected($product->id == old('product_id')) value="{{ $product->id }}">
+                                                    {{ $product->name }}
+                                                </option>
                                             @endforeach
                                         </select>
-                                        <div class="invalid-feedback"> Please Product Name.</div>
+                                        @error('product_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 industry-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Industry Name</label>
-                                        <select class="form-select form-select-solid form-select-sm" name="industry_id"
-                                            id="industry_id" data-control="select2" data-hide-search="false"
-                                            data-placeholder="Select an Product Type" data-allow-clear="true">
+                                        <select
+                                            class="form-select form-select-solid form-select-sm @error('industry_id') is-invalid @enderror"
+                                            name="industry_id" id="industry_id" data-control="select2"
+                                            data-hide-search="false" data-placeholder="Select an Industry Type"
+                                            data-allow-clear="true">
+                                            <option></option>
                                             @foreach ($industries as $industry)
-                                                <option @selected($industry->id == $industry->product_id) value="{{ $industry->id }}">
-                                                    {{ $industry->name }}</option>
+                                                <option @selected($industry->id == old('industry_id')) value="{{ $industry->id }}">
+                                                    {{ $industry->name }}
+                                                </option>
                                             @endforeach
                                         </select>
-                                        <div class="invalid-feedback"> Please Industry Name.</div>
+                                        @error('industry_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 content-select-box d-none">
                                     <div class="fv-row mb-3">
                                         <label class="form-label required">Content Name</label>
-                                        <select class="form-select form-select-solid form-select-sm" name="content_id"
-                                            id="content_id" data-control="select2" data-hide-search="false"
-                                            data-placeholder="Select an Product Type" data-allow-clear="true">
+                                        <select
+                                            class="form-select form-select-solid form-select-sm @error('content_id') is-invalid @enderror"
+                                            name="content_id" id="content_id" data-control="select2"
+                                            data-hide-search="false" data-placeholder="Select a Content Type"
+                                            data-allow-clear="true">
+                                            <option></option>
                                             @foreach ($contents as $content)
-                                                <option @selected($content->id == $content->content_id) value="{{ $content->id }}">
-                                                    {{ $content->title }}</option>
+                                                <option @selected($content->id == old('content_id')) value="{{ $content->id }}">
+                                                    {{ $content->title }}
+                                                </option>
                                             @endforeach
                                         </select>
-                                        <div class="invalid-feedback"> Please Content Name.</div>
+                                        @error('content_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
+
                                 <div class="col-lg-6 page-select-box d-none">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="fv-row mb-3">
-                                                <label class="form-label">Page Name</label>
+                                                <label class="form-label required">Page Name</label>
                                                 <input name="page_name"
-                                                    class="form-control form-control-sm form-control-solid"
+                                                    value="{{ old('page_name', $banner->page_name) }}"
+                                                    class="form-control form-control-sm form-control-solid @error('page_name') is-invalid @enderror"
                                                     placeholder="Enter Page Name" type="text" />
-                                                <div class="invalid-feedback"> Please Enter Page Name</div>
+                                                @error('page_name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="fv-row mb-3">
-                                                <label class="form-label">Page Title</label>
+                                                <label class="form-label required">Page Title</label>
                                                 <input name="page_title"
-                                                    class="form-control form-control-sm form-control-solid"
+                                                    value="{{ old('page_title', $banner->page_title) }}"
+                                                    class="form-control form-control-sm form-control-solid @error('page_title') is-invalid @enderror"
                                                     placeholder="Enter Page Title" type="text" />
-                                                <div class="invalid-feedback"> Please Enter Page Name</div>
+                                                @error('page_title')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
                             <div class="border p-4 m-1 mt-5">
-                                <p class="badge badge-info custom-bage-all">Banner
-                                    One</span>
+                                <p class="badge badge-info custom-badge-all">Banner One</p>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
-                                            <label class="form-label">Banner One Name</label>
+                                            <label class="form-label required">Banner One Name</label>
                                             <input name="banner_one_name"
-                                                class="form-control form-control-sm form-control-solid"
+                                                value="{{ old('banner_one_name', $banner->banner_one_name) }}"
+                                                class="form-control form-control-sm form-control-solid @error('banner_one_name') is-invalid @enderror"
                                                 placeholder="Enter Banner One Name" type="text" />
-                                            <div class="invalid-feedback"> Please Enter Banner One Name</div>
+                                            @error('banner_one_name')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
                                             <label class="form-label required">Banner One Image</label>
                                             <input name="banner_one_image"
-                                                class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Banner One Name" type="file" required />
-                                            <div class="invalid-feedback"> Please Enter Banner One Image</div>
+                                                class="form-control form-control-sm form-control-solid @error('banner_one_image') is-invalid @enderror"
+                                                placeholder="Enter Banner One Image" type="file" />
+                                            @error('banner_one_image')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
-                                            <label class="form-label">Banner One Link</label>
+                                            <label class="form-label required">Banner One Link</label>
                                             <input name="banner_one_link"
-                                                class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Banner One Name" type="url" />
-                                            <div class="invalid-feedback"> Please Enter Banner One Link</div>
+                                                value="{{ old('banner_one_link', $banner->banner_one_link) }}"
+                                                class="form-control form-control-sm form-control-solid @error('banner_one_link') is-invalid @enderror"
+                                                placeholder="Enter Banner One Link" type="url" />
+                                            @error('banner_one_link')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="border p-4 m-1 mt-5">
-                                <p class="badge badge-info custom-bage-all">Banner
-                                    Two</span>
+                                <p class="badge badge-info custom-badge-all">Banner Two</p>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
                                             <label class="form-label">Banner Two Name</label>
-                                            <input name="banner_two_name"
+                                            <input name="banner_two_name" value="{{ $banner->banner_two_name }}"
                                                 class="form-control form-control-sm form-control-solid"
                                                 placeholder="Enter Banner Two Name" type="text" />
                                             <div class="invalid-feedback"> Please Enter Banner Two Name</div>
@@ -205,29 +257,29 @@
                                             <label class="form-label">Banner Two Image</label>
                                             <input name="banner_two_image"
                                                 class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Banner Two Name" type="file" />
+                                                placeholder="Enter Banner Two Image" type="file" />
                                             <div class="invalid-feedback"> Please Enter Banner Two Image</div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
                                             <label class="form-label">Banner Two Link</label>
-                                            <input name="banner_two_link"
+                                            <input name="banner_two_link" value="{{ $banner->banner_two_link }}"
                                                 class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Banner Two Name" type="url" />
+                                                placeholder="Enter Banner Two Link" type="url" />
                                             <div class="invalid-feedback"> Please Enter Banner Two Link</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="border p-4 m-1 mt-5">
-                                <p class="badge badge-info custom-bage-all">Banner
-                                    Three</span>
+                                <p class="badge badge-info custom-badge-all">Banner Three</p>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
                                             <label class="form-label">Banner Three Name</label>
-                                            <input name="banner_three_name"
+                                            <input name="banner_three_name" value="{{ $banner->banner_three_name }}"
                                                 class="form-control form-control-sm form-control-solid"
                                                 placeholder="Enter Banner Three Name" type="text" />
                                             <div class="invalid-feedback"> Please Enter Banner Three Name</div>
@@ -238,74 +290,86 @@
                                             <label class="form-label">Banner Three Image</label>
                                             <input name="banner_three_image"
                                                 class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Banner Three Name" type="file" />
+                                                placeholder="Enter Banner Three Image" type="file" />
                                             <div class="invalid-feedback"> Please Enter Banner Three Image</div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
                                             <label class="form-label">Banner Three Link</label>
-                                            <input name="banner_three_link"
+                                            <input name="banner_three_link" value="{{ $banner->banner_three_link }}"
                                                 class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Banner Three Name" type="url" />
+                                                placeholder="Enter Banner Three Link" type="url" />
                                             <div class="invalid-feedback"> Please Enter Banner Three Link</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
+
                             <div class="border p-4 m-1 mt-5">
-                                <p class="badge badge-info custom-bage-all">Meta Box</span>
+                                <p class="badge badge-info custom-badge-all">Meta Box</p>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
                                             <label class="form-label">Meta Description</label>
                                             <textarea type="text" name="meta_description" class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Meta Description" id="" cols="30" rows="1" maxlength="160"></textarea>
+                                                placeholder="Enter Meta Description" id="" cols="30" rows="1" maxlength="160">{{ $banner->meta_description }}</textarea>
                                             <div class="invalid-feedback"> Please Enter Meta Description</div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
                                             <label class="form-label">Meta Title</label>
-                                            <input name="meta_title"
-                                                class="form-control form-control-sm form-control-solid"
-                                                placeholder="Enter Meta Image" type="text" maxlength="60" />
-                                            <div class="invalid-feedback"> Please Enter Meta Title</div>
+                                            <input name="meta_title" value="{{ $banner->meta_title }}"
+                                                class="form-control form-control-sm form-control-solid @error('meta_title') is-invalid @enderror"
+                                                placeholder="Enter Meta Title" type="text" maxlength="60" />
+                                            @error('meta_title')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="fv-row mb-3">
                                             <label class="form-label">Meta Image</label>
                                             <input name="meta_image"
-                                                class="form-control form-control-sm form-control-solid"
+                                                class="form-control form-control-sm form-control-solid @error('meta_image') is-invalid @enderror"
                                                 placeholder="Enter Meta Image" type="file" />
-                                            <div class="invalid-feedback"> Please Enter Meta Image</div>
+                                            @error('meta_image')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="fv-row mb-3">
                                             <label class="form-label required">Select Meta Tags</label>
-                                            <input class="form-control form-select-sm form-control-solid" name="meta_tags"
-                                                id="tags1" value="{{ old('meta_tags') }}" />
-                                            <div class="invalid-feedback"> Please Enter Meta Tags.</div>
+                                            <input
+                                                class="form-control form-select-sm form-control-solid @error('meta_tags') is-invalid @enderror"
+                                                name="meta_tags" id="tags1" value="{{ $banner->meta_tags }}" />
+                                            @error('meta_tags')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="fv-row mb-3">
                                             <label class="form-label required">Select Status</label>
-                                            <select class="form-select form-select-solid" name="status"
-                                                data-control="select2" data-placeholder="Select Status"
+                                            <select
+                                                class="form-select form-select-solid @error('status') is-invalid @enderror"
+                                                name="status" data-control="select2" data-placeholder="Select Status"
                                                 data-allow-clear="true" required>
                                                 <option></option>
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
+                                                <option @selected($banner->status == 'active') value="active">Active</option>
+                                                <option @selected($banner->status == 'inactive') value="inactive">Inactive</option>
                                             </select>
-                                            <div class="invalid-feedback"> Please Select Status.</div>
+                                            @error('status')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="row">
                                 <div class="col-lg-12 mt-5">

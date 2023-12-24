@@ -96,6 +96,7 @@ class BannerController extends Controller
             'industry_id'        => $request->industry_id,
             'content_id'         => $request->content_id,
             'page_name'          => $request->page_name,
+            'page_title'          => $request->page_title,
             'banner_one_name'    => $request->banner_one_name,
             'banner_two_name'    => $request->banner_two_name,
             'banner_three_name'  => $request->banner_three_name,
@@ -137,7 +138,15 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.pages.banner.edit');
+        return view('admin.pages.banner.edit', [
+            'banner'     => Banner::find($id),
+            'brands'     => Brand::get(['id', 'name']),
+            'categories' => Category::get(['id', 'name']),
+            'products'   => Product::get(['id', 'name']),
+            'solutions'  => SolutionDetail::get(['id', 'name']),
+            'industries' => Industry::get(['id', 'name']),
+            'contents'   => NewsTrend::get(['id', 'title']),
+        ]);
     }
 
     /**
@@ -147,7 +156,7 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BannerRequest $request, $id)
     {
         $banner = Banner::find($id);
 
@@ -225,6 +234,7 @@ class BannerController extends Controller
             'industry_id'        => $request->industry_id,
             'content_id'         => $request->content_id,
             'page_name'          => $request->page_name,
+            'page_title'          => $request->page_title,
             'banner_one_name'    => $request->banner_one_name,
             'banner_two_name'    => $request->banner_two_name,
             'banner_three_name'  => $request->banner_three_name,
@@ -239,7 +249,7 @@ class BannerController extends Controller
             'banner_three_link'  => $request->banner_three_link,
             'meta_title'         => $request->meta_title,
             'meta_description'   => $request->meta_description,
-            'meta_tags'          => json_encode($request->meta_tags),
+            'meta_tags'          => $request->meta_tags,
             'meta_image'         => $globalFunMetaImage['status']   == 1 ? $globalFunMetaImage['file_name']  :  $banner->meta_image,
             'status'             => $request->status,
         ]);
