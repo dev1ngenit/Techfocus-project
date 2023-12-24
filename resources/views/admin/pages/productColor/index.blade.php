@@ -37,24 +37,14 @@
                                         <h2 class="mt-3">Colors</h2>
                                     </div>
                                 </div>
-                                {{-- <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
-                                    <!--begin::Export dropdown-->
-
-                                    <button type="button" class="btn btn-sm btn-light-success rounded-0"
-                                        data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
-                                        data-bs-target="#colorsAddModal">
-                                        Add New
-                                    </button>
-
-                                    <!--end::Export dropdown-->
-                                </div> --}}
+                                
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <table
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
-                            id="kt_datatable_example_1">
+                            id="kt_datatable_example">
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
@@ -241,109 +231,10 @@
             </div>
         </div>
     @endforeach
-    @endforeach
 @endsection
 
 @push('scripts')
-    <script>
-        "use strict";
-
-        // Class definition
-        var KTDatatablesButtons = function() {
-            // Shared variables
-            var table;
-            var datatable;
-
-            // Private functions
-            var initDatatable = function() {
-                // Set date data order
-                const tableRows = table.querySelectorAll('tbody tr');
-
-                tableRows.forEach(row => {
-                    const dateRow = row.querySelectorAll('td');
-                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                        .format(); // select date from 4th column in table
-                    dateRow[3].setcolors('data-order', realDate);
-                });
-
-                // Init datatable --- more info on datatables: https://datatables.net/manual/
-                datatable = $(table).DataTable({
-                    "info": false,
-                    'order': [],
-                    'pageLength': 10,
-                });
-            }
-
-            // Hook export buttons
-            var exportButtons = () => {
-                const documentTitle = 'Customer Orders Report';
-                var buttons = new $.fn.dataTable.Buttons(table, {
-                    buttons: [{
-                            extend: 'copyHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'excelHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'csvHtml5',
-                            title: documentTitle
-                        },
-                        {
-                            extend: 'pdfHtml5',
-                            title: documentTitle
-                        }
-                    ]
-                }).container().appendTo($('#kt_datatable_example_1_export'));
-
-                // Hook dropdown menu click event to datatable export buttons
-                const exportButtons = document.querySelectorAll(
-                    '#kt_datatable_example_1_export_menu [data-kt-export]');
-                exportButtons.forEach(exportButton => {
-                    exportButton.addEventListener('click', e => {
-                        e.preventDefault();
-
-                        // Get clicked export value
-                        const exportValue = e.target.getcolors('data-kt-export');
-                        const target = document.querySelector('.dt-buttons .buttons-' +
-                            exportValue);
-
-                        // Trigger click event on hidden datatable export buttons
-                        target.click();
-                    });
-                });
-            }
-
-            // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-            var handleSearchDatatable = () => {
-                const filterSearch = document.querySelector('[data-kt-filter="search"]');
-                filterSearch.addEventListener('keyup', function(e) {
-                    datatable.search(e.target.value).draw();
-                });
-            }
-
-            // Public methods
-            return {
-                init: function() {
-                    table = document.querySelector('#kt_datatable_example_1');
-
-                    if (!table) {
-                        return;
-                    }
-
-                    initDatatable();
-                    exportButtons();
-                    handleSearchDatatable();
-                }
-            };
-        }();
-
-        // On document ready
-        KTUtil.onDOMContentLoaded(function() {
-            KTDatatablesButtons.init();
-        });
-    </script>
+    
     <script>
         $(document).ready(function() {
             // Attach an input event listener to the color input

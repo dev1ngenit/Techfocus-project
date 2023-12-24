@@ -9,7 +9,7 @@
                 data-placeholder="Select an Product Type" data-allow-clear="true">
                 <option></option>
                 @foreach (getAllCountry() as $country)
-                    <option value="{{ $country->id }}" @selected($country->id == $site->country_id)>{{ $country->name }}</option>
+                    <option value="{{ $country->id }}" @selected($country->id == (optional($site)->country_id))>{{ $country->name }}</option>
                 @endforeach
                 
             </select>
@@ -23,7 +23,7 @@
                 name="company_id" data-control="select2" data-placeholder="Select an option" data-allow-clear="true">
                 <option></option>
                 @foreach ($companies as $company)
-                    <option value="{{ $company->id }}" @selected($company->id == $site->company_id)>{{ $company->name }}</option>
+                    <option value="{{ $company->id }}" @selected($company->id == (optional($site)->company_id))>{{ $company->name }}</option>
                 @endforeach
             </select>
             @error('company_id')
@@ -116,6 +116,20 @@
                 @error('base_color')
                     <div class="invalid-feedback"> {{ $message }}</div>
                 @enderror
+                <div class="row align-items-center">
+                    <div class="col-4">
+                        <input type="color" pattern="#[0-9a-fA-F]{6}"
+                            class="form-control form-control-solid form-control-sm colorCode"
+                            name="color_code" step="0.01" id="colorCode"
+                            placeholder="Enter Color Code" style="height:3rem;" required>
+                    </div>
+                    <div class="col-8">
+                        {{-- <div class="input-group-append"> --}}
+                        <span class="input-group-text rounded-0 colorCodePreview"
+                            id="colorCodePreview">#000000</span>
+                        {{-- </div> --}}
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-lg-3">
