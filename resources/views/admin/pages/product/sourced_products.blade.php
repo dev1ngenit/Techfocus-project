@@ -29,7 +29,7 @@
                                     </div>
                                     <!--end::Search-->
                                     <!--begin::Export buttons-->
-                                    <div id="kt_datatable_example_1_export" class="d-none"></div>
+                                    <div id="sourced_products_export" class="d-none"></div>
                                     <!--end::Export buttons-->
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
@@ -61,16 +61,10 @@
                                         Add New
                                     </a>
                                     <!--begin::Menu-->
-                                    <div id="kt_datatable_example_1_export_menu"
+                                    <div id="sourced_products_export_menu"
                                         class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
                                         data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                                Copy to clipboard
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
+                                        
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
                                             <a href="#" class="menu-link px-3" data-kt-export="excel">
@@ -102,7 +96,7 @@
                     <div class="card-body">
                         <table
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
-                            id="kt_datatable_example_1">
+                            id="kt_datatable_example">
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
@@ -121,8 +115,10 @@
                                         <tr class="odd">
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
+                                                {{-- <img class="img-fluid rounded-circle" width="35px"
+                                                    src="{{ $product->thumbnail }}" alt="{{ $product->name }}"> --}}
                                                 <img class="img-fluid rounded-circle" width="35px"
-                                                    src="{{ $product->thumbnail }}" alt="{{ $product->name }}">
+                                                    src="{{ !empty($product->thumbnail) && file_exists(public_path($product->thumbnail)) ?  $product->thumbnail : asset('backend/images/no-image-available.png') }}" alt="{{ $product->name }}">
                                             </td>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->added_by }}</td>
@@ -187,29 +183,10 @@
             var table;
             var datatable;
 
-            // Private functions
-            var initDatatable = function() {
-                // Set date data order
-                const tableRows = table.querySelectorAll('tbody tr');
-
-                tableRows.forEach(row => {
-                    const dateRow = row.querySelectorAll('td');
-                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                        .format(); // select date from 4th column in table
-                    dateRow[3].setAttribute('data-order', realDate);
-                });
-
-                // Init datatable --- more info on datatables: https://datatables.net/manual/
-                datatable = $(table).DataTable({
-                    "info": false,
-                    'order': [],
-                    'pageLength': 10,
-                });
-            }
-
+            
             // Hook export buttons
             var exportButtons = () => {
-                const documentTitle = 'Customer Orders Report';
+                const documentTitle = 'Sourced Products ( Pending For Approval )';
                 var buttons = new $.fn.dataTable.Buttons(table, {
                     buttons: [{
                             extend: 'copyHtml5',
@@ -228,11 +205,11 @@
                             title: documentTitle
                         }
                     ]
-                }).container().appendTo($('#kt_datatable_example_1_export'));
+                }).container().appendTo($('#sourced_products_export'));
 
                 // Hook dropdown menu click event to datatable export buttons
                 const exportButtons = document.querySelectorAll(
-                    '#kt_datatable_example_1_export_menu [data-kt-export]');
+                    '#sourced_products_export_menu [data-kt-export]');
                 exportButtons.forEach(exportButton => {
                     exportButton.addEventListener('click', e => {
                         e.preventDefault();
@@ -259,15 +236,12 @@
             // Public methods
             return {
                 init: function() {
-                    table = document.querySelector('#kt_datatable_example_1');
+                    table = document.querySelector('#kt_datatable_example');
 
                     if (!table) {
                         return;
                     }
-
-                    initDatatable();
                     exportButtons();
-                    handleSearchDatatable();
                 }
             };
         }();

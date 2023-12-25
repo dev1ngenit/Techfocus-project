@@ -702,6 +702,8 @@ function validateform() {
 
 }
 
+// Color Code Preview
+
 
 
 // Multi Select

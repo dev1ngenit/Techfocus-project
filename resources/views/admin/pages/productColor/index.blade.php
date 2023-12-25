@@ -236,15 +236,6 @@
 @push('scripts')
     
     <script>
-        $(document).ready(function() {
-            // Attach an input event listener to the color input
-            $('.colorCode').on('input', function() {
-                // Get the entered color code
-                var colorCode = $(this).val();
-
-                // Update the content of the preview element
-                $('.colorCodePreview').text(colorCode);
-            });
-        });
+        
     </script>
 @endpush

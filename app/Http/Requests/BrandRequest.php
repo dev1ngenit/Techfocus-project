@@ -28,7 +28,7 @@ class BrandRequest extends FormRequest
 
         return [
             'country_id'  => 'nullable|exists:countries,id',
-            'name'        => 'required|string|unique:brands,name,' . $brandId . '|max:255',
+            'title'       => 'required|string|unique:brands,title,' . $brandId . '|max:255',
             'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'logo'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'website_url' => 'nullable|url|max:255',
@@ -45,10 +45,10 @@ class BrandRequest extends FormRequest
     {
         return [
             'country_id.exists'  => 'The selected country name is invalid.',
-            'name.required'      => 'The name field is required.',
-            'name.string'        => 'The name field must be a string.',
-            'name.unique'        => 'The name has already been taken.',
-            'name.max'           => 'The name may not be greater than 255 characters.',
+            'title.required'      => 'The name field is required.',
+            'title.string'        => 'The name field must be a string.',
+            'title.unique'        => 'The name has already been taken.',
+            'title.max'           => 'The name may not be greater than 255 characters.',
             'image.image'        => 'The file must be an image.',
             'image.mimes'        => 'The image must be a file of type:jpeg, png, jpg, gif.',
             'image.max'          => 'The image may not be greater than 2048 kilobytes.',
@@ -70,7 +70,7 @@ class BrandRequest extends FormRequest
     {
         return [
             'country_id'  => 'Country Name',
-            'name'        => 'Name',
+            'title'        => 'Name',
             'image'       => 'Image',
             'logo'        => 'Logo',
             'website_url' => 'Website URL',

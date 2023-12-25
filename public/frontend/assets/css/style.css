@@ -1,54 +1,17 @@
 /* Font Family Start*/
-@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&family=Raleway&display=swap');
+
 
 /* Font Family End*/
-:root {
-  /* Main Color */
-  --primary-color: #38b6ff;
-  --secondary-color: #00193d;
-  --secondary-bg-color: #f7f6f5;
-  --secondary-deep-color: #001430;
-  --btn-color: #004aad;
 
-  /* Background Color */
-  --main-bg-color: #f6f6f6;
-  /* Paragraph Color */
-  --paragraph-color: #8b8888;
-  --secondary-paragraph-color: #3d3632;
-  /* Heading Color */
-  --heading-color: #00193d;
-  /* Default Color */
-  --white: #fff;
-  --black: #000;
-/*  */
-  --secoandaryborder-color: #bbbbbb;
-  --border-color: #f6eae0;
-  --divider-color: #0069bf;
-
-  --toggle-color: #d0d0d0;
-  --text-color: #b1afaf;
-  --para-color: #8b8888;
-  --custom-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  --primary-font: "Arimo", sans-serif;
-  --number-font: "Poppins", sans-serif;
-  --section-title-font-size: 1.75rem;
-  /*28px*/
-  --header-font-size: 1.125rem;
-  /*18px*/
-  --content-title-font-size: 1.5rem;
-  /*24px*/
-  --paragraph-font-size: 1rem;
-  /*16px*/
-  --badge-font-size: 1.25rem;
-  /*20px*/
-}
 
 .sub-font {
   font-family: var(--primary-font);
 }
-.main-color{
+
+.main-color {
   color: var(--primary-color);
 }
+
 .primary-color {
   color: var(--primary-color);
 }
@@ -85,6 +48,7 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
 .scroll-menu-container::-webkit-scrollbar {
   width: 3px;
 }
@@ -133,7 +97,8 @@ body {
   scroll-behavior: smooth;
   font: inherit;
   font-size: var(--paragraph-font-size);
-  font-family: var(--primary-font); /* You need to define --primary-font somewhere in your CSS or use an actual font name */
+  font-family: var(--primary-font);
+  /* You need to define --primary-font somewhere in your CSS or use an actual font name */
   font-weight: 400;
   font-style: normal;
   vertical-align: baseline;
@@ -200,15 +165,18 @@ a {
   text-decoration: inherit;
   -webkit-tap-highlight-color: transparent;
 }
+
 a:hover {
   color: var(--primary-color);
   transition: all 0.5s;
 }
+
 p {
   font-size: var(--paragraph-font-size);
   font-family: 'Raleway', sans-serif;
   line-height: 1.4;
 }
+
 h6,
 .h6,
 h5,
@@ -227,25 +195,32 @@ h1,
   font-weight: 400;
   line-height: 1.2;
 }
+
 .font-small {
   font-size: 8px;
 }
+
 .font-one {
   font-size: 10px;
 }
+
 .font-two {
   font-size: 12px;
 }
+
 .font-three {
   font-size: 14px;
 }
+
 .font-four {
   font-size: var(--paragraph-font-size);
 }
+
 .text-justify {
   text-align: justify;
 }
-.custom-spacer{
+
+.custom-spacer {
   margin-top: 3rem;
   margin-bottom: 3rem;
 }

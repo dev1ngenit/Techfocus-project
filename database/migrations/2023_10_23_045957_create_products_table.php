@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('sku_code', 50)->unique()->nullable();
             $table->string('mf_code', 50)->unique()->nullable();
             $table->string('product_code', 50)->nullable();
-            $table->json('tags')->nullable();
+            $table->text('tags')->nullable();
             $table->json('attribute_id')->nullable();
             $table->json('color_id')->nullable();
             $table->json('parent_id')->nullable();
@@ -41,7 +41,7 @@ return new class extends Migration
             $table->double('sas_price')->nullable();
             $table->double('discount')->nullable();
             $table->string('deal', 50)->nullable();
-            $table->enum('refurbished', ['0', '1'])->default('0');
+            $table->enum('refurbished', ['0', '1'])->default('0')->nullable();
             $table->enum('price_status', ['rfq', 'price', 'offer_price', 'starting_price'])->default('price');
             $table->enum('rfq', ['0', '1'])->default('0');
             $table->string('product_type', 50);

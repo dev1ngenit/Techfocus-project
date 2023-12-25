@@ -34,7 +34,7 @@
                                         href="#kt_vtab_pane_3" aria-selected="false" role="tab"
                                         tabindex="-1">Descripton</a>
                                 </li>
-                                <li class="nav-item w-md-290px my-1" role="presentation">
+                                <li class="nav-item w-md-290px me-0 my-1" role="presentation">
                                     <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
                                         href="#kt_vtab_pane_4" aria-selected="false" role="tab" tabindex="-1">Source
                                         Details</a>
@@ -42,9 +42,10 @@
                             </ul>
                         </div>
                         <div class="col-lg-10 px-4 p-2">
-                            <form id="productForm" method="post" action="{{ route('admin.product.store') }}"
+                            <form id="productForm" method="post" action="{{ route('admin.product.update', $product->id) }}"
                                 enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade active show" id="kt_vtab_pane_1" role="tabpanel">
                                         <div class="w-100">
@@ -159,9 +160,9 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Current Stock</label>
                                                             <input type="number" name="qty" pattern="\d+"
-                                                                step="1"
+                                                                step="1" value="{{ $product->qty }}"
                                                                 class="form-control form-control-sm form-control-solid qty_required"
-                                                                placeholder="Enter Current Stock" required />
+                                                                placeholder="Enter Current Stock" />
                                                             <div class="invalid-feedback"> Please Enter Current Stock.
                                                             </div>
                                                         </div>
@@ -196,7 +197,7 @@
                                                                 <option></option>
                                                                 @foreach ($brands as $brand)
                                                                     <option value="{{ $brand->id }}"
-                                                                        @selected($brand->id == $product->brand_id)>{{ $brand->name }}
+                                                                        @selected($brand->id == $product->brand_id)>{{ $brand->title }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -276,10 +277,12 @@
                                                         <label class="form-label">Thumbnail Image</label>
                                                         <div class="image-input image-input-empty"
                                                             data-kt-image-input="true"
-                                                            style="background-image: url({{ $product->thumbnail }});width: auto;
-                                                            background-size: contain;
+                                                            style="background-image: url({{ $product->thumbnail }}); width: auto; background-size: contain;
+                                                            background-position: center;
                                                             border: 1px solid #009ae5;">
-                                                            <div class="image-input-wrapper w-100px h-70px"></div>
+                                                            <div class="image-input-wrapper w-100px h-70px"
+                                                                style="background-size: contain; background-position: center">
+                                                            </div>
 
                                                             <label
                                                                 class="btn btn-icon btn-circle btn-color-muted btn-active-color-primary w-25px h-25px bg-body shadow"
@@ -371,9 +374,10 @@
                                                 <div class="row">
                                                     <div class="col-lg-9">
                                                         <label class="form-label">Tags</label>
-                                                        <input class="form-control form-select-sm form-control-solid"
-                                                            name="tags" id="kt_tagify_2"
-                                                            value="{{ $product->tags }}" />
+                                                        <input type="text" name="tags"
+                                                            value="{{ !empty($product->tags) ? $product->tags : old('tags') }}"
+                                                            class="form-control form-control-sm visually-hidden"
+                                                            data-role="tagsinput" placeholder="Product Tags">
                                                     </div>
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
@@ -401,10 +405,16 @@
                                                                 name="parent_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true"
                                                                 multiselect-max-items="2">
-                                                                @if (count($products) > 0)
-                                                                    @foreach ($products as $parent_product)
-                                                                        <option value="{{ $parent_product->id }}">
-                                                                            {{ $parent_product->name }}</option>
+                                                                @if (!empty($product->parent_id))
+                                                                    @php
+                                                                        $parentIds = isset($product->parent_id) ? json_decode($product->parent_id, true) : [];
+                                                                        $parents = App\Models\Admin\Product::pluck('name', 'id')->toArray();
+                                                                    @endphp
+                                                                    @foreach ($parents as $id => $name)
+                                                                        <option value="{{ $id }}"
+                                                                            {{ is_array($parentIds) && in_array($id, $parentIds) ? 'selected' : '' }}>
+                                                                            {{ $name }}
+                                                                        </option>
                                                                     @endforeach
                                                                 @endif
                                                             </select>
@@ -419,10 +429,16 @@
                                                                 name="child_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true"
                                                                 multiselect-max-items="2">
-                                                                @if (count($products) > 0)
-                                                                    @foreach ($products as $child_product)
-                                                                        <option value="{{ $child_product->id }}">
-                                                                            {{ $child_product->name }}</option>
+                                                                @if (!empty($product->child_id))
+                                                                    @php
+                                                                        $childIds = isset($product->child_id) ? json_decode($product->child_id, true) : [];
+                                                                        $childs = App\Models\Admin\Product::pluck('name', 'id')->toArray();
+                                                                    @endphp
+                                                                    @foreach ($childs as $id => $name)
+                                                                        <option value="{{ $id }}"
+                                                                            {{ is_array($childIds) && in_array($id, $childIds) ? 'selected' : '' }}>
+                                                                            {{ $name }}
+                                                                        </option>
                                                                     @endforeach
                                                                 @endif
                                                             </select>
@@ -435,8 +451,8 @@
                                                             <label class="form-label required">Currency</label>
                                                             <select class="form-select form-select-solid form-select-sm"
                                                                 name="currency_id" data-control="select2"
-                                                                data-placeholder="Select an Brand Name"
-                                                                data-allow-clear="true" required>
+                                                                data-placeholder="Select a Currency"
+                                                                data-allow-clear="true">
                                                                 <option></option>
                                                                 @foreach ($currencys as $currency)
                                                                     <option value="{{ $currency->id }}">
@@ -451,7 +467,7 @@
                                                         <label class="form-label"></label>
                                                         <div class="form-check form-check-custom form-check-solid mb-5">
                                                             <input class="form-check-input me-3" name="refurbished"
-                                                                type="checkbox" value="1"
+                                                                type="checkbox" value="1" @checked( $product->refurbished == '1')
                                                                 id="kt_docs_formvalidation_checkbox_option_1" />
                                                             <label class="form-check-label"
                                                                 for="kt_docs_formvalidation_checkbox_option_1">
@@ -462,7 +478,7 @@
                                                     <div class="col-lg-2 mb-3">
                                                         <label class="form-label"></label>
                                                         <div class="form-check form-check-custom form-check-solid mb-5">
-                                                            <input class="form-check-input me-3" name="refurbished"
+                                                            <input class="form-check-input me-3" name="is_deal"
                                                                 type="checkbox" value="1" id="dealCheckbox">
                                                             <label class="form-check-label">
                                                                 <div class="fw-bolder text-gray-800">Is Deal</div>
@@ -474,7 +490,7 @@
                                                         <label class="form-label">Deal Price</label>
                                                         <input type="text"
                                                             class="form-control form-select-sm form-control-solid"
-                                                            name="tags" placeholder="Enter Deal" />
+                                                            name="deal" placeholder="Enter Deal" />
                                                     </div>
                                                 </div>
                                                 <div class="row mt-2 justify-content-end">
@@ -513,25 +529,25 @@
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Short Desc</label>
                                                         <textarea name="short_desc" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Short Desc">
-                                                            {{ old('short_desc') }}
+                                                            {{ $product->short_desc }}
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Overview</label>
                                                         <textarea name="overview" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Overview">
-                                                            {{ old('overview') }}
+                                                            {{ $product->overview }}
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Specification</label>
                                                         <textarea name="specification" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Specification">
-                                                            {{ old('specification') }}
+                                                            {{ $product->specification }}
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Accessories</label>
                                                         <textarea name="accessories" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Accessories">
-                                                            {{ old('accessories') }}
+                                                            {{ $product->accessories }}
                                                         </textarea>
                                                     </div>
                                                 </div>
@@ -744,10 +760,10 @@
                                                                 class="table table-hover table-rounded table-striped border gy-7 gs-7">
                                                                 <thead>
                                                                     <tr
-                                                                        class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
+                                                                        class="fw-bold fs-8 text-gray-800 border-bottom-2 border-gray-200">
                                                                         <th>Competetor Name</th>
                                                                         <th>Competetor Link</th>
-                                                                        <th>Price</th>
+                                                                        <th>Competetor Price</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -757,7 +773,7 @@
                                                                                 <input name="competitor_one_name"
                                                                                     value="{{ $product->competitor_one_name }}"
                                                                                     class="form-control form-control-sm"
-                                                                                    placeholder="Enter Product Name"
+                                                                                    placeholder="Competetor One Name"
                                                                                     type="text" />
                                                                             </div>
                                                                         </td>
@@ -766,7 +782,7 @@
                                                                                 <input name="competitor_one_link"
                                                                                     value="{{ $product->competitor_one_link }}"
                                                                                     class="form-control form-control-sm"
-                                                                                    placeholder="Enter Product Name"
+                                                                                    placeholder="Competetor One Link"
                                                                                     type="text" />
                                                                             </div>
                                                                         </td>
@@ -775,7 +791,7 @@
                                                                                 <input name="competitor_one_price"
                                                                                     value="{{ $product->competitor_one_price }}"
                                                                                     class="form-control form-control-sm"
-                                                                                    placeholder="Enter Product Name"
+                                                                                    placeholder="Competetor One Price"
                                                                                     type="text" />
                                                                             </div>
                                                                         </td>
@@ -786,7 +802,7 @@
                                                                                 <input name="competitor_two_name"
                                                                                     value="{{ $product->competitor_two_name }}"
                                                                                     class="form-control form-control-sm"
-                                                                                    placeholder="Enter Product Name"
+                                                                                    placeholder="Competetor two Name"
                                                                                     type="text" />
                                                                             </div>
                                                                         </td>
@@ -795,7 +811,7 @@
                                                                                 <input name="competitor_two_link"
                                                                                     value="{{ $product->competitor_two_link }}"
                                                                                     class="form-control form-control-sm"
-                                                                                    placeholder="Enter Product Name"
+                                                                                    placeholder="Competetor two Link"
                                                                                     type="text" />
                                                                             </div>
                                                                         </td>
@@ -804,7 +820,7 @@
                                                                                 <input name="competitor_two_price"
                                                                                     value="{{ $product->competitor_two_price }}"
                                                                                     class="form-control form-control-sm"
-                                                                                    placeholder="Enter Product Name"
+                                                                                    placeholder="Competetor two Price"
                                                                                     type="text" />
                                                                             </div>
                                                                         </td>
@@ -815,7 +831,7 @@
                                                     </div>
                                                     <div class="col-lg-3">
                                                         <label class="form-label mb-0">Source Contact</label>
-                                                        <textarea rows="1" name="source_contact" value="{{ $product->source_contact }}"
+                                                        <textarea rows="8" name="source_contact" value="{{ $product->source_contact }}"
                                                             class="form-control form-control-sm form-control-solid" placeholder="Enter Source Contact"></textarea>
                                                     </div>
                                                     <div class="col-lg-5">
@@ -840,10 +856,9 @@
                                                                             <div class="d-flex align-items-center fv-row">
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
-                                                                                    <input class="form-check-input me-2"
+                                                                                    <input class="form-check-input me-2" type="radio"
                                                                                         name="solid_source"
-                                                                                        value="{{ $product->solid_source }}"
-                                                                                        type="radio" value="1"
+                                                                                        value="yes" @checked($product->solid_source == 'yes')
                                                                                         id="kt_docs_formvalidation_radio_option_1" />
 
                                                                                     <label class="form-check-label"
@@ -856,10 +871,9 @@
 
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
-                                                                                    <input class="form-check-input me-2"
+                                                                                    <input class="form-check-input me-2" type="radio"
                                                                                         name="solid_source"
-                                                                                        value="{{ $product->solid_source }}"
-                                                                                        type="radio" value="2"
+                                                                                        value="no" @checked($product->solid_source == 'no')
                                                                                         id="kt_docs_formvalidation_radio_option_2" />
 
                                                                                     <label class="form-check-label"
@@ -884,8 +898,8 @@
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
                                                                                         name="direct_principal"
-                                                                                        value="{{ $product->direct_principal }}"
-                                                                                        type="radio" value="1"
+                                                                                        value="yes" @checked( $product->direct_principal == 'yes')
+                                                                                        type="radio"
                                                                                         id="kt_docs_formvalidation_radio_option_1" />
 
                                                                                     <label class="form-check-label"
@@ -900,8 +914,8 @@
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
                                                                                         name="direct_principal"
-                                                                                        value="{{ $product->direct_principal }}"
-                                                                                        type="radio" value="2"
+                                                                                        value="no" @checked( $product->direct_principal == 'no')
+                                                                                        type="radio"
                                                                                         id="kt_docs_formvalidation_radio_option_2" />
 
                                                                                     <label class="form-check-label"
@@ -926,8 +940,8 @@
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
                                                                                         name="agreement"
-                                                                                        value="{{ $product->agreement }}"
-                                                                                        type="radio" value="1"
+                                                                                        value="yes" @checked( $product->agreement == 'yes')
+                                                                                        type="radio"
                                                                                         id="kt_docs_formvalidation_radio_option_1" />
 
                                                                                     <label class="form-check-label"
@@ -942,8 +956,8 @@
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
                                                                                         name="agreement"
-                                                                                        value="{{ $product->agreement }}"
-                                                                                        type="radio" value="2"
+                                                                                        value="no" @checked( $product->agreement == 'no')
+                                                                                        type="radio"
                                                                                         id="kt_docs_formvalidation_radio_option_2" />
 
                                                                                     <label class="form-check-label"
@@ -957,23 +971,25 @@
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>
-                                                                            Source Type :
-                                                                        </td>
-                                                                        <td>
-                                                                            <select
-                                                                                class="form-select form-select-solid form-select-sm"
-                                                                                name="source_type"
-                                                                                value="{{ $product->source_type }}"
-                                                                                data-control="select2"
-                                                                                data-hide-search="false"
-                                                                                data-placeholder="Select an Source Type"
-                                                                                data-allow-clear="true">
+                                                                        <td width="66%">Source Type :</td>
+                                                                        <td width="34%" colspan="2">
+                                                                            <select name="source_type"
+                                                                                data-placeholder="Select Source Type.."
+                                                                                class="form-control select">
                                                                                 <option></option>
-                                                                                <option value="software">Software</option>
-                                                                                <option value="hardware">Hardware</option>
-                                                                                <option value="book">Book</option>
-                                                                                <option value="training">Training</option>
+                                                                                <option class="form-control" value="principal"
+                                                                                    {{ $product->source_type == 'principal' ? 'selected' : '' }}>
+                                                                                    Principal</option>
+                                                                                <option class="form-control"
+                                                                                    value="distributor"
+                                                                                    {{ $product->source_type == 'distributor' ? 'selected' : '' }}>
+                                                                                    Distributor</option>
+                                                                                <option class="form-control" value="supplier"
+                                                                                    {{ $product->source_type == 'supplier' ? 'selected' : '' }}>
+                                                                                    Supplier</option>
+                                                                                <option class="form-control" value="retailer"
+                                                                                    {{ $product->source_type == 'retailer' ? 'selected' : '' }}>
+                                                                                    Retailer</option>
                                                                             </select>
                                                                         </td>
                                                                     </tr>
@@ -1020,32 +1036,7 @@
             });
         });
     </script>
-    <script>
-        // Stepper lement
-        var element = document.querySelector("#kt_stepper_example_clickable");
 
-
-        // Initialize Stepper
-        var stepper = new KTStepper(element);
-
-
-        // Handle navigation click
-        stepper.on("kt.stepper.click", function(stepper) {
-            stepper.goTo(stepper.getClickedStepIndex()); // go to clicked step
-        });
-
-
-        // Handle next step
-        stepper.on("kt.stepper.next", function(stepper) {
-            stepper.goNext(); // go next step
-        });
-
-
-        // Handle previous step
-        stepper.on("kt.stepper.previous", function(stepper) {
-            stepper.goPrevious(); // go previous step
-        });
-    </script>
     <script>
         //---------Sidebar list Show Hide----------
         $(document).ready(function() {
@@ -1055,6 +1046,34 @@
             $('#rfqId').click(function() {
                 $("#rfqExpand").toggle('slow');
             });
+
+            var stock_value = $('.stock_select').find(":selected").val();
+            if (stock_value == 'available') {
+                $(".qty_display").removeClass("d-none");
+                $(".qty_required").prop('required', true);
+            } else if (stock_value == 'limited') {
+                $(".qty_display").removeClass("d-none");
+                $(".qty_required").prop('required', true);
+            } else {
+                $(".qty_display").addClass("d-none");
+                $(".qty_required").prop('required', false);
+            }
+
+            var price_value = $('.price_select').find(":selected").val();
+            if (price_value == 'rfq') {
+                // alert(price_value);
+                $(".rfq_price").removeClass("d-none");
+                $(".offer_price").addClass("d-none");
+                $(".price").addClass("d-none");
+            } else if (price_value == 'offer_price') {
+                $(".offer_price").removeClass("d-none");
+                $(".rfq_price").addClass("d-none");
+                $(".price").addClass("d-none");
+            } else {
+                $(".price").removeClass("d-none");
+                $(".offer_price").addClass("d-none");
+                $(".rfq_price").addClass("d-none");
+            }
         });
     </script>
     <script>
@@ -1115,15 +1134,15 @@
                     var $field = $(this);
                     // Check if it's a Select2 element
                     var isSelect2 = $field.hasClass('select2-hidden-accessible');
-                    if ($field.prop('required') && $field.val() === '') {
-                        isValid = false;
-                        if (isSelect2) {
-                            // Apply CSS based on the element type
-                            $field.next('.select2-container').addClass('is-invalid');
-                        } else {
-                            $field.addClass('is-invalid');
-                        }
-                    }
+                    // if ($field.prop('required') && $field.val() === '') {
+                    //     isValid = false;
+                    //     if (isSelect2) {
+                    //         // Apply CSS based on the element type
+                    //         $field.next('.select2-container').addClass('is-invalid');
+                    //     } else {
+                    //         $field.addClass('is-invalid');
+                    //     }
+                    // }
                 });
                 if (!isValid) {
                     // Fields are not valid, prevent the tab switch

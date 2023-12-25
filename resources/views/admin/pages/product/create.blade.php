@@ -34,7 +34,7 @@
                                         href="#kt_vtab_pane_3" aria-selected="false" role="tab"
                                         tabindex="-1">Descripton</a>
                                 </li>
-                                <li class="nav-item w-md-290px my-1" role="presentation">
+                                <li class="nav-item w-md-290px me-0 my-1" role="presentation">
                                     <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab"
                                         href="#kt_vtab_pane_4" aria-selected="false" role="tab" tabindex="-1">Source
                                         Details</a>
@@ -181,7 +181,7 @@
                                                                 data-allow-clear="true" required>
                                                                 <option></option>
                                                                 @foreach ($brands as $brand)
-                                                                    <option value="{{ $brand->id }}">{{ $brand->name }}
+                                                                    <option value="{{ $brand->id }}">{{ $brand->title }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -353,8 +353,10 @@
                                                 <div class="row">
                                                     <div class="col-lg-9">
                                                         <label class="form-label">Tags</label>
-                                                        <input class="form-control form-select-sm form-control-solid"
-                                                            name="tags" id="kt_tagify_2" value="{{ old('tags') }}" />
+                                                        <input type="text" name="tags"
+                                                            value="{{ old('tags') }}"
+                                                            class="form-control form-control-sm visually-hidden"
+                                                            data-role="tagsinput" placeholder="Product Tags">
                                                     </div>
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
@@ -453,7 +455,7 @@
                                                         <label class="form-label">Deal Price</label>
                                                         <input type="text"
                                                             class="form-control form-select-sm form-control-solid"
-                                                            name="tags" placeholder="Enter Deal" />
+                                                            name="deal" placeholder="Enter Deal" />
                                                     </div>
                                                 </div>
                                                 <div class="row mt-2 justify-content-end">
@@ -798,9 +800,8 @@
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
-                                                                                        name="solid_source" value="{{ old('solid_source') }}" type="radio"
-                                                                                        value="1"
-                                                                                        id="kt_docs_formvalidation_radio_option_1" />
+                                                                                        name="solid_source" value="yes" type="radio"
+                                                                                         id="kt_docs_formvalidation_radio_option_1" />
 
                                                                                     <label class="form-check-label"
                                                                                         for="kt_docs_formvalidation_radio_option_1">
@@ -813,9 +814,8 @@
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
-                                                                                        name="solid_source" value="{{ old('solid_source') }}" type="radio"
-                                                                                        value="2"
-                                                                                        id="kt_docs_formvalidation_radio_option_2" />
+                                                                                        name="solid_source" value="no" type="radio"
+                                                                                         id="kt_docs_formvalidation_radio_option_2" />
 
                                                                                     <label class="form-check-label"
                                                                                         for="kt_docs_formvalidation_radio_option_2">
@@ -838,9 +838,8 @@
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
-                                                                                        name="direct_principal" value="{{ old('direct_principal') }}"
-                                                                                        type="radio" value="1"
-                                                                                        id="kt_docs_formvalidation_radio_option_1" />
+                                                                                        name="direct_principal" value="yes"
+                                                                                        type="radio" id="kt_docs_formvalidation_radio_option_1" />
 
                                                                                     <label class="form-check-label"
                                                                                         for="kt_docs_formvalidation_radio_option_1">
@@ -853,9 +852,8 @@
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
-                                                                                        name="direct_principal" value="{{ old('direct_principal') }}"
-                                                                                        type="radio" value="2"
-                                                                                        id="kt_docs_formvalidation_radio_option_2" />
+                                                                                        name="direct_principal" value="no"
+                                                                                        type="radio" id="kt_docs_formvalidation_radio_option_2" />
 
                                                                                     <label class="form-check-label"
                                                                                         for="kt_docs_formvalidation_radio_option_2">
@@ -878,8 +876,7 @@
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
-                                                                                        name="agreement" value="{{ old('agreement') }}" type="radio"
-                                                                                        value="1"
+                                                                                        name="agreement" value="yes" type="radio"
                                                                                         id="kt_docs_formvalidation_radio_option_1" />
 
                                                                                     <label class="form-check-label"
@@ -893,8 +890,7 @@
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
-                                                                                        name="agreement" value="{{ old('agreement') }}" type="radio"
-                                                                                        value="2"
+                                                                                        name="agreement" value="no" type="radio"
                                                                                         id="kt_docs_formvalidation_radio_option_2" />
 
                                                                                     <label class="form-check-label"
@@ -908,21 +904,20 @@
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>
-                                                                            Source Type :
-                                                                        </td>
-                                                                        <td>
-                                                                            <select
-                                                                                class="form-select form-select-solid form-select-sm"
-                                                                                name="source_type" value="{{ old('source_type') }}" data-control="select2"
-                                                                                data-hide-search="false"
-                                                                                data-placeholder="Select an Source Type"
-                                                                                data-allow-clear="true">
+                                                                        <td width="66%">Source Type :</td>
+                                                                        <td width="34%" colspan="2">
+                                                                            <select name="source_type"
+                                                                                data-placeholder="Select Source Type.."
+                                                                                class="form-control select">
                                                                                 <option></option>
-                                                                                <option value="software">Software</option>
-                                                                                <option value="hardware">Hardware</option>
-                                                                                <option value="book">Book</option>
-                                                                                <option value="training">Training</option>
+                                                                                <option class="form-control" value="principal">
+                                                                                    Principal</option>
+                                                                                <option class="form-control" value="distributor">
+                                                                                    Distributor</option>
+                                                                                <option class="form-control" value="supplier">
+                                                                                    Supplier</option>
+                                                                                <option class="form-control" value="retailer">
+                                                                                    Retailer</option>
                                                                             </select>
                                                                         </td>
                                                                     </tr>
@@ -1040,7 +1035,7 @@
             console.log(formData);
         });
     </script>
-    <script>
+    {{-- <script>
         // The DOM elements you wish to replace with Tagify
         var input1 = document.querySelector("#kt_tagify_1");
         var input2 = document.querySelector("#kt_tagify_2");
@@ -1048,7 +1043,7 @@
         // Initialize Tagify components on the above inputs
         new Tagify(input1);
         new Tagify(input2);
-    </script>
+    </script> --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Get the checkbox and colors input container

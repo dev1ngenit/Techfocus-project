@@ -41,5 +41,6 @@
 
 
 <!--New Design WithOut Template Css-->
+<link rel="stylesheet" href="{{ asset('backend/assets/js/custom/input-tags/css/tagsinput.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/assets/css/custom_global.css') }}">
 @stack('styles')
