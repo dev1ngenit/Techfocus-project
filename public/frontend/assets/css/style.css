@@ -427,3 +427,8 @@ textarea {
 }
 
 /* Construction Modal */
+
+.navbar-brand {
+  position: relative;
+  top: -15px;
+}

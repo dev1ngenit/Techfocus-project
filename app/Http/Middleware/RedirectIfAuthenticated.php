@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 //Default route
-                $route = 'index';
+                $route = 'client.dashboard';
                 //Admin route
                 if($guard === 'admin'){
                     $route = 'admin.dashboard';
