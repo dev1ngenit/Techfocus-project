@@ -85,9 +85,11 @@
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-expand"></i>
                                                 </a>
-                                                <a href="{{ route('project-kpi.edit', $projectKpi->id) }}"
+                                                <a href="javascript:void()" data-kt-menu-placement="bottom-end"
+                                                    data-bs-toggle="modal" data-bs-target="#projectKpiEdit-{{$projectKpi->id}}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-pen"></i>
+                                                    <!--Edit-->
                                                 </a>
                                                 <a href="{{ route('project-kpi.destroy', $projectKpi->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
