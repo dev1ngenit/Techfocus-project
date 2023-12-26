@@ -86,23 +86,23 @@
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <a href="#"
+                                        {{-- <a href="#"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                             <i class="fa-solid fa-expand"></i>
                                             <!--View-->
-                                        </a>
+                                        </a> --}}
                                         <a href="javascript:void()" data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
                                         data-bs-target="#projectKpiEdit"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                             <i class="fa-solid fa-pen"></i>
                                             <!--Edit-->
                                         </a>
-                                        {{-- <a href=""
+                                        <a href=""
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                             data-kt-docs-table-filter="delete_row">
                                             <i class="fa-solid fa-trash-can-arrow-up"></i>
                                             <!--Delete-->
-                                        </a> --}}
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -334,6 +334,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 @push('scripts')
