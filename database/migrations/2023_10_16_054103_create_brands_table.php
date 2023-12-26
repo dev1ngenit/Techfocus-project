@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
-            $table->string('name')->unique();
+            $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->string('logo')->nullable();

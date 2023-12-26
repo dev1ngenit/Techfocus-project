@@ -54,12 +54,12 @@ class CategoryController extends Controller
         $imageFilePath = storage_path('app/public/category/image/');
         $logoFilePath = storage_path('app/public/category/logo/');
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $imageFilePath,   44, 44);
+            $globalFunImage = customUpload($mainFile, $imageFilePath);
         } else {
             $globalFunImage = ['status' => 0];
         }
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $logoFilePath,   44, 44);
+            $globalFunLogo = customUpload($logoFile, $logoFilePath);
         } else {
             $globalFunLogo = ['status' => 0];
         }
@@ -76,7 +76,6 @@ class CategoryController extends Controller
         ];
         $this->categoryRepository->storeCategory($data);
 
-        // toastr()->success('Data has been saved successfully!');
         return redirect()->back()->with('success', 'Category Added Successfully');
     }
 
@@ -119,7 +118,7 @@ class CategoryController extends Controller
         $logoFilePath = storage_path('app/public/category/logo/');
 
         if (!empty($mainFile)) {
-            $globalFunImage = customUpload($mainFile, $imageFilePath, 44, 44);
+            $globalFunImage = customUpload($mainFile, $imageFilePath);
             $paths = [
                 storage_path("app/public/category/image/{$category->image}"),
                 storage_path("app/public/category/image/{$category->image}")
@@ -134,7 +133,7 @@ class CategoryController extends Controller
         }
 
         if (!empty($logoFile)) {
-            $globalFunLogo = customUpload($logoFile, $logoFilePath, 44, 44);
+            $globalFunLogo = customUpload($logoFile, $logoFilePath);
             $paths = [
                 storage_path("app/public/category/logo/{$category->logo}"),
                 storage_path("app/public/category/logo/{$category->logo}")
@@ -161,7 +160,6 @@ class CategoryController extends Controller
 
         $this->categoryRepository->updateCategory($data, $id);
 
-        // toastr()->success('Data has been updated successfully!');
         return redirect()->back()->with('success', 'Category has been updated successfully');
     }
 

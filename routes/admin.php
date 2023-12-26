@@ -48,7 +48,9 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Accounts\AccountsDocumentController;
+use App\Http\Controllers\Admin\DynamicCssController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
+use App\Http\Controllers\HR\HolidayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,15 +106,23 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::controller(AttributeValueController::class)->group(function () {
             Route::post('/attribute-value/store', 'store')->name('attribute-value.store');
             Route::post('/attribute-value/update', 'update')->name('attribute-value.update');
-            // Route::put('/attribute-value/{id}/update', 'update')->name('attribute-value.update');
+            // Route::put('/attribute-value/{id}/update', 'update')->name('attribute-value.updfate');
             Route::delete('/attribute-value/{id}/destroy', 'destroy')->name('attribute-value.destroy');
         });
-
+        // Dynamic CSS
+        Route::controller(DynamicCssController::class)->group(function () {
+            Route::get('/dynamic-css', 'index')->name('css.index');
+            Route::put('/dynamic-css/{id}/update', 'update')->name('css.update');
+        });
         //Product
         Route::controller(ProductController::class)->group(function () {
             Route::get('/completed-products', 'index')->name('product.index');
             Route::get('/sourced-products', 'sourcedProducts')->name('sourced.products');
             Route::get('/saved-products', 'savedProducts')->name('saved.products');
+            Route::get('/product/create', 'create')->name('product.create');
+            Route::post('/product/create', 'store')->name('product.store');
+            Route::get('/product/{id}/edit', 'edit')->name('product.edit');
+            Route::put('/product/{id}/update', 'update')->name('product.update');
         });
         // HR
         Route::prefix('hr')->controller(HRController::class)->group(function () {
@@ -159,6 +169,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'policy-acknowledgment' => PolicyAcknowledgmentController::class,
                 'terms-and-policy'      => TermsAndPolicyController::class,
                 'banking'               => BankingController::class,
+                'holiday'               => HolidayController::class,
                 'attendance'            => AttendanceController::class, //not my work
                 'accounts-document'     => AccountsDocumentController::class,
             ],

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Admin\DynamicCss;
 use App\Models\Admin\Site;
 use App\Repositories\FaqRepository;
 use App\Repositories\SeoRepository;
@@ -104,6 +105,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share('site', Site::first());
+        View::share('dynamic_css', DynamicCss::first());
         Paginator::useBootstrap();
     }
 }

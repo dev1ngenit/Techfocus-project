@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
                                     <div class="card-title table_title">
-                                        <h2 class="text-center">Brand Page</h2>
+                                        <h2 class="text-center">Product SAS Page</h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">

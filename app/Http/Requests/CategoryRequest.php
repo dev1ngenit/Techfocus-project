@@ -24,10 +24,12 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
+        $categoryId = $this->route('category');
         return [
             'country_id'  => 'nullable|exists:countries,id',
             'parent_id'   => 'nullable|exists:categories,id',
             'name'        => 'required|string|max:255',
+            'slug' => 'nullable|string|unique:categories,slug,' . $categoryId . ',id',
             'is_parent'   => 'nullable|in:0,1',
             'image'       => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'logo'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',

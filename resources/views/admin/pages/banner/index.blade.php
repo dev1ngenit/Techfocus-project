@@ -54,7 +54,7 @@
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th width="5%">Sl</th>
                                     <th width="35%">Category</th>
-                                    <th width="50%">Source Name</th>
+                                    <th width="50%">Status</th>
                                     <th class="text-center" width="10%">Action</th>
                                 </tr>
                             </thead>
@@ -69,7 +69,7 @@
                                                 {{ $banner->category }}
                                             </td>
                                             <td>
-                                                Name
+                                                {{ $banner->status }}
                                             </td>
                                             <td class="d-flex justify-content-between align-items-center">
                                                 <a href="{{ route('admin.banner.edit', $banner->id) }}"

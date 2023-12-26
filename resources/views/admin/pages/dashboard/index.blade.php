@@ -27,31 +27,38 @@
                             style="background-position: right top; background-size: 30% auto; background-image: url({{ asset('backend/assets/media/svg/shapes/abstract-4.svg') }}">
                             <!--begin::Body-->
                             <div class="card-body px-3">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div id="live-clock">
+                                        <span id="live-clock-hours">0</span> hours
+                                        <span id="live-clock-minutes">0</span> minutes
+                                        <span id="live-clock-seconds">0</span> seconds
+                                    </div>
+                                </div>
                                 <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-6">
                                     <span class="text-start w-xl-225px">Today's Entry :</span> <span
-                                        class="text-end ms-3">{{!empty($attendanceToday['check_in']) ? $attendanceToday['check_in'] : 00.00}}</span>
+                                        class="text-end ms-3">{{ !empty($attendanceToday['check_in']) ? $attendanceToday['check_in'] : 00.0 }}</span>
                                 </a>
                                 <div class="my-2">
                                     <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-7">
                                         <span class="text-start w-xl-225px">Today's Check-Out :</span> <span
-                                            class="text-end ms-3">{{!empty($attendanceToday['check_out']) ? $attendanceToday['check_out'] : 00.00}}</span>
+                                            class="text-end ms-3">{{ !empty($attendanceToday['check_out']) ? $attendanceToday['check_out'] : 00.0 }}</span>
                                     </a>
                                 </div>
                                 <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-7"
-                                data-bs-toggle="modal" data-bs-target="#lateCount">
+                                    data-bs-toggle="modal" data-bs-target="#lateCount">
                                     <span class="text-start w-xl-225px">Late Count (This Month) :</span> <span
-                                        class="text-end ms-3">{{!empty(count($lateCounts)) ? count($lateCounts) : 0}}</span>
+                                        class="text-end ms-3">{{ !empty(count($lateCounts)) ? count($lateCounts) : 0 }}</span>
                                 </a>
                                 <div class="mt-2 d-flex justify-content-between align-items-center">
                                     <a href="#" class="card-title fw-bolder main_color text-hover-primary fs-7"
-                                    data-bs-toggle="modal" data-bs-target="#thisMonth">
-                                        <span class="text-start">This Month</span> <span
-                                            class="ms-3"><i class="fas fa-arrow-right"></i></span>
+                                        data-bs-toggle="modal" data-bs-target="#thisMonth">
+                                        <span class="text-start">This Month</span> <span class="ms-3"><i
+                                                class="fas fa-arrow-right"></i></span>
                                     </a>
                                     <a href="#" class="card-title fw-bolder main_color text-hover-primary fs-7"
-                                    data-bs-toggle="modal" data-bs-target="#lastMonth">
-                                        <span class="">Last Month</span> <span
-                                            class="ms-3"><i class="fas fa-arrow-right"></i></span>
+                                        data-bs-toggle="modal" data-bs-target="#lastMonth">
+                                        <span class="">Last Month</span> <span class="ms-3"><i
+                                                class="fas fa-arrow-right"></i></span>
                                     </a>
                                     @include('admin.partials.attendance_modals')
                                 </div>
@@ -1159,5 +1166,33 @@
 @endsection
 @once
     @push('scripts')
+        <script>
+            // Assuming $attendanceToday['check_in'] is a string in the format "HH:mm:ss"
+            let checkInTimeString = "{{ $attendanceToday['check_in'] }}";
+            let [hours, minutes, seconds] = checkInTimeString.split(':');
+
+            // Create a Date object with a fixed date and the specified time
+            let checkInTime = new Date();
+            checkInTime.setHours(parseInt(hours, 10));
+            checkInTime.setMinutes(parseInt(minutes, 10));
+            checkInTime.setSeconds(parseInt(seconds, 10));
+
+            function updateLiveClock() {
+                let currentTime = new Date();
+                let timeDifference = currentTime - checkInTime;
+
+                let hours = Math.floor(timeDifference / (1000 * 60 * 60));
+                let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                // Update the HTML elements with the calculated hours, minutes, and seconds
+                document.getElementById('live-clock-hours').innerText = hours;
+                document.getElementById('live-clock-minutes').innerText = minutes;
+                document.getElementById('live-clock-seconds').innerText = seconds;
+            }
+
+            // Update the live clock every second
+            setInterval(updateLiveClock, 1000);
+        </script>
     @endpush
 @endonce

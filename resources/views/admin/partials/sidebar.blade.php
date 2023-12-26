@@ -795,8 +795,16 @@
                                 <span class="menu-title">Setting</span>
                             </a>
                         </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="{{ route('admin.css.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Website CSS Setting</span>
+                            </a>
+                        </div>
 
-                        <div data-kt-menu-trigger="click"
+                        {{-- <div data-kt-menu-trigger="click"
                             class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $supplychain) ? 'here show' : '' }}">
                             <span class="menu-link">
                                 <span class="menu-bullet">
@@ -826,7 +834,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="menu-item">

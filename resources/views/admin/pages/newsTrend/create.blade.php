@@ -39,7 +39,7 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                                <div class="invalid-feedback"> Please Enter Category Name.
+                                                <div class="invalid-feedback"> Please Select Brand.
                                                 </div>
                                             </div>
                                             <div class="fv-row mb-3">
@@ -59,7 +59,7 @@
                                                         @endforeach
                                                     @endif
                                                 </select>
-                                                <div class="invalid-feedback"> Please Enter Category Name.
+                                                <div class="invalid-feedback"> Please Select Category.
                                                 </div>
                                             </div>
                                             <div class="fv-row mb-3">
@@ -93,86 +93,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-8">
+                                        <div class="col-lg-4">
+
+                                        </div>
+                                        <div class="col-lg-4">
 
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-sm-12">
                                             <div class="row">
-                                                <div class="col-md-4 mb-2">
-                                                    <label for="validationCustom010"
-                                                        class="form-label required mb-0">Category
-                                                        Name</label>
-                                                    <select class="form-select form-select-solid multiselect"
-                                                        data-control="select2" data-placeholder="Select an option"
-                                                        data-allow-clear="true" name="category_id[]" multiple="multiple"
-                                                        required>
-                                                        <option></option>
-                                                        @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}">{{ $category->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="invalid-feedback"> Please Select Category Name. </div>
-                                                </div>
-
-                                                <div class="col-md-4 mb-2">
-                                                    <label for="validationCustom010" class="form-label required mb-0">Brand
-                                                        Name</label>
-                                                    <select class="form-select form-select-solid multiselect"
-                                                        data-control="select2" data-placeholder="Select an option"
-                                                        data-allow-clear="true" name="brand_id[]" multiple="multiple"
-                                                        required>
-                                                        <option></option>
-                                                        @foreach ($brands as $brand)
-                                                            <option value="{{ $brand->id }}">{{ $brand->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="invalid-feedback"> Please Select Brand Name. </div>
-                                                </div>
-                                                <div class="col-md-4 mb-2">
-                                                    <label for="validationCustom010"
-                                                        class="form-label required mb-0">Industry
-                                                        Name</label>
-                                                    <select class="form-select form-select-solid multiselect"
-                                                        data-control="select2" data-placeholder="Select an option"
-                                                        data-allow-clear="true" name="industry_id[]" multiple="multiple"
-                                                        required>
-                                                        <option></option>
-                                                        @foreach ($industries as $industry)
-                                                            <option value="{{ $industry->id }}">{{ $industry->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    <div class="invalid-feedback"> Please Select Industry Name. </div>
-                                                </div>
-                                                <div class="col-md-4 mb-2">
-                                                    <label for="validationCustom010"
-                                                        class="form-label required mb-0">Solution
-                                                        Name</label>
-                                                    <select class="form-select form-select-solid multiselect"
-                                                        data-control="select2" data-placeholder="Select an option"
-                                                        data-allow-clear="true" name="solution_id[]" multiple="multiple"
-                                                        required>
-                                                        <option></option>
-                                                        <option value="1">Option 1</option>
-                                                    </select>
-                                                    <div class="invalid-feedback"> Please Select Solution Name. </div>
-                                                </div>
-                                                <div class="col-md-4 mb-2">
-                                                    <label for="validationCustom010"
-                                                        class="form-label required mb-0">Product
-                                                        Name</label>
-                                                    <select class="form-select form-select-solid" data-control="select2"
-                                                        data-placeholder="Select an option" data-allow-clear="true"
-                                                        name="product_id" multiple="multiple" required>
-                                                        <option></option>
-                                                        <option value="1">Option 1</option>
-                                                    </select>
-                                                    <div class="invalid-feedback"> Please Select Product Name. </div>
-                                                </div>
                                                 <div class="col-md-4 mb-2">
                                                     <label for="validationCustom010"
                                                         class="form-label required mb-0">Tags</label>

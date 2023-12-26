@@ -17,8 +17,8 @@ class CatalogAttachment extends Model
      */
     protected $guarded = [];
 
-    // public function catalog()
-    // {
-    //     return $this->belongsTo(Catalog::class);
-    // }
+    public function catalog()
+    {
+        return $this->belongsTo(Catalog::class);
+    }
 }

@@ -10,6 +10,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CatalogRequest;
 use App\Models\Admin\CatalogAttachment;
 use App\Models\Admin\Company;
 use App\Models\Admin\Industry;
@@ -25,9 +26,9 @@ class CatalogController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.catalog.index',[
+        return view('admin.pages.catalog.index', [
             'catalogs' => Catalog::join('catalog_attachments', 'catalog_attachments.catalog_id', '=', 'catalogs.id')
-            ->get(),
+                ->get(),
         ]);
     }
 
@@ -53,36 +54,8 @@ class CatalogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CatalogRequest $request)
     {
-        // Validate the request data
-        // $request->validate([
-        //     'category' => 'string|nullable',
-        //     'brand_id' => 'array|nullable',
-        //     'product_id' => 'array|nullable',
-        //     'industry_id' => 'array|nullable',
-        //     'solution_id' => 'array|nullable',
-        //     'company_id' => 'array|nullable',
-        //     'name' => 'string|nullable',
-        //     'slug' => 'string|unique:catalogs,slug|nullable',
-        //     'thumbnail' => 'image|nullable',
-        //     'page_number' => 'string|max:20|nullable',
-        //     'description' => 'string|nullable',
-        //     'company_button_name' => 'string|nullable',
-        //     'company_button_link' => 'string|nullable',
-        //     'document' => 'file|mimes:pdf|nullable',
-        //     'attachments' => 'array',
-        //     'attachments.*.page_image' => 'image|nullable',
-        //     'attachments.*.page_description' => 'string|nullable',
-        //     'attachments.*.page_link' => 'string|nullable',
-        //     'attachments.*.button_name' => 'string|nullable',
-        //     'attachments.*.button_link' => 'string|nullable',
-        // ]);
-
-        // DB::beginTransaction();
-
-        // try {
-        // Prepare catalog data
         $catalogData = [
             'category'            => $request->input('category'),
             'brand_id'            => json_encode($request->input('brand_id', [])),
@@ -126,16 +99,7 @@ class CatalogController extends Controller
                 }
             }
         }
-
-        // DB::commit();
-        // return response()->json(['message' => 'Catalog and attachments saved successfully.'], 200);
         return redirect()->back()->with('success', 'Catalog and attachments saved successfully.');
-        // } catch (\Exception $e) {
-        //     DB::rollBack();
-        //     // Log::error('Catalog creation failed: ' . $e->getMessage());
-        //     // return response()->json(['error' => 'Failed to save catalog and attachments.'], 500);
-        //     return redirect()->back()->with('error', 'Failed to save catalog and attachments');
-        // }
     }
 
     /**

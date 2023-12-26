@@ -27,14 +27,17 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js">
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('backend/assets/js/custom/techfocus/font-awesome.js') }}"></script>
+
 {{-- <script src="{{ asset('backend/assets/js/custom/techfocus/toastr.js') }}"></script> --}}
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> --}}
 <script src="{{ asset('backend/assets/js/bootstrap.multi-select.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/1.1.2/js/bootstrap-multiselect.js"></script>
 <script src="{{ asset('backend/assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
 <script src="{{ asset('backend/assets/js/custom/documentation/editors/tinymce/plugins.js') }}"></script>
+<script src="{{ asset('backend/assets/js/custom/input-tags/js/tagsinput.js') }}"></script>
 <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
 <!-- Custom:Shahed --->
 <!--end::Page Custom Javascript-->
@@ -78,6 +81,29 @@
         });
     @endif
 
+    // Color Preview
+    $(document).ready(function() {
+        // Attach an input event listener to the color input
+        $('.colorCode').on('input', function() {
+            // Get the entered color code
+            var colorCode = $(this).val();
 
-    
+            // Update the content of the preview element
+            $(this).closest('.row').find('.colorCodePreview').text(colorCode);
+        });
+
+        function updateClock() {
+            // Get the current time using moment.js
+            var currentTime = moment().format('YYYY-MM-DD HH:mm:ss');
+
+            // Update the content of the live clock element
+            $('#liveClock').text('Current Time: ' + currentTime);
+        }
+
+        // Call updateClock function every second
+        setInterval(updateClock, 1000);
+
+        // Run updateClock initially to set the initial time
+        updateClock();
+    });
 </script>

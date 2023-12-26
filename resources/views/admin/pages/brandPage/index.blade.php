@@ -79,7 +79,7 @@
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th width="5%">Sl</th>
                                     <th width="10%">Image</th>
-                                    <th width="75%">Header</th>
+                                    <th width="75%">Brand Name</th>
                                     <th class="text-center" width="10%">Action</th>
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
@@ -90,20 +90,14 @@
                                                 {{ $loop->iteration }}
                                             </td>
                                             <td>
-                                                <img class="img-fluid rounded-circle" width="35px"
-                                                    src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
-                                                    alt="">
+                                                <img class="img-fluid" width="50px"
+                                                    src="{{ !empty($brandPage->brand_logo) && file_exists(public_path('storage/brand/logo/' . $brandPage->brand_logo)) ? asset('storage/brand/logo/' . $brandPage->brand_logo) : asset('backend/images/no-image-available.png') }}"
+                                                    alt="{{ $brandPage->name }}">
                                             </td>
                                             <td>
-                                                {{ $brandPage->header }}
-
+                                                {{ $brandPage->brandName }}
                                             </td>
                                             <td class="d-flex justify-content-between align-items-center">
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal" data-bs-target="#TermsPoliciesViewModal">
-                                                    <i class="fa-solid fa-expand"></i>
-                                                </a>
                                                 <a href="{{ route('admin.brand-page.edit', $brandPage->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-pen"></i>
@@ -119,85 +113,6 @@
                                 @endif
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- View Modal --}}
-    <div class="modal fade" id="TermsPoliciesViewModal" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title ps-5">View Brand Page</h5>
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="container px-0">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card border rounded-0">
-                                    <p class="badge badge-info custom-badge">Info</span>
-                                    <div class="card-body p-1 px-2">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-lg-4 col-sm-5">
-                                                        <p class="fw-bold" title="Country Name">Title :</p>
-                                                    </div>
-                                                    <div class="col-lg-8 col-sm-6">
-                                                        <p>Lorem ipsum dolor sit amet.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-lg-4 col-sm-5">
-                                                        <p class="fw-bold">Button Name :</p>
-                                                    </div>
-                                                    <div class="col-lg-8 col-sm-6">
-                                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                                            Veritatis, reiciendis.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-lg-4 col-sm-5">
-                                                        <p class="fw-bold">Image :</p>
-                                                    </div>
-                                                    <div class="col-lg-8 col-sm-6">
-                                                        <p>
-                                                            <img class="img-fluid rounded-circle" width="35px"
-                                                                src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg"
-                                                                alt="">
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-sm-5">
-                                                        <p class="fw-bold">Short Des :</p>
-                                                    </div>
-                                                    <div class="col-lg-9 col-sm-6">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint a
-                                                            ipsam, doloremque maxime assumenda eaque adipisci eum in iste
-                                                            quam, ipsa vitae, commodi voluptatem dicta. Sed hic officiis a
-                                                            autem?
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

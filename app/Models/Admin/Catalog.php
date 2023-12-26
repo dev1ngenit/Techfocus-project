@@ -25,11 +25,11 @@ class Catalog extends Model
         'product_id' => 'array',
         'industry_id' => 'array',
         'solution_id' => 'array',
-        'company_id' => 'array'
+        'company_id' => 'array',
     ];
 
-    // public function attachments()
-    // {
-    //     return $this->hasMany(CatalogAttachment::class);
-    // }
+    public function attachments()
+    {
+        return $this->hasMany(CatalogAttachment::class);
+    }
 }

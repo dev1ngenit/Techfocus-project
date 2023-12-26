@@ -12,7 +12,7 @@ class SiteController extends Controller
 
     public function homePage() {
         $data = [
-            'categories' => Category::with('children.children.children.children.children.children.children.children.children.children')->get(['id','parent_id','name','slug']),
+            'categories' => Category::with('children.children.children.children.children.children.children.children.children.children')->where('is_parent', '1')->get(['id','parent_id','name','slug']),
         ];
         return view('frontend.pages.home.index',$data);
     }

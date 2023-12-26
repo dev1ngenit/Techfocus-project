@@ -18,5 +18,5 @@ class Brand extends Model
      */
     protected $guarded = [];
 
-    protected $slugSourceColumn = 'name';
+    protected $slugSourceColumn = 'title';
 }

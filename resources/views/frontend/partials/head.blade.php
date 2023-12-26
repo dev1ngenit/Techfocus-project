@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/swiper-bundle.min.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/aos.css') }}" />
 <!-- *********************************CSS End*********************************** -->
+@include('frontend.partials.root_css')
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/global.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}" />

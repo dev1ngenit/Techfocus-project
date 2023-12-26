@@ -29,7 +29,7 @@
                                     </div>
                                     <!--end::Search-->
                                     <!--begin::Export buttons-->
-                                    <div id="kt_datatable_example_1_export" class="d-none"></div>
+                                    <div id="approved_products_export" class="d-none"></div>
                                     <!--end::Export buttons-->
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
@@ -39,11 +39,13 @@
                                 </div>
                                 <div class="col-lg-6 col-sm-12 text-lg-end text-sm-center">
                                     <!--begin::Export dropdown-->
-                                    <a href="{{route('admin.sourced.products')}}" class="btn btn-sm btn-info rounded-0 px-2 me-3">
+                                    <a href="{{ route('admin.sourced.products') }}"
+                                        class="btn btn-sm btn-info rounded-0 px-2 me-3">
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Sourced Products
                                     </a>
-                                    <a href="{{route('admin.saved.products')}}" class="btn btn-sm btn-secondary rounded-0 px-5 me-3">
+                                    <a href="{{ route('admin.saved.products') }}"
+                                        class="btn btn-sm btn-secondary rounded-0 px-5 me-3">
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Drafts
                                     </a>
@@ -52,12 +54,13 @@
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Export Report
                                     </button>
-                                    <a href="{{route('admin.product.create')}}" class="btn btn-sm btn-success rounded-0 px-2">
+                                    <a href="{{ route('admin.product.create') }}"
+                                        class="btn btn-sm btn-success rounded-0 px-2">
                                         <i class="fa-solid fa-plus"></i>
                                         Add New
                                     </a>
                                     <!--begin::Menu-->
-                                    <div id="kt_datatable_example_1_export_menu"
+                                    <div id="approved_products_export_menu"
                                         class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
                                         data-kt-menu="true">
                                         <!--begin::Menu item-->
@@ -98,7 +101,7 @@
                     <div class="card-body">
                         <table
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
-                            id="kt_datatable_example_1">
+                            id="kt_datatable_example">
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
@@ -112,43 +115,47 @@
                                     <!--end::Table row-->
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
-                                {{-- @if ($categories)
-                                    @foreach ($categories as $category)
+                                @if ($products)
+                                    @foreach ($products as $product)
                                         <tr class="odd">
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <img class="img-fluid rounded-circle" width="35px"
-                                                    src="{{ !empty($category->logo) ? asset('storage/' . $category->logo) : asset('storage/main/no-image-available.png') }}"
-                                                    alt="{{ $category->name }} Logo">
+                                                    src="{{ !empty($product->thumbnail) && file_exists(public_path($product->thumbnail)) ? $product->thumbnail : asset('backend/images/no-image-available.png') }}"
+                                                    alt="{{ $product->name }}">
+                                            </td>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->added_by }}</td>
+                                            <td>
+                                                @if ($product->price_status === 'rfq')
+                                                    <span
+                                                        class="text-black fw-bold">{{ ucfirst($product->price_status) }}</span>
+                                                @else
+                                                    {{ ucfirst($product->price_status) }}
+                                                @endif
                                             </td>
                                             <td>
-                                                {{ getAllCountry()->where('id', $category->country_id)->first()->name ?? 'Unknown Country' }}
-                                            </td>
-                                            <td>{{ $category->parentName() ?? 'No Parent' }}
-                                            </td>
-                                            <td>{{ $category->name }}
-                                            </td>
-                                            <td>
-                                                <img class="img-fluid" width="35px"
-                                                    src="{{ !empty($category->image) ? asset('storage/' . $category->image) : asset('storage/main/no-image-available.png') }}"
-                                                    alt="{{ $category->name }} image">
+                                                @if ($product->action_status === 'listed')
+                                                    <span
+                                                        class="text-success">{{ ucfirst($product->action_status) }}</span>
+                                                @elseif ($product->action_status === 'rejected')
+                                                    <span class="text-danger">{{ ucfirst($product->action_status) }}</span>
+                                                @else
+                                                    {{ ucfirst($product->action_status) }}
+                                                @endif
                                             </td>
                                             <td class="d-flex justify-content-between align-items-center">
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#employeeDepertmentViewModal_{{ $category->id }}">
+                                                <a href="{{ route('admin.product.edit', $product->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-expand"></i>
                                                     <!--View-->
                                                 </a>
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 categoryEditModal"
-                                                    data-bs-toggle="modal" data-id="{{ $category->id }}"
-                                                    data-bs-target="#categoryEditModal_{{ $category->id }}">
+                                                <a href="{{ route('admin.product.edit', $product->id) }}"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-pen"></i>
-                                                    <!--Edit-->
+                                                    <!--View-->
                                                 </a>
-                                                <a href="{{ route('admin.category.destroy', $category->id) }}"
+                                                <a href="{{ route('admin.category.destroy', $product->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                     data-kt-docs-table-filter="delete_row">
                                                     <i class="fa-solid fa-trash-can-arrow-up"></i>
@@ -157,7 +164,7 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                @endif --}}
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -172,7 +179,6 @@
 @endsection
 
 @push('scripts')
-    
     <script>
         "use strict";
 
@@ -182,29 +188,11 @@
             var table;
             var datatable;
 
-            // Private functions
-            var initDatatable = function() {
-                // Set date data order
-                const tableRows = table.querySelectorAll('tbody tr');
-
-                tableRows.forEach(row => {
-                    const dateRow = row.querySelectorAll('td');
-                    const realDate = moment(dateRow[3].innerHTML, "DD MMM YYYY, LT")
-                        .format(); // select date from 4th column in table
-                    dateRow[3].setAttribute('data-order', realDate);
-                });
-
-                // Init datatable --- more info on datatables: https://datatables.net/manual/
-                datatable = $(table).DataTable({
-                    "info": false,
-                    'order': [],
-                    'pageLength': 10,
-                });
-            }
+            
 
             // Hook export buttons
             var exportButtons = () => {
-                const documentTitle = 'Customer Orders Report';
+                const documentTitle = 'Approved Products Report';
                 var buttons = new $.fn.dataTable.Buttons(table, {
                     buttons: [{
                             extend: 'copyHtml5',
@@ -223,11 +211,11 @@
                             title: documentTitle
                         }
                     ]
-                }).container().appendTo($('#kt_datatable_example_1_export'));
+                }).container().appendTo($('#approved_products_export'));
 
                 // Hook dropdown menu click event to datatable export buttons
                 const exportButtons = document.querySelectorAll(
-                    '#kt_datatable_example_1_export_menu [data-kt-export]');
+                    '#approved_products_export_menu [data-kt-export]');
                 exportButtons.forEach(exportButton => {
                     exportButton.addEventListener('click', e => {
                         e.preventDefault();
@@ -243,26 +231,18 @@
                 });
             }
 
-            // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-            var handleSearchDatatable = () => {
-                const filterSearch = document.querySelector('[data-kt-filter="search"]');
-                filterSearch.addEventListener('keyup', function(e) {
-                    datatable.search(e.target.value).draw();
-                });
-            }
+            
 
             // Public methods
             return {
                 init: function() {
-                    table = document.querySelector('#kt_datatable_example_1');
+                    table = document.querySelector('#kt_datatable_example');
 
                     if (!table) {
                         return;
                     }
 
-                    initDatatable();
                     exportButtons();
-                    handleSearchDatatable();
                 }
             };
         }();
