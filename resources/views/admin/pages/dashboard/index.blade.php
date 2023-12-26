@@ -1167,8 +1167,15 @@
 @once
     @push('scripts')
         <script>
-            // Assuming $attendanceToday['check_in'] is a timestamp in seconds
-            let checkInTime = {{ !empty($attendanceToday['check_in']) ? $attendanceToday['check_in'] * 1000 : 0 }};
+            // Assuming $attendanceToday['check_in'] is a string in the format "HH:mm:ss"
+            let checkInTimeString = "{{ $attendanceToday['check_in'] }}";
+            let [hours, minutes, seconds] = checkInTimeString.split(':');
+
+            // Create a Date object with a fixed date and the specified time
+            let checkInTime = new Date();
+            checkInTime.setHours(parseInt(hours, 10));
+            checkInTime.setMinutes(parseInt(minutes, 10));
+            checkInTime.setSeconds(parseInt(seconds, 10));
 
             function updateLiveClock() {
                 let currentTime = new Date();

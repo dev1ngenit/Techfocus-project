@@ -92,7 +92,7 @@ class HomeController extends Controller
                 ];
             }
             $attendanceToday = count($attendanceToday) > 0 ? $attendanceToday[0] : null;
-
+            // dd($attendanceToday['check_in']);
             // Get the first day of the current week and last day of the last week
             // Get the first day and last day of the last week
             // $firstDayLastWeek = date('Y-m-d', strtotime('last week Monday'));
