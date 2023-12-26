@@ -74,7 +74,7 @@
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <textarea class="form-control rounded-0 p-3"
-                                                id="exampleFormControlTextarea1" rows="3" placeholder="Your Message"
+                                                id="exampleFormControlTextarea1" rows="10" placeholder="Your Message"
                                                 required></textarea>
                                         </div>
                                     </div>
