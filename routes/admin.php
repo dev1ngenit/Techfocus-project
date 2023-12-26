@@ -5,6 +5,7 @@ use App\Http\Controllers\HR\HRController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\RowController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\HR\HolidayController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\BannerController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\HR\ProjectKpiController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\HomePageController;
@@ -28,12 +30,14 @@ use App\Http\Controllers\Admin\BrandPageController;
 use App\Http\Controllers\Admin\NewsTrendController;
 use App\Http\Controllers\Admin\VatAndTaxController;
 use App\Http\Controllers\Admin\AttendanceController;
+use App\Http\Controllers\Admin\DynamicCssController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductSasController;
 use App\Http\Controllers\Admin\WebSettingController;
 use App\Http\Controllers\Admin\IndustryPageController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\Admin\SolutionCardController;
+use App\Http\Controllers\HR\EmployeeProjectController;
 use App\Http\Controllers\HR\LeaveApplicationController;
 use App\Http\Controllers\Admin\AttributeValueController;
 use App\Http\Controllers\Admin\RolePermissionController;
@@ -48,9 +52,7 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Accounts\AccountsDocumentController;
-use App\Http\Controllers\Admin\DynamicCssController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
-use App\Http\Controllers\HR\HolidayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,6 +144,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'aboutpage'        => AboutPageController::class, //Not Done
                 'solution-card'    => SolutionCardController::class,
                 'employee'         => EmployeeController::class,
+                'employee-project' => EmployeeProjectController::class,
+                'project-kpi'      => ProjectKpiController::class,
                 'catalog'          => CatalogController::class,
                 'banner'           => BannerController::class,
             ]
