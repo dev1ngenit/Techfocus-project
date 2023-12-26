@@ -21,11 +21,14 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->double('given_hour')->nullable();
             $table->double('actual_hour')->nullable();
-            $table->enum('status', ['done', 'not_done','partial_done'])->default('done')->nullable();
+            $table->enum('status', ['done', 'not_done', 'partial_done'])->default('done')->nullable();
             $table->double('team_leader_rating')->nullable();
             $table->double('supervisor_rating')->nullable();
             $table->double('kpi_ratio')->nullable();
-            
+            $table->mediumText('late_reason')->nullable();
+            $table->mediumText('comments')->nullable();
+
+
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
