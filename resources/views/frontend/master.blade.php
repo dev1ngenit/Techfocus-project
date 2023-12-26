@@ -104,8 +104,8 @@
                 arrows: true,
                 dots: true,
                 pauseOnHover: false,
-                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-                nextArrow: '<button type="button" class="slick-next">Next</button>',
+                prevArrow: '<i class="fa-solid fa-chevron-left"></i>',
+                nextArrow: '<i class="fa-solid fa-chevron-right"></i>',
                 responsive: [{
                     breakpoint: 768,
                     settings: {

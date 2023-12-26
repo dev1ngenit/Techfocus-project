@@ -91,17 +91,18 @@
                                             <i class="fa-solid fa-expand"></i>
                                             <!--View-->
                                         </a>
-                                        <a href="#"
+                                        <a href="javascript:void()" data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
+                                        data-bs-target="#projectKpiEdit"
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                             <i class="fa-solid fa-pen"></i>
                                             <!--Edit-->
                                         </a>
-                                        <a href=""
+                                        {{-- <a href=""
                                             class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                             data-kt-docs-table-filter="delete_row">
                                             <i class="fa-solid fa-trash-can-arrow-up"></i>
                                             <!--Delete-->
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </td>
                             </tr>
@@ -178,6 +179,117 @@
                                 <label for="validationCustom04" class="form-label">Status</label>
                                 <select class="form-select form-select-solid form-select-sm" name="status"
                                     data-dropdown-parent="#projectKpi" data-control="select2"
+                                    data-placeholder="Select an option" data-allow-clear="true">
+                                    <option value="done">Done</option>
+                                    <option value="not_done">Not Done</option>
+                                    <option value="partial_done">Partial Done</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validationCustom04" class="form-label">Team Leader Rating</label>
+                                <input type="number" step="0.01" class="form-control form-control-solid form-control-sm"
+                                    name="team_leader_rating" id="validationCustom01"
+                                    placeholder="Enter Your Team Leader Rating">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validationCustom04" class="form-label">Supervisor Rating</label>
+                                <input type="number" step="0.01" class="form-control form-control-solid form-control-sm "
+                                    name="supervisor_rating" id="validationCustom01"
+                                    placeholder="Enter Your Supervisor Rating">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="validationCustom04" class="form-label">Kpi Ratio</label>
+                                <input type="number" step="0.01" class="form-control form-control-solid form-control-sm "
+                                    name="kpi_ratio" id="validationCustom01" placeholder="Enter Your Kpi Ratio">
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="validationCustom04" class="form-label">Late Reason</label>
+                                <textarea class="form-control form-control-solid form-control-sm" name="late_reason"
+                                    placeholder="Enter Late Reason" id="" cols="30" rows="3"></textarea>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="validationCustom04" class="form-label">Comments</label>
+                                <textarea class="form-control form-control-solid form-control-sm" name="comments"
+                                    placeholder="Enter Comments" id="" cols="30" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer p-2">
+                    <!-- Button to close the modal in the footer -->
+                    <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{-- Add Modal --}}
+<div class="modal fade" id="projectKpiEdit" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-0 border-0 shadow-sm">
+            <div class="modal-header p-2 rounded-0">
+                <h5 class="modal-title">Edit Project Kpi</h5>
+                <!-- Close button in the header -->
+                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                    aria-label="Close">
+                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                    <span class="svg-icon svg-icon-2x">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)"
+                                fill="currentColor"></rect>
+                        </svg>
+                    </span>
+                    <!--end::Svg Icon-->
+                </div>
+                <!-- End Close button in the header -->
+            </div>
+            <form action="{{ route('admin.project-kpi.store') }}" class="needs-validation" method="post"
+                novalidate>
+                @csrf
+                <div class="modal-body">
+                    <div class="container px-0">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="validationCustom04" class="form-label">Project Name</label>
+                                <select class="form-select form-select-solid form-select-sm" name="
+                                    project_id" data-dropdown-parent="#projectKpiEdit" data-control="select2"
+                                    data-placeholder="Select an option" data-allow-clear="true">
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom04" class="form-label">Employee Name</label>
+                                <select class="form-select form-select-solid form-select-sm" name="employee_id"
+                                    data-dropdown-parent="#projectKpiEdit" data-control="select2"
+                                    data-placeholder="Select an Employee Name" data-allow-clear="true">
+                                    <option></option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom04" class="form-label">Name</label>
+                                <input type="text" class="form-control form-control-solid form-control-sm" name="name"
+                                    id="validationCustom01" placeholder="Enter Your Name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom04" class="form-label">Given Hour</label>
+                                <input type="number" step="0.01" class="form-control form-control-solid form-control-sm"
+                                    name="given_hour" id="validationCustom01" placeholder="Enter Your Given Hour">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom04" class="form-label">Actual Hour</label>
+                                <input type="number" step="0.01" class="form-control form-control-solid form-control-sm"
+                                    name="actual_hour" id="validationCustom01" placeholder="Enter Your Actual Hour">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom04" class="form-label">Status</label>
+                                <select class="form-select form-select-solid form-select-sm" name="status"
+                                    data-dropdown-parent="#projectKpiEdit" data-control="select2"
                                     data-placeholder="Select an option" data-allow-clear="true">
                                     <option value="done">Done</option>
                                     <option value="not_done">Not Done</option>
