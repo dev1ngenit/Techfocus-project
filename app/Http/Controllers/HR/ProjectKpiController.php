@@ -15,7 +15,7 @@ class ProjectKpiController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.projectKpi.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class ProjectKpiController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.projectKpi.create');
     }
 
     /**

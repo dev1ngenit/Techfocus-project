@@ -27,13 +27,15 @@ return new class extends Migration
             $table->time('end_time')->nullable();
             $table->json('supervisor')->nullable();
             $table->json('assigned_employee')->nullable();
-            $table->text('review')->nullable();
             $table->enum('project_status', ['planned', 'on_going', 'completed'])->default('on_going')->nullable();
+            $table->text('review')->nullable();
             $table->string('status')->nullable();
             $table->string('weight')->nullable();
             $table->double('kpi_rating')->nullable();
             $table->unsignedBigInteger('total_working_day')->nullable();
             $table->double('total_working_man_hour')->nullable();
+
+
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
