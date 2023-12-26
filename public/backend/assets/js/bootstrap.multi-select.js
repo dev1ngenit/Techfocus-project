@@ -3,52 +3,54 @@ var style = document.createElement('style');
 style.setAttribute("id", "multiselect_dropdown_styles");
 style.innerHTML = `
                     .multiselect-dropdown{
-                    display: inline-block;
-                    padding: 0.75rem 3rem 0.75rem 1rem;
-                    border-radius: 4px;
-                    border: solid 1px #f5f8fa;
-                    background-color: #f5f8fa;
-                    position: relative;
-                    width: 100% !important;
-                    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-                    background-repeat: no-repeat;
-                    background-position: right .75rem center;
-                    background-size: 16px 12px;
+                        display: inline-block;
+                        padding: 0.3rem 3rem 0.3rem 1.5rem;
+                        border-radius: 1px;
+                        border: solid 1px #e6e7e7;
+                        background-color: #f5f8fa;
+                        position: relative;
+                        width: 100% !important;
+                        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+                        background-repeat: no-repeat;
+                        background-position: right .75rem center;
+                        background-size: 16px 12px;
                     }
                     .multiselect-dropdown span.optext, .multiselect-dropdown span.placeholder{
-                    margin-right:0.5em;
-                    margin-bottom:2px;
-                    padding:1px 0;
-                    border-radius: 4px;
-                    display:inline-block;
+                        margin-right:0.5em;
+                        margin-bottom:0px;
+                        padding:0px;
+                        border-radius: 4px;
+                        display:inline-block;
                     }
 
 
                     .multiselect-dropdown span.optext .optdel {
-                    float: right;
-                    margin: 0 -6px 1px 5px;
-                    font-size: 0.7em;
-                    margin-top: 2px;
-                    cursor: pointer;
-                    color: #666;
+                        float: right;
+                        margin: 0 -6px 1px 5px;
+                        font-size: 0.7em;
+                        margin-top: 2px;
+                        cursor: pointer;
+                        color: #666;
                     }
-                    .multiselect-dropdown span.optext .optdel:hover { color: #c66;}
+                    .multiselect-dropdown span.optext .optdel:hover { 
+                        color: #c66;
+                    }
                     .multiselect-dropdown span.placeholder{
-                    color:#ced4da;
+                        color:#777b7e;
                     }
                     .multiselect-dropdown-list-wrapper{
                         box-shadow: 0 0 50px 0 rgba(82,63,105,.15);
-                    z-index: 100;
-                    padding: 1rem 0.5rem;
-                    border-radius: 0.475rem;
-                    border: solid 1px #ced4da;
-                    display: none;
-                    margin: -1px;
-                    position: absolute;
-                    top:0;
-                    left: 0;
-                    right: 0;
-                    background: white;
+                        z-index: 100;
+                        padding: 1rem 0.5rem;
+                        border-radius: 0.475rem;
+                        border: solid 1px #ced4da;
+                        display: none;
+                        margin: -1px;
+                        position: absolute;
+                        top:0;
+                        left: 0;
+                        right: 0;
+                        background: white;
                     }
                     .multiselect-dropdown-list-wrapper .multiselect-dropdown-search {
                         margin-bottom: 5px;
@@ -60,34 +62,36 @@ style.innerHTML = `
                         border-radius: 0.325rem;
                     }
                     .multiselect-dropdown-list{
-                    padding:2px;
-                    height: 15rem;
-                    overflow-y:auto;
-                    overflow-x: hidden;
+                        padding:2px;
+                        height: 15rem;
+                        overflow-y:auto;
+                        overflow-x: hidden;
                     }
                     .multiselect-dropdown-list::-webkit-scrollbar {
-                    width: 6px;
+                        width: 6px;
                     }
                     .multiselect-dropdown-list::-webkit-scrollbar-thumb {
-                    background-color: #bec4ca;
-                    border-radius:3px;
+                        background-color: #bec4ca;
+                        border-radius:3px;
                     }
 
 
                     .multiselect-dropdown-list div{
-                    padding: 5px;
+                        padding: 5px;
                     }
                     .multiselect-dropdown-list input{
-                    height: 1.15em;
-                    width: 1.15em;
-                    margin-right: 0.35em;  
+                        height: 1.15em;
+                        width: 1.15em;
+                        margin-right: 0.35em;  
                     }
-                    .multiselect-dropdown-list div.checked{
-                    }
+                    // .multiselect-dropdown-list div.checked{
+                    // }
                     .multiselect-dropdown-list div:hover{
-                    background-color: #ced4da;
+                        background-color: #ced4da;
                     }
-                    .multiselect-dropdown span.maxselected {width:100%;}
+                    .multiselect-dropdown span.maxselected {
+                        width:100%;
+                    }
                     `;
 document.head.appendChild(style);
 

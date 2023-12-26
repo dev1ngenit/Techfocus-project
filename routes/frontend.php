@@ -12,6 +12,7 @@ Route::get('faq', [SiteController::class, 'faq'])->name('faq');
 Route::get('rfq', [SiteController::class, 'rfq'])->name('rfq');
 Route::get('contact', [SiteController::class, 'contact'])->name('contact');
 Route::get('terms', [SiteController::class, 'terms'])->name('terms');
+Route::get('about-us', [SiteController::class, 'about'])->name('about');
 Route::get('category/{slug}/products', [SiteController::class, 'filterProducts'])->name('filtering.products');
 
 // Brand Pages

@@ -80,7 +80,7 @@
                                                     alt="{{ $brand->name }} Logo">
                                             </td>
 
-                                            <td>{{ $brand->name }}</td>
+                                            <td>{{ $brand->title }}</td>
                                             <td>
                                                 <img class="img-fluid" width="50px"
                                                     src="{{ !empty($brand->image) && file_exists(public_path('storage/brand/image/' . $brand->image)) ? asset('storage/brand/image/' . $brand->image) : asset('backend/images/no-image-available.png') }}"
@@ -172,7 +172,7 @@
                                             <label for="validationCustom01" class="form-label required ">Brand Name
                                             </label>
                                             <input type="text" class="form-control form-control-solid form-control-sm"
-                                                name="name" id="validationCustom01" placeholder="Enter Name" required>
+                                                name="title" id="validationCustom01" placeholder="Enter Name" required>
                                             <div class="valid-feedback"> Looks good! </div>
                                             <div class="invalid-feedback"> Please Enter Name </div>
                                         </div>
@@ -280,8 +280,8 @@
                                                 <label for="validationCustom01" class="form-label required ">Brand Name
                                                 </label>
                                                 <input type="text"
-                                                    class="form-control form-control-solid form-control-sm" name="name"
-                                                    value="{{ $brand->name }}" id="validationCustom01"
+                                                    class="form-control form-control-solid form-control-sm" name="title"
+                                                    value="{{ $brand->title }}" id="validationCustom01"
                                                     placeholder="Enter Name" required>
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Name </div>
@@ -391,7 +391,7 @@
                                                             <p class="fw-bold">Brand Name</p>
                                                         </div>
                                                         <div class="col-lg-5 col-sm-6">
-                                                            <p>{{ $brand->name }}</p>
+                                                            <p>{{ $brand->title }}</p>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -35,7 +35,7 @@ class BioMetricController extends Controller
         $zk->connect();
         $zk->enableDevice();
 
-        $attendances = $zk->getAttendance();
+        $attendances = $zk->getAttendance(2);
         $users = $zk->getUser(); // Retrieve user data from the device
         $currentMonthAttendances = array_filter($attendances, function ($attendance) {
             return date('Y-m-d', strtotime($attendance['timestamp'])) === date('Y-m-d');

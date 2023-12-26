@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: var(--sub-main-color)">
+<div class="container-fluid" style="background-color: var(--secondary-color)">
     <div class="container text-white" style="font-size: 14px">
         <div class="row align-items-center">
             <div class="col-lg-3 p-4 text-start border-left-side">
@@ -52,7 +52,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid" style="background-color: var(--sub-color)">
+<div class="container-fluid" style="background-color: var(--secondary-deep-color)">
     <div class="container footer-logo">
         <div class="row pt-5">
             <div class="col-lg-8 offset-lg-2 d-flex">

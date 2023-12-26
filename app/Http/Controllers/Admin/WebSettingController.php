@@ -79,6 +79,7 @@ class WebSettingController extends Controller
         $webSetting                = Site::firstOrNew([]);
 
         $siteIconMainFile          = $request->file('site_icon');
+        // dd($siteIconMainFile);
         $systemLogoWhiteMainFile   = $request->file('system_logo_white');
         $systemLogoBlackMainFile   = $request->file('system_logo_black');
 
@@ -137,15 +138,17 @@ class WebSettingController extends Controller
             $globalFunSystemLogoBlack = ['status' => 0];
         }
 
+
+
         $site = Site::updateOrCreate([], [
             'country_id'                 => $request->country_id,
             'company_id'                 => $request->company_id,
             'system_name'                => $request->system_name,
             'frontend_website_name'      => $request->frontend_website_name,
             'site_motto'                 => $request->site_motto,
-            'site_icon'                  => $globalFunSiteIcon['status'] == 1 ? $siteIconMainFile->hashName() : $webSetting->site_icon,
-            'system_logo_white'          => $globalFunSystemLogoWhite['status'] == 1 ? $systemLogoWhiteMainFile->hashName() : $webSetting->system_logo_white,
-            'system_logo_black'          => $globalFunSystemLogoBlack['status'] == 1 ? $systemLogoBlackMainFile->hashName() : $webSetting->system_logo_black,
+            'site_icon'                  => $globalFunSiteIcon['status'] == 1 ? $globalFunSiteIcon['file_name'] : $webSetting->site_icon,
+            'system_logo_white'          => $globalFunSystemLogoWhite['status'] == 1 ? $globalFunSystemLogoWhite['file_name'] : $webSetting->system_logo_white,
+            'system_logo_black'          => $globalFunSystemLogoBlack['status'] == 1 ? $globalFunSystemLogoBlack['file_name'] : $webSetting->system_logo_black,
             'system_timezone'            => $request->system_timezone,
             'base_color'                 => $request->base_color,
             'base_hover_color'           => $request->base_hover_color,

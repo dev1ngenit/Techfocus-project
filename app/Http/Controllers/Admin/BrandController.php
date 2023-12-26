@@ -68,7 +68,7 @@ class BrandController extends Controller
 
         $data = [
             'country_id'   => $request->country_id,
-            'name'         => $request->name,
+            'title'         => $request->title,
             'description'  => $request->description,
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : null,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : null,
@@ -148,7 +148,7 @@ class BrandController extends Controller
 
         $data = [
             'country_id'   => $request->country_id,
-            'name'         => $request->name,
+            'title'         => $request->title,
             'description'  => $request->description,
             'image'        => $globalFunImage['status'] == 1 ? $globalFunImage['file_name'] : $brand->image,
             'logo'         => $globalFunLogo['status'] == 1 ? $globalFunLogo['file_name'] : $brand->logo,

@@ -4,12 +4,12 @@ namespace App\Models\Admin;
 
 use App\Traits\HasSlug;
 use Wildside\Userstamps\Userstamps;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class DynamicCss extends Model
 {
-    use HasFactory, HasSlug, Userstamps;
+    use HasFactory, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.
@@ -18,5 +18,10 @@ class Brand extends Model
      */
     protected $guarded = [];
 
-    protected $slugSourceColumn = 'title';
+    /**
+     * , HasSlug
+     * protected $slugSourceColumn = 'name';
+     */
+    
+
 }

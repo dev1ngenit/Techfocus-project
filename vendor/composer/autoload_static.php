@@ -751,6 +751,7 @@ class ComposerStaticInit477449c53aa665b91ea8dae4c20eebd4
         'App\\Http\\Requests\\AttendanceRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AttendanceRequest.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\BankingRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BankingRequest.php',
+        'App\\Http\\Requests\\BannerRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BannerRequest.php',
         'App\\Http\\Requests\\BrandPageRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BrandPageRequest.php',
         'App\\Http\\Requests\\BrandRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BrandRequest.php',
         'App\\Http\\Requests\\CatalogRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CatalogRequest.php',

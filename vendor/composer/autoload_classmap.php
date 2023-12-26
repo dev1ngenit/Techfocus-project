@@ -102,6 +102,7 @@ return array(
     'App\\Http\\Requests\\AttendanceRequest' => $baseDir . '/app/Http/Requests/AttendanceRequest.php',
     'App\\Http\\Requests\\Auth\\LoginRequest' => $baseDir . '/app/Http/Requests/Auth/LoginRequest.php',
     'App\\Http\\Requests\\BankingRequest' => $baseDir . '/app/Http/Requests/BankingRequest.php',
+    'App\\Http\\Requests\\BannerRequest' => $baseDir . '/app/Http/Requests/BannerRequest.php',
     'App\\Http\\Requests\\BrandPageRequest' => $baseDir . '/app/Http/Requests/BrandPageRequest.php',
     'App\\Http\\Requests\\BrandRequest' => $baseDir . '/app/Http/Requests/BrandRequest.php',
     'App\\Http\\Requests\\CatalogRequest' => $baseDir . '/app/Http/Requests/CatalogRequest.php',

@@ -70,7 +70,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <img class="img-fluid rounded-circle" width="35px"
-                                                    src="{{ !empty($category->logo) ? asset('storage/' . $category->logo) : asset('storage/main/no-image-available.png') }}"
+                                                    src="{{ !empty($category->logo) ? asset('storage/category/logo/' . $category->logo) : asset('storage/main/no-image-available.png') }}"
                                                     alt="{{ $category->name }} Logo">
                                             </td>
                                             <td>{{ $category->parentName() ?? 'No Parent' }}
@@ -238,7 +238,7 @@
                                                     class="form-control form-control-solid form-control-sm" name="image"
                                                     id="validationCustom01">
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/requestImg/' . $category->image) }}"
+                                                    <img src="{{ asset('storage/category/image/requestImg/' . $category->image) }}"
                                                         alt="" class="img-fluid">
                                                 </div>
                                                 <div class="valid-feedback"> Looks good! </div>
@@ -251,7 +251,7 @@
                                                     class="form-control form-control-solid form-control-sm" name="logo"
                                                     id="validationCustom01">
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/requestImg/' . $category->logo) }}"
+                                                    <img src="{{ asset('storage/category/logo/requestImg/' . $category->logo) }}"
                                                         alt="" class="img-fluid">
                                                 </div>
                                                 <div class="valid-feedback"> Looks good! </div>

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\Admin;
+namespace App\Models\HR;
 
 use App\Traits\HasSlug;
 use Wildside\Userstamps\Userstamps;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class Holiday extends Model
 {
     use HasFactory, HasSlug, Userstamps;
 
@@ -18,5 +18,10 @@ class Brand extends Model
      */
     protected $guarded = [];
 
-    protected $slugSourceColumn = 'title';
+    /**
+     * , HasSlug
+     * protected $slugSourceColumn = 'name';
+     */
+    
+
 }
