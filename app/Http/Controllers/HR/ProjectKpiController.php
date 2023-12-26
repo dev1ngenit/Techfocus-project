@@ -21,17 +21,6 @@ class ProjectKpiController extends Controller
     {
         return view('admin.pages.projectKpi.index', [
             'projectKpies'    => ProjectKpi::get(),
-        ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.pages.projectKpi.create', [
             'projects'    => EmployeeProject::get(['id', 'name']),
             'employees'    => Admin::get(['id', 'name']),
         ]);
@@ -73,20 +62,6 @@ class ProjectKpiController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view('admin.pages.projectKpi.create', [
-            'projectKpi'    => ProjectKpi::find($id),
-            'projects'    => EmployeeProject::get(['id', 'name']),
-            'employees'    => Admin::get(['id', 'name']),
-        ]);
-    }
 
     /**
      * Update the specified resource in storage.
