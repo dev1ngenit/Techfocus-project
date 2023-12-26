@@ -35,8 +35,6 @@ return new class extends Migration
             $table->double('kpi_rating')->nullable();
             $table->unsignedBigInteger('total_working_day')->nullable();
             $table->double('total_working_man_hour')->nullable();
-
-
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
