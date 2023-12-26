@@ -27,8 +27,6 @@ return new class extends Migration
             $table->double('kpi_ratio')->nullable();
             $table->mediumText('late_reason')->nullable();
             $table->mediumText('comments')->nullable();
-
-
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();

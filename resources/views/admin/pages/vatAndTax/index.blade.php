@@ -104,7 +104,7 @@
                                     <th width="20%">Company Name</th>
                                     <th width="10%">Type</th>
                                     <th width="20%">Name</th>
-                                    <th width="10%">Rate</th>
+                                    <th width="10%">Amount</th>
                                     <th width="10%">Status</th>
                                     <th class="text-center" width="5%">Action</th>
                                     <!--end::Table row-->
@@ -123,7 +123,7 @@
                                                 </span>
                                             </td>
                                             <td>{{ $vatAndTax->name }}</td>
-                                            <td>{{ $vatAndTax->rate }}</td>
+                                            <td>{{ $vatAndTax->amount }}</td>
                                             <td> <span
                                                     class="badge {{ $vatAndTax->status == 'active' ? 'bg-success' : 'bg-danger' }}">
                                                     {{ $vatAndTax->status }}
@@ -240,10 +240,10 @@
                                             <div class="invalid-feedback"> Please Enter Name </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="validationCustom01" class="form-label required ">Rate</label>
+                                            <label for="validationCustom01" class="form-label required ">Amount</label>
                                             <input type="number" min="0" max="999.99" step="0.01"
                                                 class="form-control form-select-sm form-control-solid"
-                                                id="validationCustom03" name="rate"
+                                                id="validationCustom03" name="amount"
                                                 title="Please enter a valid decimal number" required>
                                             <div class="valid-feedback"> Looks good! </div>
                                             <div class="invalid-feedback"> Please enter a valid decimal number</div>
@@ -367,11 +367,12 @@
                                                 <div class="invalid-feedback"> Please Enter Name </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="validationCustom01" class="form-label required ">Rate</label>
+                                                <label for="validationCustom01"
+                                                    class="form-label required ">Amount</label>
                                                 <input type="text"
                                                     class="form-control form-select-sm form-control-solid"
-                                                    id="validationCustom03" pattern="^\d+(\.\d+)?$" name="rate"
-                                                    value="{{ $vatAndTax->rate }}"
+                                                    id="validationCustom03" pattern="^\d+(\.\d+)?$" name="amount"
+                                                    value="{{ $vatAndTax->amount }}"
                                                     title="Please enter a valid decimal number" required>
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please enter a valid decimal number</div>

@@ -771,7 +771,7 @@
                 </div>
 
                 @php
-                    $setting = ['admin.web.setting',];
+                    $setting = ['admin.web.setting', 'admin.css.index', ''];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $setting) ? 'here show' : '' }}">
@@ -804,20 +804,20 @@
                             </a>
                         </div>
 
-                        {{-- <div data-kt-menu-trigger="click"
-                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $supplychain) ? 'here show' : '' }}">
+                        <div data-kt-menu-trigger="click"
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $setting) ? 'here show' : '' }}">
                             <span class="menu-link">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Leave</span>
+                                <span class="menu-title">Others Setting</span>
                                 <span class="menu-arrow"></span>
                             </span>
                             <div class="menu-sub menu-sub-accordion">
 
                                 <div class="menu-item">
                                     <a class="menu-link {{ Route::current()->getName() == 'admin.brand.index' ? 'active' : '' }}"
-                                        href="{{ route('admin.brand.index') }}">
+                                        href="{{ route('admin.currency') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
@@ -834,7 +834,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
                 <div class="menu-item">

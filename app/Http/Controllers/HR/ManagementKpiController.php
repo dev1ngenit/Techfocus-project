@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\HR;
 
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CurrencyController extends Controller
+class ManagementKpiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-         return view();
+        //
     }
 
     /**
