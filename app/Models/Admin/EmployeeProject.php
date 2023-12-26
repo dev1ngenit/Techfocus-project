@@ -18,10 +18,5 @@ class EmployeeProject extends Model
      */
     protected $guarded = [];
 
-    /**
-     * , HasSlug
-     * protected $slugSourceColumn = 'name';
-     */
-    
-
+    protected $slugSourceColumn = 'name';
 }
