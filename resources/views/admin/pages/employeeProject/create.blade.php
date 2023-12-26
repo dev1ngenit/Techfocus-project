@@ -233,7 +233,7 @@
                                         <div class="col-lg-12 mt-5">
                                             <div class="d-flex justify-content-end">
                                                 <button type="submit"
-                                                    class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                                                    class="btn btn-sm btn-light-primary rounded-0 p-3">Submit</button>
                                             </div>
                                         </div>
                                     </div>
