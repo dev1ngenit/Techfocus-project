@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\HR;
 
+use App\Models\Admin;
 use Illuminate\Support\Str;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\EmployeeProjectRequest;
-use App\Models\Admin\Company;
-use App\Models\Admin\EmployeeProject;
 use Illuminate\Http\Request;
+use App\Models\Admin\Company;
+use App\Http\Controllers\Controller;
+use App\Models\Admin\EmployeeProject;
+use App\Http\Requests\EmployeeProjectRequest;
 
 class EmployeeProjectController extends Controller
 {
@@ -32,6 +33,7 @@ class EmployeeProjectController extends Controller
     {
         return view('admin.pages.employeeProject.create', [
             'companies'    => Company::get(['id', 'name']),
+            'admins'    => Admin::get(['id', 'name']),
         ]);
     }
 
@@ -86,9 +88,11 @@ class EmployeeProjectController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.pages.employeeProject.create', [
+        return view('admin.pages.employeeProject.edit', [
             'employeeProject'    => EmployeeProject::find($id),
             'companies'    => Company::get(['id', 'name']),
+            'admins'    => Admin::get(['id', 'name']),
+
         ]);
     }
 
