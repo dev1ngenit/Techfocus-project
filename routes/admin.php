@@ -106,7 +106,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
         Route::controller(AttributeValueController::class)->group(function () {
             Route::post('/attribute-value/store', 'store')->name('attribute-value.store');
             Route::post('/attribute-value/update', 'update')->name('attribute-value.update');
-            // Route::put('/attribute-value/{id}/update', 'update')->name('attribute-value.update');
+            // Route::put('/attribute-value/{id}/update', 'update')->name('attribute-value.updfate');
             Route::delete('/attribute-value/{id}/destroy', 'destroy')->name('attribute-value.destroy');
         });
         // Dynamic CSS

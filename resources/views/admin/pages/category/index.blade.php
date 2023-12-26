@@ -311,16 +311,11 @@
             </div>
         </div>
     @endforeach
-
-
-
 @endsection
 
 @push('scripts')
-    {{-- Hide the Parent Name Input Field On Checkbox Click Start  --}}
     <script>
         $(document).ready(function() {
-            // Toggle visibility on checkbox change
             $('#flexRadioLg').change(function() {
                 var checkbox = $('.form-check-input');
                 if (checkbox.is(':checked')) {
@@ -331,7 +326,6 @@
             });
             $('.categoryEditModal').click(function() {
                 var categoryId = $(this).data('id');
-                // alert(categoryId);
                 var parentInputContainer = $('#parentInputContainer-' + categoryId);
                 var checkboxID = $('#flexRadioLg-' + categoryId);
 
