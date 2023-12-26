@@ -19,19 +19,19 @@
             <div class="col-lg-5 p-4 d-flex justify-content-between align-items-center social-area">
                 <ul class="">
                     <li class="pt-2">
-                        <a href="brand-list.html">Brand list</a>
+                        <a href="{{route('brand.list')}}">Brand list</a>
                     </li>
                     <li class="pt-2">
-                        <a href="manufacturer-account.html"> Manufacturer account</a>
+                        <a href="javascript:void(0)"> Manufacturer account</a>
                     </li>
                     <li class="pt-2">
-                        <a href="our-service.html"> Our Service</a>
+                        <a href="{{route('service')}}"> Our Service</a>
                     </li>
                     <li class="pt-2">
-                        <a href="subscriptions.html"> Subscriptions</a>
+                        <a href="{{route('subscription')}}"> Subscriptions</a>
                     </li>
                     <li class="pt-2">
-                        <a href="about-us.html">About Us</a>
+                        <a href="{{route('about')}}">About Us</a>
                     </li>
                 </ul>
                 <div class="social-icons-btn">

@@ -13,6 +13,9 @@ Route::get('rfq', [SiteController::class, 'rfq'])->name('rfq');
 Route::get('contact', [SiteController::class, 'contact'])->name('contact');
 Route::get('terms', [SiteController::class, 'terms'])->name('terms');
 Route::get('about-us', [SiteController::class, 'about'])->name('about');
+Route::get('services', [SiteController::class, 'service'])->name('service');
+Route::get('subscription', [SiteController::class, 'subscription'])->name('subscription');
+Route::get('brand/list', [SiteController::class, 'brandList'])->name('brand.list');
 Route::get('category/{slug}/products', [SiteController::class, 'filterProducts'])->name('filtering.products');
 
 // Brand Pages

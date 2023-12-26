@@ -187,7 +187,7 @@
                                             <input type="text" class="form-control form-control-solid form-control-sm"
                                                 name="code" id="validationCustom01" placeholder="Enter Code">
                                         </div>
-                                        <div class="col-lg-3 mb-1">
+                                        <div class="col-lg-6 mb-1">
                                             <label class="form-label"></label>
                                             <div class="form-check form-check-custom form-check-solid mb-5">
                                                 <input class="form-check-input me-3" name="system_default_currency"
@@ -205,36 +205,41 @@
                                                 name="exchange_rate" id="validationCustom01"
                                                 placeholder="Enter Exchange Rate">
                                         </div>
+                                        <div class="col-md-6 mb-1">
+                                            <label for="thousand_separator" class="form-label">Thousand Separator</label>
+                                            <select class="form-control form-control-sm" id="thousand_separator"
+                                                name="thousand_separator">
+                                                <option value="." selected> . (23.456,70)</option>
+                                                <option value=","> , (23,456.70)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-1">
+                                            <label for="decimal_separator" class="form-label">Decimal Separator</label>
+                                            <select class="form-control form-control-sm" id="decimal_separator"
+                                                name="decimal_separator">
+                                                <option value="." selected> . (1.23.456,70)</option>
+                                                <option value=","> , (1,23,456.70)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-1">
+                                            <label for="decimal_separator" class="form-label">Decimal Separator</label>
+                                            <select class="form-control form-control-sm" id="decimal_separator"
+                                                name="decimal_separator">
+                                                <option value="." selected> . (1.23.456,70)</option>
+                                                <option value=","> , (1,23,456.70)</option>
+                                            </select>
+                                        </div>
                                         
                                         <div class="form-group">
-                                            <label for="thousand_separator">Thousand Separator</label>
-                                            <select class="form-control" id="thousand_separator"
-                                                name="thousand_separator">
-                                                <option value="." selected>.</option>
-                                                <option value=",">,</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="decimal_separator">Decimal Separator</label>
-                                            <select class="form-control" id="decimal_separator" name="decimal_separator">
-                                                <option value="." selected>.</option>
-                                                <option value=",">,</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
                                             <label for="no_of_decimals">Number of Decimals</label>
+                                            <select class="form-control form-control-sm" id="no_of_decimals"
+                                                name="no_of_decimals">
+                                                <option value="." selected> . (1.23.456,70)</option>
+                                                <option value=","> , (1,23,456.70)</option>
+                                            </select>
                                             <input type="number" class="form-control" id="no_of_decimals"
                                                 name="no_of_decimals" placeholder="Enter number of decimals"
                                                 value="2">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="exchange_rate">Exchange Rate</label>
-                                            <input type="number" step="0.000001" class="form-control"
-                                                id="exchange_rate" name="exchange_rate" placeholder="Enter exchange rate"
-                                                value="1.000000">
                                         </div>
                                     </div>
                                 </div>

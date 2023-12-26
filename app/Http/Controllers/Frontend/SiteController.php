@@ -46,4 +46,13 @@ class SiteController extends Controller
     public function about() {
         return view('frontend.pages.about.about');
     }
+    public function subscription() {
+        return view('frontend.pages.others.subscription');
+    }
+    public function brandList() {
+        return view('frontend.pages.brand.brand_list');
+    }
+    public function service() {
+        return view('frontend.pages.service.service');
+    }
 }
