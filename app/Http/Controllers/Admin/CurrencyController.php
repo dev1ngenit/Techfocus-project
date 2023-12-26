@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Currency;
 use Illuminate\Http\Request;
 
 class CurrencyController extends Controller
@@ -14,7 +15,10 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-         return view();
+        $data =[
+            'currencys' => Currency::get(),
+        ];
+        return view('admin.pages.currency.index',$data);
     }
 
     /**

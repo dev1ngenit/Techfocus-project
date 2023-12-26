@@ -52,6 +52,7 @@ use App\Http\Controllers\Admin\EmployeeCategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Accounts\AccountsDocumentController;
+use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
 
 /*
@@ -176,6 +177,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'holiday'               => HolidayController::class,
                 'attendance'            => AttendanceController::class, //not my work
                 'accounts-document'     => AccountsDocumentController::class,
+                'currency'              => CurrencyController::class,
             ],
             ['except' => ['create', 'show', 'edit'],]
         );
