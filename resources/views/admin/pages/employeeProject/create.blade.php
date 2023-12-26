@@ -188,7 +188,7 @@
                                             <input type="number"
                                                 class="form-control form-control-solid form-control-sm @error('kpi_rating') is-invalid @enderror"
                                                 name="kpi_rating" id="validationCustom01"
-                                                placeholder="Enter Your Weight">
+                                                placeholder="Enter Your Kpi Rating">
                                             @error('kpi_rating')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -196,14 +196,11 @@
                                         <div class="col-md-4 mb-2">
                                             <label for="validationCustom04"
                                                 class="form-label mb-0 @error('total_working_day') is-invalid @enderror">Total
-                                                Working Day</label>
-                                            <select class="form-select form-select-solid form-select-sm"
-                                                name="total_working_day" data-dropdown-parent="#brandAddModal"
-                                                data-control="select2" data-placeholder="Select an option"
-                                                data-allow-clear="true">
-                                                <option value="1">Option 1</option>
-                                                <option value="2">Option 2</option>
-                                            </select>
+                                                Working Day (In Days)</label>
+                                            <input type="number"
+                                                class="form-control form-control-solid form-control-sm @error('total_working_day') is-invalid @enderror"
+                                                name="total_working_day" id="validationCustom01"
+                                                placeholder="Enter Your Total Working Day">
                                             @error('total_working_day')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror

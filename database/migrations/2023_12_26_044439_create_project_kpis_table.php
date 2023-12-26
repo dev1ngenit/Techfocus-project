@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('project_id')->nullable()->constrained('employee_projects')->cascadeOnDelete();
             $table->foreignId('employee_id')->nullable()->constrained('admins')->cascadeOnDelete();
+
             $table->string('name')->nullable();
             $table->double('given_hour')->nullable();
             $table->double('actual_hour')->nullable();
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->double('team_leader_rating')->nullable();
             $table->double('supervisor_rating')->nullable();
             $table->double('kpi_ratio')->nullable();
+            
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();

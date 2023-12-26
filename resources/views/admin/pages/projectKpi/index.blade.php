@@ -56,7 +56,7 @@
                                 <th width="30%">Name</th>
                                 <th width="12%">Start Date</th>
                                 <th width="12%">End Date</th>
-                                <th width="30%">Supervisor</th>
+                                <th width="30%">Status</th>
                                 <th class="text-center" width="10%">Action</th>
                                 <!--end::Table row-->
                         </thead>
