@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->double('given_hour')->nullable();
             $table->double('actual_hour')->nullable();
-            $table->enum('status', ['done', 'not_done','partial_done'])->default('done')->nullable();
+            $table->enum('status', ['done', 'not_done', 'partial_done'])->default('done')->nullable();
             $table->double('team_leader_rating')->nullable();
             $table->double('supervisor_rating')->nullable();
             $table->double('kpi_ratio')->nullable();
