@@ -771,7 +771,7 @@
                 </div>
 
                 @php
-                    $setting = ['admin.web.setting', 'admin.css.index', ''];
+                    $setting = ['admin.web.setting', 'admin.css.index', 'admin.currency.index'];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $setting) ? 'here show' : '' }}">
@@ -805,7 +805,7 @@
                         </div>
 
                         <div data-kt-menu-trigger="click"
-                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $setting) ? 'here show' : '' }}">
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), ['admin.currency.index']) ? 'here show' : '' }}">
                             <span class="menu-link">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
@@ -816,15 +816,15 @@
                             <div class="menu-sub menu-sub-accordion">
 
                                 <div class="menu-item">
-                                    <a class="menu-link {{ Route::current()->getName() == 'admin.brand.index' ? 'active' : '' }}"
-                                        href="{{ route('admin.currency') }}">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.currency.index' ? 'active' : '' }}"
+                                        href="{{ route('admin.currency.index') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title">Applications</span>
+                                        <span class="menu-title">Currency</span>
                                     </a>
                                 </div>
-                                <div class="menu-item">
+                                {{-- <div class="menu-item">
                                     <a class="menu-link {{ Route::current()->getName() == 'admin.category.index' ? 'active' : '' }}"
                                         href="{{ route('admin.category.index') }}">
                                         <span class="menu-bullet">
@@ -832,7 +832,7 @@
                                         </span>
                                         <span class="menu-title">Categories</span>
                                     </a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
