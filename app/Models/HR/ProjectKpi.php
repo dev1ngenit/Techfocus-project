@@ -2,7 +2,6 @@
 
 namespace App\Models\HR;
 
-use App\Traits\HasSlug;
 use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,11 +16,4 @@ class ProjectKpi extends Model
      * @var array
      */
     protected $guarded = [];
-
-    /**
-     * , HasSlug
-     * protected $slugSourceColumn = 'name';
-     */
-    
-
 }

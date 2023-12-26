@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 
-class VatTaxRequest extends FormRequest
+class ProjectKpiRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +25,17 @@ class VatTaxRequest extends FormRequest
     public function rules()
     {
         return [
-            'country_id'  => 'nullable|exists:countries,id',
-            'company_id'  => 'nullable|exists:companies,id',
-            'type'        => 'required|in:tax,vat',
-            'name'        => 'required|string|max:255',
-            'amount'        => 'required|numeric|between:0,999.99',
-            'description' => 'nullable|string',
-            'status'      => 'required|in:active,inactive',
+            'project_id' => 'nullable|exists:employee_projects,id|integer',
+            'employee_id' => 'nullable|exists:admins,id|integer',
+            'name' => 'nullable|string|max:255',
+            'given_hour' => 'nullable|numeric',
+            'actual_hour' => 'nullable|numeric',
+            'status' => 'nullable|in:done,not_done,partial_done',
+            'team_leader_rating' => 'nullable|numeric',
+            'supervisor_rating' => 'nullable|numeric',
+            'kpi_ratio' => 'nullable|numeric',
+            'late_reason' => 'nullable|string',
+            'comments' => 'nullable|string',
         ];
     }
 
@@ -43,12 +47,7 @@ class VatTaxRequest extends FormRequest
     public function messages()
     {
         return [
-            'country_id.exists' => 'The selected country name is invalid.',
-            'company_id.exists' => 'The selected company name is invalid.',
-            'type.in'           => 'The type must be either tax or vat.',
-            'name.required'     => 'The name field is required.',
-            'amount.between'      => 'The amount must be between 0 and 999.99.',
-            'status.in'         => 'The status must be either active or inactive.',
+            //
         ];
     }
 
@@ -60,13 +59,7 @@ class VatTaxRequest extends FormRequest
     public function attributes()
     {
         return [
-            'country_id'  => 'Country Name',
-            'company_id'  => 'Company Name',
-            'type'        => 'Type',
-            'name'        => 'Name',
-            'amount'        => 'amount',
-            'description' => 'Description',
-            'status'      => 'Status',
+            //
         ];
     }
 
