@@ -57,7 +57,7 @@
             font-size: 1.7em;
         }
 
-        
+
         .buttonStyle {
             border: transparent;
             border-radius: 0;
@@ -110,6 +110,44 @@
         .returnToProfile a:hover {
             color: #fff;
         }
+
+
+        .custom-sticky-button {
+            position: fixed;
+            bottom: 0px;
+            /* Adjust this value to set the distance from the bottom */
+            right: 0px;
+            /* Adjust this value to set the distance from the right */
+            z-index: 1000;
+            /* Set a higher z-index to ensure the button is on top of other elements */
+        }
+
+        .slick-dots {
+            color: var(--primary-color);
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .slick-next {
+            background-color: var(--primary-color);
+            position: relative;
+            top: -70px;
+            padding: 10px;
+            border-radius: 50%;
+            width: 35px;
+        }
+
+        .slick-prev {
+            background-color: var(--primary-color);
+            position: absolute;
+            top: 40px;
+            padding: 10px;
+            border-radius: 50%;
+            width: 35px;
+            right: 0px;
+            z-index: 99;
+        }
     </style>
 </head>
 
@@ -153,9 +191,78 @@
             </div>
         </div>
     </div> --}}
+    {{-- Compare Product --}}
+    <button class="btn btn-primary custom-sticky-button w-100 rounded-0" id="stickyButton" type="button"
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+        <div class="d-flex align-items-center justify-content-center">
+            <p class="m-0 p-0 me-2">1/10 products to compare</p>
+            <p class="m-0 p-2" style="background-color: var(--secondary-color)">Compare</p>
+        </div>
+    </button>
+
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel"
+        style="background-color: var(--secondary-color);">
+        <div class="offcanvas-header">
+            <div class="text-center">
+                <p class="m-0 p-0 me-2 text-white">1/10 products to compare</p>
+            </div>
+            <button type="button" class="btn-close bg-white rounded-0" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body small">
+            <div class="container p-0">
+                <div class="compare-card slider">
+                    <div class="slide"><img
+                            src="https://image.freepik.com/free-vector/luxury-letter-e-logo-design_1017-8903.jpg"></div>
+                    <div class="slide"><img src="https://image.freepik.com/free-vector/3d-box-logo_1103-876.jpg"></div>
+                    <div class="slide"><img src="https://image.freepik.com/free-vector/blue-tech-logo_1103-822.jpg">
+                    </div>
+                    <div class="slide"><img
+                            src="https://image.freepik.com/free-vector/colors-curl-logo-template_23-2147536125.jpg">
+                    </div>
+                    <div class="slide"><img
+                            src="https://image.freepik.com/free-vector/abstract-cross-logo_23-2147536124.jpg">
+                    </div>
+                    <div class="slide"><img
+                            src="https://image.freepik.com/free-vector/football-logo-background_1195-244.jpg">
+                    </div>
+                    <div class="slide"><img
+                            src="https://image.freepik.com/free-vector/background-of-spots-halftone_1035-3847.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Compare Product End--}}
 
     <!-- *********************************Script Start***********************************-->
     @include('frontend.partials.script')
+    <script>
+        $(document).ready(function(){
+            $('.compare-card').slick({
+                slidesToShow: 6,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 1500,
+                arrows: true,
+                dots: true,
+                pauseOnHover: false,
+                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+                nextArrow: '<button type="button" class="slick-next">Next</button>',
+                responsive: [{
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 4
+                    }
+                }, {
+                    breakpoint: 520,
+                    settings: {
+                        slidesToShow: 3
+                    }
+                }]
+            });
+        });
+    </script>
     <script>
         window.onload = function() {
             // Add a click event listener to the modalOverlay
