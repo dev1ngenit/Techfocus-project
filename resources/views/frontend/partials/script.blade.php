@@ -10,7 +10,7 @@
 <script src="{{ asset('frontend/assets/js/plugin/swiper-bundle.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <script src="{{ asset('frontend/assets/js/plugin/aos@2.3.1.js') }}"></script>
-<script src="https://kit.fontawesome.com/69b7156a94.js"></script>
+<script src="{{ asset('frontend/assets/js/plugin/fontawesome.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/xzoom@1.0.14/dist/xzoom.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>

@@ -8,7 +8,7 @@
             </div>
             <div class="col-lg-2 p-4 text-center border-left-side">
                 <div>
-                    <a href="exhibit.html">EXHIBIT WITH US </a>
+                    <a href="{{ route('exhibit') }}">EXHIBIT WITH US </a>
                 </div>
             </div>
             <div class="col-lg-2 p-4 text-center border-left-side">
