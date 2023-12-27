@@ -6,6 +6,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Admin\HomePage;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\NewsTrend;
+use App\Models\Admin\Product;
 use Illuminate\Support\Facades\File;
 
 class HomePageController extends Controller
@@ -17,7 +19,9 @@ class HomePageController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.homePage.index');
+        return view('admin.pages.homePage.index', [
+            'homePages' => HomePage::get(),
+        ]);
     }
 
     /**
@@ -27,7 +31,10 @@ class HomePageController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.homePage.create');
+        return view('admin.pages.homePage.create', [
+            'products' => Product::get(['id', 'name']),
+            'newsTrends' => NewsTrend::get(['id', 'title']),
+        ]);
     }
 
     /**
@@ -230,7 +237,11 @@ class HomePageController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.pages.homePage.edit');
+        return view('admin.pages.homePage.edit', [
+            'homePage'  => HomePage::find($id),
+            'products'   => Product::get(['id', 'name']),
+            'newsTrends' => NewsTrend::get(['id', 'title']),
+        ]);
     }
 
     /**
