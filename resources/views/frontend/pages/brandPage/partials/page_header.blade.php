@@ -24,20 +24,20 @@
     <!-- Tabbing Section Start -->
     <div class="row bg-white mb-4 p-3 sticky-top align-items-center shadow-lg">
         <div class="col-lg-3">
-            <img src="https://img.directindustry.com/images_di/logo-p/L16788.gif" width="225" height="45"
+            <img src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/' . $brand->logo)) ? asset('storage/brand/logo/' . $brand->logo) : asset('backend/images/no-image-available.png') }}" width="225" height="45"
                 alt="" />
         </div>
         <div class="col-lg-9">
             <ul class="d-flex justify-content-around pt-4 product-tabbing-menu">
                 <li>
-                    <a href="" class="product-tabbing-menu-active">Company</a>
+                    <a href="{{ route('brand.overview',$brand->slug) }}" class="product-tabbing-menu-active">Company</a>
                 </li>
                 <li>
-                    <a href="" class="">Products</a>
+                    <a href="{{ route('brand.pdf',$brand->slug) }}" class="">Products</a>
                 </li>
-                <li><a href="">Catalogs</a></li>
-                <li><a href="">News & Trends</a></li>
-                <li><a href="">Exhibitions</a></li>
+                <li><a href="{{ route('brand.products',$brand->slug) }}">Catalogs</a></li>
+                <li><a href="{{ route('brand.content',$brand->slug) }}">News & Trends</a></li>
+                {{-- <li><a href="{{ route('brand.') }}">Exhibitions</a></li> --}}
             </ul>
         </div>
     </div>
