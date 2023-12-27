@@ -96,6 +96,7 @@
 
     <span class="skype-button bubble" data-color="#0078D4" data-contact-id="ngenit"></span>
     <span class="skype-chat" data-color-message="#0078D4"></span>
+
     
     <!-- *********************************Script Start***********************************-->
     @include('frontend.partials.script')

@@ -1,7 +1,7 @@
 <div class="container-fluid" style="background-color: var(--secondary-color)">
     <div class="container text-white" style="font-size: 14px">
         <div class="row align-items-center">
-            <div class="col-lg-3 p-4 text-start border-left-side">
+            <div class="col-lg-3 p-4 text-lg-start text-center border-left-side">
                 <div>
                     <a href="{{ route('buying.guide') }}">HOW TO BUY PRODUCTS </a>
                 </div>
