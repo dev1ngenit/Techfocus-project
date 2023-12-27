@@ -50,27 +50,27 @@
                                             <div class="inset-img d-flex justify-content-center"
                                                 style="overflow: hidden; margin-top: 50px; position: relative;">
                                                 <img src="{{ !empty($top_brand->logo) && file_exists(public_path('storage/brand/logo/' . $top_brand->logo)) ? asset('storage/brand/logo/' . $top_brand->logo) : asset('backend/images/no-image-available.png') }}"
-                                                    alt="{{ $top_brand->name }}">
+                                                   class="lazyLoaded" alt="{{ $top_brand->name }}" style="height: auto; width: auto;">
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between p-2"
                                                 style="margin-top: 50px;">
                                                 <h2 class="text-center font-four">{{ $top_brand->name }}</h2>
                                                 <!-- Brand Logo -->
                                                 <a href="#">
-                                                    <img class="lazyLoaded logo right"
+                                                    {{-- <img class="lazyLoaded logo right"
                                                         src="https://img.directindustry.com/images_di/photo-pp/18998-17335319.gif"
-                                                        title="Adicomp Srl">
+                                                        title="Adicomp Srl"> --}}
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="back from-bottom text-start">
                                             <a href="">
                                                 <span class="font-two pt-3">
-                                                    Z-LASER GmbH</span>
+                                                    {{ $top_brand->name }}</span>
                                             </a>
                                             <br>
                                             <p class="subtitles"></p>
-                                            <ul class="ms-0 ps-0">
+                                            {{-- <ul class="ms-0 ps-0">
                                                 <li>diode laser</li>
                                                 <li>pulsed laser</li>
                                                 <li> laser</li>
@@ -79,7 +79,7 @@
                                                 <li>continuous laser</li>
                                                 <li>laser projector</li>
                                                 <li>infrared laser</li>
-                                            </ul>
+                                            </ul> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -89,11 +89,7 @@
                 @endif
             </div>
             <div class="d-flex justify-content-center">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        {{ $top_brands->links() }}
-                    </ul>
-                </nav>
+                {{ $top_brands->links() }}
             </div>
         </section>
         <section class="mb-4">
@@ -113,27 +109,27 @@
                                             <div class="inset-img d-flex justify-content-center"
                                                 style="overflow: hidden; margin-top: 50px; position: relative;">
                                                 <img src="{{ !empty($featured_brand->logo) && file_exists(public_path('storage/brand/logo/' . $featured_brand->logo)) ? asset('storage/brand/logo/' . $featured_brand->logo) : asset('backend/images/no-image-available.png') }}"
-                                                    alt="{{ $featured_brand->name }}">
+                                                class="lazyLoaded" alt="{{ $featured_brand->name }}" style="height: auto; width: auto;">
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between p-2"
                                                 style="margin-top: 50px;">
                                                 <h2 class="text-center font-four">{{ $featured_brand->name }}</h2>
                                                 <!-- Brand Logo -->
                                                 <a href="#">
-                                                    <img class="lazyLoaded logo right"
+                                                    {{-- <img class="lazyLoaded logo right"
                                                         src="https://img.directindustry.com/images_di/photo-pp/18998-17335319.gif"
-                                                        title="Adicomp Srl">
+                                                        title="Adicomp Srl"> --}}
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="back from-bottom text-start">
                                             <a href="">
                                                 <span class="font-two pt-3">
-                                                    Z-LASER GmbH</span>
+                                                    {{ $featured_brand->name }}</span>
                                             </a>
                                             <br>
                                             <p class="subtitles"></p>
-                                            <ul class="ms-0 ps-0">
+                                            {{-- <ul class="ms-0 ps-0">
                                                 <li>diode laser</li>
                                                 <li>pulsed laser</li>
                                                 <li> laser</li>
@@ -142,7 +138,7 @@
                                                 <li>continuous laser</li>
                                                 <li>laser projector</li>
                                                 <li>infrared laser</li>
-                                            </ul>
+                                            </ul> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -151,11 +147,7 @@
                     @endforeach
                 @endif
                 <div class="d-flex justify-content-center">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            {{ $featured_brands->links() }}
-                        </ul>
-                    </nav>
+                    {{ $featured_brands->links() }}
                 </div>
             </div>
         </section>

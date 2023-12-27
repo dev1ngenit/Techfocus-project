@@ -778,7 +778,6 @@ figure img {
   height: 33px;
 }
 .pagination {
-  display: inline-block;
   margin-bottom: 30px;
   padding: 8px 0;
   border-top: var(--primary-color) solid 1px;
