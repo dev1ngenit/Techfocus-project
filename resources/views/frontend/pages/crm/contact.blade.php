@@ -132,7 +132,7 @@
                         src="https://www.cosmed.com/images/08_icons/get_in_touch/request_information.svg"
                         class="card-img-top" alt="...">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Get Suppert Now</h3>
+                        <h3 class="card-title">Get Support Now</h3>
                         <p class="card-text py-2 w-75 mx-auto">Fill the online form to get software upgrades
                             and more
                             advantages</p>
@@ -147,7 +147,7 @@
                         src="https://www.cosmed.com/images/08_icons/get_in_touch/register_product.svg"
                         class="card-img-top" alt="...">
                     <div class="card-body text-center">
-                        <h3 class="card-title text-white">Get Suppert Now</h3>
+                        <h3 class="card-title text-white">Get Support Now</h3>
                         <p class="card-text text-white py-2 w-75 mx-auto">Fill the online form to get software upgrades
                             and more
                             advantages</p>

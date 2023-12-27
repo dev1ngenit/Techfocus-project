@@ -137,59 +137,59 @@
                 <p class="text-center">CHOOSE BY COMPANY NAME</p>
                 <div class="d-flex justify-content-center">
                     <div class="pagination">
-                        <a href="https://pdf.directindustry.com/pdf/soc-0-9.html">0-9</a>
+                        <a href="javascript:void(0).html">0-9</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-A.html">A</a>
+                        <a href="javascript:void(0)">A</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-B.html">B</a>
+                        <a href="javascript:void(0)">B</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-C.html">C</a>
+                        <a href="javascript:void(0)">C</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-D.html">D</a>
+                        <a href="javascript:void(0)">D</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-E.html">E</a>
+                        <a href="javascript:void(0)">E</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-F.html">F</a>
+                        <a href="javascript:void(0)">F</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-G.html">G</a>
+                        <a href="javascript:void(0)">G</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-H.html">H</a>
+                        <a href="javascript:void(0)">H</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-I.html">I</a>
+                        <a href="javascript:void(0)">I</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-J.html">J</a>
+                        <a href="javascript:void(0)">J</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-K.html">K</a>
+                        <a href="javascript:void(0)">K</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-L.html">L</a>
+                        <a href="javascript:void(0)">L</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-M.html">M</a>
+                        <a href="javascript:void(0)">M</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-N.html">N</a>
+                        <a href="javascript:void(0)">N</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-O.html">O</a>
+                        <a href="javascript:void(0)">O</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-P.html">P</a>
+                        <a href="javascript:void(0)">P</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-Q.html">Q</a>
+                        <a href="javascript:void(0)">Q</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-R.html">R</a>
+                        <a href="javascript:void(0)">R</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-S.html">S</a>
+                        <a href="javascript:void(0)">S</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-T.html">T</a>
+                        <a href="javascript:void(0)">T</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-U.html">U</a>
+                        <a href="javascript:void(0)">U</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-V.html">V</a>
+                        <a href="javascript:void(0)">V</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-W.html">W</a>
+                        <a href="javascript:void(0)">W</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-X.html">X</a>
+                        <a href="javascript:void(0)">X</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-Y.html">Y</a>
+                        <a href="javascript:void(0)">Y</a>
                         <span>-</span>
-                        <a href="https://pdf.directindustry.com/pdf/soc-Z.html">Z</a>
+                        <a href="javascript:void(0)">Z</a>
                     </div>
                 </div>
             </div>
