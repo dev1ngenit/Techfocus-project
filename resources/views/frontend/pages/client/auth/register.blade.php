@@ -13,6 +13,15 @@
                         You can view your conversation and request <br />
                         history in your account.
                     </p>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     <div class="row mb-5">
                         <div class="col-lg-8 offset-lg-2">
                             <form action="{{ route('register') }}" method="POST" class="signup_validation needs-validation"
@@ -24,10 +33,15 @@
                                             <label for="name" class="form-label">Name:</label>
                                             <input type="text" class="form-control rounded-0" id="name"
                                                 placeholder="Enter First Name" name="name" required />
+                                            @error('name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                             <div class="valid-feedback">Excellent.</div>
-                                            <div class="invalid-feedback">
+                                            {{-- <div class="invalid-feedback">
                                                 Please fill out this field.
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
 
@@ -37,10 +51,15 @@
                                             <label for="email" class="form-label">Email:</label>
                                             <input type="email" class="form-control rounded-0" id="email"
                                                 placeholder="Enter Email" name="email" required />
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                             <div class="valid-feedback">Good.</div>
-                                            <div class="invalid-feedback">
+                                            {{-- <div class="invalid-feedback">
                                                 Please fill out this field.
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -50,10 +69,15 @@
                                             <label for="phone" class="form-label">Phone Number</label>
                                             <input type="number" class="form-control rounded-0" id="phone"
                                                 placeholder="Enter Phone Number" name="phone" required />
+                                            @error('phone')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                             <div class="valid-feedback">Valid.</div>
-                                            <div class="invalid-feedback">
+                                            {{-- <div class="invalid-feedback">
                                                 Please fill out this field.
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-12">
@@ -61,10 +85,15 @@
                                             <label for="company_name" class="form-label">Company Name</label>
                                             <input type="text" class="form-control rounded-0" id="company_name"
                                                 placeholder="Enter Company Name" name="company_name" />
+                                            @error('company_name')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                             <div class="valid-feedback">Excellent.</div>
-                                            <div class="invalid-feedback">
+                                            {{-- <div class="invalid-feedback">
                                                 Please fill out this field.
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -75,10 +104,15 @@
                                             <label for="pwd" class="form-label">Password:</label>
                                             <input type="password" class="form-control rounded-0" id="pwd"
                                                 placeholder="Enter password" name="password" required />
+                                            @error('password')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                             <div class="valid-feedback">Good.</div>
-                                            <div class="invalid-feedback">
+                                            {{-- <div class="invalid-feedback">
                                                 Please fill out this field.
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-12">
@@ -86,6 +120,11 @@
                                             <label for="confirm_password" class="form-label">Confirm Password:</label>
                                             <input type="password" class="form-control rounded-0" id="confirm_password"
                                                 placeholder="Enter password" name="password_confirmation" required />
+                                            @error('password_confirmation')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                             <div class="valid-feedback">Password Strong.</div>
                                             <!-- <div class="invalid-feedback">Passwords do not match or are not strong enough.</div> -->
                                         </div>
