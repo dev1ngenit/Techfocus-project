@@ -8,35 +8,7 @@
             <div class="row align-items-center">
                 <div class="container px-4">
                     <div class="row gx-5">
-                        <div class="col-lg-3">
-                            <div class="pt-4 pb-2 text-center">CATALOGS BY THEME</div>
-                            <div>
-                                <ul class="nav nav-tabs flex-column" id="myTab" role="tablist">
-                                    <li class="nav-item p-0 mt-1 shadow-lg univers-group-item" role="presentation">
-                                        <span class="nav-link ps-3 active" id="home-tab" data-bs-toggle="tab"
-                                            data-bs-target="#home" type="button" role="tab" aria-controls="home"
-                                            aria-selected="true">
-                                            All
-                                        </span>
-                                    </li>
-                                    <li class="nav-item p-0 mt-1 shadow-lg univers-group-item" role="presentation">
-                                        <span class="nav-link ps-3" id="profile-tab" data-bs-toggle="tab"
-                                            data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
-                                            aria-selected="false">
-                                            Detection - Measurement
-                                        </span>
-                                    </li>
-                                    <li class="nav-item p-0 mt-1 shadow-lg univers-group-item" role="presentation">
-                                        <span class="nav-link ps-3" id="contact-tab" data-bs-toggle="tab"
-                                            data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
-                                            aria-selected="false">
-                                            Metrology - Laboratory
-                                        </span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-9">
+                        <div class="col-lg-12">
                             <div class="devider-wrap">
                                 <h4 class="devider-content mb-4">
                                     <span class="devider-text">NEW CATALOGS</span>
