@@ -30,13 +30,13 @@
         <div class="col-lg-9">
             <ul class="d-flex justify-content-around pt-4 product-tabbing-menu">
                 <li>
-                    <a href="{{ route('brand.overview',$brand->slug) }}" class="product-tabbing-menu-active">Company</a>
+                    <a href="{{ route('brand.overview',$brand->slug) }}" class="{{ Route::current()->getName() == 'brand.overview' ? 'product-tabbing-menu-active' : '' }}">Company</a>
                 </li>
                 <li>
-                    <a href="{{ route('brand.pdf',$brand->slug) }}" class="">Products</a>
+                    <a href="{{ route('brand.pdf',$brand->slug) }}" class="{{ Route::current()->getName() == 'brand.pdf' ? 'product-tabbing-menu-active' : '' }}">Products</a>
                 </li>
-                <li><a href="{{ route('brand.products',$brand->slug) }}">Catalogs</a></li>
-                <li><a href="{{ route('brand.content',$brand->slug) }}">News & Trends</a></li>
+                <li><a href="{{ route('brand.products',$brand->slug) }}" class="{{ Route::current()->getName() == 'brand.products' ? 'product-tabbing-menu-active' : '' }}">Catalogs</a></li>
+                <li><a href="{{ route('brand.content',$brand->slug) }}" class="{{ Route::current()->getName() == 'brand.content' ? 'product-tabbing-menu-active' : '' }}">News & Trends</a></li>
                 {{-- <li><a href="{{ route('brand.') }}">Exhibitions</a></li> --}}
             </ul>
         </div>
