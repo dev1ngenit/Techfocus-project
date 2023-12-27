@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
                                     <button data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
-                                        data-bs-target="#projectKpi" class="btn btn-sm btn-light-success rounded-0 p-3">
+                                        data-bs-target="#projectKpiAdd" class="btn btn-sm btn-light-success rounded-0 p-3">
                                         Add New
                                     </button>
                                 </div>
@@ -81,17 +81,13 @@
                                         <td>{{ $projectKpi->kpi_ratio }}</td>
                                         <td>
                                             <div class="d-flex justify-content-between align-items-center">
-                                                {{-- <a href="{{ route('project-kpi.show', $projectKpi->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                    <i class="fa-solid fa-expand"></i>
-                                                </a> --}}
                                                 <a href="javascript:void()" data-kt-menu-placement="bottom-end"
-                                                    data-bs-toggle="modal" data-bs-target="#projectKpiEdit-{{$projectKpi->id}}"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#projectKpiEdit_{{ $projectKpi->id }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-pen"></i>
-                                                    <!--Edit-->
                                                 </a>
-                                                <a href="{{ route('project-kpi.destroy', $projectKpi->id) }}"
+                                                <a href="{{ route('admin.project-kpi.destroy', $projectKpi->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                     data-kt-docs-table-filter="delete_row">
                                                     <i class="fa-solid fa-trash-can-arrow-up"></i>
@@ -102,14 +98,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
     {{-- Add Modal --}}
-    <div class="modal fade" id="projectKpi" data-backdrop="static">
+    <div class="modal fade" id="projectKpiAdd" data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content rounded-0 border-0 shadow-sm">
                 <div class="modal-header p-2 rounded-0">
@@ -138,23 +133,24 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="validationCustom04" class="form-label">Project Name</label>
-                                    <select class="form-select form-select-solid form-select-sm"
-                                        name="
-                                    project_id"
-                                        data-dropdown-parent="#projectKpi" data-control="select2"
+                                    <select class="form-select form-select-solid form-select-sm" name="project_id"
+                                        data-dropdown-parent="#projectKpiAdd" data-control="select2"
                                         data-placeholder="Select an option" data-allow-clear="true">
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
+                                        <option></option>
+                                        @foreach ($projects as $project)
+                                            <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="validationCustom04" class="form-label">Employee Name</label>
                                     <select class="form-select form-select-solid form-select-sm" name="employee_id"
-                                        data-dropdown-parent="#projectKpi" data-control="select2"
+                                        data-dropdown-parent="#projectKpiAdd" data-control="select2"
                                         data-placeholder="Select an Employee Name" data-allow-clear="true">
                                         <option></option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
+                                        @foreach ($employees as $employee)
+                                            <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-6">
@@ -224,115 +220,136 @@
         </div>
     </div>
     {{-- Edit Modal --}}
-    <div class="modal fade" id="projectKpiEdit" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
-                    <h5 class="modal-title">Edit Project Kpi</h5>
-                    <!-- Close button in the header -->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                        <span class="svg-icon svg-icon-2x">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
-                                    transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
-                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)"
-                                    fill="currentColor"></rect>
-                            </svg>
-                        </span>
-                        <!--end::Svg Icon-->
+    @foreach ($projectKpies as $projectKpi)
+        <div class="modal fade" id="projectKpiEdit_{{ $projectKpi->id }}" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-0 border-0 shadow-sm">
+                    <div class="modal-header p-2 rounded-0">
+                        <h5 class="modal-title">Edit Project Kpi</h5>
+                        <!-- Close button in the header -->
+                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                            <span class="svg-icon svg-icon-2x">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none">
+                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1"
+                                        transform="rotate(-45 6 17.3137)" fill="currentColor"></rect>
+                                    <rect x="7.41422" y="6" width="16" height="2" rx="1"
+                                        transform="rotate(45 7.41422 6)" fill="currentColor"></rect>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
+                        </div>
+                        <!-- End Close button in the header -->
                     </div>
-                    <!-- End Close button in the header -->
-                </div>
-                <form action="{{ route('admin.project-kpi.store') }}" class="needs-validation" method="post"
-                    novalidate>
-                    @csrf
-                    <div class="modal-body">
-                        <div class="container px-0">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="validationCustom04" class="form-label">Project Name</label>
-                                    <select class="form-select form-select-solid form-select-sm" name="
-                                        project_id" data-dropdown-parent="#projectKpiEdit" data-control="select2"
-                                        data-placeholder="Select an option" data-allow-clear="true">
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="validationCustom04" class="form-label">Employee Name</label>
-                                    <select class="form-select form-select-solid form-select-sm" name="employee_id"
-                                        data-dropdown-parent="#projectKpiEdit" data-control="select2"
-                                        data-placeholder="Select an Employee Name" data-allow-clear="true">
-                                        <option></option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="validationCustom04" class="form-label">Name</label>
-                                    <input type="text" class="form-control form-control-solid form-control-sm" name="name"
-                                        id="validationCustom01" placeholder="Enter Your Name">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="validationCustom04" class="form-label">Given Hour</label>
-                                    <input type="number" step="0.01" class="form-control form-control-solid form-control-sm"
-                                        name="given_hour" id="validationCustom01" placeholder="Enter Your Given Hour">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="validationCustom04" class="form-label">Actual Hour</label>
-                                    <input type="number" step="0.01" class="form-control form-control-solid form-control-sm"
-                                        name="actual_hour" id="validationCustom01" placeholder="Enter Your Actual Hour">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="validationCustom04" class="form-label">Status</label>
-                                    <select class="form-select form-select-solid form-select-sm" name="status"
-                                        data-dropdown-parent="#projectKpiEdit" data-control="select2"
-                                        data-placeholder="Select an option" data-allow-clear="true">
-                                        <option value="done">Done</option>
-                                        <option value="not_done">Not Done</option>
-                                        <option value="partial_done">Partial Done</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="validationCustom04" class="form-label">Team Leader Rating</label>
-                                    <input type="number" step="0.01" class="form-control form-control-solid form-control-sm"
-                                        name="team_leader_rating" id="validationCustom01"
-                                        placeholder="Enter Your Team Leader Rating">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="validationCustom04" class="form-label">Supervisor Rating</label>
-                                    <input type="number" step="0.01" class="form-control form-control-solid form-control-sm "
-                                        name="supervisor_rating" id="validationCustom01"
-                                        placeholder="Enter Your Supervisor Rating">
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="validationCustom04" class="form-label">Kpi Ratio</label>
-                                    <input type="number" step="0.01" class="form-control form-control-solid form-control-sm "
-                                        name="kpi_ratio" id="validationCustom01" placeholder="Enter Your Kpi Ratio">
-                                </div>
-                                <div class="col-md-6 mt-2">
-                                    <label for="validationCustom04" class="form-label">Late Reason</label>
-                                    <textarea class="form-control form-control-solid form-control-sm" name="late_reason"
-                                        placeholder="Enter Late Reason" id="" cols="30" rows="3"></textarea>
-                                </div>
-                                <div class="col-md-6 mt-2">
-                                    <label for="validationCustom04" class="form-label">Comments</label>
-                                    <textarea class="form-control form-control-solid form-control-sm" name="comments"
-                                        placeholder="Enter Comments" id="" cols="30" rows="3"></textarea>
+                    <form action="{{ route('admin.project-kpi.update', $projectKpi->id) }}" class="needs-validation"
+                        method="post" novalidate>
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            <div class="container px-0">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="validationCustom04" class="form-label">Project Name</label>
+                                        <select class="form-select form-select-solid form-select-sm" name="project_id"
+                                            data-dropdown-parent="#projectKpiEdit_{{ $projectKpi->id }}"
+                                            data-control="select2" data-placeholder="Select an option"
+                                            data-allow-clear="true">
+                                            <option></option>
+                                            @foreach ($projects as $project)
+                                                <option @selected($project->id == $projectKpi->project_id) value="{{ $project->id }}">
+                                                    {{ $project->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="validationCustom04" class="form-label">Employee Name</label>
+                                        <select class="form-select form-select-solid form-select-sm" name="employee_id"
+                                            data-dropdown-parent="#projectKpiEdit_{{ $projectKpi->id }}"
+                                            data-control="select2" data-placeholder="Select an Employee Name"
+                                            data-allow-clear="true">
+                                            <option></option>
+                                            @foreach ($employees as $employee)
+                                                <option @selected($employee->id == $projectKpi->employee_id) value="{{ $employee->id }}">
+                                                    {{ $employee->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="validationCustom04" class="form-label">Name</label>
+                                        <input type="text" class="form-control form-control-solid form-control-sm"
+                                            name="name" value="{{ $projectKpi->name }}" id="validationCustom01"
+                                            placeholder="Enter Your Name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="validationCustom04" class="form-label">Given Hour</label>
+                                        <input type="number" step="0.01"
+                                            class="form-control form-control-solid form-control-sm" name="given_hour"
+                                            value="{{ $projectKpi->given_hour }}" id="validationCustom01"
+                                            placeholder="Enter Your Given Hour">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="validationCustom04" class="form-label">Actual Hour</label>
+                                        <input type="number" step="0.01"
+                                            class="form-control form-control-solid form-control-sm" name="actual_hour"
+                                            value="{{ $projectKpi->actual_hour }}" id="validationCustom01"
+                                            placeholder="Enter Your Actual Hour">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="validationCustom04" class="form-label">Status</label>
+                                        <select class="form-select form-select-solid form-select-sm" name="status"
+                                            data-dropdown-parent="#projectKpiEdit_{{ $projectKpi->id }}"
+                                            data-control="select2" data-placeholder="Select an option"
+                                            data-allow-clear="true">
+                                            <option @selected($projectKpi->status == 'done') value="done">Done</option>
+                                            <option @selected($projectKpi->status == 'not_done') value="not_done">Not Done</option>
+                                            <option @selected($projectKpi->status == 'partial_done') value="partial_done">Partial Done</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="validationCustom04" class="form-label">Team Leader Rating</label>
+                                        <input type="number" step="0.01"
+                                            class="form-control form-control-solid form-control-sm"
+                                            name="team_leader_rating" value="{{ $projectKpi->team_leader_rating }}"
+                                            id="validationCustom01" placeholder="Enter Your Team Leader Rating">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="validationCustom04" class="form-label">Supervisor Rating</label>
+                                        <input type="number" step="0.01"
+                                            class="form-control form-control-solid form-control-sm "
+                                            name="supervisor_rating" value="{{ $projectKpi->supervisor_rating }}"
+                                            id="validationCustom01" placeholder="Enter Your Supervisor Rating">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="validationCustom04" class="form-label">Kpi Ratio</label>
+                                        <input type="number" step="0.01"
+                                            class="form-control form-control-solid form-control-sm " name="kpi_ratio"
+                                            value="{{ $projectKpi->kpi_ratio }}" id="validationCustom01"
+                                            placeholder="Enter Your Kpi Ratio">
+                                    </div>
+                                    <div class="col-md-6 mt-2">
+                                        <label for="validationCustom04" class="form-label">Late Reason</label>
+                                        <textarea class="form-control form-control-solid form-control-sm" name="late_reason" placeholder="Enter Late Reason"
+                                            id="" cols="30" rows="3">{{ $projectKpi->late_reason }}</textarea>
+                                    </div>
+                                    <div class="col-md-6 mt-2">
+                                        <label for="validationCustom04" class="form-label">Comments</label>
+                                        <textarea class="form-control form-control-solid form-control-sm" name="comments" placeholder="Enter Comments"
+                                            id="" cols="30" rows="3">{{ $projectKpi->comments }}</textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer p-2">
-                        <!-- Button to close the modal in the footer -->
-                        <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
-                    </div>
-                </form>
+                        <div class="modal-footer p-2">
+                            <!-- Button to close the modal in the footer -->
+                            <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    @endforeach
 @endsection
 
 @push('scripts')

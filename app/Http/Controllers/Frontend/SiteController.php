@@ -34,9 +34,14 @@ class SiteController extends Controller
     public function terms() {
         return view('frontend.pages.others.terms');
     }
+
     public function allCatalog() {
-        return view('frontend.pages.catalog.allCatalog');
+        $data = [
+            'categories' => Category::with('children.children.children.children.children.children.children.children.children.children')->where('is_parent', '1')->get(['id','parent_id','name','slug']),
+        ];
+        return view('frontend.pages.catalog.allCatalog',$data);
     }
+
     public function rfq() {
         return view('frontend.pages.rfq.rfq');
     }
@@ -54,5 +59,13 @@ class SiteController extends Controller
     }
     public function service() {
         return view('frontend.pages.service.service');
+    }
+
+    public function sourcingGuide() {
+        return view('frontend.pages.guide.sourcing_guide');
+    }
+
+    public function buyingGuide() {
+        return view('frontend.pages.guide.buying_guide');
     }
 }

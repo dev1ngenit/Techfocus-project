@@ -24,7 +24,7 @@
             <div class="container px-4">
                 <div class="row gx-5">
                     <div class="col-lg-3">
-                        <div class="pt-4 pb-2 text-center">CATALOGS BY THEME</div>
+                        <div class="pt-4 pb-2 text-center">CATALOGS BY CATEGORIES</div>
                         <div>
                             <ul class="nav nav-tabs flex-column" id="myTab" role="tablist">
                                 <li class="nav-item p-0 mt-1 shadow-lg univers-group-item" role="presentation">
@@ -34,37 +34,35 @@
                                         All
                                     </span>
                                 </li>
-                                <li class="nav-item p-0 mt-1 shadow-lg univers-group-item" role="presentation">
-                                    <span class="nav-link ps-3" id="profile-tab" data-bs-toggle="tab"
-                                        data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
-                                        aria-selected="false">
-                                        Detection - Measurement
-                                    </span>
-                                </li>
-                                <li class="nav-item p-0 mt-1 shadow-lg univers-group-item" role="presentation">
-                                    <span class="nav-link ps-3" id="contact-tab" data-bs-toggle="tab"
-                                        data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
-                                        aria-selected="false">
-                                        Metrology - Laboratory
-                                    </span>
-                                </li>
+                                @if (count($categories) > 0)
+                                    @foreach ($categories as $key => $category)
+                                        <li class="nav-item p-0 mt-1 shadow-lg univers-group-item" role="presentation">
+                                            <span class="nav-link ps-3" id="category-item-{{ $key }}-tab" data-bs-toggle="tab"
+                                                data-bs-target="#category-item-{{ $key }}" type="button" role="tab"
+                                                aria-controls="category-item-{{ $key }}" aria-selected="false">
+                                                {{ $category->name }}
+                                            </span>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-9">
-                        <div class="devider-wrap">
-                            <h4 class="devider-content mb-4">
-                                <span class="devider-text">NEW CATALOGS</span>
-                            </h4>
-                        </div>
+                        
                         <div>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel"
                                     aria-labelledby="home-tab">
                                     <!-- Content -->
+                                    <div class="devider-wrap">
+                                        <h4 class="devider-content mb-4">
+                                            <span class="devider-text">All Catalogs</span>
+                                        </h4>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-3">
-                                            <a href="">
+                                            <a href="{{ route('pdf.details','machine-safeguard') }}">
                                                 <div class="card projects-card rounded-0">
                                                     <img src="https://img.directindustry.com/pdf/repository_di/12525/2022-power-generation-products-1050613_1b.jpg"
                                                         class="card-img-top img-fluid rounded-0" alt="..." />
@@ -86,271 +84,46 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/124669/hpc101sc-fp6412-1047849_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
-                                                        </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/4571522/advanced-level-extrusion-1050609_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
-                                                        </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/68381/k-tek-m58-oms-nv-151b-dt-dwp-datasheet-1050626_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
-                                                        </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    <!-- Content -->
-                                    <div class="row">
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/12525/2022-power-generation-products-1050613_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
+                                @if (count($categories) > 0) 
+                                    @foreach ($categories as $key => $category)
+                                        <div class="tab-pane fade" id="category-item-{{ $key }}" role="tabpanel"
+                                            aria-labelledby="category-item-{{ $key }}-tab">
+                                               <!-- Content -->
+                                               <div class="devider-wrap">
+                                                <h4 class="devider-content mb-4">
+                                                    <span class="devider-text">{{ $category->name }} Catalogs</span>
+                                                </h4>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-3">
+                                                    <a href="">
+                                                        <div class="card projects-card rounded-0">
+                                                            <img src="https://img.directindustry.com/pdf/repository_di/12525/2022-power-generation-products-1050613_1b.jpg"
+                                                                class="card-img-top img-fluid rounded-0" alt="..." />
+                                                            <div class="card-body">
+                                                                <p class="card-text project-para text-center">
+                                                                    Machine safeguard
+                                                                </p>
+                                                                <div class="catalog-logo-area">
+                                                                    <img title="Key Technology (China) Limited"
+                                                                        class="catalog-logo lazyLoaded"
+                                                                        src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
+                                                                </div>
+                                                                <div class="catalog-logo-area mt-3">
+                                                                    <p class="p-0 m-0" style="font-size: 10px">
+                                                                        2 Pages
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
+                                                    </a>
                                                 </div>
-                                            </a>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/124669/hpc101sc-fp6412-1047849_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
-                                                        </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/4571522/advanced-level-extrusion-1050609_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
-                                                        </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/68381/k-tek-m58-oms-nv-151b-dt-dwp-datasheet-1050626_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
-                                                        </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                    <!-- Content -->
-                                    <div class="row">
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/12525/2022-power-generation-products-1050613_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
-                                                        </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/124669/hpc101sc-fp6412-1047849_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
-                                                        </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/4571522/advanced-level-extrusion-1050609_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
-                                                        </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <a href="">
-                                                <div class="card projects-card rounded-0">
-                                                    <img src="https://img.directindustry.com/pdf/repository_di/68381/k-tek-m58-oms-nv-151b-dt-dwp-datasheet-1050626_1b.jpg"
-                                                        class="card-img-top img-fluid rounded-0" alt="..." />
-                                                    <div class="card-body">
-                                                        <p class="card-text project-para text-center">
-                                                            Machine safeguard
-                                                        </p>
-                                                        <div class="catalog-logo-area">
-                                                            <img title="Key Technology (China) Limited"
-                                                                class="catalog-logo lazyLoaded"
-                                                                src="https://img.directindustry.com/images_di/logo-pp/L68381.gif" />
-                                                        </div>
-                                                        <div class="catalog-logo-area mt-3">
-                                                            <p class="p-0 m-0" style="font-size: 10px">
-                                                                2 Pages
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
