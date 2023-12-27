@@ -22,7 +22,7 @@
                         <a href="{{route('brand.list')}}">Brand list</a>
                     </li>
                     <li class="pt-2">
-                        <a href="javascript:void(0)"> Manufacturer account</a>
+                        <a href="{{ route('manufacturer.account') }}"> Manufacturer account</a>
                     </li>
                     <li class="pt-2">
                         <a href="{{route('service')}}"> Our Service</a>

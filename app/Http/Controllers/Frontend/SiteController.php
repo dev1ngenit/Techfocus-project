@@ -96,4 +96,8 @@ class SiteController extends Controller
     {
         return view('frontend.pages.others.exhibit');
     }
+    public function manufacturerAccount()
+    {
+        return view('frontend.pages.manufacturer.account');
+    }
 }
