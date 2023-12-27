@@ -60,9 +60,9 @@
                                 <!--begin::Table row-->
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th width="5%">Sl</th>
-                                    <th width="10%">Logo</th>
-                                    <th width="40%">Name</th>
-                                    <th width="10%">Image</th>
+                                    <th width="10%">Name</th>
+                                    <th width="40%">Currency</th>
+                                    <th width="10%">Exchange Rate</th>
                                     <th class="text-center" width="10%">Action</th>
                                 </tr>
                                 <!--end::Table row-->
@@ -72,39 +72,21 @@
                                     @foreach ($currencys as $currency)
                                         <tr class="odd">
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>
-                                                <img class="img-fluid" width="50px"
-                                                    src="{{ !empty($currency->logo) && file_exists(public_path('storage/currency/logo/' . $currency->logo)) ? asset('storage/currency/logo/' . $currency->logo) : asset('backend/images/no-image-available.png') }}"
-                                                    alt="{{ $currency->name }} Logo">
-                                            </td>
-
-                                            <td>{{ $currency->title }}</td>
-                                            <td>
-                                                <img class="img-fluid" width="50px"
-                                                    src="{{ !empty($currency->image) && file_exists(public_path('storage/currency/image/' . $currency->image)) ? asset('storage/currency/image/' . $currency->image) : asset('backend/images/no-image-available.png') }}"
-                                                    alt="{{ $currency->name }} image">
-                                            </td>
+                                            <td>{{ $currency->name }}</td>
+                                            <td>{{ $currency->currency }}</td>
+                                            <td>{{ $currency->exchange_rate }}</td>
                                             <td>
                                                 <div class="d-flex justify-content-between align-items-center">
-                                                    <a href="#"
-                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#currencyViewModal_{{ $currency->id }}">
-                                                        <i class="fa-solid fa-expand"></i>
-                                                        <!--View-->
-                                                    </a>
-                                                    <a href="#"
+                                                    <a href="javascript:void(0)"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#currencyEditModal_{{ $currency->id }}">
                                                         <i class="fa-solid fa-pen"></i>
-                                                        <!--Edit-->
                                                     </a>
                                                     <a href="{{ route('admin.currency.destroy', $currency->id) }}"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                         data-kt-docs-table-filter="delete_row">
                                                         <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                        <!--Delete-->
                                                     </a>
                                                 </div>
                                             </td>
@@ -112,10 +94,7 @@
                                     @endforeach
                                 @endif
                             </tbody>
-
                         </table>
-
-                        {{-- <p>{!! nl2br() !!}</p> --}}
                     </div>
                 </div>
             </div>
@@ -144,28 +123,27 @@
                     </div>
                     <!-- End Close button in the header -->
                 </div>
-                <form method="POST" action="{{ route('admin.currency.store') }}" class="needs-validation" novalidate
-                    enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.currency.store') }}" class="needs-validation" novalidate>
                     @csrf
                     <div class="modal-body">
                         <div class="container px-0">
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12">
                                     <div class="row">
-                                        {{-- <div class="col-md-6">
-                                        <label for="validationCustom04" class="form-label required">Country
-                                            Name</label>
-                                        <select class="form-select form-select-solid" name="country_id"
-                                            data-dropdown-parent="#currencyAddModal" data-control="select2"
-                                            data-placeholder="Select an option" data-allow-clear="true" required>
-                                            <option></option>
-                                            @foreach (getAllCountry() as $country)
-                                                <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="valid-feedback"> Looks good! </div>
-                                        <div class="invalid-feedback"> Please provide a valid zip. </div>
-                                    </div> --}}
+                                        <div class="col-md-6">
+                                            <label for="validationCustom04" class="form-label required">Country
+                                                Name</label>
+                                            <select class="form-select form-select-solid" name="country_id"
+                                                data-dropdown-parent="#currencyAddModal" data-control="select2"
+                                                data-placeholder="Select an option" data-allow-clear="true" required>
+                                                <option></option>
+                                                @foreach (getAllCountry() as $country)
+                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="valid-feedback"> Looks good! </div>
+                                            <div class="invalid-feedback"> Please provide a valid zip. </div>
+                                        </div>
                                         <div class="col-md-6 mb-1">
                                             <label for="validationCustom01" class="form-label required ">Currency Name
                                             </label>
@@ -180,6 +158,12 @@
                                             <input type="text" class="form-control form-control-solid form-control-sm"
                                                 name="symbol" id="validationCustom01"
                                                 placeholder="Enter Currency Symbol">
+                                        </div>
+                                        <div class="col-md-6 mb-1">
+                                            <label for="validationCustom01" class="form-label">Currency
+                                            </label>
+                                            <input type="text" class="form-control form-control-solid form-control-sm"
+                                                name="currency" id="validationCustom01" placeholder="Enter Currency">
                                         </div>
                                         <div class="col-md-6 mb-1">
                                             <label for="validationCustom01" class="form-label">Code
@@ -205,7 +189,7 @@
                                                 name="exchange_rate" id="validationCustom01"
                                                 placeholder="Enter Exchange Rate">
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <label for="thousand_separator">Thousand Separator</label>
                                             <select class="form-control" id="thousand_separator"
@@ -226,15 +210,14 @@
                                         <div class="form-group">
                                             <label for="no_of_decimals">Number of Decimals</label>
                                             <input type="number" class="form-control" id="no_of_decimals"
-                                                name="no_of_decimals" placeholder="Enter number of decimals"
-                                                value="2">
+                                                name="no_of_decimals" placeholder="Enter number of decimals">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exchange_rate">Exchange Rate</label>
                                             <input type="number" step="0.000001" class="form-control"
-                                                id="exchange_rate" name="exchange_rate" placeholder="Enter exchange rate"
-                                                value="1.000000">
+                                                id="exchange_rate" name="exchange_rate"
+                                                placeholder="Enter exchange rate">
                                         </div>
                                     </div>
                                 </div>
@@ -273,7 +256,7 @@
                         <!-- End Close button in the header -->
                     </div>
                     <form method="POST" action="{{ route('admin.currency.update', $currency->id) }}"
-                        class="needs-validation" novalidate enctype="multipart/form-data">
+                        class="needs-validation" novalidate>
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
@@ -281,86 +264,118 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12">
                                         <div class="row">
-                                            {{-- <div class="col-md-6">
-                                            <label for="validationCustom04" class="form-label required">Country
-                                                Name</label>
-                                            <select class="form-select form-select-solid" name="country_id"
-                                                data-dropdown-parent="#currencyEditModal_{{ $currency->id }}" data-control="select2"
-                                                data-placeholder="Select an option" data-allow-clear="true" required>
-                                                <option></option>
-                                                @foreach (getAllCountry() as $country)
-                                                    <option @selected($country->id == $currency->country_id) value="{{ $country->id }}">
-                                                        {{ $country->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            <div class="valid-feedback"> Looks good! </div>
-                                            <div class="invalid-feedback"> Please provide a valid zip. </div>
-                                        </div> --}}
+                                            <div class="col-md-6">
+                                                <label for="validationCustom04" class="form-label required">Country
+                                                    Name</label>
+                                                <select class="form-select form-select-solid" name="country_id"
+                                                    data-dropdown-parent="#currencyEditModal_{{ $currency->id }}"
+                                                    data-control="select2" data-placeholder="Select an option"
+                                                    data-allow-clear="true" required>
+                                                    <option></option>
+                                                    @foreach (getAllCountry() as $country)
+                                                        <option @selected($country->id == $currency->country_id) value="{{ $country->id }}">
+                                                            {{ $country->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <div class="valid-feedback"> Looks good! </div>
+                                                <div class="invalid-feedback"> Please provide a valid zip. </div>
+                                            </div>
                                             <div class="col-md-6 mb-1">
-                                                <label for="validationCustom01" class="form-label required ">currency Name
+                                                <label for="validationCustom01" class="form-label required ">Currency Name
                                                 </label>
                                                 <input type="text"
-                                                    class="form-control form-control-solid form-control-sm" name="title"
-                                                    value="{{ $currency->title }}" id="validationCustom01"
+                                                    class="form-control form-control-solid form-control-sm" name="name"
+                                                    value="{{ $currency->name }}" id="validationCustom01"
                                                     placeholder="Enter Name" required>
                                                 <div class="valid-feedback"> Looks good! </div>
                                                 <div class="invalid-feedback"> Please Enter Name </div>
                                             </div>
                                             <div class="col-md-6 mb-1">
-                                                <label for="validationCustom01" class="form-label  ">Image
+                                                <label for="validationCustom01" class="form-label">Currency Symbol
                                                 </label>
-                                                <input type="file"
-                                                    class="form-control form-control-solid form-control-sm" name="image"
-                                                    id="validationCustom01">
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter Image(jpg,jpeg,png) </div>
+                                                <input type="text"
+                                                    class="form-control form-control-solid form-control-sm" name="symbol"
+                                                    value="{{ $currency->symbol }}" id="validationCustom01"
+                                                    placeholder="Enter Currency Symbol">
                                             </div>
                                             <div class="col-md-6 mb-1">
-                                                <label for="validationCustom01" class="form-label  ">Logo
+                                                <label for="validationCustom01" class="form-label">Currency
                                                 </label>
-                                                <input type="file"
-                                                    class="form-control form-control-solid form-control-sm" name="logo"
-                                                    id="validationCustom01">
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter logo(jpg,jpeg,png) </div>
-                                            </div>
-                                            <div class="col-md-6 mb-1">
-                                                <label for="validationCustom01" class="form-label">Website URL
-                                                </label>
-                                                <input type="url"
+                                                <input type="text"
                                                     class="form-control form-control-solid form-control-sm"
-                                                    name="website_url" value="{{ $currency->website_url }}"
-                                                    id="validationCustom01" placeholder="Enter Web Site Url">
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter Url </div>
+                                                    name="currency" value="{{ $currency->currency }}"
+                                                    id="validationCustom01" placeholder="Enter Currency">
                                             </div>
-                                            <div class="col-md-6">
-                                                <label for="validationCustom010" class="form-label">Description</label>
-                                                <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid">{{ $currency->description }}</textarea>
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please Enter description</div>
+                                            <div class="col-md-6 mb-1">
+                                                <label for="validationCustom01" class="form-label">Code
+                                                </label>
+                                                <input type="text"
+                                                    class="form-control form-control-solid form-control-sm" name="code"
+                                                    value="{{ $currency->code }}" id="validationCustom01"
+                                                    placeholder="Enter Code">
                                             </div>
-                                            <div class="col-md-6">
-                                                <label for="validationCustom04"
-                                                    class="form-label required">Category</label>
-                                                <select class="form-select form-select-solid" name="category"
-                                                    data-dropdown-parent="#currencyEditModal_{{ $currency->id }}"
-                                                    data-control="select2" data-placeholder="Select an option"
-                                                    data-allow-clear="true" required>
-                                                    <option></option>
-                                                    <option value="Top"
-                                                        {{ $currency->category == 'Top' ? 'selected' : '' }}>
-                                                        Top
+                                            <div class="col-lg-3 mb-1">
+                                                <label class="form-label"></label>
+                                                <div class="form-check form-check-custom form-check-solid mb-5">
+                                                    <input class="form-check-input me-3" name="system_default_currency"
+                                                        value="{{ $currency->system_default_currency }}"
+                                                        {{ $currency->system_default_currency ? 'checked' : '' }}
+                                                        type="checkbox" value="true" id="defaultCheckbox">
+                                                    <label class="form-check-label">
+                                                        <div class="fw-bolder text-gray-800">Is Default </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-1" id="defaultInputContainer">
+                                                <label for="validationCustom01" class="form-label">Exchange Rate
+                                                </label>
+                                                <input type="number" step="0.000001"
+                                                    class="form-control form-control-solid form-control-sm"
+                                                    name="exchange_rate" value="{{ $currency->exchange_rate }}"
+                                                    id="validationCustom01" placeholder="Enter Exchange Rate">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="thousand_separator">Thousand Separator</label>
+                                                <select class="form-control" id="thousand_separator"
+                                                    name="thousand_separator"
+                                                    value="{{ $currency->thousand_separator }}">
+                                                    <option value="."
+                                                        {{ $currency->thousand_separator == '.' ? 'selected' : '' }}>Dot
+                                                        (.)
                                                     </option>
-                                                    <option value="Featured"
-                                                        {{ $currency->category == 'Featured' ? 'selected' : '' }}>
-                                                        Featured</option>
-                                                    <option value="Others"
-                                                        {{ $currency->category == 'Others' ? 'selected' : '' }}>
-                                                        Others</option>
+                                                    <option value=","
+                                                        {{ $currency->thousand_separator == ',' ? 'selected' : '' }}>Comma
+                                                        (,)</option>
                                                 </select>
-                                                <div class="valid-feedback"> Looks good! </div>
-                                                <div class="invalid-feedback"> Please provide a valid Option. </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="decimal_separator">Decimal Separator</label>
+                                                <select class="form-control" id="decimal_separator"
+                                                    name="decimal_separator" value="{{ $currency->decimal_separator }}">
+                                                    <option value="."
+                                                        {{ $currency->decimal_separator == '.' ? 'selected' : '' }}>Dot (.)
+                                                    </option>
+                                                    <option value=","
+                                                        {{ $currency->decimal_separator == ',' ? 'selected' : '' }}>Comma
+                                                        (,)</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="no_of_decimals">Number of Decimals</label>
+                                                <input type="number" class="form-control" id="no_of_decimals"
+                                                    name="no_of_decimals"min="0" value="{{ $currency->no_of_decimals }}"
+                                                    placeholder="Enter number of decimals">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exchange_rate">Exchange Rate</label>
+                                                <input type="number" step="0.000001"
+                                                    value="{{ $currency->exchange_rate }}" class="form-control"
+                                                    id="exchange_rate" name="exchange_rate"
+                                                    placeholder="Enter exchange rate">
                                             </div>
                                         </div>
                                     </div>
@@ -368,7 +383,6 @@
                             </div>
                         </div>
                         <div class="modal-footer p-2">
-                            <!-- Button to close the modal in the footer -->
                             <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
                         </div>
                     </form>
@@ -492,6 +506,6 @@
                     $('#defaultInputContainer').show();
                 }
             });
-            });
+        });
     </script>
 @endpush
