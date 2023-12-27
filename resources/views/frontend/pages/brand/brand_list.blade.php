@@ -50,11 +50,11 @@
                                             <div class="inset-img d-flex justify-content-center"
                                                 style="overflow: hidden; margin-top: 50px; position: relative;">
                                                 <img src="{{ !empty($top_brand->logo) && file_exists(public_path('storage/brand/logo/' . $top_brand->logo)) ? asset('storage/brand/logo/' . $top_brand->logo) : asset('backend/images/no-image-available.png') }}"
-                                                   class="lazyLoaded" alt="{{ $top_brand->name }}" style="height: auto; width: auto;">
+                                                   class="lazyLoaded" alt="{{ $top_brand->title }}" style="height: auto; width: auto;">
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between p-2"
                                                 style="margin-top: 50px;">
-                                                <h2 class="text-center font-four">{{ $top_brand->name }}</h2>
+                                                <h2 class="text-center font-four">{{ $top_brand->title }}</h2>
                                                 <!-- Brand Logo -->
                                                 <a href="#">
                                                     {{-- <img class="lazyLoaded logo right"
@@ -66,7 +66,7 @@
                                         <div class="back from-bottom text-start">
                                             <a href="">
                                                 <span class="font-two pt-3">
-                                                    {{ $top_brand->name }}</span>
+                                                    {{ $top_brand->title }}</span>
                                             </a>
                                             <br>
                                             <p class="subtitles"></p>
@@ -109,11 +109,11 @@
                                             <div class="inset-img d-flex justify-content-center"
                                                 style="overflow: hidden; margin-top: 50px; position: relative;">
                                                 <img src="{{ !empty($featured_brand->logo) && file_exists(public_path('storage/brand/logo/' . $featured_brand->logo)) ? asset('storage/brand/logo/' . $featured_brand->logo) : asset('backend/images/no-image-available.png') }}"
-                                                class="lazyLoaded" alt="{{ $featured_brand->name }}" style="height: auto; width: auto;">
+                                                class="lazyLoaded" alt="{{ $featured_brand->title }}" style="height: auto; width: auto;">
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between p-2"
                                                 style="margin-top: 50px;">
-                                                <h2 class="text-center font-four">{{ $featured_brand->name }}</h2>
+                                                <h2 class="text-center font-four">{{ $featured_brand->title }}</h2>
                                                 <!-- Brand Logo -->
                                                 <a href="#">
                                                     {{-- <img class="lazyLoaded logo right"
@@ -125,7 +125,7 @@
                                         <div class="back from-bottom text-start">
                                             <a href="">
                                                 <span class="font-two pt-3">
-                                                    {{ $featured_brand->name }}</span>
+                                                    {{ $featured_brand->title }}</span>
                                             </a>
                                             <br>
                                             <p class="subtitles"></p>
