@@ -4,7 +4,9 @@
 <head>
     @include('frontend.partials.head')
     <style>
-
+       .offcanvas.compare-canvas{
+        max-height: 40vh !important;
+       }
     </style>
 </head>
 
@@ -57,7 +59,7 @@
         </div>
     </button>
 
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel"
+    <div class="offcanvas offcanvas-bottom compare-canvas" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel"
         style="background-color: var(--secondary-color);">
         <div class="offcanvas-header">
             <div class="text-center">
