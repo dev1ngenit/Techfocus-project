@@ -50,7 +50,8 @@
                                             <div class="inset-img d-flex justify-content-center"
                                                 style="overflow: hidden; margin-top: 50px; position: relative;">
                                                 <img src="{{ !empty($top_brand->logo) && file_exists(public_path('storage/brand/logo/' . $top_brand->logo)) ? asset('storage/brand/logo/' . $top_brand->logo) : asset('backend/images/no-image-available.png') }}"
-                                                   class="lazyLoaded" alt="{{ $top_brand->title }}" style="height: auto; width: auto;">
+                                                    class="lazyLoaded" alt="{{ $top_brand->title }}"
+                                                    style="height: auto; width: auto;">
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between p-2"
                                                 style="margin-top: 50px;">
@@ -64,13 +65,13 @@
                                             </div>
                                         </div>
                                         <div class="back from-bottom text-start">
-                                            <a href="">
+                                            <a href="{{ route('brand.overview', $top_brand->slug) }}">
                                                 <span class="font-two pt-3">
                                                     {{ $top_brand->title }}</span>
-                                            </a>
-                                            <br>
-                                            <p class="subtitles"></p>
-                                            {{-- <ul class="ms-0 ps-0">
+
+                                                <br>
+                                                <p class="subtitles"></p>
+                                                {{-- <ul class="ms-0 ps-0">
                                                 <li>diode laser</li>
                                                 <li>pulsed laser</li>
                                                 <li> laser</li>
@@ -80,6 +81,7 @@
                                                 <li>laser projector</li>
                                                 <li>infrared laser</li>
                                             </ul> --}}
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +111,8 @@
                                             <div class="inset-img d-flex justify-content-center"
                                                 style="overflow: hidden; margin-top: 50px; position: relative;">
                                                 <img src="{{ !empty($featured_brand->logo) && file_exists(public_path('storage/brand/logo/' . $featured_brand->logo)) ? asset('storage/brand/logo/' . $featured_brand->logo) : asset('backend/images/no-image-available.png') }}"
-                                                class="lazyLoaded" alt="{{ $featured_brand->title }}" style="height: auto; width: auto;">
+                                                    class="lazyLoaded" alt="{{ $featured_brand->title }}"
+                                                    style="height: auto; width: auto;">
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between p-2"
                                                 style="margin-top: 50px;">
@@ -123,13 +126,13 @@
                                             </div>
                                         </div>
                                         <div class="back from-bottom text-start">
-                                            <a href="">
+                                            <a href="{{ route('brand.overview', $featured_brand->slug) }}">
                                                 <span class="font-two pt-3">
                                                     {{ $featured_brand->title }}</span>
-                                            </a>
-                                            <br>
-                                            <p class="subtitles"></p>
-                                            {{-- <ul class="ms-0 ps-0">
+
+                                                <br>
+                                                <p class="subtitles"></p>
+                                                {{-- <ul class="ms-0 ps-0">
                                                 <li>diode laser</li>
                                                 <li>pulsed laser</li>
                                                 <li> laser</li>
@@ -139,6 +142,7 @@
                                                 <li>laser projector</li>
                                                 <li>infrared laser</li>
                                             </ul> --}}
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
