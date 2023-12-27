@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Admin\Brand;
 use Illuminate\Http\Request;
+use App\Models\Admin\Product;
 use App\Http\Controllers\Controller;
 
 class PageController extends Controller
@@ -115,8 +116,9 @@ class PageController extends Controller
 
     public function productDetails($slug)
     {
+        $data['product'] = Product::where('slug', $slug)->where('product_status', 'product')->firstOrFail();
         $data = [
-            'brand' => Brand::with('brandPage')->where('slug', $slug)->select('id', 'slug', 'title', 'logo')->firstOrFail(),
+            'brand' => Brand::with('brandPage')->where('id', $data['product']->brand_id)->select('id', 'slug', 'title', 'logo')->firstOrFail(),
         ];
         return view('frontend.pages.product.product_details',$data);
         // $data['sproduct'] = Product::where('slug', $id)->where('product_status', 'product')->first();
