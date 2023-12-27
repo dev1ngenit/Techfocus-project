@@ -48,9 +48,11 @@
                     <!--begin::Content-->
                     <div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
                         <!--begin::Logo-->
-                        <a href="../../demo1/dist/index.html" class="py-9 mb-5">
-                            <img alt="Logo" src="{{ asset('backend/assets/media/logos/logo-2.svg') }}"
-                                class="h-60px" />
+                        <a href="{{ route('homepage') }}" class="py-9 mb-5">
+                            {{-- <img alt="Logo" src="{{ asset('backend/assets/media/logos/logo-2.svg') }}"
+                                class="h-60px" /> --}}
+                            <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}"
+                            class="h-60px" alt="TechFocus" />
                         </a>
                         <!--end::Logo-->
                         <!--begin::Title-->

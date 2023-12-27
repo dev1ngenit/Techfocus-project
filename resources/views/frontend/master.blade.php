@@ -46,6 +46,8 @@
                 <h1 class="mb-3 modalh1">The Website is in Under Construction</h1>
                 <h6 class="mb-5">We are sorry for the temporary inconvenience. If you face any problem, contact our
                     support team.</h6>
+                <span class="skype-button bubble" data-color="#0078D4" data-contact-id="ngenit"></span>
+                <span class="skype-chat" data-color-message="#0078D4"></span>
                 <button class="buttonStyle" id="closeButton">Close</button>
             </div>
         </div>
@@ -94,10 +96,15 @@
     </div>
     {{-- Compare Product End --}}
 
+<<<<<<< HEAD
     <span class="skype-button bubble" data-color="#0078D4" data-contact-id="ngenit"></span>
     <span class="skype-chat" data-color-message="#0078D4"></span>
 
     
+=======
+
+
+>>>>>>> d3c5bb0bf6ccb013fd86c9c79864aac54517bd43
     <!-- *********************************Script Start***********************************-->
     @include('frontend.partials.script')
     <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>

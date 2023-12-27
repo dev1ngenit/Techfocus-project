@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Admin\Brand;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PageController extends Controller
 {
-    public function overview($id)
+    public function overview($slug)
     {
-        // $data['brand'] = Brand::where('slug', $id)->select('id', 'slug', 'title', 'image')->first();
+        $data = [
+            'brand' => Brand::with('brandPage')->where('slug', $slug)->select('id', 'slug', 'title', 'logo')->firstOrFail(),
+        ];
+        // $data['brand'] = Brand::with('brandPage')->where('slug', $slug)->select('id', 'slug', 'title', 'logo')->firstOrFail();
         // $data['brandpage'] = BrandPage::where('brand_id', $data['brand']->id)->first();
         // if (!empty($data['brandpage'])) {
 
@@ -28,14 +32,16 @@ class PageController extends Controller
         //     Toastr::error('No Details information found for this Brand.');
         //     return redirect()->back();
         // }
-        return view('frontend.pages.brandPage.overview');
+        return view('frontend.pages.brandPage.overview',$data);
     }
 
     public function brandProducts($slug, Request $request)
     {
-        return view('frontend.pages.brandPage.products');
+        $data = [
+            'brand' => Brand::with('brandPage')->where('slug', $slug)->select('id', 'slug', 'title', 'logo')->firstOrFail(),
+        ];
+        return view('frontend.pages.brandPage.products',$data);
 
-        // $data['brand'] = Brand::where('slug', $id)->select('id', 'slug', 'title', 'image')->first();
         // $data['brandpage'] = BrandPage::where('brand_id', $data['brand']->id)->first(['id', 'banner_image', 'brand_logo', 'header']);
 
         // if (!empty($data['brandpage'])) {
@@ -109,7 +115,10 @@ class PageController extends Controller
 
     public function productDetails($slug)
     {
-        return view('frontend.pages.product.product_details');
+        $data = [
+            'brand' => Brand::with('brandPage')->where('slug', $slug)->select('id', 'slug', 'title', 'logo')->firstOrFail(),
+        ];
+        return view('frontend.pages.product.product_details',$data);
         // $data['sproduct'] = Product::where('slug', $id)->where('product_status', 'product')->first();
         // if (!empty($data['sproduct']->cat_id)) {
         //     $data['products'] = Product::where('cat_id', $data['sproduct']->cat_id)
@@ -143,7 +152,10 @@ class PageController extends Controller
 
     public function brandPdf($slug)
     {
-        return view('frontend.pages.brandPage.catalogs');
+        $data = [
+            'brand' => Brand::with('brandPage')->where('slug', $slug)->select('id', 'slug', 'title', 'logo')->firstOrFail(),
+        ];
+        return view('frontend.pages.brandPage.catalogs', $data);
         // $data['brand'] = Brand::where('slug', $id)->select('id', 'slug', 'title', 'image')->firstOrFail();
         // $data['brandpage'] = BrandPage::where('brand_id', $data['brand']->id)->firstOrFail(['id', 'banner_image', 'brand_logo', 'header']);
 
@@ -169,7 +181,10 @@ class PageController extends Controller
 
     public function pdfDetails($slug)
     {
-        return view('frontend.pages.brandPage.pdf_details');
+        $data = [
+            'brand' => Brand::with('brandPage')->where('slug', $slug)->select('id', 'slug', 'title', 'logo')->firstOrFail(),
+        ];
+        return view('frontend.pages.brandPage.pdf_details',$data);
         // $data['brand'] = Brand::where('slug', $id)->select('id', 'slug', 'title', 'image')->firstOrFail();
         // $data['brandpage'] = BrandPage::where('brand_id', $data['brand']->id)->firstOrFail(['id', 'banner_image', 'brand_logo', 'header']);
 
@@ -195,7 +210,10 @@ class PageController extends Controller
 
     public function content($slug)
     {
-        return view('frontend.pages.brandPage.contents');
+        $data = [
+            'brand' => Brand::with('brandPage')->where('slug', $slug)->select('id', 'slug', 'title', 'logo')->firstOrFail(),
+        ];
+        return view('frontend.pages.brandPage.contents',$data);
         // $data['brand'] = Brand::where('slug', $id)->select('id', 'slug', 'title', 'image')->first();
         // $data['brandpage'] = BrandPage::where('brand_id', $data['brand']->id)->first(['id', 'banner_image', 'brand_logo', 'header']);
         // $id = json_encode($data['brand']->id);
@@ -219,6 +237,9 @@ class PageController extends Controller
 
     public function contentDetails($slug)
     {
-        return view('frontend.pages.brandPage.content_details');
+        $data = [
+            'brand' => Brand::with('brandPage')->where('slug', $slug)->select('id', 'slug', 'title', 'logo')->firstOrFail(),
+        ];
+        return view('frontend.pages.brandPage.content_details',$data);
     }
 }

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('news_trends', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('added_by')->nullable()->constrained('admins')->cascadeOnDelete();
             $table->json('category_id')->nullable()->comment('multi_id');
             $table->json('brand_id')->nullable()->comment('multi_id');
             $table->json('industry_id')->nullable()->comment('multi_id');
@@ -31,11 +32,13 @@ return new class extends Migration
             $table->string('author')->nullable();
             $table->text('address')->nullable();
             $table->json('tags')->nullable();
-            $table->string('author_image')->nullable();
             $table->string('banner_image')->nullable();
             $table->string('thumbnail_image')->nullable();
-            $table->string('additional_url')->nullable();
-            $table->text('footer')->nullable()->comment('summernote')->nullable();
+            $table->string('additional_button_name')->nullable();
+            $table->text('additional_url')->nullable();
+            $table->string('source_image')->nullable();
+            $table->text('source_link')->nullable();
+            $table->text('footer')->nullable()->comment('summernote');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
