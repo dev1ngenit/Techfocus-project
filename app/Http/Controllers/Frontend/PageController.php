@@ -204,7 +204,7 @@ class PageController extends Controller
         // $data['clientStories'] = ClientStory::whereJsonContains('brand_id', $id)->get();
 
         // $mergedData = $data['blogs']->concat($data['clientStories']);
-
+ 
         // $data['contents'] = $mergedData->toArray();
 
 

@@ -23,9 +23,10 @@ return new class extends Migration
             $table->string('section_one_button')->nullable();
             $table->text('section_one_link')->nullable();
             $table->string('section_one_image')->nullable()->comment('image');
+            
             $table->string('section_two_name')->nullable();
             $table->json('section_two_products')->nullable()->comment('multiselect:max-4;products table');
-            
+
             $table->string('section_three_name')->nullable();
             $table->string('section_three_badge')->nullable();
             $table->string('section_three_title')->nullable();

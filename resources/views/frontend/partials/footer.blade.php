@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-lg-3 p-4 text-start border-left-side">
                 <div>
-                    <a href="how-source.html">HOW TO SOURCE PRODUCTS </a>
+                    <a href="{{ route('buying.guide') }}">HOW TO BUY PRODUCTS </a>
                 </div>
             </div>
             <div class="col-lg-2 p-4 text-center border-left-side">
@@ -57,7 +57,7 @@
         <div class="row pt-5">
             <div class="col-lg-8 offset-lg-2 d-flex">
                 <div class="d-flex align-items-center">
-                    <a href="brand-news.html" class="border-left-side pe-lg-3">
+                    <a href="{{ route('homepage') }}" class="border-left-side pe-lg-3">
                         <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}" width="180px" class="me-3"
                             alt="" />
                     </a>

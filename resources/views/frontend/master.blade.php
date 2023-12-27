@@ -4,7 +4,7 @@
 <head>
     @include('frontend.partials.head')
     <style>
-       
+
     </style>
 </head>
 
@@ -92,8 +92,12 @@
     </div>
     {{-- Compare Product End --}}
 
+    <span class="skype-button bubble" data-color="#0078D4" data-contact-id="ngenit"></span>
+    <span class="skype-chat" data-color-message="#0078D4"></span>
+    
     <!-- *********************************Script Start***********************************-->
     @include('frontend.partials.script')
+    <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.compare-card').slick({
