@@ -478,7 +478,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!--  /.container  -->
                     </div>
                 </li>
                 <li class="nav-item">

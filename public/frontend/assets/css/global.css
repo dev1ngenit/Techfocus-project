@@ -121,8 +121,9 @@
   transition-timing-function: cubic-bezier(10, 2, 3, 1);
   transform: translateX(50rem);
   top: 0;
-  z-index: 0;
+  z-index: 9999;
   transition: 0.5s;
+  background-color: var(--primary-color);
 }
 #menyAvPaa {
   display: none;
@@ -2172,13 +2173,121 @@ ul:not(:hover) li:first-child .imgSubCat {
   border: 1px solid var(--border-color);
   box-shadow: none;
 }
-.contact-card{
+.contact-card {
   transition: all 0.5s;
 }
 .contact-card:hover {
   transform: scale(1.1);
 }
 /* Contact Us Page End */
+
+/* Pdf Page */
+
+.img-wrapper {
+  position: relative;
+  margin-top: 15px;
+}
+
+.img-wrapper img {
+  width: 250px;
+}
+.img-wrapper a {
+  display: flex;
+  justify-content: center;
+}
+
+.img-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+
+.img-overlay i {
+  color: #fff;
+  font-size: 3em;
+}
+
+#overlay {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 9999;
+}
+
+.pdf-card-catalogue{
+  transition: all 0.3s;
+}
+.pdf-card-catalogue:hover{
+  transform: scale(1.1);
+  transition: all 0.3s;
+}
+#overlay img {
+  margin: 0;
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  padding: 5%;
+}
+
+@media screen and (min-width: 768px) {
+  #overlay img {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #overlay img {
+    width: 50%;
+  }
+}
+
+#nextButton,
+#prevButton,
+#exitButton {
+  color: #fff;
+  font-size: 2em;
+  transition: opacity 0.8s;
+}
+
+#nextButton:hover,
+#prevButton:hover,
+#exitButton:hover {
+  opacity: 0.7;
+}
+
+@media screen and (min-width: 768px) {
+  #nextButton,
+  #prevButton,
+  #exitButton {
+    font-size: 3em;
+  }
+}
+
+#exitButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+/* Pdf Page End */
 @media (min-width: 1200px) and (max-width: 1399px) {
   .ban_text p {
     font-size: 21px;
@@ -2234,6 +2343,18 @@ ul:not(:hover) li:first-child .imgSubCat {
     width: 100%;
     display: block;
   }
+  .common-btn-3 {
+    background-image: linear-gradient( to bottom, #0069bf, #077cd0, #178fe0, #27a2f0, var(--primary-color) );
+    color: var(--white);
+    width: 100%;
+    font-weight: 500;
+    transition: all 0.5s;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 11px;
+    text-align: center;
+}
 }
 @media only screen and (max-width: 480px) {
   .ban_text strong span {

@@ -396,6 +396,8 @@ textarea {
   right: 0px;
   /* Adjust this value to set the distance from the right */
   z-index: 1000;
+  background-color: var(--primary-color);
+  border: 0;
   /* Set a higher z-index to ensure the button is on top of other elements */
 }
 

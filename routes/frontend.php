@@ -28,7 +28,7 @@ Route::middleware('web')->group(function () {
     Route::get('/single/product/{slug}', [PageController::class, 'productDetails'])->name('product.details');
     Route::get('/{slug}/brochures', [PageController::class, 'brandPdf'])->name('brand.pdf');
     Route::get('/{slug}/products', [PageController::class, 'brandProducts'])->name('brand.products');
-    Route::get('/pdf/{slug}', [PageController::class, 'pdfDetails'])->name('pdf.details');
+    Route::get('/catalogue-pdf/{slug}', [PageController::class, 'pdfDetails'])->name('pdf.details');
     Route::get('/{slug}/contents', [PageController::class, 'content'])->name('brand.content');
     Route::get('/contents/{slug}', [PageController::class, 'contentDetails'])->name('content.details');
     // Route::get('/{slug}/products', [PageController::class, 'ajaxBrandProductsPagination'])->name('brand.products.pagination');
