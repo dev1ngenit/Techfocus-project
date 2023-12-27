@@ -10,11 +10,11 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6 col-sm-12 text-lg-start text-sm-center">
                                     <div class="card-title ps-3">
-                                        <h2 class="text-start ps-5">News & Trends Add From</h2>
+                                        <h2 class="text-start ps-5">Tech Content Add From</h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 text-lg-end text-sm-center">
-                                    <a href="{{ route('admin.news-trend.index') }}"
+                                    <a href="{{ route('admin.tech-content.index') }}"
                                         class="btn btn-icon btn-primary w-auto px-3 rounded-0">
                                         <i class="las la-arrow-left fs-2 me-2"></i> Back</a>
                                 </div>
@@ -89,26 +89,26 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="row">
-                                    <div class="col-lg-8 mb-3">
-                                        <label for="validationCustom01" class="form-label required ">Badge
-                                        </label>
-                                        <input type="text" class="form-control form-control-solid form-control-sm"
-                                            id="validationCustom01" placeholder="Enter Badge" name="badge" required>
-                                        <div class="invalid-feedback"> Please Enter Badge </div>
+                                        <div class="col-lg-8 mb-3">
+                                            <label for="validationCustom01" class="form-label required ">Badge
+                                            </label>
+                                            <input type="text" class="form-control form-control-solid form-control-sm"
+                                                id="validationCustom01" placeholder="Enter Badge" name="badge" required>
+                                            <div class="invalid-feedback"> Please Enter Badge </div>
+                                        </div>
+                                        <div class="col-lg-4 mb-3">
+                                            <label for="validationCustom010"
+                                                class="form-label required mb-0">Featured</label>
+                                            <select class="form-select form-select-solid" data-control="select2"
+                                                data-placeholder="Select an option" data-allow-clear="true" name="featured"
+                                                data-hide-search="true" required>
+                                                <option></option>
+                                                <option value="0">No</option>
+                                                <option value="1">Yes</option>
+                                            </select>
+                                            <div class="invalid-feedback"> Please Select Featured. </div>
+                                        </div>
                                     </div>
-                                    <div class="col-lg-4 mb-3">
-                                        <label for="validationCustom010"
-                                            class="form-label required mb-0">Featured</label>
-                                        <select class="form-select form-select-solid" data-control="select2"
-                                            data-placeholder="Select an option" data-allow-clear="true"
-                                            name="featured" data-hide-search="true" required>
-                                            <option></option>
-                                            <option value="0">No</option>
-                                            <option value="1">Yes</option>
-                                        </select>
-                                        <div class="invalid-feedback"> Please Select Featured. </div>
-                                    </div>
-                                </div>
                                     <div class="fv-row mb-3">
                                         <label for="validationCustom01" class="form-label required ">Title</label>
                                         <input type="text" class="form-control form-control-solid form-control-sm"
@@ -155,14 +155,9 @@
                                     <div class="fv-row mb-3">
                                         <label for="validationCustom010" class="form-label required mb-0">Type</label>
                                         <select class="form-select form-select-sm rounded-0" data-control="select2"
-                                            data-placeholder="Select an option" data-allow-clear="true" name="type"
+                                            data-placeholder="Select an option" data-allow-clear="false" name="type"
                                             data-hide-search="true" required>
-                                            <option></option>
-                                            <option value="news">News</option>
-                                            <option value="trends">Trends</option>
-                                            {{-- <option value="blogs">Blogs</option>
-                                            <option value="client_stories">Client Stories</option>
-                                            <option value="tech_contents">Tech Contents</option> --}}
+                                            <option value="tech_contents" selected>Tech Contents</option>
                                         </select>
                                         <div class="invalid-feedback"> Please Select Type. </div>
                                     </div>
@@ -196,8 +191,9 @@
                                     <div class="row">
                                         <div class="col-lg-6 mb-3">
                                             <label for="validationCustom010" class="form-label required mb-0">Tags</label>
-                                            <input type="text" name="tags" value="{{ old('tags') }}" class="form-control form-control-sm visually-hidden"
-                                                data-role="tagsinput" placeholder="Enter Tags">
+                                            <input type="text" name="tags" value="{{ old('tags') }}"
+                                                class="form-control form-control-sm visually-hidden" data-role="tagsinput"
+                                                placeholder="Enter Tags">
                                             <div class="invalid-feedback"> Please Select Tags. </div>
                                         </div>
                                         <div class="col-lg-6 mb-3">
@@ -241,8 +237,8 @@
                                 </div>
                             </div>
 
-                            <div class="modal-footer p-2">
-                                <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                            <div class="row p-2">
+                                <button type="submit" class="btn btn-sm btn-primary rounded-0">Submit</button>
                             </div>
                         </form>
                     </div>

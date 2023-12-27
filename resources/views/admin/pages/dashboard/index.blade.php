@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="post d-flex flex-column-fluid" id="kt_post">
-            <div id="kt_content_container" class="container-xxl">
+            <div id="kt_content_container" class="container-fluid">
                 <div class="row gy-5 g-xl-8">
                     <div class="col-xl-3">
                         <!--begin::Statistics Widget 1-->
@@ -36,12 +36,12 @@
                                 </div>
                                 <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-6">
                                     <span class="text-start w-xl-225px">Today's Entry :</span> <span
-                                        class="text-end ms-3">{{ !empty($attendanceToday['check_in']) ? $attendanceToday['check_in'] : 00.0 }}</span>
+                                        class="text-end ms-3">{{ !empty($attendanceToday['check_in']) ? $attendanceToday['check_in'] : 'Absent' }}</span>
                                 </a>
                                 <div class="my-2">
                                     <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-7">
                                         <span class="text-start w-xl-225px">Today's Check-Out :</span> <span
-                                            class="text-end ms-3">{{ !empty($attendanceToday['check_out']) ? $attendanceToday['check_out'] : 00.0 }}</span>
+                                            class="text-end ms-3">{{ !empty($attendanceToday['check_out']) ? $attendanceToday['check_out'] : 'Absent' }}</span>
                                     </a>
                                 </div>
                                 <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-7"
@@ -1168,31 +1168,37 @@
     @push('scripts')
         <script>
             // Assuming $attendanceToday['check_in'] is a string in the format "HH:mm:ss"
-            let checkInTimeString = "{{ $attendanceToday['check_in'] }}";
-            let [hours, minutes, seconds] = checkInTimeString.split(':');
+            let checkInTimeString = "{{ isset($attendanceToday['check_in']) ? $attendanceToday['check_in'] : '' }}";
+            if (!empty(checkInTimeString)) {
+                let [hours, minutes, seconds] = checkInTimeString.split(':');
 
-            // Create a Date object with a fixed date and the specified time
-            let checkInTime = new Date();
-            checkInTime.setHours(parseInt(hours, 10));
-            checkInTime.setMinutes(parseInt(minutes, 10));
-            checkInTime.setSeconds(parseInt(seconds, 10));
+                let checkInTime = new Date();
+                checkInTime.setHours(parseInt(hours, 10));
+                checkInTime.setMinutes(parseInt(minutes, 10));
+                checkInTime.setSeconds(parseInt(seconds, 10));
 
-            function updateLiveClock() {
-                let currentTime = new Date();
-                let timeDifference = currentTime - checkInTime;
+                function updateLiveClock() {
+                    let currentTime = new Date();
+                    let timeDifference = currentTime - checkInTime;
 
-                let hours = Math.floor(timeDifference / (1000 * 60 * 60));
-                let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-                let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+                    let hours = Math.floor(timeDifference / (1000 * 60 * 60));
+                    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-                // Update the HTML elements with the calculated hours, minutes, and seconds
-                document.getElementById('live-clock-hours').innerText = hours;
-                document.getElementById('live-clock-minutes').innerText = minutes;
-                document.getElementById('live-clock-seconds').innerText = seconds;
+                    document.getElementById('live-clock-hours').innerText = hours;
+                    document.getElementById('live-clock-minutes').innerText = minutes;
+                    document.getElementById('live-clock-seconds').innerText = seconds;
+                }
+
+                setInterval(updateLiveClock, 1000);
+            } else {
+                // Display "Absent Today" message when check_in is null
+                document.getElementById('live-clock-hours').innerText = 'Absent Today';
+                document.getElementById('live-clock-minutes').style.display =
+                'none'; // You can adjust this based on your UI design
+                document.getElementById('live-clock-seconds').style.display =
+                'none'; // You can adjust this based on your UI design
             }
-
-            // Update the live clock every second
-            setInterval(updateLiveClock, 1000);
         </script>
     @endpush
 @endonce

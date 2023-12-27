@@ -31,9 +31,9 @@ return new class extends Migration
             $table->longText('long_des')->comment('summernote')->nullable();
             $table->string('author')->nullable();
             $table->text('address')->nullable();
-            $table->json('tags')->nullable();
-            $table->string('banner_image')->nullable();
+            $table->text('tags')->nullable();
             $table->string('thumbnail_image')->nullable();
+            $table->string('banner_image')->nullable();
             $table->string('additional_button_name')->nullable();
             $table->text('additional_url')->nullable();
             $table->string('source_image')->nullable();

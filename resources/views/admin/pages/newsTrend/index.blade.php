@@ -1,11 +1,11 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-lg">
                 <div class="card card-p-0 card-flush">
                     <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                        <div class="container px-0">
+                        <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-4 col-sm-12 text-lg-start text-sm-center">
                                     <div class="d-flex align-items-center position-relative my-1">
@@ -36,7 +36,7 @@
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
 
                                     <a href="{{ route('admin.news-trend.create') }}" type="button"
-                                        class="btn btn-sm btn-light-success rounded-0">
+                                        class="btn btn-sm btn-success rounded-0">
                                         Add New
                                     </a>
                                 </div>
@@ -46,13 +46,14 @@
                     <div class="card-body">
                         <table
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
-                            id="kt_datatable_example_1">
+                            id="kt_datatable_example">
                             <thead class="table_header_bg">
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th width="5%">Sl</th>
-                                    <th width="20%">Title</th>
-                                    <th width="35%">Header</th>
-                                    <th width="20%">Author</th>
+                                    <th width="40%">Title</th>
+                                    <th width="15%">Author</th>
+                                    <th width="15%">Added By</th>
+                                    <th width="15%">Category</th>
                                     <th class="text-center" width="10%">Action</th>
                                 </tr>
                             </thead>
@@ -65,10 +66,13 @@
                                             </td>
                                             <td>{{ $newsTrend->title }}</td>
                                             <td>
-                                                {{ $newsTrend->header }}
+                                                {{ $newsTrend->author }}
                                             </td>
                                             <td>
-                                                {{ $newsTrend->author }}
+                                                {{ $newsTrend->addedBy->name }}
+                                            </td>
+                                            <td>
+                                                {{ ucfirst($newsTrend->type) }}
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-between align-items-center">

@@ -18,7 +18,7 @@ class SalesTeamTargetController extends Controller
         $this->salesTeamTargetRepository = $salesTeamTargetRepository;
         $this->companyRepository = $companyRepository;
     }
-
+ 
     /**
      * Display a listing of the resource.
      *

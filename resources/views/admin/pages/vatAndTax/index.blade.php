@@ -1,11 +1,11 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-lg">
                 <div class="card card-p-0 card-flush">
                     <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                        <div class="container px-0">
+                        <div class="container-fluid">
                             <div class="row table_title_box">
                                 <div class="col-lg-4 col-sm-12">
                                     <div class="table_search_box">
@@ -41,51 +41,12 @@
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
                                     <div class="table_search_box">
-                                        <!--begin::Export dropdown-->
-                                        <button type="button" class="btn btn-sm btn-light-primary"
-                                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                            {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                            Export Report
-                                        </button>
+
                                         <button type="button" class="btn btn-sm btn-light-success"
                                             data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
                                             data-bs-target="#vatTaxAddModal">
                                             Add New
                                         </button>
-                                        <!--begin::Menu-->
-                                        <div id="kt_datatable_example_1_export_menu"
-                                            class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                            data-kt-menu="true">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                                    Copy to clipboard
-                                                </a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                                    Export as Excel
-                                                </a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                                    Export as CSV
-                                                </a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                                    Export as PDF
-                                                </a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu-->
                                         <!--end::Export dropdown-->
                                     </div>
                                 </div>
@@ -95,27 +56,23 @@
                     <div class="card-body">
                         <table
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
-                            id="kt_datatable_example_1">
+                            id="kt_datatable_example">
                             <thead class="table_header_bg">
                                 <!--begin::Table row-->
                                 <tr class="text-start text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th width="5%">Sl</th>
-                                    <th width="20%">Country Name</th>
-                                    <th width="20%">Company Name</th>
                                     <th width="10%">Type</th>
                                     <th width="20%">Name</th>
                                     <th width="10%">Amount</th>
                                     <th width="10%">Status</th>
                                     <th class="text-center" width="5%">Action</th>
-                                    <!--end::Table row-->
+                                </tr>
                             </thead>
                             <tbody class="fw-bold text-gray-600">
                                 @if ($vatAndTaxes)
                                     @foreach ($vatAndTaxes as $vatAndTax)
                                         <tr class="odd">
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $vatAndTax->countryName() ?? 'no data' }}</td>
-                                            <td>{{ $vatAndTax->companyName() ?? 'no data' }}</td>
                                             <td>
                                                 <span
                                                     class="badge {{ $vatAndTax->type == 'tax' ? 'bg-primary' : 'bg-info' }}">
@@ -128,27 +85,29 @@
                                                     class="badge {{ $vatAndTax->status == 'active' ? 'bg-success' : 'bg-danger' }}">
                                                     {{ $vatAndTax->status }}
                                                 </span></td>
-                                            <td class="d-flex justify-content-between align-items-center">
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#vatAndTaxViewModal_{{ $vatAndTax->id }}">
-                                                    <i class="fa-solid fa-expand"></i>
-                                                    <!--View-->
-                                                </a>
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#vatAndTaxEditModal_{{ $vatAndTax->id }}">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                    <!--Edit-->
-                                                </a>
-                                                <a href="{{ route('admin.vat-tax.destroy', $vatAndTax->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                    data-kt-docs-table-filter="delete_row">
-                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                    <!--Delete-->
-                                                </a>
+                                            <td>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a href="#"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#vatAndTaxViewModal_{{ $vatAndTax->id }}">
+                                                        <i class="fa-solid fa-expand"></i>
+                                                        <!--View-->
+                                                    </a>
+                                                    <a href="#"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#vatAndTaxEditModal_{{ $vatAndTax->id }}">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                        <!--Edit-->
+                                                    </a>
+                                                    <a href="{{ route('admin.vat-tax.destroy', $vatAndTax->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                        data-kt-docs-table-filter="delete_row">
+                                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                        <!--Delete-->
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -186,7 +145,7 @@
                 <form action="{{ route('admin.vat-tax.store') }}" class="needs-validation" method="post" novalidate>
                     @csrf
                     <div class="modal-body">
-                        <div class="container px-0">
+                        <div class="container-fluid px-3">
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12">
                                     <div class="row">
@@ -308,7 +267,7 @@
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
-                            <div class="container px-0">
+                            <div class="container-fluid px-0">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12">
                                         <div class="row">
@@ -433,7 +392,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <div class="container px-0">
+                        <div class="container-fluid px-0">
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12">
                                     <div class="row">
@@ -571,7 +530,7 @@
                             title: documentTitle
                         }
                     ]
-                }).container().appendTo($('#kt_datatable_example_1_export'));
+                }).container - fluid().appendTo($('#kt_datatable_example_1_export'));
 
                 // Hook dropdown menu click event to datatable export buttons
                 const exportButtons = document.querySelectorAll(

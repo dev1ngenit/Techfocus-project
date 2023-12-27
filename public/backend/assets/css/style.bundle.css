@@ -37975,7 +37975,7 @@ a:hover {
 }
 
 .btn-group-sm>.btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon), .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon).btn-sm {
-    padding: calc(.55rem + 1px) calc(.25rem + 1px);
+    padding: calc(.55rem + 1px) calc(.75rem + 1px);
     /* padding: calc(.55rem + 1px) calc(1.25rem + 1px); */
 }
 

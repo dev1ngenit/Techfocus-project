@@ -22,7 +22,7 @@ class AccountsDocumentController extends Controller
     public function index()
     {
         return view('admin.pages.accountDocument.index', [
-            'accountsDocuments' => AccountsDocument::latest('id')->get(),
+            'accountsDocuments' => AccountsDocument::with('attachments')->latest('id')->get(),
             'companies' => Company::latest('name')->get(['id', 'name']),
         ]);
     }
@@ -53,7 +53,7 @@ class AccountsDocumentController extends Controller
         ]);
 
         $additionalFiles = $request->file('attachment');
-        $additionalFilePath = storage_path('app/public/');
+        $additionalFilePath = storage_path('app/public/file/account-attachment/');
         if (!empty($additionalFiles)) {
             foreach ($additionalFiles as $additionalFile) {
                 $uploadFile = customUpload($additionalFile, $additionalFilePath);
@@ -113,7 +113,7 @@ class AccountsDocumentController extends Controller
             ]);
 
             $additionalFiles = $request->file('attachment');
-            $additionalFilePath = storage_path('app/public/');
+            $additionalFilePath = storage_path('app/public/file/account-attachment/');
 
             $oldAttachments = $accountsDocument->attachments;
             foreach ($oldAttachments as $oldAttachment) {
@@ -157,7 +157,7 @@ class AccountsDocumentController extends Controller
         $accountsDocument = AccountsDocument::with('attachments')->find($id);
 
         foreach ($accountsDocument->attachments as $attachment) {
-            $attachmentPath = storage_path('app/public/' . $attachment->attachment);
+            $attachmentPath = storage_path('app/public/file/account-attachment/' . $attachment->attachment);
 
             if (File::exists($attachmentPath)) {
                 File::delete($attachmentPath);
