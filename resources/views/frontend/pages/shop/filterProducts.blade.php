@@ -940,7 +940,7 @@
                     product characteristics and technical specifications for major
                     brands | View PDF catalogues and other online documentation
                 </p>
-                <p class="main-color text-center">
+                <p class="sub-color text-center w-75 mx-auto">
                     *Prices are pre-tax. They exclude delivery charges and customs
                     duties and do not include additional charges for installation or
                     activation options. Prices are indicative only and may vary by

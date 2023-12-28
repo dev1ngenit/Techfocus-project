@@ -25,50 +25,52 @@
             <div class="col-lg-12">
                 <div class="container">
                     <div class="row gx-3 my-3">
-                        @if (count($categories) > 0) 
-                            @foreach ($categories as $key => $category) 
-                                <div class="col-lg-6 col-sm-12 ps-0">
-                                    <div class="accordion accordion-flush" id="accordionFlushExample-{{$key}}">
-                                        <div class="accordion-item mb-2">
-                                            <h2 class="accordion-header" id="flush-heading-{{$key}}">
-                                                <button class="accordion-button p-3 collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{$key}}"
-                                                    aria-expanded="false" aria-controls="flush-collapse-{{$key}}">
-                                                    <p class="m-0 accordion-button-area p-2 ps-0">
-                                                        <span class="ms-0"> </span>
-                                                    </p>
-                                                    <div class="d-flex align-items-center w-100">
-                                                        <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
-                                                        <p class="mb-0 ms-2">
-                                                            {{$category->name}}
-                                                        </p>
-                                                    </div>
-            
-                                                    <p></p>
-                                                </button>
-                                            </h2>
-                                            <div id="flush-collapse-{{$key}}" class="accordion-collapse collapse"
-                                                aria-labelledby="flush-heading-{{$key}}" data-bs-parent="#accordionFlushExample-{{$key}}">
-                                                <div class="accordion-body">
-                                                    <ul class="ps-3">
-                                                        @if (count($category->children) > 0) 
-                                                            @foreach ($category->children as $sub_cat) 
-                                                                <li class="mb-2 menu-single-items">
-                                                                    <a href="{{ route('category',$sub_cat->slug) }}">{{$sub_cat->name}}</a>
-                                                                </li>
-                                                            @endforeach
-                                                            @else
-                                                            <li class="mb-2 menu-single-items">
-                                                                <a href="javascript:void(0)">No Content Found!</a>
-                                                            </li>
-                                                        @endif
-                                                    </ul>
-                                                </div>
+                        @if (count($categories) > 0)
+                        @foreach ($categories as $key => $category)
+                        <div class="col-lg-6 col-sm-12 ps-0">
+                            <div class="accordion accordion-flush" id="accordionFlushExample-{{$key}}">
+                                <div class="accordion-item mb-2">
+                                    <h2 class="accordion-header" id="flush-heading-{{$key}}">
+                                        <button class="accordion-button p-3 collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{$key}}"
+                                            aria-expanded="false" aria-controls="flush-collapse-{{$key}}">
+                                            <p class="m-0 accordion-button-area p-2 ps-0">
+                                                <span class="ms-0"> </span>
+                                            </p>
+                                            <div class="d-flex align-items-center w-100">
+                                                <img src="{{ asset('frontend/assets/img/Icon.svg') }}" alt="" />
+                                                <p class="mb-0 ms-2">
+                                                    {{$category->name}}
+                                                </p>
                                             </div>
+
+                                            <p></p>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse-{{$key}}" class="accordion-collapse collapse"
+                                        aria-labelledby="flush-heading-{{$key}}"
+                                        data-bs-parent="#accordionFlushExample-{{$key}}">
+                                        <div class="accordion-body">
+                                            <ul class="ps-3">
+                                                @if (count($category->children) > 0)
+                                                @foreach ($category->children as $sub_cat)
+                                                <li class="mb-2 menu-single-items">
+                                                    <a
+                                                        href="{{ route('category',$sub_cat->slug) }}">{{$sub_cat->name}}</a>
+                                                </li>
+                                                @endforeach
+                                                @else
+                                                <li class="mb-2 menu-single-items">
+                                                    <a href="javascript:void(0)">No Content Found!</a>
+                                                </li>
+                                                @endif
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            </div>
+                        </div>
+                        @endforeach
                         @endif
                     </div>
                 </div>
@@ -127,7 +129,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <a href="product-single.html" class="url-box">
+                <div class="url-box">
                     <div class="card rounded-0 border-0">
                         <div class="card-header bg-white d-flex justify-content-between">
                             <span class="product_badge">New</span>
@@ -144,29 +146,37 @@
                                 <h6 class="pt-3">WATERPROOF ENCLOSURE</h6>
                                 <div class="mb-3">
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
             <div class="col">
-                <a href="product-single.html" class="url-box">
+                <div class="url-box">
                     <div class="card rounded-0 border-0">
                         <div class="card-header bg-white d-flex justify-content-between">
                             <span class="product_badge">New</span>
@@ -183,29 +193,37 @@
                                 <h6 class="pt-3">WATERPROOF ENCLOSURE</h6>
                                 <div class="mb-3">
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
             <div class="col">
-                <a href="product-single.html" class="url-box">
+                <div class="url-box">
                     <div class="card rounded-0 border-0">
                         <div class="card-header bg-white d-flex justify-content-between">
                             <span class="product_badge">New</span>
@@ -222,29 +240,37 @@
                                 <h6 class="pt-3">WATERPROOF ENCLOSURE</h6>
                                 <div class="mb-3">
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
             <div class="col">
-                <a href="product-single.html" class="url-box">
+                <div class="url-box">
                     <div class="card rounded-0 border-0">
                         <div class="card-header bg-white d-flex justify-content-between">
                             <span class="product_badge">New</span>
@@ -261,29 +287,37 @@
                                 <h6 class="pt-3">WATERPROOF ENCLOSURE</h6>
                                 <div class="mb-3">
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
             <div class="col">
-                <a href="product-single.html" class="url-box">
+                <div class="url-box">
                     <div class="card rounded-0 border-0">
                         <div class="card-header bg-white d-flex justify-content-between">
                             <span class="product_badge">New</span>
@@ -300,26 +334,34 @@
                                 <h6 class="pt-3">WATERPROOF ENCLOSURE</h6>
                                 <div class="mb-3">
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                     <p class="p-0 m-0 pb-2">
-                                        <i class="fa-solid fa-shield main-color tags-text me-2"></i>
-                                        <span class="tags-text">For surface inspection</span>
+                                        <a href="">
+                                            <i class="fa-solid fa-paperclip main-color tags-text me-2"></i>
+                                            <span class="tags-text">For surface inspection</span>
+                                        </a>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -534,47 +576,63 @@
     <!-- Exhibitions -->
     <div>
         <div class="mt-5 mb-3 mx-4">
-            <a href="exhibit.html" class="mt-3">
+            <div class="mt-3">
                 <div class="row gx-5 bg-white develop-business-2 align-items-center">
                     <div class="col p-2">
                         <div class="main-color d-flex">
-                            <h6 class="mb-0">Develop your business!</h6>
+                            <a href="">
+                                <h6 class="mb-0 ps-4">Develop Your Business!</h6>
+                            </a>
                         </div>
                     </div>
                     <div class="col p-2">
-                        <div class="main-color d-flex">
-                            <i class="fa-regular fa-comments"></i>
-                            <p class="ms-2 p-0 m-0">
-                                1. <span class="text-muted">Contact us</span>
-                            </p>
-                        </div>
+                        <a href="">
+                            <div class="main-color d-flex align-items-center">
+                                <p class="p-0 m-0">
+                                    <i class="fa-solid fa-phone-volume"></i>
+                                </p>
+                                <p class="ms-2 p-0 m-0">
+                                    <span class="text-muted">Contact Us</span>
+                                </p>
+                            </div>
+                        </a>
                     </div>
                     <div class="col p-2">
-                        <div class="main-color d-flex">
-                            <i class="fa-solid fa-laptop"></i>
-                            <p class="ms-2 p-0 m-0">
-                                2. <span class="text-muted">Exhibit your products</span>
-                            </p>
-                        </div>
+                        <a href="">
+                            <div class="main-color d-flex align-items-center">
+                                <p class="p-0 m-0">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                </p>
+                                <p class="ms-2 p-0 m-0">
+                                    <span class="text-muted">Start Selling Online</span>
+                                </p>
+                            </div>
+                        </a>
                     </div>
                     <div class="col p-2">
-                        <div class="main-color d-flex">
-                            <i class="fa-solid fa-desktop"></i>
-                            <p class="ms-2 p-0 m-0">
-                                3. <span class="text-muted">Start selling online</span>
-                            </p>
-                        </div>
+                        <a href="">
+                            <div class="main-color d-flex align-items-center">
+                                <p class="p-0 m-0">
+                                    <i class="fa-solid fa-box-open"></i>
+                                </p>
+                                <p class="ms-2 p-0 m-0">
+                                    <span class="text-muted">Exhibit Your Products</span>
+                                </p>
+                            </div>
+                        </a>
                     </div>
                     <div class="col p-2 special-exhibit-2 m-0">
-                        <div class="text-center p-3">
-                            <h4 class="text-white mb-0">Exhibit with us</h4>
-                            <p class="ms-2 p-0 m-0 text-white" style="font-size: 12px">
-                                Sign up in 2 minutes
-                            </p>
-                        </div>
+                        <a href="">
+                            <div class="text-center p-3">
+                                <h4 class="text-white mb-0">Exhibit With Us</h4>
+                                <p class="ms-2 p-0 m-0 text-white" style="font-size: 12px">
+                                    Sign up in 2 minutes
+                                </p>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
     <!-- Our Buying Guides -->
@@ -611,8 +669,7 @@
                             pressure is certainly the [...]
                         </p>
                         <!-- <a href="guide.html" class="btn signin mt-2 rounded-0">Learn More</a> -->
-                        <a href="guide.html" class="btn common-btn-2 mt-2 rounded-0">
-                            <span class="text-gradient">Learn More</span></a>
+                        <a href="guide.html" class="btn common-btn-4 mt-2 rounded-0">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -635,7 +692,7 @@
                             pressure is certainly the [...]
                         </p>
                         <!-- <a href="guide.html" class="btn signin mt-2 rounded-0">Learn More</a> -->
-                        <a href="guide.html" class="btn common-btn-3 mt-2 rounded-0">Learn More</a>
+                        <a href="guide.html" class="btn common-btn-4 mt-2 rounded-0">Learn More</a>
                     </div>
                 </div>
             </div>

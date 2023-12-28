@@ -5,7 +5,7 @@
     <div class="container mm">
         <div class="row align-items-center">
             <div class="col-lg-12 my-5">
-                <h2 class="titles text-center font-two">
+                <h2 class="titles text-center font-two mb-1">
                     RECEIVE AND <span class="main-color"> COMPARE </span>
                 </h2>
                 <h2 class="titles text-center font-two">
@@ -24,7 +24,7 @@
                         <div class="col-lg-4">
                             <div class="d-flex flex-column align-items-center">
                                 <p>
-                                    <img class="shadow-lg rounded-circle"
+                                    <img class="rfq-img rounded-circle"
                                         src="https://img.directindustry.com/media/ps/images/common/rfq/ao-step-01.svg"
                                         alt="" />
                                 </p>
@@ -34,7 +34,7 @@
                         <div class="col-lg-4">
                             <div class="d-flex flex-column align-items-center">
                                 <p>
-                                    <img class="shadow-lg rounded-circle"
+                                    <img class="rfq-img rounded-circle"
                                         src="https://img.directindustry.com/media/ps/images/common/rfq/ao-step-02.svg"
                                         alt="" />
                                 </p>
@@ -44,7 +44,7 @@
                         <div class="col-lg-4">
                             <div class="d-flex flex-column align-items-center">
                                 <p>
-                                    <img class="shadow-lg rounded-circle"
+                                    <img class="rfq-img rounded-circle"
                                         src="https://img.directindustry.com/media/ps/images/common/rfq/ao-step-03.svg"
                                         alt="" />
                                 </p>
@@ -64,12 +64,11 @@
                 </div>
             </div>
             <div class="container mb-5">
-                <form class="card rounded-0 border-0 shadow-lg" action="">
-                    <div class="card-header p-0 m-0 bg-black rounded-0 border-0">
+                <form class="card rounded-0 border-0 shadow-sm rfq-img  action=">
+                    <div class="card-header p-0 m-0 rounded-0 border-0" style="background-color: var(--secondary-color)">
                         <nav class="nav nav-pills nav-fill">
-                            <a class="nav-link tab-pills step-form-btn rounded-0 p-3" href="#"><span
-                                    class="text-white">1.</span>
-                                Your Needs</a>
+                            <a class="nav-link tab-pills step-form-btn rounded-0 p-3" href="#">Your Needs</span>
+                                </a>
                             <a class="nav-link tab-pills step-form-btn rounded-0 p-3" href="#">Address Details</a>
                             <a class="nav-link tab-pills step-form-btn rounded-0 p-3" href="#">Company Details</a>
                             <a class="nav-link tab-pills step-form-btn rounded-0 p-3" href="#">Finish</a>
@@ -497,7 +496,7 @@
                     </div>
                     <div class="card-footer text-end">
                         <div class="d-flex">
-                            <button type="button" id="back_button" class="btn btn-link" onclick="back()">
+                            <button type="button" id="back_button" class="btn common-btn-4 w-auto rounded-0" onclick="back()">
                                 Back
                             </button>
                             <button type="button" id="next_button" class="btn signin ms-auto w-auto rounded-0"
