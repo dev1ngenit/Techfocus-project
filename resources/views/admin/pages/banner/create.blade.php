@@ -9,7 +9,7 @@
             display: block;
         }
     </style>
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card my-5 rounded-0">
@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <form action="{{ route('admin.banner.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="row">
+                            <div class="row pb-3">
                                 <div class="col-lg-6">
                                     <div class="fv-row mb-3">
                                         <label class="form-label ">Select Category</label>
@@ -60,7 +60,7 @@
                                             name="brand_id" id="brand_id" data-control="select2" data-hide-search="false"
                                             data-placeholder="Select an Product Type" data-allow-clear="true">
                                             @foreach ($brands as $brand)
-                                                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                                <option value="{{ $brand->id }}">{{ $brand->title }}</option>
                                             @endforeach
                                         </select>
                                         @error('brand_id')
@@ -157,9 +157,28 @@
                                         <div class="col-lg-6">
                                             <div class="fv-row mb-3">
                                                 <label class="form-label">Page Name</label>
-                                                <input name="page_name"
-                                                    class="form-control form-control-sm form-control-solid @error('page_name') is-invalid @enderror"
-                                                    placeholder="Enter Page Name" type="text" />
+                                                <select
+                                                    class="form-select form-select-solid form-select-sm @error('page_name') is-invalid @enderror"
+                                                    name="page_name" id="page_name" data-control="select2"
+                                                    data-hide-search="false" data-placeholder="Select an Product Type"
+                                                    data-allow-clear="true" required>
+                                                    <option value="home_page">Home Page</option>
+                                                    <option value="about_page">About Us Page</option>
+                                                    <option value="contact_page">Contact Us Page</option>
+                                                    <option value="service_page">Our Service Page</option>
+                                                    <option value="user_page">User Account Page</option>
+                                                    <option value="brand_list_page">Brand List Page</option>
+                                                    <option value="buying_guide_page">Bying Guide Page</option>
+                                                    <option value="sourcing_guide_page">Sourcing Guide Page</option>
+                                                    <option value="rfq_page">RFQ Page</option>
+                                                    <option value="catalogs_page">All Catalogs Page</option>
+                                                    <option value="faq_page">FAQ Page</option>
+                                                    <option value="terms_page">Terms Page</option>
+                                                    <option value="privacy_page">Privacy Page</option>
+                                                    <option value="compare_page">Compare Page</option>
+                                                    <option value="exhibit_page">Exhibit Page</option>
+                                                    <option value="distributor_page">Distributor Page</option>
+                                                </select>
                                                 @error('page_name')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -180,187 +199,196 @@
                                 </div>
                             </div>
 
-                            <div class="border p-4 m-1 mt-5">
-                                <p class="badge badge-info custom-bage-all">Banner
-                                    One</span>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Banner One Name</label>
-                                            <input name="banner_one_name"
-                                                class="form-control form-control-sm form-control-solid @error('banner_one_name') is-invalid @enderror"
-                                                placeholder="Enter Banner One Name" type="text" />
-                                            @error('banner_one_name')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                            <div class="row py-3">
+                                <div class="border p-4 m-1 mt-5 mb-4">
+                                    <p class="badge badge-info custom-bage-all">Banner
+                                        One</span>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Banner One Name</label>
+                                                <input name="banner_one_name"
+                                                    class="form-control form-control-sm form-control-solid @error('banner_one_name') is-invalid @enderror"
+                                                    placeholder="Enter Banner One Name" type="text" />
+                                                @error('banner_one_name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Banner One Image</label>
-                                            <input name="banner_one_image"
-                                                class="form-control form-control-sm form-control-solid @error('banner_one_image') is-invalid @enderror"
-                                                placeholder="Enter Banner One Image" type="file" />
-                                            @error('banner_one_image')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Banner One Image</label>
+                                                <input name="banner_one_image"
+                                                    class="form-control form-control-sm form-control-solid @error('banner_one_image') is-invalid @enderror"
+                                                    placeholder="Enter Banner One Image" type="file" />
+                                                @error('banner_one_image')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Banner One Link</label>
-                                            <input name="banner_one_link"
-                                                class="form-control form-control-sm form-control-solid @error('banner_one_link') is-invalid @enderror"
-                                                placeholder="Enter Banner One Name" type="url" />
-                                            @error('banner_one_link')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="border p-4 m-1 mt-5">
-                                <p class="badge badge-info custom-bage-all">Banner
-                                    Two</span>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Banner Two Name</label>
-                                            <input name="banner_two_name"
-                                                class="form-control form-control-sm form-control-solid @error('banner_two_name') is-invalid @enderror"
-                                                placeholder="Enter Banner Two Name" type="text" />
-                                            @error('banner_two_name')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Banner Two Image</label>
-                                            <input name="banner_two_image"
-                                                class="form-control form-control-sm form-control-solid @error('banner_two_image') is-invalid @enderror"
-                                                placeholder="Enter Banner Two Name" type="file" />
-                                            @error('banner_two_image')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Banner Two Link</label>
-                                            <input name="banner_two_link"
-                                                class="form-control form-control-sm form-control-solid @error('banner_two_link') is-invalid @enderror"
-                                                placeholder="Enter Banner Two Name" type="url" />
-                                            @error('banner_two_link')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border p-4 m-1 mt-5">
-                                <p class="badge badge-info custom-bage-all">Banner
-                                    Three</span>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Banner Three Name</label>
-                                            <input name="banner_three_name"
-                                                class="form-control form-control-sm form-control-solid @error('banner_three_name') is-invalid @enderror"
-                                                placeholder="Enter Banner Three Name" type="text" />
-                                            @error('banner_three_name')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Banner Three Image</label>
-                                            <input name="banner_three_image"
-                                                class="form-control form-control-sm form-control-solid @error('banner_three_image') is-invalid @enderror"
-                                                placeholder="Enter Banner Three Name" type="file" />
-                                            @error('banner_three_image')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Banner Three Link</label>
-                                            <input name="banner_three_link"
-                                                class="form-control form-control-sm form-control-solid @error('banner_three_link') is-invalid @enderror"
-                                                placeholder="Enter Banner Three Name" type="url" />
-                                            @error('banner_three_link')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Banner One Link</label>
+                                                <input name="banner_one_link"
+                                                    class="form-control form-control-sm form-control-solid @error('banner_one_link') is-invalid @enderror"
+                                                    placeholder="Enter Banner One Name" type="url" />
+                                                @error('banner_one_link')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="border p-4 m-1 mt-5">
-                                <p class="badge badge-info custom-bage-all">Meta Box</span>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Meta Description</label>
-                                            <textarea type="text" name="meta_description"
-                                                class="form-control form-control-sm form-control-solid @error('meta_description') is-invalid @enderror"
-                                                placeholder="Enter Meta Description" id="" cols="30" rows="1" maxlength="160"></textarea>
-                                            @error('meta_description')
+                            <div class="row py-3">
+                                <div class="border p-4 m-1 mt-5 mb-4">
+                                    <p class="badge badge-info custom-bage-all">Banner
+                                        Two</span>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Banner Two Name</label>
+                                                <input name="banner_two_name"
+                                                    class="form-control form-control-sm form-control-solid @error('banner_two_name') is-invalid @enderror"
+                                                    placeholder="Enter Banner Two Name" type="text" />
+                                                @error('banner_two_name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Banner Two Image</label>
+                                                <input name="banner_two_image"
+                                                    class="form-control form-control-sm form-control-solid @error('banner_two_image') is-invalid @enderror"
+                                                    placeholder="Enter Banner Two Name" type="file" />
+                                                @error('banner_two_image')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Banner Two Link</label>
+                                                <input name="banner_two_link"
+                                                    class="form-control form-control-sm form-control-solid @error('banner_two_link') is-invalid @enderror"
+                                                    placeholder="Enter Banner Two Name" type="url" />
+                                                @error('banner_two_link')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row py-3">
+                                <div class="border p-4 m-1 mt-5 mb-4">
+                                    <p class="badge badge-info custom-bage-all">Banner
+                                        Three</span>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Banner Three Name</label>
+                                                <input name="banner_three_name"
+                                                    class="form-control form-control-sm form-control-solid @error('banner_three_name') is-invalid @enderror"
+                                                    placeholder="Enter Banner Three Name" type="text" />
+                                                @error('banner_three_name')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Banner Three Image</label>
+                                                <input name="banner_three_image"
+                                                    class="form-control form-control-sm form-control-solid @error('banner_three_image') is-invalid @enderror"
+                                                    placeholder="Enter Banner Three Name" type="file" />
+                                                @error('banner_three_image')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Banner Three Link</label>
+                                                <input name="banner_three_link"
+                                                    class="form-control form-control-sm form-control-solid @error('banner_three_link') is-invalid @enderror"
+                                                    placeholder="Enter Banner Three Name" type="url" />
+                                                @error('banner_three_link')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row py-3">
+                                <div class="border p-4 m-1 mt-5">
+                                    <p class="badge badge-info custom-bage-all">Meta Box</span>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Meta Description</label>
+                                                <textarea type="text" name="meta_description"
+                                                    class="form-control form-control-sm form-control-solid @error('meta_description') is-invalid @enderror"
+                                                    placeholder="Enter Meta Description" id="" cols="30" rows="1" maxlength="160"></textarea>
+                                                @error('meta_description')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Meta Title</label>
+                                                <input name="meta_title"
+                                                    class="form-control form-control-sm form-control-solid @error('meta_title') is-invalid @enderror"
+                                                    placeholder="Enter Meta Image" type="text" maxlength="60" />
+                                                @error('meta_title')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label">Meta Image</label>
+                                                <input name="meta_image"
+                                                    class="form-control form-control-sm form-control-solid @error('meta_image') is-invalid @enderror"
+                                                    placeholder="Enter Meta Image" type="file" />
+                                                @error('meta_image')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label ">Select Meta Tags</label>
+                                                <input
+                                                    class="form-control form-select-sm form-control-solid @error('meta_tags') is-invalid @enderror"
+                                                    name="meta_tags" id="tags1" value="{{ old('meta_tags') }}" />
+                                                @error('meta_tags')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="fv-row mb-3">
+                                                <label class="form-label ">Select Status</label>
+                                                <select
+                                                    class="form-select form-select-solid @error('status') is-invalid @enderror"
+                                                    name="status" data-control="select2"
+                                                    data-placeholder="Select Status" data-allow-clear="true">
+                                                    <option></option>
+                                                    <option value="active">Active</option>
+                                                    <option value="inactive">Inactive</option>
+                                                </select>
+                                            </div>
+                                            @error('status')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Meta Title</label>
-                                            <input name="meta_title"
-                                                class="form-control form-control-sm form-control-solid @error('meta_title') is-invalid @enderror"
-                                                placeholder="Enter Meta Image" type="text" maxlength="60" />
-                                            @error('meta_title')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Meta Image</label>
-                                            <input name="meta_image"
-                                                class="form-control form-control-sm form-control-solid @error('meta_image') is-invalid @enderror"
-                                                placeholder="Enter Meta Image" type="file" />
-                                            @error('meta_image')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label ">Select Meta Tags</label>
-                                            <input
-                                                class="form-control form-select-sm form-control-solid @error('meta_tags') is-invalid @enderror"
-                                                name="meta_tags" id="tags1" value="{{ old('meta_tags') }}" />
-                                            @error('meta_tags')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label ">Select Status</label>
-                                            <select
-                                                class="form-select form-select-solid @error('status') is-invalid @enderror"
-                                                name="status" data-control="select2" data-placeholder="Select Status"
-                                                data-allow-clear="true">
-                                                <option></option>
-                                                <option value="active">Active</option>
-                                                <option value="inactive">Inactive</option>
-                                            </select>
-                                        </div>
-                                        @error('status')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -368,7 +396,7 @@
                                 <div class="col-lg-12 mt-5">
                                     <div class="d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                                            class="btn btn-sm btn-primary rounded-0">Submit</button>
                                     </div>
                                 </div>
                             </div>

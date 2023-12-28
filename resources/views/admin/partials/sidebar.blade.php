@@ -447,7 +447,7 @@
                 </div>
 
                 @php
-                    $sitecontent = ['admin.brand-page.index', 'admin.solution-details.index', 'admin.homepage.index', 'admin.homepage.create', 'admin.homepage.edit', 'admin.aboutpage.index', 'admin.aboutpage.create', 'admin.aboutpage.edit', 'admin.industry.index', 'admin.news-trend.index', 'admin.news-trend.create', 'admin.news-trend.edit', 'admin.terms-and-policy.index', 'admin.row.index', 'admin.row.create', 'admin.row.edit', 'admin.company.index', 'admin.company.create', 'admin.company.edit', 'admin.solution-card.index', 'admin.solution-card.create', 'admin.solution-card.edit', 'admin.blog.index', 'admin.story.index', 'admin.tech-content.index', 'admin.blog.create', 'admin.story.create', 'admin.tech-content.create', 'admin.blog.edit', 'admin.story.edit', 'admin.tech-content.edit'];
+                    $sitecontent = ['admin.brand-page.index', 'admin.solution-details.index', 'admin.homepage.index', 'admin.homepage.create', 'admin.homepage.edit', 'admin.aboutpage.index', 'admin.aboutpage.create', 'admin.aboutpage.edit', 'admin.industry.index', 'admin.news-trend.index', 'admin.news-trend.create', 'admin.news-trend.edit', 'admin.terms-and-policy.index', 'admin.row.index', 'admin.row.create', 'admin.row.edit', 'admin.company.index', 'admin.company.create', 'admin.company.edit', 'admin.solution-card.index', 'admin.solution-card.create', 'admin.solution-card.edit', 'admin.blog.index', 'admin.story.index', 'admin.tech-content.index', 'admin.blog.create', 'admin.story.create', 'admin.tech-content.create', 'admin.blog.edit', 'admin.story.edit', 'admin.tech-content.edit', 'admin.banner.index','admin.banner.create','admin.banner.edit'];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $sitecontent) ? 'here show' : '' }}">
@@ -546,6 +546,15 @@
                                 </div>
 
                             </div>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ in_array(Route::current()->getName(), ['admin.banner.index','admin.banner.create','admin.banner.edit']) ? 'active' : '' }}""
+                                href="{{ route('admin.banner.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">All Banners</span>
+                            </a>
                         </div>
                         <div class="menu-item">
                             <a class="menu-link {{ Route::current()->getName() == 'admin.news-trend.index' ? 'active' : '' }}"
@@ -799,7 +808,7 @@
 
 
 
-                <div class="menu-item">
+                {{-- <div class="menu-item">
                     <a class="menu-link" href="../../demo1/dist/apps/calendar.html">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
@@ -821,7 +830,7 @@
                         </span>
                         <span class="menu-title">Calendar</span>
                     </a>
-                </div>
+                </div> --}}
 
                 @php
                     $setting = ['admin.web.setting', 'admin.css.index', 'admin.currency.index', 'admin.country.state.city.index'];
@@ -899,11 +908,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="menu-item">
+                {{-- <div class="menu-item">
                     <div class="menu-content pt-8 pb-0">
                         <span class="menu-section text-muted text-uppercase fs-8 ls-1">Layout</span>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
             <!--end::Menu-->

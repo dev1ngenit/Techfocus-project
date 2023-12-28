@@ -173,10 +173,45 @@
                                         <div class="col-lg-6">
                                             <div class="fv-row mb-3">
                                                 <label class="form-label required">Page Name</label>
-                                                <input name="page_name"
-                                                    value="{{ old('page_name', $banner->page_name) }}"
-                                                    class="form-control form-control-sm form-control-solid @error('page_name') is-invalid @enderror"
-                                                    placeholder="Enter Page Name" type="text" />
+
+                                                <select
+                                                    class="form-select form-select-solid form-select-sm @error('page_name') is-invalid @enderror"
+                                                    name="page_name" id="page_name" data-control="select2"
+                                                    data-hide-search="false" data-placeholder="Select an Product Type"
+                                                    data-allow-clear="true" required>
+                                                    <option @selected($banner->page_name == 'home_page') value="home_page">Home Page
+                                                    </option>
+                                                    <option @selected($banner->page_name == 'about_page') value="about_page">About Us Page
+                                                    </option>
+                                                    <option @selected($banner->page_name == 'contact_page') value="contact_page">Contact Us
+                                                        Page</option>
+                                                    <option @selected($banner->page_name == 'service_page') value="service_page">Our Service
+                                                        Page</option>
+                                                    <option @selected($banner->page_name == 'user_page') value="user_page">User Account
+                                                        Page</option>
+                                                    <option @selected($banner->page_name == 'brand_list_page') value="brand_list_page">Brand
+                                                        List Page</option>
+                                                    <option @selected($banner->page_name == 'buying_guide_page') value="buying_guide_page">Bying
+                                                        Guide Page</option>
+                                                    <option @selected($banner->page_name == 'sourcing_guide_page') value="sourcing_guide_page">
+                                                        Sourcing Guide Page</option>
+                                                    <option @selected($banner->page_name == 'rfq_page') value="rfq_page">RFQ Page
+                                                    </option>
+                                                    <option @selected($banner->page_name == 'catalogs_page') value="catalogs_page">All
+                                                        Catalogs Page</option>
+                                                    <option @selected($banner->page_name == 'faq_page') value="faq_page">FAQ Page
+                                                    </option>
+                                                    <option @selected($banner->page_name == 'terms_page') value="terms_page">Terms Page
+                                                    </option>
+                                                    <option @selected($banner->page_name == 'privacy_page') value="privacy_page">Privacy Page
+                                                    </option>
+                                                    <option @selected($banner->page_name == 'compare_page') value="compare_page">Compare Page
+                                                    </option>
+                                                    <option @selected($banner->page_name == 'exhibit_page') value="exhibit_page">Exhibit Page
+                                                    </option>
+                                                    <option @selected($banner->page_name == 'distributor_page') value="distributor_page">
+                                                        Distributor Page</option>
+                                                </select>
                                                 @error('page_name')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror

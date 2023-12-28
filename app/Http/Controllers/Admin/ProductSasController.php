@@ -76,7 +76,7 @@ class ProductSasController extends Controller
     public function show($id)
     {
         return view('admin.pages.product-sas.create', [
-            'product' => Product::where(),
+            'product' => Product::where('slug' , $id)->firstOrFail(),
         ]);
     }
 

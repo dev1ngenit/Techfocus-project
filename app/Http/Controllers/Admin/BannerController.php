@@ -37,7 +37,7 @@ class BannerController extends Controller
     public function create()
     {
         return view('admin.pages.banner.create', [
-            'brands'     => Brand::get(['id', 'name']),
+            'brands'     => Brand::get(['id', 'title']),
             'categories' => Category::get(['id', 'name']),
             'products'   => Product::get(['id', 'name']),
             'solutions'  => SolutionDetail::get(['id', 'name']),
@@ -96,7 +96,7 @@ class BannerController extends Controller
             'industry_id'        => $request->industry_id,
             'content_id'         => $request->content_id,
             'page_name'          => $request->page_name,
-            'page_title'          => $request->page_title,
+            'page_title'         => $request->page_title,
             'banner_one_name'    => $request->banner_one_name,
             'banner_two_name'    => $request->banner_two_name,
             'banner_three_name'  => $request->banner_three_name,
@@ -140,7 +140,7 @@ class BannerController extends Controller
     {
         return view('admin.pages.banner.edit', [
             'banner'     => Banner::find($id),
-            'brands'     => Brand::get(['id', 'name']),
+            'brands'     => Brand::get(['id', 'title']),
             'categories' => Category::get(['id', 'name']),
             'products'   => Product::get(['id', 'name']),
             'solutions'  => SolutionDetail::get(['id', 'name']),
@@ -234,7 +234,7 @@ class BannerController extends Controller
             'industry_id'        => $request->industry_id,
             'content_id'         => $request->content_id,
             'page_name'          => $request->page_name,
-            'page_title'          => $request->page_title,
+            'page_title'         => $request->page_title,
             'banner_one_name'    => $request->banner_one_name,
             'banner_two_name'    => $request->banner_two_name,
             'banner_three_name'  => $request->banner_three_name,
