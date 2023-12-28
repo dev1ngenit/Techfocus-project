@@ -251,7 +251,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="row_four_btn_name"
+                                                                            name="row_four_btn_name" maxlength="200"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
@@ -369,7 +369,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="row_five_btn_name"
+                                                                            name="row_five_btn_name" maxlength="200"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
@@ -484,7 +484,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
                                                                             name="solutionCardOneId_button_name"
-                                                                            id="validationCustom01"
+                                                                            maxlength="200" id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                         <div class="invalid-feedback"> Please Enter Button
                                                                             Name </div>
@@ -501,7 +501,6 @@
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
                                                                         <textarea name="solutionCardOneId_short_des" class="tox-target kt_docs_tinymce_plugins">
-                                                                           
                                                                          </textarea>
                                                                     </div>
                                                                 </div>
@@ -550,8 +549,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solutionCardTwoId_short_des"
-                                                                            id="validationCustom01"
+                                                                            name="solutionCardTwoId_button_name"
+                                                                            maxlength="200" id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                         <div class="invalid-feedback"> Please Enter Button
                                                                             Name </div>
@@ -567,9 +566,7 @@
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
-                                                                        <textarea name="solutionCardTwoId_button_name" class="tox-target kt_docs_tinymce_plugins">
-                                                               
-                                                                </textarea>
+                                                                        <textarea name="solutionCardTwoId_short_des" class="tox-target kt_docs_tinymce_plugins"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -587,7 +584,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solutionCardTwoId_badge"
+                                                                            name="solutionCardThreeId_badge"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter a badge">
                                                                     </div>
@@ -597,7 +594,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solutionCardTwoId_title"
+                                                                            name="solutionCardThreeId_title"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Title">
                                                                     </div>
@@ -617,24 +614,22 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solutionCardTwoId_short_des"
-                                                                            id="validationCustom01"
+                                                                            name="solutionCardThreeId_button_name"
+                                                                            maxlength="200" id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
                                                                     <div class="col-md-6 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Link
                                                                         </label>
-                                                                        <textarea rows="1" name="solutionCardTwoId_link" class="form-control form-control-sm form-control-solid"
+                                                                        <textarea rows="1" name="solutionCardThreeId_link" class="form-control form-control-sm form-control-solid"
                                                                             placeholder="Enter Link"></textarea>
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
-                                                                        <textarea name="solutionCardTwoId_button_name" class="tox-target kt_docs_tinymce_plugins">
-                                                                           
-                                                                        </textarea>
+                                                                        <textarea name="solutionCardThreeId_short_des" class="tox-target kt_docs_tinymce_plugins"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -771,7 +766,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="rowSevenId_btn_name"
+                                                                            name="rowSevenId_btn_name" maxlength="200"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
@@ -893,7 +888,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="rowEightId_btn_name"
+                                                                            name="rowEightId_btn_name" maxlength="200"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>

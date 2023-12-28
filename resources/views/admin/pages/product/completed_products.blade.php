@@ -5,7 +5,7 @@
             <div class="col-lg-12 card rounded-0 shadow-lg">
                 <div class="card card-p-0 card-flush">
                     <div class="card-header align-items-center pb-1 pt-3 gap-2 gap-md-5">
-                        <div class="container-fluid px-0">
+                        <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2 col-sm-12 text-lg-start text-sm-center">
                                     <!--begin::Search-->
