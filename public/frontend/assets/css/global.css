@@ -1750,11 +1750,12 @@ tbody td:hover::before {
 }
 
 .faq-search {
-  top: 1px;
+  top: 0px;
   font-size: var(--paragraph-font-size);
   position: relative;
-  right: 40px;
+  right: 39px;
   z-index: 999;
+  width: 40px;
 }
 .faq-menu {
   padding: 10px;

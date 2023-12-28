@@ -3,13 +3,13 @@
 @endsection
 @section('content')
     <!-- content start -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row breadcrumb-banner-area p-5"
             style="
           background-image: url(https://virtual-expo.my.site.com/Visitors/s/sfsites/c/file-asset/Background1?v=1);
         ">
             <div class="col-lg-12">
-                <h1 class="text-center font-poppins my-5 text-uppercase">
+                <h1 class="text-center font-poppins my-5 text-uppercase fw-bold">
                     Welcome to the VirtualExpo <br />knowledge base
                 </h1>
                 <div class="col-lg-12 w-50 mx-auto pt-3">
@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12 pb-5">
-                                        <div class="d-flex justify-content-end">
+                                        <div class="d-flex justify-content-center">
                                             <a href="#" class="btn signin rounded-0 w-auto">Contact Support</a>
                                         </div>
                                     </div>

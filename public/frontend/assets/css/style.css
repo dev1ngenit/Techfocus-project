@@ -197,6 +197,9 @@ h1,
   line-height: 1.2;
 }
 
+main{
+  margin-top: 6.4rem;
+}
 .font-small {
   font-size: 8px;
 }
@@ -206,7 +209,8 @@ h1,
 }
 
 .font-two {
-  font-size: 12px;
+  font-size: var(--badge-font-size);
+  font-weight: 700;
 }
 
 .font-three {
@@ -214,7 +218,8 @@ h1,
 }
 
 .font-four {
-  font-size: var(--paragraph-font-size);
+  font-size: var(--header-font-size);
+  text-transform: capitalize;
 }
 
 .text-justify {
