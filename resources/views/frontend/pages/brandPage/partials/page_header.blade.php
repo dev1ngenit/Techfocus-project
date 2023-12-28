@@ -1,3 +1,13 @@
+<style>
+    .sticky-header{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+        transition: all 0.3s;
+    }
+</style>
+
 <div class="swiper bannerSwiper product-banner">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -6,7 +16,7 @@
     </div>
     <div class="swiper-pagination"></div>
 </div>
-<div class="container">
+{{-- <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="breadcrumbs">
@@ -19,7 +29,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <section class="header d-lg-block d-sm-none" id="myHeader">
     <div class="container brand-page-header-container ">
         <!-- Tabbing Section Start -->
@@ -76,13 +86,13 @@
 
         function handleScroll(header, container, sticky) {
             if (window.pageYOffset > sticky) {
-                header.classList.add("sticky-top");
+                header.classList.add("sticky-header");
                 container.classList.remove("container");
                 mainHeader.classList.remove("fixed-top");
                 container.classList.add("container-fluid");
             } else {
                 mainHeader.classList.add("fixed-top");
-                header.classList.remove("sticky-top");
+                header.classList.remove("sticky-header");
                 container.classList.remove("container-fluid");
                 container.classList.add("container");
             }
