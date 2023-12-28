@@ -101,10 +101,7 @@
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
                                         for laser cutting industrial environments, which
-                                        therefore require air flow rates at high operating
-                                        pressures. Use of the LASER series Onair systems
-                                        therefore allows to cut by air, thus avoiding the use of
-                                        nit...
+                                        therefore.
                                     </p>
                                     <p class="pt-3 pb-2 m-0 text-center" style="border-top: 1px solid #eee">
                                         <a href="">
@@ -149,10 +146,7 @@
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
                                         for laser cutting industrial environments, which
-                                        therefore require air flow rates at high operating
-                                        pressures. Use of the LASER series Onair systems
-                                        therefore allows to cut by air, thus avoiding the use of
-                                        nit...
+                                        therefore.
                                     </p>
                                     <p class="pt-3 pb-2 m-0 text-center" style="border-top: 1px solid #eee">
                                         <a href="">
@@ -197,10 +191,7 @@
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
                                         for laser cutting industrial environments, which
-                                        therefore require air flow rates at high operating
-                                        pressures. Use of the LASER series Onair systems
-                                        therefore allows to cut by air, thus avoiding the use of
-                                        nit...
+                                        therefore.
                                     </p>
                                     <p class="pt-3 pb-2 m-0 text-center" style="border-top: 1px solid #eee">
                                         <a href="">
@@ -248,10 +239,7 @@
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
                                         for laser cutting industrial environments, which
-                                        therefore require air flow rates at high operating
-                                        pressures. Use of the LASER series Onair systems
-                                        therefore allows to cut by air, thus avoiding the use of
-                                        nit...
+                                        therefore.
                                     </p>
                                     <p class="pt-3 pb-2 m-0 text-center" style="border-top: 1px solid #eee">
                                         <a href="">
@@ -296,10 +284,7 @@
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
                                         for laser cutting industrial environments, which
-                                        therefore require air flow rates at high operating
-                                        pressures. Use of the LASER series Onair systems
-                                        therefore allows to cut by air, thus avoiding the use of
-                                        nit...
+                                        therefore.
                                     </p>
                                     <p class="pt-3 pb-2 m-0 text-center" style="border-top: 1px solid #eee">
                                         <a href="">
@@ -344,10 +329,7 @@
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
                                         for laser cutting industrial environments, which
-                                        therefore require air flow rates at high operating
-                                        pressures. Use of the LASER series Onair systems
-                                        therefore allows to cut by air, thus avoiding the use of
-                                        nit...
+                                        therefore.
                                     </p>
                                     <p class="pt-3 pb-2 m-0 text-center" style="border-top: 1px solid #eee">
                                         <a href="">
@@ -392,10 +374,7 @@
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
                                         for laser cutting industrial environments, which
-                                        therefore require air flow rates at high operating
-                                        pressures. Use of the LASER series Onair systems
-                                        therefore allows to cut by air, thus avoiding the use of
-                                        nit...
+                                        therefore.
                                     </p>
                                     <p class="pt-3 pb-2 m-0 text-center" style="border-top: 1px solid #eee">
                                         <a href="">
