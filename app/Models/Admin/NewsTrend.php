@@ -3,13 +3,14 @@
 namespace App\Models\Admin;
 
 use App\Models\Admin;
+use App\Traits\HasSlug;
 use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class NewsTrend extends Model
 {
-    use HasFactory, Userstamps;
+    use HasFactory, HasSlug, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.
@@ -17,6 +18,8 @@ class NewsTrend extends Model
      * @var array
      */
     protected $guarded = [];
+    protected $slugSourceColumn = 'title';
+    
     public function scopeByType($query, $type)
     {
         return $query->where('type', $type);

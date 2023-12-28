@@ -109,6 +109,10 @@
   border-bottom: 3px solid var(--primary-color);
 }
 
+.nav-item
+.custom-nav{
+  color: var(--white);
+}
 .burger-wrapper {
   cursor: pointer;
 }
@@ -536,16 +540,19 @@ figure img {
   transition: transform 0.4s;
   transition: transform 0.4s, -webkit-transform 0.4s;
 }
-.projects-card:hover {
-  transform: scale(1.1);
-}
 .projects-card {
   transition: transform 0.5s;
   border: 0px;
   box-shadow: var(--custom-shadow);
 }
+.product-badge{
+  font-size: 12px;
+    font-weight: 400;
+    padding: 5px 6px;
+}
 .project-para {
-  line-height: 25px;
+  height: 3rem;
+  line-height: 1.3;
   word-spacing: 0px;
 }
 .special-exhibit-2 {
@@ -705,7 +712,7 @@ figure img {
   font-weight: 800;
 }
 .univers-group-item {
-  /* margin-bottom: 5px; */
+  background: var(--white);
   padding: 12px 15px;
   /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); */
 }
@@ -731,7 +738,6 @@ figure img {
 .nav-tabs .nav-link {
   margin-bottom: -3px;
   width: 100%;
-  border-left: 3px solid var(--primary-color);
   background: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -741,7 +747,6 @@ figure img {
   background-color: var(--primary-color);
   width: 100%;
   color: var(--white);
-  border-left: 3px solid var(--secondary-color);
   border-top: 0px;
   border-bottom: 0px;
 }
@@ -754,7 +759,7 @@ figure img {
   max-height: 20px;
 }
 .card-img-top {
-  max-height: 300px;
+  height: 250px;
 }
 .card-img-top-related {
   max-height: auto;
@@ -788,11 +793,13 @@ figure img {
 .card-news-trends {
   border-radius: 0px;
   box-shadow: var(--custom-shadow);
-  height: 230px;
+  height: 340px;
   text-align: center;
   background-color: var(--white);
   cursor: pointer;
 }
+
+/* For Logo */
 .inset-img{
   display: flex;
     align-items: center;
@@ -800,6 +807,31 @@ figure img {
     justify-content: center;
     padding: 40px
 }
+#stand-logo {
+  max-width: 100%;
+  max-height: 90px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.custom-video-icon {
+  width: 40px;
+  height: 40px;
+}
+.stand-header-nav li {
+  border-right: 1px solid var(--border-color);
+  position: relative;
+  right: 10px;
+  padding: 1rem 2rem;
+  list-style-type: none;
+  font-size: var(--header-font-size);
+  color: var(--secondary-color);
+}
+
+.stand-header-nav li:last-child {
+  border-right: none;
+}
+/* End */
 .card-news-trends .profile {
   transition: 0.2s;
   height: 250px;
@@ -1103,27 +1135,20 @@ figure img {
   clear: both;
   overflow: hidden;
 }
-
 /* Everything out of border is hidden */
-
 /* Preview */
-
 .xzoom-preview {
   border: 1px solid var(--border-color);
   background: var(--primary-color);
   box-shadow: var(--custom-shadow);
 }
-
 /* Lens */
-
 .xzoom-lens {
   border: 1px solid var(--border-color);
   box-shadow: var(--custom-shadow);
   cursor: zoom-in;
 }
-
 /* Loading */
-
 .xzoom-loading {
   background-position: center center;
   background-repeat: no-repeat;
@@ -1134,9 +1159,7 @@ figure img {
   height: 48px;
   transform: translate(-50%, -50%);
 }
-
 /* Additional class that applied to thumb when it is active */
-
 .xactive {
   -webkit-box-shadow: 0px 0px 3px 0px var(--primary-color) !important;
   -moz-box-shadow: 0px 0px 3px 0px var(--primary-color) !important;
@@ -1160,6 +1183,7 @@ figure img {
 }
 .product-tabbing-menu-active {
   border-bottom: 4px solid var(--secondary-deep-color);
+  padding: 10px;
 }
 
 /* Brand Page */
@@ -1725,6 +1749,9 @@ tbody td:hover::before {
   overflow: hidden;
   border: 3px solid transparent;
   border-top-color: var(--primary-color) !important;
+}
+.rfq-img{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .rfq-offcanvas-modal {
   transform: rotate(-90deg);

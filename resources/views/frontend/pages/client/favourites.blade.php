@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row p-3">
             <div class="col-lg-12 col-sm-12">
-                <p class="main-color text-center">
+                <p class="sub-color text-center w-75 mx-auto">
                     *Prices are pre-tax. They exclude delivery charges and customs
                     duties and do not include additional charges for installation or
                     activation options. Prices are indicative only and may vary by

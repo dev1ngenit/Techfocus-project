@@ -241,7 +241,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-sm-12 mt-3">
-                <p class="main-color text-center"> *Prices are pre-tax. They exclude delivery charges and customs
+                <p class="sub-color text-center w-75 mx-auto"> *Prices are pre-tax. They exclude delivery charges and customs
                     duties and do not include additional charges for installation or activation options. Prices are
                     indicative only and may vary by country, with changes to the cost of raw materials and exchange
                     rates. </p>
