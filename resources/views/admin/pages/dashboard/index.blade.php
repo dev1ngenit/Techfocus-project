@@ -1169,7 +1169,7 @@
         <script>
             // Assuming $attendanceToday['check_in'] is a string in the format "HH:mm:ss"
             let checkInTimeString = "{{ isset($attendanceToday['check_in']) ? $attendanceToday['check_in'] : '' }}";
-            if (!empty(checkInTimeString)) {
+            if (checkInTimeString !== '') {
                 let [hours, minutes, seconds] = checkInTimeString.split(':');
 
                 let checkInTime = new Date();
@@ -1185,6 +1185,7 @@
                     let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
                     let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
+                    // alert(hours);
                     document.getElementById('live-clock-hours').innerText = hours;
                     document.getElementById('live-clock-minutes').innerText = minutes;
                     document.getElementById('live-clock-seconds').innerText = seconds;
