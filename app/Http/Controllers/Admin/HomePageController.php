@@ -438,7 +438,7 @@ class HomePageController extends Controller
             $globalFunSectionSevenFourthGridIcon = ['status' => 0];
         }
 
-        HomePage::create([
+        $homePage->update([
             'country_id'                            => $request->country_id,
             'section_one_name'                      => $request->section_one_name,
             'section_one_badge'                     => $request->section_one_badge,

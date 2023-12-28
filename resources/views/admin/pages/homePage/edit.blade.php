@@ -53,9 +53,9 @@
                         </div>
                         <div class="col-lg-10 px-4 p-2">
                             <form id="productForm" method="POST"
-                                action="{{ route('admin.solution-details.update', $homePage->id) }}"
-                                enctype="multipart/form-data">
+                                action="{{ route('admin.homepage.update', $homePage->id) }}" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade active show" id="section-one" role="tabpanel">
                                         <div class="w-100">
@@ -123,10 +123,13 @@
                                                             <label class="form-label">Section One Image</label>
                                                             <input type="file"
                                                                 class="form-control form-control-solid form-control-sm @error('section_one_image') is-invalid @enderror"
-                                                                name="section_one_image" id="validationCustom01"
+                                                                name="section_one_image"
+                                                                value="{{ $homePage->section_one_image }}"
+                                                                id="validationCustom01"
                                                                 placeholder="Enter Section One Image">
                                                             @error('section_one_image')
-                                                                <div class="invalid-feedback d-block">{{ $message }}</div>
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -161,7 +164,7 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Section One Description</label>
                                                             <textarea name="section_one_description"
-                                                                class="tox-target kt_docs_tinymce_plugins @error('section_one_description') is-invalid @enderror">{{ $homePage->section_one_description }}</textarea>
+                                                                class="tox-target kt_docs_tinymce_plugins @error('section_one_description') is-invalid @enderror">{!! $homePage->section_one_description !!}</textarea>
                                                             @error('section_one_description')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
                                                                 </div>
@@ -471,7 +474,7 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Section Three Link</label>
                                                             <textarea name="section_three_link" placeholder="Enter Section Three Link"
-                                                                class="form-control form-control-sm form-control-solid @error('section_three_link') is-invalid @enderror"></textarea>
+                                                                class="form-control form-control-sm form-control-solid @error('section_three_link') is-invalid @enderror">{{ $homePage->section_three_link }}</textarea>
                                                             @error('section_three_link')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
                                                                 </div>
@@ -483,7 +486,7 @@
                                                             <label class="form-label">Section Three Fist Column
                                                                 Link</label>
                                                             <textarea name="section_three_first_column_link" row="1" placeholder="Enter Section Three Fist Column Link"
-                                                                class="form-control form-control-sm form-control-solid @error('section_three_first_column_link') is-invalid @enderror"></textarea>
+                                                                class="form-control form-control-sm form-control-solid @error('section_three_first_column_link') is-invalid @enderror">{{ $homePage->section_three_first_column_link }}</textarea>
                                                             @error('section_three_first_column_link')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
                                                                 </div>
@@ -495,7 +498,7 @@
                                                             <label class="form-label">Section Three Second Column
                                                                 Link</label>
                                                             <textarea name="section_three_second_column_link" row="1" placeholder="Enter Section Three Second Column Link"
-                                                                class="form-control form-control-sm form-control-solid @error('section_three_second_column_link') is-invalid @enderror"></textarea>
+                                                                class="form-control form-control-sm form-control-solid @error('section_three_second_column_link') is-invalid @enderror">{{ $homePage->section_three_second_column_link }}</textarea>
                                                             @error('section_three_second_column_link')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
                                                                 </div>
@@ -507,7 +510,7 @@
                                                             <label class="form-label">Section Three Third Column
                                                                 Link</label>
                                                             <textarea name="section_three_third_column_link" row="1" placeholder="Enter Section Three Third Column Link"
-                                                                class="form-control form-control-sm form-control-solid @error('section_three_third_column_link') is-invalid @enderror"></textarea>
+                                                                class="form-control form-control-sm form-control-solid @error('section_three_third_column_link') is-invalid @enderror">{{ $homePage->section_three_third_column_link }}</textarea>
                                                             @error('section_three_third_column_link')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
                                                                 </div>
@@ -519,7 +522,7 @@
                                                             <label class="form-label">Section Three Fourth Column
                                                                 Link</label>
                                                             <textarea name="section_three_fourth_column_link" row="1" placeholder="Enter Section Three Fourth Column Link"
-                                                                class="form-control form-control-sm form-control-solid @error('section_three_fourth_column_link') is-invalid @enderror"></textarea>
+                                                                class="form-control form-control-sm form-control-solid @error('section_three_fourth_column_link') is-invalid @enderror">{{ $homePage->section_three_fourth_column_link }}</textarea>
                                                             @error('section_three_fourth_column_link')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
                                                                 </div>
@@ -565,7 +568,9 @@
                                                             <label class="form-label">Section Four Name</label>
                                                             <input type="text"
                                                                 class="form-control form-control-solid form-control-sm @error('section_four_name') is-invalid @enderror"
-                                                                name="section_four_name" id="validationCustom01"
+                                                                name="section_four_name"
+                                                                value="{{ $homePage->section_four_name }}"
+                                                                id="validationCustom01"
                                                                 placeholder="Enter Section Four Name">
                                                             @error('section_four_name')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
@@ -932,7 +937,7 @@
                                                                     <label class="form-label">Section Six First
                                                                         Column</label>
                                                                     <textarea name="section_six_first_column_description" placeholder="Enter Section Six First Column"
-                                                                        class="form-control form-control-sm form-control-solid @error('section_six_first_column_description') is-invalid @enderror"></textarea>
+                                                                        class="form-control form-control-sm form-control-solid @error('section_six_first_column_description') is-invalid @enderror">{{ $homePage->section_six_first_column_description }}</textarea>
                                                                     @error('section_six_first_column_description')
                                                                         <div class="invalid-feedback d-block">
                                                                             {{ $message }}
@@ -946,7 +951,7 @@
                                                                         Button
                                                                         Link</label>
                                                                     <textarea name="section_six_first_column_button_link" placeholder="Enter Section Six Fist Column Button Link"
-                                                                        class="form-control form-control-sm form-control-solid @error('section_six_first_column_button_link') is-invalid @enderror"></textarea>
+                                                                        class="form-control form-control-sm form-control-solid @error('section_six_first_column_button_link') is-invalid @enderror">{{ $homePage->section_six_first_column_button_link }}</textarea>
                                                                     @error('section_six_first_column_button_link')
                                                                         <div class="invalid-feedback d-block">
                                                                             {{ $message }}
@@ -969,6 +974,7 @@
                                                                     <input type="file"
                                                                         class="form-control form-control-solid form-control-sm @error('section_six_second_column_image') is-invalid @enderror"
                                                                         name="section_six_second_column_image"
+                                                                        value="{{ $homePage->section_six_second_column_image }}"
                                                                         id="validationCustom01"
                                                                         placeholder="Enter Section Six Second Colum Image">
                                                                     @error('section_six_second_column_image')
@@ -985,6 +991,7 @@
                                                                     <input type="text"
                                                                         class="form-control form-control-solid form-control-sm @error('section_six_second_column_title') is-invalid @enderror"
                                                                         name="section_six_second_column_title"
+                                                                        value="{{ $homePage->section_six_second_column_title }}"
                                                                         id="validationCustom01"
                                                                         placeholder="Enter Section Six Second Column Title">
                                                                     @error('section_six_second_column_title')
@@ -1002,6 +1009,7 @@
                                                                     <input type="text"
                                                                         class="form-control form-control-solid form-control-sm @error('section_six_second_column_button_name') is-invalid @enderror"
                                                                         name="section_six_second_column_button_name"
+                                                                        value="{{ $homePage->section_six_second_column_button_name }}"
                                                                         id="validationCustom01"
                                                                         placeholder="Enter Section Six Second Colum Button Name">
                                                                     @error('section_six_second_column_button_name')
@@ -1015,7 +1023,8 @@
                                                                 <div class="fv-row mb-3">
                                                                     <label class="form-label">Section Six Second
                                                                         Column</label>
-                                                                    <textarea name="section_six_second_column_description" placeholder="Enter Section Six Second Column"
+                                                                    <textarea name="section_six_second_column_description"
+                                                                        value="{{ $homePage->section_six_second_column_description }}" placeholder="Enter Section Six Second Column"
                                                                         class="form-control form-control-sm form-control-solid @error('section_six_second_column_description') is-invalid @enderror"></textarea>
                                                                     @error('section_six_second_column_description')
                                                                         <div class="invalid-feedback d-block">
@@ -1028,7 +1037,9 @@
                                                                 <div class="fv-row mb-3">
                                                                     <label class="form-label">Section Six Second Column
                                                                         Button Link</label>
-                                                                    <textarea name="section_six_second_column_button_link" placeholder="Enter Section Six Fist Column Button Link"
+                                                                    <textarea name="section_six_second_column_button_link"
+                                                                        value="{{ $homePage->section_six_second_column_button_link }}"
+                                                                        placeholder="Enter Section Six Fist Column Button Link"
                                                                         class="form-control form-control-sm form-control-solid @error('section_six_second_column_button_link') is-invalid @enderror"></textarea>
                                                                     @error('section_six_second_column_button_link')
                                                                         <div class="invalid-feedback d-block">
@@ -1052,6 +1063,7 @@
                                                                     <input type="file"
                                                                         class="form-control form-control-solid form-control-sm @error('section_six_third_column_image') is-invalid @enderror"
                                                                         name="section_six_third_column_image"
+                                                                        value="{{ $homePage->section_six_third_column_image }}"
                                                                         id="validationCustom01"
                                                                         placeholder="Enter Section Six Third Colum Image">
                                                                     @error('section_six_third_column_image')
@@ -1068,6 +1080,7 @@
                                                                     <input type="text"
                                                                         class="form-control form-control-solid form-control-sm @error('section_six_third_column_title') is-invalid @enderror"
                                                                         name="section_six_third_column_title"
+                                                                        value="{{ $homePage->section_six_third_column_title }}"
                                                                         id="validationCustom01"
                                                                         placeholder="Enter Section Six Third Column Title">
                                                                     @error('section_six_third_column_title')
@@ -1085,6 +1098,7 @@
                                                                     <input type="text"
                                                                         class="form-control form-control-solid form-control-sm @error('section_six_third_column_button_name') is-invalid @enderror"
                                                                         name="section_six_third_column_button_name"
+                                                                        value="{{ $homePage->section_six_third_column_button_name }}"
                                                                         id="validationCustom01"
                                                                         placeholder="Enter Section Six Third Colum Button Name">
                                                                     @error('section_six_third_column_button_name')
@@ -1099,7 +1113,7 @@
                                                                     <label class="form-label">Section Six Third
                                                                         Column</label>
                                                                     <textarea name="section_six_third_column_description" placeholder="Enter Section Six Third Column"
-                                                                        class="form-control form-control-sm form-control-solid @error('section_six_third_column_description') is-invalid @enderror"></textarea>
+                                                                        class="form-control form-control-sm form-control-solid @error('section_six_third_column_description') is-invalid @enderror">{{ $homePage->section_six_third_column_description }}</textarea>
                                                                     @error('section_six_third_column_description')
                                                                         <div class="invalid-feedback d-block">
                                                                             {{ $message }}
@@ -1112,7 +1126,7 @@
                                                                     <label class="form-label">Section Six Third Column
                                                                         Button Link</label>
                                                                     <textarea name="section_six_third_column_button_link" placeholder="Enter Section Six Fist Column Button Link"
-                                                                        class="form-control form-control-sm form-control-solid @error('section_six_third_column_button_link') is-invalid @enderror"></textarea>
+                                                                        class="form-control form-control-sm form-control-solid @error('section_six_third_column_button_link') is-invalid @enderror">{{ $homePage->section_six_third_column_button_link }}</textarea>
                                                                     @error('section_six_third_column_button_link')
                                                                         <div class="invalid-feedback d-block">
                                                                             {{ $message }}
@@ -1159,7 +1173,9 @@
                                                             <label class="form-label">Section Seven Name</label>
                                                             <input type="text"
                                                                 class="form-control form-control-solid form-control-sm @error('section_seven_name') is-invalid @enderror"
-                                                                name="section_seven_name" id="validationCustom01"
+                                                                name="section_seven_name"
+                                                                value="{{ $homePage->section_seven_name }}"
+                                                                id="validationCustom01"
                                                                 placeholder="Enter Section Seven Name">
                                                             @error('section_seven_name')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
@@ -1172,7 +1188,9 @@
                                                             <label class="form-label">Section Seven Badge</label>
                                                             <input type="text"
                                                                 class="form-control form-control-solid form-control-sm @error('section_seven_badge') is-invalid @enderror"
-                                                                name="section_seven_badge" id="validationCustom01"
+                                                                name="section_seven_badge"
+                                                                value="{{ $homePage->section_seven_badge }}"
+                                                                id="validationCustom01"
                                                                 placeholder="Enter Section Seven Badge">
                                                             @error('section_seven_badge')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
@@ -1185,7 +1203,9 @@
                                                             <label class="form-label">Section Seven Title</label>
                                                             <input type="text"
                                                                 class="form-control form-control-solid form-control-sm @error('section_seven_title') is-invalid @enderror"
-                                                                name="section_seven_title" id="validationCustom01"
+                                                                name="section_seven_title"
+                                                                value="{{ $homePage->section_seven_title }}"
+                                                                id="validationCustom01"
                                                                 placeholder="Enter Section Seven Title">
                                                             @error('section_seven_title')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
@@ -1198,7 +1218,9 @@
                                                             <label class="form-label">Section Seven Button</label>
                                                             <input type="text"
                                                                 class="form-control form-control-solid form-control-sm @error('section_seven_button') is-invalid @enderror"
-                                                                name="section_seven_button" id="validationCustom01"
+                                                                name="section_seven_button"
+                                                                value="{{ $homePage->section_seven_button }}"
+                                                                id="validationCustom01"
                                                                 placeholder="Enter Section Seven Button">
                                                             @error('section_seven_button')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
@@ -1210,7 +1232,7 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Section Seven Link</label>
                                                             <textarea name="section_seven_link" placeholder="Enter Section Seven Link"
-                                                                class="form-control form-control-sm form-control-solid @error('section_seven_link') is-invalid @enderror"></textarea>
+                                                                class="form-control form-control-sm form-control-solid @error('section_seven_link') is-invalid @enderror">{{ $homePage->section_seven_link }}</textarea>
                                                             @error('section_seven_link')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
                                                                 </div>
@@ -1230,6 +1252,7 @@
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_first_grid_icon') is-invalid @enderror"
                                                                             name="section_seven_first_grid_icon"
+                                                                            value="{{ $homePage->section_seven_first_grid_icon }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven First Grid Icon">
                                                                         @error('section_seven_first_grid_icon')
@@ -1247,6 +1270,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_first_grid_title') is-invalid @enderror"
                                                                             name="section_seven_first_grid_title"
+                                                                            value="{{ $homePage->section_seven_first_grid_title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven First Grid Title">
                                                                         @error('section_seven_first_grid_title')
@@ -1264,6 +1288,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_first_grid_button_name') is-invalid @enderror"
                                                                             name="section_seven_first_grid_button_name"
+                                                                            value="{{ $homePage->section_seven_first_grid_button_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven First Grid Button">
                                                                         @error('section_seven_first_grid_button_name')
@@ -1278,7 +1303,7 @@
                                                                         <label class="form-label"> Section Seven Fist Grid
                                                                             Button Link</label>
                                                                         <textarea name="section_seven_first_grid_button_link" placeholder="Enter Section Seven Link"
-                                                                            class="form-control form-control-sm form-control-solid @error('section_seven_first_grid_button_link') is-invalid @enderror"></textarea>
+                                                                            class="form-control form-control-sm form-control-solid @error('section_seven_first_grid_button_link') is-invalid @enderror">{{ $homePage->section_seven_first_grid_button_link }}</textarea>
                                                                         @error('section_seven_first_grid_button_link')
                                                                             <div class="invalid-feedback d-block">
                                                                                 {{ $message }}
@@ -1300,6 +1325,7 @@
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_second_grid_icon') is-invalid @enderror"
                                                                             name="section_seven_second_grid_icon"
+                                                                            value="{{ $homePage->section_seven_second_grid_icon }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven Second Grid Icon">
                                                                         @error('section_seven_second_grid_icon')
@@ -1317,6 +1343,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_second_grid_title') is-invalid @enderror"
                                                                             name="section_seven_second_grid_title"
+                                                                            value="{{ $homePage->section_seven_second_grid_title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven Second Grid Title">
                                                                         @error('section_seven_second_grid_title')
@@ -1334,6 +1361,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_second_grid_button_name') is-invalid @enderror"
                                                                             name="section_seven_second_grid_button_name"
+                                                                            value="{{ $homePage->section_seven_second_grid_button_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven Second Grid Button">
                                                                         @error('section_seven_second_grid_button_name')
@@ -1349,7 +1377,7 @@
                                                                             Grid
                                                                             Button Link</label>
                                                                         <textarea name="section_seven_second_grid_button_link" placeholder="Enter Section Seven Link"
-                                                                            class="form-control form-control-sm form-control-solid @error('section_seven_second_grid_button_link') is-invalid @enderror"></textarea>
+                                                                            class="form-control form-control-sm form-control-solid @error('section_seven_second_grid_button_link') is-invalid @enderror">{{ $homePage->section_seven_second_grid_button_link }}</textarea>
                                                                         @error('section_seven_second_grid_button_link')
                                                                             <div class="invalid-feedback d-block">
                                                                                 {{ $message }}
@@ -1371,6 +1399,7 @@
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_third_grid_icon') is-invalid @enderror"
                                                                             name="section_seven_third_grid_icon"
+                                                                            value="{{ $homePage->section_seven_third_grid_icon }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven Third Grid Icon">
                                                                         @error('section_seven_third_grid_icon')
@@ -1388,6 +1417,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_third_grid_title') is-invalid @enderror"
                                                                             name="section_seven_third_grid_title"
+                                                                            value="{{ $homePage->section_seven_third_grid_title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven Third Grid Title">
                                                                         @error('section_seven_third_grid_title')
@@ -1405,6 +1435,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_third_grid_button_name') is-invalid @enderror"
                                                                             name="section_seven_third_grid_button_name"
+                                                                            value="{{ $homePage->section_seven_third_grid_button_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven Third Grid Button">
                                                                         @error('section_seven_third_grid_button_name')
@@ -1419,7 +1450,7 @@
                                                                         <label class="form-label"> Section Seven Third Grid
                                                                             Button Link</label>
                                                                         <textarea name="section_seven_third_grid_button_link" placeholder="Enter Section Seven Third Grid Button Link"
-                                                                            class="form-control form-control-sm form-control-solid @error('section_seven_third_grid_button_link') is-invalid @enderror"></textarea>
+                                                                            class="form-control form-control-sm form-control-solid @error('section_seven_third_grid_button_link') is-invalid @enderror">{{ $homePage->section_seven_third_grid_button_link }}</textarea>
                                                                         @error('section_seven_third_grid_button_link')
                                                                             <div class="invalid-feedback d-block">
                                                                                 {{ $message }}
@@ -1441,6 +1472,7 @@
                                                                         <input type="file"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_fourth_grid_icon') is-invalid @enderror"
                                                                             name="section_seven_fourth_grid_icon"
+                                                                            value="{{ $homePage->section_seven_fourth_grid_icon }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven Fourth Grid Icon">
                                                                         @error('section_seven_fourth_grid_icon')
@@ -1458,6 +1490,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_fourth_grid_title') is-invalid @enderror"
                                                                             name="section_seven_fourth_grid_title"
+                                                                            value="{{ $homePage->section_seven_fourth_grid_title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven Fourth Grid Title">
                                                                         @error('section_seven_fourth_grid_title')
@@ -1475,6 +1508,7 @@
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_seven_fourth_grid_button_name') is-invalid @enderror"
                                                                             name="section_seven_fourth_grid_button_name"
+                                                                            value="{{ $homePage->section_seven_fourth_grid_button_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Seven Fourth Grid Button">
                                                                         @error('section_seven_fourth_grid_button_name')
@@ -1490,7 +1524,7 @@
                                                                             Grid
                                                                             Button Link</label>
                                                                         <textarea name="section_seven_fourth_grid_button_link" placeholder="Enter Section Seven Fourth Grid Button Link"
-                                                                            class="form-control form-control-sm form-control-solid @error('section_seven_fourth_grid_button_link') is-invalid @enderror"></textarea>
+                                                                            class="form-control form-control-sm form-control-solid @error('section_seven_fourth_grid_button_link') is-invalid @enderror">{{ $homePage->section_seven_fourth_grid_button_link }}</textarea>
                                                                         @error('section_seven_fourth_grid_button_link')
                                                                             <div class="invalid-feedback d-block">
                                                                                 {{ $message }}
@@ -1507,7 +1541,7 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Section Seven Description</label>
                                                             <textarea name="section_seven_description" placeholder="Enter Section Seven Description"
-                                                                class="tox-target kt_docs_tinymce_plugins @error('section_seven_description') is-invalid @enderror"></textarea>
+                                                                class="tox-target kt_docs_tinymce_plugins @error('section_seven_description') is-invalid @enderror">{!! $homePage->section_seven_description !!}</textarea>
                                                             @error('section_seven_description')
                                                                 <div class="invalid-feedback d-block">{{ $message }}
                                                                 </div>
@@ -1524,7 +1558,8 @@
                                                                     <i class="fa-solid fa-arrow-right"></i>
                                                                 </span>
                                                             </a>
-                                                            <button class="btn btn-lg btn-info rounded-0" type="submit">
+                                                            <button class="btn btn-lg btn-info rounded-0"
+                                                                type="submit">
                                                                 Submit
                                                                 <span class="svg-icon svg-icon-4 ms-1 me-0">
                                                                     <i class="fa-solid fa-arrow-right"></i>
