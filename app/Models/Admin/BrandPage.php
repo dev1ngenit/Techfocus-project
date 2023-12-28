@@ -48,6 +48,6 @@ class BrandPage extends Model
 
     public function brandName()
     {
-        return Brand::where('id', $this->brand_id)->value('name');
+        return Brand::where('id', $this->brand_id)->value('title');
     }
 }

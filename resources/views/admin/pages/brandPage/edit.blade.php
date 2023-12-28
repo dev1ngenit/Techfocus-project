@@ -97,7 +97,7 @@
                                                                 @foreach ($brands as $brand)
                                                                     <option @selected($brand->id == $brandPage->brand_id)
                                                                         value="{{ $brand->id }}">
-                                                                        {{ $brand->name }}</option>
+                                                                        {{ $brand->title }}</option>
                                                                 @endforeach
                                                             </select>
                                                             @error('brand_id')
