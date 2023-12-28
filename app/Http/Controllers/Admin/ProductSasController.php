@@ -30,9 +30,7 @@ class ProductSasController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.product-sas.create', [
-            'products' => Product::get(['id', 'name']),
-        ]);
+        
     }
 
     /**
@@ -77,7 +75,9 @@ class ProductSasController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.pages.product-sas.create', [
+            'product' => Product::where(),
+        ]);
     }
 
     /**
