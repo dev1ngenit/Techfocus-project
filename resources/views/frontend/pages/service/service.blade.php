@@ -4,10 +4,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row breadcrumb-banner-area p-5"
-            style="
-        background-image: url(https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/03/globalisation-3390877_1920-2.jpg);
-        position: relative;
-      ">
+            style="background-image: url(https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/03/globalisation-3390877_1920-2.jpg);position: relative;">
             <div class="banner-overlay-image"></div>
             <!-- Add the overlay directly in style attribute -->
             <div class="breadcrumb-content" style="position: relative; z-index: 2; color: #fff">
