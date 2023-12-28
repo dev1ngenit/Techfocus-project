@@ -241,8 +241,7 @@
                                                                 multiselect-max-items="2">
                                                                 @foreach ($industrys as $industrie)
                                                                     <option value="{{ $industrie->id }}"
-                                                                        @selected(in_array($solutionDetail->id, $selectedSolutions))
-                                                                        @if (in_array($industrie->id, $selectedIndustries)) selected @endif>
+                                                                        @selected(in_array($industrie->id, $selectedIndustries))>
                                                                         {{ $industrie->title }}
                                                                     </option>
                                                                 @endforeach

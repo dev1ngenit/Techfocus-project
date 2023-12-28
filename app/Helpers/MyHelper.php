@@ -1,14 +1,15 @@
 <?php
 
-use App\Models\Admin\Address;
-use App\Models\Admin\Company;
 use App\Models\City;
 use App\Models\State;
 use App\Models\Country;
+use App\Models\Admin\Address;
+use App\Models\Admin\Company;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Industry;
 use App\Models\Admin\ProductSas;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
 /**
@@ -32,48 +33,64 @@ use Intervention\Image\Facades\Image;
 if (!function_exists('customUpload')) {
     function customUpload(UploadedFile $mainFile, string $uploadPath, ?int $reqWidth = null, ?int $reqHeight = null): array
     {
-        $originalName = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
+        try {
+            $originalName = pathinfo($mainFile->getClientOriginalName(), PATHINFO_FILENAME);
 
-        $hashedName = substr($mainFile->hashName(), -12);
+            $hashedName = substr($mainFile->hashName(), -12);
 
-        $fileName = $originalName . '_' . $hashedName;
+            $fileName = $originalName . '_' . $hashedName;
 
-        if (!is_dir($uploadPath)) {
-            if (!mkdir($uploadPath, 0777, true)) {
-                abort(404, "Failed to create the directory: $uploadPath");
+            // if (!is_dir($uploadPath)) {
+            //     if (!mkdir($uploadPath, 0777, true)) {
+            //         abort(404, "Failed to create the directory: $uploadPath");
+            //     }
+            // }
+            if (!File::isDirectory($uploadPath) && !File::makeDirectory($uploadPath, 0777, true, true)) {
+                throw new \RuntimeException("Failed to create the directory: $uploadPath");
             }
-        }
 
-        if (strpos($mainFile->getMimeType(), 'image') === 0) {
-            $requestImgPath = "{$uploadPath}/requestImg";
-            if (!is_dir($requestImgPath)) {
-                if (!mkdir($requestImgPath, 0777, true)) {
-                    abort(404, "Failed to create the directory: $requestImgPath");
+            // if (strpos($mainFile->getMimeType(), 'image') === 0) {
+            //     $requestImgPath = "{$uploadPath}/requestImg";
+            //     if (!is_dir($requestImgPath)) {
+            //         if (!mkdir($requestImgPath, 0777, true)) {
+            //             abort(404, "Failed to create the directory: $requestImgPath");
+            //         }
+            //     }
+
+            if (strpos($mainFile->getMimeType(), 'image') === 0) {
+                $requestImgPath = "{$uploadPath}/requestImg";
+                if (!File::isDirectory($requestImgPath) && !File::makeDirectory($requestImgPath, 0777, true, true)) {
+                    throw new \RuntimeException("Failed to create the directory: $requestImgPath");
                 }
+
+                $img = Image::make($mainFile);
+                $img->save("$uploadPath/$fileName");
+                if ($reqWidth !== null && $reqHeight !== null) {
+                    $img->resize($reqWidth, $reqHeight, function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    });
+                    $img->save("$requestImgPath/$fileName");
+                }
+            } else {
+                $mainFile->storeAs($uploadPath, $fileName);
             }
 
-            $img = Image::make($mainFile);
-            $img->save("$uploadPath/$fileName");
-            if ($reqWidth !== null && $reqHeight !== null) {
-                $img->resize($reqWidth, $reqHeight, function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                });
-                $img->save("$requestImgPath/$fileName");
-            }
-        } else {
-            $mainFile->storeAs('public/files/', $fileName);
+            $output = [
+                'status'         => 1,
+                'file_name'      => $fileName,
+                'file_extension' => $mainFile->getClientOriginalExtension(),
+                'file_size'      => $mainFile->getSize(),
+                'file_type'      => $mainFile->getMimeType(),
+            ];
+
+            return array_map('htmlspecialchars', $output);
+        } catch (\Exception $e) {
+            return [
+                'status' => 0,
+                'error_message' => $e->getMessage(),
+            ];
         }
-
-        $output = [
-            'status'         => 1,
-            'file_name'      => $fileName,
-            'file_extension' => $mainFile->getClientOriginalExtension(),
-            'file_size'      => $mainFile->getSize(),
-            'file_type'      => $mainFile->getMimeType(),
-        ];
-
-        return array_map('htmlspecialchars', $output);
     }
 }
 

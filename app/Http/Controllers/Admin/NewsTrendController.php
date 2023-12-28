@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\Admin\NewsTrend;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\SolutionDetail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\NewsTrendRequest;
-use App\Models\Admin\SolutionDetail;
 use App\Repositories\Interfaces\BrandRepositoryInterface;
 use App\Repositories\Interfaces\CategoryRepositoryInterface;
 use App\Repositories\Interfaces\IndustryRepositoryInterface;
@@ -43,7 +47,6 @@ class NewsTrendController extends Controller
             'newsTrends' => $this->newsTrendRepository->allNewsTrend(),
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -69,38 +72,49 @@ class NewsTrendController extends Controller
     {
         $bannerFile    = $request->file('banner_image');
         $thumbnailFile = $request->file('thumbnail_image');
-        $filePath      = storage_path('app/public/');
+        $sourceFile = $request->file('source_image');
+        $filePath      = storage_path('app/public/content/');
         if (!empty($bannerFile)) {
             $globalFunBanner = customUpload($bannerFile, $filePath);
         } else {
             $globalFunBanner = ['status' => 0];
         }
         if (!empty($thumbnailFile)) {
-            $globalFunThumbnail = customUpload($thumbnailFile, $filePath,   44, 44);
+            $globalFunThumbnail = customUpload($thumbnailFile, $filePath);
         } else {
             $globalFunThumbnail = ['status' => 0];
         }
+        if (!empty($sourceFile)) {
+            $globalFunSource = customUpload($sourceFile, $filePath);
+        } else {
+            $globalFunSource = ['status' => 0];
+        }
 
         $data = [
-            'category_id'     => json_encode($request->category_id),
-            'brand_id'        => json_encode($request->brand_id),
-            'industry_id'     => json_encode($request->industry_id),
-            'solution_id'     => json_encode($request->solution_id),
-            'product_id'      => json_encode($request->product_id),
-            'featured'        => $request->featured,
-            'type'            => $request->type,
-            'badge'           => $request->badge,
-            'title'           => $request->title,
-            'header'          => $request->header,
-            'short_des'       => $request->short_des,
-            'long_des'        => $request->long_des,
-            'author'          => $request->author,
-            'address'         => $request->address,
-            'tags'            => json_encode($request->tags),
-            'banner_image'    => $globalFunBanner['status']    == 1 ? $globalFunBanner['file_name']   : null,
-            'thumbnail_image' => $globalFunThumbnail['status'] == 1 ? $globalFunThumbnail['file_name'] : null,
-            'additional_url'  => $request->additional_url,
-            'footer'          => $request->footer,
+            'category_id'            => json_encode($request->category_id),
+            'brand_id'               => json_encode($request->brand_id),
+            'industry_id'            => json_encode($request->industry_id),
+            'solution_id'            => json_encode($request->solution_id),
+            'product_id'             => json_encode($request->product_id),
+            'featured'               => $request->featured,
+            'type'                   => $request->type,
+            'badge'                  => $request->badge,
+            'title'                  => $request->title,
+            'header'                 => $request->header,
+            'short_des'              => $request->short_des,
+            'long_des'               => $request->long_des,
+            'author'                 => $request->author,
+            'address'                => $request->address,
+            'tags'                   => $request->tags,
+            'banner_image'           => $globalFunBanner['status']    == 1 ? $globalFunBanner['file_name']   : null,
+            'thumbnail_image'        => $globalFunThumbnail['status'] == 1 ? $globalFunThumbnail['file_name'] : null,
+            'source_image'           => $globalFunSource['status']    == 1 ? $globalFunSource['file_name']   : null,
+            'additional_button_name' => $request->additional_button_name,
+            'additional_url'         => $request->additional_url,
+            'source_link'            => $request->source_link,
+            'added_by'               => Auth::guard('admin')->user()->id,
+            'footer'                 => $request->footer,
+            'created_at'             => Carbon::now(),
         ];
         $this->newsTrendRepository->storeNewsTrend($data);
 
@@ -128,11 +142,11 @@ class NewsTrendController extends Controller
     public function edit($id)
     {
         return view('admin.pages.newsTrend.edit', [
-            'newsTrends' =>  $this->newsTrendRepository->findNewsTrend($id),
-            'categories' => $this->categoryRepository->allCategory(),
-            'brands'     => $this->brandRepository->allBrand(),
-            'industries' => $this->industryRepository->allIndustry(),
-            'solutions'  => SolutionDetail::latest('id')->get(['id', 'name']),
+            'content'    => NewsTrend::findOrFail($id),
+            'brands'     => DB::table('brands')->select('id', 'title')->orderBy('id', 'desc')->get(),
+            'categories' => Category::with('children.children.children.children.children.children')->latest('id')->get(),
+            'industries' => DB::table('industries')->select('id', 'name')->orderBy('id', 'desc')->get(),
+            'solutions'  => DB::table('solution_details')->select('id', 'name')->orderBy('id', 'desc')->get(),
         ]);
     }
 
@@ -149,13 +163,14 @@ class NewsTrendController extends Controller
 
         $bannerFile = $request->file('banner_image');
         $thumbnailFile = $request->file('thumbnail_image');
-        $filePath = storage_path('app/public/');
+        $sourceFile = $request->file('source_image');
+        $filePath = storage_path('app/public/content/');
 
         if (!empty($bannerFile)) {
             $globalFunBanner = customUpload($bannerFile, $filePath);
             $paths = [
-                storage_path("app/public/{$newsTrend->banner_image}"),
-                storage_path("app/public/requestImg/{$newsTrend->banner_image}")
+                storage_path("app/public/content/{$newsTrend->banner_image}"),
+                storage_path("app/public/content/requestImg/{$newsTrend->banner_image}")
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -169,8 +184,8 @@ class NewsTrendController extends Controller
         if (!empty($thumbnailFile)) {
             $globalFunThumbnail = customUpload($thumbnailFile, $filePath, 44, 44);
             $paths = [
-                storage_path("app/public/{$newsTrend->thumbnail_image}"),
-                storage_path("app/public/requestImg/{$newsTrend->thumbnail_image}")
+                storage_path("app/public/content/{$newsTrend->thumbnail_image}"),
+                storage_path("app/public/content/requestImg/{$newsTrend->thumbnail_image}")
             ];
             foreach ($paths as $path) {
                 if (File::exists($path)) {
@@ -180,27 +195,46 @@ class NewsTrendController extends Controller
         } else {
             $globalFunThumbnail = ['status' => 0];
         }
+        if (!empty($sourceFile)) {
+            $globalFunSource = customUpload($sourceFile, $filePath, 44, 44);
+            $paths = [
+                storage_path("app/public/content/{$newsTrend->source_image}"),
+                storage_path("app/public/content/requestImg/{$newsTrend->source_image}")
+            ];
+            foreach ($paths as $path) {
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+            }
+        } else {
+            $globalFunSource = ['status' => 0];
+        }
 
         $data = [
-            'category_id'     => json_encode($request->category_id),
-            'brand_id'        => json_encode($request->brand_id),
-            'industry_id'     => json_encode($request->industry_id),
-            'solution_id'     => json_encode($request->solution_id),
-            'product_id'      => json_encode($request->product_id),
-            'featured'        => $request->featured,
-            'type'            => $request->type,
-            'badge'           => $request->badge,
-            'title'           => $request->title,
-            'header'          => $request->header,
-            'short_des'       => $request->short_des,
-            'long_des'        => $request->long_des,
-            'author'          => $request->author,
-            'address'         => $request->address,
-            'tags'            => json_encode($request->tags),
-            'banner_image'    => $globalFunBanner['status']    == 1 ? $globalFunBanner['file_name']   : $newsTrend->banner_image,
-            'thumbnail_image' => $globalFunThumbnail['status'] == 1 ? $globalFunThumbnail['file_name'] : $newsTrend->thumbnail_image,
-            'additional_url'  => $request->additional_url,
-            'footer'          => $request->footer,
+            'category_id'            => json_encode($request->category_id),
+            'brand_id'               => json_encode($request->brand_id),
+            'industry_id'            => json_encode($request->industry_id),
+            'solution_id'            => json_encode($request->solution_id),
+            'product_id'             => json_encode($request->product_id),
+            'featured'               => $request->featured,
+            'type'                   => $request->type,
+            'badge'                  => $request->badge,
+            'title'                  => $request->title,
+            'header'                 => $request->header,
+            'short_des'              => $request->short_des,
+            'long_des'               => $request->long_des,
+            'author'                 => $request->author,
+            'address'                => $request->address,
+            'tags'                   => $request->tags,
+            'banner_image'           => $globalFunBanner['status']    == 1 ? $globalFunBanner['file_name']   : $newsTrend->banner_image,
+            'thumbnail_image'        => $globalFunThumbnail['status'] == 1 ? $globalFunThumbnail['file_name'] : $newsTrend->thumbnail_image,
+            'source_image'           => $globalFunSource['status']    == 1 ? $globalFunSource['file_name']   : $newsTrend->source_image,
+            'additional_button_name' => $request->additional_button_name,
+            'additional_url'         => $request->additional_url,
+            'source_link'            => $request->source_link,
+            'footer'                 => $request->footer,
+            'updated_at'             => Carbon::now(),
+            
         ];
 
         $this->newsTrendRepository->updateNewsTrend($data, $id);
@@ -220,9 +254,10 @@ class NewsTrendController extends Controller
         $newsTrend =  $this->newsTrendRepository->findNewsTrend($id);
 
         $paths = [
-            storage_path('app/public/') . $newsTrend->banner_image,
-            storage_path('app/public/') . $newsTrend->thumbnail_image,
-            storage_path('app/public/requestImg/') . $newsTrend->thumbnail_image,
+            storage_path('app/public/content/') . $newsTrend->banner_image,
+            storage_path('app/public/content/') . $newsTrend->thumbnail_image,
+            storage_path('app/public/content/') . $newsTrend->source_image,
+            storage_path('app/public/content/requestImg/') . $newsTrend->thumbnail_image,
         ];
 
         foreach ($paths as $path) {

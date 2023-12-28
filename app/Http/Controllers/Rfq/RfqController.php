@@ -19,7 +19,7 @@ class RfqController extends Controller
     public function index()
     {
         return view('admin.pages.rfq.index', [
-            'rfqs' => Rfq::get(),
+            'rfqs' => Rfq::where('rfq_type', 'rfq')->latest('id')->get(),
         ]);
     }
 

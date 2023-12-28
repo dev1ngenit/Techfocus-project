@@ -9,7 +9,7 @@ class NewsTrendRepository implements NewsTrendRepositoryInterface
 {
     public function allNewsTrend()
     {
-        return NewsTrend::latest('id')->get();
+        return NewsTrend::latest('id')->whereIn('type', ['news', 'trends'])->get();
     }
 
     public function storeNewsTrend(array $data)

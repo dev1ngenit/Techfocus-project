@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+
+use Illuminate\Support\Facades\Schema;
 use App\Models\Admin\DynamicCss;
 use App\Models\Admin\Site;
 use App\Repositories\FaqRepository;
@@ -104,8 +106,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('site', Site::first());
-        View::share('dynamic_css', DynamicCss::first());
+
+        if (Schema::hasTable('sites')) {
+            View::share('site', Site::first());
+        } else {
+            View::share('site', null);
+        }
+        if (Schema::hasTable('dynamic_csses')) {
+            View::share('dynamic_css', DynamicCss::first());
+        } else {
+            View::share('dynamic_css', null);
+        }
         Paginator::useBootstrap();
     }
 }

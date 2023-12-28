@@ -135,7 +135,7 @@ class ProductController extends Controller
             'agreement'                 => $request->agreement,
             'source_type'               => $request->source_type,
             'source_contact'            => $request->source_contact,
-            'added_by'                  => Auth::user()->name,
+            'added_by'                  => Auth::guard('admin')->user()->name,
             'action_status'             => ($request->action == 'save') ? 'save' : 'listed',
             'product_status'            => 'sourcing',
             'created_at'                => Carbon::now(),

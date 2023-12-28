@@ -6,7 +6,7 @@
                 <div class="card card-flush">
                     <div class="card-header align-items-center gap-2 gap-md-5 shadow-lg bg-light-primary px-0"
                         style="min-height: 45px;">
-                        <div class="container px-0">
+                        <div class="container-fluid">
                             <div class="row align-items-center">
                                 <div class="col-lg-6 col-sm-12 text-lg-start text-sm-center">
                                     <div class="card-title ps-3">
@@ -88,13 +88,27 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="fv-row mb-3">
+                                    <div class="row">
+                                    <div class="col-lg-8 mb-3">
                                         <label for="validationCustom01" class="form-label required ">Badge
                                         </label>
                                         <input type="text" class="form-control form-control-solid form-control-sm"
                                             id="validationCustom01" placeholder="Enter Badge" name="badge" required>
                                         <div class="invalid-feedback"> Please Enter Badge </div>
                                     </div>
+                                    <div class="col-lg-4 mb-3">
+                                        <label for="validationCustom010"
+                                            class="form-label required mb-0">Featured</label>
+                                        <select class="form-select form-select-solid" data-control="select2"
+                                            data-placeholder="Select an option" data-allow-clear="true"
+                                            name="featured" data-hide-search="true" required>
+                                            <option></option>
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+                                        <div class="invalid-feedback"> Please Select Featured. </div>
+                                    </div>
+                                </div>
                                     <div class="fv-row mb-3">
                                         <label for="validationCustom01" class="form-label required ">Title</label>
                                         <input type="text" class="form-control form-control-solid form-control-sm"
@@ -114,7 +128,7 @@
                                             <label for="validationCustom01" class="form-label">Source URL</label>
                                             <input type="url" class="form-control form-control-solid form-control-sm"
                                                 id="validationCustom01" placeholder="Enter Additional  URL"
-                                                name="additional_url">
+                                                name="source_link">
                                             <div class="invalid-feedback"> Please Enter Source URL</div>
                                         </div>
                                     </div>
@@ -146,9 +160,9 @@
                                             <option></option>
                                             <option value="news">News</option>
                                             <option value="trends">Trends</option>
-                                            <option value="blogs">Blogs</option>
+                                            {{-- <option value="blogs">Blogs</option>
                                             <option value="client_stories">Client Stories</option>
-                                            <option value="tech_contents">Tech Contents</option>
+                                            <option value="tech_contents">Tech Contents</option> --}}
                                         </select>
                                         <div class="invalid-feedback"> Please Select Type. </div>
                                     </div>
@@ -180,43 +194,21 @@
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12">
                                     <div class="row">
-                                        <div class="fv-row mb-3">
+                                        <div class="col-lg-6 mb-3">
                                             <label for="validationCustom010" class="form-label required mb-0">Tags</label>
-                                            <select class="form-select form-select-solid" data-control="select2"
-                                                data-placeholder="Select an option" data-allow-clear="true"
-                                                name="tags" multiple="multiple" required>
-                                                <option></option>
-                                                <option value="1">Option 1</option>
-                                            </select>
+                                            <input type="text" name="tags" value="{{ old('tags') }}" class="form-control form-control-sm visually-hidden"
+                                                data-role="tagsinput" placeholder="Enter Tags">
                                             <div class="invalid-feedback"> Please Select Tags. </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-lg-6 mb-3">
                                             <label for="validationCustom010"
                                                 class="form-label required mb-0">Address</label>
                                             <textarea rows="1" name="address" class="form-control form-control-sm form-control-solid"
                                                 placeholder="Enter Address" required></textarea>
                                             <div class="invalid-feedback"> Please Enter Address</div>
                                         </div>
-                                        <div class="fv-row mb-3">
-                                            <label for="validationCustom010"
-                                                class="form-label required mb-0">Featured</label>
-                                            <select class="form-select form-select-solid" data-control="select2"
-                                                data-placeholder="Select an option" data-allow-clear="true"
-                                                name="featured" data-hide-search="true" required>
-                                                <option></option>
-                                                <option value="0">No</option>
-                                                <option value="1">Yes</option>
-                                            </select>
-                                            <div class="invalid-feedback"> Please Select Featured. </div>
-                                        </div>
 
-
-
-
-
-
-
-                                        <div class="col-md-4">
+                                        <div class="col-lg-6 mb-3">
                                             <label for="validationCustom010"
                                                 class="form-label required mb-0">Header</label>
                                             <textarea rows="1" name="header" class="form-control form-control-sm form-control-solid"
@@ -224,7 +216,7 @@
                                             <div class="invalid-feedback"> Please Enter Header</div>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        <div class="col-lg-6 mb-3">
                                             <label for="validationCustom010"
                                                 class="form-label required mb-0">Footer</label>
                                             <textarea rows="1" name="footer" class="form-control form-control-sm form-control-solid"
