@@ -31,19 +31,19 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data['products'] = DB::table('products')->where('product_status', 'product')->latest('id', 'desc')
+        $data['products'] = Product::with('productSas')->where('product_status', 'product')->latest('id', 'desc')
             ->get(['id', 'slug', 'thumbnail', 'price', 'name', 'stock', 'action_status', 'price_status', 'added_by']);
         return view('admin.pages.product.completed_products', $data);
     }
     public function savedProducts()
     {
-        $data['saved_products'] = DB::table('products')->where('product_status', 'sourcing')->where('action_status', 'save')->latest('id', 'desc')
+        $data['saved_products'] = Product::with('productSas')->where('product_status', 'sourcing')->where('action_status', 'save')->latest('id', 'desc')
             ->get(['id', 'slug', 'thumbnail', 'price', 'discount', 'name', 'stock', 'source_one_price', 'source_two_price', 'action_status', 'price_status', 'added_by']);
         return view('admin.pages.product.saved_products', $data);
     }
     public function sourcedProducts()
     {
-        $data['products'] = DB::table('products')->where('product_status', 'sourcing')->where('action_status', '!=', 'save')->select('id', 'name', 'slug', 'thumbnail', 'price_status', 'action_status', 'added_by')->get();
+        $data['products'] = Product::with('productSas')->where('product_status', 'sourcing')->where('action_status', '!=', 'save')->select('id', 'name', 'slug', 'thumbnail', 'price_status', 'action_status', 'added_by')->get();
         return view('admin.pages.product.sourced_products', $data);
     }
 

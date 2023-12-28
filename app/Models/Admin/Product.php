@@ -32,9 +32,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class);
     }
-    public function product()
+    public function productSas()
     {
-        return $this->hasOne(BrandPage::class);
+        return $this->hasOne(ProductSas::class);
     }
 
 }
