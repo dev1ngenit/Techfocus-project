@@ -21,22 +21,121 @@
             </div>
         </div>
         <div class="row mb-5">
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <a href="{{ route('product.details','articulated-robot') }}">
                     <div class="card projects-card rounded-0">
                         <div>
                             <p class="video-tag">Video</p>
                         </div>
-                        <img src="https://img.directindustry.com/images_di/photo-m2/17645-12350564.jpg"
+                        <img src="https://img.directindustry.com/images_di/photo-m2/19826-12259045.jpg"
                             class="card-img-top img-fluid rounded-0" alt="..." />
                         <div class="card-body mb-5">
                             <p class="card-text project-para text-center">
-                                ARTICULATED ROBOT TX2-40
+                                ISOLATION TRANSFORMER TT1 SERIES
                             </p>
                             <div class="text-center">
-                                <span><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
-                                <span><i class="fa-solid fa-tag me-1 main-color"></i>6axis</span>
-                                <span><i class="fa-solid fa-tag me-1 main-color"></i>Floor Mounted</span>
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="{{ route('product.details','articulated-robot') }}">
+                    <div class="card projects-card rounded-0">
+                        <div>
+                            <p class="video-tag">Video</p>
+                        </div>
+                        <img src="https://img.directindustry.com/images_di/photo-m2/19826-4338393.jpg"
+                            class="card-img-top img-fluid rounded-0" alt="..." />
+                        <div class="card-body mb-5">
+                            <p class="card-text project-para text-center">
+                                ISOLATION TRANSFORMER TTIT SERIES
+                            </p>
+                            <div class="text-center">
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="{{ route('product.details','articulated-robot') }}">
+                    <div class="card projects-card rounded-0">
+                        <div>
+                            <p class="video-tag">Video</p>
+                        </div>
+                        <img src="https://img.directindustry.com/images_di/photo-m2/19826-7851145.jpg"
+                            class="card-img-top img-fluid rounded-0" alt="..." />
+                        <div class="card-body mb-5">
+                            <p class="card-text project-para text-center">
+                                ISOLATION TRANSFORMER EVKE SERIES
+                            </p>
+                            <div class="text-center">
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="{{ route('product.details','articulated-robot') }}">
+                    <div class="card projects-card rounded-0">
+                        <div>
+                            <p class="video-tag">Video</p>
+                        </div>
+                        <img src="https://img.directindustry.com/images_di/photo-m2/19826-2651885.jpg"
+                            class="card-img-top img-fluid rounded-0" alt="..." />
+                        <div class="card-body mb-5">
+                            <p class="card-text project-para text-center">
+                                POWER AUTO-TRANSFORMER ESP SERIES
+                            </p>
+                            <div class="text-center">
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="{{ route('product.details','articulated-robot') }}">
+                    <div class="card projects-card rounded-0">
+                        <div>
+                            <p class="video-tag">Video</p>
+                        </div>
+                        <img src="https://img.directindustry.com/images_di/photo-m2/19826-4337839.jpg"
+                            class="card-img-top img-fluid rounded-0" alt="..." />
+                        <div class="card-body mb-5">
+                            <p class="card-text project-para text-center">
+                                ISOLATION TRANSFORMER RTE SERIES
+                            </p>
+                            <div class="text-center">
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-2">
+                <a href="{{ route('product.details','articulated-robot') }}">
+                    <div class="card projects-card rounded-0">
+                        <div>
+                            <p class="video-tag">Video</p>
+                        </div>
+                        <img src="https://img.directindustry.com/images_di/photo-m2/19826-4339339.jpg"
+                            class="card-img-top img-fluid rounded-0" alt="..." />
+                        <div class="card-body mb-5">
+                            <p class="card-text project-para text-center">
+                                POWER AUTO-TRANSFORMER PVAT3 SERIES
+                            </p>
+                            <div class="text-center">
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
+                                <span class="product-badge"><i class="fa-solid fa-tag me-1 main-color"></i>Collaborative</span>
                             </div>
                         </div>
                     </div>
@@ -46,8 +145,8 @@
         <!-- Related Search -->
         <div class="container">
             <div class="row mt-5 mb-5">
-                <div class="col bg-light">
-                    <div class="card rounded-0 border-0 shadow-lg">
+                <div class="col p-0">
+                    <div class="card rounded-0 border-0 shadow-sm">
                         <div class="card-header rounded-0">
                             <h4 class="pt-2 text-center">Related Searches</h4>
                         </div>
@@ -92,7 +191,7 @@
         </div>
         <div class="row p-3">
             <div class="col-lg-12 col-sm-12">
-                <p class="main-color text-center"> *Prices are pre-tax. They exclude delivery charges and customs duties
+                <p class="sub-color text-center w-75 mx-auto"> *Prices are pre-tax. They exclude delivery charges and customs duties
                     and
                     do not include additional charges for installation or activation options. Prices are indicative only and
                     may

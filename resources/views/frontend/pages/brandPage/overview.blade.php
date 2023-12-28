@@ -7,10 +7,9 @@
     <!-- content start -->
     <div class="container">
         <div class="row mb-5 mt-5">
-            <div class="col-lg-12">
+            <div class="col-lg-12 p-0">
                 <div class="card rounded-0 border-0 p-5">
-                    <div class="card-body">
-                        <h3 class="titles">EXPERT-TÜNKERS GmbH</h3>
+                    <div class="card-body p-0">
                         <div class="row mt-3 mb-2">
                             <div class="col-lg-12">
                                 <div class="devider-wrap">
@@ -59,46 +58,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12">
-                                <p>
-                                    As a reason, precise, fast and reliable automation
-                                    solutions have been our core competence - let us convince
-                                    you of our quality. EXPERT - INDEXING AND POSITIONING
-                                    since 1961
-                                </p>
-
-
-                                <div class="xzoom-container w-100">
-                                    <!-- Main Image Default Show -->
-                                    <a data-fancybox-trigger="gallery" href="javascript:;">
-                                        <img class="xzoom" id="xzoom-default"
-                                            src="https://img.directindustry.com/images_di/photo-mg/16788-18842734.webp"
-                                            xoriginal="https://img.directindustry.com/images_di/photo-mg/16788-18842734.webp"
-                                            width="100%" height="100%" />
-                                    </a>
-                                    <!-- Main Image Default Show End-->
-                                    <div class="xzoom-thumbs">
-                                        <a class="popup" data-fancybox="gallery"
-                                            href="https://img.directindustry.com/images_di/photo-mg/16788-18842712.webp"><img
-                                                class="xzoom-gallery"
-                                                src="https://img.directindustry.com/images_di/photo-mg/16788-18842712.webp"
-                                                xpreview="https://img.directindustry.com/images_di/photo-mg/16788-18842712.webp"
-                                                width="80" height="80" /></a>
-                                        <a class="popup" data-fancybox="gallery"
-                                            href="https://img.directindustry.com/images_di/photo-mg/16788-18842722.webp"><img
-                                                class="xzoom-gallery"
-                                                src="https://img.directindustry.com/images_di/photo-mg/16788-18842722.webp"
-                                                xpreview="https://img.directindustry.com/images_di/photo-mg/16788-18842722.webp"
-                                                width="80" height="80" /></a>
-                                        <a class="popup" data-fancybox="gallery"
-                                            href="https://img.directindustry.com/images_di/photo-mg/16788-18842734.webp"><img
-                                                class="xzoom-gallery"
-                                                src="https://img.directindustry.com/images_di/photo-mg/16788-18842734.webp"
-                                                xpreview="https://img.directindustry.com/images_di/photo-mg/16788-18842734.webp"
-                                                width="80" height="80" /></a>
-                                    </div>
+                            <div class="col-lg-6">
+                                <h3>More Than Your Average Cloud Backup – A Complete Cyber Protection Solution</h3>
+                            </div>
+                            <div class="col-lg-6">
+                                <div>
+                                    <img class="img-fluid" src="http://ngenitltd.com/storage/ccpLEaB2qKR1OYwK1697888641.jpg" alt="">
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -107,7 +73,7 @@
         </div>
         <div class="row p-3">
             <div class="col-lg-12 col-sm-12">
-                <p class="main-color text-center"> *Prices are pre-tax. They exclude delivery charges and customs duties
+                <p class="sub-color text-center w-75 mx-auto"> *Prices are pre-tax. They exclude delivery charges and customs duties
                     and do not include additional charges for installation or activation options. Prices are indicative
                     only and may vary by country, with changes to the cost of raw materials and exchange rates. </p>
             </div>

@@ -31,16 +31,26 @@
         </div>
     </div>
 </div> --}}
-<section class="header d-lg-block d-sm-none" id="myHeader">
+<section class="header d-lg-block d-sm-none mt-4" id="myHeader">
     <div class="container brand-page-header-container ">
         <!-- Tabbing Section Start -->
-        <div class="row bg-white mb-4 p-3 align-items-center shadow-lg header" id="myHeader">
-            <div class="col-lg-3">
-                <img src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/' . $brand->logo)) ? asset('storage/brand/logo/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
-                    class="img-fluid" />
+        <div class="row bg-white mb-4  align-items-center header" id="myHeader">
+            <div class="col-lg-2">
+                {{-- <img id="stand-logo"
+                    src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/' . $brand->logo)) ? asset('storage/brand/logo/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
+                    class="img-fluid" /> --}}
+                <div class="d-flex justify-content-around align-items-center">
+                    <a href="">
+                        <img id="stand-logo" src="http://techfocusltd.com/storage/brand/logo/uNE6uamVvau6eiqf1687074668.png"
+                            class="img-fluid" />
+                    </a>
+                    <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        <img class="img-fluid custom-video-icon"
+                            src="http://ngenitltd.com/frontend/images/no-video-icon.png" alt=""> </a>
+                </div>
             </div>
-            <div class="col-lg-9">
-                <ul class="d-flex justify-content-around pt-4 product-tabbing-menu">
+            <div class="col-lg-10">
+                <ul class="d-flex justify-content-start align-items-center pt-4 product-tabbing-menu stand-header-nav">
                     <li>
                         <a href="{{ route('brand.overview', $brand->slug) }}"
                             class="{{ Route::current()->getName() == 'brand.overview' ? 'product-tabbing-menu-active' : '' }}">Company</a>

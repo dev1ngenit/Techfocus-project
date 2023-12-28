@@ -127,7 +127,9 @@
         <div class="container-fluid">
             <!-- Logo Start -->
             <a class="navbar-brand mb-0" href="{{ route('homepage') }}" data-aos="fade-right">
-                <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}"
+                {{-- <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}"
+                    height="60px" alt="" /> --}}
+                <img src="http://techfocusltd.com/storage/webSetting/systemLogoWhite/Logo_R1llPg4c.png"
                     height="60px" alt="" />
             </a>
             <!-- Logo End -->
@@ -151,7 +153,7 @@
                         <!-- Mobile Menu -->
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item dropdown" data-aos="fade-right" data-aos-duration="500">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a class="nav-link custom-nav dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Product
                                 </a>
@@ -162,13 +164,13 @@
                                                 <span class="text-uppercase text-white">Category 1</span>
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="#">Active</a>
+                                                        <a class="nav-link custom-nav active" href="#">Active</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#">Link item</a>
+                                                        <a class="nav-link custom-nav" href="#">Link item</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#">Link item</a>
+                                                        <a class="nav-link custom-nav" href="#">Link item</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -176,13 +178,13 @@
                                             <div class="col-md-4">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="#">Active</a>
+                                                        <a class="nav-link custom-nav active" href="#">Active</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#">Link item</a>
+                                                        <a class="nav-link custom-nav" href="#">Link item</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#">Link item</a>
+                                                        <a class="nav-link custom-nav" href="#">Link item</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -201,16 +203,16 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('catalog.all') }}">Catalog</a>
+                                <a class="nav-link custom-nav" href="{{ route('catalog.all') }}">Catalog</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('rfq') }}">RFQ</a>
+                                <a class="nav-link custom-nav" href="{{ route('rfq') }}">RFQ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
+                                <a class="nav-link custom-nav" href="{{ route('contact') }}">Contact Us</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="news-trends.html" id="navbarDropdown"
+                                <a class="nav-link custom-nav dropdown-toggle" href="news-trends.html" id="navbarDropdown"
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     News & Trends
                                 </a>
@@ -221,13 +223,13 @@
                                                 <span class="text-uppercase text-white">Category 2</span>
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="#">Active</a>
+                                                        <a class="nav-link custom-nav active" href="#">Active</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#">Link item</a>
+                                                        <a class="nav-link custom-nav" href="#">Link item</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#">Link item</a>
+                                                        <a class="nav-link custom-nav" href="#">Link item</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -235,13 +237,13 @@
                                             <div class="col-md-4">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link active" href="#">Active</a>
+                                                        <a class="nav-link custom-nav active" href="#">Active</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#">Link item</a>
+                                                        <a class="nav-link custom-nav" href="#">Link item</a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="#">Link item</a>
+                                                        <a class="nav-link custom-nav" href="#">Link item</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -262,7 +264,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">E-Magazine</a>
+                                <a class="nav-link custom-nav" href="#">E-Magazine</a>
                             </li>
                         </ul>
                     </div>
@@ -272,7 +274,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link custom-nav dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-aos="fade-right">
                             Product
                         </a>
@@ -283,10 +285,10 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-aos="fade-right" href="{{ route('catalog.all') }}">Catalog</a>
+                        <a class="nav-link custom-nav" data-aos="fade-right" href="{{ route('catalog.all') }}">Catalog</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="news-trends.html" id="navbarDropdown" role="button"
+                        <a class="nav-link custom-nav dropdown-toggle" href="news-trends.html" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-aos="fade-right">
                             News & Trends
                         </a>
@@ -298,10 +300,10 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-aos="fade-right" href="{{ route('rfq') }}">RFQ</a>
+                        <a class="nav-link custom-nav" data-aos="fade-right" href="{{ route('rfq') }}">RFQ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
+                        <a class="nav-link custom-nav" href="{{ route('contact') }}">Contact Us</a>
                     </li>
                 </ul>
                 <!-- Search Box Start -->

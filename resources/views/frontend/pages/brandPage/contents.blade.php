@@ -25,11 +25,11 @@
                             <a href="{{ route('content.details','new-onair-laser-series') }}">
                                 <div class="content">
                                     <div class="front">
-                                        <img class="profile" width="100%"
+                                        <img class="im-fluid" width="100%"
                                             src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                             alt="...." />
                                         <div class="d-flex align-items-center justify-content-between p-2">
-                                            <h2 class="text-center font-four">New Onair Laser Series</h2>
+                                            <h2 class="text-center font-four mb-0">New Onair Laser Series</h2>
                                             <!-- Brand Logo -->
                                             <a href="#">
                                                 <img class="lazyLoaded logo right"
@@ -39,15 +39,15 @@
                                         </div>
                                     </div>
                                     <div class="back from-bottom text-start">
-                                        <span class="font-two pt-3 text-muted">
+                                        <span class="font-three pt-3 text-muted">
                                             Posted on 9/13/2023</span>
                                         <br />
-                                        <p class="pt-3 pb-2 m-0 font-two">
+                                        <p class="pt-3 pb-2 m-0 font-three">
                                             HIGH PRESSURE SCREW COMPRESSORS PACKAGE: Single stage up
                                             to 20 Bar
                                         </p>
                                         <p class="subtitles"></p>
-                                        <p class="font-two pt-2 pb-3 text-justify">
+                                        <p class="font-three pt-2 pb-3 text-justify">
                                             The LASER series compression units are designed for
                                             intensive use, and are known for their high efficiency.
                                             Compact and quiet, they have been specifically designed
@@ -74,11 +74,11 @@
                         <div class="card border-0 card-news-trends">
                             <div class="content">
                                 <div class="front">
-                                    <img class="profile" width="100%"
+                                    <img class="im-fluid" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155807-18876465.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
-                                        <h2 class="text-center font-four">New Onair Laser Series</h2>
+                                        <h2 class="text-center font-four mb-0">New Onair Laser Series</h2>
                                         <!-- Brand Logo -->
                                         <a href="#">
                                             <img class="lazyLoaded logo right"
@@ -88,15 +88,15 @@
                                     </div>
                                 </div>
                                 <div class="back from-bottom text-start">
-                                    <span class="font-two pt-3 text-muted">
+                                    <span class="font-three pt-3 text-muted">
                                         Posted on 9/13/2023</span>
                                     <br />
-                                    <p class="pt-3 pb-2 m-0 font-two">
-                                        HIGH PRESSURE SCREW COMPRESSORS PACKAGE: Single stage up
+                                    <p class="pt-3 pb-2 m-0 font-three">
+                                        Single stage up
                                         to 20 Bar
                                     </p>
                                     <p class="subtitles"></p>
-                                    <p class="font-two pt-2 pb-3 text-justify">
+                                    <p class="font-three pt-2 pb-3 text-justify">
                                         The LASER series compression units are designed for
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
@@ -122,11 +122,11 @@
                         <div class="card border-0 card-news-trends">
                             <div class="content">
                                 <div class="front">
-                                    <img class="profile" width="100%"
+                                    <img class="im-fluid" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
-                                        <h2 class="text-center font-four">New Onair Laser Series</h2>
+                                        <h2 class="text-center font-four mb-0">New Onair Laser Series</h2>
                                         <!-- Brand Logo -->
                                         <a href="#">
                                             <img class="lazyLoaded logo right"
@@ -136,15 +136,15 @@
                                     </div>
                                 </div>
                                 <div class="back from-bottom text-start">
-                                    <span class="font-two pt-3 text-muted">
+                                    <span class="font-three pt-3 text-muted">
                                         Posted on 9/13/2023</span>
                                     <br />
-                                    <p class="pt-3 pb-2 m-0 font-two">
-                                        HIGH PRESSURE SCREW COMPRESSORS PACKAGE: Single stage up
+                                    <p class="pt-3 pb-2 m-0 font-three">
+                                        Single stage up
                                         to 20 Bar
                                     </p>
                                     <p class="subtitles"></p>
-                                    <p class="font-two pt-2 pb-3 text-justify">
+                                    <p class="font-three pt-2 pb-3 text-justify">
                                         The LASER series compression units are designed for
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
@@ -170,11 +170,11 @@
                         <div class="card border-0 card-news-trends">
                             <div class="content">
                                 <div class="front">
-                                    <img class="profile" width="100%"
+                                    <img class="im-fluid" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155792-18874820.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
-                                        <h2 class="text-center font-four">New Onair Laser Series</h2>
+                                        <h2 class="text-center font-four mb-0">New Onair Laser Series</h2>
                                         <!-- Brand Logo -->
                                         <a href="#">
                                             <img class="lazyLoaded logo right"
@@ -184,15 +184,15 @@
                                     </div>
                                 </div>
                                 <div class="back from-bottom text-start">
-                                    <span class="font-two pt-3 text-muted">
+                                    <span class="font-three pt-3 text-muted">
                                         Posted on 9/13/2023</span>
                                     <br />
-                                    <p class="pt-3 pb-2 m-0 font-two">
-                                        HIGH PRESSURE SCREW COMPRESSORS PACKAGE: Single stage up
+                                    <p class="pt-3 pb-2 m-0 font-three">
+                                        Single stage up
                                         to 20 Bar
                                     </p>
                                     <p class="subtitles"></p>
-                                    <p class="font-two pt-2 pb-3 text-justify">
+                                    <p class="font-three pt-2 pb-3 text-justify">
                                         The LASER series compression units are designed for
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
@@ -221,11 +221,11 @@
                         <div class="card border-0 card-news-trends">
                             <div class="content">
                                 <div class="front">
-                                    <img class="profile" width="100%"
+                                    <img class="im-fluid" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
-                                        <h2 class="text-center font-four">New Onair Laser Series</h2>
+                                        <h2 class="text-center font-four mb-0">New Onair Laser Series</h2>
                                         <!-- Brand Logo -->
                                         <a href="#">
                                             <img class="lazyLoaded logo right"
@@ -235,15 +235,15 @@
                                     </div>
                                 </div>
                                 <div class="back from-bottom text-start">
-                                    <span class="font-two pt-3 text-muted">
+                                    <span class="font-three pt-3 text-muted">
                                         Posted on 9/13/2023</span>
                                     <br />
-                                    <p class="pt-3 pb-2 m-0 font-two">
-                                        HIGH PRESSURE SCREW COMPRESSORS PACKAGE: Single stage up
+                                    <p class="pt-3 pb-2 m-0 font-three">
+                                        Single stage up
                                         to 20 Bar
                                     </p>
                                     <p class="subtitles"></p>
-                                    <p class="font-two pt-2 pb-3 text-justify">
+                                    <p class="font-three pt-2 pb-3 text-justify">
                                         The LASER series compression units are designed for
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
@@ -269,11 +269,11 @@
                         <div class="card border-0 card-news-trends">
                             <div class="content">
                                 <div class="front">
-                                    <img class="profile" width="100%"
+                                    <img class="im-fluid" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155807-18876465.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
-                                        <h2 class="text-center font-four">New Onair Laser Series</h2>
+                                        <h2 class="text-center font-four mb-0">New Onair Laser Series</h2>
                                         <!-- Brand Logo -->
                                         <a href="#">
                                             <img class="lazyLoaded logo right"
@@ -283,15 +283,15 @@
                                     </div>
                                 </div>
                                 <div class="back from-bottom text-start">
-                                    <span class="font-two pt-3 text-muted">
+                                    <span class="font-three pt-3 text-muted">
                                         Posted on 9/13/2023</span>
                                     <br />
-                                    <p class="pt-3 pb-2 m-0 font-two">
-                                        HIGH PRESSURE SCREW COMPRESSORS PACKAGE: Single stage up
+                                    <p class="pt-3 pb-2 m-0 font-three">
+                                        Single stage up
                                         to 20 Bar
                                     </p>
                                     <p class="subtitles"></p>
-                                    <p class="font-two pt-2 pb-3 text-justify">
+                                    <p class="font-three pt-2 pb-3 text-justify">
                                         The LASER series compression units are designed for
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
@@ -317,11 +317,11 @@
                         <div class="card border-0 card-news-trends">
                             <div class="content">
                                 <div class="front">
-                                    <img class="profile" width="100%"
+                                    <img class="im-fluid" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
-                                        <h2 class="text-center font-four">New Onair Laser Series</h2>
+                                        <h2 class="text-center font-four mb-0">New Onair Laser Series</h2>
                                         <!-- Brand Logo -->
                                         <a href="#">
                                             <img class="lazyLoaded logo right"
@@ -331,15 +331,15 @@
                                     </div>
                                 </div>
                                 <div class="back from-bottom text-start">
-                                    <span class="font-two pt-3 text-muted">
+                                    <span class="font-three pt-3 text-muted">
                                         Posted on 9/13/2023</span>
                                     <br />
-                                    <p class="pt-3 pb-2 m-0 font-two">
-                                        HIGH PRESSURE SCREW COMPRESSORS PACKAGE: Single stage up
+                                    <p class="pt-3 pb-2 m-0 font-three">
+                                        Single stage up
                                         to 20 Bar
                                     </p>
                                     <p class="subtitles"></p>
-                                    <p class="font-two pt-2 pb-3 text-justify">
+                                    <p class="font-three pt-2 pb-3 text-justify">
                                         The LASER series compression units are designed for
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
@@ -365,11 +365,11 @@
                         <div class="card border-0 card-news-trends">
                             <div class="content">
                                 <div class="front">
-                                    <img class="profile" width="100%"
+                                    <img class="im-fluid" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155792-18874820.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
-                                        <h2 class="text-center font-four">New Onair Laser Series</h2>
+                                        <h2 class="text-center font-four mb-0">New Onair Laser Series</h2>
                                         <!-- Brand Logo -->
                                         <a href="#">
                                             <img class="lazyLoaded logo right"
@@ -379,15 +379,15 @@
                                     </div>
                                 </div>
                                 <div class="back from-bottom text-start">
-                                    <span class="font-two pt-3 text-muted">
+                                    <span class="font-three pt-3 text-muted">
                                         Posted on 9/13/2023</span>
                                     <br />
-                                    <p class="pt-3 pb-2 m-0 font-two">
-                                        HIGH PRESSURE SCREW COMPRESSORS PACKAGE: Single stage up
+                                    <p class="pt-3 pb-2 m-0 font-three">
+                                        Single stage up
                                         to 20 Bar
                                     </p>
                                     <p class="subtitles"></p>
-                                    <p class="font-two pt-2 pb-3 text-justify">
+                                    <p class="font-three pt-2 pb-3 text-justify">
                                         The LASER series compression units are designed for
                                         intensive use, and are known for their high efficiency.
                                         Compact and quiet, they have been specifically designed
