@@ -19,7 +19,7 @@ class BlogController extends Controller
     public function index()
     {
         return view('admin.pages.blog.index', [
-            'blogs' => NewsTrend::byType('blog')->latest('id')->get(['title','author','added_by','type','id']),
+            'blogs' => NewsTrend::byType('blogs')->latest('id')->get(['title','author','added_by','type','id']),
         ]);
     }
 
