@@ -34,7 +34,7 @@
             max-width: 1450px;
         }
     </style>
-    <section class="ban_sec">
+    <section class="ban_sec section_one">
         <div class="container-fluid p-0">
             <div class="ban_img">
                 <img src="https://templates.thememodern.com/industris/images/subheader-about.jpg" alt="banner"
@@ -53,7 +53,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="section_two">
         <div class="container custom-spacer">
             <div class="row">
                 <div class="col-lg-6">
@@ -99,7 +99,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="section_three">
         <div class="container">
             <ul class="nav nav-tabs row g-2" id="myTab" role="tablist">
                 <li class="nav-item col-lg-3 p-3 ps-0" role="presentation">
@@ -298,7 +298,7 @@
         </div>
     </section>
 
-    <section class="ban_sec-action">
+    <section class="ban_sec-action section_four">
         <div class="container p-0">
             <div class="ban_img-action">
                 <img src="https://s3.amazonaws.com/thumbnails.venngage.com/template/942a9fe0-01ee-441a-97c0-b9c89b85e0a8.png"
@@ -309,7 +309,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="section_five">
         <div class="container custom-spacer">
             <div class="row align-items-center">
                 <div class="col-lg-6" style="border-right: 1px solid var(--secondary-color)">
@@ -375,7 +375,7 @@
         </div>
     </section>
 
-    <section>
+    <section class="section_six">
         <div class="container px-4 custom-spacer mt-5">
             <div class="row gx-5">
                 <div class="col-lg-3 ps-0">
@@ -414,7 +414,7 @@
         </div>
     </section>
     
-    <section>
+    <section class="section_seven">
         <div class="container p-0 custom-spacer pt-5">
             <h2 class="text-center">Our Partners</h2>
             <div class="customer-logos slider">
