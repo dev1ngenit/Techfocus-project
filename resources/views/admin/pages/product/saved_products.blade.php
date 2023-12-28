@@ -109,6 +109,7 @@
                                     <th width="10%">Added By</th>
                                     <th width="10%">Status</th>
                                     <th width="10%">Action</th>
+                                </tr>
                                     <!--end::Table row-->
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
