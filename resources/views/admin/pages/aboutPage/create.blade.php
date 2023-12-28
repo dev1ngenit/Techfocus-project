@@ -37,6 +37,14 @@
                                 <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab" href="#section-five"
                                     aria-selected="false" role="tab" tabindex="-1">Section Five</a>
                             </li>
+                            <li class="nav-item w-md-290px my-1" role="presentation">
+                                <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab" href="#section-six"
+                                    aria-selected="false" role="tab" tabindex="-1">Section Six</a>
+                            </li>
+                            <li class="nav-item w-md-290px my-1" role="presentation">
+                                <a class="nav-link p-5 rounded-0 tab-trigger" data-bs-toggle="tab" href="#section-seven"
+                                    aria-selected="false" role="tab" tabindex="-1">Section Seven</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-lg-10 px-4 p-2">
@@ -1008,11 +1016,11 @@
                                         </div>
                                         <div class="fv-row">
                                             <div class="row">
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-12">
                                                     <div class="fv-row mb-3">
                                                         <label class="form-label">Section Four Banner Middle
                                                             Image</label>
-                                                        <input type="text"
+                                                        <input type="file"
                                                             class="form-control form-control-solid form-control-sm @error('section_four_banner_middle_image') is-invalid @enderror"
                                                             name="section_four_banner_middle_image"
                                                             id="validationCustom01"
@@ -1021,116 +1029,6 @@
                                                         <div class="invalid-feedback d-block">{{ $message }}</div>
                                                         @enderror
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="fv-row mb-3">
-                                                        <label class="form-label">Section Four Col One Title</label>
-                                                        <input type="text"
-                                                            class="form-control form-control-solid form-control-sm @error('section_four_col_one_title') is-invalid @enderror"
-                                                            name="section_four_col_one_title" id="validationCustom01"
-                                                            placeholder="Enter Section Four Col One Title">
-                                                        @error('section_four_col_one_title')
-                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="fv-row mb-3">
-                                                        <label class="form-label">Section Four Ceo Sign</label>
-                                                        <input type="text"
-                                                            class="form-control form-control-solid form-control-sm @error('section_four_ceo_sign') is-invalid @enderror"
-                                                            name="section_four_ceo_sign" id="validationCustom01"
-                                                            placeholder="Enter Section Four Ceo Sign">
-                                                        @error('section_four_ceo_sign')
-                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="fv-row mb-3">
-                                                        <label class="form-label">Section Four Ceo Name</label>
-                                                        <input type="text"
-                                                            class="form-control form-control-solid form-control-sm @error('section_four_ceo_name') is-invalid @enderror"
-                                                            name="section_four_ceo_name" id="validationCustom01"
-                                                            placeholder="Enter Section Four Ceo Name">
-                                                        @error('section_four_ceo_name')
-                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="fv-row mb-3">
-                                                        <label class="form-label">Section Four Ceo Designation</label>
-                                                        <input type="text"
-                                                            class="form-control form-control-solid form-control-sm @error('section_four_ceo_designation') is-invalid @enderror"
-                                                            name="section_four_ceo_designation" id="validationCustom01"
-                                                            placeholder="Enter Section Four Ceo Designation">
-                                                        @error('section_four_ceo_designation')
-                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="fv-row mb-3">
-                                                        <label class="form-label">Section Four Ceo Facebook Account
-                                                            Link</label>
-                                                        <input type="text"
-                                                            class="form-control form-control-solid form-control-sm @error('section_four_ceo_facebook_account_link') is-invalid @enderror"
-                                                            name="section_four_ceo_facebook_account_link"
-                                                            id="validationCustom01"
-                                                            placeholder="Enter Section Four Ceo Facebook Account Link">
-                                                        @error('section_four_ceo_facebook_account_link')
-                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="fv-row mb-3">
-                                                        <label class="form-label">Section Four Ceo Twitter Account
-                                                            Link</label>
-                                                        <input type="text"
-                                                            class="form-control form-control-solid form-control-sm @error('section_four_ceo_twitter_account_link') is-invalid @enderror"
-                                                            name="section_four_ceo_twitter_account_link"
-                                                            id="validationCustom01"
-                                                            placeholder="Enter Section Four Ceo Twitter Account Link">
-                                                        @error('section_four_ceo_twitter_account_link')
-                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3">
-                                                    <div class="fv-row mb-3">
-                                                        <label class="form-label">Section Four Ceo Whatsapp Account
-                                                            Link</label>
-                                                        <input type="text"
-                                                            class="form-control form-control-solid form-control-sm @error('section_four_ceo_whatsapp_account_link') is-invalid @enderror"
-                                                            name="section_four_ceo_whatsapp_account_link"
-                                                            id="validationCustom01"
-                                                            placeholder="Enter Section Four Ceo Whatsapp Account Link">
-                                                        @error('section_four_ceo_whatsapp_account_link')
-                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="fv-row mb-3">
-                                                        <label class="form-label">Section Four Col One Description</label>
-                                                        <textarea rows="1"
-                                                            name="section_four_col_one_description"
-                                                            class="form-control form-control-sm form-control-solid @error('section_four_col_one_description') is-invalid @enderror"
-                                                            placeholder="Enter Section four Tab four Detailed Description"></textarea>
-                                                        @error('section_four_col_one_description')
-                                                        <div class="invalid-feedback d-block">{{$message
-                                                            }}</div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row border p-4">
-                                                <p class="badge badge-info custom-badge"
-                                                    style="margin-top: -15px; width: 13%">First Column</span>
-                                                <div class="col-lg-12">
-
                                                 </div>
                                             </div>
                                             <div class="row mt-5 justify-content-end">
@@ -1165,11 +1063,460 @@
                                             </h2>
                                         </div>
                                         <div class="fv-row">
-                                            asdasdasdasd
+                                            <div class="row border p-4">
+                                                <p class="badge badge-info custom-badge"
+                                                    style="margin-top: -15px; width: 13%">Column One</span>
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Col One
+                                                                    Title</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    name="section_five_col_one_title"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Col One Title">
+                                                                @error('section_five_col_one_title')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo Sign</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-section_five_ceo_sign-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    name="section_five_ceo_sign" id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Sign">
+                                                                @error('section_five_ceo_sign')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo Name</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-section_five_ceo_name-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    name="section_five_ceo_name" id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Name">
+                                                                @error('section_five_ceo_name')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo
+                                                                    Designation</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    name="section_five_ceo_designation"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Designation">
+                                                                @error('section_five_ceo_designation')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo Facebook
+                                                                    Account Link</label>
+                                                                <input type="url"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_facebook_account_link') is-invalid @enderror"
+                                                                    name="section_five_ceo_facebook_account_link"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Facebook Account Link">
+                                                                @error('section_five_ceo_facebook_account_link')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo Twitter
+                                                                    Account Link</label>
+                                                                <input type="url"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_twitter_account_link') is-invalid @enderror"
+                                                                    name="section_five_ceo_twitter_account_link"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Twitter Account Link">
+                                                                @error('section_five_ceo_twitter_account_link')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo Whatsapp
+                                                                    Account Link</label>
+                                                                <input type="url"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_whatsapp_account_link') is-invalid @enderror"
+                                                                    name="section_five_ceo_whatsapp_account_link"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Whatsapp Account Link">
+                                                                @error('section_five_ceo_whatsapp_account_link')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Col One
+                                                                    Description</label>
+                                                                <textarea rows="1"
+                                                                    name="section_five_col_one_description"
+                                                                    class="form-control form-control-sm form-control-solid @error('section_five_col_one_description') is-invalid @enderror"
+                                                                    placeholder="Enter Section Five Col One Description"></textarea>
+                                                                @error('section_five_col_one_description')
+                                                                <div class="invalid-feedback d-block">{{$message
+                                                                    }}</div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row border p-4">
+                                                <p class="badge badge-info custom-badge"
+                                                    style="margin-top: -15px; width: 13%">Column Two</span>
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Col Two
+                                                                    Title</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_col_two_title') is-invalid @enderror"
+                                                                    name="section_five_col_two_title"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Col One Title">
+                                                                @error('section_five_col_two_title')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Col Two List
+                                                                    1</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_col_two_list_1') is-invalid @enderror"
+                                                                    name="section_five_col_two_list_1"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Col One Title">
+                                                                @error('section_five_col_two_list_1')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Col Two List
+                                                                    2</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_col_two_list_2') is-invalid @enderror"
+                                                                    name="section_five_col_two_list_2"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Col One Title">
+                                                                @error('section_five_col_two_list_2')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Col Two List
+                                                                    3</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_col_two_list_3') is-invalid @enderror"
+                                                                    name="section_five_col_two_list_3"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Col One Title">
+                                                                @error('section_five_col_two_list_3')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Col Two List
+                                                                    4</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_col_two_list_4') is-invalid @enderror"
+                                                                    name="section_five_col_two_list_4"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Col One Title">
+                                                                @error('section_five_col_two_list_4')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Col Two
+                                                                    Content</label>
+                                                                <textarea rows="1" name="section_five_col_two_content"
+                                                                    class="form-control form-control-sm form-control-solid 
+                                                                    @error('section_five_col_two_content') is-invalid @enderror"
+                                                                    placeholder="Enter Section Five Col Two Content"></textarea>
+                                                                @error('section_five_col_two_content')
+                                                                <div class="invalid-feedback d-block">{{$message
+                                                                    }}</div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="row mt-2 justify-content-end">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
                                                         data-bs-target="#section-four" aria-selected="false" role="tab"
+                                                        tabindex="-1">
+                                                        Previous
+                                                        <span class="svg-icon svg-icon-4 ms-1 me-0">
+                                                            <i class="fa-solid fa-arrow-right"></i>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-lg btn-info rounded-0 tab-trigger-next"
+                                                        data-bs-toggle="tab" data-bs-target="#section-six"
+                                                        aria-selected="false" role="tab" tabindex="-1">
+                                                        Continue
+                                                        <span class="svg-icon svg-icon-4 ms-1 me-0">
+                                                            <i class="fa-solid fa-arrow-right"></i>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="section-six" role="tabpanel">
+                                    <div class="w-100">
+                                        <div class="pb-10 pb-lg-10">
+                                            <h2
+                                                class="fw-bolder d-flex justify-content-center align-items-center text-dark">
+                                                Section Six
+                                            </h2>
+                                        </div>
+                                        <div class="fv-row">
+                                            <div class="row border p-4">
+                                                <p class="badge badge-info custom-badge"
+                                                    style="margin-top: -15px; width: 13%">Column One</span>
+                                                <div class="col-lg-12">
+                                                    <div class="row">
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Col One
+                                                                    Title</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    name="section_five_col_one_title"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Col One Title">
+                                                                @error('section_five_col_one_title')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo Sign</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-section_five_ceo_sign-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    name="section_five_ceo_sign" id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Sign">
+                                                                @error('section_five_ceo_sign')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo Name</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-section_five_ceo_name-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    name="section_five_ceo_name" id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Name">
+                                                                @error('section_five_ceo_name')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo
+                                                                    Designation</label>
+                                                                <input type="text"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    name="section_five_ceo_designation"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Designation">
+                                                                @error('section_five_ceo_designation')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo Facebook
+                                                                    Account Link</label>
+                                                                <input type="url"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_facebook_account_link') is-invalid @enderror"
+                                                                    name="section_five_ceo_facebook_account_link"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Facebook Account Link">
+                                                                @error('section_five_ceo_facebook_account_link')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo Twitter
+                                                                    Account Link</label>
+                                                                <input type="url"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_twitter_account_link') is-invalid @enderror"
+                                                                    name="section_five_ceo_twitter_account_link"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Twitter Account Link">
+                                                                @error('section_five_ceo_twitter_account_link')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Ceo Whatsapp
+                                                                    Account Link</label>
+                                                                <input type="url"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_whatsapp_account_link') is-invalid @enderror"
+                                                                    name="section_five_ceo_whatsapp_account_link"
+                                                                    id="validationCustom01"
+                                                                    placeholder="Enter Section Five Ceo Whatsapp Account Link">
+                                                                @error('section_five_ceo_whatsapp_account_link')
+                                                                <div class="invalid-feedback d-block">{{ $message }}
+                                                                </div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="fv-row mb-3">
+                                                                <label class="form-label">Section Five Col One
+                                                                    Description</label>
+                                                                <textarea rows="1"
+                                                                    name="section_five_col_one_description"
+                                                                    class="form-control form-control-sm form-control-solid @error('section_five_col_one_description') is-invalid @enderror"
+                                                                    placeholder="Enter Section Five Col One Description"></textarea>
+                                                                @error('section_five_col_one_description')
+                                                                <div class="invalid-feedback d-block">{{$message
+                                                                    }}</div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2 justify-content-end">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
+                                                        data-bs-target="#section-five" aria-selected="false" role="tab"
+                                                        tabindex="-1">
+                                                        Previous
+                                                        <span class="svg-icon svg-icon-4 ms-1 me-0">
+                                                            <i class="fa-solid fa-arrow-right"></i>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-lg btn-info rounded-0 tab-trigger-next"
+                                                        data-bs-toggle="tab" data-bs-target="#section-seven"
+                                                        aria-selected="false" role="tab" tabindex="-1">
+                                                        Continue
+                                                        <span class="svg-icon svg-icon-4 ms-1 me-0">
+                                                            <i class="fa-solid fa-arrow-right"></i>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="section-seven" role="tabpanel">
+                                    <div class="w-100">
+                                        <div class="pb-10 pb-lg-10">
+                                            <h2
+                                                class="fw-bolder d-flex justify-content-center align-items-center text-dark">
+                                                Section Six
+                                            </h2>
+                                        </div>
+                                        <div class="fv-row">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="fv-row mb-3">
+                                                        <label class="form-label required">Brand Name</label>
+                                                        <select class="form-select form-select-solid  form-select-sm
+                                                        @error('brand_id') is-invalid @enderror" name="brand_id"
+                                                            id="field2" multiple multiselect-search="true"
+                                                            multiselect-select-all="true" multiselect-max-items="3"
+                                                            onchange="console.log(this.selectedOptions)">
+                                                            <option>Abarth</option>
+                                                            <option>Alfa Romeo</option>
+                                                            <option>Aston Martin</option>
+                                                            <option>Audi</option>
+                                                            <option>Bentley</option>
+                                                            <option>BMW</option>
+                                                            <option>Bugatti</option>
+                                                            <option>Cadillac</option>
+                                                        </select>
+                                                        @error('brand_id')
+                                                        <div class="invalid-feedback d-block">{{$message
+                                                            }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="validationCustom04"
+                                                        class="form-label required">Status</label>
+                                                    <select
+                                                        class="form-select form-select-solid form-select-sm @error('status') is-invalid @enderror"
+                                                        name="status" data-control="select2"
+                                                        data-placeholder="Select an option" data-allow-clear="true"
+                                                        required>
+                                                        <option></option>
+                                                        <option value="1">Option 1</option>
+                                                        <option value="2">Option 2</option>
+                                                    </select>
+                                                    @error('status')
+                                                    <div class="invalid-feedback d-block">{{$message
+                                                        }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2 justify-content-end">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
+                                                        data-bs-target="#section-six" aria-selected="false" role="tab"
                                                         tabindex="-1">
                                                         Previous
                                                         <span class="svg-icon svg-icon-4 ms-1 me-0">
