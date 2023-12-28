@@ -1,5 +1,5 @@
 <style>
-    .sticky-header{
+    .sticky-header {
         position: -webkit-sticky;
         position: sticky;
         top: 0;
@@ -11,7 +11,8 @@
 <div class="swiper bannerSwiper product-banner">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img src="https://img.directindustry.com/images_di/bnr/16788/hd/55424v2.jpg" class="img-fluid" alt="" />
+            <img src="https://img.directindustry.com/images_di/bnr/16788/hd/55424v2.jpg" class="img-fluid"
+                alt="" />
         </div>
     </div>
     <div class="swiper-pagination"></div>
@@ -41,17 +42,17 @@
             <div class="col-lg-9">
                 <ul class="d-flex justify-content-around pt-4 product-tabbing-menu">
                     <li>
-                        <a href="{{ route('brand.overview',$brand->slug) }}"
+                        <a href="{{ route('brand.overview', $brand->slug) }}"
                             class="{{ Route::current()->getName() == 'brand.overview' ? 'product-tabbing-menu-active' : '' }}">Company</a>
                     </li>
-                    <li><a href="{{ route('brand.products',$brand->slug) }}"
+                    <li><a href="{{ route('brand.products', $brand->slug) }}"
                             class="{{ Route::current()->getName() == 'brand.products' ? 'product-tabbing-menu-active' : '' }}">Products</a>
                     </li>
                     <li>
-                        <a href="{{ route('brand.pdf',$brand->slug) }}"
+                        <a href="{{ route('brand.pdf', $brand->slug) }}"
                             class="{{ Route::current()->getName() == 'brand.pdf' ? 'product-tabbing-menu-active' : '' }}">Catalogs</a>
                     </li>
-                    <li><a href="{{ route('brand.content',$brand->slug) }}"
+                    <li><a href="{{ route('brand.content', $brand->slug) }}"
                             class="{{ Route::current()->getName() == 'brand.content' ? 'product-tabbing-menu-active' : '' }}">News
                             & Trends</a></li>
                     {{-- <li><a href="{{ route('brand.') }}">Exhibitions</a></li> --}}
@@ -84,17 +85,34 @@
             handleScroll(header, container, sticky);
         };
 
+        // function handleScroll(header, container, sticky) {
+        //     if (window.pageYOffset > sticky) {
+        //         header.classList.add("sticky-header");
+        //         container.classList.remove("container");
+        //         mainHeader.classList.remove("fixed-top");
+        //         container.classList.add("container-fluid");
+        //     } else {
+        //         mainHeader.classList.add("fixed-top");
+        //         header.classList.remove("sticky-header");
+        //         container.classList.remove("container-fluid");
+        //         container.classList.add("container");
+        //     }
+        // }
+        const threshold = 50; // Adjust the threshold value as needed
+
         function handleScroll(header, container, sticky) {
-            if (window.pageYOffset > sticky) {
+            if (window.pageYOffset > threshold) {
+                // Scrolled past the threshold, add sticky styles
                 header.classList.add("sticky-header");
                 container.classList.remove("container");
                 mainHeader.classList.remove("fixed-top");
                 container.classList.add("container-fluid");
             } else {
-                mainHeader.classList.add("fixed-top");
-                header.classList.remove("sticky-header");
-                container.classList.remove("container-fluid");
-                container.classList.add("container");
+                // Not necessarily scrolled past the threshold, but user has started scrolling
+                header.classList.add("sticky-header");
+                container.classList.remove("container");
+                mainHeader.classList.remove("fixed-top");
+                container.classList.add("container-fluid");
             }
         }
     });
