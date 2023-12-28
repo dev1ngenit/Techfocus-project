@@ -64,7 +64,7 @@
                                     <div id="sourced_products_export_menu"
                                         class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
                                         data-kt-menu="true">
-                                        
+
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
                                             <a href="#" class="menu-link px-3" data-kt-export="excel">
@@ -108,7 +108,7 @@
                                     <th width="10%">Status</th>
                                     <th width="10%">Action</th>
                                 </tr>
-                                    <!--end::Table row-->
+                                <!--end::Table row-->
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
                                 @if ($products)
@@ -119,13 +119,14 @@
                                                 <img class="img-fluid rounded-circle" width="35px"
                                                     src="{{ $product->thumbnail }}" alt="{{ $product->name }}">
                                                 {{-- <img class="img-fluid rounded-circle" width="35px" --}}
-                                                    {{-- src="{{ !empty($product->thumbnail) && file_exists(public_path($product->thumbnail)) ?  $product->thumbnail : asset('backend/images/no-image-available.png') }}" alt="{{ $product->name }}"> --}}
+                                                {{-- src="{{ !empty($product->thumbnail) && file_exists(public_path($product->thumbnail)) ?  $product->thumbnail : asset('backend/images/no-image-available.png') }}" alt="{{ $product->name }}"> --}}
                                             </td>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->added_by }}</td>
                                             <td>
                                                 @if ($product->price_status === 'rfq')
-                                                    <span class="text-black fw-bold">{{ ucfirst($product->price_status) }}</span>
+                                                    <span
+                                                        class="text-black fw-bold">{{ ucfirst($product->price_status) }}</span>
                                                 @else
                                                     {{ ucfirst($product->price_status) }}
                                                 @endif
@@ -140,32 +141,36 @@
                                                     {{ ucfirst($product->action_status) }}
                                                 @endif
                                             </td>
-                                            <td class="d-flex justify-content-between align-items-center">
-                                                @if (count($product->productSas) > 0) 
-                                                    <a href="{{ route('admin.product-sas.edit', [$product->slug]) }}" title="SAS Edit" class="btn btn-success me-3">
-                                                        <i class="fa-solid fa-file-circle-plus"></i>
+                                            <td>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    @if ($product->productSas)
+                                                        <a href="{{ route('admin.product-sas.edit', [$product->slug]) }}"
+                                                            title="SAS Edit" class="btn btn-primary me-3">
+                                                            <i class="fa-solid fa-file-circle-plus"></i>
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ route('admin.product-sas.show', [$product->slug]) }}"
+                                                            title="SAS Create" class="btn btn-success me-3">
+                                                            <i class="fa-solid fa-file-circle-plus"></i>
+                                                        </a>
+                                                    @endif
+                                                    <a href="{{ route('admin.product.edit', $product->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                        <i class="fa-solid fa-expand"></i>
+                                                        <!--View-->
                                                     </a>
-                                                @else 
-                                                <a href="{{ route('admin.product-sas.show', [$product->slug]) }}" title="SAS Create" class="btn btn-success me-3">
-                                                    <i class="fa-solid fa-file-circle-plus"></i>
-                                                </a>
-                                                @endif
-                                                <a href="{{ route('admin.product.edit', $product->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                    <i class="fa-solid fa-expand"></i>
-                                                    <!--View-->
-                                                </a>
-                                                <a href="{{ route('admin.product.edit', $product->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                    <!--View-->
-                                                </a>
-                                                <a href="{{ route('admin.category.destroy', $product->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                    data-kt-docs-table-filter="delete_row">
-                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                    <!--Delete-->
-                                                </a>
+                                                    <a href="{{ route('admin.product.edit', $product->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                        <!--View-->
+                                                    </a>
+                                                    <a href="{{ route('admin.category.destroy', $product->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                        data-kt-docs-table-filter="delete_row">
+                                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                        <!--Delete-->
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -193,7 +198,7 @@
             var table;
             var datatable;
 
-            
+
             // Hook export buttons
             var exportButtons = () => {
                 const documentTitle = 'Sourced Products ( Pending For Approval )';
