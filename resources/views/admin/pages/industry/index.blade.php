@@ -39,51 +39,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
-                                    <!--begin::Export dropdown-->
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0 p-3"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                        Export Report
-                                    </button>
+
                                     <a href="{{ route('admin.industry.create') }}"
                                         class="btn btn-sm btn-light-success rounded-0 p-3">
                                         Add New
                                     </a>
-                                    <!--begin::Menu-->
-                                    <div id="kt_datatable_example_1_export_menu"
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                                Copy to clipboard
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                                Export as Excel
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                                Export as CSV
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                                Export as PDF
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-                                    <!--end::Export dropdown-->
+
                                 </div>
                             </div>
                         </div>
@@ -110,27 +71,29 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <img class="img-fluid rounded-circle" width="35px"
-                                                    src="{{ !empty($industry->image) ? asset('storage/' . $industry->image) : asset('storage/main/no-image-available.png') }}"
+                                                    src="{{ !empty($industry->image) ? asset('storage/industry/image/' . $industry->image) : asset('storage/main/no-image-available.png') }}"
                                                     alt="{{ $industry->slug }} image">
                                             </td>
                                             <td>
                                                 <img class="img-fluid rounded-circle" width="35px"
-                                                    src="{{ !empty($industry->logo) ? asset('storage/' . $industry->logo) : asset('storage/main/no-image-available.png') }}"
+                                                    src="{{ !empty($industry->logo) ? asset('storage/industry/logo/' . $industry->logo) : asset('storage/main/no-image-available.png') }}"
                                                     alt="{{ $industry->slug }} Logo">
                                             </td>
                                             <td>{{ $industry->parentName() ?? 'No Parent' }}
                                             <td>{{ $industry->name }}
                                             </td>
-                                            <td class="d-flex justify-content-between align-items-center">
-                                                <a href="{{ route('admin.industry.edit', $industry->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                </a>
-                                                <a href="{{ route('admin.industry.destroy', $industry->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                    data-kt-docs-table-filter="delete_row">
-                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                </a>
+                                            <td>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a href="{{ route('admin.industry.edit', $industry->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                    </a>
+                                                    <a href="{{ route('admin.industry.destroy', $industry->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                        data-kt-docs-table-filter="delete_row">
+                                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
