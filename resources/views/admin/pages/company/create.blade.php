@@ -1,12 +1,12 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-sm px-0">
                 <div class="card card-flush">
                     <div class="card-header align-items-center gap-2 gap-md-5 shadow-lg bg-light-primary px-0"
                         style="min-height: 45px;">
-                        <div class="container px-0">
+                        <div class="container-fluid px-4">
                             <div class="row align-items-center">
                                 <div class="col-lg-6 col-sm-12 text-lg-start text-sm-center">
                                     <div class="card-title ps-3">
@@ -25,11 +25,11 @@
                         <form id="myForm" action="{{ route('admin.company.store') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
-                            <div class="container px-0">
+                            <div class="container-fluid px-2">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12">
                                         <div class="row">
-                                            <div class="col-md-3 mb-1">
+                                            <div class="col-lg-3 mb-1">
                                                 <label for="name" class="form-label mb-0">Name</label>
                                                 <input type="text"
                                                     class="form-control form-control-solid form-control-sm @error('name') is-invalid @enderror"
@@ -40,14 +40,13 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04"
                                                     class="form-label required mb-0">Industry</label>
                                                 <select
-                                                    class="form-select form-select-solid form-select-sm @error('industry') is-invalid @enderror"
-                                                    name="industry[]" data-control="select2" multiple="multiple"
-                                                    data-placeholder="Select an option" data-allow-clear="true">
-                                                    <option></option>
+                                                    class="form-select form-select-solid form-select-sm @error('industry') is-invalid @enderror""
+                                                    name="industry[]" id="field2" multiple multiselect-search="true"
+                                                    multiselect-select-all="true" multiselect-max-items="2">
                                                     @foreach (getIndustry() as $industry)
                                                         <option value="{{ $industry->id }}">
                                                             {{ $industry->name }}</option>
@@ -57,14 +56,13 @@
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04" class="form-label required mb-0">Country
                                                     Name</label>
                                                 <select
-                                                    class="form-select form-select-solid form-select-sm @error('country') is-invalid @enderror"
-                                                    name="country[]" data-control="select2" multiple="multiple"
-                                                    data-placeholder="Select an option" data-allow-clear="true">
-                                                    <option></option>
+                                                    class="form-select form-select-solid form-select-sm @error('country') is-invalid @enderror""
+                                                    name="country[]" id="field2" multiple multiselect-search="true"
+                                                    multiselect-select-all="true" multiselect-max-items="2">
                                                     @foreach (getAllCountry() as $country)
                                                         <option value="{{ $country->id }}">
                                                             {{ $country->name }}</option>
@@ -75,14 +73,13 @@
                                                 @enderror
 
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04"
                                                     class="form-label required mb-0">Location</label>
                                                 <select
-                                                    class="form-select form-select-solid form-select-sm @error('location') is-invalid @enderror"
-                                                    name="location[]" data-control="select2" multiple="multiple"
-                                                    data-placeholder="Select an option" data-allow-clear="true">
-                                                    <option></option>
+                                                    class="form-select form-select-solid form-select-sm @error('location') is-invalid @enderror""
+                                                    name="location[]" id="field2" multiple multiselect-search="true"
+                                                    multiselect-select-all="true" multiselect-max-items="2">
                                                     @foreach (getAddress() as $address)
                                                         <option value="{{ $address->id }}">
                                                             {{ $address->name }}</option>
@@ -93,7 +90,7 @@
                                                 @enderror
 
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04"
                                                     class="form-label required mb-0">Phone</label>
                                                 <input type="text"
@@ -104,7 +101,7 @@
                                                 @enderror
 
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04"
                                                     class="form-label required mb-0">Email</label>
                                                 <input type="email"
@@ -116,7 +113,7 @@
                                                 @enderror
 
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04" class="form-label required mb-0">Website
                                                     Url</label>
                                                 <input type="text"
@@ -128,7 +125,7 @@
                                                 @enderror
 
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom01" class="form-label required mb-0">Logo
                                                 </label>
                                                 <input type="file"
@@ -140,7 +137,7 @@
 
                                             </div>
 
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04" class="form-label required mb-0">Postal
                                                     Code</label>
                                                 <input type="text"
@@ -151,7 +148,7 @@
                                                 @enderror
 
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04" class="form-label required mb-0">Contact
                                                     Name</label>
                                                 <input type="text"
@@ -163,7 +160,7 @@
                                                 @enderror
 
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04" class="form-label required mb-0">Contact
                                                     Email</label>
                                                 <input type="text"
@@ -175,7 +172,7 @@
                                                 @enderror
 
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04" class="form-label required mb-0">Contact
                                                     Phone</label>
                                                 <input type="text"
@@ -187,7 +184,7 @@
                                                 @enderror
 
                                             </div>
-                                            <div class="col-md-3 mb-2">
+                                            <div class="col-lg-3 mb-2">
                                                 <label for="validationCustom04"
                                                     class="form-label required mb-0">Headquarter Country
                                                     Name</label>
@@ -206,52 +203,52 @@
                                                 @enderror
 
                                             </div>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="validationCustom04"
-                                                class="form-label required mb-0">Founder</label>
-                                            <input type="text"
-                                                class="form-control form-control-solid form-control-sm @error('founder') is-invalid @enderror"
-                                                name="founder" id="validationCustom01" placeholder="E.g: Founder">
-                                            @error('founder')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
+                                            <div class="col-lg-3 mb-2">
+                                                <label for="validationCustom04"
+                                                    class="form-label required mb-0">Founder</label>
+                                                <input type="text"
+                                                    class="form-control form-control-solid form-control-sm @error('founder') is-invalid @enderror"
+                                                    name="founder" id="validationCustom01" placeholder="E.g: Founder">
+                                                @error('founder')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-3 mb-2">
+                                                <label for="validationCustom04"
+                                                    class="form-label required mb-0">CEO</label>
+                                                <input type="text"
+                                                    class="form-control form-control-solid form-control-sm @error('ceo') is-invalid @enderror"
+                                                    name="ceo" id="validationCustom01" placeholder="E.g: CEO">
+                                                @error('ceo')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+
+                                            </div>
+                                            <div class="col-lg-3 mb-2">
+                                                <label for="validationCustom04" class="form-label required mb-0">Year
+                                                    Founded</label>
+                                                <input type="number"
+                                                    class="form-control form-control-solid form-control-sm @error('year_founded') is-invalid @enderror"
+                                                    name="year_founded" min="1000" max="9999"
+                                                    id="validationCustom01" placeholder="E.g: 1920">
+                                                @error('year_founded')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+
+                                            </div>
+                                            <div class="col-lg-6 mb-2">
+                                                <label for="validationCustom04"
+                                                    class="form-label required mb-0">Headquarter</label>
+                                                <textarea rows="1" name="headquarter"
+                                                    class="form-control form-control-sm form-control-solid @error('headquarter') is-invalid @enderror"></textarea>
+                                                @error('headquarter')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+
+                                            </div>
 
                                         </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="validationCustom04" class="form-label required mb-0">CEO</label>
-                                            <input type="text"
-                                                class="form-control form-control-solid form-control-sm @error('ceo') is-invalid @enderror"
-                                                name="ceo" id="validationCustom01" placeholder="E.g: CEO">
-                                            @error('ceo')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="validationCustom04" class="form-label required mb-0">Year
-                                                Founded</label>
-                                            <input type="number"
-                                                class="form-control form-control-solid form-control-sm @error('year_founded') is-invalid @enderror"
-                                                name="year_founded" min="1000" max="9999"
-                                                id="validationCustom01" placeholder="E.g: 1920">
-                                            @error('year_founded')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-
-                                        </div>
-                                        <div class="col-md-12 mb-2">
-                                            <label for="validationCustom04"
-                                                class="form-label required mb-0">Headquarter</label>
-                                            <textarea rows="1" name="headquarter"
-                                                class="form-control form-control-sm form-control-solid @error('headquarter') is-invalid @enderror"></textarea>
-                                            @error('headquarter')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-
-                                        </div>
-
-                                        <div class="col-md-12 mb-2">
+                                        <div class="col-lg-12 mb-2">
                                             <label for="validationCustom04"
                                                 class="form-label required mb-0">Mission</label>
                                             <textarea name="mission" class="tox-target kt_docs_tinymce_plugins @error('mission') is-invalid @enderror">{{ old('mission') }}</textarea>
@@ -260,7 +257,7 @@
                                             @enderror
 
                                         </div>
-                                        <div class="col-md-12 mb-2">
+                                        <div class="col-lg-12 mb-2">
                                             <label for="validationCustom04"
                                                 class="form-label required mb-0">Vision</label>
                                             <textarea name="vision" class="tox-target kt_docs_tinymce_plugins @error('vision') is-invalid @enderror">{{ old('vision') }}</textarea>
@@ -269,7 +266,7 @@
                                             @enderror
 
                                         </div>
-                                        <div class="col-md-12 mb-2">
+                                        <div class="col-lg-12 mb-2">
                                             <label for="validationCustom04"
                                                 class="form-label required mb-0">History</label>
                                             <textarea name="history" class="tox-target kt_docs_tinymce_plugins @error('history') is-invalid @enderror">{{ old('history') }}</textarea>
@@ -278,7 +275,7 @@
                                             @enderror
 
                                         </div>
-                                        <div class="col-md-12 mb-2">
+                                        <div class="col-lg-12 mb-2">
                                             <label for="about" class="form-label required mb-0">About</label>
                                             <textarea id="about" name="about"
                                                 class="tox-target kt_docs_tinymce_plugins @error('about') is-invalid @enderror">{{ old('about') }} </textarea>

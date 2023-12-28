@@ -17,7 +17,7 @@ class BankingController extends Controller
         $this->companyRepository = $companyRepository;
     }
 
-    /**
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

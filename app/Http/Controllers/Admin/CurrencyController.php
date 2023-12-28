@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Admin\Currency;
 use Illuminate\Http\Request;
+use App\Models\Admin\Currency;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\CurrencyRequest;
 
 class CurrencyController extends Controller
 {
@@ -15,20 +16,9 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-        $data =[
+        return view('admin.pages.currency.index', [
             'currencys' => Currency::get(),
-        ];
-        return view('admin.pages.currency.index',$data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        ]);
     }
 
     /**
@@ -37,31 +27,22 @@ class CurrencyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CurrencyRequest $request)
     {
-        //
-    }
+        Currency::create([
+            'country_id'              => $request->country_id,
+            'system_default_currency' => $request->system_default_currency ?? false,
+            'name'                    => $request->name,
+            'currency'                => $request->currency,
+            'code'                    => $request->code,
+            'symbol'                  => $request->symbol,
+            'thousand_separator'      => $request->thousand_separator,
+            'decimal_separator'       => $request->decimal_separator,
+            'no_of_decimals'          => $request->no_of_decimals,
+            'exchange_rate'           => $request->exchange_rate,
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
 
     /**
@@ -71,9 +52,24 @@ class CurrencyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CurrencyRequest $request, $id)
     {
-        //
+        $currency = Currency::find($id);
+
+        $currency->update([
+            'country_id'              => $request->country_id,
+            'system_default_currency' => $request->system_default_currency ?? false,
+            'name'                    => $request->name,
+            'currency'                => $request->currency,
+            'code'                    => $request->code,
+            'symbol'                  => $request->symbol,
+            'thousand_separator'      => $request->thousand_separator,
+            'decimal_separator'       => $request->decimal_separator,
+            'no_of_decimals'          => $request->no_of_decimals,
+            'exchange_rate'           => $request->exchange_rate,
+        ]);
+
+        return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
 
     /**
@@ -84,6 +80,6 @@ class CurrencyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Currency::find($id)->delete();
     }
 }

@@ -2,7 +2,7 @@
 @section('metadata')
 @endsection
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
         <div class="row breadcrumb-banner-area p-5"
             style="background-image: url(https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/03/globalisation-3390877_1920-2.jpg);position: relative;">
             <div class="banner-overlay-image"></div>
@@ -55,8 +55,8 @@
         </div>
     </div>
     <div class="container">
-        <div class="row my-5">
-            <div class="col-lg-4">
+        <div class="row mt-4">
+            <div class="col-lg-3">
                 <div class="card rounded-0 border-0 shadow-none">
                     <div class="card-body">
                         <div class="justify-content-center flex-column text-center">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="card rounded-0 border-0 shadow-none">
                     <div class="card-body">
                         <div class="justify-content-center flex-column text-center">
@@ -90,7 +90,24 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
+                <div class="card rounded-0 border-0 shadow-none">
+                    <div class="card-body">
+                        <div class="justify-content-center flex-column text-center">
+                            <div class="d-flex justify-content-center my-3">
+                                <img src="https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/03/pictogrammes-valide.png"
+                                    width="80px" alt="" />
+                            </div>
+                            <h5 class="fw-bold">CONTACT US</h5>
+                            <p>
+                                Our experts will contact you within 48 hours to offer you
+                                advice on the best marketing and sales strategy for growth.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
                 <div class="card rounded-0 border-0 shadow-none">
                     <div class="card-body">
                         <div class="justify-content-center flex-column text-center">
@@ -110,7 +127,7 @@
         </div>
     </div>
     <div class="container">
-        <div class="row my-5 p-5 bg-white">
+        <div class="row mt-4 p-5 bg-white">
             <div class="col-lg-12">
                 <p class="text-center fw-bold titles">
                     Join the ranks of industry leaders doing business on our 6
@@ -155,7 +172,7 @@
         </div>
         <div class="row justify-content-center mb-5">
             <div class="col-lg-3 text-center">
-                <div class="mb-5">
+                <div class="bg-white p-5 mb-2" style="height: 180px;">
                     <div class="wp-block-coblocks-icon text-center is-style-outlined">
                         <div class="service-cards main-color has-text-color has-color-virtualexpo-color"
                             style="height: 40px; width: 40px">
@@ -168,7 +185,7 @@
                     </div>
                     <p class="font-four">Your products and keywords in 9 languages</p>
                 </div>
-                <div class="mb-5">
+                <div class="bg-white p-5 mb-2" style="height: 180px;">
                     <div class="wp-block-coblocks-icon text-center is-style-outlined">
                         <div class="service-cards main-color has-text-color has-color-virtualexpo-color"
                             style="height: 40px; width: 40px">
@@ -194,7 +211,7 @@
                         Multiple product photos, a video and weblink
                     </p>
                 </div>
-                <div class="mb-5">
+                <div class="bg-white p-5 mb-2" style="height: 180px;">
                     <div class="wp-block-coblocks-icon text-center is-style-outlined">
                         <div class="service-cards main-color has-text-color has-color-virtualexpo-color"
                             style="height: 40px; width: 40px">
@@ -221,7 +238,7 @@
                     alt="" />
             </div>
             <div class="col-lg-3 text-center">
-                <div class="mb-5">
+                <div class="bg-white p-5 mb-2" style="height: 180px;">
                     <div class="wp-block-coblocks-icon text-center is-style-outlined">
                         <div class="service-cards main-color has-text-color has-color-virtualexpo-color"
                             style="height: 40px; width: 40px">
@@ -241,7 +258,7 @@
                         view your price options
                     </p>
                 </div>
-                <div class="mb-5">
+                <div class="bg-white p-5 mb-2" style="height: 180px;">
                     <div class="wp-block-coblocks-icon text-center is-style-outlined">
                         <div class="service-cards main-color has-text-color has-color-virtualexpo-color"
                             style="height: 40px; width: 40px">
@@ -257,7 +274,7 @@
                         their budget
                     </p>
                 </div>
-                <div class="mb-5">
+                <div class="bg-white p-5 mb-2" style="height: 180px;">
                     <div class="wp-block-coblocks-icon text-center is-style-outlined">
                         <div class="service-cards main-color has-text-color has-color-virtualexpo-color"
                             style="height: 40px; width: 40px">
@@ -275,155 +292,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row gx-3">
-            <div class="col-lg-6">
-                <!-- Card Info -->
-                <div class="text-center mb-5 service-card">
-                    <div class="d-flex justify-content-center pb-3">
-                        <img class="shadow-lg rounded-circle"
-                            src="https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/03/carte.png"
-                            alt="" />
-                    </div>
-                    <h5 class="fw-bold pb-3">A reliable international group</h5>
-                    <p>
-                        VirtualExpo Group has been connecting manufacturers and buyers
-                        around the world for over twenty years: our main goal is to help
-                        businesses carry out their projects.
-                    </p>
-                    <div class="container p-4">
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item rounded-3 border-0 shadow mb-2">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button border-bottom collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                        aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Learn More
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <p>your content goes here.....</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <!-- Card Info -->
-                <div class="text-center mb-5 service-card">
-                    <div class="d-flex justify-content-center pb-3">
-                        <img class="shadow-lg rounded-circle"
-                            src="https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/03/portable.png"
-                            alt="" />
-                    </div>
-                    <h5 class="fw-bold pb-3">Get global exposure!</h5>
-                    <p>
-                        By translating all content in 9 languages, indexing technical
-                        keywords and displaying detailed specifications, buyers from
-                        around the world can easily find and compare the right products.
-                    </p>
-                    <div class="container p-4">
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item rounded-3 border-0 shadow mb-2">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button border-bottom collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                        aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Learn More
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <p>your content goes here.....</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row gx-3">
-            <div class="col-lg-6">
-                <!-- Card Info -->
-                <div class="text-center service-card">
-                    <div class="d-flex justify-content-center pb-3">
-                        <img class="shadow-lg rounded-circle"
-                            src="https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/03/serrer-la-main.png"
-                            alt="" />
-                    </div>
-                    <h5 class="fw-bold pb-3">
-                        Marketplaces designed with simplicity in mind
-                    </h5>
-                    <p>
-                        VirtualExpo Group has been connecting manufacturers and buyers
-                        around the world for over twenty years: our main goal is to help
-                        businesses carry out their projects.
-                    </p>
-                    <div class="container p-4">
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item rounded-3 border-0 shadow mb-2">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button border-bottom collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne1"
-                                        aria-expanded="false" aria-controls="flush-collapseOne1">
-                                        Learn More
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne1" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <p>your content goes here.....</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <!-- Card Info -->
-                <div class="text-center service-card">
-                    <div class="d-flex justify-content-center pb-3">
-                        <img class="shadow-lg rounded-circle"
-                            src="https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/03/statistiques.png"
-                            alt="" />
-                    </div>
-                    <h5 class="fw-bold pb-3">A genuine business booster</h5>
-                    <p>
-                        By translating all content in 9 languages, indexing technical
-                        keywords and displaying detailed specifications, buyers from
-                        around the world can easily find and compare the right products.
-                    </p>
-                    <div class="container p-4">
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
-                            <div class="accordion-item rounded-3 border-0 shadow mb-2">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button border-bottom collapsed fw-semibold" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                        aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Learn More
-                                    </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                    data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                        <p>your content goes here.....</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div id="projectFacts" class="sectionClass">
                 <div class="fullWidth eight columns">
@@ -649,145 +518,7 @@
             </div>
         </div>
     </div>
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="main-color titles text-center">TESTIMONIALS</h2>
-                <h6 class="text-center pt-3">WHAT DO OUR CUSTOMERS THINK OF US?</h6>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-sm-12">
-                    <div class="swiper testimonialSwiper mb-5 mt-5">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide bg-white">
-                                <div class="card border-0 rounded-0 bg-white">
-                                    <div class="card-header bg-white p-3">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="https://img.directindustry.com/images_di/logo-pp/L16025.gif"
-                                                alt="" height="50px" />
-                                        </div>
-                                    </div>
-                                    <div class="card-body mt-3">
-                                        <p class="text-justify font-three">
-                                            Using the MedicalExpo marketplace, I managed to reach
-                                            up to 30 countries (in Europe and America) in 12
-                                            months, in spite of the pandemic. MedicalExpo is the
-                                            best way to save time, effort and costs, and to find
-                                            the right clients internationally.
-                                        </p>
-                                        <div class="pt-3">
-                                            <p class="text-center fw-bold">ALEXEY BARANOV</p>
-                                            <p class="text-center font-two">Export Director</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide bg-white">
-                                <div class="card border-0 rounded-0 bg-white">
-                                    <div class="card-header bg-white p-3">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/03/Dicson.png"
-                                                alt="" height="50px" />
-                                        </div>
-                                    </div>
-                                    <div class="card-body mt-3">
-                                        <p class="text-justify font-three">
-                                            Using the MedicalExpo marketplace, I managed to reach
-                                            up to 30 countries (in Europe and America) in 12
-                                            months, in spite of the pandemic. MedicalExpo is the
-                                            best way to save time, effort and costs, and to find
-                                            the right clients internationally.
-                                        </p>
-                                        <div class="pt-3">
-                                            <p class="text-center fw-bold">ALEXEY BARANOV</p>
-                                            <p class="text-center font-two">Export Director</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide bg-white">
-                                <div class="card border-0 rounded-0 bg-white">
-                                    <div class="card-header bg-white p-3">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="https://img.directindustry.com/images_di/logo-pp/L16025.gif"
-                                                alt="" height="50px" />
-                                        </div>
-                                    </div>
-                                    <div class="card-body mt-3">
-                                        <p class="text-justify font-three">
-                                            Using the MedicalExpo marketplace, I managed to reach
-                                            up to 30 countries (in Europe and America) in 12
-                                            months, in spite of the pandemic. MedicalExpo is the
-                                            best way to save time, effort and costs, and to find
-                                            the right clients internationally.
-                                        </p>
-                                        <div class="pt-3">
-                                            <p class="text-center fw-bold">ALEXEY BARANOV</p>
-                                            <p class="text-center font-two">Export Director</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide bg-white">
-                                <div class="card border-0 rounded-0 bg-white">
-                                    <div class="card-header bg-white p-3">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="https://img.directindustry.com/images_di/logo-pp/L16025.gif"
-                                                alt="" height="50px" />
-                                        </div>
-                                    </div>
-                                    <div class="card-body mt-3">
-                                        <p class="text-justify font-three">
-                                            Using the MedicalExpo marketplace, I managed to reach
-                                            up to 30 countries (in Europe and America) in 12
-                                            months, in spite of the pandemic. MedicalExpo is the
-                                            best way to save time, effort and costs, and to find
-                                            the right clients internationally.
-                                        </p>
-                                        <div class="pt-3">
-                                            <p class="text-center fw-bold">ALEXEY BARANOV</p>
-                                            <p class="text-center font-two">Export Director</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide bg-white">
-                                <div class="card border-0 rounded-0 bg-white">
-                                    <div class="card-header bg-white p-3">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="https://img.directindustry.com/images_di/logo-pp/L16025.gif"
-                                                alt="" class="img-fluid" />
-                                        </div>
-                                    </div>
-                                    <div class="card-body mt-3">
-                                        <p class="text-justify font-three">
-                                            Using the MedicalExpo marketplace, I managed to reach
-                                            up to 30 countries (in Europe and America) in 12
-                                            months, in spite of the pandemic. MedicalExpo is the
-                                            best way to save time, effort and costs, and to find
-                                            the right clients internationally.
-                                        </p>
-                                        <div class="pt-3">
-                                            <p class="text-center fw-bold">ALEXEY BARANOV</p>
-                                            <p class="text-center font-two">Export Director</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-button-next shadow-lg">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </div>
-                        <div class="swiper-button-prev shadow-lg">
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row breadcrumb-banner-area p-5"
             style="
         background-image: url(https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/02/hero-contact.jpg);
@@ -895,7 +626,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row bg-white p-4 shadow-sm">
             <div class="col-lg-6 col-sm-12">
                 <form>
                     <div class="row g-3">
@@ -941,7 +672,7 @@
                 </form>
             </div>
             <div class="col-lg-6 col-sm-12">
-                <div>
+                <div class="d-flex justify-content-center"> 
                     <img src="https://business.virtual-expo.com/wp-content/uploads/sites/4/2022/03/contact-us.png"
                         alt="" />
                 </div>

@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-lg">
                 <div class="card card-p-0 card-flush">
@@ -107,6 +107,7 @@
                                     <th width="10%">Price Status</th>
                                     <th width="10%">Status</th>
                                     <th width="10%">Action</th>
+                                </tr>
                                     <!--end::Table row-->
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
@@ -115,10 +116,10 @@
                                         <tr class="odd">
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
-                                                {{-- <img class="img-fluid rounded-circle" width="35px"
-                                                    src="{{ $product->thumbnail }}" alt="{{ $product->name }}"> --}}
                                                 <img class="img-fluid rounded-circle" width="35px"
-                                                    src="{{ !empty($product->thumbnail) && file_exists(public_path($product->thumbnail)) ?  $product->thumbnail : asset('backend/images/no-image-available.png') }}" alt="{{ $product->name }}">
+                                                    src="{{ $product->thumbnail }}" alt="{{ $product->name }}">
+                                                {{-- <img class="img-fluid rounded-circle" width="35px" --}}
+                                                    {{-- src="{{ !empty($product->thumbnail) && file_exists(public_path($product->thumbnail)) ?  $product->thumbnail : asset('backend/images/no-image-available.png') }}" alt="{{ $product->name }}"> --}}
                                             </td>
                                             <td>{{ $product->name }}</td>
                                             <td>{{ $product->added_by }}</td>

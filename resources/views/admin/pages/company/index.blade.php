@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-sm">
                 <div class="card card-p-0 card-flush">
@@ -38,51 +38,11 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
-                                    <!--begin::Export dropdown-->
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                        Export Report
-                                    </button>
+
                                     <a href="{{ route('admin.company.create') }}"
                                         class="btn btn-sm btn-light-success rounded-0" data-kt-menu-placement="bottom-end">
                                         Add New
                                     </a>
-                                    <!--begin::Menu-->
-                                    <div id="kt_datatable_example_1_export_menu"
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                        data-kt-menu="true">
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                                Copy to clipboard
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                                Export as Excel
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                                Export as CSV
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                                Export as PDF
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-                                    <!--end::Export dropdown-->
                                 </div>
                             </div>
                         </div>
@@ -98,8 +58,7 @@
                                     <th width="10%">Logo</th>
                                     <th width="80%">Name</th>
                                     <th class="text-center" width="10%">Action</th>
-                                    <!--end::Table row-->
-
+                                </tr>
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
                                 @if ($companies)

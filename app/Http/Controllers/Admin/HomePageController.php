@@ -15,7 +15,7 @@ class HomePageController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.homePage.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class HomePageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.homePage.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class HomePageController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pages.homePage.edit');
     }
 
     /**

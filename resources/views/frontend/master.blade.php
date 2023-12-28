@@ -4,7 +4,9 @@
 <head>
     @include('frontend.partials.head')
     <style>
-       
+       .offcanvas.compare-canvas{
+        max-height: 40vh !important;
+       }
     </style>
 </head>
 
@@ -29,7 +31,7 @@
     <!-- Footer End -->
     <!-- Go To Top Button -->
     <a id="goTop"></a>
-    {{-- <div id="modalOverlay">
+    <div id="modalOverlay">
         <div class="modalPopup">
             <div class="row headerBar align-items-center">
                 <div class="col-2"></div>
@@ -44,10 +46,12 @@
                 <h1 class="mb-3 modalh1">The Website is in Under Construction</h1>
                 <h6 class="mb-5">We are sorry for the temporary inconvenience. If you face any problem, contact our
                     support team.</h6>
+                <span class="skype-button bubble" data-color="#0078D4" data-contact-id="ngenit"></span>
+                <span class="skype-chat" data-color-message="#0078D4"></span>
                 <button class="buttonStyle" id="closeButton">Close</button>
             </div>
         </div>
-    </div> --}}
+    </div>
     {{-- Compare Product --}}
     <button class="btn btn-primary custom-sticky-button w-100 rounded-0" id="stickyButton" type="button"
         data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
@@ -57,7 +61,7 @@
         </div>
     </button>
 
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel"
+    <div class="offcanvas offcanvas-bottom compare-canvas" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel"
         style="background-color: var(--secondary-color);">
         <div class="offcanvas-header">
             <div class="text-center">
@@ -92,8 +96,18 @@
     </div>
     {{-- Compare Product End --}}
 
+<<<<<<< HEAD
+    <span class="skype-button bubble" data-color="#0078D4" data-contact-id="ngenit"></span>
+    <span class="skype-chat" data-color-message="#0078D4"></span>
+
+    
+=======
+
+
+>>>>>>> d3c5bb0bf6ccb013fd86c9c79864aac54517bd43
     <!-- *********************************Script Start***********************************-->
     @include('frontend.partials.script')
+    <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.compare-card').slick({
