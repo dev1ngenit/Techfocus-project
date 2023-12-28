@@ -5,10 +5,9 @@
             <div class="col-lg-12 card rounded-0 shadow-sm">
                 <div class="card card-p-0 card-flush">
                     <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                        <div class="container px-0">
+                        <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-4 col-sm-12 text-lg-start text-sm-center">
-                                    <!--begin::Search-->
                                     <div class="d-flex align-items-center position-relative my-1">
                                         <span
                                             class="svg-icon svg-icon-2 svg-icon-gray-700 position-absolute top-50 translate-middle-y ms-4">
@@ -27,22 +26,22 @@
                                             class="form-control form-control-sm form-control-solid w-150px ps-14 rounded-0"
                                             placeholder="Search" style="border: 1px solid #eee;" />
                                     </div>
-                                    <!--end::Search-->
-                                    <!--begin::Export buttons-->
                                     <div id="kt_datatable_example_1_export" class="d-none"></div>
-                                    <!--end::Export buttons-->
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
                                     <div class="card-title table_title">
-                                        <h2 class="text-center">Companies</h2>
+                                        <h2 class="text-center">Client RFQs</h2>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
-
-                                    <a href="{{ route('admin.company.create') }}"
-                                        class="btn btn-sm btn-light-success rounded-0" data-kt-menu-placement="bottom-end">
-                                        Add New
+                                    <a href="{{ route('admin.deal.index') }}" type="button"
+                                        class="btn btn-sm btn-success rounded-0">
+                                        Deals
                                     </a>
+                                    {{-- <a href="{{ route('admin.brand-page.create') }}" type="button"
+                                        class="btn btn-sm btn-light-success rounded-0">
+                                        Add New
+                                    </a> --}}
                                 </div>
                             </div>
                         </div>
@@ -52,39 +51,39 @@
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
                             id="kt_datatable_example">
                             <thead class="table_header_bg">
-                                <!--begin::Table row-->
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
-                                    <th width="5%">Sl</th>
-                                    <th width="10%">Logo</th>
-                                    <th width="80%">Name</th>
-                                    <th class="text-center" width="10%">Action</th>
+                                    <th width="10%">RFQ Code</th>
+                                    <th width="12%">Created At</th>
+                                    <th width="18%">Client Name</th>
+                                    <th width="20%">Client Email</th>
+                                    <th width="5%">Details</th>
+                                    <th width="8%">Status</th>
+                                    <th width="15%" class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
-                                @if ($companies)
-                                    @foreach ($companies as $company)
+                                @if (count($rfqs) > 0)
+                                    @foreach ($rfqs as $key => $rfq)
                                         <tr class="odd">
                                             <td>
                                                 {{ $loop->iteration }}
                                             </td>
+                                            <td>{{ ucfirst($rfq->rfq_code) }}</td>
+                                            <td>{{ ucfirst($rfq->create_date) }}</td>
+                                            <td>{{ ucfirst($rfq->name) }}</td>
+                                            <td>{{ ucfirst($rfq->email) }}</td>
                                             <td>
-                                                <img class="img-fluid rounded-circle" width="35px"
-                                                    src="{{ !empty($company->logo) ? asset('storage/' . $company->logo) : asset('storage/main/no-image-available.png') }}"
-                                                    alt="{{ $company->slug }} Logo">
-                                            </td>
-                                            <td>{{ $company->name }}</td>
-                                            <td class="d-flex justify-content-between align-items-center">
-                                                <a href="{{ route('admin.company.edit', $company->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                    <!--Edit-->
-                                                </a>
-                                                <a href="{{ route('admin.company.destroy', $company->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                    data-kt-docs-table-filter="delete_row">
-                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                    <!--Delete-->
-                                                </a>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a href="{{ route('admin.brand-page.edit', $rfq->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                    </a>
+                                                    <a href="{{ route('admin.brand-page.destroy', $rfq->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                        data-kt-docs-table-filter="delete_row">
+                                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -96,4 +95,6 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
 @endsection

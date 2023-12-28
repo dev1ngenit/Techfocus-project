@@ -11,7 +11,7 @@ use App\Repositories\Interfaces\VatAndTaxRepositoryInterface;
 class VatAndTaxController extends Controller
 {
     private $vatAndTaxRepository, $companyRepository;
-
+ 
     public function __construct(VatAndTaxRepositoryInterface $vatAndTaxRepository, CompanyRepositoryInterface $companyRepository)
     {
         $this->vatAndTaxRepository = $vatAndTaxRepository;

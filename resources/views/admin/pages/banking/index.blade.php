@@ -1,11 +1,11 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-sm">
                 <div class="card card-p-0 card-flush">
                     <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                        <div class="container px-0">
+                        <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-4 col-sm-12 text-lg-start text-sm-center">
                                     <div class="d-flex align-items-center position-relative my-1">
@@ -34,40 +34,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                        Export Report
-                                    </button>
+
                                     <button type="button" class="btn btn-sm btn-light-success rounded-0"
                                         data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
                                         data-bs-target="#BankingsAddModal">
                                         Add New
                                     </button>
-                                    <div id="kt_datatable_example_1_export_menu"
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                        data-kt-menu="true">
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="copy">
-                                                Copy to clipboard
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                                Export as Excel
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                                Export as CSV
-                                            </a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                                Export as PDF
-                                            </a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +47,7 @@
                     <div class="card-body">
                         <table
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
-                            id="kt_datatable_example_1">
+                            id="kt_datatable_example">
                             <thead class="table_header_bg">
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th width="5%">Sl</th>
@@ -84,6 +56,7 @@
                                     <th width="20%">Order Id</th>
                                     <th width="10%">Country Name</th>
                                     <th class="text-center" width="10%">Action</th>
+                                </tr>
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
                                 @if ($bankings)
@@ -100,20 +73,22 @@
                                             <td> {{ $banking->invoice_number }}
                                             </td>
                                             <td>
-                                                {{ $banking->companyName() ?? '---' }}
+                                                {{ $banking->countryName() ?? '---' }}
                                             </td>
-                                            <td class="d-flex justify-content-between align-items-center">
-                                                <a href="#"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#BankingsmentEditModal_{{ $banking->id }}">
-                                                    <i class="fa-solid fa-pen"></i>
-                                                </a>
-                                                <a href="{{ route('admin.banking.destroy', $banking->id) }}"
-                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
-                                                    data-kt-docs-table-filter="delete_row">
-                                                    <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                </a>
+                                            <td>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <a href="#"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#BankingsmentEditModal_{{ $banking->id }}">
+                                                        <i class="fa-solid fa-pen"></i>
+                                                    </a>
+                                                    <a href="{{ route('admin.banking.destroy', $banking->id) }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
+                                                        data-kt-docs-table-filter="delete_row">
+                                                        <i class="fa-solid fa-trash-can-arrow-up"></i>
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -139,7 +114,7 @@
                 <form action="{{ route('admin.banking.store') }}" class="needs-validation" method="post" novalidate>
                     @csrf
                     <div class="modal-body">
-                        <div class="container px-0">
+                        <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-12 col-sm-12">
                                     <div class="row">
@@ -276,7 +251,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
                     <div class="modal-header p-2 rounded-0">
-                        <h5 class="modal-title">Edit Bankings</h5>
+                        <h5 class="modal-title">Edit Banking</h5>
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
                             <i class="fa-solid fa-circle-xmark"></i>
@@ -287,7 +262,7 @@
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
-                            <div class="container px-0">
+                            <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12">
                                         <div class="row">

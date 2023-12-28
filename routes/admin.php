@@ -54,6 +54,11 @@ use App\Http\Controllers\Admin\EmployeeDepartmentController;
 use App\Http\Controllers\Accounts\AccountsDocumentController;
 use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\PolicyAcknowledgmentController;
+use App\Http\Controllers\Content\BlogController;
+use App\Http\Controllers\Content\ClientStoryController;
+use App\Http\Controllers\Content\TechContentController;
+use App\Http\Controllers\Rfq\DealController;
+use App\Http\Controllers\Rfq\RfqController;
 
 /*
 |--------------------------------------------------------------------------
@@ -132,6 +137,15 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             Route::get('/dashboard', 'dashboard')->name('hr.dashboard');
         });
 
+        // RFQ
+        Route::controller(RfqController::class)->group(function () {
+            Route::get('/rfq/list', 'index')->name('rfq.index');
+        });
+        Route::controller(DealController::class)->group(function () {
+            Route::get('/deals/list', 'index')->name('deal.index');
+        });
+
+
         Route::resources(
             [
                 // 'product'          => ProductController::class,
@@ -181,6 +195,23 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             ],
             ['except' => ['create', 'show', 'edit'],]
         );
+        Route::resources(
+            [
+                'blog'         => BlogController::class,
+                'story'        => ClientStoryController::class,
+                'tech-content' => TechContentController::class,
+
+            ],
+            ['except' => ['store', 'update', 'show'],]
+        );
+        // Content
+
+
+
+
+
+
+
         Route::resource('contact', ContactController::class)->except(['create', 'show', 'edit'])
             ->middleware(['throttle:10,1', 'checkBan'], 'only', ['store']);
 
