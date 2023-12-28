@@ -793,7 +793,7 @@ figure img {
 .card-news-trends {
   border-radius: 0px;
   box-shadow: var(--custom-shadow);
-  height: 340px;
+  height: 350px;
   text-align: center;
   background-color: var(--white);
   cursor: pointer;
