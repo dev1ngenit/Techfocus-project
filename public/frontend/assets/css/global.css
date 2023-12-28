@@ -780,6 +780,7 @@ figure img {
 }
 .pagination {
   margin-bottom: 30px;
+  margin-top: 50px;
   padding: 8px 0;
   border-top: var(--primary-color) solid 1px;
   border-bottom: var(--primary-color) solid 1px;
@@ -787,10 +788,17 @@ figure img {
 .card-news-trends {
   border-radius: 0px;
   box-shadow: var(--custom-shadow);
-  height: 310px;
+  height: 230px;
   text-align: center;
   background-color: var(--white);
   cursor: pointer;
+}
+.inset-img{
+  display: flex;
+    align-items: center;
+    height: 190px;
+    justify-content: center;
+    padding: 40px
 }
 .card-news-trends .profile {
   transition: 0.2s;
