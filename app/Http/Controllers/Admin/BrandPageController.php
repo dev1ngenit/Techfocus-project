@@ -35,7 +35,7 @@ class BrandPageController extends Controller
     public function create()
     {
         return view('admin.pages.brandPage.create', [
-            'brands' => Brand::get(['id', 'name']),
+            'brands' => Brand::get(['id', 'title']),
         ]);
     }
 
@@ -235,7 +235,7 @@ class BrandPageController extends Controller
     public function edit($id)
     {
         return view('admin.pages.brandPage.edit', [
-            'brands' => Brand::get(['id', 'name']),
+            'brands' => Brand::get(['id', 'title']),
             'brandPage' => BrandPage::find($id),
         ]);
     }
