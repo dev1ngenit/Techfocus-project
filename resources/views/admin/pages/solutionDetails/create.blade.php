@@ -89,11 +89,11 @@
                                                                 multiselect-select-all="true" multiselect-max-items="3"
                                                                 onchange="console.log(this.selectedOptions)">
                                                                 @foreach ($brands as $brand)
-                                                                    <option value="{{ $brand->id }}">{{ $brand->name }}
+                                                                    <option value="{{ $brand->id }}">{{ $brand->title }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
-                                                            <div class="invalid-feedback"> Please Enter Product Name.</div>
+                                                            <div class="invalid-feedback"> Please Enter Brand Name.</div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">

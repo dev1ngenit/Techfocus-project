@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\Admin\Category;
 use App\Models\Admin\NewsTrend;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -182,7 +183,7 @@ class NewsTrendController extends Controller
         }
 
         if (!empty($thumbnailFile)) {
-            $globalFunThumbnail = customUpload($thumbnailFile, $filePath, 44, 44);
+            $globalFunThumbnail = customUpload($thumbnailFile, $filePath);
             $paths = [
                 storage_path("app/public/content/{$newsTrend->thumbnail_image}"),
                 storage_path("app/public/content/requestImg/{$newsTrend->thumbnail_image}")
@@ -196,7 +197,7 @@ class NewsTrendController extends Controller
             $globalFunThumbnail = ['status' => 0];
         }
         if (!empty($sourceFile)) {
-            $globalFunSource = customUpload($sourceFile, $filePath, 44, 44);
+            $globalFunSource = customUpload($sourceFile, $filePath);
             $paths = [
                 storage_path("app/public/content/{$newsTrend->source_image}"),
                 storage_path("app/public/content/requestImg/{$newsTrend->source_image}")

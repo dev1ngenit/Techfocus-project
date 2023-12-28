@@ -35,7 +35,7 @@ class SolutionDetailsController extends Controller
     {
         return view('admin.pages.solutionDetails.create', [
             'industries' => Industry::get(['id', 'name']),
-            'brands' => Brand::get(['id', 'name']),
+            'brands' => Brand::get(['id', 'title']),
         ]);
     }
 
@@ -278,7 +278,7 @@ class SolutionDetailsController extends Controller
         return view('admin.pages.solutionDetails.edit', [
             'solutionDetail' => SolutionDetail::with('rowOne', 'rowFour', 'solutionCardOne', 'solutionCardTwo', 'solutionCardThree', 'solutionCardFour', 'solutionCardFive', 'solutionCardSix', 'solutionCardSeven', 'solutionCardEight')->find($id),
             'industries' => Industry::get(['id', 'name']),
-            'brands' => Brand::get(['id', 'name']),
+            'brands' => Brand::get(['id', 'title']),
         ]);
     }
 

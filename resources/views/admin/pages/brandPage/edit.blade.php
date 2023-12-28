@@ -97,7 +97,7 @@
                                                                 @foreach ($brands as $brand)
                                                                     <option @selected($brand->id == $brandPage->brand_id)
                                                                         value="{{ $brand->id }}">
-                                                                        {{ $brand->name }}</option>
+                                                                        {{ $brand->title }}</option>
                                                                 @endforeach
                                                             </select>
                                                             @error('brand_id')
@@ -519,7 +519,7 @@
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
-                                                                            Des</label>
+                                                                            Description</label>
                                                                         <textarea name="solutionCardOneId_short_des" class="tox-target kt_docs_tinymce_plugins">
                                                                            {{ $brandPage->solutionCardOne->short_des }}
                                                                          </textarea>
@@ -572,8 +572,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solutionCardTwoId_short_des"
-                                                                            value="{{ $brandPage->solutionCardTwo->short_des }}"
+                                                                            name="solutionCardTwoId_button_name"
+                                                                            value="{{ $brandPage->solutionCardTwo->button_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                         <div class="invalid-feedback"> Please Enter Button
@@ -590,9 +590,9 @@
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
-                                                                        <textarea name="solutionCardTwoId_button_name" class="tox-target kt_docs_tinymce_plugins">
-                                                               {{ $brandPage->solutionCardTwo->button_name }}
-                                                                </textarea>
+                                                                        <textarea name="solutionCardTwoId_short_des" class="tox-target kt_docs_tinymce_plugins">
+                                                                        {{ $brandPage->solutionCardTwo->short_des }}
+                                                                        </textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -610,7 +610,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solutionCardTwoId_badge"
+                                                                            name="solutionCardThreeId_badge"
                                                                             value="{{ $brandPage->solutionCardThree->badge }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter a badge">
@@ -621,7 +621,7 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solutionCardTwoId_title"
+                                                                            name="solutionCardThreeId_title"
                                                                             value="{{ $brandPage->solutionCardThree->title }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Title">
@@ -642,8 +642,8 @@
                                                                         </label>
                                                                         <input type="text"
                                                                             class="form-control form-control-solid form-control-sm"
-                                                                            name="solutionCardTwoId_short_des"
-                                                                            value="{{ $brandPage->solutionCardThree->short_des }}"
+                                                                            name="solutionCardThreeId_button_name"
+                                                                            value="{{ $brandPage->solutionCardThree->button_name }}"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Button Name">
                                                                     </div>
@@ -651,15 +651,15 @@
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Link
                                                                         </label>
-                                                                        <textarea rows="1" name="solutionCardTwoId_link" class="form-control form-control-sm form-control-solid"
+                                                                        <textarea rows="1" name="solutionCardThreeId_link" class="form-control form-control-sm form-control-solid"
                                                                             placeholder="Enter Link">{{ $brandPage->solutionCardThree->link }}</textarea>
                                                                     </div>
                                                                     <div class="col-md-12 mb-2">
                                                                         <label for="validationCustom01"
                                                                             class="form-label required mb-0">Short
                                                                             Des</label>
-                                                                        <textarea name="solutionCardTwoId_button_name" class="tox-target kt_docs_tinymce_plugins">
-                                                                           {{ $brandPage->solutionCardThree->button_name }}
+                                                                        <textarea name="solutionCardThreeId_short_des" class="tox-target kt_docs_tinymce_plugins">
+                                                                           {{ $brandPage->solutionCardThree->short_des }}
                                                                         </textarea>
                                                                     </div>
                                                                 </div>

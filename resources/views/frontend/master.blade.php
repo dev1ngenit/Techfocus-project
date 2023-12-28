@@ -53,7 +53,7 @@
         </div>
     </div> --}}
     {{-- Compare Product --}}
-    <button class="btn btn-primary custom-sticky-button w-100 rounded-0" id="stickyButton" type="button"
+    {{-- <button class="btn btn-primary custom-sticky-button w-100 rounded-0" id="stickyButton" type="button"
         data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
         <div class="d-flex align-items-center justify-content-center">
             <p class="m-0 p-0 me-2">1/10 products to compare</p>
@@ -93,8 +93,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- Compare Product End --}}
+
+
+    
     <!-- *********************************Script Start***********************************-->
     @include('frontend.partials.script')
     <script src="https://swc.cdn.skype.com/sdk/v1/sdk.min.js"></script>

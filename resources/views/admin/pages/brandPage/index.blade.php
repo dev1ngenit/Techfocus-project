@@ -63,11 +63,11 @@
                                             </td>
                                             <td>
                                                 <img class="img-fluid" width="50px"
-                                                    src="{{ !empty($brandPage->brand_logo) && file_exists(public_path('storage/brand/logo/' . $brandPage->brand_logo)) ? asset('storage/brand/logo/' . $brandPage->brand_logo) : asset('backend/images/no-image-available.png') }}"
+                                                    src="{{ !empty($brandPage->brand_logo) && file_exists(public_path('storage/brand-page/logo/' . $brandPage->brand_logo)) ? asset('storage/brand-page/logo/' . $brandPage->brand_logo) : asset('backend/images/no-image-available.png') }}"
                                                     alt="{{ $brandPage->name }}">
                                             </td>
                                             <td>
-                                                {{ $brandPage->brandName }}
+                                                {{ $brandPage->brandName() }}
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-between align-items-center">

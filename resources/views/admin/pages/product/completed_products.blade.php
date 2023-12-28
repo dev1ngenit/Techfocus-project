@@ -1,11 +1,11 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-lg">
                 <div class="card card-p-0 card-flush">
                     <div class="card-header align-items-center pb-1 pt-3 gap-2 gap-md-5">
-                        <div class="container px-0">
+                        <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2 col-sm-12 text-lg-start text-sm-center">
                                     <!--begin::Search-->
@@ -93,7 +93,6 @@
                                         <!--end::Menu item-->
                                     </div>
                                     <!--end::Menu-->
-                                    <!--end::Export dropdown-->
                                 </div>
                             </div>
                         </div>
@@ -145,6 +144,15 @@
                                                 @endif
                                             </td>
                                             <td class="d-flex justify-content-between align-items-center">
+                                                @if (count($product->productSas) > 0) 
+                                                    <a href="{{ route('admin.product-sas.edit', [$product->slug]) }}" title="SAS Edit" class="btn btn-success me-3">
+                                                        <i class="fa-solid fa-file-circle-plus"></i>
+                                                    </a>
+                                                @else 
+                                                <a href="{{ route('admin.product-sas.show', [$product->slug]) }}" title="SAS Create" class="btn btn-success me-3">
+                                                    <i class="fa-solid fa-file-circle-plus"></i>
+                                                </a>
+                                                @endif
                                                 <a href="{{ route('admin.product.edit', $product->id) }}"
                                                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                     <i class="fa-solid fa-expand"></i>
