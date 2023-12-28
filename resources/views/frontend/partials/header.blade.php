@@ -1,5 +1,5 @@
 <!-- Top Bar Start -->
-<section class="fixed-top">
+<section class="fixed-top main_header">
     <div class="container-fluid d-sm-none d-md-block" style="background-color: var(--secondary-deep-color)">
         <div class="row text-white top-bar" style="background-color: var(--secondary-color)">
             <div class="empty-area" style="background-color: var(--secondary-deep-color);

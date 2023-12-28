@@ -20,32 +20,72 @@
         </div>
     </div>
 </div>
-<div class="container sticky-top">
-    <!-- Tabbing Section Start -->
-    <div class="row bg-white mb-4 p-3 align-items-center shadow-lg header" id="myHeader">
-        <div class="col-lg-3">
-            <img src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/' . $brand->logo)) ? asset('storage/brand/logo/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
-                class="img-fluid" />
+<section class="header d-lg-block d-sm-none" id="myHeader">
+    <div class="container brand-page-header-container ">
+        <!-- Tabbing Section Start -->
+        <div class="row bg-white mb-4 p-3 align-items-center shadow-lg header" id="myHeader">
+            <div class="col-lg-3">
+                <img src="{{ !empty($brand->logo) && file_exists(public_path('storage/brand/logo/' . $brand->logo)) ? asset('storage/brand/logo/' . $brand->logo) : asset('backend/images/no-image-available.png') }}"
+                    class="img-fluid" />
+            </div>
+            <div class="col-lg-9">
+                <ul class="d-flex justify-content-around pt-4 product-tabbing-menu">
+                    <li>
+                        <a href="{{ route('brand.overview',$brand->slug) }}"
+                            class="{{ Route::current()->getName() == 'brand.overview' ? 'product-tabbing-menu-active' : '' }}">Company</a>
+                    </li>
+                    <li><a href="{{ route('brand.products',$brand->slug) }}"
+                            class="{{ Route::current()->getName() == 'brand.products' ? 'product-tabbing-menu-active' : '' }}">Products</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('brand.pdf',$brand->slug) }}"
+                            class="{{ Route::current()->getName() == 'brand.pdf' ? 'product-tabbing-menu-active' : '' }}">Catalogs</a>
+                    </li>
+                    <li><a href="{{ route('brand.content',$brand->slug) }}"
+                            class="{{ Route::current()->getName() == 'brand.content' ? 'product-tabbing-menu-active' : '' }}">News
+                            & Trends</a></li>
+                    {{-- <li><a href="{{ route('brand.') }}">Exhibitions</a></li> --}}
+                </ul>
+            </div>
         </div>
-        <div class="col-lg-9">
-            <ul class="d-flex justify-content-around pt-4 product-tabbing-menu">
-                <li>
-                    <a href="{{ route('brand.overview',$brand->slug) }}"
-                        class="{{ Route::current()->getName() == 'brand.overview' ? 'product-tabbing-menu-active' : '' }}">Company</a>
-                </li>
-                <li><a href="{{ route('brand.products',$brand->slug) }}"
-                        class="{{ Route::current()->getName() == 'brand.products' ? 'product-tabbing-menu-active' : '' }}">Products</a>
-                </li>
-                <li>
-                    <a href="{{ route('brand.pdf',$brand->slug) }}"
-                        class="{{ Route::current()->getName() == 'brand.pdf' ? 'product-tabbing-menu-active' : '' }}">Catalogs</a>
-                </li>
-                <li><a href="{{ route('brand.content',$brand->slug) }}"
-                        class="{{ Route::current()->getName() == 'brand.content' ? 'product-tabbing-menu-active' : '' }}">News
-                        & Trends</a></li>
-                {{-- <li><a href="{{ route('brand.') }}">Exhibitions</a></li> --}}
-            </ul>
-        </div>
+        <!-- Tabbing Section End -->
     </div>
-    <!-- Tabbing Section End -->
-</div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var isMobile = window.innerWidth <= 768; // Adjust the threshold as needed
+
+        var header, container, sticky;
+
+        if (isMobile) {
+            header = document.getElementById("mobileHeader");
+            mainHeader = document.querySelector(".main_header");
+            container = document.querySelector(".mobile-brand-page-header-container");
+            sticky = header.offsetTop;
+        } else {
+            header = document.getElementById("myHeader");
+            mainHeader = document.querySelector(".main_header");
+            container = document.querySelector(".brand-page-header-container");
+            sticky = header.offsetTop;
+        }
+
+        window.onscroll = function() {
+            handleScroll(header, container, sticky);
+        };
+
+        function handleScroll(header, container, sticky) {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky-top");
+                container.classList.remove("container");
+                mainHeader.classList.remove("fixed-top");
+                container.classList.add("container-fluid");
+            } else {
+                mainHeader.classList.add("fixed-top");
+                header.classList.remove("sticky-top");
+                container.classList.remove("container-fluid");
+                container.classList.add("container");
+            }
+        }
+    });
+</script>
