@@ -67,7 +67,7 @@
                                                     alt="{{ $brandPage->name }}">
                                             </td>
                                             <td>
-                                                {{ $brandPage->brandName }}
+                                                {{ $brandPage->brandName() }}
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-between align-items-center">

@@ -46,8 +46,13 @@ class BrandPage extends Model
         return $this->belongsTo(SolutionCard::class, 'solution_card_three_id');
     }
 
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class, 'brand_id');
+    }
+
     public function brandName()
     {
-        return Brand::where('id', $this->brand_id)->value('title');
+        return $this->brand->title;
     }
 }
