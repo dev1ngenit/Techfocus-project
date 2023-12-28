@@ -58,8 +58,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div>
-                        <span class="main-color">OUR STORY</span>
-                        {{-- About Us Content Ready --}}
+                        <span class="main-color">{{ $aboutPage->section_two_badge ?? 'OUR STORY' }}</span>
                         <div class="mt-lg-2">
                             <h1 class="title fw-bold">Industris <span class="main-color">1994-2019</span></h1>
                             <h3 class="py-lg-3">Making Electric Power Safer, More Reliable, and More Economical</h3>
@@ -413,7 +412,7 @@
             </div>
         </div>
     </section>
-    
+
     <section class="section_seven">
         <div class="container p-0 custom-spacer pt-5">
             <h2 class="text-center">Our Partners</h2>

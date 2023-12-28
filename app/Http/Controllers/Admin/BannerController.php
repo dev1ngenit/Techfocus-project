@@ -37,7 +37,7 @@ class BannerController extends Controller
     public function create()
     {
         return view('admin.pages.banner.create', [
-            'brands'     => Brand::get(['id', 'name']),
+            'brands'     => Brand::get(['id', 'title']),
             'categories' => Category::get(['id', 'name']),
             'products'   => Product::get(['id', 'name']),
             'solutions'  => SolutionDetail::get(['id', 'name']),
@@ -140,7 +140,7 @@ class BannerController extends Controller
     {
         return view('admin.pages.banner.edit', [
             'banner'     => Banner::find($id),
-            'brands'     => Brand::get(['id', 'name']),
+            'brands'     => Brand::get(['id', 'title']),
             'categories' => Category::get(['id', 'name']),
             'products'   => Product::get(['id', 'name']),
             'solutions'  => SolutionDetail::get(['id', 'name']),
