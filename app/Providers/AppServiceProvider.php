@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 
-use Illuminate\Support\Facades\Schema;
-use App\Models\Admin\DynamicCss;
+use App\Models\HR\Task;
 use App\Models\Admin\Site;
+use App\Models\Admin\DynamicCss;
 use App\Repositories\FaqRepository;
 use App\Repositories\SeoRepository;
 use App\Repositories\SmtpRepository;
@@ -13,6 +13,7 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use App\Repositories\BrandRepository;
 use App\Repositories\EventRepository;
+use Illuminate\Support\Facades\Schema;
 use App\Repositories\AddressRepository;
 use App\Repositories\BankingRepository;
 use App\Repositories\CompanyRepository;
@@ -116,6 +117,11 @@ class AppServiceProvider extends ServiceProvider
             View::share('dynamic_css', DynamicCss::first());
         } else {
             View::share('dynamic_css', null);
+        }
+        if (Schema::hasTable('tasks')) {
+            View::share('agendas', Task::where('task_type' , 'agenda')->get());
+        } else {
+            View::share('agendas', null);
         }
         Paginator::useBootstrap();
     }

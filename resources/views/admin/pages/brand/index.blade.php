@@ -48,7 +48,6 @@
                                         data-bs-target="#brandAddModal">
                                         Add New
                                     </button>
-
                                     <!--end::Export dropdown-->
                                 </div>
                             </div>

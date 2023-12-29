@@ -6,6 +6,7 @@ use App\Models\Admin\Role;
 use App\Models\Admin\Permission;
 use Laravel\Sanctum\HasApiTokens;
 use Wildside\Userstamps\Userstamps;
+use App\Models\Admin\EmployeeCategory;
 use App\Traits\HasRolesAndPermissions;
 use App\Notifications\Admin\VerifyEmail;
 use Illuminate\Notifications\Notifiable;
@@ -113,7 +114,8 @@ class Admin extends Authenticatable implements MustVerifyEmail
         return $this->permissions()->where('name', $permission)->first() !== null;
     }
 
-    /**
-     * The permissions that belong to the admin.
-     */
+    public function getCategoryName()
+    {
+        return EmployeeCategory::where('id', $this->category_id)->value('name');
+    }
 }

@@ -1,4 +1,5 @@
 @extends('admin.master')
+
 @section('content')
     <div class="content d-flex flex-column flex-column-fluid mt-13" id="kt_content">
         <div class="toolbar" id="kt_toolbar">
@@ -6,10 +7,12 @@
                 <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
                     data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                     class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
-                    <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">Dashboard
-                        <span class="h-20px border-1 border-gray-200 border-start ms-3 mx-2 me-1"></span>
-                        {{-- <span class="text-muted fs-7 fw-bold mt-2">#XRS-45670</span> --}}
+                    <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">
+                        Dashboard
                     </h1>
+                </div>
+                <div class="d-flex align-items-center gap-2 gap-lg-3">
+
                 </div>
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
 
@@ -20,52 +23,503 @@
         </div>
         <div class="post d-flex flex-column-fluid" id="kt_post">
             <div id="kt_content_container" class="container-fluid">
-                <div class="row gy-5 g-xl-8">
-                    <div class="col-xl-3">
-                        <!--begin::Statistics Widget 1-->
-                        <div class="card bgi-no-repeat mb-xl-8"
-                            style="background-position: right top; background-size: 30% auto; background-image: url({{ asset('backend/assets/media/svg/shapes/abstract-4.svg') }}">
-                            <!--begin::Body-->
-                            <div class="card-body px-3">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div id="live-clock">
-                                        <span id="live-clock-hours">0</span> hours
-                                        <span id="live-clock-minutes">0</span> minutes
-                                        <span id="live-clock-seconds">0</span> seconds
+                <div class="row g-5 g-xl-10">
+                    <div class="col-xl-4 mb-xl-10">
+
+                        <div class="card card-flush h-xl-100">
+                            <div class="card-header rounded bgi-no-repeat bgi-size-cover bgi-position-y-top bgi-position-x-center align-items-start h-250px"
+                                style="background-image:url('{{ asset('backend/assets/media/svg/shapes/top-green.png') }}')"
+                                data-bs-theme="light">
+                                <h3 class="card-title align-items-start flex-column text-white pt-15">
+                                    <span class="fw-bold fs-2x mb-3">Hello, {{ Auth::guard('admin')->user()->name }}</span>
+
+                                    <div class="fs-4 text-white">
+                                        <span class="opacity-75">You have</span>
+
+                                        <span class="position-relative d-inline-block">
+                                            <a href="/metronic8/demo1/../demo1/pages/user-profile/projects.html"
+                                                class="link-white opacity-75-hover fw-bold d-block mb-1">4 tasks</a>
+
+                                            <span
+                                                class="position-absolute opacity-50 bottom-0 start-0 border-2 border-body border-bottom w-100"></span>
+                                        </span>
+
+                                        <span class="opacity-75">to complete</span>
+                                    </div>
+                                </h3>
+
+                                <div class="card-toolbar pt-5">
+                                    <button
+                                        class="btn btn-sm btn-icon btn-active-color-primary btn-color-white bg-white bg-opacity-25 bg-hover-opacity-100 bg-hover-white bg-active-opacity-25 w-20px h-20px"
+                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
+                                        data-kt-menu-overflow="true">
+                                        <i class="fa-solid fa-ellipsis fs-4"></i>
+                                    </button>
+
+
+                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px"
+                                        data-kt-menu="true">
+                                        <div class="menu-item px-3">
+                                            <div class="menu-content fs-6 text-gray-900 fw-bold px-3 py-4">Quick Actions
+                                            </div>
+                                        </div>
+                                        <div class="separator mb-3 opacity-75"></div>
+
+                                        <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3">
+                                                Leave Application
+                                            </a>
+                                        </div>
+
+                                        {{-- <div class="menu-item px-3">
+                                            <a href="#" class="menu-link px-3">
+                                                New Customer
+                                            </a>
+                                        </div> --}}
+
+                                        {{-- <div class="menu-item px-3" data-kt-menu-trigger="hover"
+                                            data-kt-menu-placement="right-start">
+                                            <a href="#" class="menu-link px-3">
+                                                <span class="menu-title">New Group</span>
+                                                <span class="menu-arrow"></span>
+                                            </a>
+
+                                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">
+                                                        Admin Group
+                                                    </a>
+                                                </div>
+
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">
+                                                        Staff Group
+                                                    </a>
+                                                </div>
+
+                                                <div class="menu-item px-3">
+                                                    <a href="#" class="menu-link px-3">
+                                                        Member Group
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div> --}}
+
+
+
+                                        {{-- <div class="separator mt-3 opacity-75"></div>
+
+                                        <div class="menu-item px-3">
+                                            <div class="menu-content px-3 py-3">
+                                                <a class="btn btn-primary  btn-sm px-4" href="#">
+                                                    Generate Reports
+                                                </a>
+                                            </div>
+                                        </div> --}}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-body mt-n20">
+                                <div class="mt-n20 position-relative">
+                                    <div class="row g-3 g-lg-6">
+                                        <div class="col-6">
+                                            <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
+                                                <div class="symbol symbol-30px me-5 mb-8">
+                                                    <span class="symbol-label">
+                                                        <i class="ki-duotone ki-flask fs-1 text-primary"><span
+                                                                class="path1"></span><span class="path2"></span></i>
+                                                    </span>
+                                                </div>
+
+                                                <div class="m-0">
+                                                    <span class="text-gray-700 fw-bolder d-block fs-4 lh-1 ls-n1 mb-1">
+                                                        <div id="live-clock">
+                                                            <span id="live-clock-hours">0</span> hours
+                                                            <span id="live-clock-minutes">0</span> minutes
+                                                            <span id="live-clock-seconds">0</span> seconds
+                                                        </div>
+                                                    </span>
+
+                                                    <span class="text-gray-500 fw-semibold fs-6">Your Office Time
+                                                        (Today)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
+                                                <div class="m-0 mb-3">
+                                                    <span
+                                                        class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ !empty($attendanceToday['check_in']) ? $attendanceToday['check_in'] : 'Absent' }}</span>
+
+                                                    <span class="text-gray-500 fw-semibold fs-6">Today's Entry </span>
+                                                </div>
+                                                <div class="m-0">
+                                                    <span
+                                                        class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">{{ !empty($attendanceToday['check_out']) ? $attendanceToday['check_out'] : 'Absent' }}</span>
+
+                                                    <span class="text-gray-500 fw-semibold fs-6">Today's Check-Out</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
+                                                <div class="symbol symbol-30px me-5 mb-8">
+                                                    <span class="symbol-label">
+                                                        <i class="ki-duotone ki-award fs-1 text-primary"><span
+                                                                class="path1"></span><span class="path2"></span><span
+                                                                class="path3"></span></i>
+                                                    </span>
+                                                </div>
+
+                                                <div class="m-0">
+                                                    <a href="#"
+                                                        class="card-title fw-bolder text-danger text-hover-primary fs-7"
+                                                        data-bs-toggle="modal" data-bs-target="#lateCount">
+                                                        <span
+                                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">
+                                                            {{ !empty(count($lateCounts)) ? count($lateCounts) : 0 }}
+                                                        </span>
+                                                        <span class="text-gray-500 fw-semibold fs-6">Late Count(This
+                                                            Month)</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
+                                                <div class="symbol symbol-30px me-5 mb-8">
+                                                    <div>
+                                                        <a href="#"
+                                                            class="card-title fw-bolder main_color text-hover-primary fs-7"
+                                                            data-bs-toggle="modal" data-bs-target="#thisMonth">
+                                                            <span class="text-start">This Month</span> <span
+                                                                class="ms-3"><i class="fas fa-arrow-right"></i></span>
+                                                        </a>
+                                                    </div>
+                                                    <a href="#"
+                                                        class="card-title fw-bolder main_color text-hover-primary fs-7"
+                                                        data-bs-toggle="modal" data-bs-target="#lastMonth">
+                                                        <span class="">Last Month</span> <span class="ms-3"><i
+                                                                class="fas fa-arrow-right"></i></span>
+                                                    </a>
+                                                    @include('admin.partials.attendance_modals')
+                                                </div>
+                                                <div class="m-0">
+                                                    <span
+                                                        class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1"></span>
+
+                                                    <span class="text-gray-500 fw-semibold fs-6">Attendance List</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-8 mb-5 mb-xl-10">
+                        <div class="row g-5 g-xl-10">
+                            <div class="col-xl-6 mb-xl-10">
+                                <div id="kt_sliders_widget_1_slider" class="card card-flush h-xl-100">
+                                    <div class="card-header pt-5 pb-5 align-items-center border-bottom">
+                                        <div>
+                                            <h4 class="card-title d-flex align-items-start flex-column">
+                                                <span class="card-label fw-bold text-gray-800">Today’s Agenda's</span>
+                                            </h4>
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-sm btn-icon btn-active-color-primary btn-color-white bg-white bg-opacity-25 bg-hover-opacity-100 bg-hover-white bg-active-opacity-25 w-20px h-20px"
+                                                data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
+                                                data-bs-target="#createAgenda">
+                                                <i class="fa-solid fa-circle-plus fs-2 text-success"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body pt-5 h-lg-550px">
+                                        @if (count($agendas) > 0) 
+                                            @foreach ($agendas as $agenda) 
+                                                <div class="d-flex align-items-center mb-8">
+                                                    <span class="bullet bullet-vertical h-40px bg-dark"></span>
+                                                    <div class="form-check form-check-custom form-check-solid mx-5">
+                                                        <input class="form-check-input bg-emerald-500" type="checkbox"
+                                                            value="">
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <a href="#"
+                                                            class="text-gray-800 text-hover-primary fw-bold fs-6">{{ $agenda->task_name }}</a>
+                                                        {{-- <span class="text-muted fw-semibold d-block">Due in 2 Days</span> --}}
+                                                    </div>
+                                                    <a href="#">
+                                                        <span class="badge badge-success fs-8 fw-bold rounded-0">Convert <br> to
+                                                            Task</span>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 mb-5 mb-xl-10">
+
+
+                                <div id="kt_sliders_widget_2_slider"
+                                    class="card card-flush carousel carousel-custom carousel-stretch slide h-xl-100"
+                                    data-bs-ride="carousel" data-bs-interval="5500">
+                                    <div class="card-header pt-5">
+                                        <h4 class="card-title d-flex align-items-start flex-column">
+                                            <span class="card-label fw-bold text-gray-800">Today’s Events</span>
+                                            <span class="text-gray-500 mt-1 fw-bold fs-7">24 events on all
+                                                activities</span>
+                                        </h4>
+
+                                        <div class="card-toolbar">
+                                            <ol
+                                                class="p-0 m-0 carousel-indicators carousel-indicators-bullet carousel-indicators-active-success">
+                                                <li data-bs-target="#kt_sliders_widget_2_slider" data-bs-slide-to="0"
+                                                    class="ms-1 active" aria-current="true"></li>
+                                                <li data-bs-target="#kt_sliders_widget_2_slider" data-bs-slide-to="1"
+                                                    class="ms-1"></li>
+                                                <li data-bs-target="#kt_sliders_widget_2_slider" data-bs-slide-to="2"
+                                                    class="ms-1"></li>
+
+                                            </ol>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body py-6">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item show active">
+                                                <div class="d-flex align-items-center mb-9">
+                                                    <div class="symbol symbol-70px symbol-circle me-5">
+                                                        <span class="symbol-label bg-light-success">
+                                                            <i class="ki-duotone ki-abstract-24 fs-3x text-success"><span
+                                                                    class="path1"></span><span class="path2"></span></i>
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="m-0">
+                                                        <h4 class="fw-bold text-gray-800 mb-3">Ruby on Rails</h4>
+
+                                                        <div class="d-flex d-grid gap-5">
+                                                            <div class="d-flex flex-column flex-shrink-0 me-4">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 5 Topics
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 1 Speakers
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="d-flex flex-column flex-shrink-0">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 60 Min
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 137 students
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="m-0">
+                                                    <a href="#" class="btn btn-sm btn-light me-2 mb-2">Details</a>
+
+                                                    <a href="#" class="btn btn-sm btn-success mb-2"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#kt_modal_create_campaign">Join Event</a>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="d-flex align-items-center mb-9">
+                                                    <div class="symbol symbol-70px symbol-circle me-5">
+                                                        <span class="symbol-label bg-light-danger">
+                                                            <i class="ki-duotone ki-abstract-25 fs-3x text-danger"><span
+                                                                    class="path1"></span><span class="path2"></span></i>
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="m-0">
+                                                        <h4 class="fw-bold text-gray-800 mb-3">Ruby on Rails</h4>
+
+                                                        <div class="d-flex d-grid gap-5">
+                                                            <div class="d-flex flex-column flex-shrink-0 me-4">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 12 Topics
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 1 Speakers
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="d-flex flex-column flex-shrink-0">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 50 Min
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 72 students
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="m-0">
+                                                    <a href="#" class="btn btn-sm btn-light me-2 mb-2">Details</a>
+
+                                                    <a href="#" class="btn btn-sm btn-success mb-2"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#kt_modal_create_campaign">Join Event</a>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="d-flex align-items-center mb-9">
+                                                    <div class="symbol symbol-70px symbol-circle me-5">
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <i class="ki-duotone ki-abstract-36 fs-3x text-primary"><span
+                                                                    class="path1"></span><span class="path2"></span></i>
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="m-0">
+                                                        <h4 class="fw-bold text-gray-800 mb-3">Ruby on Rails</h4>
+
+                                                        <div class="d-flex d-grid gap-5">
+                                                            <div class="d-flex flex-column flex-shrink-0 me-4">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 3 Topics
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 1 Speakers
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="d-flex flex-column flex-shrink-0">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 50 Min
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 72 students
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="m-0">
+                                                    <a href="#" class="btn btn-sm btn-light me-2 mb-2">Details</a>
+
+                                                    <a href="#" class="btn btn-sm btn-success mb-2"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#kt_modal_create_campaign">Join Event</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="row gy-5 g-xl-8">
+                    <div class="col-xl-5">
+                        <div class="card bgi-no-repeat mb-xl-8"
+                            style="background-position: right top; background-size: 30% auto; background-image: url({{ asset('backend/assets/media/svg/shapes/abstract-4.svg') }}">
+                            <div class="card-body">
+                                <div class="row">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3">
+                        <div class="card bgi-no-repeat mb-xl-8"
+                            style="background-position: right top; background-size: 30% auto; background-image: url({{ asset('backend/assets/media/svg/shapes/abstract-4.svg') }}">
+                            <div class="card-body px-3">
+                                <div class="d-flex align-items-center justify-content-center">
+
+                                </div>
                                 <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-6">
-                                    <span class="text-start w-xl-225px">Today's Entry :</span> <span
-                                        class="text-end ms-3">{{ !empty($attendanceToday['check_in']) ? $attendanceToday['check_in'] : 'Absent' }}</span>
+                                    <span class="text-start w-xl-225px"></span> <span class="text-end ms-3"></span>
                                 </a>
                                 <div class="my-2">
                                     <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-7">
-                                        <span class="text-start w-xl-225px">Today's Check-Out :</span> <span
-                                            class="text-end ms-3">{{ !empty($attendanceToday['check_out']) ? $attendanceToday['check_out'] : 'Absent' }}</span>
+                                        <span class="text-start w-xl-225px"></span> <span class="text-end ms-3"></span>
                                     </a>
                                 </div>
                                 <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-7"
                                     data-bs-toggle="modal" data-bs-target="#lateCount">
                                     <span class="text-start w-xl-225px">Late Count (This Month) :</span> <span
-                                        class="text-end ms-3">{{ !empty(count($lateCounts)) ? count($lateCounts) : 0 }}</span>
+                                        class="text-end ms-3"></span>
                                 </a>
                                 <div class="mt-2 d-flex justify-content-between align-items-center">
-                                    <a href="#" class="card-title fw-bolder main_color text-hover-primary fs-7"
-                                        data-bs-toggle="modal" data-bs-target="#thisMonth">
-                                        <span class="text-start">This Month</span> <span class="ms-3"><i
-                                                class="fas fa-arrow-right"></i></span>
-                                    </a>
-                                    <a href="#" class="card-title fw-bolder main_color text-hover-primary fs-7"
-                                        data-bs-toggle="modal" data-bs-target="#lastMonth">
-                                        <span class="">Last Month</span> <span class="ms-3"><i
-                                                class="fas fa-arrow-right"></i></span>
-                                    </a>
-                                    @include('admin.partials.attendance_modals')
+
                                 </div>
                             </div>
-                            <!--end::Body-->
                         </div>
-                        <!--end::Statistics Widget 1-->
                     </div>
                     <div class="col-xl-4">
                         <div class="card card-xl-stretch-50 mb-5 mb-xl-8">
@@ -990,7 +1444,8 @@
                                         <label class="form-check form-check-custom form-check-solid">
                                             <input class="form-check-input" type="checkbox" value=""
                                                 id="kt_calendar_datepicker_allday" />
-                                            <span class="form-check-label fw-bold" for="kt_calendar_datepicker_allday">All
+                                            <span class="form-check-label fw-bold"
+                                                for="kt_calendar_datepicker_allday">All
                                                 Day</span>
                                         </label>
                                     </div>
@@ -1037,7 +1492,8 @@
                                     <button type="button" id="kt_modal_add_event_submit" class="btn btn-primary">
                                         <span class="indicator-label">Submit</span>
                                         <span class="indicator-progress">Please wait...
-                                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                            <span
+                                                class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                     </button>
                                 </div>
                             </form>
@@ -1087,7 +1543,8 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none">
                                             <rect opacity="0.5" x="6" y="17.3137" width="16" height="2"
-                                                rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                                                rx="1" transform="rotate(-45 6 17.3137)"
+                                                fill="currentColor" />
                                             <rect x="7.41422" y="6" width="16" height="2" rx="1"
                                                 transform="rotate(45 7.41422 6)" fill="currentColor" />
                                         </svg>
@@ -1194,11 +1651,7 @@
                 setInterval(updateLiveClock, 1000);
             } else {
                 // Display "Absent Today" message when check_in is null
-                document.getElementById('live-clock-hours').innerText = 'Absent Today';
-                document.getElementById('live-clock-minutes').style.display =
-                'none'; // You can adjust this based on your UI design
-                document.getElementById('live-clock-seconds').style.display =
-                'none'; // You can adjust this based on your UI design
+                document.getElementById('live-clock').innerText = 'Absent Today';
             }
         </script>
     @endpush
