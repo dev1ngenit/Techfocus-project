@@ -70,7 +70,7 @@
                                                         <label class="form-label">Section Two Badge</label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm @error('section_two_badge') is-invalid @enderror"
-                                                            name="section_two_badge" id="validationCustom01"
+                                                            name="section_two_badge" maxlength="220" id="validationCustom01"
                                                             placeholder="Enter Section Two Badge">
                                                         @error('section_two_badge')
                                                         <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -82,7 +82,7 @@
                                                         <label class="form-label">Section Two Title One</label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm @error('section_two_title_1') is-invalid @enderror"
-                                                            name="section_two_title_1" id="validationCustom01"
+                                                            name="section_two_title_1" maxlength="220" id="validationCustom01"
                                                             placeholder="Enter Section Two Badge">
                                                         @error('section_two_title_1')
                                                         <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -94,7 +94,7 @@
                                                         <label class="form-label">Section Two Title Span</label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm @error('section_two_title_span') is-invalid @enderror"
-                                                            name="section_two_title_span" id="validationCustom01"
+                                                            name="section_two_title_span" maxlength="220" id="validationCustom01"
                                                             placeholder="Enter Section Two Title Span">
                                                         @error('section_two_title_span')
                                                         <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -106,7 +106,7 @@
                                                         <label class="form-label">Section Two Subtitle</label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm @error('section_two_subtitle') is-invalid @enderror"
-                                                            name="section_two_subtitle" id="validationCustom01"
+                                                            name="section_two_subtitle" maxlength="220" id="validationCustom01"
                                                             placeholder="Enter Section Two Title">
                                                         @error('section_two_subtitle')
                                                         <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -157,7 +157,7 @@
                                                             Title</label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm @error('section_two_secondary_image_title') is-invalid @enderror"
-                                                            name="section_two_secondary_image_title"
+                                                            name="section_two_secondary_image_title" maxlength="220"
                                                             id="validationCustom01"
                                                             placeholder="Enter Section Two Secondary Image Title">
                                                         @error('section_two_secondary_image_title')
@@ -170,7 +170,7 @@
                                                         <label class="form-label">Section Two Button Name</label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm @error('section_two_button_name') is-invalid @enderror"
-                                                            name="section_two_button_name" id="validationCustom01"
+                                                            name="section_two_button_name" maxlength="220" id="validationCustom01"
                                                             placeholder="Enter Section Two Button Name">
                                                         @error('section_two_button_name')
                                                         <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -236,10 +236,10 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab One
                                                                             Title</label>
-                                                                        <input type="url"
+                                                                        <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_one_title') is-invalid @enderror"
                                                                             name="section_three_tab_one_title"
-                                                                            id="validationCustom01"
+                                                                            id="validationCustom01" maxlength="220"
                                                                             placeholder="Enter Section Three Tab One Title">
                                                                         @error('section_three_tab_one_title')
                                                                         <div class="invalid-feedback d-block">{{
@@ -266,7 +266,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab One
                                                                             List Title</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_one_list_title') is-invalid @enderror"
                                                                             name="section_three_tab_one_list_title"
                                                                             id="validationCustom01"
@@ -281,7 +281,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab One
                                                                             List One</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_one_list_1') is-invalid @enderror"
                                                                             name="section_three_tab_one_list_1"
                                                                             id="validationCustom01"
@@ -296,7 +296,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab One
                                                                             List Two</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_one_list_2') is-invalid @enderror"
                                                                             name="section_three_tab_one_list_2"
                                                                             id="validationCustom01"
@@ -311,7 +311,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab One
                                                                             List Three</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_one_list_3') is-invalid @enderror"
                                                                             name="section_three_tab_one_list_3"
                                                                             id="validationCustom01"
@@ -326,7 +326,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab One
                                                                             List Four</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_one_list_4') is-invalid @enderror"
                                                                             name="section_three_tab_one_list_4"
                                                                             id="validationCustom01"
@@ -341,7 +341,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab One
                                                                             Quote</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_one_quote') is-invalid @enderror"
                                                                             name="section_three_tab_one_quote"
                                                                             maxlength="250" id="validationCustom01"
@@ -356,7 +356,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab One
                                                                             Quote Author</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_one_quote_author') is-invalid @enderror"
                                                                             name="section_three_tab_one_quote_author"
                                                                             id="validationCustom01"
@@ -371,7 +371,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab One
                                                                             Button Name</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_one_button_name') is-invalid @enderror"
                                                                             name="section_three_tab_one_button_name"
                                                                             id="validationCustom01"
@@ -425,7 +425,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab two
                                                                             Title</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_two_title') is-invalid @enderror"
                                                                             name="section_three_tab_two_title"
                                                                             id="validationCustom01"
@@ -455,7 +455,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab two
                                                                             List Title</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_two_list_title') is-invalid @enderror"
                                                                             name="section_three_tab_two_list_title"
                                                                             id="validationCustom01"
@@ -469,8 +469,8 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab two
-                                                                            List two</label>
-                                                                        <input type="url"
+                                                                            List One</label>
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_two_list_1') is-invalid @enderror"
                                                                             name="section_three_tab_two_list_1"
                                                                             id="validationCustom01"
@@ -485,7 +485,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab two
                                                                             List Two</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_two_list_2') is-invalid @enderror"
                                                                             name="section_three_tab_two_list_2"
                                                                             id="validationCustom01"
@@ -500,7 +500,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab two
                                                                             List Three</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_two_list_3') is-invalid @enderror"
                                                                             name="section_three_tab_two_list_3"
                                                                             id="validationCustom01"
@@ -515,7 +515,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab two
                                                                             List Four</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_two_list_4') is-invalid @enderror"
                                                                             name="section_three_tab_two_list_4"
                                                                             id="validationCustom01"
@@ -530,7 +530,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab two
                                                                             Quote</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_two_quote') is-invalid @enderror"
                                                                             name="section_three_tab_two_quote"
                                                                             maxlength="250" id="validationCustom01"
@@ -545,7 +545,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab two
                                                                             Quote Author</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_two_quote_author') is-invalid @enderror"
                                                                             name="section_three_tab_two_quote_author"
                                                                             id="validationCustom01"
@@ -560,7 +560,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab two
                                                                             Button Name</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_two_button_name') is-invalid @enderror"
                                                                             name="section_three_tab_two_button_name"
                                                                             id="validationCustom01"
@@ -612,10 +612,9 @@
                                                             <div class="row">
                                                                 <div class="col-lg-6">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section Three Tab
-                                                                            three
+                                                                        <label class="form-label">Section Three Tab Three
                                                                             Title</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_title') is-invalid @enderror"
                                                                             name="section_three_tab_three_title"
                                                                             id="validationCustom01"
@@ -629,8 +628,7 @@
                                                                 <div class="col-lg-6">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
-                                                                            Short
+                                                                            three Short
                                                                             Description</label>
                                                                         <textarea rows="1"
                                                                             name="section_three_tab_three_short_description"
@@ -647,7 +645,7 @@
                                                                         <label class="form-label">Section Three Tab
                                                                             Three
                                                                             List Title</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_list_title') is-invalid @enderror"
                                                                             name="section_three_tab_three_list_title"
                                                                             id="validationCustom01"
@@ -662,8 +660,8 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
                                                                             Three
-                                                                            List three</label>
-                                                                        <input type="url"
+                                                                            List One</label>
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_list_1') is-invalid @enderror"
                                                                             name="section_three_tab_three_list_1"
                                                                             id="validationCustom01"
@@ -678,8 +676,8 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
                                                                            Three
-                                                                            List three</label>
-                                                                        <input type="url"
+                                                                            List Two</label>
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_list_2') is-invalid @enderror"
                                                                             name="section_three_tab_three_list_2"
                                                                             id="validationCustom01"
@@ -695,10 +693,10 @@
                                                                         <label class="form-label">Section Three Tab
                                                                             Three
                                                                             List Three</label>
-                                                                        <input type="url"
+                                                                        <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_list_3') is-invalid @enderror"
                                                                             name="section_three_tab_three_list_3"
-                                                                            id="validationCustom01"
+                                                                            id="validationCustom01" maxlength="220"
                                                                             placeholder="Enter Section Three Tab three List Three">
                                                                         @error('section_three_tab_three_list_3')
                                                                         <div class="invalid-feedback d-block">{{
@@ -711,10 +709,10 @@
                                                                         <label class="form-label">Section Three Tab
                                                                             Three
                                                                             List Four</label>
-                                                                        <input type="url"
+                                                                        <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_list_4') is-invalid @enderror"
                                                                             name="section_three_tab_three_list_4"
-                                                                            id="validationCustom01"
+                                                                            id="validationCustom01" maxlength="220"
                                                                             placeholder="Enter Section Three Tab three List Four">
                                                                         @error('section_three_tab_three_list_4')
                                                                         <div class="invalid-feedback d-block">{{
@@ -727,10 +725,9 @@
                                                                         <label class="form-label">Section Three Tab
                                                                             Three
                                                                             Quote</label>
-                                                                        <input type="url"
+                                                                        <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_quote') is-invalid @enderror"
-                                                                            name="section_three_tab_three_quote"
-                                                                            maxlength="250" id="validationCustom01"
+                                                                            name="section_three_tab_three_quote" id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab three Quote">
                                                                         @error('section_three_tab_three_quote')
                                                                         <div class="invalid-feedback d-block">{{
@@ -743,10 +740,10 @@
                                                                         <label class="form-label">Section Three Tab
                                                                             Three
                                                                             Quote Author</label>
-                                                                        <input type="url"
+                                                                        <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_quote_author') is-invalid @enderror"
                                                                             name="section_three_tab_three_quote_author"
-                                                                            id="validationCustom01"
+                                                                            id="validationCustom01" maxlength="220"
                                                                             placeholder="Enter Section Three Tab three Quote Author">
                                                                         @error('section_three_tab_three_quote_author')
                                                                         <div class="invalid-feedback d-block">{{
@@ -759,10 +756,10 @@
                                                                         <label class="form-label">Section Three Tab
                                                                             Three
                                                                             Button Name</label>
-                                                                        <input type="url"
+                                                                        <input type="text"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_button_name') is-invalid @enderror"
                                                                             name="section_three_tab_three_button_name"
-                                                                            id="validationCustom01"
+                                                                            id="validationCustom01" maxlength="220"
                                                                             placeholder="Enter Section Three Tab three Button Name">
                                                                         @error('section_three_tab_three_button_name')
                                                                         <div class="invalid-feedback d-block">{{
@@ -815,7 +812,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab four
                                                                             Title</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_four_title') is-invalid @enderror"
                                                                             name="section_three_tab_four_title"
                                                                             id="validationCustom01"
@@ -845,7 +842,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab four
                                                                             List Title</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_four_list_title') is-invalid @enderror"
                                                                             name="section_three_tab_four_list_title"
                                                                             id="validationCustom01"
@@ -860,7 +857,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab four
                                                                             List One</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_four_list_1') is-invalid @enderror"
                                                                             name="section_three_tab_four_list_1"
                                                                             id="validationCustom01"
@@ -875,7 +872,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab four
                                                                             List Two</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_four_list_2') is-invalid @enderror"
                                                                             name="section_three_tab_four_list_2"
                                                                             id="validationCustom01"
@@ -890,7 +887,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab four
                                                                             List Three</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_four_list_3') is-invalid @enderror"
                                                                             name="section_three_tab_four_list_3"
                                                                             id="validationCustom01"
@@ -905,7 +902,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab four
                                                                             List Four</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_four_list_4') is-invalid @enderror"
                                                                             name="section_three_tab_four_list_4"
                                                                             id="validationCustom01"
@@ -920,10 +917,9 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab four
                                                                             Quote</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_four_quote') is-invalid @enderror"
-                                                                            name="section_three_tab_four_quote"
-                                                                            maxlength="250" id="validationCustom01"
+                                                                            name="section_three_tab_four_quote" id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab four Quote">
                                                                         @error('section_three_tab_four_quote')
                                                                         <div class="invalid-feedback d-block">{{
@@ -935,7 +931,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab four
                                                                             Quote Author</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_four_quote_author') is-invalid @enderror"
                                                                             name="section_three_tab_four_quote_author"
                                                                             id="validationCustom01"
@@ -950,7 +946,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab four
                                                                             Button Name</label>
-                                                                        <input type="url"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_four_button_name') is-invalid @enderror"
                                                                             name="section_three_tab_four_button_name"
                                                                             id="validationCustom01"
@@ -1084,7 +1080,7 @@
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Col One
                                                                     Title</label>
-                                                                <input type="text"
+                                                                <input type="text" maxlength="220"
                                                                     class="form-control form-control-solid form-control-sm @error('section_five_col_one_title') is-invalid @enderror"
                                                                     name="section_five_col_one_title"
                                                                     id="validationCustom01"
@@ -1098,7 +1094,7 @@
                                                         <div class="col-lg-3">
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Ceo Sign</label>
-                                                                <input type="text"
+                                                                <input type="file"
                                                                     class="form-control form-control-solid form-control-sm @error('section_five_ceo_sign') is-invalid @enderror"
                                                                     name="section_five_ceo_sign" id="validationCustom01"
                                                                     placeholder="Enter Section Five Ceo Sign">
@@ -1111,7 +1107,7 @@
                                                         <div class="col-lg-3">
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Ceo Name</label>
-                                                                <input type="text"
+                                                                <input type="text" maxlength="220"
                                                                     class="form-control form-control-solid form-control-sm @error('section_five_ceo_name') is-invalid @enderror"
                                                                     name="section_five_ceo_name" id="validationCustom01"
                                                                     placeholder="Enter Section Five Ceo Name">
@@ -1125,7 +1121,7 @@
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Ceo
                                                                     Designation</label>
-                                                                <input type="text"
+                                                                <input type="text" maxlength="220"
                                                                     class="form-control form-control-solid form-control-sm @error('section_five_ceo_designation') is-invalid @enderror"
                                                                     name="section_five_ceo_designation"
                                                                     id="validationCustom01"
@@ -1208,7 +1204,7 @@
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Col Two
                                                                     Title</label>
-                                                                <input type="text"
+                                                                <input type="text" maxlength="220"
                                                                     class="form-control form-control-solid form-control-sm @error('section_five_col_two_title') is-invalid @enderror"
                                                                     name="section_five_col_two_title"
                                                                     id="validationCustom01"
@@ -1223,7 +1219,7 @@
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Col Two List
                                                                     1</label>
-                                                                <input type="text"
+                                                                <input type="text" maxlength="220"
                                                                     class="form-control form-control-solid form-control-sm @error('section_five_col_two_list_1') is-invalid @enderror"
                                                                     name="section_five_col_two_list_1"
                                                                     id="validationCustom01"
@@ -1238,7 +1234,7 @@
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Col Two List
                                                                     2</label>
-                                                                <input type="text"
+                                                                <input type="text" maxlength="220"
                                                                     class="form-control form-control-solid form-control-sm @error('section_five_col_two_list_2') is-invalid @enderror"
                                                                     name="section_five_col_two_list_2"
                                                                     id="validationCustom01"
@@ -1253,7 +1249,7 @@
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Col Two List
                                                                     3</label>
-                                                                <input type="text"
+                                                                <input type="text" maxlength="220"
                                                                     class="form-control form-control-solid form-control-sm @error('section_five_col_two_list_3') is-invalid @enderror"
                                                                     name="section_five_col_two_list_3"
                                                                     id="validationCustom01"
@@ -1268,7 +1264,7 @@
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Col Two List
                                                                     4</label>
-                                                                <input type="text"
+                                                                <input type="text" maxlength="220"
                                                                     class="form-control form-control-solid form-control-sm @error('section_five_col_two_list_4') is-invalid @enderror"
                                                                     name="section_five_col_two_list_4"
                                                                     id="validationCustom01"
@@ -1339,7 +1335,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card One
                                                                             Title</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_one_title') is-invalid @enderror"
                                                                             name="section_six_card_one_title"
                                                                             id="validationCustom01"
@@ -1355,7 +1351,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card One
                                                                             Count</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_one_count') is-invalid @enderror"
                                                                             name="section_six_card_one_count"
                                                                             id="validationCustom01"
@@ -1371,7 +1367,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card One
                                                                             Icon</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_one_icon') is-invalid @enderror"
                                                                             name="section_six_card_one_icon"
                                                                             id="validationCustom01"
@@ -1411,7 +1407,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card Two
                                                                             Title</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_two_title') is-invalid @enderror"
                                                                             name="section_six_card_two_title"
                                                                             id="validationCustom01"
@@ -1427,7 +1423,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card Two
                                                                             Count</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_two_count') is-invalid @enderror"
                                                                             name="section_six_card_two_count"
                                                                             id="validationCustom01"
@@ -1443,7 +1439,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card Two
                                                                             Icon</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_two_icon') is-invalid @enderror"
                                                                             name="section_six_card_two_icon"
                                                                             id="validationCustom01"
@@ -1483,7 +1479,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card Three
                                                                             Title</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_three_title') is-invalid @enderror"
                                                                             name="section_six_card_three_title"
                                                                             id="validationCustom01"
@@ -1499,7 +1495,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card Three
                                                                             Count</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_three_count') is-invalid @enderror"
                                                                             name="section_six_card_three_count"
                                                                             id="validationCustom01"
@@ -1515,7 +1511,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card Three
                                                                             Icon</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_three_icon') is-invalid @enderror"
                                                                             name="section_six_card_three_icon"
                                                                             id="validationCustom01"
@@ -1555,7 +1551,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card Four
                                                                             Title</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_four_title') is-invalid @enderror"
                                                                             name="section_six_card_four_title"
                                                                             id="validationCustom01"
@@ -1571,7 +1567,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card Four
                                                                             Count</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_four_count') is-invalid @enderror"
                                                                             name="section_six_card_four_count"
                                                                             id="validationCustom01"
@@ -1587,7 +1583,7 @@
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Six Card Four
                                                                             Icon</label>
-                                                                        <input type="text"
+                                                                        <input type="text" maxlength="220"
                                                                             class="form-control form-control-solid form-control-sm @error('section_six_card_four_icon') is-invalid @enderror"
                                                                             name="section_six_card_four_icon"
                                                                             id="validationCustom01"
@@ -1721,10 +1717,8 @@
 </div>
 @endsection
 @push('scripts')
-
-
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
             // Function to validate and switch tabs
             function validateAndSwitchTab(targetTabId) {
                 let isValid = true;
@@ -1821,5 +1815,5 @@
                 validateAndSwitchTab(targetTabId);
             });
         });
-</script>
+    </script>
 @endpush
