@@ -25,7 +25,6 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->json('category_id')->nullable();
             $table->json('brands')->nullable();
-            $table->string('page_name')->nullable();
 
             $table->string('primary_color',100)->nullable();
             $table->string('secondary_color',100)->nullable();
