@@ -6,13 +6,16 @@
         z-index: 1020;
         transition: all 0.3s;
     }
+
+    main {
+        margin-top: 0rem;
+    }
 </style>
 
 <div class="swiper bannerSwiper product-banner">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img src="https://img.directindustry.com/images_di/bnr/16788/hd/55424v2.jpg" class="img-fluid"
-                alt="" />
+            <img src="https://img.directindustry.com/images_di/bnr/16788/hd/55424v2.jpg" class="img-fluid" alt="" />
         </div>
     </div>
     <div class="swiper-pagination"></div>
@@ -41,7 +44,8 @@
                     class="img-fluid" /> --}}
                 <div class="d-flex justify-content-around align-items-center">
                     <a href="">
-                        <img id="stand-logo" src="http://techfocusltd.com/storage/brand/logo/uNE6uamVvau6eiqf1687074668.png"
+                        <img id="stand-logo"
+                            src="http://techfocusltd.com/storage/brand/logo/uNE6uamVvau6eiqf1687074668.png"
                             class="img-fluid" />
                     </a>
                     <a href="#" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
