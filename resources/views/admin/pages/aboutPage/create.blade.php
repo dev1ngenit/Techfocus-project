@@ -48,7 +48,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-10 px-4 p-2">
-                        <form id="productForm" method="POST" action="{{ route('admin.homepage.store') }}"
+                        <form id="productForm" method="POST" action="{{ route('admin.aboutpage.store') }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="tab-content" id="myTabContent">

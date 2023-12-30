@@ -49,7 +49,8 @@
                         </div>
                         <div class="col-lg-10 px-4 p-2">
                             <form id="productForm" method="POST"
-                                action="{{ route('admin.homepage.update', $aboutPage->id) }}" enctype="multipart/form-data">
+                                action="{{ route('admin.aboutpage.update', $aboutPage->id) }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="tab-content" id="myTabContent">
