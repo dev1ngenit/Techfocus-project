@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('dynamic_sites', function (Blueprint $table) {
             $table->id();
+            
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->foreignId('industry_id')->nullable()->constrained('industries')->cascadeOnDelete();
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->string('custom_url')->nullable();
             $table->string('favicon_icon')->nullable();
             $table->string('logo')->nullable();
+            
             $table->json('category_id')->nullable();
             $table->json('brands')->nullable();
 
@@ -54,6 +56,7 @@ return new class extends Migration
             $table->string('badge_font_size',100)->nullable();
             $table->text('primary_font_url')->nullable();
             $table->text('number_font_url')->nullable();
+
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();

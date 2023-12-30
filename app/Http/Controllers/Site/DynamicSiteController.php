@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Site;
 
 use Illuminate\Support\Str;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DynamicSiteController extends Controller
 {
@@ -15,7 +15,7 @@ class DynamicSiteController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.dynamic-site.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class DynamicSiteController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.dynamic-site.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class DynamicSiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('admin.pages.dynamic-site.edit');
     }
 
     /**

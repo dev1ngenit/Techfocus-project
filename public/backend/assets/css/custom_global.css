@@ -354,12 +354,12 @@ tr td {
 
 /* Clock Start */
 #clock {
-  background-color: black;
+  background-color: #0069bf;
   color: white;
   display: inline-block;
   width: auto;
-  padding: 0.25em 1em;
-  border-radius: 5px;
+  border-radius: 0px;
+  padding: 15px 20px;
 }
 
 #clock p {
@@ -372,10 +372,15 @@ tr td {
   text-align: center;
   margin: 0 0.25em;
 }
+.separator {
+  display: block;
+  height: 0;
+  border-bottom: 0px solid #eff2f5;
+}
 
 #clock .time-unit .large {
   display: block;
-  font-size: 2em;
+  font-size: 1.2rem;
 }
 
 #clock .time-unit .small {
@@ -386,7 +391,7 @@ tr td {
 #clock .separator {
   font-size: 2em;
   vertical-align: top;
-  margin-top: -0.1em;
+  margin-top: -0.2em;
 }
 /* Clock End */
 

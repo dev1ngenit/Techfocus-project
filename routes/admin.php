@@ -40,6 +40,7 @@ use App\Http\Controllers\Admin\DynamicCssController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductSasController;
 use App\Http\Controllers\Admin\WebSettingController;
+use App\Http\Controllers\Site\DynamicSiteController;
 use App\Http\Controllers\Admin\IndustryPageController;
 use App\Http\Controllers\Admin\ProductColorController;
 use App\Http\Controllers\Admin\SolutionCardController;
@@ -171,6 +172,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'banner'           => BannerController::class,
                 'employee-task'    => EmployeeTaskController::class,
                 'task'             => TaskController::class,
+                'dynamic-site'     => DynamicSiteController::class,
             ]
         );
         Route::resources(
