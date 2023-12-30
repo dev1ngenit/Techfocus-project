@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-sm-12 d-flex justify-content-end">
-                    <h4 class="text-white p-0 m-0 fw-bold">Home Page Add</h4>
+                    <h4 class="text-white p-0 m-0 fw-bold">About Us Page</h4>
                 </div>
             </div>
             <div class="card-body p-0 pt-1">
@@ -79,6 +79,18 @@
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="fv-row mb-3">
+                                                        <label class="form-label">Section Two Title One</label>
+                                                        <input type="text"
+                                                            class="form-control form-control-solid form-control-sm @error('section_two_title_1') is-invalid @enderror"
+                                                            name="section_two_title_1" id="validationCustom01"
+                                                            placeholder="Enter Section Two Badge">
+                                                        @error('section_two_title_1')
+                                                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="fv-row mb-3">
                                                         <label class="form-label">Section Two Title Span</label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm @error('section_two_title_span') is-invalid @enderror"
@@ -91,7 +103,7 @@
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="fv-row mb-3">
-                                                        <label class="form-label">Section Two Title</label>
+                                                        <label class="form-label">Section Two Subtitle</label>
                                                         <input type="text"
                                                             class="form-control form-control-solid form-control-sm @error('section_two_subtitle') is-invalid @enderror"
                                                             name="section_two_subtitle" id="validationCustom01"
@@ -270,7 +282,7 @@
                                                                         <label class="form-label">Section Three Tab One
                                                                             List One</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_one_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_one_list_1') is-invalid @enderror"
                                                                             name="section_three_tab_one_list_1"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab One List One">
@@ -285,7 +297,7 @@
                                                                         <label class="form-label">Section Three Tab One
                                                                             List Two</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_one_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_one_list_2') is-invalid @enderror"
                                                                             name="section_three_tab_one_list_2"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab One List Two">
@@ -300,7 +312,7 @@
                                                                         <label class="form-label">Section Three Tab One
                                                                             List Three</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_one_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_one_list_3') is-invalid @enderror"
                                                                             name="section_three_tab_one_list_3"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab One List Three">
@@ -315,7 +327,7 @@
                                                                         <label class="form-label">Section Three Tab One
                                                                             List Four</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_one_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_one_list_4') is-invalid @enderror"
                                                                             name="section_three_tab_one_list_4"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab One List Four">
@@ -330,7 +342,7 @@
                                                                         <label class="form-label">Section Three Tab One
                                                                             Quote</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_one_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_one_quote') is-invalid @enderror"
                                                                             name="section_three_tab_one_quote"
                                                                             maxlength="250" id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab One Quote">
@@ -459,7 +471,7 @@
                                                                         <label class="form-label">Section Three Tab two
                                                                             List two</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_two_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_two_list_1') is-invalid @enderror"
                                                                             name="section_three_tab_two_list_1"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab two List two">
@@ -474,7 +486,7 @@
                                                                         <label class="form-label">Section Three Tab two
                                                                             List Two</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_two_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_two_list_2') is-invalid @enderror"
                                                                             name="section_three_tab_two_list_2"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab two List Two">
@@ -489,7 +501,7 @@
                                                                         <label class="form-label">Section Three Tab two
                                                                             List Three</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_two_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_two_list_3') is-invalid @enderror"
                                                                             name="section_three_tab_two_list_3"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab two List Three">
@@ -504,7 +516,7 @@
                                                                         <label class="form-label">Section Three Tab two
                                                                             List Four</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_two_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_two_list_4') is-invalid @enderror"
                                                                             name="section_three_tab_two_list_4"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab two List Four">
@@ -519,7 +531,7 @@
                                                                         <label class="form-label">Section Three Tab two
                                                                             Quote</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_two_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_two_quote') is-invalid @enderror"
                                                                             name="section_three_tab_two_quote"
                                                                             maxlength="250" id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab two Quote">
@@ -633,7 +645,7 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
+                                                                            Three
                                                                             List Title</label>
                                                                         <input type="url"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_list_title') is-invalid @enderror"
@@ -649,10 +661,10 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
+                                                                            Three
                                                                             List three</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_three_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_three_list_1') is-invalid @enderror"
                                                                             name="section_three_tab_three_list_1"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab three List three">
@@ -665,10 +677,10 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
+                                                                           Three
                                                                             List three</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_three_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_three_list_2') is-invalid @enderror"
                                                                             name="section_three_tab_three_list_2"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab three List three">
@@ -681,10 +693,10 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
+                                                                            Three
                                                                             List Three</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_three_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_three_list_3') is-invalid @enderror"
                                                                             name="section_three_tab_three_list_3"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab three List Three">
@@ -697,10 +709,10 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
+                                                                            Three
                                                                             List Four</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_three_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_three_list_4') is-invalid @enderror"
                                                                             name="section_three_tab_three_list_4"
                                                                             id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab three List Four">
@@ -713,10 +725,10 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
+                                                                            Three
                                                                             Quote</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_three_title') is-invalid @enderror"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_three_quote') is-invalid @enderror"
                                                                             name="section_three_tab_three_quote"
                                                                             maxlength="250" id="validationCustom01"
                                                                             placeholder="Enter Section Three Tab three Quote">
@@ -729,7 +741,7 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
+                                                                            Three
                                                                             Quote Author</label>
                                                                         <input type="url"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_quote_author') is-invalid @enderror"
@@ -745,7 +757,7 @@
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
+                                                                            Three
                                                                             Button Name</label>
                                                                         <input type="url"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_button_name') is-invalid @enderror"
@@ -761,7 +773,7 @@
                                                                 <div class="col-lg-6">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
+                                                                            Three
                                                                             Button Link</label>
                                                                         <input type="url"
                                                                             class="form-control form-control-solid form-control-sm @error('section_three_tab_three_button_link') is-invalid @enderror"
@@ -777,7 +789,7 @@
                                                                 <div class="col-lg-6">
                                                                     <div class="fv-row mb-3">
                                                                         <label class="form-label">Section Three Tab
-                                                                            three
+                                                                            Three
                                                                             Detailed Description</label>
                                                                         <textarea rows="1"
                                                                             name="section_three_tab_three_detailed_description"
@@ -801,14 +813,14 @@
                                                             <div class="row">
                                                                 <div class="col-lg-6">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
+                                                                        <label class="form-label">Section Three Tab four
                                                                             Title</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_four_tab_four_title') is-invalid @enderror"
-                                                                            name="section_four_tab_four_title"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_four_title') is-invalid @enderror"
+                                                                            name="section_three_tab_four_title"
                                                                             id="validationCustom01"
-                                                                            placeholder="Enter Section four Tab four Title">
-                                                                        @error('section_four_tab_four_title')
+                                                                            placeholder="Enter Section Three Tab Three Title">
+                                                                        @error('section_three_tab_four_title')
                                                                         <div class="invalid-feedback d-block">{{
                                                                             $message }}</div>
                                                                         @enderror
@@ -816,14 +828,14 @@
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
+                                                                        <label class="form-label">Section Three Tab four
                                                                             Short
                                                                             Description</label>
                                                                         <textarea rows="1"
-                                                                            name="section_four_tab_four_short_description"
-                                                                            class="form-control form-control-sm form-control-solid @error('section_four_tab_four_short_description') is-invalid @enderror"
-                                                                            placeholder="Enter Section four Tab four Short Description"></textarea>
-                                                                        @error('section_four_tab_four_short_description')
+                                                                            name="section_three_tab_four_short_description"
+                                                                            class="form-control form-control-sm form-control-solid @error('section_three_tab_four_short_description') is-invalid @enderror"
+                                                                            placeholder="Enter Section Three Tab Four Short Description"></textarea>
+                                                                        @error('section_three_tab_four_short_description')
                                                                         <div class="invalid-feedback d-block">{{
                                                                             $message }}</div>
                                                                         @enderror
@@ -831,14 +843,14 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
+                                                                        <label class="form-label">Section Three Tab four
                                                                             List Title</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_four_tab_four_list_title') is-invalid @enderror"
-                                                                            name="section_four_tab_four_list_title"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_four_list_title') is-invalid @enderror"
+                                                                            name="section_three_tab_four_list_title"
                                                                             id="validationCustom01"
-                                                                            placeholder="Enter Section four Tab four List Title">
-                                                                        @error('section_four_tab_four_list_title')
+                                                                            placeholder="Enter Section four Tab Four List Title">
+                                                                        @error('section_three_tab_four_list_title')
                                                                         <div class="invalid-feedback d-block">{{
                                                                             $message }}</div>
                                                                         @enderror
@@ -846,14 +858,14 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
-                                                                            List four</label>
+                                                                        <label class="form-label">Section Three Tab four
+                                                                            List One</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_four_tab_four_title') is-invalid @enderror"
-                                                                            name="section_four_tab_four_list_1"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_four_list_1') is-invalid @enderror"
+                                                                            name="section_three_tab_four_list_1"
                                                                             id="validationCustom01"
-                                                                            placeholder="Enter Section four Tab four List four">
-                                                                        @error('section_four_tab_four_list_1')
+                                                                            placeholder="Enter Section Three Tab Four List four">
+                                                                        @error('section_three_tab_four_list_1')
                                                                         <div class="invalid-feedback d-block">{{$message
                                                                             }}</div>
                                                                         @enderror
@@ -861,14 +873,14 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
-                                                                            List four</label>
+                                                                        <label class="form-label">Section Three Tab four
+                                                                            List Two</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_four_tab_four_title') is-invalid @enderror"
-                                                                            name="section_four_tab_four_list_2"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_four_list_2') is-invalid @enderror"
+                                                                            name="section_three_tab_four_list_2"
                                                                             id="validationCustom01"
-                                                                            placeholder="Enter Section four Tab four List four">
-                                                                        @error('section_four_tab_four_list_2')
+                                                                            placeholder="Enter Section Three Tab four List four">
+                                                                        @error('section_three_tab_four_list_2')
                                                                         <div class="invalid-feedback d-block">{{
                                                                             $message }}</div>
                                                                         @enderror
@@ -876,14 +888,14 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
-                                                                            List four</label>
+                                                                        <label class="form-label">Section Three Tab four
+                                                                            List Three</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_four_tab_four_title') is-invalid @enderror"
-                                                                            name="section_four_tab_four_list_3"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_four_list_3') is-invalid @enderror"
+                                                                            name="section_three_tab_four_list_3"
                                                                             id="validationCustom01"
-                                                                            placeholder="Enter Section four Tab four List four">
-                                                                        @error('section_four_tab_four_list_3')
+                                                                            placeholder="Enter Section Three Tab four List four">
+                                                                        @error('section_three_tab_four_list_3')
                                                                         <div class="invalid-feedback d-block">{{
                                                                             $message }}</div>
                                                                         @enderror
@@ -891,14 +903,14 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
+                                                                        <label class="form-label">Section Three Tab four
                                                                             List Four</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_four_tab_four_title') is-invalid @enderror"
-                                                                            name="section_four_tab_four_list_4"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_four_list_4') is-invalid @enderror"
+                                                                            name="section_three_tab_four_list_4"
                                                                             id="validationCustom01"
-                                                                            placeholder="Enter Section four Tab four List Four">
-                                                                        @error('section_four_tab_four_list_4')
+                                                                            placeholder="Enter Section Three Tab four List Four">
+                                                                        @error('section_three_tab_four_list_4')
                                                                         <div class="invalid-feedback d-block">{{
                                                                             $message }}</div>
                                                                         @enderror
@@ -906,14 +918,14 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
+                                                                        <label class="form-label">Section Three Tab four
                                                                             Quote</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_four_tab_four_title') is-invalid @enderror"
-                                                                            name="section_four_tab_four_quote"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_four_quote') is-invalid @enderror"
+                                                                            name="section_three_tab_four_quote"
                                                                             maxlength="250" id="validationCustom01"
-                                                                            placeholder="Enter Section four Tab four Quote">
-                                                                        @error('section_four_tab_four_quote')
+                                                                            placeholder="Enter Section Three Tab four Quote">
+                                                                        @error('section_three_tab_four_quote')
                                                                         <div class="invalid-feedback d-block">{{
                                                                             $message }}</div>
                                                                         @enderror
@@ -921,14 +933,14 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
+                                                                        <label class="form-label">Section Three Tab four
                                                                             Quote Author</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_four_tab_four_quote_author') is-invalid @enderror"
-                                                                            name="section_four_tab_four_quote_author"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_four_quote_author') is-invalid @enderror"
+                                                                            name="section_three_tab_four_quote_author"
                                                                             id="validationCustom01"
-                                                                            placeholder="Enter Section four Tab four Quote Author">
-                                                                        @error('section_four_tab_four_quote_author')
+                                                                            placeholder="Enter Section Three Tab four Quote Author">
+                                                                        @error('section_three_tab_four_quote_author')
                                                                         <div class="invalid-feedback d-block">{{
                                                                             $message }}</div>
                                                                         @enderror
@@ -936,14 +948,14 @@
                                                                 </div>
                                                                 <div class="col-lg-3">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
+                                                                        <label class="form-label">Section Three Tab four
                                                                             Button Name</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_four_tab_four_button_name') is-invalid @enderror"
-                                                                            name="section_four_tab_four_button_name"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_four_button_name') is-invalid @enderror"
+                                                                            name="section_three_tab_four_button_name"
                                                                             id="validationCustom01"
-                                                                            placeholder="Enter Section four Tab four Button Name">
-                                                                        @error('section_four_tab_four_button_name')
+                                                                            placeholder="Enter Section Three Tab four Button Name">
+                                                                        @error('section_three_tab_four_button_name')
                                                                         <div class="invalid-feedback d-block">{{
                                                                             $message }}</div>
                                                                         @enderror
@@ -951,14 +963,14 @@
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
+                                                                        <label class="form-label">Section Three Tab four
                                                                             Button Link</label>
                                                                         <input type="url"
-                                                                            class="form-control form-control-solid form-control-sm @error('section_four_tab_four_button_link') is-invalid @enderror"
-                                                                            name="section_four_tab_four_button_link"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_three_tab_four_button_link') is-invalid @enderror"
+                                                                            name="section_three_tab_four_button_link"
                                                                             id="validationCustom01"
-                                                                            placeholder="Enter Section four Tab four Button Link">
-                                                                        @error('section_four_tab_four_button_link')
+                                                                            placeholder="Enter Section Three Tab four Button Link">
+                                                                        @error('section_three_tab_four_button_link')
                                                                         <div class="invalid-feedback d-block">{{
                                                                             $message }}</div>
                                                                         @enderror
@@ -966,13 +978,13 @@
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <div class="fv-row mb-3">
-                                                                        <label class="form-label">Section four Tab four
+                                                                        <label class="form-label">Section Three Tab four
                                                                             Detailed Description</label>
                                                                         <textarea rows="1"
-                                                                            name="section_four_tab_four_detailed_description"
-                                                                            class="form-control form-control-sm form-control-solid @error('section_four_tab_four_detailed_description') is-invalid @enderror"
-                                                                            placeholder="Enter Section four Tab four Detailed Description"></textarea>
-                                                                        @error('section_four_tab_four_detailed_description')
+                                                                            name="section_three_tab_four_detailed_description"
+                                                                            class="form-control form-control-sm form-control-solid @error('section_three_tab_four_detailed_description') is-invalid @enderror"
+                                                                            placeholder="Enter Section Three Tab four Detailed Description"></textarea>
+                                                                        @error('section_three_tab_four_detailed_description')
                                                                         <div class="invalid-feedback d-block">{{$message
                                                                             }}</div>
                                                                         @enderror
@@ -982,25 +994,25 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row mt-5 justify-content-end">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
-                                                            data-bs-target="#section-two" aria-selected="false"
-                                                            role="tab" tabindex="-1">
-                                                            Previous
-                                                            <span class="svg-icon svg-icon-4 ms-1 me-0">
-                                                                <i class="fa-solid fa-arrow-right"></i>
-                                                            </span>
-                                                        </a>
-                                                        <a class="btn btn-lg btn-info rounded-0 tab-trigger-next"
-                                                            data-bs-toggle="tab" data-bs-target="#section-four"
-                                                            aria-selected="false" role="tab" tabindex="-1">
-                                                            Continue
-                                                            <span class="svg-icon svg-icon-4 ms-1 me-0">
-                                                                <i class="fa-solid fa-arrow-right"></i>
-                                                            </span>
-                                                        </a>
-                                                    </div>
+                                            </div>
+                                            <div class="row mt-5 justify-content-end">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
+                                                        data-bs-target="#section-two" aria-selected="false" role="tab"
+                                                        tabindex="-1">
+                                                        Previous
+                                                        <span class="svg-icon svg-icon-4 ms-1 me-0">
+                                                            <i class="fa-solid fa-arrow-right"></i>
+                                                        </span>
+                                                    </a>
+                                                    <a class="btn btn-lg btn-info rounded-0 tab-trigger-next"
+                                                        data-bs-toggle="tab" data-bs-target="#section-four"
+                                                        aria-selected="false" role="tab" tabindex="-1">
+                                                        Continue
+                                                        <span class="svg-icon svg-icon-4 ms-1 me-0">
+                                                            <i class="fa-solid fa-arrow-right"></i>
+                                                        </span>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1073,7 +1085,7 @@
                                                                 <label class="form-label">Section Five Col One
                                                                     Title</label>
                                                                 <input type="text"
-                                                                    class="form-control form-control-solid form-control-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_col_one_title') is-invalid @enderror"
                                                                     name="section_five_col_one_title"
                                                                     id="validationCustom01"
                                                                     placeholder="Enter Section Five Col One Title">
@@ -1087,7 +1099,7 @@
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Ceo Sign</label>
                                                                 <input type="text"
-                                                                    class="form-control form-control-solid form-section_five_ceo_sign-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_sign') is-invalid @enderror"
                                                                     name="section_five_ceo_sign" id="validationCustom01"
                                                                     placeholder="Enter Section Five Ceo Sign">
                                                                 @error('section_five_ceo_sign')
@@ -1100,7 +1112,7 @@
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Ceo Name</label>
                                                                 <input type="text"
-                                                                    class="form-control form-control-solid form-section_five_ceo_name-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_name') is-invalid @enderror"
                                                                     name="section_five_ceo_name" id="validationCustom01"
                                                                     placeholder="Enter Section Five Ceo Name">
                                                                 @error('section_five_ceo_name')
@@ -1114,7 +1126,7 @@
                                                                 <label class="form-label">Section Five Ceo
                                                                     Designation</label>
                                                                 <input type="text"
-                                                                    class="form-control form-control-solid form-control-sm @error('section_four_banner_middle_image') is-invalid @enderror"
+                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_designation') is-invalid @enderror"
                                                                     name="section_five_ceo_designation"
                                                                     id="validationCustom01"
                                                                     placeholder="Enter Section Five Ceo Designation">
@@ -1124,7 +1136,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-4">
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Ceo Facebook
                                                                     Account Link</label>
@@ -1139,7 +1151,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-4">
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Ceo Twitter
                                                                     Account Link</label>
@@ -1154,7 +1166,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-4">
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Ceo Whatsapp
                                                                     Account Link</label>
@@ -1267,7 +1279,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-12">
+                                                        <div class="col-lg-9">
                                                             <div class="fv-row mb-3">
                                                                 <label class="form-label">Section Five Col Two
                                                                     Content</label>
@@ -1285,7 +1297,7 @@
                                                 </div>
                                             </div>
                                             <div class="row mt-2 justify-content-end">
-                                                <div class="d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center justify-content-between p-0">
                                                     <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
                                                         data-bs-target="#section-four" aria-selected="false" role="tab"
                                                         tabindex="-1">
@@ -1316,131 +1328,298 @@
                                             </h2>
                                         </div>
                                         <div class="fv-row">
-                                            <div class="row border p-4">
-                                                <p class="badge badge-info custom-badge"
-                                                    style="margin-top: -15px; width: 13%">Column One</span>
-                                                <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <div class="fv-row mb-3">
-                                                                <label class="form-label">Section Five Col One
-                                                                    Title</label>
-                                                                <input type="text"
-                                                                    class="form-control form-control-solid form-control-sm @error('section_four_banner_middle_image') is-invalid @enderror"
-                                                                    name="section_five_col_one_title"
-                                                                    id="validationCustom01"
-                                                                    placeholder="Enter Section Five Col One Title">
-                                                                @error('section_five_col_one_title')
-                                                                <div class="invalid-feedback d-block">{{ $message }}
-                                                                </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="fv-row mb-3">
-                                                                <label class="form-label">Section Five Ceo Sign</label>
-                                                                <input type="text"
-                                                                    class="form-control form-control-solid form-section_five_ceo_sign-sm @error('section_four_banner_middle_image') is-invalid @enderror"
-                                                                    name="section_five_ceo_sign" id="validationCustom01"
-                                                                    placeholder="Enter Section Five Ceo Sign">
-                                                                @error('section_five_ceo_sign')
-                                                                <div class="invalid-feedback d-block">{{ $message }}
-                                                                </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="fv-row mb-3">
-                                                                <label class="form-label">Section Five Ceo Name</label>
-                                                                <input type="text"
-                                                                    class="form-control form-control-solid form-section_five_ceo_name-sm @error('section_four_banner_middle_image') is-invalid @enderror"
-                                                                    name="section_five_ceo_name" id="validationCustom01"
-                                                                    placeholder="Enter Section Five Ceo Name">
-                                                                @error('section_five_ceo_name')
-                                                                <div class="invalid-feedback d-block">{{ $message }}
-                                                                </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="fv-row mb-3">
-                                                                <label class="form-label">Section Five Ceo
-                                                                    Designation</label>
-                                                                <input type="text"
-                                                                    class="form-control form-control-solid form-control-sm @error('section_four_banner_middle_image') is-invalid @enderror"
-                                                                    name="section_five_ceo_designation"
-                                                                    id="validationCustom01"
-                                                                    placeholder="Enter Section Five Ceo Designation">
-                                                                @error('section_five_ceo_designation')
-                                                                <div class="invalid-feedback d-block">{{ $message }}
-                                                                </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="fv-row mb-3">
-                                                                <label class="form-label">Section Five Ceo Facebook
-                                                                    Account Link</label>
-                                                                <input type="url"
-                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_facebook_account_link') is-invalid @enderror"
-                                                                    name="section_five_ceo_facebook_account_link"
-                                                                    id="validationCustom01"
-                                                                    placeholder="Enter Section Five Ceo Facebook Account Link">
-                                                                @error('section_five_ceo_facebook_account_link')
-                                                                <div class="invalid-feedback d-block">{{ $message }}
-                                                                </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="fv-row mb-3">
-                                                                <label class="form-label">Section Five Ceo Twitter
-                                                                    Account Link</label>
-                                                                <input type="url"
-                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_twitter_account_link') is-invalid @enderror"
-                                                                    name="section_five_ceo_twitter_account_link"
-                                                                    id="validationCustom01"
-                                                                    placeholder="Enter Section Five Ceo Twitter Account Link">
-                                                                @error('section_five_ceo_twitter_account_link')
-                                                                <div class="invalid-feedback d-block">{{ $message }}
-                                                                </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="fv-row mb-3">
-                                                                <label class="form-label">Section Five Ceo Whatsapp
-                                                                    Account Link</label>
-                                                                <input type="url"
-                                                                    class="form-control form-control-solid form-control-sm @error('section_five_ceo_whatsapp_account_link') is-invalid @enderror"
-                                                                    name="section_five_ceo_whatsapp_account_link"
-                                                                    id="validationCustom01"
-                                                                    placeholder="Enter Section Five Ceo Whatsapp Account Link">
-                                                                @error('section_five_ceo_whatsapp_account_link')
-                                                                <div class="invalid-feedback d-block">{{ $message }}
-                                                                </div>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="row border p-4">
+                                                        <p class="badge badge-info custom-badge"
+                                                            style="margin-top: -15px; width: 13%">Column One</span>
                                                         <div class="col-lg-12">
-                                                            <div class="fv-row mb-3">
-                                                                <label class="form-label">Section Five Col One
-                                                                    Description</label>
-                                                                <textarea rows="1"
-                                                                    name="section_five_col_one_description"
-                                                                    class="form-control form-control-sm form-control-solid @error('section_five_col_one_description') is-invalid @enderror"
-                                                                    placeholder="Enter Section Five Col One Description"></textarea>
-                                                                @error('section_five_col_one_description')
-                                                                <div class="invalid-feedback d-block">{{$message
-                                                                    }}</div>
-                                                                @enderror
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card One
+                                                                            Title</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_one_title') is-invalid @enderror"
+                                                                            name="section_six_card_one_title"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card One Title">
+                                                                        @error('section_six_card_one_title')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card One
+                                                                            Count</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_one_count') is-invalid @enderror"
+                                                                            name="section_six_card_one_count"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card One Count">
+                                                                        @error('section_six_card_one_count')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card One
+                                                                            Icon</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_one_icon') is-invalid @enderror"
+                                                                            name="section_six_card_one_icon"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card One Icon">
+                                                                        @error('section_six_card_one_icon')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card One
+                                                                            Short Description</label>
+                                                                        <textarea rows="1"
+                                                                            name="section_six_card_one_short_description"
+                                                                            class="form-control form-control-sm form-control-solid @error('section_six_card_one_short_description') is-invalid @enderror"
+                                                                            placeholder="Enter Section Six Card One Short Description"></textarea>
+                                                                        @error('section_six_card_one_short_description')
+                                                                        <div class="invalid-feedback d-block">{{$message
+                                                                            }}</div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="row border p-4">
+                                                        <p class="badge badge-info custom-badge"
+                                                            style="margin-top: -15px; width: 13%">Column Two</span>
+                                                        <div class="col-lg-12">
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Two
+                                                                            Title</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_two_title') is-invalid @enderror"
+                                                                            name="section_six_card_two_title"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card two Title">
+                                                                        @error('section_six_card_two_title')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Two
+                                                                            Count</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_two_count') is-invalid @enderror"
+                                                                            name="section_six_card_two_count"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card two Count">
+                                                                        @error('section_six_card_two_count')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Two
+                                                                            Icon</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_two_icon') is-invalid @enderror"
+                                                                            name="section_six_card_two_icon"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card two Icon">
+                                                                        @error('section_six_card_two_icon')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Two
+                                                                            Short Description</label>
+                                                                        <textarea rows="1"
+                                                                            name="section_six_card_two_short_description"
+                                                                            class="form-control form-control-sm form-control-solid @error('section_six_card_two_short_description') is-invalid @enderror"
+                                                                            placeholder="Enter Section Six Card two Short Description"></textarea>
+                                                                        @error('section_six_card_two_short_description')
+                                                                        <div class="invalid-feedback d-block">{{$message
+                                                                            }}</div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="row border p-4">
+                                                        <p class="badge badge-info custom-badge"
+                                                            style="margin-top: -15px; width: 15%">Column Three</span>
+                                                        <div class="col-lg-12">
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Three
+                                                                            Title</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_three_title') is-invalid @enderror"
+                                                                            name="section_six_card_three_title"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card Three Title">
+                                                                        @error('section_six_card_three_title')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Three
+                                                                            Count</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_three_count') is-invalid @enderror"
+                                                                            name="section_six_card_three_count"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card Three Count">
+                                                                        @error('section_six_card_three_count')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Three
+                                                                            Icon</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_three_icon') is-invalid @enderror"
+                                                                            name="section_six_card_three_icon"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card Three Icon">
+                                                                        @error('section_six_card_three_icon')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Three
+                                                                            Short Description</label>
+                                                                        <textarea rows="1"
+                                                                            name="section_six_card_three_short_description"
+                                                                            class="form-control form-control-sm form-control-solid @error('section_six_card_three_short_description') is-invalid @enderror"
+                                                                            placeholder="Enter Section Six Card Three Short Description"></textarea>
+                                                                        @error('section_six_card_three_short_description')
+                                                                        <div class="invalid-feedback d-block">{{$message
+                                                                            }}</div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="row border p-4">
+                                                        <p class="badge badge-info custom-badge"
+                                                            style="margin-top: -15px; width: 13%">Column Four</span>
+                                                        <div class="col-lg-12">
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Four
+                                                                            Title</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_four_title') is-invalid @enderror"
+                                                                            name="section_six_card_four_title"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card Four Title">
+                                                                        @error('section_six_card_four_title')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Four
+                                                                            Count</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_four_count') is-invalid @enderror"
+                                                                            name="section_six_card_four_count"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card Four Count">
+                                                                        @error('section_six_card_four_count')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card Four
+                                                                            Icon</label>
+                                                                        <input type="text"
+                                                                            class="form-control form-control-solid form-control-sm @error('section_six_card_four_icon') is-invalid @enderror"
+                                                                            name="section_six_card_four_icon"
+                                                                            id="validationCustom01"
+                                                                            placeholder="Enter Section Six Card Four Icon">
+                                                                        @error('section_six_card_four_icon')
+                                                                        <div class="invalid-feedback d-block">{{
+                                                                            $message }}
+                                                                        </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                    <div class="fv-row mb-3">
+                                                                        <label class="form-label">Section Six Card four
+                                                                            Short Description</label>
+                                                                        <textarea rows="1"
+                                                                            name="section_six_card_four_short_description"
+                                                                            class="form-control form-control-sm form-control-solid @error('section_six_card_four_short_description') is-invalid @enderror"
+                                                                            placeholder="Enter Section Six Card Four Short Description"></textarea>
+                                                                        @error('section_six_card_four_short_description')
+                                                                        <div class="invalid-feedback d-block">{{$message
+                                                                            }}</div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row mt-2 justify-content-end">
-                                                <div class="d-flex align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center justify-content-between p-0">
                                                     <a class="btn btn-lg btn-info rounded-0 tab-trigger-previous"
                                                         data-bs-target="#section-five" aria-selected="false" role="tab"
                                                         tabindex="-1">
@@ -1467,18 +1646,18 @@
                                         <div class="pb-10 pb-lg-10">
                                             <h2
                                                 class="fw-bolder d-flex justify-content-center align-items-center text-dark">
-                                                Section Six
+                                                Section Seven
                                             </h2>
                                         </div>
                                         <div class="fv-row">
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="fv-row mb-3">
-                                                        <label class="form-label required">Brand Name</label>
+                                                        <label class="form-label">Brand Name</label>
                                                         <select class="form-select form-select-solid  form-select-sm
                                                         @error('brand_id') is-invalid @enderror" name="brand_id"
                                                             id="field2" multiple multiselect-search="true"
-                                                            multiselect-select-all="true" multiselect-max-items="3"
+                                                            multiselect-select-all="true" multiselect-max-items="2"
                                                             onchange="console.log(this.selectedOptions)">
                                                             <option>Abarth</option>
                                                             <option>Alfa Romeo</option>
@@ -1496,13 +1675,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="validationCustom04"
-                                                        class="form-label required">Status</label>
+                                                    <label for="validationCustom04" class="form-label ">Status</label>
                                                     <select
                                                         class="form-select form-select-solid form-select-sm @error('status') is-invalid @enderror"
                                                         name="status" data-control="select2"
-                                                        data-placeholder="Select an option" data-allow-clear="true"
-                                                        required>
+                                                        data-placeholder="Select an option" data-allow-clear="true">
                                                         <option></option>
                                                         <option value="1">Option 1</option>
                                                         <option value="2">Option 2</option>
@@ -1544,15 +1721,7 @@
 </div>
 @endsection
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-multiselect@0.9.16/dist/js/bootstrap-multiselect.min.js"></script>
-<script>
-    $(document).ready(function() {
-            $('.nav-tabs a').click(function() {
-                $(this).tab('show');
-            });
-        });
-</script>
+
 
 <script>
     $(document).ready(function() {
