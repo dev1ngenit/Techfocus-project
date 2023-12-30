@@ -1717,10 +1717,8 @@
 </div>
 @endsection
 @push('scripts')
-
-
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
             // Function to validate and switch tabs
             function validateAndSwitchTab(targetTabId) {
                 let isValid = true;
@@ -1817,5 +1815,5 @@
                 validateAndSwitchTab(targetTabId);
             });
         });
-</script>
+    </script>
 @endpush
