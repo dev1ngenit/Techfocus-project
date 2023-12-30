@@ -22,8 +22,8 @@ return new class extends Migration
             $table->text('section_two_description');
             $table->string('section_two_main_image')->nullable()->comment('image');
             $table->string('section_two_secondary_image')->nullable()->comment('image');
-            $table->string('section_two_secondary_image_count')->nullable();// req
-            $table->string('section_two_secondary_image_title')->nullable();// req
+            $table->string('section_two_secondary_image_count')->nullable(); // req
+            $table->string('section_two_secondary_image_title')->nullable(); // req
             $table->string('section_two_button_name')->nullable();
             $table->string('section_two_button_link')->nullable();
             $table->string('section_three_tab_one_title');

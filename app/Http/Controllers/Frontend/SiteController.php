@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Admin\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\AboutPage;
 
 class SiteController extends Controller
 {
@@ -60,7 +61,9 @@ class SiteController extends Controller
     }
     public function about()
     {
-        return view('frontend.pages.about.about');
+        return view('frontend.pages.about.about', [
+            'aboutPage' => AboutPage::whereStatus('active')->first(),
+        ]);
     }
     public function subscription()
     {
