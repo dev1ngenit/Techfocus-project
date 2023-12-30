@@ -798,10 +798,9 @@ figure img {
   background-color: var(--white);
   cursor: pointer;
 }
-.card-news-trends {
-  height: 350px;
+.trend-img {
+  height: 300px;
 }
-
 /* For Logo */
 .inset-img{
   display: flex;

@@ -25,7 +25,7 @@
                             <a href="{{ route('content.details','new-onair-laser-series') }}">
                                 <div class="content">
                                     <div class="front">
-                                        <img class="im-fluid" width="100%"
+                                        <img class="im-fluid trend-img" width="100%"
                                             src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                             alt="...." />
                                         <div class="d-flex align-items-center justify-content-between p-2">
@@ -70,7 +70,7 @@
                         <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155807-18876465.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -115,7 +115,7 @@
                         <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -160,7 +160,7 @@
                         <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155792-18874820.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -208,7 +208,7 @@
                         <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -253,7 +253,7 @@
                         <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155807-18876465.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -298,7 +298,7 @@
                         <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -343,7 +343,7 @@
                         <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155792-18874820.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
