@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\HR;
 
+use Carbon\Carbon;
+use App\Models\Admin;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Models\Admin\EmployeeCategory;
+use App\Models\Admin\LeaveApplication;
 use App\Http\Requests\LeaveApplicationRequest;
 use App\Repositories\Interfaces\LeaveApplicationRepositoryInterface;
 
@@ -23,9 +28,30 @@ class LeaveApplicationController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.leaveApplication.index', [
+        $today = Carbon::today();
+        $yesterday = Carbon::yesterday();
+
+        $data['leaveApplications'] = LeaveApplication::whereDate('created_at', '>=', $yesterday)
+            ->whereDate('created_at', '<=', $today)
+            ->orderBy('id', 'desc')
+            ->get();
+        return view('admin.pages.leaveApplication.index', $data);
+    }
+
+    public function history()
+    {
+        return view('admin.pages.leaveApplication.history', [
             'leaveApplications' =>  $this->leaveApplicationRepository->allLeaveApplication(),
         ]);
+    }
+
+    public function dashboard()
+    {
+        $data = [
+            'user'              => Auth::guard('admin')->user(),
+            'employeeCategory'  => EmployeeCategory::whereId(Auth::guard('admin')->user()->category_id)->first()
+        ];
+        return view('admin.pages.leaveApplication.dashboard',$data);
     }
 
     /**

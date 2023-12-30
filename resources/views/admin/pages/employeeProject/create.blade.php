@@ -1,12 +1,12 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-sm px-0">
                 <div class="card card-flush">
                     <div class="card-header align-items-center gap-2 gap-md-5 shadow-lg bg-light-primary px-0"
                         style="min-height: 45px;">
-                        <div class="container px-0">
+                        <div class="container-fluid">
                             <div class="row align-items-center">
                                 <div class="col-lg-6 col-sm-12 text-lg-start text-sm-center">
                                     <div class="card-title ps-3">
@@ -25,7 +25,7 @@
                         <form id="myForm" action="{{ route('admin.employee-project.store') }}" method="post"
                             enctype="multipart/form-data">
                             @csrf
-                            <div class="container px-0">
+                            <div class="container-fluid px-0">
                                 <div class="row">
                                     <div class="col-lg-12 col-sm-12">
                                         <div class="row">
@@ -213,10 +213,10 @@
                                             </div>
 
                                             <div class="col-md-12 mb-2">
-                                                <label for="longText" class="form-label mb-0">Long Text</label>
+                                                <label for="longText" class="form-label mb-0">Project Description</label>
                                                 <textarea id="longText" name="description"
-                                                    class="tox-target kt_docs_tinymce_plugins @error('longText') is-invalid @enderror">{{ old('longText') }} </textarea>
-                                                @error('longText')
+                                                    class="tox-target kt_docs_tinymce_plugins @error('description') is-invalid @enderror">{{ old('description') }} </textarea>
+                                                @error('description')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>

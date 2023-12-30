@@ -14,8 +14,8 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-4">
                                     <div class="d-flex">
-                                        <p class="pe-2 m-0 text-white">SAS REF : <strong>SAS-251123-1</strong></p>
-                                        <p class="m-0 text-white">Price Status : <strong>Rfq</strong></p>
+                                        <p class="pe-2 m-0 text-white">SAS REF : <strong>{{$product->ref_code}}</strong></p>
+                                        <p class="m-0 text-white">Price Status : <strong>{{ucfirst($product->price_status)}}</strong></p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="col-lg-4 ">
                                     <div class="d-flex justify-content-end">
-                                        <p class="m-0 text-white">Date : <strong>25/11/2023 16:39:41</strong></p>
+                                        <p class="m-0 text-white">Product Sourcing Date : <strong>{{$product->create_date}}</strong></p>
                                     </div>
                                 </div>
                             </div>
@@ -65,9 +65,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <p class=" p-2 m-0"><strong>Item:</strong> Vivotek NS9521 32-Channel VAST 2
-                                                Station
-                                                Des NS9521 32-Channel.</p>
+                                            <p class=" p-2 m-0"><strong>Item:</strong> {{$product->name}}</p>
                                         </div>
                                     </div>
                                 </div>

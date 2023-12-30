@@ -52,7 +52,6 @@
                                 <!--begin::Table row-->
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th width="5%">Sl</th>
-                                    <th width="10%">Image</th>
                                     <th width="40%">Title</th>
                                     <th width="10%">Action</th>
                                     <!--end::Table row-->
