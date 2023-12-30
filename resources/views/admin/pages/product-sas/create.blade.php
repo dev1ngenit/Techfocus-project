@@ -80,7 +80,7 @@
                                                     <p class="m-0 p-0 me-2">Goods</p>
                                                     <input type="text"
                                                         class="form-control form-control-solid form-control-sm"
-                                                        name="cog_price" id="validationCustom01"
+                                                        name="cog_price" id="validationCustom01" value="{{}}"
                                                         placeholder="E.g: 0.05%, 0.5%, 5%">
                                                 </div>
                                             </div>

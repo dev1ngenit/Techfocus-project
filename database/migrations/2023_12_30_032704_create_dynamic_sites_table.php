@@ -19,13 +19,12 @@ return new class extends Migration
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->foreignId('industry_id')->nullable()->constrained('industries')->cascadeOnDelete();
-            $table->string('name')->nullable();
-            $table->string('slug')->unique();
-            $table->string('page_name')->nullable();
-            $table->string('custom_url')->nullable();
-            $table->string('favicon_icon')->nullable();
-            $table->string('logo')->nullable();
-            
+            $table->string('name',200)->nullable();
+            $table->string('slug',200)->unique();
+            $table->string('page_name',200)->nullable();
+            $table->string('custom_url',200)->nullable();
+            $table->string('favicon_icon',200)->nullable();
+            $table->string('logo',200)->nullable();
             $table->json('category_id')->nullable();
             $table->json('brands')->nullable();
 
