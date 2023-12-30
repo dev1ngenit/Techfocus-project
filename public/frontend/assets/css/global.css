@@ -271,7 +271,7 @@
   min-width: 5rem;
   background: var(--secondary-color);
   color: var(--white);
-  border: 2px solid var(--border-color);
+  border: 1px solid var(--border-color);
 }
 .exhibition-btn {
   border: 1px solid var(--white);
