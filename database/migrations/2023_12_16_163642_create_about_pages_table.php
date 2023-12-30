@@ -106,7 +106,7 @@ return new class extends Migration
             $table->text('section_six_card_four_short_description');
             $table->string('section_six_card_four_icon')->nullable();
             $table->json('brand_id');
-            $table->enum('status',['active','inactive'])->default('active')->nullable();
+            $table->enum('status', ['active', 'inactive'])->default('active')->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
