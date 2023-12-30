@@ -38,11 +38,24 @@
   }
 
   .empty-area {
-    width: 71%;
+    width: 70%;
   }
 
   .fill-area {
-    width: 29%;
+    width: 30%;
+  }
+
+  .search-2 {
+    width: 21rem;
+  }
+
+  .navbar-brand {
+    top: -18px;
+    padding: 0 0px;
+  }
+
+  main {
+    margin-top: 6.093rem;
   }
 
   .holder-main-text h6 {
@@ -63,12 +76,14 @@
 }
 
 @media only screen and (min-width: 1401px) and (max-width: 1800px) {
-  .empty-area{
+  .empty-area {
     width: 75%;
   }
-  .fill-area{
+
+  .fill-area {
     width: 25%;
   }
+
   .top-bar {
     font-size: 1rem;
   }
