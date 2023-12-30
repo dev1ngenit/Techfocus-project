@@ -32,7 +32,7 @@ class AboutPageController extends Controller
     public function create()
     {
         return view('admin.pages.aboutPage.create', [
-            'brands' => Brand::get(['id', 'name']),
+            'brands' => Brand::get(['id', 'title']),
         ]);
     }
 
@@ -194,7 +194,7 @@ class AboutPageController extends Controller
     {
         return view('admin.pages.aboutPage.edit', [
             'aboutPage' => AboutPage::find($id),
-            'brands' => Brand::get(['id', 'name']),
+            'brands' => Brand::get(['id', 'title']),
         ]);
     }
 
