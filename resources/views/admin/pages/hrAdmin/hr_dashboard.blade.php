@@ -19,48 +19,43 @@
             </div>
         </div>
         <div class="post d-flex flex-column-fluid" id="kt_post">
-            <div id="kt_content_container" class="container-xxl">
+            <div id="kt_content_container" class="container-fluid">
 
                 <div class="row g-5 g-xl-8">
-                    <div class="col-xl-3">
+                    <div class="col-xl-4">
                         <!--begin::Statistics Widget 1-->
+
                         <div class="card bgi-no-repeat mb-xl-8"
                             style="background-position: right top; background-size: 30% auto; background-image: url({{ asset('backend/assets/media/svg/shapes/abstract-4.svg') }}">
                             <!--begin::Body-->
-                            <div class="card-body">
-                                <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-5">
-                                    <span class="text-start w-xl-225px">Total Employees :</span> <span class="text-end ms-3">10</span>
-                                </a>
-                                <div class="my-2">
-                                    <a href="#" class="card-title fw-bolder text-success text-hover-primary fs-5">
-                                        <span class="text-start w-xl-225px">Present (Today) :</span> <span class="text-end ms-3">10</span>
-                                    </a>
+                            <div class="card-body d-flex flex-column p-8 ps-1 pe-14">
+                                <div class="d-flex flex-center flex-grow-1 pt-3">
+                                    <div class="d-flex flex-column me-2">
+                                        <a href="#" class="text-primary text-hover-dark fw-bolder fs-3">Total
+                                            Employees :</a>
+                                    </div>
+                                    <span class="symbol symbol-50px">
+                                        <span class="symbol-label fs-5 fw-bolder bg-light-primary text-primary">100</span>
+                                    </span>
                                 </div>
-                                <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-5">
-                                    <span class="text-start w-xl-225px">Absent (Today) :</span> <span class="text-end ms-3">10</span>
-                                </a>
-                            </div>
-                            <!--end::Body-->
-                        </div>
-                        <!--end::Statistics Widget 1-->
-                    </div>
-                    <div class="col-xl-3">
-                        <!--begin::Statistics Widget 1-->
-                        <div class="card bgi-no-repeat mb-xl-8"
-                            style="background-position: right top; background-size: 30% auto; background-image: url({{ asset('backend/assets/media/svg/shapes/abstract-4.svg') }}">
-                            <!--begin::Body-->
-                            <div class="card-body">
-                                <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-5">
-                                    Total Employees : <span class="text-end ms-3">10</span>
-                                </a>
-                                <div class="my-2">
-                                    <a href="#" class="card-title fw-bolder text-success text-hover-primary fs-5">
-                                        Present (Today) : <span class="text-end ms-3">10</span>
-                                    </a>
+                                <div class="d-flex flex-center flex-grow-1 py-6">
+                                    <div class="d-flex flex-column me-2">
+                                        <a href="#" class="text-success text-hover-primary fw-bolder fs-3">Present
+                                            (Today) :</a>
+                                    </div>
+                                    <span class="symbol symbol-50px">
+                                        <span class="symbol-label fs-5 fw-bolder bg-light-success text-success">100</span>
+                                    </span>
                                 </div>
-                                <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-5">
-                                    Absent (Today) : <span class="text-end ms-3">10</span>
-                                </a>
+                                <div class="d-flex flex-center flex-grow-1 pb-3">
+                                    <div class="d-flex flex-column me-2">
+                                        <a href="#" class="text-danger text-hover-primary fw-bolder fs-3">Absent
+                                            (Today) :</a>
+                                    </div>
+                                    <span class="symbol symbol-50px">
+                                        <span class="symbol-label fs-5 fw-bolder bg-light-danger text-danger">100</span>
+                                    </span>
+                                </div>
                             </div>
                             <!--end::Body-->
                         </div>
@@ -88,8 +83,8 @@
                             style="background-position: right top; background-size: 30% auto; background-image: url({{ asset('backend/assets/media/svg/shapes/abstract-1.svg') }})">
                             <!--begin::Body-->
                             <div class="card-body">
-                                <a href="#" class="card-title fw-bolder text-muted text-hover-primary fs-4">UI
-                                    Conference</a>
+                                <a href="#" class="card-title fw-bolder text-muted text-hover-primary fs-4">Today's
+                                    Tasks</a>
                                 <div class="fw-bolder text-primary my-6">10AM Jan, 2021</div>
                                 <p class="text-dark-75 fw-bold fs-5 m-0">AirWays - A Front-end solution for airlines build
                                     with ReactJS</p>
@@ -100,6 +95,255 @@
                     </div>
                 </div>
 
+                <div class="row g-5 g-xl-8">
+                    
+                    <div class="col-xl-6">
+                        <div class="card card-xxl-stretch mb-5 mb-xl-8">
+                            <div class="card-header border-0 pt-5">
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="card-label fw-bolder fs-3 mb-1">Employee List</span>
+                                    <span class="text-muted mt-1 fw-bold fs-7">More than 400 new products</span>
+                                </h3>
+                                <div class="card-toolbar">
+                                    <ul class="nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-secondary fw-bolder px-4 me-1 active"
+                                                data-bs-toggle="tab" href="#kt_table_widget_5_tab_1">Month</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-secondary fw-bolder px-4 me-1"
+                                                data-bs-toggle="tab" href="#kt_table_widget_5_tab_2">Week</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-secondary fw-bolder px-4"
+                                                data-bs-toggle="tab" href="#kt_table_widget_5_tab_3">Day</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body py-3">
+                                <div class="table-responsive">
+                                    <table
+                                        class="table table-row-dashed table-row-gray-200 align-middle gs-0 gy-4">
+                                        <thead>
+                                            <tr class="border-0">
+                                                <th class="p-0 w-50px"></th>
+                                                <th class="p-0 min-w-150px"></th>
+                                                <th class="p-0 min-w-140px"></th>
+                                                <th class="p-0 min-w-110px"></th>
+                                                <th class="p-0 min-w-50px"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="symbol symbol-45px me-2">
+                                                        <span class="symbol-label">
+                                                            <img src="{{ asset('backend') }}/assets/media/svg/brand-logos/plurk.svg"
+                                                                class="h-50 align-self-center" alt="" />
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"
+                                                        class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Brad
+                                                        Simmons</a>
+                                                    <span class="text-muted fw-bold d-block">Movie Creator</span>
+                                                </td>
+                                                <td class="text-end text-muted fw-bold">React, HTML</td>
+                                                <td class="text-end">
+                                                    <span class="badge badge-light-success">Approved</span>
+                                                </td>
+                                                <td class="text-end">
+                                                    <a href="#"
+                                                        class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
+                                                        <span class="svg-icon svg-icon-2">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24"
+                                                                fill="none">
+                                                                <rect opacity="0.5" x="18" y="13" width="13"
+                                                                    height="2" rx="1"
+                                                                    transform="rotate(-180 18 13)"
+                                                                    fill="currentColor" />
+                                                                <path
+                                                                    d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
+                                                                    fill="currentColor" />
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="symbol symbol-45px me-2">
+                                                        <span class="symbol-label">
+                                                            <img src="{{ asset('backend') }}/assets/media/svg/brand-logos/telegram.svg"
+                                                                class="h-50 align-self-center" alt="" />
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"
+                                                        class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Popular
+                                                        Authors</a>
+                                                    <span class="text-muted fw-bold d-block">Most
+                                                        Successful</span>
+                                                </td>
+                                                <td class="text-end text-muted fw-bold">Python, MySQL</td>
+                                                <td class="text-end">
+                                                    <span class="badge badge-light-warning">In Progress</span>
+                                                </td>
+                                                <td class="text-end">
+                                                    <a href="#"
+                                                        class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
+                                                        <span class="svg-icon svg-icon-2">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24"
+                                                                fill="none">
+                                                                <rect opacity="0.5" x="18" y="13" width="13"
+                                                                    height="2" rx="1"
+                                                                    transform="rotate(-180 18 13)"
+                                                                    fill="currentColor" />
+                                                                <path
+                                                                    d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
+                                                                    fill="currentColor" />
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="symbol symbol-45px me-2">
+                                                        <span class="symbol-label">
+                                                            <img src="{{ asset('backend') }}/assets/media/svg/brand-logos/vimeo.svg"
+                                                                class="h-50 align-self-center" alt="" />
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"
+                                                        class="text-dark fw-bolder text-hover-primary mb-1 fs-6">New
+                                                        Users</a>
+                                                    <span class="text-muted fw-bold d-block">Awesome Users</span>
+                                                </td>
+                                                <td class="text-end text-muted fw-bold">Laravel,Metronic</td>
+                                                <td class="text-end">
+                                                    <span class="badge badge-light-primary">Success</span>
+                                                </td>
+                                                <td class="text-end">
+                                                    <a href="#"
+                                                        class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
+                                                        <span class="svg-icon svg-icon-2">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24"
+                                                                fill="none">
+                                                                <rect opacity="0.5" x="18" y="13" width="13"
+                                                                    height="2" rx="1"
+                                                                    transform="rotate(-180 18 13)"
+                                                                    fill="currentColor" />
+                                                                <path
+                                                                    d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
+                                                                    fill="currentColor" />
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="symbol symbol-45px me-2">
+                                                        <span class="symbol-label">
+                                                            <img src="{{ asset('backend') }}/assets/media/svg/brand-logos/bebo.svg"
+                                                                class="h-50 align-self-center" alt="" />
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"
+                                                        class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Active
+                                                        Customers</a>
+                                                    <span class="text-muted fw-bold d-block">Movie Creator</span>
+                                                </td>
+                                                <td class="text-end text-muted fw-bold">AngularJS, C#</td>
+                                                <td class="text-end">
+                                                    <span class="badge badge-light-danger">Rejected</span>
+                                                </td>
+                                                <td class="text-end">
+                                                    <a href="#"
+                                                        class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
+                                                        <span class="svg-icon svg-icon-2">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24"
+                                                                fill="none">
+                                                                <rect opacity="0.5" x="18" y="13" width="13"
+                                                                    height="2" rx="1"
+                                                                    transform="rotate(-180 18 13)"
+                                                                    fill="currentColor" />
+                                                                <path
+                                                                    d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
+                                                                    fill="currentColor" />
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="symbol symbol-45px me-2">
+                                                        <span class="symbol-label">
+                                                            <img src="{{ asset('backend') }}/assets/media/svg/brand-logos/kickstarter.svg"
+                                                                class="h-50 align-self-center" alt="" />
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="#"
+                                                        class="text-dark fw-bolder text-hover-primary mb-1 fs-6">Bestseller
+                                                        Theme</a>
+                                                    <span class="text-muted fw-bold d-block">Best Customers</span>
+                                                </td>
+                                                <td class="text-end text-muted fw-bold">ReactJS, Ruby</td>
+                                                <td class="text-end">
+                                                    <span class="badge badge-light-warning">In Progress</span>
+                                                </td>
+                                                <td class="text-end">
+                                                    <a href="#"
+                                                        class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
+                                                        <span class="svg-icon svg-icon-2">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24"
+                                                                fill="none">
+                                                                <rect opacity="0.5" x="18" y="13" width="13"
+                                                                    height="2" rx="1"
+                                                                    transform="rotate(-180 18 13)"
+                                                                    fill="currentColor" />
+                                                                <path
+                                                                    d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
+                                                                    fill="currentColor" />
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {{-- <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="kt_datatable_example">
+                                        
+                                    </div>
+                                    <div class="tab-pane fade" id="kt_table_widget_5_tab_2">
+                                        
+                                    </div>
+                                    <div class="tab-pane fade" id="kt_table_widget_5_tab_3">
+                                        
+                                    </div>
+                                </div> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row gy-5 g-xl-8">
 
@@ -657,11 +901,12 @@
                                                             <a href="#"
                                                                 class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
                                                                 <span class="svg-icon svg-icon-2">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24"
-                                                                        fill="none">
-                                                                        <rect opacity="0.5" x="18" y="13" width="13"
-                                                                            height="2" rx="1"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="24" height="24"
+                                                                        viewBox="0 0 24 24" fill="none">
+                                                                        <rect opacity="0.5" x="18" y="13"
+                                                                            width="13" height="2"
+                                                                            rx="1"
                                                                             transform="rotate(-180 18 13)"
                                                                             fill="currentColor" />
                                                                         <path
@@ -713,11 +958,12 @@
                                                             <a href="#"
                                                                 class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
                                                                 <span class="svg-icon svg-icon-2">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24"
-                                                                        fill="none">
-                                                                        <rect opacity="0.5" x="18" y="13" width="13"
-                                                                            height="2" rx="1"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="24" height="24"
+                                                                        viewBox="0 0 24 24" fill="none">
+                                                                        <rect opacity="0.5" x="18" y="13"
+                                                                            width="13" height="2"
+                                                                            rx="1"
                                                                             transform="rotate(-180 18 13)"
                                                                             fill="currentColor" />
                                                                         <path
@@ -752,11 +998,12 @@
                                                             <a href="#"
                                                                 class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
                                                                 <span class="svg-icon svg-icon-2">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24"
-                                                                        fill="none">
-                                                                        <rect opacity="0.5" x="18" y="13" width="13"
-                                                                            height="2" rx="1"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="24" height="24"
+                                                                        viewBox="0 0 24 24" fill="none">
+                                                                        <rect opacity="0.5" x="18" y="13"
+                                                                            width="13" height="2"
+                                                                            rx="1"
                                                                             transform="rotate(-180 18 13)"
                                                                             fill="currentColor" />
                                                                         <path
@@ -790,11 +1037,12 @@
                                                             <a href="#"
                                                                 class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
                                                                 <span class="svg-icon svg-icon-2">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24"
-                                                                        fill="none">
-                                                                        <rect opacity="0.5" x="18" y="13" width="13"
-                                                                            height="2" rx="1"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="24" height="24"
+                                                                        viewBox="0 0 24 24" fill="none">
+                                                                        <rect opacity="0.5" x="18" y="13"
+                                                                            width="13" height="2"
+                                                                            rx="1"
                                                                             transform="rotate(-180 18 13)"
                                                                             fill="currentColor" />
                                                                         <path
@@ -846,11 +1094,12 @@
                                                             <a href="#"
                                                                 class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
                                                                 <span class="svg-icon svg-icon-2">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24"
-                                                                        fill="none">
-                                                                        <rect opacity="0.5" x="18" y="13" width="13"
-                                                                            height="2" rx="1"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="24" height="24"
+                                                                        viewBox="0 0 24 24" fill="none">
+                                                                        <rect opacity="0.5" x="18" y="13"
+                                                                            width="13" height="2"
+                                                                            rx="1"
                                                                             transform="rotate(-180 18 13)"
                                                                             fill="currentColor" />
                                                                         <path
@@ -884,11 +1133,12 @@
                                                             <a href="#"
                                                                 class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
                                                                 <span class="svg-icon svg-icon-2">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24"
-                                                                        fill="none">
-                                                                        <rect opacity="0.5" x="18" y="13" width="13"
-                                                                            height="2" rx="1"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="24" height="24"
+                                                                        viewBox="0 0 24 24" fill="none">
+                                                                        <rect opacity="0.5" x="18" y="13"
+                                                                            width="13" height="2"
+                                                                            rx="1"
                                                                             transform="rotate(-180 18 13)"
                                                                             fill="currentColor" />
                                                                         <path
@@ -922,11 +1172,12 @@
                                                             <a href="#"
                                                                 class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
                                                                 <span class="svg-icon svg-icon-2">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24"
-                                                                        fill="none">
-                                                                        <rect opacity="0.5" x="18" y="13" width="13"
-                                                                            height="2" rx="1"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="24" height="24"
+                                                                        viewBox="0 0 24 24" fill="none">
+                                                                        <rect opacity="0.5" x="18" y="13"
+                                                                            width="13" height="2"
+                                                                            rx="1"
                                                                             transform="rotate(-180 18 13)"
                                                                             fill="currentColor" />
                                                                         <path
@@ -961,11 +1212,12 @@
                                                             <a href="#"
                                                                 class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary">
                                                                 <span class="svg-icon svg-icon-2">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="24" viewBox="0 0 24 24"
-                                                                        fill="none">
-                                                                        <rect opacity="0.5" x="18" y="13" width="13"
-                                                                            height="2" rx="1"
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                        width="24" height="24"
+                                                                        viewBox="0 0 24 24" fill="none">
+                                                                        <rect opacity="0.5" x="18" y="13"
+                                                                            width="13" height="2"
+                                                                            rx="1"
                                                                             transform="rotate(-180 18 13)"
                                                                             fill="currentColor" />
                                                                         <path
@@ -1026,7 +1278,8 @@
                                         <label class="form-check form-check-custom form-check-solid">
                                             <input class="form-check-input" type="checkbox" value=""
                                                 id="kt_calendar_datepicker_allday" />
-                                            <span class="form-check-label fw-bold" for="kt_calendar_datepicker_allday">All
+                                            <span class="form-check-label fw-bold"
+                                                for="kt_calendar_datepicker_allday">All
                                                 Day</span>
                                         </label>
                                     </div>
@@ -1073,7 +1326,8 @@
                                     <button type="button" id="kt_modal_add_event_submit" class="btn btn-primary">
                                         <span class="indicator-label">Submit</span>
                                         <span class="indicator-progress">Please wait...
-                                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                            <span
+                                                class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                     </button>
                                 </div>
                             </form>
@@ -1123,7 +1377,8 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none">
                                             <rect opacity="0.5" x="6" y="17.3137" width="16" height="2"
-                                                rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                                                rx="1" transform="rotate(-45 6 17.3137)"
+                                                fill="currentColor" />
                                             <rect x="7.41422" y="6" width="16" height="2" rx="1"
                                                 transform="rotate(45 7.41422 6)" fill="currentColor" />
                                         </svg>
