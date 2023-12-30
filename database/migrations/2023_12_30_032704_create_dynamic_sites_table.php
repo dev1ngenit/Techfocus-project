@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('dynamic_sites', function (Blueprint $table) {
             $table->id();
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
+            $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->foreignId('industry_id')->nullable()->constrained('industries')->cascadeOnDelete();
             $table->string('name')->nullable();
             $table->string('slug')->unique();

@@ -95,35 +95,35 @@
             handleScroll(header, container, sticky);
         };
 
-        // function handleScroll(header, container, sticky) {
-        //     if (window.pageYOffset > sticky) {
-        //         header.classList.add("sticky-header");
-        //         container.classList.remove("container");
-        //         mainHeader.classList.remove("fixed-top");
-        //         container.classList.add("container-fluid");
-        //     } else {
-        //         mainHeader.classList.add("fixed-top");
-        //         header.classList.remove("sticky-header");
-        //         container.classList.remove("container-fluid");
-        //         container.classList.add("container");
-        //     }
-        // }
-        const threshold = 50; // Adjust the threshold value as needed
-
         function handleScroll(header, container, sticky) {
-            if (window.pageYOffset > threshold) {
-                // Scrolled past the threshold, add sticky styles
+            if (window.pageYOffset > sticky) {
                 header.classList.add("sticky-header");
                 container.classList.remove("container");
                 mainHeader.classList.remove("fixed-top");
                 container.classList.add("container-fluid");
             } else {
-                // Not necessarily scrolled past the threshold, but user has started scrolling
-                header.classList.add("sticky-header");
-                container.classList.remove("container");
-                mainHeader.classList.remove("fixed-top");
-                container.classList.add("container-fluid");
+                mainHeader.classList.add("fixed-top");
+                header.classList.remove("sticky-header");
+                container.classList.remove("container-fluid");
+                container.classList.add("container");
             }
         }
+        // const threshold = 20; // Adjust the threshold value as needed
+
+        // function handleScroll(header, container, sticky) {
+        //     if (window.pageYOffset > threshold) {
+        //         // Scrolled past the threshold, add sticky styles
+        //         header.classList.add("sticky-header");
+        //         container.classList.remove("container");
+        //         mainHeader.classList.remove("fixed-top");
+        //         container.classList.add("container-fluid");
+        //     } else {
+        //         // Not necessarily scrolled past the threshold, but user has started scrolling
+        //         header.classList.add("sticky-header");
+        //         container.classList.remove("container");
+        //         mainHeader.classList.remove("fixed-top");
+        //         container.classList.add("container-fluid");
+        //     }
+        // }
     });
 </script>
