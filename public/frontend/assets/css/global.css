@@ -793,12 +793,14 @@ figure img {
 .card-news-trends {
   border-radius: 0px;
   box-shadow: var(--custom-shadow);
-  height: 350px;
+  height: 225px;
   text-align: center;
   background-color: var(--white);
   cursor: pointer;
 }
-
+.trend-img {
+  height: 300px;
+}
 /* For Logo */
 .inset-img{
   display: flex;

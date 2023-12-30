@@ -21,11 +21,11 @@
                 <!-- News & Trends Content -->
                 <div class="row">
                     <div class="col">
-                        <div class="card border-0 card-news-trends">
+                        <div class="card border-0 card-news-trends trends-card">
                             <a href="{{ route('content.details','new-onair-laser-series') }}">
                                 <div class="content">
                                     <div class="front">
-                                        <img class="im-fluid" width="100%"
+                                        <img class="im-fluid trend-img" width="100%"
                                             src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                             alt="...." />
                                         <div class="d-flex align-items-center justify-content-between p-2">
@@ -43,19 +43,15 @@
                                             Posted on 9/13/2023</span>
                                         <br />
                                         <p class="pt-3 pb-2 m-0 font-three">
-                                            HIGH PRESSURE SCREW COMPRESSORS PACKAGE: Single stage up
-                                            to 20 Bar
+                                            HIGH PRESSURE SCREW
                                         </p>
                                         <p class="subtitles"></p>
                                         <p class="font-three pt-2 pb-3 text-justify">
                                             The LASER series compression units are designed for
-                                            intensive use, and are known for their high efficiency.
-                                            Compact and quiet, they have been specifically designed
-                                            for laser cutting industrial environments, which
-                                            therefore require air flow rates at high operating
-                                            pressures. Use of the LASER series Onair systems
-                                            therefore allows to cut by air, thus avoiding the use of
-                                            nit...
+                                        intensive use, and are known for their high efficiency.
+                                        Compact and quiet, they have been specifically designed
+                                        for laser cutting industrial environments, which
+                                        therefore.
                                         </p>
                                         <p class="pt-3 pb-2 m-0 text-center" style="border-top: 1px solid #eee">
                                             <a href="">
@@ -71,10 +67,10 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="card border-0 card-news-trends">
+                        <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155807-18876465.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -116,10 +112,10 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="card border-0 card-news-trends">
+                        <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -161,10 +157,10 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="card border-0 card-news-trends">
+                        <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155792-18874820.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -209,10 +205,10 @@
                 <!-- News & Trends Content -->
                 <div class="row mt-4">
                     <div class="col-lg-3">
-                        <div class="card border-0 card-news-trends">
+                        <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -254,10 +250,10 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="card border-0 card-news-trends">
+                        <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155807-18876465.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -299,10 +295,10 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="card border-0 card-news-trends">
+                        <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/156230-18911074.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
@@ -344,10 +340,10 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <div class="card border-0 card-news-trends">
+                        <div class="card border-0 card-news-trends trends-card">
                             <div class="content">
                                 <div class="front">
-                                    <img class="im-fluid" width="100%"
+                                    <img class="im-fluid trend-img" width="100%"
                                         src="https://img.directindustry.com/images_di/projects/images-om/155792-18874820.jpg"
                                         alt="...." />
                                     <div class="d-flex align-items-center justify-content-between p-2">
