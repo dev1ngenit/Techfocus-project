@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('is_parent', ['0', '1'])->default(1);
             $table->string('image')->nullable();
             $table->string('logo')->nullable();
+            $table->string('type')->nullable();
             $table->text('description')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
