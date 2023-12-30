@@ -56,33 +56,29 @@
     <div class="container footer-logo">
         <div class="row pt-5">
             <div class="col-lg-8 offset-lg-2 d-flex">
-                <div class="d-flex align-items-center">
+                <div class="d-flex justify-content-center align-items-center">
                     <a href="{{ route('homepage') }}" class="border-left-side pe-lg-3">
-                        <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}" width="180px" class="me-3"
-                            alt="" />
+                        <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}"
+                            width="180px" class="me-3" alt="" />
                     </a>
                     {{-- <a href="brand-news.html" class="me-4">
                         <img src="https://i.ibb.co/pL02QzP/images-removebg-preview.png" width="120px" alt="" />
                     </a>
                     <a href="brand-news.html" class="me-4">
-                        <img src="https://i.ibb.co/CMFMJ5Z/images-removebg-preview-1.png" width="120px"
-                            alt="" />
+                        <img src="https://i.ibb.co/CMFMJ5Z/images-removebg-preview-1.png" width="120px" alt="" />
                     </a>
                     <a href="brand-news.html" class="me-4">
-                        <img src="https://i.ibb.co/CMFMJ5Z/images-removebg-preview-1.png" width="120px"
-                            alt="" />
+                        <img src="https://i.ibb.co/CMFMJ5Z/images-removebg-preview-1.png" width="120px" alt="" />
                     </a>
                     <a href="brand-news.html" class="me-4">
-                        <img src="https://i.ibb.co/CMFMJ5Z/images-removebg-preview-1.png" width="120px"
-                            alt="" />
+                        <img src="https://i.ibb.co/CMFMJ5Z/images-removebg-preview-1.png" width="120px" alt="" />
                     </a>
                     <a href="brand-news.html" class="me-4">
-                        <img src="https://i.ibb.co/CMFMJ5Z/images-removebg-preview-1.png" width="120px"
-                            alt="" />
+                        <img src="https://i.ibb.co/CMFMJ5Z/images-removebg-preview-1.png" width="120px" alt="" />
                     </a> --}}
                 </div>
             </div>
-            <div class="col-lg-12 text-white mt-lg-5">
+            <div class="col-lg-12 text-white mt-lg-5 mb-lg-5">
                 <p class="text-center">© 2023 All rights reserved</p>
                 <ul class="d-flex justify-content-center ps-0">
                     <li>
