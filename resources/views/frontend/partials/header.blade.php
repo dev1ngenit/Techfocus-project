@@ -35,10 +35,10 @@
                                 </div>
                                 <div class="popover__wrapper me-5">
                                     <a href="#">
-                                        <h2 class="popover__title mb-1" data-aos="fade-left">
+                                        <h2 class="popover__title mb-1 fw-bold" data-aos="fade-left">
                                             <span>
                                                 <i class="fa-solid fa-star-of-life"></i>
-                                                <span class="p-0 m-0" style="color: var(--main-color)">My</span>
+                                                <span class="p-0 m-0" style="color: var(--primary-color)">My</span>
                                                 Techfocus
                                             </span>
                                         </h2>
