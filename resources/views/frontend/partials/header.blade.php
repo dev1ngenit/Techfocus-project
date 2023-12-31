@@ -483,9 +483,145 @@
                         </a>
                         <div class="dropdown-menu menu-dropdown" aria-labelledby="navbarDropdown">
                             <div class="container">
-                                asdasdasd
+                                <div class="row my-5 gx-3">
+                                    <div class="col-lg-3">
+                                        <div>
+                                            <img class="img-fluid header-side-banner"
+                                                src="https://www.kuka.com/-/media/kuka-corporate/images/ir/mitteilungen.jpg?rev=1b1c6d88287d493c9d06716764767b38&w=767&hash=D675CCDCE6BAF6450C5DB2F986F22751"
+                                                alt="">
+                                            <h5 class="pt-3">Products</h5>
+                                            <p>Get an overview on the entire KUKA portfolio from industrial robots to
+                                                complete production lines.</p>
+                                            <div>
+                                                <a href="" class="main-color">
+                                                    Learn More <i class="fa-solid fa-chevron-right ps-1 font-one"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="row gx-2">
+                                            <div class="col-lg-4 first-column column-transition">
+                                                <div class="column-header">
+                                                    <div class="pt-0">
+                                                        <a href="#" class="">Industries</a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Case Studies
+                                                            <i class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="">Automative Industry</a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Automated
+                                                            House
+                                                            Building<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Electronic
+                                                            Industries<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Ecommerce &
+                                                            Logistic
+                                                            Service<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Helth Care<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Consumer
+                                                            Goods
+                                                            Industries<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="">Metal Industires<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 second-column column-transition"
+                                                style="display: none;">
+                                                <div class="column-header"
+                                                    style="border-left: 1px solid var(--border-color)">
+                                                    <div class="ps-3">
+                                                        <div class="pt-0">
+                                                            <a href="#" class="">Helthcare</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="expand-column-second"
+                                                                onclick="toggleColumn('third-column')">Robots In
+                                                                The
+                                                                Medical Industry<i
+                                                                    class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">3D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">Team And Service</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">3D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="expand-column-second"
+                                                                onclick="toggleColumn('third-column')">Current
+                                                                Topics<i
+                                                                    class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">Swisslog Helthcare</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="expand-column-second"
+                                                                onclick="toggleColumn('third-column')">Downloads<i
+                                                                    class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 third-column column-transition" style="display: none;">
+                                                <div class="column-header"
+                                                    style="border-left: 1px solid var(--border-color)">
+                                                    <div class="ps-3">
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">3D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">Team And Service</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">4D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">5D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">6D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">7D Virdtual Showroom</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <!--  /.container  -->
                         </div>
                     </li>
                     <li class="nav-item">
