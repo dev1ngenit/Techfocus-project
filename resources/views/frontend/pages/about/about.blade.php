@@ -34,7 +34,6 @@
             max-width: 1450px;
         }
     </style>
-    @dd($brands)
     <section class="ban_sec section_one">
         <div class="container-fluid p-0">
             <div class="ban_img">
