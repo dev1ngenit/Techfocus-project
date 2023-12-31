@@ -1,0 +1,8 @@
+public/storage
+public/hot
+storage/*.key
+storage/clockwork
+.env.*.php
+.env.php
+.env
+.env-production

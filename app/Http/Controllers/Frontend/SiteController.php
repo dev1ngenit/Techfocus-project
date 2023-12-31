@@ -59,16 +59,25 @@ class SiteController extends Controller
     {
         return view('frontend.pages.crm.contact');
     }
+
     public function about()
     {
+        $aboutPage = AboutPage::whereStatus('active')->first();
+
+        $brandIds = $aboutPage ? json_decode($aboutPage->brand_id, true) : [];
+        $brands = $brandIds ? Brand::whereIn('id', $brandIds)->get() : collect();
+
         return view('frontend.pages.about.about', [
-            'aboutPage' => AboutPage::whereStatus('active')->first(),
+            'aboutPage' => $aboutPage,
+            'brands' => $brands,
         ]);
     }
+
     public function subscription()
     {
         return view('frontend.pages.others.subscription');
     }
+
     public function brandList()
     {
         $paginationSettings = ['*'];

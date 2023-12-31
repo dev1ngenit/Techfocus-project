@@ -48,7 +48,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-10 px-4 p-2">
-                        <form id="productForm" method="POST" action="{{ route('admin.homepage.store') }}"
+                        <form id="productForm" method="POST" action="{{ route('admin.aboutpage.store') }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="tab-content" id="myTabContent">
@@ -1655,14 +1655,9 @@
                                                             id="field2" multiple multiselect-search="true"
                                                             multiselect-select-all="true" multiselect-max-items="2"
                                                             onchange="console.log(this.selectedOptions)">
-                                                            <option>Abarth</option>
-                                                            <option>Alfa Romeo</option>
-                                                            <option>Aston Martin</option>
-                                                            <option>Audi</option>
-                                                            <option>Bentley</option>
-                                                            <option>BMW</option>
-                                                            <option>Bugatti</option>
-                                                            <option>Cadillac</option>
+                                          @foreach ($brands as $brand) 
+                                                              <option value="{{ $brand->id }}">{{ $brand->title }}</option>
+                                          @endforeach
                                                         </select>
                                                         @error('brand_id')
                                                         <div class="invalid-feedback d-block">{{$message
@@ -1677,8 +1672,8 @@
                                                         name="status" data-control="select2"
                                                         data-placeholder="Select an option" data-allow-clear="true">
                                                         <option></option>
-                                                        <option value="1">Option 1</option>
-                                                        <option value="2">Option 2</option>
+                                                        <option value="active">Active</option>
+                                                        <option value="inactive">In Active</option>
                                                     </select>
                                                     @error('status')
                                                     <div class="invalid-feedback d-block">{{$message

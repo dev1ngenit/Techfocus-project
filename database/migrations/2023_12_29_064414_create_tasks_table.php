@@ -27,6 +27,8 @@ return new class extends Migration
             $table->json('assignees')->nullable();
             $table->json('supervisors')->nullable();
             $table->json('notify_id')->nullable();
+            $table->text('completion_url')->nullable();
+            $table->text('employee_comment')->nullable();
             $table->integer('supervisor_rating')->nullable();
             $table->integer('hr_rating')->nullable();
             $table->integer('ceo_rating')->nullable();

@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\HR;
+namespace App\Http\Controllers\Marketing;
 
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
-use App\Models\HR\Task;
 use Illuminate\Http\Request;
 
-class EmployeeTaskController extends Controller
+class MarketingTargetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,21 +15,9 @@ class EmployeeTaskController extends Controller
      */
     public function index()
     {
-        $data = [
-            'employees' => Admin::get(),
-        ];
-        return view('admin.pages.employeeTask.index',$data);
+        //
     }
 
-    public function employeeTasks($employeeId)
-    {
-        $data = [
-            'tasks' => Task::where('employee_id' , $employeeId)->get(),
-        ];
-        $view = view('admin.pages.employeeTask.partials.monthly_task_table', $data)->render();
-        return response()->json(['html' => $view]);
-
-    }
     /**
      * Show the form for creating a new resource.
      *
