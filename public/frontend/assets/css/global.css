@@ -93,6 +93,12 @@
 .fill-area {
   width: 20%;
 }
+/* Header Dropdown Start */
+.header-side-banner {
+  width: 390px;
+  height: 250px;
+}
+/* Header Dropdown End */
 /* Common Container End */
 .main-menu {
   background-color: var(--secondary-deep-color);
@@ -109,8 +115,7 @@
   border-bottom: 3px solid var(--primary-color);
 }
 
-.nav-item
-.custom-nav{
+.nav-item .custom-nav {
   color: var(--white);
 }
 .burger-wrapper {
@@ -545,10 +550,10 @@ figure img {
   border: 0px;
   box-shadow: var(--custom-shadow);
 }
-.product-badge{
+.product-badge {
   font-size: 12px;
-    font-weight: 400;
-    padding: 5px 6px;
+  font-weight: 400;
+  padding: 5px 6px;
 }
 .project-para {
   height: 3rem;
@@ -801,13 +806,13 @@ figure img {
 .trend-img {
   height: 300px;
 }
-/* For Logo */
-.inset-img{
+/* For brand Logo */
+.inset-img {
   display: flex;
-    align-items: center;
-    height: 190px;
-    justify-content: center;
-    padding: 40px
+  align-items: center;
+  height: 190px;
+  justify-content: center;
+  padding: 40px;
 }
 #stand-logo {
   max-width: 100%;
@@ -1752,7 +1757,7 @@ tbody td:hover::before {
   border: 3px solid transparent;
   border-top-color: var(--primary-color) !important;
 }
-.rfq-img{
+.rfq-img {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .rfq-offcanvas-modal {
@@ -2270,10 +2275,10 @@ ul:not(:hover) li:first-child .imgSubCat {
   z-index: 9999;
 }
 
-.pdf-card-catalogue{
+.pdf-card-catalogue {
   transition: all 0.3s;
 }
-.pdf-card-catalogue:hover{
+.pdf-card-catalogue:hover {
   transform: scale(1.1);
   transition: all 0.3s;
 }
@@ -2382,7 +2387,14 @@ ul:not(:hover) li:first-child .imgSubCat {
     display: block;
   }
   .common-btn-3 {
-    background-image: linear-gradient( to bottom, #0069bf, #077cd0, #178fe0, #27a2f0, var(--primary-color) );
+    background-image: linear-gradient(
+      to bottom,
+      #0069bf,
+      #077cd0,
+      #178fe0,
+      #27a2f0,
+      var(--primary-color)
+    );
     color: var(--white);
     width: 100%;
     font-weight: 500;
@@ -2392,7 +2404,7 @@ ul:not(:hover) li:first-child .imgSubCat {
     flex-direction: column;
     margin-bottom: 11px;
     text-align: center;
-}
+  }
 }
 @media only screen and (max-width: 480px) {
   .ban_text strong span {

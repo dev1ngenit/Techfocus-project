@@ -1,3 +1,51 @@
+<style>
+    .menu-dropdown {
+        position: relative;
+        padding: 20px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .menu-dropdown::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://png.pngtree.com/background/20220729/original/pngtree-light-gray-geometry-abstract-subtle-background-vector-picture-image_1867383.jpg');
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        opacity: 0.8;
+        /* Adjust the opacity as needed */
+    }
+
+    .header-side-banner {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .column-transition {
+        transition: all 0.3s ease;
+    }
+
+    .column-header a:hover,
+    .column-header.active a {
+        color: var(--primary-color);
+    }
+
+    .dropdown-submenu {
+        position: relative;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -1px;
+    }
+</style>
 <!-- Top Bar Start -->
 <section class="fixed-top main_header">
     <div class="container-fluid d-sm-none d-md-block" style="background-color: var(--secondary-deep-color)">
@@ -9,7 +57,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="d-flex justify-content-end align-items-center p-1">
+                            <div class="d-flex justify-content-end align-items-center px-1">
                                 <div class="dropdown">
                                     <button class="dropdown-toggle me-4" type="button" id="dropdownMenuButton1"
                                         data-bs-toggle="dropdown" aria-expanded="false" data-aos="fade-left">
@@ -127,10 +175,11 @@
         <div class="container-fluid">
             <!-- Logo Start -->
             <a class="navbar-brand mb-0" href="{{ route('homepage') }}" data-aos="fade-right">
-                {{-- <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}"
+                {{-- <img
+                    src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}"
                     height="60px" alt="" /> --}}
-                <img src="http://techfocusltd.com/storage/webSetting/systemLogoWhite/Logo_R1llPg4c.png"
-                    height="60px" alt="" />
+                <img src="http://techfocusltd.com/storage/webSetting/systemLogoWhite/Logo_R1llPg4c.png" height="60px"
+                    alt="" />
             </a>
             <!-- Logo End -->
             <!-- Mobile Menu -->
@@ -153,8 +202,8 @@
                         <!-- Mobile Menu -->
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item dropdown" data-aos="fade-right" data-aos-duration="500">
-                                <a class="nav-link custom-nav dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link custom-nav dropdown-toggle" href="#" id="navbarDropdown"
+                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Product
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -212,8 +261,9 @@
                                 <a class="nav-link custom-nav" href="{{ route('contact') }}">Contact Us</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link custom-nav dropdown-toggle" href="news-trends.html" id="navbarDropdown"
-                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link custom-nav dropdown-toggle" href="news-trends.html"
+                                    id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
                                     News & Trends
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -280,16 +330,155 @@
                         </a>
                         <div class="dropdown-menu menu-dropdown" aria-labelledby="navbarDropdown">
                             <div class="container">
-                                asdasdasdasd
+                                <div class="row my-5 gx-3">
+                                    <div class="col-lg-3">
+                                        <div>
+                                            <img class="img-fluid header-side-banner"
+                                                src="https://www.kuka.com/-/media/kuka-corporate/images/ir/mitteilungen.jpg?rev=1b1c6d88287d493c9d06716764767b38&w=767&hash=D675CCDCE6BAF6450C5DB2F986F22751"
+                                                alt="">
+                                            <h5 class="pt-3">Products</h5>
+                                            <p>Get an overview on the entire KUKA portfolio from industrial robots to
+                                                complete production lines.</p>
+                                            <div>
+                                                <a href="" class="main-color">
+                                                    Learn More <i class="fa-solid fa-chevron-right ps-1 font-one"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="row gx-2">
+                                            <div class="col-lg-4 first-column column-transition">
+                                                <div class="column-header">
+                                                    <div class="pt-0">
+                                                        <a href="#" class="">Industries</a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Case Studies
+                                                            <i class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="">Automative Industry</a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Automated
+                                                            House
+                                                            Building<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Electronic
+                                                            Industries<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Ecommerce &
+                                                            Logistic
+                                                            Service<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Helth Care<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="expand-column-first"
+                                                            onclick="toggleColumn('second-column')">Consumer
+                                                            Goods
+                                                            Industries<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                    <div class="pt-4">
+                                                        <a href="#" class="">Metal Industires<i
+                                                                class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 second-column column-transition"
+                                                style="display: none;">
+                                                <div class="column-header"
+                                                    style="border-left: 1px solid var(--border-color)">
+                                                    <div class="ps-3">
+                                                        <div class="pt-0">
+                                                            <a href="#" class="">Helthcare</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="expand-column-second"
+                                                                onclick="toggleColumn('third-column')">Robots In
+                                                                The
+                                                                Medical Industry<i
+                                                                    class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">3D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">Team And Service</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">3D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="expand-column-second"
+                                                                onclick="toggleColumn('third-column')">Current
+                                                                Topics<i
+                                                                    class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">Swisslog Helthcare</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="expand-column-second"
+                                                                onclick="toggleColumn('third-column')">Downloads<i
+                                                                    class="fa-solid fa-chevron-right font-one ps-2"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 third-column column-transition" style="display: none;">
+                                                <div class="column-header"
+                                                    style="border-left: 1px solid var(--border-color)">
+                                                    <div class="ps-3">
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">3D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">Team And Service</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">4D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">5D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">6D Virdtual Showroom</a>
+                                                        </div>
+                                                        <div class="pt-4">
+                                                            <a href="#" class="">7D Virdtual Showroom</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link custom-nav" data-aos="fade-right" href="{{ route('catalog.all') }}">Catalog</a>
+                        <a class="nav-link custom-nav" data-aos="fade-right"
+                            href="{{ route('catalog.all') }}">Catalog</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link custom-nav dropdown-toggle" href="news-trends.html" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-aos="fade-right">
+                        <a class="nav-link custom-nav dropdown-toggle" href="news-trends.html" id="navbarDropdown"
+                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            data-aos="fade-right">
                             News & Trends
                         </a>
                         <div class="dropdown-menu menu-dropdown" aria-labelledby="navbarDropdown">
@@ -320,3 +509,27 @@
         </div>
     </nav>
 </section>
+<script>
+    function toggleColumn(columnClassName, linkElement) {
+        var column = document.querySelector('.' + columnClassName);
+        var columnHeader = column.querySelector('.column-header');
+
+        // Toggle the 'column-transition' class to enable transitions
+        column.classList.toggle('column-transition');
+
+        if (column.style.display === 'none' || column.style.display === '') {
+            column.style.display = 'block';
+            columnHeader.classList.add('active');
+        } else {
+            column.style.display = 'none';
+            columnHeader.classList.remove('active');
+        }
+
+        // Remove 'active' class from all other links
+        document.querySelectorAll('.column-header a').forEach(function (el) {
+            if (el !== linkElement) {
+                el.parentElement.classList.remove('active');
+            }
+        });
+    }
+</script>
