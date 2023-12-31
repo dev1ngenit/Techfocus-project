@@ -18,8 +18,11 @@ return new class extends Migration
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
             $table->foreignId('employee_id')->nullable()->constrained('admins')->cascadeOnDelete();
+            
             $table->string('title')->nullable();
             $table->string('slug')->unique();
+            $table->year('fiscal_year')->nullable();
+            $table->enum('quarter', ['q1', 'q2', 'q3', 'q4'])->nullable();
             $table->string('month')->nullable();
             $table->date('create_date')->nullable();
             $table->json('supervisors')->nullable();

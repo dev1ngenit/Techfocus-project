@@ -152,6 +152,9 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             Route::get('/deals/list', 'index')->name('deal.index');
         });
 
+        // Monthly tasks
+        Route::get('/employee/monthly-tasks/{employeeId}', [EmployeeTaskController::class, 'employeeTasks'])->name('monthly.tasks');
+
 
         Route::resources(
             [
