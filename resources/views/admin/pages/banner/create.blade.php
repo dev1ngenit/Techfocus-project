@@ -202,7 +202,7 @@
                             <div class="row py-3">
                                 <div class="border p-4 m-1 mt-5 mb-4">
                                     <p class="badge badge-info custom-bage-all">Banner
-                                        One</span>
+                                        One</p>
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="fv-row mb-3">
@@ -244,7 +244,7 @@
                             <div class="row py-3">
                                 <div class="border p-4 m-1 mt-5 mb-4">
                                     <p class="badge badge-info custom-bage-all">Banner
-                                        Two</span>
+                                        Two</p>
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="fv-row mb-3">
@@ -286,7 +286,7 @@
                             <div class="row py-3">
                                 <div class="border p-4 m-1 mt-5 mb-4">
                                     <p class="badge badge-info custom-bage-all">Banner
-                                        Three</span>
+                                        Three</p>
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="fv-row mb-3">
@@ -327,7 +327,7 @@
 
                             <div class="row py-3">
                                 <div class="border p-4 m-1 mt-5">
-                                    <p class="badge badge-info custom-bage-all">Meta Box</span>
+                                    <p class="badge badge-info custom-bage-all">Meta Box</p>
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="fv-row mb-3">

@@ -165,8 +165,8 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
                 'industry-page'    => IndustryPageController::class,
                 'industry'         => IndustryController::class,
                 'row'              => RowController::class,
-                'homepage'         => HomePageController::class, //Not Done
-                'aboutpage'        => AboutPageController::class, //Not Done
+                'homepage'         => HomePageController::class, 
+                'aboutpage'        => AboutPageController::class, 
                 'solution-card'    => SolutionCardController::class,
                 'employee'         => EmployeeController::class,
                 'employee-project' => EmployeeProjectController::class,
