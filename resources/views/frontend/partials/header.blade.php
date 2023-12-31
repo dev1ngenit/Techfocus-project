@@ -178,8 +178,8 @@
                 {{-- <img
                     src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}"
                     height="60px" alt="" /> --}}
-                <img src="http://techfocusltd.com/storage/webSetting/systemLogoWhite/Logo_R1llPg4c.png" height="60px"
-                    alt="" />
+                <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}" height="60px"
+                    alt="TechFocus" />
             </a>
             <!-- Logo End -->
             <!-- Mobile Menu -->
@@ -196,7 +196,7 @@
                         <p class="text-danger">
                             <a class="navbar-brand" href="{{ route('homepage') }}">
                                 <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}"
-                                    width="200px" height="60px" alt="" />
+                                    width="200px" height="60px" alt="TechFocus" />
                             </a>
                         </p>
                         <!-- Mobile Menu -->
