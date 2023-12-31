@@ -119,7 +119,7 @@
                                     <label class="form-label">Name</label>
                                     <input name="name"
                                         class="form-control form-control-sm form-control-solid @error ('name') is-invalid @enderror"
-                                        placeholder="Enter Button Name" type="text" />
+                                        placeholder="Enter Button Name" type="text" maxlength="100" />
                                     @error ('name')
                                     <div class="invalid-feedback"> {{message}}</div>
                                     @enderror
@@ -130,7 +130,7 @@
                                     <label class="form-label">Type</label>
                                     <input name="type"
                                         class="form-control form-control-sm form-control-solid @error ('type') is-invalid @enderror"
-                                        placeholder="Enter Button Name" type="text" />
+                                        placeholder="Enter Button Name" type="text" maxlength="50" />
                                     @error ('type')
                                     <div class="invalid-feedback"> {{message}}</div>
                                     @enderror
