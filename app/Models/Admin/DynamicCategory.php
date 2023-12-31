@@ -2,13 +2,14 @@
 
 namespace App\Models\Admin;
 
+use App\Traits\HasSlug;
 use Wildside\Userstamps\Userstamps;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DynamicCategory extends Model
 {
-    use HasFactory, Userstamps;
+    use HasFactory, HasSlug, Userstamps;
 
     /**
      * The attributes that aren't mass assignable.
@@ -16,4 +17,6 @@ class DynamicCategory extends Model
      * @var array
      */
     protected $guarded = [];
+
+    protected $slugSourceColumn = 'name';
 }

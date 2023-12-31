@@ -25,10 +25,9 @@ class DynamicCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_id' => 'nullable|exists:companies,id',
             'parent_id' => 'nullable|exists:dynamic_categories,id',
-            'name' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
+            'name' => 'required|string|max:100',
+            'type' => 'required|string|max:50',
             'status' => 'required|in:active,inactive',
         ];
     }
@@ -41,34 +40,32 @@ class DynamicCategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'company_id.exists' => 'The selected company does not exist.',
             'parent_id.exists' => 'The selected parent category does not exist.',
             'name.required' => 'The name field is required.',
             'name.string' => 'The name field must be a string.',
-            'name.max' => 'The name field may not be greater than 255 characters.',
+            'name.max' => 'The name field may not be greater than 100 characters.',
             'type.required' => 'The type field is required.',
             'type.string' => 'The type field must be a string.',
-            'type.max' => 'The type field may not be greater than 255 characters.',
+            'type.max' => 'The type field may not be greater than 50 characters.',
             'status.required' => 'The status field is required.',
             'status.in' => 'The status field must be one of: active, inactive.',
         ];
     }
 
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'company_id' => 'company',
-            'parent_id'  => 'parent category',
-            'name'       => 'name',
-            'type'       => 'type',
-            'status'     => 'status',
-        ];
-    }
+    // /**
+    //  * Get custom attributes for validator errors.
+    //  *
+    //  * @return array
+    //  */
+    // public function attributes()
+    // {
+    //     return [
+    //         'parent_id'  => 'parent category',
+    //         'name'       => 'name',
+    //         'type'       => 'type',
+    //         'status'     => 'status',
+    //     ];
+    // }
 
     /**
      * Handle a failed validation attempt.
