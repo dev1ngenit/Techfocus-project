@@ -39,7 +39,10 @@ class EmployeeTaskController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'employees' => Admin::get(),
+        ];
+        return view('admin.pages.employeeTask.create',$data);
     }
 
     /**

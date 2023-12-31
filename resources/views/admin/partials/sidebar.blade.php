@@ -753,7 +753,7 @@
                             </a>
                         </div>
                         <div data-kt-menu-trigger="click"
-                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), ['admin.task.index','admin.employee-task.index','admin.leave-application.create','admin.leave-application.edit']) ? 'here show' : '' }}">
+                            class="menu-item menu-accordion {{ in_array(Route::current()->getName(), ['admin.task.index','admin.employee-task.index','admin.employee-task.create','admin.leave-application.create','admin.leave-application.edit']) ? 'here show' : '' }}">
                             <span class="menu-link">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
@@ -765,6 +765,15 @@
                                 <div class="menu-item">
                                     <a class="menu-link {{ Route::current()->getName() == 'admin.employee-task.index' ? 'active' : '' }}"
                                         href="{{ route('admin.employee-task.index') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Employee Task List</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item">
+                                    <a class="menu-link {{ Route::current()->getName() == 'admin.employee-task.create' ? 'active' : '' }}"
+                                        href="{{ route('admin.employee-task.create') }}">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>

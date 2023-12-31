@@ -20,8 +20,8 @@ class EmployeeTask extends Model
 
     /**
      * , HasSlug
-     * protected $slugSourceColumn = 'name';
+     * 
      */
-    
+    protected $slugSourceColumn = 'title';
 
 }
