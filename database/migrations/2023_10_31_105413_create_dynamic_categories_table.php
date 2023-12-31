@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('dynamic_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
-            $table->foreignId('parent_id')->nullable()->constrained('dynamic_categories')->cascadeOnDelete();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->string('type');
+            $table->string('name', 100);
+            $table->string('slug', 150)->unique();
+            $table->string('type', 50);
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();

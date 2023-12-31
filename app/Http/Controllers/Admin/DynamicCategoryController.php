@@ -5,17 +5,15 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DynamicCategoryRequest;
-use App\Repositories\Interfaces\CompanyRepositoryInterface;
 use App\Repositories\Interfaces\DynamicCategoryRepositoryInterface;
 
 class DynamicCategoryController extends Controller
 {
-    private $dynamicCategoryRepository, $companyRepository;
+    private $dynamicCategoryRepository;
 
-    public function __construct(DynamicCategoryRepositoryInterface $dynamicCategoryRepository, CompanyRepositoryInterface $companyRepository)
+    public function __construct(DynamicCategoryRepositoryInterface $dynamicCategoryRepository)
     {
         $this->dynamicCategoryRepository = $dynamicCategoryRepository;
-        $this->companyRepository         = $companyRepository;
     }
 
     /**
@@ -27,18 +25,7 @@ class DynamicCategoryController extends Controller
     {
         return view('admin.pages.dynamicCategory.index', [
             'dynamicCategories'    => $this->dynamicCategoryRepository->allDynamicCategory(),
-            'companies'    => $this->companyRepository->allCompany(),
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -50,39 +37,14 @@ class DynamicCategoryController extends Controller
     public function store(DynamicCategoryRequest $request)
     {
         $data = [
-            'company_id' => $request->company_id,
             'parent_id'  => $request->parent_id,
             'name'       => $request->name,
-            'slug'       => Str::slug($request->name),
             'type'       => $request->type,
             'status'     => $request->status,
         ];
         $this->dynamicCategoryRepository->storeDynamicCategory($data);
 
-        toastr()->success('Data has been saved successfully!');
-        return redirect()->back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
 
     /**
@@ -95,18 +57,15 @@ class DynamicCategoryController extends Controller
     public function update(DynamicCategoryRequest $request, $id)
     {
         $data = [
-            'company_id' => $request->company_id,
             'parent_id'  => $request->parent_id,
             'name'       => $request->name,
-            'slug'       => Str::slug($request->name),
             'type'       => $request->type,
             'status'     => $request->status,
         ];
 
         $this->dynamicCategoryRepository->updateDynamicCategory($data, $id);
 
-        toastr()->success('Data has been updated successfully!');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data has been Updated successfully!');
     }
 
     /**
