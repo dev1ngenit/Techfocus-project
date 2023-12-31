@@ -415,6 +415,23 @@
 
 @push('scripts')
     <script>
-        
+        $(document).ready(function() {
+            $('select[name="employee_id"]').on('change', function() {
+                var employeeId = $(this).val();
+
+                // Make an AJAX request to the controller
+                $.ajax({
+                    type: 'GET',
+                    url: '/your-controller-url/' + employeeId,
+                    success: function(data) {
+                        // Replace the content of the monthly_task_table div with the received data
+                        $('.monthly_task_table').html(data);
+                    },
+                    error: function() {
+                        console.error('Error fetching data.');
+                    }
+                });
+            });
+        });
     </script>
 @endpush
