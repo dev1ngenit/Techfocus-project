@@ -43,7 +43,7 @@
                             </div>
                             <div class="row py-5">
                                 <div class="border p-4 m-1 mt-5 mb-4">
-                                    <p class="badge badge-info custom-bage-all w-200px rounded-0">General Information</p>
+                                    <p class="badge badge-info custom-bage-all w-125px rounded-0">General Information</p>
                                     <div class="row">
                                         <div class="col-lg-4 mb-3">
                                             <label class="form-label">Title</label>
@@ -81,16 +81,18 @@
                                                 data-allow-clear="true" required>
                                                 <option></option>
                                                 @foreach ($months as $index => $month)
-                                                @php
-                                                    $currentMonth = date('n');
-                                                    $nextMonth = ($currentMonth + $index) % 12 + 1;
-                                                    // Log::alert($nextMonth);
-                                                @endphp
-                                                    <option value="{{ $month }}" @selected($nextMonth == $index)>{{ $month }}</option>
+                                                    @php
+                                                        $currentMonth = date('n');
+                                                        $nextMonth = (($currentMonth + $index) % 12) + 1;
+                                                    @endphp
+                                                    <option value="{{ $nextMonth }}"
+                                                        {{ $nextMonth == $currentMonth ? 'selected' : '' }}>
+                                                        {{ $month }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback"> Please Enter Month.</div>
                                         </div>
+
                                         <div class="col-lg-2 mb-3">
                                             <label class="form-label required">Quarter</label>
                                             <select class="form-select form-select-solid form-select-sm" name="quarter"
@@ -140,7 +142,15 @@
                                         <div id="kt_docs_repeater_advanced">
                                             <div class="form-group">
                                                 <div data-repeater-list="kt_docs_repeater_advanced">
-                                                    <div data-repeater-item class="border p-3 mb-3">
+                                                    <div class="d-flex align-items-center justify-content-end">
+                                                        <div>
+                                                            <a href="javascript:void(0;)" data-repeater-create
+                                                                class="btn btn-sm btn-success rounded-0">
+                                                                <i class="la la-plus"></i>Add more
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div data-repeater-item class="p-3 mb-3">
                                                         <div class="form-group row mb-5 align-items-center">
                                                             <div class="col-lg-10">
                                                                 <div class="row">
@@ -183,10 +193,7 @@
                                                             <div class="col-md-2">
                                                                 <div
                                                                     class="d-flex justify-content-between align-items-center">
-                                                                    <a href="javascript:;" data-repeater-create
-                                                                        class="btn btn-sm btn-light-primary mt-8">
-                                                                        <i class="la la-plus"></i>Add
-                                                                    </a>
+
 
                                                                     <a href="javascript:;" data-repeater-delete
                                                                         class="btn btn-sm btn-light-danger mt-8">
