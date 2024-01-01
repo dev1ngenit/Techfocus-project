@@ -12,6 +12,13 @@ class DynamicCategoryRepository implements DynamicCategoryRepositoryInterface
         return DynamicCategory::latest('id')->get();
     }
 
+    public function allDynamicActiveCategory($categoryType)
+    {
+        return DynamicCategory::where('type', $categoryType)
+            ->whereStatus('active')
+            ->get();
+    }
+
     public function storeDynamicCategory(array $data)
     {
         return DynamicCategory::create($data);

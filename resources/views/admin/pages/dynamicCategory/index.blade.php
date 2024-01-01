@@ -146,7 +146,9 @@
                                         data-dropdown-parent="#dynamicCategoryAdd" data-control="select2"
                                         data-placeholder="Select an option" data-allow-clear="true">
                                         <option></option>
-                                        <option value="hr_policies">Hr Policy</option>
+                                        <option value="events">Events</option>
+                                        <option value="faqs">Faqs</option>
+                                        <option value="hr_policies">Hr Policies</option>
                                     </select>
                                     @error('type')
                                         <div class="invalid-feedback"> {{ message }}</div>
@@ -221,29 +223,26 @@
                                             @enderror
                                         </div>
                                     </div>
-
                                     <div class="col-md-6">
                                         <label for="validationCustom04"
                                             class="form-label type @error('type') is-invalid @enderror">Type</label>
                                         <select class="form-select form-select-solid form-select-sm" name="type"
-                                            data-dropdown-parent="#dynamicCategoryEdit_{{ $dynamicCategory->id }}" data-control="select2"
-                                            data-placeholder="Select an option" data-allow-clear="true">
+                                            data-control="select2" data-placeholder="Select an option"
+                                            data-allow-clear="true">
                                             <option></option>
                                             @foreach ($dynamicCategories as $dynamicCategory)
                                                 <option @selected($dynamicCategory->type == $dynamicCategory->type) value="{{ $dynamicCategory->type }}">
-                                                    Hr Policy</option>
+                                                    {{ $dynamicCategory->type }}</option>
                                             @endforeach
                                         </select>
                                         @error('type')
                                             <div class="invalid-feedback"> {{ message }}</div>
                                         @enderror
                                     </div>
-
                                     <div class="col-md-6">
                                         <label for="validationCustom04"
                                             class="form-label status @error('status') is-invalid @enderror">Status</label>
                                         <select class="form-select form-select-solid form-select-sm" name="status"
-                                            data-dropdown-parent="#dynamicCategoryEdit_{{ $dynamicCategory->id }}"
                                             data-control="select2" data-placeholder="Select an option"
                                             data-allow-clear="true">
                                             <option></option>

@@ -28,7 +28,7 @@ class HrPolicyController extends Controller
     {
         return view('admin.pages.hrPolicy.index', [
             'hrPolicys'         => $this->hrPolicyRepository->allHrPolicy(),
-            'dynamicCategories' => $this->dynamicCategoryRepository->allDynamicCategory(),
+            'dynamicCategories' => $this->dynamicCategoryRepository->allDynamicActiveCategory('hr_policies'),
             'companies'         => $this->companyRepository->allCompany(),
         ]);
     }

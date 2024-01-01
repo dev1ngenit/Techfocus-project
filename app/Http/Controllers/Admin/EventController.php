@@ -32,7 +32,7 @@ class EventController extends Controller
     {
         return view('admin.pages.event.index', [
             'events'              => $this->eventRepository->allEvent(),
-            'dynamicCategories'   => $this->dynamicCategoryRepository->allDynamicCategory(),
+            'dynamicCategories'   => $this->dynamicCategoryRepository->allDynamicActiveCategory('events'),
             'admins' =>  Admin::get(['id', 'name']),
             'employeedepartments' => $this->employeedepartmentRepository->allEmployeeDepartment(),
         ]);
