@@ -64,8 +64,16 @@
                                     <tr class="odd">
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $dynamicCategory->name }}</td>
-                                        <td>{{ $dynamicCategory->formatText($type) }}</td>
-                                        <td>{{ $dynamicCategory->status }}</td>
+                                        <td>{{ formatText($dynamicCategory->type) }}</td>
+                                        <td>
+                                            <span @class([
+                                                'badge',
+                                                'badge-success' => $dynamicCategory->status == 'active',
+                                                'badge-danger' => $dynamicCategory->status == 'inactive',
+                                            ])>
+                                                {{ $dynamicCategory->status }}
+                                            </span>
+                                        </td>
                                         <td>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <a href="javascript:void()"
@@ -216,7 +224,7 @@
                                     <div class="col-lg-6">
                                         <div class="fv-row mb-3">
                                             <label class="form-label">Type</label>
-                                            <input name="type" value="{{ $dynamicCategory->type }}"
+                                            <input name="type" value="{{ formatText($dynamicCategory->type) }}"
                                                 class="form-control form-control-sm form-control-solid @error('type') is-invalid @enderror"
                                                 placeholder="Enter Button Name" type="text" />
                                             @error('type')

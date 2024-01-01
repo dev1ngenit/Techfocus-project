@@ -8,11 +8,9 @@ use App\Repositories\Interfaces\DynamicCategoryRepositoryInterface;
 
 class DynamicCategoryController extends Controller
 {
-    private $dynamicCategoryRepository;
-
-    public function __construct(DynamicCategoryRepositoryInterface $dynamicCategoryRepository)
-    {
-        $this->dynamicCategoryRepository = $dynamicCategoryRepository;
+    public function __construct(
+        private DynamicCategoryRepositoryInterface $dynamicCategoryRepository
+    ) {
     }
 
     /**
@@ -23,7 +21,7 @@ class DynamicCategoryController extends Controller
     public function index()
     {
         return view('admin.pages.dynamicCategory.index', [
-            'dynamicCategories'    => $this->dynamicCategoryRepository->allDynamicCategory(),
+            'dynamicCategories' => $this->dynamicCategoryRepository->allDynamicCategory(),
         ]);
     }
 
@@ -35,13 +33,7 @@ class DynamicCategoryController extends Controller
      */
     public function store(DynamicCategoryRequest $request)
     {
-        $data = [
-            'parent_id'  => $request->parent_id,
-            'name'       => $request->name,
-            'type'       => $request->type,
-            'status'     => $request->status,
-        ];
-        $this->dynamicCategoryRepository->storeDynamicCategory($data);
+        $this->dynamicCategoryRepository->storeDynamicCategory($request->only('parent_id', 'name', 'type', 'status'));
 
         return redirect()->back()->with('success', 'Data has been saved successfully!');
     }
@@ -55,16 +47,9 @@ class DynamicCategoryController extends Controller
      */
     public function update(DynamicCategoryRequest $request, $id)
     {
-        $data = [
-            'parent_id'  => $request->parent_id,
-            'name'       => $request->name,
-            'type'       => $request->type,
-            'status'     => $request->status,
-        ];
+        $this->dynamicCategoryRepository->updateDynamicCategory($request->only('parent_id', 'name', 'type', 'status'), $id);
 
-        $this->dynamicCategoryRepository->updateDynamicCategory($data, $id);
-
-        return redirect()->back()->with('success', 'Data has been Updated successfully!');
+        return redirect()->back()->with('success', 'Data has been updated successfully!');
     }
 
     /**
