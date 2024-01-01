@@ -221,17 +221,24 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="fv-row mb-3">
-                                            <label class="form-label">Type</label>
-                                            <input name="type" value="{{ formatText($dynamicCategory->type) }}"
-                                                class="form-control form-control-sm form-control-solid @error('type') is-invalid @enderror"
-                                                placeholder="Enter Button Name" type="text" />
-                                            @error('type')
-                                                <div class="invalid-feedback"> {{ message }}</div>
-                                            @enderror
-                                        </div>
+
+                                    <div class="col-md-6">
+                                        <label for="validationCustom04"
+                                            class="form-label type @error('type') is-invalid @enderror">Type</label>
+                                        <select class="form-select form-select-solid form-select-sm" name="type"
+                                            data-dropdown-parent="#dynamicCategoryEdit_{{ $dynamicCategory->id }}" data-control="select2"
+                                            data-placeholder="Select an option" data-allow-clear="true">
+                                            <option></option>
+                                            @foreach ($dynamicCategories as $dynamicCategory)
+                                                <option @selected($dynamicCategory->type == $dynamicCategory->type) value="{{ $dynamicCategory->type }}">
+                                                    Hr Policy</option>
+                                            @endforeach
+                                        </select>
+                                        @error('type')
+                                            <div class="invalid-feedback"> {{ message }}</div>
+                                        @enderror
                                     </div>
+
                                     <div class="col-md-6">
                                         <label for="validationCustom04"
                                             class="form-label status @error('status') is-invalid @enderror">Status</label>
