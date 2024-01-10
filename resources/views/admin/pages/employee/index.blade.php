@@ -150,7 +150,7 @@
                     </div>
                     <!-- End Close button in the header -->
                 </div>
-                <form method="POST" action="{{ route('admin.brand.store') }}" class="needs-validation" novalidate
+                <form method="POST" action="{{ route('admin.employee.store') }}" class="needs-validation" novalidate
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">

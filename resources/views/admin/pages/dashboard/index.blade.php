@@ -239,7 +239,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="card-body pt-5 h-lg-550px">
+                                    <div class="card-body pt-5 h-lg-600px">
                                         @if (count($agendas) > 0) 
                                             @foreach ($agendas as $agenda) 
                                                 <div class="d-flex align-items-center mb-8">

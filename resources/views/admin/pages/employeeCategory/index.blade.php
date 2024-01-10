@@ -348,7 +348,7 @@
                                                     data-allow-clear="true">
                                                     <option></option>
                                                     @foreach ($companies as $company)
-                                                        <option @selected($company->id == $employeeCategory->company) value="{{ $company->id }}">
+                                                        <option @selected($company->id == $employeeCategory->company_id) value="{{ $company->id }}">
                                                             {{ $company->name }}</option>
                                                     @endforeach
                                                 </select>
