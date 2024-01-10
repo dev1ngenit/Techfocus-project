@@ -62,7 +62,8 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 pt-1">
                                                         <div class="mb-1">
-                                                            <label class="p-0 text-start text-black">Job Category Name</label>
+                                                            <label class="p-0 text-start text-black">Job Category
+                                                                Name</label>
                                                             <select name="employee_category_id"
                                                                 class="form-select form-select-sm form-select-solid"
                                                                 data-control="select2" data-placeholder="Select an option"
@@ -75,12 +76,13 @@
                                                                     </option>
                                                                 @endforeach
                                                             </select>
-                                                            <div class="invalid-feedback"> Please Enter Job Category.</div>
+                                                            <div class="invalid-feedback"> Please Enter Name.</div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 pt-1">
                                                         <div class="mb-1">
-                                                            <label class="p-0 text-start text-black">Depertment Name</label>
+                                                            <label class="p-0 text-start text-black">Depertment
+                                                                Name</label>
                                                             <select name="department_id"
                                                                 class="form-select form-select-sm form-select-solid"
                                                                 data-control="select2" data-placeholder="Select an option"

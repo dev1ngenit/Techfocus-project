@@ -28,14 +28,14 @@ var swiper = new Swiper(".bannerSwiper", {
   pagination: {
     el: ".swiper-pagination",
   },
-  speed: 1000,
+  speed: 5000,
   loop: true,
   centeredSlides: true,
   roundLengths: true,
-  mousewheel: true,
+  mousewheel: false,
   grabCursor: false,
   autoplay: {
-    delay: 5000,
+    delay: 8000,
   },
 });
 
