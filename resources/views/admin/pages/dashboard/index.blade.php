@@ -477,6 +477,216 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="kt_sliders_widget_2_slider"
+                                    class="card card-flush carousel carousel-custom carousel-stretch slide h-xl-100"
+                                    data-bs-ride="carousel" data-bs-interval="5500">
+                                    <div class="card-header pt-5">
+                                        <h4 class="card-title d-flex align-items-start flex-column">
+                                            <span class="card-label fw-bold text-gray-800">Today’s Events</span>
+                                            <span class="text-gray-500 mt-1 fw-bold fs-7">24 events on all
+                                                activities</span>
+                                        </h4>
+
+                                        <div class="card-toolbar">
+                                            <ol
+                                                class="p-0 m-0 carousel-indicators carousel-indicators-bullet carousel-indicators-active-success">
+                                                <li data-bs-target="#kt_sliders_widget_2_slider" data-bs-slide-to="0"
+                                                    class="ms-1 active" aria-current="true"></li>
+                                                <li data-bs-target="#kt_sliders_widget_2_slider" data-bs-slide-to="1"
+                                                    class="ms-1"></li>
+                                                <li data-bs-target="#kt_sliders_widget_2_slider" data-bs-slide-to="2"
+                                                    class="ms-1"></li>
+
+                                            </ol>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body py-6">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item show active">
+                                                <div class="d-flex align-items-center mb-9">
+                                                    <div class="symbol symbol-70px symbol-circle me-5">
+                                                        <span class="symbol-label bg-light-success">
+                                                            <i class="ki-duotone ki-abstract-24 fs-3x text-success"><span
+                                                                    class="path1"></span><span class="path2"></span></i>
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="m-0">
+                                                        <h4 class="fw-bold text-gray-800 mb-3">Ruby on Rails</h4>
+
+                                                        <div class="d-flex d-grid gap-5">
+                                                            <div class="d-flex flex-column flex-shrink-0 me-4">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 5 Topics
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 1 Speakers
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="d-flex flex-column flex-shrink-0">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 60 Min
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 137 students
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="m-0">
+                                                    <a href="#" class="btn btn-sm btn-light me-2 mb-2">Details</a>
+
+                                                    <a href="#" class="btn btn-sm btn-success mb-2"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#kt_modal_create_campaign">Join Event</a>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="d-flex align-items-center mb-9">
+                                                    <div class="symbol symbol-70px symbol-circle me-5">
+                                                        <span class="symbol-label bg-light-danger">
+                                                            <i class="ki-duotone ki-abstract-25 fs-3x text-danger"><span
+                                                                    class="path1"></span><span class="path2"></span></i>
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="m-0">
+                                                        <h4 class="fw-bold text-gray-800 mb-3">Ruby on Rails</h4>
+
+                                                        <div class="d-flex d-grid gap-5">
+                                                            <div class="d-flex flex-column flex-shrink-0 me-4">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 12 Topics
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 1 Speakers
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="d-flex flex-column flex-shrink-0">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 50 Min
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 72 students
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="m-0">
+                                                    <a href="#" class="btn btn-sm btn-light me-2 mb-2">Details</a>
+
+                                                    <a href="#" class="btn btn-sm btn-success mb-2"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#kt_modal_create_campaign">Join Event</a>
+                                                </div>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <div class="d-flex align-items-center mb-9">
+                                                    <div class="symbol symbol-70px symbol-circle me-5">
+                                                        <span class="symbol-label bg-light-primary">
+                                                            <i class="ki-duotone ki-abstract-36 fs-3x text-primary"><span
+                                                                    class="path1"></span><span class="path2"></span></i>
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="m-0">
+                                                        <h4 class="fw-bold text-gray-800 mb-3">Ruby on Rails</h4>
+
+                                                        <div class="d-flex d-grid gap-5">
+                                                            <div class="d-flex flex-column flex-shrink-0 me-4">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 3 Topics
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 1 Speakers
+                                                                </span>
+                                                            </div>
+
+                                                            <div class="d-flex flex-column flex-shrink-0">
+                                                                <span
+                                                                    class="d-flex align-items-center fs-7 fw-bold text-gray-500 mb-2">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 50 Min
+                                                                </span>
+
+                                                                <span
+                                                                    class="d-flex align-items-center text-gray-500 fw-bold fs-7">
+                                                                    <i
+                                                                        class="ki-duotone ki-right-square fs-6 text-gray-600 me-2"><span
+                                                                            class="path1"></span><span
+                                                                            class="path2"></span></i> 72 students
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="m-0">
+                                                    <a href="#" class="btn btn-sm btn-light me-2 mb-2">Details</a>
+
+                                                    <a href="#" class="btn btn-sm btn-success mb-2"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#kt_modal_create_campaign">Join Event</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

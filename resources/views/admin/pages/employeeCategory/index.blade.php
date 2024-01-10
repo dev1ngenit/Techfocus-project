@@ -1,11 +1,11 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-lg">
                 <div class="card card-p-0 card-flush">
                     <div class="card-header align-items-center py-5 gap-2 gap-md-5">
-                        <div class="container px-0">
+                        <div class="container-fluid px-4">
                             <div class="row">
                                 <div class="col-lg-4 col-sm-12 text-lg-start text-sm-center">
                                     <!--begin::Search-->
@@ -38,7 +38,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-end text-sm-center">
-                                    <button type="button" class="btn btn-sm btn-light-success rounded-0"
+                                    <button type="button" class="btn btn-sm btn-success rounded-0"
                                         data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
                                         data-bs-target="#employeeCategoryAddModal">
                                         Add New
@@ -67,8 +67,8 @@
                                     @foreach ($employeeCategories as $employeeCategory)
                                         <tr class="odd">
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $employeeCategory->countryName() ?? 'Not Identified' }}</td>
-                                            <td>{{ $employeeCategory->companyName() ?? 'Not Identified' }}</td>
+                                            <td>{{ ucfirst($employeeCategory->countryName() ?? 'Not Identified') }}</td>
+                                            <td>{{ ucfirst($employeeCategory->companyName() ?? 'Not Identified') }}</td>
                                             <td>{{ $employeeCategory->name }}</td>
                                             <td>{{ $employeeCategory->evaluation_period }} days</td>
                                             <td>
@@ -190,43 +190,38 @@
                                             <div class="card-body p-1 px-2">
                                                 <div class="row modal_body_badge">
                                                     <div class="col-md-4 mb-2">
-                                                        <label for="validationCustom01"
-                                                            class="form-label required ">Earned
-                                                            Leave
+                                                        <label for="validationCustom01" class="form-label">Earned Leave
                                                         </label>
                                                         <input type="number"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="monthly_earned_leave" step="0.01"
+                                                            name="monthly_earned_leave" step="0.001"
                                                             id="validationCustom01"
-                                                            placeholder="Enter Monthly Earned Leave" required>
+                                                            placeholder="Enter Monthly Earned Leave">
                                                         <div class="valid-feedback"> Looks good! </div>
                                                         <div class="invalid-feedback"> Please Enter Monthly Earned Leave
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
                                                         <label for="validationCustom01"
-                                                            class="form-label required ">Casual
-                                                            Leave
+                                                            class="form-label">Casual Leave
                                                         </label>
                                                         <input type="number"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="monthly_casual_leave" step="0.01"
+                                                            name="monthly_casual_leave" step="0.001"
                                                             id="validationCustom01"
-                                                            placeholder="Enter Monthly Casual Leave" required>
+                                                            placeholder="Enter Monthly Casual Leave">
                                                         <div class="valid-feedback"> Looks good! </div>
                                                         <div class="invalid-feedback"> Please Enter Monthly Casual Leave
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4 mb-2">
                                                         <label for="validationCustom01"
-                                                            class="form-label required ">Medical
-                                                            Leave
+                                                            class="form-label">Medical Leave
                                                         </label>
                                                         <input type="number"
                                                             class="form-control form-control-solid form-control-sm"
-                                                            name="monthly_medical_leave" step="0.01"
-                                                            id="validationCustom01" placeholder="Enter Country Name"
-                                                            required>
+                                                            name="monthly_medical_leave" step="0.001"
+                                                            id="validationCustom01" placeholder="Enter Medical Leave">
                                                         <div class="valid-feedback"> Looks good! </div>
                                                         <div class="invalid-feedback"> Please Enter Monthly Medical Leave
                                                         </div>
@@ -389,15 +384,14 @@
                                                     <div class="row modal_body_badge">
                                                         <div class="col-md-4 mb-2">
                                                             <label for="validationCustom01"
-                                                                class="form-label required ">Earned
-                                                                Leave
+                                                                class="form-label">Earned Leave
                                                             </label>
                                                             <input type="number"
                                                                 class="form-control form-control-solid form-control-sm"
                                                                 name="monthly_earned_leave"
                                                                 value="{{ $employeeCategory->monthly_earned_leave }}"
                                                                 step="0.01" id="validationCustom01"
-                                                                placeholder="Enter Monthly Earned Leave" required>
+                                                                placeholder="Enter Monthly Earned Leave">
                                                             <div class="valid-feedback"> Looks good! </div>
                                                             <div class="invalid-feedback"> Please Enter Monthly Earned
                                                                 Leave
@@ -405,31 +399,28 @@
                                                         </div>
                                                         <div class="col-md-4 mb-2">
                                                             <label for="validationCustom01"
-                                                                class="form-label required ">Casual
-                                                                Leave
+                                                                class="form-label">Casual Leave
                                                             </label>
                                                             <input type="number"
                                                                 class="form-control form-control-solid form-control-sm"
                                                                 name="monthly_casual_leave"
                                                                 value="{{ $employeeCategory->monthly_casual_leave }}"
                                                                 step="0.01" id="validationCustom01"
-                                                                placeholder="Enter Monthly Casual Leave" required>
+                                                                placeholder="Enter Monthly Casual Leave">
                                                             <div class="valid-feedback"> Looks good! </div>
-                                                            <div class="invalid-feedback"> Please Enter Monthly Casual
-                                                                Leave
+                                                            <div class="invalid-feedback"> Please Enter Monthly Casual Leave
                                                             </div>
                                                         </div>
                                                         <div class="col-md-4 mb-2">
                                                             <label for="validationCustom01"
-                                                                class="form-label required ">Medical
-                                                                Leave
+                                                                class="form-label">Medical Leave
                                                             </label>
                                                             <input type="number"
                                                                 class="form-control form-control-solid form-control-sm"
                                                                 name="monthly_medical_leave"
                                                                 value="{{ $employeeCategory->monthly_medical_leave }}"
                                                                 step="0.01" id="validationCustom01"
-                                                                placeholder="Enter Country Name" required>
+                                                                placeholder="Enter Medical Leave">
                                                             <div class="valid-feedback"> Looks good! </div>
                                                             <div class="invalid-feedback"> Please Enter Monthly Medical
                                                                 Leave
