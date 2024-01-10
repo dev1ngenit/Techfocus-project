@@ -164,20 +164,28 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
-                                                <div class="symbol symbol-30px me-5 mb-3">
-                                                    <span class="symbol-label">
-                                                        <img class="h-30px" src="{{asset('backend/images/Late Time.png')}}" alt="">
-                                                    </span>
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div class="symbol symbol-30px me-5 mb-5">
+                                                        <span class="symbol-label">
+                                                            <img class="h-30px" src="{{asset('backend/images/Late Time.png')}}" alt="">
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="#"
+                                                        class="card-title fw-bolder text-danger text-hover-primary fs-7"
+                                                        data-bs-toggle="modal" data-bs-target="#lateCount">
+                                                        <span
+                                                            class="text-danger fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">
+                                                            {{ !empty(count($lateCounts)) ? count($lateCounts) : 0 }}
+                                                        </span>
+                                                    </a>
+                                                    </div>
                                                 </div>
 
                                                 <div class="m-0">
                                                     <a href="#"
                                                         class="card-title fw-bolder text-danger text-hover-primary fs-7"
                                                         data-bs-toggle="modal" data-bs-target="#lateCount">
-                                                        <span
-                                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">
-                                                            {{ !empty(count($lateCounts)) ? count($lateCounts) : 0 }}
-                                                        </span>
                                                         <span class="text-gray-500 fw-semibold fs-7">Late Count(This Month)</span>
                                                     </a>
                                                 </div>
