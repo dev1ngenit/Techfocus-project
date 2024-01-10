@@ -126,10 +126,9 @@
                                     <div class="row g-3 g-lg-6">
                                         <div class="col-6">
                                             <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
-                                                <div class="symbol symbol-30px me-5 mb-8">
+                                                <div class="symbol symbol-30px me-5 mb-3">
                                                     <span class="symbol-label">
-                                                        <i class="ki-duotone ki-flask fs-1 text-primary"><span
-                                                                class="path1"></span><span class="path2"></span></i>
+                                                        <i class="fa-solid fa-clock fs-1 text-primary"></i>
                                                     </span>
                                                 </div>
 
@@ -165,11 +164,9 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
-                                                <div class="symbol symbol-30px me-5 mb-8">
+                                                <div class="symbol symbol-30px me-5 mb-3">
                                                     <span class="symbol-label">
-                                                        <i class="ki-duotone ki-award fs-1 text-primary"><span
-                                                                class="path1"></span><span class="path2"></span><span
-                                                                class="path3"></span></i>
+                                                        <img class="h-30px" src="{{asset('backend/images/Late Time.png')}}" alt="">
                                                     </span>
                                                 </div>
 
@@ -181,25 +178,24 @@
                                                             class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">
                                                             {{ !empty(count($lateCounts)) ? count($lateCounts) : 0 }}
                                                         </span>
-                                                        <span class="text-gray-500 fw-semibold fs-6">Late Count(This
-                                                            Month)</span>
+                                                        <span class="text-gray-500 fw-semibold fs-7">Late Count(This Month)</span>
                                                     </a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
-                                                <div class="symbol symbol-30px me-5 mb-8">
+                                                <div class="symbol symbol-30px me-5 mb-2">
                                                     <div>
                                                         <a href="#"
-                                                            class="card-title fw-bolder main_color text-hover-primary fs-7"
+                                                            class="card-title fw-bolder main_color text-hover-primary fs-8"
                                                             data-bs-toggle="modal" data-bs-target="#thisMonth">
                                                             <span class="text-start">This Month</span> <span
                                                                 class="ms-3"><i class="fas fa-arrow-right"></i></span>
                                                         </a>
                                                     </div>
                                                     <a href="#"
-                                                        class="card-title fw-bolder main_color text-hover-primary fs-7"
+                                                        class="card-title fw-bolder main_color text-hover-primary fs-8"
                                                         data-bs-toggle="modal" data-bs-target="#lastMonth">
                                                         <span class="">Last Month</span> <span class="ms-3"><i
                                                                 class="fas fa-arrow-right"></i></span>
@@ -215,6 +211,22 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row g-3 g-lg-6 pt-10">
+                                        <div class="card-header pt-5 pb-5 align-items-center border-bottom">
+                                            <div>
+                                                <h4 class="card-title d-flex align-items-start flex-column">
+                                                    <span class="card-label fw-bold text-gray-800">Leave Application Status</span>
+                                                </h4>
+                                            </div>
+                                            <div>
+                                                <a class="btn btn-sm btn-icon btn-active-color-primary btn-color-white bg-white bg-opacity-25 bg-hover-opacity-100 bg-hover-white bg-active-opacity-25 w-20px h-20px"
+                                                    data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
+                                                    data-bs-target="#createAgenda">
+                                                    <i class="fa-solid fa-circle-plus fs-2 text-success"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -223,11 +235,11 @@
                     <div class="col-xl-8 mb-5 mb-xl-10">
                         <div class="row g-5 g-xl-10">
                             <div class="col-xl-6 mb-xl-10">
-                                <div id="kt_sliders_widget_1_slider" class="card card-flush h-xl-100">
+                                <div class="card card-flash">
                                     <div class="card-header pt-5 pb-5 align-items-center border-bottom">
                                         <div>
                                             <h4 class="card-title d-flex align-items-start flex-column">
-                                                <span class="card-label fw-bold text-gray-800">Today’s Agenda's</span>
+                                                <span class="card-label fw-bold text-gray-800">Today’s Agendas</span>
                                             </h4>
                                         </div>
                                         <div>
@@ -238,8 +250,45 @@
                                             </a>
                                         </div>
                                     </div>
-
-                                    <div class="card-body pt-5 h-lg-600px">
+                                    <div class="card-body pt-5 h-lg-250px overflow-y-scroll">
+                                        @if (count($agendas) > 0) 
+                                            @foreach ($agendas as $agenda) 
+                                                <div class="d-flex align-items-center mb-8">
+                                                    <span class="bullet bullet-vertical h-40px bg-dark"></span>
+                                                    <div class="form-check form-check-custom form-check-solid mx-5">
+                                                        <input class="form-check-input bg-emerald-500" type="checkbox"
+                                                            value="">
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <a href="#"
+                                                            class="text-gray-800 text-hover-primary fw-bold fs-6">{{ $agenda->task_name }}</a>
+                                                        {{-- <span class="text-muted fw-semibold d-block">Due in 2 Days</span> --}}
+                                                    </div>
+                                                    <a href="#">
+                                                        <span class="badge badge-success fs-8 fw-bold rounded-0">Convert <br> to
+                                                            Task</span>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="card card-flash">
+                                    <div class="card-header pt-5 pb-5 align-items-center border-bottom">
+                                        <div>
+                                            <h4 class="card-title d-flex align-items-start flex-column">
+                                                <span class="card-label fw-bold text-gray-800">Today’s Tasks</span>
+                                            </h4>
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-sm btn-icon btn-active-color-primary btn-color-white bg-white bg-opacity-25 bg-hover-opacity-100 bg-hover-white bg-active-opacity-25 w-20px h-20px"
+                                                data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
+                                                data-bs-target="#createAgenda">
+                                                <i class="fa-solid fa-circle-plus fs-2 text-success"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body pt-5 h-lg-325px overflow-y-scroll">
                                         @if (count($agendas) > 0) 
                                             @foreach ($agendas as $agenda) 
                                                 <div class="d-flex align-items-center mb-8">

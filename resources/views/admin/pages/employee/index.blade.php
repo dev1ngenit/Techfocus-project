@@ -194,9 +194,9 @@
                                 <div class="col-lg-4">
                                     <div class="mb-4">
                                         <label class="form-label" for="basicpill-email-input">Job Category</label>
-                                        <select name="employee_category_id" class="form-select form-select-sm form-select-solid"
-                                            data-control="select2" data-placeholder="Select an option"
-                                            data-allow-clear="true">
+                                        <select name="employee_category_id"
+                                            class="form-select form-select-sm form-select-solid" data-control="select2"
+                                            data-placeholder="Select an option" data-allow-clear="true">
                                             <option></option>
                                             @foreach ($employeeCategories as $employeeCategory)
                                                 <option value="{{ $employeeCategory->id }}">
@@ -208,7 +208,8 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-1">
-                                        <label class="form-label" for="basicpill-phoneno-input">Employee Code (Biometric ID)</label>
+                                        <label class="form-label" for="basicpill-phoneno-input">Employee Code (Biometric
+                                            ID)</label>
                                         <input type="text" class="form-control form-control-sm allow_decimal"
                                             placeholder="Employee Code (Biometric ID)" name="employee_id" maxlength="15"
                                             value="{{ old('employee_id') }}" />
@@ -231,13 +232,17 @@
                                             id="select6" multiple="multiple" data-include-select-all-option="true"
                                             data-placeholder="Chose Sector" data-enable-filtering="true"
                                             data-enable-case-insensitive-filtering="true" required>
-
-                                            <option value="admin">Admin</option>
-                                            <option value="business">Business</option>
+                                            <option value="admin">SuperAdmin</option>
+                                            <option value="sales">Sales</option>
+                                            <option value="marketing">Marketing</option>
                                             <option value="accounts">Accounts</option>
+                                            <option value="finance">Finance</option>
+                                            <option value="hr">HR</option>
+                                            <option value="operation">Operation</option>
                                             <option value="site">Site & Contents</option>
                                             <option value="logistics">Logistics</option>
-                                            <option value="support">Support</option>
+                                            <option value="software_development">SOftware Development</option>
+                                            <option value="crm">CRM</option>
                                         </select>
 
                                     </div>
@@ -246,7 +251,8 @@
                                     <div class="mb-4">
                                         <label class="form-label required" for="basicpill-firstname-input">Role</label>
                                         <select name="role" class="form-select form-select-sm form-select-solid"
-                                        data-control="select2" data-placeholder="Select a Role" data-allow-clear="true" required>
+                                            data-control="select2" data-placeholder="Select a Role"
+                                            data-allow-clear="true" required>
                                             <option value="admin">Admin</option>
                                             <option value="manager">Manager</option>
                                             <option value="others">Others</option>
@@ -260,7 +266,8 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="mb-4">
-                                        <label class="form-label required" for="basicpill-firstname-input">Supervisor</label>
+                                        <label class="form-label required"
+                                            for="basicpill-firstname-input">Supervisor</label>
                                         <select name="supervisor_id" class="form-select form-select-sm form-select-solid"
                                             data-control="select2" data-placeholder="Select an option"
                                             data-allow-clear="true" required>
@@ -390,11 +397,13 @@
                                     <div class="col-lg-4">
                                         <div class="mb-4">
                                             <label class="form-label" for="basicpill-email-input">Job Category</label>
-                                            <select name="employee_category_id" class="form-select form-select-sm form-select-solid"
+                                            <select name="employee_category_id"
+                                                class="form-select form-select-sm form-select-solid"
                                                 data-control="select2" data-placeholder="Select an option"
                                                 data-allow-clear="true">
                                                 @foreach ($employeeCategories as $employeeCategory)
-                                                    <option value="{{ $employeeCategory->id }}" @selected($admin->employee_category_id == $employeeCategory->id)>
+                                                    <option value="{{ $employeeCategory->id }}"
+                                                        @selected($admin->employee_category_id == $employeeCategory->id)>
                                                         {{ $employeeCategory->name }}
                                                     </option>
                                                 @endforeach
@@ -403,13 +412,14 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-1">
-                                            <label class="form-label" for="basicpill-phoneno-input">Employee Code (Biometric ID)</label>
+                                            <label class="form-label" for="basicpill-phoneno-input">Employee Code
+                                                (Biometric ID)</label>
                                             <input type="text" class="form-control form-control-sm allow_decimal"
-                                                placeholder="Employee Code (Biometric ID)" name="employee_id" maxlength="15"
-                                                value="{{ $admin->employee_id }}" />
+                                                placeholder="Employee Code (Biometric ID)" name="employee_id"
+                                                maxlength="15" value="{{ $admin->employee_id }}" />
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                                 <div class="row">
@@ -432,24 +442,28 @@
                                                     $adminDepartment = isset($admin->department) ? json_decode($admin->department, true) : [];
                                                     $adminRole = isset($admin->role) ? json_decode($admin->role, true) : [];
                                                 @endphp
-                                                <option value="admin" @selected(is_array($adminDepartment) && in_array('admin', $adminDepartment))>Admin</option>
-                                                <option value="business" @selected(is_array($adminDepartment) && in_array('business', $adminDepartment))>Business</option>
+                                                <option value="admin" @selected(is_array($adminDepartment) && in_array('admin', $adminDepartment))>Super Admin</option>
+                                                <option value="sales" @selected(is_array($adminDepartment) && in_array('sales', $adminDepartment))>Sales</option>
+                                                <option value="marketing" @selected(is_array($adminDepartment) && in_array('marketing', $adminDepartment))>Marketing</option>
                                                 <option value="accounts" @selected(is_array($adminDepartment) && in_array('accounts', $adminDepartment))>Accounts</option>
-                                                <option value="site" @selected(is_array($adminDepartment) && in_array('site', $adminDepartment))>Site & Contents
-                                                </option>
-                                                <option value="logistics" @selected(is_array($adminDepartment) && in_array('logistics', $adminDepartment))>Logistics
-                                                </option>
-                                                <option value="support" @selected(is_array($adminDepartment) && in_array('support', $adminDepartment))>Support
-                                                </option>
+                                                <option value="finance" @selected(is_array($adminDepartment) && in_array('finance', $adminDepartment))>Finance</option>
+                                                <option value="hr" @selected(is_array($adminDepartment) && in_array('hr', $adminDepartment))>HR</option>
+                                                <option value="operation" @selected(is_array($adminDepartment) && in_array('operation', $adminDepartment))>Operation</option>
+                                                <option value="site" @selected(is_array($adminDepartment) && in_array('site', $adminDepartment))>Site & Contents</option>
+                                                <option value="logistics" @selected(is_array($adminDepartment) && in_array('logistics', $adminDepartment))>Logistics</option>
+                                                <option value="software_development" @selected(is_array($adminDepartment) && in_array('software_development', $adminDepartment))>SOftware Development</option>
+                                                <option value="crm" @selected(is_array($adminDepartment) && in_array('crm', $adminDepartment))>CRM</option>
                                             </select>
 
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-1">
-                                            <label class="form-label required" for="basicpill-firstname-input">Role</label>
+                                            <label class="form-label required"
+                                                for="basicpill-firstname-input">Role</label>
                                             <select name="role" class="form-select form-select-sm form-select-solid"
-                                            data-control="select2" data-placeholder="Select a Role" data-allow-clear="true" required>
+                                                data-control="select2" data-placeholder="Select a Role"
+                                                data-allow-clear="true" required>
                                                 <option value="admin" @selected(is_array($adminRole) && in_array('admin', $adminRole))>Admin</option>
                                                 <option value="manager" @selected(is_array($adminRole) && in_array('manager', $adminRole))>Manager</option>
                                                 <option value="others" @selected(is_array($adminRole) && in_array('others', $adminRole))>Others</option>
@@ -462,9 +476,12 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-4">
-                                            <label class="form-label required" for="basicpill-firstname-input">Supervisor</label>
-                                            <select name="supervisor_id" class="form-select form-select-sm form-select-solid"
-                                                data-control="select2" data-placeholder="Select a Supervisor" data-allow-clear="true" required>
+                                            <label class="form-label required"
+                                                for="basicpill-firstname-input">Supervisor</label>
+                                            <select name="supervisor_id"
+                                                class="form-select form-select-sm form-select-solid"
+                                                data-control="select2" data-placeholder="Select a Supervisor"
+                                                data-allow-clear="true" required>
                                                 <option></option>
                                                 @foreach ($admins as $supervisor)
                                                     <option value="{{ $supervisor->id }}" @selected($admin->supervisor_id == $supervisor->id)>

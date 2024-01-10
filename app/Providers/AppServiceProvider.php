@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-
+use App\Models\Admin;
 use App\Models\HR\Task;
 use App\Models\Admin\Site;
 use App\Models\Admin\DynamicCss;
@@ -108,6 +108,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
+        if (Schema::hasTable('admins')) {
+            View::share('all_employees', Admin::get());
+        } else {
+            View::share('all_employees', null);
+        }
         if (Schema::hasTable('sites')) {
             View::share('site', Site::first());
         } else {
