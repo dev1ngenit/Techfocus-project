@@ -40,7 +40,6 @@
 		<!--begin::Drawers-->
 		@include('admin.partials.drawers')
 
-		
 		<!--end::Engage toolbar-->
 		<!--begin::Scrolltop-->
 		<div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
@@ -56,6 +55,7 @@
 		<!--end::Scrolltop-->
 		<!--begin::Modals-->
 		@include('admin.partials.modals')
+		@include('admin.partials.leave_modal')
 		<!--end::Modals-->
 		<!--begin::Javascript-->
         @include('admin.partials.script')
