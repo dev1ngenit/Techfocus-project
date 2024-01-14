@@ -1,10 +1,10 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card my-5 rounded-0">
-                    <div class="card-header card-header-stretch">
+                    <div class="card-header py-2">
                         <h2 class="card-title">Web Site Appearance</h2>
                         <div class="card-toolbar">
                             <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0">

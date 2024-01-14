@@ -207,7 +207,7 @@
                                                                                         class="form-label required">Start
                                                                                         Date</label>
                                                                                     <input name="start_date"
-                                                                                        type="date"
+                                                                                        type="datetime-local"
                                                                                         class="form-control form-control-sm form-control-solid"
                                                                                         data-kt-repeater="repeat"
                                                                                         placeholder="Start Date"

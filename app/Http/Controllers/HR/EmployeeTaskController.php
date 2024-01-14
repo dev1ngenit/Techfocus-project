@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\HR;
 
-use Illuminate\Support\Str;
-use App\Http\Controllers\Controller;
 use App\Models\Admin;
-use App\Models\HR\EmployeeTask;
 use App\Models\HR\Task;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\HR\EmployeeTask;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class EmployeeTaskController extends Controller
 {
@@ -112,8 +113,8 @@ class EmployeeTaskController extends Controller
                     ]);
                 }
             }
-
-            return redirect()->back()->with('success', 'Data saved successfully.');
+            Session::flash('success', 'Data saved successfully.');
+            return redirect()->back();    ///->with('success', 'Data saved successfully.')
         }
 
         return redirect()->back()->withErrors($validator)->withInput();
