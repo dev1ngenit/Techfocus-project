@@ -10,7 +10,7 @@ class CategoryRepository implements CategoryRepositoryInterface
     public function allCategory()
     {
         return Category::with('children.children.children.children.children.children.children.children.children.children')->latest('id')->get();
-    }
+    } 
 
     public function storeCategory(array $data)
     {

@@ -36,7 +36,7 @@ function clockTicker() {
 
   // Refresh the clock every 1 second
   requestAnimationFrame(clockTicker);
-}
+} 
 
 // Start the clock
 clockTicker();

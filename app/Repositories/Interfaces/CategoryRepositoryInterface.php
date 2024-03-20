@@ -10,3 +10,4 @@ interface CategoryRepositoryInterface
     public function updateCategory(array $data, int $id);
     public function destroyCategory(int $id);
 }
+ 
