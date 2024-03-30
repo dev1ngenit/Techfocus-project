@@ -1141,70 +1141,8 @@
             stepper.goPrevious(); // go previous step
         });
     </script>
-    <script>
-        //---------Sidebar list Show Hide----------
-        $(document).ready(function() {
-
-
-            $('#dealId').click(function() {
-                $("#dealExpand").toggle(this.checked);
-            });
-
-
-            $('#rfqId').click(function() {
-
-
-                $("#rfqExpand").toggle('slow');
-
-
-            });
-
-        });
-    </script>
-    <script>
-        $('.stock_select').on('change', function() {
-
-
-            var stock_value = $(this).find(":selected").val();
-
-
-            if (stock_value == 'available') {
-                $(".qty_display").removeClass("d-none");
-                $(".qty_required").prop('required', true);
-            } else if (stock_value == 'limited') {
-                $(".qty_display").removeClass("d-none");
-                $(".qty_required").prop('required', true);
-            } else {
-                $(".qty_display").addClass("d-none");
-                $(".qty_required").prop('required', false);
-            }
-
-
-        });
-
-
-        $('.price_select').on('change', function() {
-
-
-            var price_value = $(this).find(":selected").val();
-            if (price_value == 'rfq') {
-                // alert(price_value);
-                $(".rfq_price").removeClass("d-none");
-                $(".offer_price").addClass("d-none");
-                $(".price").addClass("d-none");
-            } else if (price_value == 'offer_price') {
-                $(".offer_price").removeClass("d-none");
-                $(".rfq_price").addClass("d-none");
-                $(".price").addClass("d-none");
-            } else {
-                $(".price").removeClass("d-none");
-                $(".offer_price").addClass("d-none");
-                $(".rfq_price").addClass("d-none");
-            }
-
-
-        });
-    </script>
+    
+    
     <script>
         var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
             url: "https://keenthemes.com/scripts/void.php", // Set the url for your upload script location

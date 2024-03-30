@@ -18,7 +18,7 @@ class PasswordResetLinkController extends Controller
     {
         return view('admin.auth.forgot-password');
     }
-
+ 
     /**
      * Handle an incoming password reset link request.
      *
