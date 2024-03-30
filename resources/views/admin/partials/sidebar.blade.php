@@ -447,7 +447,7 @@
                 </div>
 
                 @php
-                    $sitecontent = ['admin.brand-page.index', 'admin.solution-details.index', 'admin.homepage.index', 'admin.homepage.create', 'admin.homepage.edit', 'admin.aboutpage.index', 'admin.aboutpage.create', 'admin.aboutpage.edit', 'admin.industry.index', 'admin.news-trend.index', 'admin.news-trend.create', 'admin.news-trend.edit', 'admin.terms-and-policy.index', 'admin.row.index', 'admin.row.create', 'admin.row.edit', 'admin.company.index', 'admin.company.create', 'admin.company.edit', 'admin.solution-card.index', 'admin.solution-card.create', 'admin.solution-card.edit', 'admin.blog.index', 'admin.story.index', 'admin.tech-content.index', 'admin.blog.create', 'admin.story.create', 'admin.tech-content.create', 'admin.blog.edit', 'admin.story.edit', 'admin.tech-content.edit', 'admin.banner.index','admin.banner.create','admin.banner.edit'];
+                    $sitecontent = ['admin.catalog.index', 'admin.catalog.create', 'admin.catalog.edit', 'admin.brand-page.index', 'admin.solution-details.index', 'admin.homepage.index', 'admin.homepage.create', 'admin.homepage.edit', 'admin.aboutpage.index', 'admin.aboutpage.create', 'admin.aboutpage.edit', 'admin.industry.index', 'admin.news-trend.index', 'admin.news-trend.create', 'admin.news-trend.edit', 'admin.terms-and-policy.index', 'admin.row.index', 'admin.row.create', 'admin.row.edit', 'admin.company.index', 'admin.company.create', 'admin.company.edit', 'admin.solution-card.index', 'admin.solution-card.create', 'admin.solution-card.edit', 'admin.blog.index', 'admin.story.index', 'admin.tech-content.index', 'admin.blog.create', 'admin.story.create', 'admin.tech-content.create', 'admin.blog.edit', 'admin.story.edit', 'admin.tech-content.edit', 'admin.banner.index','admin.banner.create','admin.banner.edit'];
                 @endphp
                 <div data-kt-menu-trigger="click"
                     class="menu-item menu-accordion {{ in_array(Route::current()->getName(), $sitecontent) ? 'here show' : '' }}">
@@ -624,6 +624,15 @@
                                     </a>
                                 </div>
                             </div>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ in_array(Route::current()->getName(), ['admin.catalog.index', 'admin.catalog.create', 'admin.catalog.edit']) ? 'active' : '' }}"
+                                href="{{ route('admin.catalog.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Catalogs</span>
+                            </a>
                         </div>
                         <div class="menu-item">
                             <a class="menu-link {{ Route::current()->getName() == 'admin.terms-and-policy.index' ? 'active' : '' }}"

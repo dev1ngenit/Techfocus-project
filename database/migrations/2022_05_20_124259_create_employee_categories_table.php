@@ -15,17 +15,17 @@ return new class extends Migration
     {
         Schema::create('employee_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
-            $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnDelete();
+            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnUpdate();
+            $table->foreignId('company_id')->nullable()->constrained('companies')->cascadeOnUpdate();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->unsignedInteger('evaluation_period');
-            $table->unsignedSmallInteger('monthly_earned_leave')->default(0);
-            $table->unsignedSmallInteger('monthly_casual_leave')->default(0);
-            $table->unsignedSmallInteger('monthly_medical_leave')->default(0);
-            $table->unsignedSmallInteger('yearly_earned_leave')->default(0);
-            $table->unsignedSmallInteger('yearly_casual_leave')->default(0);
-            $table->unsignedSmallInteger('yearly_medical_leave')->default(0);
+            $table->unsignedInteger('evaluation_period')->nullable();
+            $table->unsignedSmallInteger('monthly_earned_leave')->default(0)->nullable();
+            $table->unsignedSmallInteger('monthly_casual_leave')->default(0)->nullable();
+            $table->unsignedSmallInteger('monthly_medical_leave')->default(0)->nullable();
+            $table->unsignedSmallInteger('yearly_earned_leave')->default(0)->nullable();
+            $table->unsignedSmallInteger('yearly_casual_leave')->default(0)->nullable();
+            $table->unsignedSmallInteger('yearly_medical_leave')->default(0)->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();
