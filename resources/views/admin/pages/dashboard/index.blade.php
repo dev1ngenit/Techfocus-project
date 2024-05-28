@@ -14,11 +14,11 @@
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                 </div>
-                <div class="d-flex align-items-center gap-2 gap-lg-3">
+                {{-- <div class="d-flex align-items-center gap-2 gap-lg-3">
 
                     <a href="../../demo1/dist/.html" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                         data-bs-target="#kt_modal_create_app">Create</a>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -27,19 +27,18 @@
                     <div class="col-xl-4 mb-xl-10">
 
                         <div class="card card-flush h-xl-100">
-                            <div class="card-header rounded bgi-no-repeat bgi-size-cover bgi-position-y-top bgi-position-x-center align-items-start h-250px"
+                            <div class="card-header rounded bgi-no-repeat bgi-size-cover bgi-position-y-top bgi-position-x-center align-items-start h-200px"
                                 style="background-image:url('{{ asset('backend/assets/media/svg/shapes/top-green.png') }}')"
                                 data-bs-theme="light">
-                                <h3 class="card-title align-items-start flex-column text-white pt-15">
-                                    <span class="fw-bold fs-2x mb-3">Hello, {{ Auth::guard('admin')->user()->name }}</span>
+                                <h3 class="card-title align-items-start flex-column text-white pt-5">
+                                    <span class="fw-bold fs-md-2 mb-3">Hello, {{ Auth::guard('admin')->user()->name }}</span>
 
                                     <div class="fs-4 text-white">
                                         <span class="opacity-75">You have</span>
-
                                         <span class="position-relative d-inline-block">
-                                            <a href="/metronic8/demo1/../demo1/pages/user-profile/projects.html"
-                                                class="link-white opacity-75-hover fw-bold d-block mb-1">4 tasks</a>
-
+                                            <a href="#"
+                                                class="link-white opacity-75-hover fw-bold d-block mb-1">4 tasks
+                                            </a>
                                             <span
                                                 class="position-absolute opacity-50 bottom-0 start-0 border-2 border-body border-bottom w-100"></span>
                                         </span>
@@ -121,15 +120,14 @@
                                 </div>
                             </div>
 
-                            <div class="card-body mt-n20">
+                            <div class="card-body mt-n20 h-md-550px overflow-y-scroll">
                                 <div class="mt-n20 position-relative">
                                     <div class="row g-3 g-lg-6">
-                                        <div class="col-6">
+                                        <div class="col-6 mt-md-1">
                                             <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
-                                                <div class="symbol symbol-30px me-5 mb-8">
+                                                <div class="symbol symbol-30px me-5 mb-3">
                                                     <span class="symbol-label">
-                                                        <i class="ki-duotone ki-flask fs-1 text-primary"><span
-                                                                class="path1"></span><span class="path2"></span></i>
+                                                        <i class="fa-solid fa-clock fs-1 text-primary"></i>
                                                     </span>
                                                 </div>
 
@@ -147,7 +145,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-6 mt-md-1">
                                             <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
                                                 <div class="m-0 mb-3">
                                                     <span
@@ -165,23 +163,31 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
-                                                <div class="symbol symbol-30px me-5 mb-8">
-                                                    <span class="symbol-label">
-                                                        <i class="ki-duotone ki-award fs-1 text-primary"><span
-                                                                class="path1"></span><span class="path2"></span><span
-                                                                class="path3"></span></i>
-                                                    </span>
+                                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                                    <div class="symbol symbol-30px">
+                                                        <span class="symbol-label">
+                                                            <img class="h-25px w-25px"
+                                                                src="{{ asset('backend/images/Late Time.png') }}"
+                                                                alt="">
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <a href="#"
+                                                            class="card-title fw-bolder text-danger text-hover-primary fs-7"
+                                                            data-bs-toggle="modal" data-bs-target="#lateCount">
+                                                            <span
+                                                                class="text-danger fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">
+                                                                {{ !empty(count($lateCounts)) ? count($lateCounts) : 0 }}
+                                                            </span>
+                                                        </a>
+                                                    </div>
                                                 </div>
 
                                                 <div class="m-0">
                                                     <a href="#"
                                                         class="card-title fw-bolder text-danger text-hover-primary fs-7"
                                                         data-bs-toggle="modal" data-bs-target="#lateCount">
-                                                        <span
-                                                            class="text-gray-700 fw-bolder d-block fs-2qx lh-1 ls-n1 mb-1">
-                                                            {{ !empty(count($lateCounts)) ? count($lateCounts) : 0 }}
-                                                        </span>
-                                                        <span class="text-gray-500 fw-semibold fs-6">Late Count(This
+                                                        <span class="text-gray-500 fw-semibold fs-7">Late Count(This
                                                             Month)</span>
                                                     </a>
                                                 </div>
@@ -189,17 +195,17 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="bg-gray-100 bg-opacity-70 rounded-2 px-6 py-5">
-                                                <div class="symbol symbol-30px me-5 mb-8">
+                                                <div class="symbol symbol-30px me-5 mb-0">
                                                     <div>
                                                         <a href="#"
-                                                            class="card-title fw-bolder main_color text-hover-primary fs-7"
+                                                            class="card-title fw-bolder main_color text-hover-primary fs-8"
                                                             data-bs-toggle="modal" data-bs-target="#thisMonth">
                                                             <span class="text-start">This Month</span> <span
                                                                 class="ms-3"><i class="fas fa-arrow-right"></i></span>
                                                         </a>
                                                     </div>
                                                     <a href="#"
-                                                        class="card-title fw-bolder main_color text-hover-primary fs-7"
+                                                        class="card-title fw-bolder main_color text-hover-primary fs-8"
                                                         data-bs-toggle="modal" data-bs-target="#lastMonth">
                                                         <span class="">Last Month</span> <span class="ms-3"><i
                                                                 class="fas fa-arrow-right"></i></span>
@@ -215,6 +221,83 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row g-3 g-lg-6 pt-4">
+                                        <div class="card-header pt-5 pb-2 px-2 align-items-center border-bottom">
+                                            <div>
+                                                <h4 class="card-title d-flex align-items-start flex-column">
+                                                    <span class="card-label fw-bold text-gray-800">Leave Application
+                                                        Status</span>
+                                                </h4>
+                                            </div>
+                                            <div>
+                                                <a class="btn btn-sm btn-icon btn-active-color-primary btn-color-white bg-white bg-opacity-25 bg-hover-opacity-100 bg-hover-white bg-active-opacity-25 w-20px h-20px"
+                                                    data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
+                                                    data-bs-target="#makeLeaveModal">
+                                                    <i class="fa-solid fa-circle-plus fs-2 text-success"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-0 mt-1">
+                                            <div class="table-responsive h-md-250px overflow-y-scroll">
+                                                <table class="table table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5">
+                                                    <thead class="table_header_bg">
+                                                        <!--begin::Table row-->
+                                                        <tr
+                                                            class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
+                                                            <th width="60%">Name</th>
+                                                            <th width="25%">Status</th>
+                                                            <th width="15%">Action</th>
+                                                        </tr>
+                                                        <!--end::Table row-->
+                                                    </thead>
+                                                    <tbody class="fw-bold text-gray-600 text-center">
+                                                        <tr
+                                                            class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
+                                                            <th width="60%">Name</th>
+                                                            <th width="25%">Status</th>
+                                                            <th width="15%">Action</th>
+                                                        </tr>
+                                                        <tr
+                                                            class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
+                                                            <th width="60%">Name</th>
+                                                            <th width="25%">Status</th>
+                                                            <th width="15%">Action</th>
+                                                        </tr>
+                                                        <tr
+                                                            class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
+                                                            <th width="60%">Name</th>
+                                                            <th width="25%">Status</th>
+                                                            <th width="15%">Action</th>
+                                                        </tr>
+                                                        <tr
+                                                            class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
+                                                            <th width="60%">Name</th>
+                                                            <th width="25%">Status</th>
+                                                            <th width="15%">Action</th>
+                                                        </tr>
+                                                        <tr
+                                                            class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
+                                                            <th width="60%">Name</th>
+                                                            <th width="25%">Status</th>
+                                                            <th width="15%">Action</th>
+                                                        </tr>
+                                                        <tr
+                                                            class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
+                                                            <th width="60%">Name</th>
+                                                            <th width="25%">Status</th>
+                                                            <th width="15%">Action</th>
+                                                        </tr>
+                                                        <tr
+                                                            class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
+                                                            <th width="60%">Name</th>
+                                                            <th width="25%">Status</th>
+                                                            <th width="15%">Action</th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -223,11 +306,11 @@
                     <div class="col-xl-8 mb-5 mb-xl-10">
                         <div class="row g-5 g-xl-10">
                             <div class="col-xl-6 mb-xl-10">
-                                <div id="kt_sliders_widget_1_slider" class="card card-flush h-xl-100">
+                                <div class="card card-flash">
                                     <div class="card-header pt-5 pb-5 align-items-center border-bottom">
                                         <div>
                                             <h4 class="card-title d-flex align-items-start flex-column">
-                                                <span class="card-label fw-bold text-gray-800">Today’s Agenda's</span>
+                                                <span class="card-label fw-bold text-gray-800">Today’s Agendas</span>
                                             </h4>
                                         </div>
                                         <div>
@@ -238,10 +321,9 @@
                                             </a>
                                         </div>
                                     </div>
-
-                                    <div class="card-body pt-5 h-lg-550px">
-                                        @if (count($agendas) > 0) 
-                                            @foreach ($agendas as $agenda) 
+                                    <div class="card-body pt-5 h-lg-250px overflow-y-scroll">
+                                        @if (count($agendas) > 0)
+                                            @foreach ($agendas as $agenda)
                                                 <div class="d-flex align-items-center mb-8">
                                                     <span class="bullet bullet-vertical h-40px bg-dark"></span>
                                                     <div class="form-check form-check-custom form-check-solid mx-5">
@@ -254,7 +336,47 @@
                                                         {{-- <span class="text-muted fw-semibold d-block">Due in 2 Days</span> --}}
                                                     </div>
                                                     <a href="#">
-                                                        <span class="badge badge-success fs-8 fw-bold rounded-0">Convert <br> to
+                                                        <span class="badge badge-success fs-8 fw-bold rounded-0">Convert
+                                                            <br> to
+                                                            Task</span>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="card card-flash">
+                                    <div class="card-header pt-5 pb-5 align-items-center border-bottom">
+                                        <div>
+                                            <h4 class="card-title d-flex align-items-start flex-column">
+                                                <span class="card-label fw-bold text-gray-800">Today’s Tasks</span>
+                                            </h4>
+                                        </div>
+                                        <div>
+                                            <a class="btn btn-sm btn-icon btn-active-color-primary btn-color-white bg-white bg-opacity-25 bg-hover-opacity-100 bg-hover-white bg-active-opacity-25 w-20px h-20px"
+                                                data-kt-menu-placement="bottom-end" data-bs-toggle="modal"
+                                                data-bs-target="#createAgenda">
+                                                <i class="fa-solid fa-circle-plus fs-2 text-success"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="card-body pt-5 h-lg-325px overflow-y-scroll">
+                                        @if (count($agendas) > 0)
+                                            @foreach ($agendas as $agenda)
+                                                <div class="d-flex align-items-center mb-8">
+                                                    <span class="bullet bullet-vertical h-40px bg-dark"></span>
+                                                    <div class="form-check form-check-custom form-check-solid mx-5">
+                                                        <input class="form-check-input bg-emerald-500" type="checkbox"
+                                                            value="">
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <a href="#"
+                                                            class="text-gray-800 text-hover-primary fw-bold fs-6">{{ $agenda->task_name }}</a>
+                                                        {{-- <span class="text-muted fw-semibold d-block">Due in 2 Days</span> --}}
+                                                    </div>
+                                                    <a href="#">
+                                                        <span class="badge badge-success fs-8 fw-bold rounded-0">Convert
+                                                            <br> to
                                                             Task</span>
                                                     </a>
                                                 </div>
@@ -265,8 +387,6 @@
                             </div>
 
                             <div class="col-xl-6 mb-5 mb-xl-10">
-
-
                                 <div id="kt_sliders_widget_2_slider"
                                     class="card card-flush carousel carousel-custom carousel-stretch slide h-xl-100"
                                     data-bs-ride="carousel" data-bs-interval="5500">
@@ -485,42 +605,7 @@
                     </div>
                 </div>
                 <div class="row gy-5 g-xl-8">
-                    <div class="col-xl-5">
-                        <div class="card bgi-no-repeat mb-xl-8"
-                            style="background-position: right top; background-size: 30% auto; background-image: url({{ asset('backend/assets/media/svg/shapes/abstract-4.svg') }}">
-                            <div class="card-body">
-                                <div class="row">
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3">
-                        <div class="card bgi-no-repeat mb-xl-8"
-                            style="background-position: right top; background-size: 30% auto; background-image: url({{ asset('backend/assets/media/svg/shapes/abstract-4.svg') }}">
-                            <div class="card-body px-3">
-                                <div class="d-flex align-items-center justify-content-center">
-
-                                </div>
-                                <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-6">
-                                    <span class="text-start w-xl-225px"></span> <span class="text-end ms-3"></span>
-                                </a>
-                                <div class="my-2">
-                                    <a href="#" class="card-title fw-bolder text-black text-hover-primary fs-7">
-                                        <span class="text-start w-xl-225px"></span> <span class="text-end ms-3"></span>
-                                    </a>
-                                </div>
-                                <a href="#" class="card-title fw-bolder text-danger text-hover-primary fs-7"
-                                    data-bs-toggle="modal" data-bs-target="#lateCount">
-                                    <span class="text-start w-xl-225px">Late Count (This Month) :</span> <span
-                                        class="text-end ms-3"></span>
-                                </a>
-                                <div class="mt-2 d-flex justify-content-between align-items-center">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-xl-4">
                         <div class="card card-xl-stretch-50 mb-5 mb-xl-8">
                             <div class="card-body d-flex flex-column p-0">
@@ -718,10 +803,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="row g-5 g-xl-8">
                     <div class="col-xl-4">
                         <div class="card card-xxl-stretch mb-xl-8">
                             <div class="card-header border-0 py-5">
@@ -859,6 +940,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+
+                <div class="row g-5 g-xl-8">
+
                     <div class="col-xl-8">
                         <div class="card card-xxl-stretch mb-5 mb-xl-8">
                             <div class="card-header border-0 pt-5">

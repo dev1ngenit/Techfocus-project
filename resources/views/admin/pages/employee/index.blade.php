@@ -1,11 +1,11 @@
 @extends('admin.master')
 @section('content')
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row">
             <div class="col-lg-12 card rounded-0 shadow-lg">
                 <div class="card card-p-0 card-flush">
                     <div class="card-header align-items-center pt-2 pb-1 gap-2 gap-md-5">
-                        <div class="container px-0">
+                        <div class="container-fluid px-0">
                             <div class="row">
                                 <div class="col-lg-4 col-sm-12 text-lg-start text-sm-center">
                                     <!--begin::Search-->
@@ -57,7 +57,9 @@
                                     <th class="ps-0" width="10%">Designation</th>
                                     <th class="ps-0" width="20%">Department</th>
                                     <th class="ps-0" width="15%">Roles</th>
-                                    <th class="ps-0" width="5%"><span class="text-center" title="Employment Form">Form</span></th>
+                                    <th class="ps-0" width="5%">
+                                        <span class="text-center" title="Employment Form">Form</span>
+                                    </th>
                                     <th class="ps-0" width="10%">Action</th>
                                 </tr>
                                 <!--end::Table row-->
@@ -86,23 +88,20 @@
                                             <td>{{ $admin->name }}</td>
                                             <td>
                                                 <div class="d-flex justify-content-center align-items-center">
-                                                    <a href="#"
-                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#adminViewModal_{{ $admin->id }}">
-                                                        <i class="fa-solid fa-expand"></i>
+                                                    <a href="{{ route('admin.employee.create') }}"
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                        <i class="fa-solid fa-plus text-primary"></i>
                                                     </a>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex justify-content-between align-items-center">
-                                                    <a href="#"
+                                                    {{-- <a href="#"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#adminViewModal_{{ $admin->id }}">
                                                         <i class="fa-solid fa-expand"></i>
-                                                        <!--View-->
-                                                    </a>
+                                                    </a> --}}
                                                     <a href="#"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                                                         data-bs-toggle="modal"
@@ -110,7 +109,7 @@
                                                         <i class="fa-solid fa-pen"></i>
                                                         <!--Edit-->
                                                     </a>
-                                                    <a href="{{ route('admin.brand.destroy', $admin->id) }}"
+                                                    <a href="{{ route('admin.employee.destroy', $admin->id) }}"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                         data-kt-docs-table-filter="delete_row">
                                                         <i class="fa-solid fa-trash-can-arrow-up"></i>
@@ -130,9 +129,9 @@
     </div>
     {{-- Add Modal --}}
     <div class="modal fade" id="adminAddModal" data-backdrop="static">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content rounded-0 border-0 shadow-sm">
-                <div class="modal-header p-2 rounded-0">
+                <div class="modal-header p-2 px-4 rounded-0">
                     <h5 class="modal-title">Add Employee Account</h5>
                     <!-- Close button in the header -->
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
@@ -151,42 +150,30 @@
                     </div>
                     <!-- End Close button in the header -->
                 </div>
-                <form method="POST" action="{{ route('admin.brand.store') }}" class="needs-validation" novalidate
+                <form method="POST" action="{{ route('admin.employee.store') }}" class="needs-validation" novalidate
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
-                        <div class="container px-0">
+                        <div class="container-fluid">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="mb-1">
+                                <div class="col-lg-4">
+                                    <div class="mb-4">
                                         <label class="form-label" for="basicpill-firstname-input">Full Name</label>
                                         <input type="text" maxlength="80" class="form-control form-control-sm"
                                             placeholder="Enter Employees Name" name="name"
                                             value="{{ old('name') }}" />
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-1">
+                                <div class="col-lg-3">
+                                    <div class="mb-4">
                                         <label class="form-label" for="basicpill-email-input">Designation</label>
                                         <input maxlength="50" type="text" class="form-control form-control-sm"
                                             placeholder="Enter Employees Designation" name="designation"
                                             value="{{ old('designation') }}" />
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="basicpill-phoneno-input">Phone</label>
-                                        <input maxlength="15" type="text"
-                                            class="form-control form-control-sm allow_decimal"
-                                            placeholder="Enter Phone Number" name="phone"
-                                            value="{{ old('phone') }}" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="mb-1">
+                                <div class="col-lg-5">
+                                    <div class="mb-4">
                                         <label class="form-label" for="basicpill-email-input">Email</label>
                                         <input type="email" class="form-control form-control-sm"
                                             placeholder="Enter Email ID" name="email" value="{{ old('email') }}" />
@@ -196,38 +183,76 @@
 
                             <div class="row">
                                 <div class="col-lg-4">
+                                    <div class="mb-4">
+                                        <label class="form-label" for="basicpill-phoneno-input">Phone</label>
+                                        <input maxlength="15" type="text"
+                                            class="form-control form-control-sm allow_decimal"
+                                            placeholder="Enter Phone Number" name="phone"
+                                            value="{{ old('phone') }}" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-4">
+                                        <label class="form-label" for="basicpill-email-input">Job Category</label>
+                                        <select name="employee_category_id"
+                                            class="form-select form-select-sm form-select-solid" data-control="select2"
+                                            data-placeholder="Select an option" data-allow-clear="true">
+                                            <option></option>
+                                            @foreach ($employeeCategories as $employeeCategory)
+                                                <option value="{{ $employeeCategory->id }}">
+                                                    {{ $employeeCategory->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
                                     <div class="mb-1">
+                                        <label class="form-label" for="basicpill-phoneno-input">Employee Code (Biometric
+                                            ID)</label>
+                                        <input type="text" class="form-control form-control-sm allow_decimal"
+                                            placeholder="Employee Code (Biometric ID)" name="employee_id" maxlength="15"
+                                            value="{{ old('employee_id') }}" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-4">
                                         <label class="form-label" for="basicpill-firstname-input">City</label>
                                         <input type="text" maxlength="50" class="form-control form-control-sm"
                                             placeholder="Enter City" name="city" value="{{ old('city') }}" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="mb-1">
+                                    <div class="mb-4">
                                         <label class="form-label" for="basicpill-firstname-input">Department</label>
                                         <select name="department[]" class="form-control-sm multiselect btn btn-sm"
                                             id="select6" multiple="multiple" data-include-select-all-option="true"
                                             data-placeholder="Chose Sector" data-enable-filtering="true"
                                             data-enable-case-insensitive-filtering="true" required>
-
-                                            <option value="admin">Admin</option>
-                                            <option value="business">Business</option>
+                                            <option value="admin">SuperAdmin</option>
+                                            <option value="sales">Sales</option>
+                                            <option value="marketing">Marketing</option>
                                             <option value="accounts">Accounts</option>
+                                            <option value="finance">Finance</option>
+                                            <option value="hr">HR</option>
+                                            <option value="operation">Operation</option>
                                             <option value="site">Site & Contents</option>
                                             <option value="logistics">Logistics</option>
-                                            <option value="support">Support</option>
+                                            <option value="software_development">SOftware Development</option>
+                                            <option value="crm">CRM</option>
                                         </select>
 
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="basicpill-firstname-input">Role</label>
-                                        <select name="role" class="form-control form-select-sm select"
-                                            data-container-css-class="select-sm"
-                                            data-minimum-results-for-search="Infinity" data-placeholder="Chose Sector"
-                                            required>
-                                            <option></option>
+                                    <div class="mb-4">
+                                        <label class="form-label required" for="basicpill-firstname-input">Role</label>
+                                        <select name="role" class="form-select form-select-sm form-select-solid"
+                                            data-control="select2" data-placeholder="Select a Role"
+                                            data-allow-clear="true" required>
                                             <option value="admin">Admin</option>
                                             <option value="manager">Manager</option>
                                             <option value="others">Others</option>
@@ -240,24 +265,49 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <div class="mb-1">
+                                    <div class="mb-4">
+                                        <label class="form-label required"
+                                            for="basicpill-firstname-input">Supervisor</label>
+                                        <select name="supervisor_id" class="form-select form-select-sm form-select-solid"
+                                            data-control="select2" data-placeholder="Select an option"
+                                            data-allow-clear="true" required>
+                                            <option></option>
+                                            @foreach ($admins as $supervisor)
+                                                <option value="{{ $supervisor->id }}">
+                                                    {{ $supervisor->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <div class="invalid-feedback"> Please Enter Supervisor.</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-4">
                                         <label class="form-label" for="basicpill-firstname-input">Profile
                                             Picture</label>
-                                        <div class="row"></div>
-                                        <input id="image" type="file" class="form-control form-control-sm"
+                                        <input id="image1" type="file" class="form-control form-control-sm"
                                             id="basicpill-firstname-input" name="photo" />
                                         {{-- <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin" style="width:40px; height: 40px;"/> --}}
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="mb-1">
+                                    <div class="mb-4">
+                                        <label class="form-label" for="basicpill-firstname-input">Sign</label>
+                                        <div class="row"></div>
+                                        <input id="image" type="file" class="form-control form-control-sm"
+                                            id="basicpill-firstname-input" name="sign" />
+                                        {{-- <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin" style="width:40px; height: 40px;"/> --}}
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-4">
                                         <label class="form-label" for="basicpill-firstname-input">Password</label>
                                         <input type="password" class="form-control form-control-sm" id="password"
                                             name="password">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="mb-1">
+                                    <div class="mb-4">
                                         <label class="form-label" for="basicpill-firstname-input">Confirm
                                             Password</label>
                                         <input type="password" class="form-control form-control-sm" id="confirm_password"
@@ -271,7 +321,7 @@
                     </div>
                     <div class="modal-footer p-2">
                         <!-- Button to close the modal in the footer -->
-                        <button type="submit" class="btn btn-sm btn-light-primary rounded-0">Submit</button>
+                        <button type="submit" class="btn btn-sm btn-primary rounded-0">Submit</button>
                     </div>
                 </form>
             </div>
@@ -280,10 +330,10 @@
     {{-- Edit Modal --}}
     @foreach ($admins as $admin)
         <div class="modal fade" id="adminEditModal-{{ $admin->id }}" data-backdrop="static">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
                 <div class="modal-content rounded-0 border-0 shadow-sm">
-                    <div class="modal-header p-2 rounded-0">
-                        <h5 class="modal-title">Edit Brand</h5>
+                    <div class="modal-header p-2 px-4 rounded-0">
+                        <h5 class="modal-title">Edit Employee</h5>
                         <!-- Close button in the header -->
                         <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                             aria-label="Close">
@@ -300,14 +350,14 @@
                         </div>
                         <!-- End Close button in the header -->
                     </div>
-                    <form method="POST" action="{{ route('admin.employee.update', $admin->id) }}" class="needs-validation"
-                        novalidate enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.employee.update', $admin->id) }}"
+                        class="needs-validation" novalidate enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
                             <div class="container px-0">
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicpill-firstname-input">Full
                                                 Name</label>
@@ -316,12 +366,20 @@
                                                 value="{{ $admin->name }}" />
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-3">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicpill-email-input">Designation</label>
                                             <input maxlength="50" type="text" class="form-control form-control-sm"
                                                 placeholder="Enter Employees Designation" name="designation"
                                                 value="{{ $admin->designation }}" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="mb-1">
+                                            <label class="form-label" for="basicpill-email-input">Email</label>
+                                            <input type="email" class="form-control form-control-sm"
+                                                placeholder="Enter Email ID" name="email"
+                                                value="{{ $admin->email }}" />
                                         </div>
                                     </div>
                                 </div>
@@ -336,23 +394,32 @@
                                                 value="{{ $admin->phone }}" />
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
+                                    <div class="col-lg-4">
+                                        <div class="mb-4">
+                                            <label class="form-label" for="basicpill-email-input">Job Category</label>
+                                            <select name="employee_category_id"
+                                                class="form-select form-select-sm form-select-solid"
+                                                data-control="select2" data-placeholder="Select an option"
+                                                data-allow-clear="true">
+                                                @foreach ($employeeCategories as $employeeCategory)
+                                                    <option value="{{ $employeeCategory->id }}"
+                                                        @selected($admin->employee_category_id == $employeeCategory->id)>
+                                                        {{ $employeeCategory->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <div class="mb-1">
-                                            <label class="form-label" for="basicpill-phoneno-input">Employee Code</label>
-                                            <input type="text"
-                                                class="form-control form-control-sm allow_decimal"
-                                                placeholder="Enter Employee Code" name="employee_id"
+                                            <label class="form-label" for="basicpill-phoneno-input">Employee Code
+                                                (Biometric ID)</label>
+                                            <input type="text" class="form-control form-control-sm allow_decimal"
+                                                placeholder="Employee Code (Biometric ID)" name="employee_id"
                                                 maxlength="15" value="{{ $admin->employee_id }}" />
                                         </div>
                                     </div>
-                                    <div class="col-lg-5">
-                                        <div class="mb-1">
-                                            <label class="form-label" for="basicpill-email-input">Email</label>
-                                            <input type="email" class="form-control form-control-sm"
-                                                placeholder="Enter Email ID" name="email"
-                                                value="{{ $admin->email }}" />
-                                        </div>
-                                    </div>
+
                                 </div>
 
                                 <div class="row">
@@ -375,27 +442,28 @@
                                                     $adminDepartment = isset($admin->department) ? json_decode($admin->department, true) : [];
                                                     $adminRole = isset($admin->role) ? json_decode($admin->role, true) : [];
                                                 @endphp
-                                                <option value="admin" @selected(is_array($adminDepartment) && in_array('admin', $adminDepartment))>Admin</option>
-                                                <option value="business" @selected(is_array($adminDepartment) && in_array('business', $adminDepartment))>Business</option>
+                                                <option value="admin" @selected(is_array($adminDepartment) && in_array('admin', $adminDepartment))>Super Admin</option>
+                                                <option value="sales" @selected(is_array($adminDepartment) && in_array('sales', $adminDepartment))>Sales</option>
+                                                <option value="marketing" @selected(is_array($adminDepartment) && in_array('marketing', $adminDepartment))>Marketing</option>
                                                 <option value="accounts" @selected(is_array($adminDepartment) && in_array('accounts', $adminDepartment))>Accounts</option>
-                                                <option value="site" @selected(is_array($adminDepartment) && in_array('site', $adminDepartment))>Site & Contents
-                                                </option>
-                                                <option value="logistics" @selected(is_array($adminDepartment) && in_array('logistics', $adminDepartment))>Logistics
-                                                </option>
-                                                <option value="support" @selected(is_array($adminDepartment) && in_array('support', $adminDepartment))>Support
-                                                </option>
+                                                <option value="finance" @selected(is_array($adminDepartment) && in_array('finance', $adminDepartment))>Finance</option>
+                                                <option value="hr" @selected(is_array($adminDepartment) && in_array('hr', $adminDepartment))>HR</option>
+                                                <option value="operation" @selected(is_array($adminDepartment) && in_array('operation', $adminDepartment))>Operation</option>
+                                                <option value="site" @selected(is_array($adminDepartment) && in_array('site', $adminDepartment))>Site & Contents</option>
+                                                <option value="logistics" @selected(is_array($adminDepartment) && in_array('logistics', $adminDepartment))>Logistics</option>
+                                                <option value="software_development" @selected(is_array($adminDepartment) && in_array('software_development', $adminDepartment))>SOftware Development</option>
+                                                <option value="crm" @selected(is_array($adminDepartment) && in_array('crm', $adminDepartment))>CRM</option>
                                             </select>
 
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-1">
-                                            <label class="form-label" for="basicpill-firstname-input">Role</label>
-                                            <select name="role" class="form-control form-select-sm select"
-                                                data-container-css-class="select-sm"
-                                                data-minimum-results-for-search="Infinity" data-placeholder="Chose Sector"
-                                                required>
-                                                <option></option>
+                                            <label class="form-label required"
+                                                for="basicpill-firstname-input">Role</label>
+                                            <select name="role" class="form-select form-select-sm form-select-solid"
+                                                data-control="select2" data-placeholder="Select a Role"
+                                                data-allow-clear="true" required>
                                                 <option value="admin" @selected(is_array($adminRole) && in_array('admin', $adminRole))>Admin</option>
                                                 <option value="manager" @selected(is_array($adminRole) && in_array('manager', $adminRole))>Manager</option>
                                                 <option value="others" @selected(is_array($adminRole) && in_array('others', $adminRole))>Others</option>
@@ -407,12 +475,39 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
+                                        <div class="mb-4">
+                                            <label class="form-label required"
+                                                for="basicpill-firstname-input">Supervisor</label>
+                                            <select name="supervisor_id"
+                                                class="form-select form-select-sm form-select-solid"
+                                                data-control="select2" data-placeholder="Select a Supervisor"
+                                                data-allow-clear="true" required>
+                                                <option></option>
+                                                @foreach ($admins as $supervisor)
+                                                    <option value="{{ $supervisor->id }}" @selected($admin->supervisor_id == $supervisor->id)>
+                                                        {{ $supervisor->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <div class="invalid-feedback"> Please Enter Supervisor.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <div class="mb-1">
                                             <label class="form-label" for="basicpill-firstname-input">Profile
                                                 Picture</label>
                                             <div class="row"></div>
                                             <input id="image" type="file" class="form-control form-control-sm"
                                                 id="basicpill-firstname-input" name="photo" />
+                                            {{-- <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin" style="width:40px; height: 40px;"/> --}}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-4">
+                                            <label class="form-label" for="basicpill-firstname-input">Sign</label>
+                                            <div class="row"></div>
+                                            <input id="image" type="file" class="form-control form-control-sm"
+                                                id="basicpill-firstname-input" name="sign" />
                                             {{-- <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin" style="width:40px; height: 40px;"/> --}}
                                         </div>
                                     </div>

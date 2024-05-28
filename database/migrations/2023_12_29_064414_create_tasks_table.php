@@ -23,11 +23,19 @@ return new class extends Migration
             $table->text('task_description')->nullable();
             $table->string('task_target')->nullable();
             $table->string('task_rating')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
+            $table->time('buffer_time')->nullable();
+            $table->text('location')->nullable();
+            $table->string('image')->nullable();
             $table->integer('task_weight')->nullable();
             $table->json('assignees')->nullable();
             $table->json('supervisors')->nullable();
             $table->json('notify_id')->nullable();
             $table->text('completion_url')->nullable();
+            $table->text('employee_request')->nullable();
             $table->text('employee_comment')->nullable();
             $table->integer('supervisor_rating')->nullable();
             $table->integer('hr_rating')->nullable();
@@ -37,7 +45,7 @@ return new class extends Migration
             $table->text('ceo_review')->nullable();
             $table->string('priority')->nullable();
             $table->enum('task_type', ['project_task', 'agenda', 'task'])->default('task')->nullable();
-            $table->enum('status', ['done', 'not_done', 'partial_done'])->default('done')->nullable();
+            $table->enum('status', ['done', 'not_done', 'partial_done', 'late'])->default('done')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->timestamps();

@@ -53,9 +53,7 @@
   border-radius: 0;
 }
 
-.nav-line-tabs .nav-item .nav-link.active, .nav-line-tabs .nav-item .nav-link:hover:not(.disabled), .nav-line-tabs .nav-item.show .nav-link {
-  background-color: #ae0a46;
-}
+
 
 /* Nav Item:Shahed*/
 

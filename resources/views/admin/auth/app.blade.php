@@ -3,7 +3,7 @@
 <!--begin::Head-->
 
 <head>
-    <base href="../../../">
+    {{-- <base href="../../../">  --}}
     <title> TechFocus</title>
     <meta charset="utf-8" />
     <meta name="description"
@@ -18,7 +18,8 @@
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="TechFocus" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link rel="shortcut icon" href="{{ asset('backend/assets/media/logos/favicon.ico') }}" />
+    <link rel="shortcut icon"
+        href="{{ !empty($site->site_icon) && file_exists(public_path('storage/webSetting/siteIcon/' . $site->site_icon)) ? asset('storage/webSetting/siteIcon/' . $site->site_icon) : asset('backend/images/no-image-available.png') }}" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
@@ -52,7 +53,7 @@
                             {{-- <img alt="Logo" src="{{ asset('backend/assets/media/logos/logo-2.svg') }}"
                                 class="h-60px" /> --}}
                             <img src="{{ !empty($site->system_logo_white) && file_exists(public_path('storage/webSetting/systemLogoWhite/' . $site->system_logo_white)) ? asset('storage/webSetting/systemLogoWhite/' . $site->system_logo_white) : asset('backend/images/no-image-available.png') }}"
-                            class="h-60px" alt="TechFocus" />
+                                class="h-60px" alt="TechFocus" />
                         </a>
                         <!--end::Logo-->
                         <!--begin::Title-->
