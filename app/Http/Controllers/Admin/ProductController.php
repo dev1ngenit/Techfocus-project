@@ -21,6 +21,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Admin\ProductRequest;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -74,7 +75,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->all(),
+        $validator = Validator::make(
+            $request->all(),
             [
                 'name'     => 'required|unique:products,name|max:200',
                 'thumbnail' => 'required|image|mimes:png,jpg,jpeg|max:5000',
