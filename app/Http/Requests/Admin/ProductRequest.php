@@ -27,8 +27,8 @@ class ProductRequest extends FormRequest
         $product = $this->route('product'); // Directly access the brand ID from the route parameter.
 
         return [
-            'country_id'                => 'nullable|exists:countries,id',
-            'company_id'                => 'nullable|exists:companies,id',
+            // 'country_id'                => 'nullable|exists:countries,id',
+            // 'company_id'                => 'nullable|exists:companies,id',
             'ref_code'                  => 'nullable|string|max:50',
             'name'                      => 'required|string|unique:products,name,' . $product . '|max:255',
             'sku_code'                  => 'nullable|string|max:50|unique:products,sku_code,' . $product,
