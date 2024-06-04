@@ -204,10 +204,12 @@
                                                             <div class="invalid-feedback"> Please Enter Brand Name.</div>
                                                         </div>
                                                     </div>
+                                                    @php
+                                                        $categoryIds = isset($product->category_id)
+                                                            ? json_decode($product->category_id, true)
+                                                            : [];
+                                                    @endphp
                                                     <div class="col-lg-3 mb-3">
-                                                        @php
-                                                            $categoryIds = isset($product->category_id) ? json_decode($product->category_id, true) : [];
-                                                        @endphp
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Category Name</label>
                                                             <select class="form-select form-select-solid form-select-sm"
@@ -242,7 +244,7 @@
                                                                 @foreach ($industrys as $industrie)
                                                                     <option value="{{ $industrie->id }}"
                                                                         @selected(in_array($industrie->id, $selectedIndustries))>
-                                                                        {{ $industrie->title }}
+                                                                        {{ $industrie->name }}
                                                                     </option>
                                                                 @endforeach
                                                             </select>
@@ -406,8 +408,13 @@
                                                                 multiselect-max-items="2">
                                                                 @if (!empty($product->parent_id))
                                                                     @php
-                                                                        $parentIds = isset($product->parent_id) ? json_decode($product->parent_id, true) : [];
-                                                                        $parents = App\Models\Admin\Product::pluck('name', 'id')->toArray();
+                                                                        $parentIds = isset($product->parent_id)
+                                                                            ? json_decode($product->parent_id, true)
+                                                                            : [];
+                                                                        $parents = App\Models\Admin\Product::pluck(
+                                                                            'name',
+                                                                            'id',
+                                                                        )->toArray();
                                                                     @endphp
                                                                     @foreach ($parents as $id => $name)
                                                                         <option value="{{ $id }}"
@@ -430,8 +437,13 @@
                                                                 multiselect-max-items="2">
                                                                 @if (!empty($product->child_id))
                                                                     @php
-                                                                        $childIds = isset($product->child_id) ? json_decode($product->child_id, true) : [];
-                                                                        $childs = App\Models\Admin\Product::pluck('name', 'id')->toArray();
+                                                                        $childIds = isset($product->child_id)
+                                                                            ? json_decode($product->child_id, true)
+                                                                            : [];
+                                                                        $childs = App\Models\Admin\Product::pluck(
+                                                                            'name',
+                                                                            'id',
+                                                                        )->toArray();
                                                                     @endphp
                                                                     @foreach ($childs as $id => $name)
                                                                         <option value="{{ $id }}"
@@ -466,7 +478,8 @@
                                                         <label class="form-label"></label>
                                                         <div class="form-check form-check-custom form-check-solid mb-5">
                                                             <input class="form-check-input me-3" name="refurbished"
-                                                                type="checkbox" value="1" @checked( $product->refurbished == '1')
+                                                                type="checkbox" value="1"
+                                                                @checked($product->refurbished == '1')
                                                                 id="kt_docs_formvalidation_checkbox_option_1" />
                                                             <label class="form-check-label"
                                                                 for="kt_docs_formvalidation_checkbox_option_1">
@@ -855,9 +868,10 @@
                                                                             <div class="d-flex align-items-center fv-row">
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
-                                                                                    <input class="form-check-input me-2" type="radio"
-                                                                                        name="solid_source"
-                                                                                        value="yes" @checked($product->solid_source == 'yes')
+                                                                                    <input class="form-check-input me-2"
+                                                                                        type="radio" name="solid_source"
+                                                                                        value="yes"
+                                                                                        @checked($product->solid_source == 'yes')
                                                                                         id="kt_docs_formvalidation_radio_option_1" />
 
                                                                                     <label class="form-check-label"
@@ -870,9 +884,10 @@
 
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
-                                                                                    <input class="form-check-input me-2" type="radio"
-                                                                                        name="solid_source"
-                                                                                        value="no" @checked($product->solid_source == 'no')
+                                                                                    <input class="form-check-input me-2"
+                                                                                        type="radio" name="solid_source"
+                                                                                        value="no"
+                                                                                        @checked($product->solid_source == 'no')
                                                                                         id="kt_docs_formvalidation_radio_option_2" />
 
                                                                                     <label class="form-check-label"
@@ -897,7 +912,8 @@
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
                                                                                         name="direct_principal"
-                                                                                        value="yes" @checked( $product->direct_principal == 'yes')
+                                                                                        value="yes"
+                                                                                        @checked($product->direct_principal == 'yes')
                                                                                         type="radio"
                                                                                         id="kt_docs_formvalidation_radio_option_1" />
 
@@ -913,7 +929,8 @@
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
                                                                                         name="direct_principal"
-                                                                                        value="no" @checked( $product->direct_principal == 'no')
+                                                                                        value="no"
+                                                                                        @checked($product->direct_principal == 'no')
                                                                                         type="radio"
                                                                                         id="kt_docs_formvalidation_radio_option_2" />
 
@@ -938,8 +955,8 @@
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
-                                                                                        name="agreement"
-                                                                                        value="yes" @checked( $product->agreement == 'yes')
+                                                                                        name="agreement" value="yes"
+                                                                                        @checked($product->agreement == 'yes')
                                                                                         type="radio"
                                                                                         id="kt_docs_formvalidation_radio_option_1" />
 
@@ -954,8 +971,8 @@
                                                                                 <div
                                                                                     class="form-check form-check-custom form-check-solid mb-5 me-2">
                                                                                     <input class="form-check-input me-2"
-                                                                                        name="agreement"
-                                                                                        value="no" @checked( $product->agreement == 'no')
+                                                                                        name="agreement" value="no"
+                                                                                        @checked($product->agreement == 'no')
                                                                                         type="radio"
                                                                                         id="kt_docs_formvalidation_radio_option_2" />
 
@@ -976,17 +993,20 @@
                                                                                 data-placeholder="Select Source Type.."
                                                                                 class="form-control select">
                                                                                 <option></option>
-                                                                                <option class="form-control" value="principal"
+                                                                                <option class="form-control"
+                                                                                    value="principal"
                                                                                     {{ $product->source_type == 'principal' ? 'selected' : '' }}>
                                                                                     Principal</option>
                                                                                 <option class="form-control"
                                                                                     value="distributor"
                                                                                     {{ $product->source_type == 'distributor' ? 'selected' : '' }}>
                                                                                     Distributor</option>
-                                                                                <option class="form-control" value="supplier"
+                                                                                <option class="form-control"
+                                                                                    value="supplier"
                                                                                     {{ $product->source_type == 'supplier' ? 'selected' : '' }}>
                                                                                     Supplier</option>
-                                                                                <option class="form-control" value="retailer"
+                                                                                <option class="form-control"
+                                                                                    value="retailer"
                                                                                     {{ $product->source_type == 'retailer' ? 'selected' : '' }}>
                                                                                     Retailer</option>
                                                                             </select>
