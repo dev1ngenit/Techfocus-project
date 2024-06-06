@@ -3,7 +3,7 @@
         'name' => 'shahed/laravel-breeze-multi-auth-admin',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '6d7e1ba3a03b547d59f7632cf7a3ef2954c2a5d9',
+        'reference' => '8a675ee828177792001af6a4bb40739b1107957b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -1121,7 +1121,7 @@
         'shahed/laravel-breeze-multi-auth-admin' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '6d7e1ba3a03b547d59f7632cf7a3ef2954c2a5d9',
+            'reference' => '8a675ee828177792001af6a4bb40739b1107957b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
