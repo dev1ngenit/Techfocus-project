@@ -1,24 +1,81 @@
 /* Extra small devices (phones, 575px and down) */
 @media only screen and (max-width: 576px) {
-  /* Your styles for extra small devices go here */
+  .main_header {
+    display: none;
+  }
+  .swiper {
+    width: 100%;
+    height: 12rem;
+}
+  .swiper-slide img {
+    object-fit: fill;
+  }
+
+  .popover__content:before {
+    right: calc(33% - 10px);
+    top: -6px;
+  }
+
+  .popover__wrapper {
+    margin-right: 2rem;
+  }
+
+  .popover__content {
+    left: -6rem;
+    right: 0rem;
+    padding: 0.9rem;
+    width: 13.5rem;
+    top: 2rem;
+  }
+
+  .navbar-brand {
+    position: relative;
+    top: 0px;
+  }
+
+  #burger {
+    width: 41px;
+    height: 38px;
+    right: 3rem;
+    top: -17px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 7px 5px;
+
+  }
+
+
+  main {
+    margin-top: 6.6rem;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 577px - 768px) */
 @media only screen and (min-width: 577px) and (max-width: 768px) {
-  /* Your styles for small devices go here */
+  .main_header {
+    display: none;
+  }
 }
 
 /* Medium devices (landscape tablets, 769px - 992px) */
 @media only screen and (min-width: 769px) and (max-width: 992px) {
-  /* Your styles for medium devices go here */
+  .mobile_header {
+    display: none;
+  }
 }
 
 /* Large devices (laptops/desktops, 993px - 1200px) */
-@media only screen and (min-width: 993px) and (max-width: 1200px) {}
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  .mobile_header {
+    display: none;
+  }
+}
 
 /* Extra large devices (large laptops and desktops, 1201px and up) */
 @media only screen and (min-width: 1201px) {
-  /* Your styles for extra large devices go here */
+  .mobile_header {
+    display: none;
+  }
 }
 
 /* Custom media query (992px - 1400px) */
@@ -38,11 +95,11 @@
   }
 
   .empty-area {
-    width: 70%;
+    width: 64%;
   }
 
   .fill-area {
-    width: 30%;
+    width: 36%;
   }
 
   .search-2 {
@@ -55,7 +112,7 @@
   }
 
   main {
-    margin-top: 6.093rem;
+    margin-top: 5.4rem;
   }
 
   .holder-main-text h6 {
@@ -76,6 +133,10 @@
 }
 
 @media only screen and (min-width: 1401px) and (max-width: 1800px) {
+  .search-2 {
+    width: 21rem;
+  }
+
   .empty-area {
     width: 75%;
   }

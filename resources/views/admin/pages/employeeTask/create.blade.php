@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.catalog.store') }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('admin.employee-task.store') }}" method="POST" enctype="multipart/form-data"
                             class="needs-validation" novalidate>
                             @csrf
                             <div class="row">
@@ -43,7 +43,7 @@
                             </div>
                             <div class="row py-5">
                                 <div class="border p-4 m-1 mt-5 mb-4">
-                                    <p class="badge badge-info custom-bage-all w-200px rounded-0">General Information</p>
+                                    <p class="badge badge-info custom-bage-all w-125px rounded-0">General Information</p>
                                     <div class="row">
                                         <div class="col-lg-4 mb-3">
                                             <label class="form-label">Title</label>
@@ -81,16 +81,18 @@
                                                 data-allow-clear="true" required>
                                                 <option></option>
                                                 @foreach ($months as $index => $month)
-                                                @php
-                                                    $currentMonth = date('n');
-                                                    $nextMonth = ($currentMonth + $index) % 12 + 1;
-                                                    // Log::alert($nextMonth);
-                                                @endphp
-                                                    <option value="{{ $month }}" @selected($nextMonth == $index)>{{ $month }}</option>
+                                                    @php
+                                                        $currentMonth = date('n');
+                                                        $nextMonth = (($currentMonth + $index) % 12) + 1;
+                                                    @endphp
+                                                    <option value="{{ $nextMonth }}"
+                                                        {{ $nextMonth == $currentMonth ? 'selected' : '' }}>
+                                                        {{ $month }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="invalid-feedback"> Please Enter Month.</div>
                                         </div>
+
                                         <div class="col-lg-2 mb-3">
                                             <label class="form-label required">Quarter</label>
                                             <select class="form-select form-select-solid form-select-sm" name="quarter"
@@ -140,10 +142,18 @@
                                         <div id="kt_docs_repeater_advanced">
                                             <div class="form-group">
                                                 <div data-repeater-list="kt_docs_repeater_advanced">
-                                                    <div data-repeater-item class="border p-3 mb-3">
+                                                    <div class="d-flex align-items-center justify-content-end">
+                                                        <div>
+                                                            <a href="javascript:void(0;)" data-repeater-create
+                                                                class="btn btn-sm btn-success rounded-0">
+                                                                <i class="la la-plus"></i>Add more
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div data-repeater-item class="p-3 mb-3">
                                                         <div class="form-group row mb-5 align-items-center">
-                                                            <div class="col-lg-10">
-                                                                <div class="row">
+                                                            <div class="col-md-12">
+                                                                {{-- <div class="row">
                                                                     <div class="col-md-3 mb-3">
                                                                         <label class="form-label">Page Image</label>
                                                                         <input name="page_image" type="file"
@@ -178,22 +188,200 @@
                                                                         <textarea rows="1" name="description" class="form-control form-control-sm form-control-solid"
                                                                             data-kt-repeater="repeat" placeholder="Enter Description"></textarea>
                                                                     </div>
+                                                                </div> --}}
+                                                                <div class="table-responsive">
+                                                                    <table class="border">
+                                                                        <tbody class="no-border">
+                                                                            <tr>
+                                                                                <td width="30%">
+                                                                                    <label
+                                                                                        class="form-label required">Task</label>
+                                                                                    <input name="task_name" type="text"
+                                                                                        maxlength="230"
+                                                                                        class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat"
+                                                                                        placeholder="Task" required />
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label
+                                                                                        class="form-label required">Start
+                                                                                        Date</label>
+                                                                                    <input name="start_date"
+                                                                                        type="datetime-local"
+                                                                                        class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat"
+                                                                                        placeholder="Start Date"
+                                                                                        required />
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="form-label required">End
+                                                                                        Date</label>
+                                                                                    <input name="end_date" type="date"
+                                                                                        class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat"
+                                                                                        placeholder="Start Date"
+                                                                                        required />
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="form-label">Start
+                                                                                        Time</label>
+                                                                                    <input name="start_time"
+                                                                                        type="time"
+                                                                                        class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat"
+                                                                                        placeholder="Start Time" />
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="form-label">End
+                                                                                        Time</label>
+                                                                                    <input name="end_time" type="time"
+                                                                                        class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat"
+                                                                                        placeholder="End Time" />
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="form-label">Buffer
+                                                                                        Time</label>
+                                                                                    <input name="buffer_time"
+                                                                                        type="time"
+                                                                                        class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat"
+                                                                                        placeholder="Buffer Time" />
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label
+                                                                                        class="form-label">Location</label>
+                                                                                    <input name="location" type="text"
+                                                                                        maxlength="230"
+                                                                                        class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat"
+                                                                                        placeholder="Location" />
+                                                                                </td>
+                                                                                <td rowspan="2" width="3%">
+                                                                                    <a href="javascript:;"
+                                                                                        data-repeater-delete
+                                                                                        class="btn btn-sm btn-light-danger mt-8">
+                                                                                        <i
+                                                                                            class="fa-solid fa-trash-alt fs-2"></i>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td width="25%">
+                                                                                    <label class="form-label required">Task
+                                                                                        Description</label>
+                                                                                    <textarea rows="1" name="task_description" class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat" placeholder="Enter Description"></textarea>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label
+                                                                                        class="form-label required">Supervisor</label>
+                                                                                    <select
+                                                                                        class="form-select form-select-solid form-select-sm"
+                                                                                        name="supervisors[]"
+                                                                                        id="field2" multiple
+                                                                                        multiselect-search="true"
+                                                                                        multiselect-select-all="true"
+                                                                                        multiselect-max-items="2">
+                                                                                        @if (count($all_employees) > 0)
+                                                                                            @foreach ($all_employees as $supervisor)
+                                                                                                <option
+                                                                                                    value="{{ $supervisor->id }}">
+                                                                                                    {{ $supervisor->name }}
+                                                                                                </option>
+                                                                                            @endforeach
+                                                                                        @endif
+                                                                                    </select>
+                                                                                    <div class="invalid-feedback"> Please
+                                                                                        Enter Supervisor Name.
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label
+                                                                                        class="form-label required">Notify
+                                                                                        To</label>
+                                                                                    <select
+                                                                                        class="form-select form-select-solid form-select-sm"
+                                                                                        name="notify_id[]" id="field2"
+                                                                                        multiple multiselect-search="true"
+                                                                                        multiselect-select-all="true"
+                                                                                        multiselect-max-items="2">
+                                                                                        @if (count($all_employees) > 0)
+                                                                                            @foreach ($all_employees as $notify_to)
+                                                                                                <option
+                                                                                                    value="{{ $notify_to->id }}">
+                                                                                                    {{ $notify_to->name }}
+                                                                                                </option>
+                                                                                            @endforeach
+                                                                                        @endif
+                                                                                    </select>
+                                                                                    <div class="invalid-feedback"> Please
+                                                                                        Enter Notifiable Employees.
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="form-label required">Add
+                                                                                        Standby</label>
+                                                                                    <select
+                                                                                        class="form-select form-select-solid form-select-sm"
+                                                                                        name="assignees[]" id="field2"
+                                                                                        multiple multiselect-search="true"
+                                                                                        multiselect-select-all="true"
+                                                                                        multiselect-max-items="2">
+                                                                                        @if (count($all_employees) > 0)
+                                                                                            @foreach ($all_employees as $assignee)
+                                                                                                <option
+                                                                                                    value="{{ $assignee->id }}">
+                                                                                                    {{ $assignee->name }}
+                                                                                                </option>
+                                                                                            @endforeach
+                                                                                        @endif
+                                                                                    </select>
+                                                                                    <div class="invalid-feedback"> Please
+                                                                                        Enter Standby Employees.
+                                                                                    </div>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="form-label">Task
+                                                                                        Target</label>
+                                                                                    <input name="task_target"
+                                                                                        type="text" maxlength="230"
+                                                                                        class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat"
+                                                                                        placeholder="Task Target" />
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="form-label">Task
+                                                                                        Rating</label>
+                                                                                    <input name="task_rating"
+                                                                                        type="text" maxlength="230"
+                                                                                        class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat"
+                                                                                        placeholder="Task Rating" />
+                                                                                </td>
+                                                                                <td>
+                                                                                    <label class="form-label">Task
+                                                                                        Weight</label>
+                                                                                    <input name="task_weight"
+                                                                                        type="text" maxlength="230"
+                                                                                        class="form-control form-control-sm form-control-solid"
+                                                                                        data-kt-repeater="repeat"
+                                                                                        placeholder="Task Weight" />
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-2">
+                                                            {{-- <div class="col-md-1">
                                                                 <div
                                                                     class="d-flex justify-content-between align-items-center">
-                                                                    <a href="javascript:;" data-repeater-create
-                                                                        class="btn btn-sm btn-light-primary mt-8">
-                                                                        <i class="la la-plus"></i>Add
-                                                                    </a>
-
                                                                     <a href="javascript:;" data-repeater-delete
                                                                         class="btn btn-sm btn-light-danger mt-8">
-                                                                        <i class="la la-trash-o fs-3"></i>Delete
+                                                                        <i class="fa-solid fa-trash-alt fs-2"></i>
                                                                     </a>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
 
                                                         </div>
                                                     </div>

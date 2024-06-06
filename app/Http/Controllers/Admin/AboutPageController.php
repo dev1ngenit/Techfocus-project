@@ -170,7 +170,7 @@ class AboutPageController extends Controller
             'status'                                   => $request->status,
         ]);
 
-        return redirect()->back()->with('success', 'Data has been saved successfully!');
+        return redirect()->back()->with('success', 'Data has been saved successfully!')->withInput();
     }
 
     /**

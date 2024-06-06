@@ -48,14 +48,13 @@
 }
 
 /* Nav Item:Shahed*/
-.nav-line-tabs .nav-item .nav-link{
+.nav-line-tabs .nav-item .nav-link {
   padding: 0.5rem;
   border-radius: 0;
 }
 
-.nav-line-tabs .nav-item .nav-link.active, .nav-line-tabs .nav-item .nav-link:hover:not(.disabled), .nav-line-tabs .nav-item.show .nav-link{
-  background-color: #ae0a46;
-}
+
+
 /* Nav Item:Shahed*/
 
 
@@ -189,7 +188,7 @@ tr td {
   padding: 10px !important;
 }
 
-#kt_datatable_example{
+#kt_datatable_example {
   border: 1px solid #eff2f5;
 }
 
@@ -226,12 +225,12 @@ tr td {
   justify-content: center;
 }
 
-.custom-bage-all{
-  margin-top: -25px;
+.custom-bage-all {
+  margin-top: -27px;
   width: 10%;
-  height: 20px;
+  height: 25px;
   display: flex;
-    justify-content: center;
+  justify-content: center;
 }
 
 .table_title {
@@ -249,19 +248,23 @@ tr td {
   color: white;
 }
 
-.dropzone{
+.dropzone {
   padding: 0rem !important;
 }
-.dz-filename{
+
+.dz-filename {
   display: none;
 }
-.dz-size, .dz-progress, .dz-success-mark, .dz-error-mark, .dz-error-message{
+
+.dz-size, .dz-progress, .dz-success-mark, .dz-error-mark, .dz-error-message {
   display: none !important;
 }
-.dropzone .dz-preview, .dz-image{
+
+.dropzone .dz-preview, .dz-image {
   min-height: 60px !important;
   min-width: 60px !important;
 }
+
 .dropzone .dz-preview .dz-image {
   border-radius: 20px;
   overflow: hidden;
@@ -271,10 +274,12 @@ tr td {
   display: block;
   z-index: 10;
 }
-.dz-image img{
+
+.dz-image img {
   height: 60px;
   width: 60px;
 }
+
 .dropzone .dz-preview .dz-remove {
   font-size: 14px;
   text-align: center;
@@ -324,7 +329,8 @@ tr td {
 .dropzone-field {
   border: 1px dashed #009ef7;
   display: flex;
-  flex-wrap: wrap; /* Allow multiple images in a row */
+  flex-wrap: wrap;
+  /* Allow multiple images in a row */
   align-items: center;
   border-radius: 4px;
   padding: 10px 5px;
@@ -354,12 +360,13 @@ tr td {
 
 /* Clock Start */
 #clock {
-  background-color: #0069bf;
+  background-image: linear-gradient(to bottom, #0069bf, #077cd0, #178fe0, #27a2f0, #38b6ff);
   color: white;
   display: inline-block;
   width: auto;
   border-radius: 0px;
-  padding: 15px 20px;
+  padding: 5px 15px;
+  font-size: 1.2rem;
 }
 
 #clock p {
@@ -372,6 +379,7 @@ tr td {
   text-align: center;
   margin: 0 0.25em;
 }
+
 .separator {
   display: block;
   height: 0;
@@ -385,14 +393,15 @@ tr td {
 
 #clock .time-unit .small {
   display: block;
-  font-size: 0.5em;
+  font-size: 0.6em;
 }
 
 #clock .separator {
-  font-size: 2em;
+  font-size: 1.2em;
   vertical-align: top;
   margin-top: -0.2em;
 }
+
 /* Clock End */
 
 

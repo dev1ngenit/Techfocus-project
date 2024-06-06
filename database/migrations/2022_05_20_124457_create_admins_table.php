@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
-            $table->foreignId('employee_department_id')->nullable()->constrained('employee_departments')->cascadeOnDelete();
+            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnUpdate();
+            $table->foreignId('employee_department_id')->nullable()->constrained('employee_departments')->cascadeOnUpdate();
+            $table->foreignId('supervisor_id')->nullable()->constrained('admins')->cascadeOnUpdate();
             $table->string('name', 255);
             $table->string('username', 30)->unique()->nullable();
             $table->string('email', 255)->unique();
@@ -32,7 +33,7 @@ return new class extends Migration
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
-            $table->foreignId('employee_category_id')->nullable()->constrained('employee_categories')->cascadeOnDelete();
+            $table->foreignId('employee_category_id')->nullable()->constrained('employee_categories')->cascadeOnUpdate();
             $table->string('employee_id')->unique()->nullable()->comment('107');
             $table->string('mobile', 20)->nullable();
             $table->string('total_years_of_job_experience')->nullable();

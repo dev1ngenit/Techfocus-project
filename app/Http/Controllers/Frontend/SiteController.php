@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\AboutPage;
+use Illuminate\Support\Facades\Session;
 
 class SiteController extends Controller
 {
@@ -63,14 +64,18 @@ class SiteController extends Controller
     public function about()
     {
         $aboutPage = AboutPage::whereStatus('active')->first();
+        if (!empty($aboutPage)) {
+            $brandIds = $aboutPage ? json_decode($aboutPage->brand_id, true) : [];
+            $brands = $brandIds ? Brand::whereIn('id', $brandIds)->get() : collect();
 
-        $brandIds = $aboutPage ? json_decode($aboutPage->brand_id, true) : [];
-        $brands = $brandIds ? Brand::whereIn('id', $brandIds)->get() : collect();
-
-        return view('frontend.pages.about.about', [
-            'aboutPage' => $aboutPage,
-            'brands' => $brands,
-        ]);
+            return view('frontend.pages.about.about', [
+                'aboutPage' => $aboutPage,
+                'brands' => $brands,
+            ]);
+        } else {
+            Session::flash('warning','The Page is now in Construction Mode. Please Try again later.');
+            return redirect()->back();
+        }
     }
 
     public function subscription()

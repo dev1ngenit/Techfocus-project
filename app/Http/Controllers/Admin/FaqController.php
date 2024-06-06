@@ -29,7 +29,7 @@ class FaqController extends Controller
     {
         return view('admin.pages.faq.index', [
             'faqs'              => $this->faqRepository->allFaq(),
-            'dynamicCategories' => $this->dynamicCategoryRepository->allDynamicCategory(),
+            'dynamicCategories' =>  $this->dynamicCategoryRepository->allDynamicActiveCategory('faqs'),
         ]);
     }
 

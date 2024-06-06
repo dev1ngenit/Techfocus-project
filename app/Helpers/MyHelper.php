@@ -124,6 +124,21 @@ if (!function_exists('getAllCountry')) {
     }
 }
 
+if (!function_exists('formatText')) {
+    
+    /**
+     * Generate a unique transaction number.
+     *
+     * @return string
+     */
+    function formatText($text)
+    { {
+            $text = str_replace('_', ' ', $text);
+            return ucfirst(strtolower($text));
+        }
+    }
+}
+
 if (!function_exists('getAllState')) {
     /**
      * Generate a unique transaction number.

@@ -24,6 +24,8 @@ class EmployeeController extends Controller
     {
         return view('admin.pages.employee.index', [
             'admins' =>  Admin::with('permissions')->get(),
+            'employeeDepartments' =>  EmployeeDepartment::get(['id', 'name']),
+            'employeeCategories' =>  EmployeeCategory::get(['id', 'name']),
         ]);
     }
 
@@ -89,6 +91,7 @@ class EmployeeController extends Controller
         Admin::create([
             'country_id'                                    => $request->country_id,
             'employee_department_id'                        => $request->employee_department_id,
+            'supervisor_id'                                 => $request->supervisor_id,
             'name'                                          => $request->name,
             'username'                                      => $request->username,
             'email'                                         => $request->email,
@@ -318,6 +321,7 @@ class EmployeeController extends Controller
         $admins->update([
             'country_id'                                    => $request->country_id,
             'employee_department_id'                        => $request->employee_department_id,
+            'supervisor_id'                                 => $request->supervisor_id,
             'name'                                          => $request->name,
             'username'                                      => $request->username,
             'email'                                         => $request->email,

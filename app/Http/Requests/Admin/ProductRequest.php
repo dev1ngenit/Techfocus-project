@@ -27,14 +27,14 @@ class ProductRequest extends FormRequest
         $product = $this->route('product'); // Directly access the brand ID from the route parameter.
 
         return [
-            'country_id'                => 'nullable|exists:countries,id',
-            'company_id'                => 'nullable|exists:companies,id',
+            // 'country_id'                => 'nullable|exists:countries,id',
+            // 'company_id'                => 'nullable|exists:companies,id',
             'ref_code'                  => 'nullable|string|max:50',
             'name'                      => 'required|string|unique:products,name,' . $product . '|max:255',
             'sku_code'                  => 'nullable|string|max:50|unique:products,sku_code,' . $product,
             'mf_code'                   => 'nullable|string|max:50|unique:products,mf_code,' . $product,
             'product_code'              => 'nullable|string|max:50',
-            'tags'                      => 'nullable|array',
+            'tags'                      => 'nullable',
             'color_id'                  => 'nullable|array',
             'short_desc'                => 'nullable|string',
             'overview'                  => 'nullable|string',
@@ -42,7 +42,7 @@ class ProductRequest extends FormRequest
             'accessories'               => 'nullable|string',
             'warranty'                  => 'nullable|string',
             'thumbnail'                 => 'required|image|mimes:png,jpg,jpeg|max:2024',
-            'qty'                       => 'required|integer|min:1',
+            'qty'                       => 'nullable',
             'stock'                     => 'nullable|string|max:50',
             'price'                     => 'nullable|numeric',
             'sas_price'                 => 'nullable|numeric',

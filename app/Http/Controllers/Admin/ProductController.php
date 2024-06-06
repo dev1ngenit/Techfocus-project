@@ -21,6 +21,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Admin\ProductRequest;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -72,8 +73,28 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(Request $request)
     {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'name'     => 'required|unique:products,name|max:200',
+                'thumbnail' => 'required|image|mimes:png,jpg,jpeg|max:5000',
+
+            ],
+            [
+                'thumbnail' => [
+                    'max'   => 'The image field must be smaller than 10 MB.',
+                ],
+                'thumbnail' => 'The file must be an image.',
+                'mimes'     => 'The :attribute must be a file of type:PNG-JPEG-JPG',
+                'required'  => 'The :attribute field must be given.',
+                'unique'    => 'The Product Name has already been existed in the database.',
+            ]
+        );
+
+        if ($validator->passes()) {
+
         $thumbnail = $request->file('thumbnail');
         $thumbnailName = Str::random(20) . '.' . $thumbnail->getClientOriginalExtension();
         $thumbnailPath = $thumbnail->storeAs('upload/Products/thumbnail', $thumbnailName, 'public');
@@ -176,10 +197,18 @@ class ProductController extends Controller
                 ]);
             }
         }
+        toastr()->success('Data Inserted Successfully');
+        return redirect()->back();
+            } else {
+                $messages = $validator->messages();
+                foreach ($messages->all() as $message) {
+                    toastr()->error($message, 'Failed', ['timeOut' => 30000]);
+                }
+                return redirect()->back()->withInput();
+            }
 
-        //  
 
-        return redirect()->back()->withInput();
+       
     }
 
 
