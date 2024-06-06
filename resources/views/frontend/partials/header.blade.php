@@ -125,12 +125,12 @@
                                             </li>
                                         </ul>
                                         <hr class="text-muted" />
-                                        <ul class="account p-0 text-muted text-start" style="font-size: 7px">
+                                        <ul class="account p-0 text-muted text-start" style="font-size: 13px">
                                             <li>
                                                 Sign in to your manufacturer account
                                                 <a target="_blank" class="main-color">Manufacturer account</a>
                                             </li>
-                                            <li>
+                                            <li class="pt-2">
                                                 Sign in to your distributor account
                                                 <a target="_blank" class="main-color">Distributor account</a>
                                             </li>
