@@ -3,37 +3,41 @@ var style = document.createElement('style');
 style.setAttribute("id", "multiselect_dropdown_styles");
 style.innerHTML = `
                     .multiselect-dropdown{
-                        display: inline-block;
-                        padding: 0.3rem 3rem 0.3rem 1.5rem;
-                        border-radius: 1px;
-                        border: solid 1px #e6e7e7;
-                        background-color: #f5f8fa;
-                        position: relative;
-                        width: 100% !important;
-                        height: 34px;
-                        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
-                        background-repeat: no-repeat;
-                        background-position: right .75rem center;
-                        background-size: 16px 12px;
+                            display: flex;
+                            padding: 0.3rem 3rem 0.3rem 1.5rem;
+                            border-radius: 1px;
+                            border: solid 1px #e6e7e7;
+                            background-color: #f5f8fa;
+                            position: relative;
+                            width: 100% !important;
+                            height: 44px;
+                            background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e);
+                            background-repeat: no-repeat;
+                            background-position: right .75rem center;
+                            background-size: 16px 12px;
+                            align-items: center;
                     }
                     .multiselect-dropdown span.optext, .multiselect-dropdown span.placeholder{
-                        margin-right:0.5em;
-                        margin-bottom:0px;
-                        padding:0px;
-                        border-radius: 4px;
-                        display:inline-block;
-                        line-height: 1;
-                        margin-top: 6px;
+                            margin-right: 1rem;
+                            margin-bottom: 0px;
+                            padding: 0px;
+                            border-radius: 4px;
+                            display: inline-block;
+                            line-height: 1;
+                            // margin-top: 6px;
+                            font-size: 12px;
                     }
 
 
                     .multiselect-dropdown span.optext .optdel {
                         float: right;
-                        margin: 0 -6px 1px 5px;
-                        font-size: 0.7em;
-                        margin-top: 2px;
+                        margin: -4px -7px 0px 4px;
+                        font-size: 1rem;
                         cursor: pointer;
-                        color: #666;
+                        color: #fff;
+                        background: gray;
+                        border-radius: 10px;
+                        padding: 2px;
                     }
                     .multiselect-dropdown span.optext .optdel:hover { 
                         color: #c66;
@@ -256,7 +260,7 @@ function MultiselectDropdown(options) {
                 div.querySelectorAll('span.optext, span.placeholder').forEach(t => div.removeChild(
                     t));
                 var sels = Array.from(el.selectedOptions);
-                if (sels.length > (el.attributes['multiselect-max-items']?.value ?? 5)) {
+                if (sels.length > (el.attributes['multiselect-max-items']?.value ?? 1)) {
                     div.appendChild(newEl('span', {
                         class: ['optext', 'maxselected'],
                         text: sels.length + ' ' + config.txtSelected

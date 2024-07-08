@@ -39,7 +39,7 @@
 <!--end::Custom-Shahed-->
 
 
-
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <!--New Design WithOut Template Css-->
 <link rel="stylesheet" href="{{ asset('backend/assets/js/custom/input-tags/css/tagsinput.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/assets/css/custom_global.css') }}">

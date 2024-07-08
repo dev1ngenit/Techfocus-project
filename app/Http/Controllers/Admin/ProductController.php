@@ -14,14 +14,15 @@ use App\Models\Admin\ProductImage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Admin\IndustryProduct;
 use App\Models\Admin\SolutionProduct;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Admin\ProductRequest;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -394,6 +395,20 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::with('productIndustries','productSolutions','multiImages')->findOrFail($id);
+        //unlink($product->thumbnail);
+        if (File::exists($product->thumbnail)) {
+            File::delete($product->thumbnail);
+        }
+        $product->delete();
+
+        $imges = $product->multiImages;
+        foreach ($imges as $img) {
+            //unlink($img->photo_name);
+            if (File::exists($img->photo_name)) {
+                File::delete($img->photo_name);
+            }
+            $img->delete();
+        }
     }
 }

@@ -138,6 +138,7 @@ Route::prefix('administrator')->name('admin.')->group(static function () {
             Route::post('/product/create', 'store')->name('product.store');
             Route::get('/product/{id}/edit', 'edit')->name('product.edit');
             Route::put('/product/{id}/update', 'update')->name('product.update');
+            Route::delete('/product/{id}/destroy', 'destroy')->name('product.destroy');
         });
         // HR
         Route::prefix('hr')->controller(HRController::class)->group(function () {

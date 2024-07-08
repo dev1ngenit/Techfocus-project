@@ -82,8 +82,7 @@
                                                         <i class="fa-solid fa-expand"></i>
                                                     </a> --}}
                                                     <a href="{{ route('admin.blog.edit', $blog->id) }}"
-                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
-                                                        data-bs-toggle="modal" data-bs-target="#categorymentEditModal">
+                                                        class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                         <i class="fa-solid fa-pen"></i>
                                                     </a>
                                                     <a href="{{ route('admin.news-trend.destroy', $blog->id) }}"

@@ -8,7 +8,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-lg-2 col-sm-12 text-lg-start text-sm-center">
-                                    <!--begin::Search-->
+                                    
                                     <div class="d-flex align-items-center position-relative my-1">
                                         <span
                                             class="svg-icon svg-icon-2 svg-icon-gray-700 position-absolute top-50 translate-middle-y ms-4">
@@ -27,10 +27,10 @@
                                             class="form-control form-control-sm form-control-solid w-150px ps-14 rounded-0"
                                             placeholder="Search" style="border: 1px solid #eee;" />
                                     </div>
-                                    <!--end::Search-->
-                                    <!--begin::Export buttons-->
+                                    
+                                    
                                     <div id="sourced_products_export" class="d-none"></div>
-                                    <!--end::Export buttons-->
+                                    
                                 </div>
                                 <div class="col-lg-4 col-sm-12 text-lg-center text-sm-center">
                                     <div class="card-title table_title">
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-sm-12 text-lg-end text-sm-center">
-                                    <!--begin::Export dropdown-->
+                                    
                                     <a href="{{ route('admin.product.index') }}"
                                         class="btn btn-sm btn-info rounded-0 px-2 me-3">
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
@@ -50,45 +50,13 @@
                                         {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
                                         Drafts
                                     </a>
-                                    <button type="button" class="btn btn-sm btn-light-primary rounded-0 px-2 me-3"
-                                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        {{-- <span class="svg-icon svg-icon-1 position-absolute ms-4"></span> --}}
-                                        Export Report
-                                    </button>
                                     <a href="{{ route('admin.product.create') }}"
                                         class="btn btn-sm btn-success rounded-0 px-2">
                                         <i class="fa-solid fa-plus"></i>
                                         Add New
                                     </a>
-                                    <!--begin::Menu-->
-                                    <div id="sourced_products_export_menu"
-                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                        data-kt-menu="true">
-
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="excel">
-                                                Export as Excel
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="csv">
-                                                Export as CSV
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                        <!--begin::Menu item-->
-                                        <div class="menu-item px-3">
-                                            <a href="#" class="menu-link px-3" data-kt-export="pdf">
-                                                Export as PDF
-                                            </a>
-                                        </div>
-                                        <!--end::Menu item-->
-                                    </div>
-                                    <!--end::Menu-->
-                                    <!--end::Export dropdown-->
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
@@ -98,7 +66,7 @@
                             class="table table-striped table-hover align-middle rounded-0 table-row-bordered border fs-6 g-5"
                             id="kt_datatable_example">
                             <thead class="table_header_bg">
-                                <!--begin::Table row-->
+                                
                                 <tr class="text-center text-gray-900 fw-bolder fs-7 text-uppercase">
                                     <th width="5%">Sl</th>
                                     <th width="10%">Image</th>
@@ -108,7 +76,7 @@
                                     <th width="10%">Status</th>
                                     <th width="10%">Action</th>
                                 </tr>
-                                <!--end::Table row-->
+                                
                             </thead>
                             <tbody class="fw-bold text-gray-600 text-center">
                                 @if ($products)
@@ -157,18 +125,18 @@
                                                     <a href="{{ route('admin.product.edit', $product->id) }}"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                         <i class="fa-solid fa-expand"></i>
-                                                        <!--View-->
+                                                        
                                                     </a>
                                                     <a href="{{ route('admin.product.edit', $product->id) }}"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                         <i class="fa-solid fa-pen"></i>
-                                                        <!--View-->
+                                                        
                                                     </a>
-                                                    <a href="{{ route('admin.category.destroy', $product->id) }}"
+                                                    <a href="{{ route('admin.product.destroy', $product->id) }}"
                                                         class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 delete"
                                                         data-kt-docs-table-filter="delete_row">
                                                         <i class="fa-solid fa-trash-can-arrow-up"></i>
-                                                        <!--Delete-->
+                                                        
                                                     </a>
                                                 </div>
                                             </td>

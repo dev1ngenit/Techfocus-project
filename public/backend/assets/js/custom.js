@@ -36,7 +36,7 @@ function clockTicker() {
 
   // Refresh the clock every 1 second
   requestAnimationFrame(clockTicker);
-} 
+}
 
 // Start the clock
 clockTicker();
@@ -52,15 +52,45 @@ function submitForm(event, element) {
 
 
 // Tiny MCE Start
-document.addEventListener('DOMContentLoaded', function () {
-  tinymce.init({
-    selector: '.kt_docs_tinymce_plugins'
-  });
-});
-document.addEventListener('DOMContentLoaded', function () {
-  tinymce.init({
-    selector: '.overview'
-  });
+// document.addEventListener('DOMContentLoaded', function () {
+//   tinymce.init({
+//     selector: '.kt_docs_tinymce_plugins'
+//   });
+// });
+// document.addEventListener('DOMContentLoaded', function () {
+//   tinymce.init({
+//     selector: '.overview'
+//   });
+// });
+$(document).ready(function () {
+  ClassicEditor.create(document.querySelector('.ckeditor'))
+    .then(editor => {
+      console.log(editor);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  ClassicEditor.create(document.querySelector('.overview'))
+    .then(editor => {
+      console.log(editor);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  ClassicEditor.create(document.querySelector('.specification'))
+    .then(editor => {
+      console.log(editor);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  ClassicEditor.create(document.querySelector('.accessories'))
+    .then(editor => {
+      console.log(editor);
+    })
+    .catch(error => {
+      console.error(error);
+    });
 });
 // Tiny MCE End
 
@@ -447,11 +477,11 @@ KTUtil.onDOMContentLoaded(function () {
 })();
 
 
-document.addEventListener('DOMContentLoaded', function () {
-  tinymce.init({
-    selector: '#kt_docs_tinymce_basic'
-  });
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//   tinymce.init({
+//     selector: '#kt_docs_tinymce_basic'
+//   });
+// });
 
 // Calander With Target ANd Time
 document.addEventListener('DOMContentLoaded', function () {

@@ -540,25 +540,25 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Short Desc</label>
-                                                        <textarea name="short_desc" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Short Desc">
+                                                        <textarea name="short_desc" class="tox-target ckeditor" placeholder="Write Short Desc">
                                                             {{ $product->short_desc }}
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Overview</label>
-                                                        <textarea name="overview" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Overview">
+                                                        <textarea name="overview" class="tox-target overview" placeholder="Write Overview">
                                                             {{ $product->overview }}
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Specification</label>
-                                                        <textarea name="specification" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Specification">
+                                                        <textarea name="specification" class="tox-target specification" placeholder="Write Specification">
                                                             {{ $product->specification }}
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Accessories</label>
-                                                        <textarea name="accessories" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Accessories">
+                                                        <textarea name="accessories" class="tox-target accessories" placeholder="Write Accessories">
                                                             {{ $product->accessories }}
                                                         </textarea>
                                                     </div>

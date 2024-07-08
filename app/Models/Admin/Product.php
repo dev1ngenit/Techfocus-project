@@ -32,6 +32,14 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class);
     }
+    public function productIndustries()
+    {
+        return $this->hasMany(IndustryProduct::class);
+    }
+    public function productSolutions()
+    {
+        return $this->hasMany(SolutionProduct::class);
+    }
     public function productSas()
     {
         return $this->hasOne(ProductSas::class);

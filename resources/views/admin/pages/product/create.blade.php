@@ -73,16 +73,16 @@
                                                             <label class="form-label required">SKU Code</label>
                                                             <input name="sku_code"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Eg: NG-2647374" type="text" required />
+                                                                placeholder="Eg: NG-2647374" type="text" required/>
                                                             <div class="invalid-feedback"> Please Enter SKU Code.</div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-2 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">MF Code</label>
+                                                            <label class="form-label">MF Code</label>
                                                             <input name="mf_code"
                                                                 class="form-control form-control-sm form-control-solid"
-                                                                placeholder="Eg: MF-2647374" type="text" value="{{ old('mf_code') }}" required />
+                                                                placeholder="Eg: MF-2647374" type="text" value="{{ old('mf_code') }}" />
                                                             <div class="invalid-feedback"> Please Enter MF Code.</div>
                                                         </div>
                                                     </div>
@@ -103,7 +103,7 @@
                                                     <div class="col-lg-2 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Product Type</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
+                                                            <select class="form-control select"
                                                                 name="product_type" data-control="select2"
                                                                 data-hide-search="true"
                                                                 data-placeholder="Select an Product Type"
@@ -123,7 +123,7 @@
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Stock Status</label>
                                                             <select
-                                                                class="form-select form-select-solid form-select-sm stock_select"
+                                                                class="form-control select stock_select"
                                                                 name="stock" data-control="select2"
                                                                 data-placeholder="Select Stock Status"
                                                                 data-allow-clear="true" required>
@@ -159,7 +159,7 @@
                                                     <div class="col-lg-2 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Price Status</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
+                                                            <select class="form-control select"
                                                                 data-control="select2"
                                                                 data-placeholder="Select Price Status" name="price_status"
                                                                 data-hide-search="true" data-allow-clear="true" required>
@@ -175,7 +175,7 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Brand Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
+                                                            <select class="form-control select"
                                                                 name="brand_id" data-control="select2"
                                                                 data-placeholder="Select an Brand Name"
                                                                 data-allow-clear="true" required>
@@ -191,7 +191,7 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Category Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
+                                                            <select class="form-control select"
                                                                 name="category_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true">
                                                                 @if (count($categories) > 0)
@@ -213,11 +213,11 @@
 
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Industry Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
+                                                            <label class="form-label">Industry Name</label>
+                                                            <select class="form-control select"
                                                                 name="industry_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true"
-                                                                multiselect-max-items="2">
+                                                                multiselect-max-items="1">
                                                                 @if (count($industries) > 0)
                                                                     @foreach ($industries as $industry)
                                                                         <option value="{{ $industry->id }}">
@@ -233,11 +233,11 @@
 
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Solution Name</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
+                                                            <label class="form-label">Solution Name</label>
+                                                            <select class="form-control select"
                                                                 name="solution_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true"
-                                                                multiselect-max-items="2">
+                                                                multiselect-max-items="1">
                                                                 @if (count($solutions) > 0)
                                                                     @foreach ($solutions as $solution)
                                                                         <option value="{{ $solution->id }}">
@@ -346,7 +346,7 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label required">Product Colors</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
+                                                            <select class="form-control select"
                                                                 name="color_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true"
                                                                 multiselect-max-items="2">
@@ -365,7 +365,7 @@
                                                     <div class="col-lg-6 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Parent Products</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
+                                                            <select class="form-control select"
                                                                 name="parent_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true"
                                                                 multiselect-max-items="2">
@@ -383,7 +383,7 @@
                                                     <div class="col-lg-6 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Child Products</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
+                                                            <select class="form-control select"
                                                                 name="child_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true"
                                                                 multiselect-max-items="2">
@@ -400,7 +400,7 @@
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
                                                             <label class="form-label">Currency</label>
-                                                            <select class="form-select form-select-solid form-select-sm"
+                                                            <select class="form-control select"
                                                                 name="currency_id" data-control="select2"
                                                                 data-placeholder="Select Currency"
                                                                 data-allow-clear="true">
@@ -478,25 +478,25 @@
                                                 <div class="row">
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Short Desc</label>
-                                                        <textarea name="short_desc" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Short Desc">
+                                                        <textarea name="short_desc" class="tox-target ckeditor" placeholder="Write Short Desc">
                                                             {{ old('short_desc') }}
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Overview</label>
-                                                        <textarea name="overview" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Overview">
+                                                        <textarea name="overview" class="tox-target overview" placeholder="Write Overview">
                                                             {{ old('overview') }}
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Specification</label>
-                                                        <textarea name="specification" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Specification">
+                                                        <textarea name="specification" class="tox-target specification" placeholder="Write Specification">
                                                             {{ old('specification') }}
                                                         </textarea>
                                                     </div>
                                                     <div class="col-lg-6 mb-2">
                                                         <label class="form-label mb-0">Accessories</label>
-                                                        <textarea name="accessories" class="tox-target kt_docs_tinymce_plugins" placeholder="Write Accessories">
+                                                        <textarea name="accessories" class="tox-target accessories" placeholder="Write Accessories">
                                                             {{ old('accessories') }}
                                                         </textarea>
                                                     </div>
