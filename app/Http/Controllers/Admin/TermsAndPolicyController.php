@@ -51,7 +51,7 @@ class TermsAndPolicyController extends Controller
         // dd($request->all());
         $data = [
             'country_id'      => $request->country_id,
-            'company_id'       => $request->company_id,
+            'company_id'      => $request->company_id,
             'name'            => $request->name,
             'content'         => $request->content,
             'is_active'       => $request->is_active ?? '0',
