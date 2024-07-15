@@ -82,11 +82,11 @@
                                                     </div>
                                                     <div class="col-lg-2 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">MF Code</label>
+                                                            <label class="form-label">MF Code</label>
                                                             <input name="mf_code"
                                                                 class="form-control form-control-sm form-control-solid"
                                                                 placeholder="Eg: MF-2647374" type="text"
-                                                                value="{{ $product->mf_code }}" required />
+                                                                value="{{ $product->mf_code }}"/>
                                                             <div class="invalid-feedback"> Please Enter MF Code.</div>
                                                         </div>
                                                     </div>
@@ -98,7 +98,7 @@
                                                             <input name="notification_days"
                                                                 class="form-control form-control-sm form-control-solid"
                                                                 placeholder="Eg:15 days,30 days" type="text"
-                                                                value="{{ $product->notification_days }}" required />
+                                                                value="{{ $product->notification_days }}" required/>
                                                             <div class="invalid-feedback"> Please Enter Notification Days.
                                                             </div>
                                                         </div>
@@ -158,7 +158,7 @@
 
                                                     <div class="col-lg-2 mb-3 qty_display d-none">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Current Stock</label>
+                                                            <label class="form-label">Current Stock</label>
                                                             <input type="number" name="qty" pattern="\d+"
                                                                 step="1" value="{{ $product->qty }}"
                                                                 class="form-control form-control-sm form-control-solid qty_required"
@@ -382,7 +382,7 @@
                                                     </div>
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Product Colors</label>
+                                                            <label class="form-label">Product Colors</label>
                                                             <select class="form-select form-select-solid form-select-sm"
                                                                 name="color_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true"
@@ -401,7 +401,7 @@
                                                     </div>
                                                     <div class="col-lg-6 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Parent Products</label>
+                                                            <label class="form-label">Parent Products</label>
                                                             <select class="form-select form-select-solid form-select-sm"
                                                                 name="parent_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true"
@@ -430,7 +430,7 @@
                                                     </div>
                                                     <div class="col-lg-6 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Child Products</label>
+                                                            <label class="form-label">Child Products</label>
                                                             <select class="form-select form-select-solid form-select-sm"
                                                                 name="child_id[]" id="field2" multiple
                                                                 multiselect-search="true" multiselect-select-all="true"
@@ -459,7 +459,7 @@
                                                     </div>
                                                     <div class="col-lg-3 mb-3">
                                                         <div class="fv-row mb-3">
-                                                            <label class="form-label required">Currency</label>
+                                                            <label class="form-label">Currency</label>
                                                             <select class="form-select form-select-solid form-select-sm"
                                                                 name="currency_id" data-control="select2"
                                                                 data-placeholder="Select a Currency"
