@@ -172,7 +172,7 @@
                 <label class="form-label">Phone One</label>
                 <input name="phone_one" value="{{ optional($site)->phone_one }}"
                     class="form-control form-control-sm form-control-solid @error('phone_one') is-invalid @enderror"
-                    placeholder="Enter Phone One" type="number" />
+                    placeholder="Enter Phone One" type="text" />
                 @error('phone_one')
                     <div class="invalid-feedback"> {{ $message }}</div>
                 @enderror
@@ -183,7 +183,7 @@
                 <label class="form-label">Phone Two</label>
                 <input name="phone_two" value="{{ optional($site)->phone_two }}"
                     class="form-control form-control-sm form-control-solid @error('phone_two') is-invalid @enderror"
-                    placeholder="Enter Phone Two" type="number" />
+                    placeholder="Enter Phone Two" type="text" />
                 @error('phone_two')
                     <div class="invalid-feedback"> {{ $message }}</div>
                 @enderror
@@ -194,7 +194,7 @@
                 <label class="form-label">Whatsapp Number</label>
                 <input name="whatsapp_number" value="{{ optional($site)->whatsapp_number }}"
                     class="form-control form-control-sm form-control-solid @error('whatsapp_number') is-invalid @enderror"
-                    placeholder="Enter Whatsapp Number" type="number" />
+                    placeholder="Enter Whatsapp Number" type="text" />
                 @error('whatsapp_number')
                     <div class="invalid-feedback"> {{ $message }}</div>
                 @enderror
